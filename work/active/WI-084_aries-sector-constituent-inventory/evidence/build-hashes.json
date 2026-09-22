@@ -1,0 +1,17 @@
+{
+  "source_hashes": {
+    "models/library/analyses/sector_constituent_inventory.sysml": "97c3b48387d5a4c47e376469c673d35fc69b93ffc756b04cd01ad6f46d78968b",
+    "models/designs/aries_cs_transfer/constituent_inventory.sysml": "3a5d06336d1b35f98cc476e3737798107224185d5ebcee133b4c1477707f96af"
+  },
+  "staged_hashes": {
+    "models/library/analyses/sector_constituent_inventory.sysml": "97c3b48387d5a4c47e376469c673d35fc69b93ffc756b04cd01ad6f46d78968b",
+    "models/designs/aries_cs_transfer/constituent_inventory.sysml": "3a5d06336d1b35f98cc476e3737798107224185d5ebcee133b4c1477707f96af"
+  },
+  "completion_hashes": {
+    "inventory_support.py": "9d3ef817453252afda058706b05d3193c1c994b4696d779944073fd81a9d91f7",
+    "three_sector_inventory_sum_impl.py": "08f8709b7ff2d18d859919858493b40bd7642eaddbe437c54d896686af427e67",
+    "constituent_inventory_impl.py": "c2cd639adffce8435a5860980c7180aecac735ca7eb6d781d7f646b44ff8c722",
+    "three_constituent_recipe_summary_impl.py": "1cfc932aeb0c14e9a3e9cb37575d1c6ede1cae38b791ed7a7be264f59f85d384",
+    "covered_layer_volume_impl.py": "cd3dff58653954585fd00391d2533ff98222d3b98a3a3cd53de59eca9a314de2"
+  }
+}

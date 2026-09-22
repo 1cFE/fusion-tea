@@ -1,0 +1,31 @@
+{
+  "codegen_produced": [
+    "IMPLEMENTATION_BACKLOG.md",
+    "__init__.py",
+    "contracts/generation_manifest.json",
+    "contracts/model_contract.json",
+    "contracts/verify.py",
+    "inputs/__init__.py",
+    "inputs/constituent_inventory_params.json",
+    "modules/__init__.py",
+    "modules/sector_constituent_inventory/__init__.py",
+    "modules/sector_constituent_inventory/constituent_inventory.py",
+    "modules/sector_constituent_inventory/covered_layer_volume.py",
+    "modules/sector_constituent_inventory/three_constituent_recipe_summary.py",
+    "modules/sector_constituent_inventory/three_sector_inventory_sum.py",
+    "pipelines/__init__.py",
+    "pipelines/pipeline.yaml",
+    "primitives.py",
+    "schemas/__init__.py",
+    "schemas/constituent_inventory_output.py",
+    "schemas/constituent_inventory_params.py",
+    "schemas/three_constituent_recipe_summary_output.py",
+    "schemas/three_sector_inventory_sum_output.py",
+    "tests/__init__.py",
+    "tests/test_implementations_runnable.py"
+  ],
+  "handwritten_globs": [
+    "handwritten/**"
+  ],
+  "runtime_globs": []
+}

@@ -13,7 +13,7 @@ Updated: 2026-09-21
 
 ## Scope and source authority
 
-[AGENT] Use Lyon Table II p706 as the quantitative recipe authority for this case, including 65.4%, 10.6% and 24% lateral coverages. The source figure's older 61%/15% split is an unresolved discrepancy, not a second input. The primary page is retained at [lyon-p706.png](evidence/lyon-p706.png); its PDF is the retained post-reveal `08-FST-Lyon.pdf` cited by the scope. Table rates describe complex machined shapes in USD2004/kg. Output is a source-rate constituent subtotal, not raw commodity cost or installed capital.
+[AGENT] Use Lyon Table II p706 as the quantitative recipe authority for this case, including 65.4%, 10.6% and 24% lateral coverages. The source figure's conflicting 61%/15% split is an unresolved discrepancy, not a second input. The primary page is retained at [lyon-p706.png](evidence/lyon-p706.png); its PDF is the retained post-reveal `08-FST-Lyon.pdf` cited by the scope. Table rates describe complex machined shapes in USD2004/kg. Output is a source-rate constituent subtotal, not raw commodity cost or installed capital. The source allocates LiPb to account 26 special materials, so the combined subtotal is not assigned to a blanket cost account.
 
 | Region | Coverage | Supplied thickness m | LiPb / SiC insert / ferritic steel / He volume fractions |
 |---|---:|---:|---|
@@ -46,15 +46,17 @@ Updated: 2026-09-21
 
 [AGENT] Every new calculation rejects nonfinite inputs/outputs and invalid domains through guarded typed native completion. Areas, thicknesses, volumes, rates, masses and subtotals are nonnegative; material density is positive; fractions are within [0,1]; recipe fraction sum differs from one by at most 1e-12. The tolerance is an AGENT floating-point closure allowance, not a material-composition uncertainty. Zero volume remains valid but cannot excuse an invalid recipe sum. Overflow cannot yield a supported result. Native completions retain the equations in SysML documentation and do not contain ARIES-specific values.
 
+[AGENT] Integration review identified a missing partition check before the first candidate could be accepted. The sector sum now also consumes the three supplied coverage fractions, checks each lies in [0,1], and refuses a sum differing from one by more than 1e-12, even when all areas are zero. This checks the declared complete lateral partition without normalizing or choosing the supplied values; geometric nonoverlap remains a source/model interpretation.
+
 [AGENT] Existing radial-build, winding-pack and hybrid blanket-cost definitions do not match these semantics and remain unchanged. This item adds four elementary relationships/aggregations and one assembly; it makes no unchanged physical-definition reuse claim. Parser, generator, typed completion, package sealing and TEAx execution reuse the established isolated route.
 
 ## Acceptance and execution plan
 
 - [x] Inspect primary Table II, retain the page, document source conflict and supplied roles.
-- [ ] Obtain independent source/design judgment on this contract before implementation.
-- [ ] Author four definitions and the reference assembly; generate, complete and seal isolated native package.
-- [ ] Execute tapered lower/upper endpoints and doubled supplied area; independently verify constituent and region sums and unchanged selected values.
-- [ ] Execute a changed single-material price and verify unchanged volume/mass; exercise invalid fractions, recipe closure, negative geometry/density/rate and nonfinite inputs through native entry points.
-- [ ] Run focused validation, record genuine static limitations, and obtain completion review.
+- [x] Obtain independent source/design judgment on this contract before implementation. Reviewer accepted 2026-09-21 after independently checking Tables II/VIII and p705 geometry/rate semantics; corrected the unsupported chronology claim about the figure split and reconciled the proposal with this reference-only contract.
+- [x] Author four definitions and the reference assembly; generate, complete and seal isolated native package.
+- [x] Execute tapered lower/upper endpoints and doubled supplied area; independently verify constituent and region sums and unchanged selected values. Five supported cases pass 230 independent decimal comparisons; see evidence/results.json.
+- [x] Execute a changed single-material price and verify unchanged volume/mass; exercise invalid fractions, recipe closure, negative geometry/density/rate and nonfinite inputs through native entry points. Fourteen refusals include recipe and lateral-partition closure at zero volume.
+- [x] Run focused validation, record genuine static limitations, and obtain completion review.
 
 [AGENT] The output must report known non-helium mass, source-rate subtotal, unquantified helium volume and fractional coverage. No claim of actual reference blanket totals, breeding, thermal capability, structural adequacy, replacement cost or LCOE follows. Source whole-component reconstruction still needs LCFS/midpoint geometry, average taper distribution and the excluded components' separate inventory boundaries.

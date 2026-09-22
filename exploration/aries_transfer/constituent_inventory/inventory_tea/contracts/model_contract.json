@@ -1,0 +1,513 @@
+{
+  "catalog_schema_version": "3.0.0",
+  "constraint_catalog": null,
+  "evaluation_semantics": "kleene-three-valued",
+  "outputs": [
+    {
+      "channel_name": "aries_constituent_inventory__full__layer__volume",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__lipb__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__lipb__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__lipb__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__sic_insert__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__sic_insert__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__sic_insert__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__ferritic_steel__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__ferritic_steel__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__ferritic_steel__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__recipe__unquantified_volume",
+      "field_name": "unquantified_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__recipe__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__recipe__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__full__recipe__represented_fraction",
+      "field_name": "represented_fraction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__layer__volume",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__ferritic_steel__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__sic_insert__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__sic_insert__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__sic_insert__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__lipb__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__lipb__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__lipb__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__recipe__unquantified_volume",
+      "field_name": "unquantified_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__recipe__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__recipe__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__behind_divertor__recipe__represented_fraction",
+      "field_name": "represented_fraction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__layer__volume",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__ferritic_steel__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__ferritic_steel__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__ferritic_steel__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__sic_insert__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__sic_insert__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__sic_insert__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__lipb__inventory__constituent_volume",
+      "field_name": "constituent_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__lipb__inventory__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__lipb__inventory__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__recipe__unquantified_volume",
+      "field_name": "unquantified_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__recipe__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__recipe__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__tapered__recipe__represented_fraction",
+      "field_name": "represented_fraction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__reference_blanket_subset__totals__known_mass",
+      "field_name": "known_mass",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__reference_blanket_subset__totals__unquantified_volume",
+      "field_name": "unquantified_volume",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__reference_blanket_subset__totals__source_price_subtotal",
+      "field_name": "source_price_subtotal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_constituent_inventory__reference_blanket_subset__totals__volume",
+      "field_name": "volume",
+      "python_type": "float"
+    }
+  ],
+  "parameters": [
+    {
+      "default_value": 0.106,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__coverage"
+    },
+    {
+      "default_value": 103.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__ferritic_steel__component_rate"
+    },
+    {
+      "default_value": 7800.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__ferritic_steel__material_density"
+    },
+    {
+      "default_value": 0.08,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__ferritic_steel__volume_fraction"
+    },
+    {
+      "default_value": 0.08,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__helium_fraction"
+    },
+    {
+      "default_value": 17.1,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__lipb__component_rate"
+    },
+    {
+      "default_value": 8897.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__lipb__material_density"
+    },
+    {
+      "default_value": 0.75,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__lipb__volume_fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__midpoint_area_basis"
+    },
+    {
+      "default_value": 101.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__sic_insert__component_rate"
+    },
+    {
+      "default_value": 3200.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__sic_insert__material_density"
+    },
+    {
+      "default_value": 0.09,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__sic_insert__volume_fraction"
+    },
+    {
+      "default_value": 0.35,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__behind_divertor__thickness"
+    },
+    {
+      "default_value": 0.654,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__coverage"
+    },
+    {
+      "default_value": 103.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__ferritic_steel__component_rate"
+    },
+    {
+      "default_value": 7800.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__ferritic_steel__material_density"
+    },
+    {
+      "default_value": 0.06,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__ferritic_steel__volume_fraction"
+    },
+    {
+      "default_value": 0.08,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__helium_fraction"
+    },
+    {
+      "default_value": 17.1,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__lipb__component_rate"
+    },
+    {
+      "default_value": 8897.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__lipb__material_density"
+    },
+    {
+      "default_value": 0.79,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__lipb__volume_fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__midpoint_area_basis"
+    },
+    {
+      "default_value": 101.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__sic_insert__component_rate"
+    },
+    {
+      "default_value": 3200.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__sic_insert__material_density"
+    },
+    {
+      "default_value": 0.07,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__sic_insert__volume_fraction"
+    },
+    {
+      "default_value": 0.543,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__full__thickness"
+    },
+    {
+      "default_value": 0.24,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__coverage"
+    },
+    {
+      "default_value": 103.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__ferritic_steel__component_rate"
+    },
+    {
+      "default_value": 7800.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__ferritic_steel__material_density"
+    },
+    {
+      "default_value": 0.08,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__ferritic_steel__volume_fraction"
+    },
+    {
+      "default_value": 0.08,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__helium_fraction"
+    },
+    {
+      "default_value": 17.1,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__lipb__component_rate"
+    },
+    {
+      "default_value": 8897.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__lipb__material_density"
+    },
+    {
+      "default_value": 0.76,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__lipb__volume_fraction"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__midpoint_area_basis"
+    },
+    {
+      "default_value": 101.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__sic_insert__component_rate"
+    },
+    {
+      "default_value": 3200.0,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__sic_insert__material_density"
+    },
+    {
+      "default_value": 0.08,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__sic_insert__volume_fraction"
+    },
+    {
+      "default_value": 0.25,
+      "entry_type": "design_attribute",
+      "param_group": "constituent_inventory_params",
+      "python_type": "float",
+      "qualified_name": "aries_constituent_inventory__tapered__thickness"
+    }
+  ],
+  "semantic_fingerprint": "c03a06a3041939c8f8f9701e8c607e4318b2aa591a6f2c3c77fbaf5d51693b18"
+}

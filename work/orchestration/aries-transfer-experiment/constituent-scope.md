@@ -1,5 +1,7 @@
 # T02: source constituent and sector inventory proposal
 
+[AGENT] Implementation scope is now governed by `work/active/WI-084_aries-sector-constituent-inventory/spec.md`, independently accepted 2026-09-21. It prioritizes the reference three-region assembly and defers the alternative recipe and equal-unit-volume pair proposed below. Those deferred proposal checks are not WI-084 acceptance conditions.
+
 [INHERITED: coordinator assignment, 2026-09-21] Build a meaningful source-supported constituent/sector inventory through the native model route. Preserve independently supplied geometry and distinguish the FS/He reference from the SiC alternative. [AGENT] The evidence supports both reference and alternative recipes. The next increment need not stop at the alternative, but it must stop short of a whole-plant volume claim.
 
 ## Recommended build
@@ -23,7 +25,7 @@
 
 [AGENT] The three lateral blanket fractions sum to one. Other table rows overlap these regions in depth; summing every row's area fraction would double-count coverage. Reference first wall is a separate Table II component while the alternative row explicitly includes first wall. Consequently a full-blanket recipe comparison is not a complete equal-functional-scope blanket-system cost comparison. The initial assembly excludes first wall, divertor hardware, second blanket, back walls, shields, manifolds and supports from the reference-region sum; none is inferred zero.
 
-[AGENT] Fig5 gives the qualitative full/tapered arrangement, but its caption's older 61%+15%=76% subdivision differs from Table II's 65.4%+10.6%=76%. Use the quantitative Table II recipe under a named Table-II case; do not silently merge the figure's split into it. The overall tapered fraction agrees at 24%.
+[AGENT] Fig5 gives the qualitative full/tapered arrangement, but its caption's 61%+15%=76% subdivision differs from Table II's 65.4%+10.6%=76%. Use the quantitative Table II recipe under a named Table-II case; do not silently merge the figure's split into it. The overall tapered fraction agrees at 24%.
 
 ## Geometry support and its limit
 
