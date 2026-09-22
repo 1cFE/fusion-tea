@@ -116,3 +116,23 @@ The tiny-rate scan quantifies cancellation in the native IDC diagnostic (finance
 ### T-005 start — 2026-09-22
 
 Coordinator commits the stable live metadata and preparation, then invokes the native integration seam into evidence/integration-attempt1. The final study record/snapshot remain uncommitted until executed, interpreted and frozen.
+
+### T-005 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** evidence/integration-attempt1/integration_return.json returns CANDIDATE; all ten gates pass, including regeneration, handwritten preservation, source-family regression, exact baseline verification and lineage.
+- **Reading:** One study-ready promoted package exists for this round. Native executable d13f4153 and semantic419e6e3d match the independently accepted implementation.
+- **Decision:** Trigger: all native gates pass with stable prepared points. Decision: release the declared64-point study on this one identity. Tier: execution detail. Decided by: coordinator. Changed: native candidate receipt and T-006 release; no model change.
+
+### T-006 scope
+
+- **Objective:** Execute and interpret the64declared lifecycle accounting/sensitivity cases with separate retained financial-refusal diagnostics.
+- **Why now:** T-005 promotes the independently reviewed exact package and T-004 preparation passes.
+- **Scope:** evidence/study-execution-brief.md; one native study, exact complete proposals, all-point independent verification, report/findings and replay. No model/point/oracle meaning changes or recovery optimization.
+- **Inputs:** goal.md, native CANDIDATE integration-attempt1, prepared metadata ae93a888, WI-091 accepted native evidence54cce30b and source/math/implementation reviews.
+- **Done when:** All64native records and verification are complete, adverse outcomes retained, interpretation and one immutable study record ready for final review.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-006 start — 2026-09-22
+
+Continuing study executor is released after the CANDIDATE checkpoint. The coordinator owns final archive/snapshot and commit. No further independent pre-execution review is required: source/math, actual generated behavior, axis authority and scoped precision are already accepted; the final study reading receives continuing independent review.

@@ -1,0 +1,14 @@
+{
+  "outcome": "pass",
+  "scope": "static pipeline references and model contract",
+  "paths": [
+    "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/aries_integrated/contracts/model_contract.json",
+    "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/aries_integrated/inputs/integrated_equipment_costs_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/aries_integrated/inputs/mfe_account_costs_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/aries_integrated/inputs/mfe_plasma_scaling_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/aries_integrated/inputs/mfe_viability_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/aries_integrated/inputs/plant_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/aries_integrated/inputs/plasma_integration_params.json",
+    "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/aries_integrated/pipelines/pipeline.yaml"
+  ]
+}
