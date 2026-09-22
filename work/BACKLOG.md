@@ -277,6 +277,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-087
+    name: ARIES nominal Brayton component cycle
+    scale: standard
+    status: backlog
+    completed: null
 standalone:
 - id: WI-026
   name: Pytest Baseline Re-Record
@@ -545,6 +550,7 @@ standalone:
 | WI-084 | ARIES sector constituent inventory | standard | backlog |  |
 | WI-085 | ARIES calculated plasma to fuel integration | standard | backlog |  |
 | WI-086 | ARIES dual blanket heat accounting | standard | backlog |  |
+| WI-087 | ARIES nominal Brayton component cycle | standard | backlog |  |
 
 ## Standalone Items
 

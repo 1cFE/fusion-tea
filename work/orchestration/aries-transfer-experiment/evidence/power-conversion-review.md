@@ -1,0 +1,27 @@
+# Independent T09 power-conversion review
+
+[AGENT] 2026-09-21. Focused source/design review of `power-conversion-scope.md`, reusing the directly inspected Raffray p736–737 evidence from `heat-transport-review.md`. No new source acquisition or machine-performance qualification is claimed.
+
+## Source and approximation judgment
+
+[AGENT] The proposal faithfully transcribes three compression stages, one listed expansion stage, nominal compressor/turbine efficiencies 0.89/0.93, recuperator effectiveness 0.95, maximum pressure 15 MPa, overall compression ratio 3.5, fractional pressure loss 0.045 and minimum cycle temperature 35 degrees C. The 707/355-degree-C external-HX temperatures are illustrative Figure 12 states; using the hot state as supplied and the other only for comparison avoids imposing both ends of the calculated recuperation process.
+
+[AGENT] Equal compressor ratios, full intercooling to the low temperature, lumping pressure loss on the hot side, fixed ideal-helium properties and selected 1000-kg/s flow are explicit scenario assumptions. The equivalent expansion does not reconstruct the separate compressor/generator turbines drawn in Figure 13. Net fluid shaft work is therefore an appropriate output label; source generator output and net electrical efficiency remain outside scope. No source heat or target efficiency may choose the supplied flow.
+
+## Equation and interface judgment
+
+[AGENT] Proposed ideal-gas compressor and turbine temperature/work equations have the correct pressure exponents and efficiency directions. Equal-capacity recuperation transfers `epsilon*mdot*cp*(Thot-Tcold)` from hot to cold; the two outlet temperature changes must use that same transfer once. All actual compressor, cooler, turbine, recuperator and heater outputs must feed their downstream owners and the heat/work ledger. The signed cycle residual is `Qheater-Qintercoolers-Qprecooler-(Wturbine-Wcompressors)`. A state-resolved component chain is a meaningful new cycle assembly, not unchanged reuse of existing DEMO or Rankine definitions.
+
+[AGENT] Independent arithmetic on the proposed nominal assumptions gives approximately 831.790186675 MW net shaft work, 1879.919442960 MW required external heating and shaft efficiency 0.442460548. Calculated heater inlet is 344.989708654 degrees C, about 10.010291346 degrees C below the published 355-degree-C illustrative value. These are advance equation checks, not native results or source-accuracy acceptance targets. The ledger closes to floating-point roundoff without tuning.
+
+[AGENT] Canonical domain contract should require finite positive absolute temperatures, selected flow and cp; gamma greater than one; isentropic efficiencies in `(0,1]`; effectiveness in `[0,1]`; coherent positive pressures and an actual expansion ratio; cooling outlets no hotter than inlets; and positive external heat before dividing for efficiency. Refuse reversed recuperator ordering rather than inventing a bypass. Preserve signed residual and net shaft work; negative net work is an operating outcome, not a number to clamp. Independently supplied equipment ratings remain unchanged when flow or state choices change.
+
+[AGENT] Source/design principle accepted. Canonical item/interface review remains pending. Final acceptance will need generated state/pressure/heat connections, energy identities, parameter response, capacity behavior and appropriate domain/refusal evidence. Nominal efficiency assumptions are not off-design equipment maps, and a finite converged arithmetic result does not qualify the source cycle or its heat-source interfaces.
+
+## WI-087 canonical design disposition
+
+[AGENT] Accepted for implementation against `work/active/WI-087_aries-nominal-brayton-component-cycle/spec.md`. Three independent supplied ratios and one supplied inlet/return pressure determine all compressor pressures; neither the 15-MPa nor 3.5 source comparison forces the perturbed design back to nominal. Shared supplied mass flow is independent of heat and equipment capacity. Shared loop-return pressure is a physical continuity binding, not an optimization policy. This resolves the earlier scope wording that could have implied controlled discharge pressure after ratio perturbations.
+
+[AGENT] Six generic definitions and the proposed actual component consumers are proportionate to the nominal cycle. Signed thermal conditioning is acceptable with explicit heating/cooling roles and ledger enforcement that intercooler/precooler heats are nonpositive and heater heat is positive. The author confirmed these ledger checks before implementation. This prevents changing a public role flag from silently reinterpreting a cycle heat boundary. Compressor/turbine shaft magnitudes remain nonnegative, while net shaft work and conservation residual remain signed.
+
+[AGENT] Planned independent state/pressure identities, whole-cycle conservation, fixed-rating flow perturbations, individually changed stage ratios, temperature response and runtime refusals cover the consequential new relationships. Final review must inspect the actual generated graph and new typed completions; naming components does not by itself establish a connected cycle. Reuse credit remains limited to unchanged generic capacity/constraint definitions and toolchain. Physical off-design maps, exact source shaft partition, exchanger matching and electrical output remain outside acceptance.
