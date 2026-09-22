@@ -486,6 +486,12 @@ standalone:
   priority: P0
   status: completed
   completed: '2026-09-22'
+- id: WI-091
+  name: ARIES integrated lifecycle cost
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -607,3 +613,4 @@ standalone:
 | WI-080 | Supplied thermal equipment capability and demand checks | standard | P0 | backlog |  |
 | WI-089 | ARIES integrated heat and electricity | standard | P0 | completed | Completed 2026-09-22 |
 | WI-090 | ARIES integrated equipment and costs | standard | P0 | completed | Completed 2026-09-22 |
+| WI-091 | ARIES integrated lifecycle cost | standard | P0 | backlog |  |

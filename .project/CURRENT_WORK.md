@@ -1,3 +1,7 @@
+# Integrated ARIES LCOE — in progress — 2026-09-22
+
+[OWNER] Issued prompt 03 and required separate no-breeding-credit and explicit tritium-supply scenarios, no double-counted exhaust recycling, complete terminal costs, financing once and one replacement convention. [AGENT] The [goal](../work/orchestration/goals/aries-integrated-lcoe/goal.md) is grounded; [trail](../work/orchestration/goals/aries-integrated-lcoe/trail.md) records the run. Native WI-091 is registered. Design authoring and retained-source/fuel-boundary investigation are underway before independent review and implementation. Formal closure remains owner-held.
+
 # Integrated ARIES equipment and costs — closed — 2026-09-22
 
 [OWNER] Issued prompt 02 and required principal thermal sensitivity before equipment/economic ranking, capability-to-inventory/cost/operating-demand connections, preserved source-case failures and the label “assumed integrated baseline” for 423.1 MW. [AGENT] The [new goal](../work/orchestration/goals/aries-integrated-equipment-costs/goal.md) is grounded under the retained brief; [trail](../work/orchestration/goals/aries-integrated-equipment-costs/trail.md) carries ongoing work. The predecessor below is the accepted starting evidence. The owner authorized closure on 2026-09-22. The goal is closed and [WI-090 is archived](../work/completed/20260922_WI-090_aries-integrated-equipment-and-costs/report.md).
