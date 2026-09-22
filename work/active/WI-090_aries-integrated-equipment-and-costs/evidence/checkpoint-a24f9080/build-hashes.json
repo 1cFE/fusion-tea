@@ -1,7 +1,7 @@
 {
   "sources": {
     "models/library/analyses/integrated_heat_electricity.sysml": "6a692de868866d48ba463f761e841dbf4666573bf1067a07d74123aeff96b5aa",
-    "models/library/analyses/integrated_equipment_costs.sysml": "168622201450221ee40a9465434ed9801f06de8379b520ac01870377a0c4fc2f",
+    "models/library/analyses/integrated_equipment_costs.sysml": "5634b444d2870d0e2761d39ce8e2370d905afb0aa90e2feac805524d48e394cd",
     "models/library/structure/integrated_equipment_parts.sysml": "0a9e0717612957c09db3a397d94eb4db28915946aac34eb5888af60e73c2bc47",
     "models/library/foundation/costed_component.sysml": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
     "models/library/analyses/mfe_account_costs.sysml": "3f114bc1ec5d6f78ca98771b552948e3def6de07372e4b9abe834a4a54f0ba48",
@@ -14,11 +14,11 @@
     "models/library/analyses/dual_circuit_heat_accounting.sysml": "8c311602a904ef499463d7857a7369dca67eb887f75298d9b637fa2816a2b99a",
     "models/library/analyses/ideal_gas_brayton_components.sysml": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499",
     "models/designs/aries_cs_transfer/plasma_integration.sysml": "05aad0f2ccad3ba2af303a357c63b2d163d1a962e4a20734ba74c19b4e70e0e4",
-    "models/designs/aries_cs_integrated/plant.sysml": "6387973f773b3fae97878c919196434eac8c46ac769a37d49655073036c6de2f"
+    "models/designs/aries_cs_integrated/plant.sysml": "99b9f5a7bf28af6096c39d748a03327d6b77f33cbbaa34f47c631b535d46a30d"
   },
   "staged": {
     "models/library/analyses/integrated_heat_electricity.sysml": "6a692de868866d48ba463f761e841dbf4666573bf1067a07d74123aeff96b5aa",
-    "models/library/analyses/integrated_equipment_costs.sysml": "168622201450221ee40a9465434ed9801f06de8379b520ac01870377a0c4fc2f",
+    "models/library/analyses/integrated_equipment_costs.sysml": "5634b444d2870d0e2761d39ce8e2370d905afb0aa90e2feac805524d48e394cd",
     "models/library/structure/integrated_equipment_parts.sysml": "0a9e0717612957c09db3a397d94eb4db28915946aac34eb5888af60e73c2bc47",
     "models/library/foundation/costed_component.sysml": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
     "models/library/analyses/mfe_account_costs.sysml": "3f114bc1ec5d6f78ca98771b552948e3def6de07372e4b9abe834a4a54f0ba48",
@@ -31,7 +31,7 @@
     "models/library/analyses/dual_circuit_heat_accounting.sysml": "8c311602a904ef499463d7857a7369dca67eb887f75298d9b637fa2816a2b99a",
     "models/library/analyses/ideal_gas_brayton_components.sysml": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499",
     "models/designs/aries_cs_transfer/plasma_integration.sysml": "05aad0f2ccad3ba2af303a357c63b2d163d1a962e4a20734ba74c19b4e70e0e4",
-    "models/designs/aries_cs_integrated/plant.sysml": "6387973f773b3fae97878c919196434eac8c46ac769a37d49655073036c6de2f"
+    "models/designs/aries_cs_integrated/plant.sysml": "99b9f5a7bf28af6096c39d748a03327d6b77f33cbbaa34f47c631b535d46a30d"
   },
   "completions": [
     {
@@ -253,17 +253,8 @@
     {
       "source": "exploration/aries_integrated/native_completions/equipment/equipment_cost_ledger_impl.py",
       "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/equipment_cost_ledger_impl.py",
-      "source_sha256": "e51755eeb62b3c0dc3ba89f78ffafdaa345ca48fee39ff3ab1363015afa6f22b",
-      "target_sha256": "6da7362951ee585f37b77f70d25a8966dacb6c378ad10c5d44110fc525f8a38e",
-      "prefix_only": false,
-      "typed_adapter": true,
-      "reviewed_body_ast_unchanged": true
-    },
-    {
-      "source": "exploration/aries_integrated/native_completions/equipment/comparison_difference_impl.py",
-      "target": "exploration/aries_integrated/aries_integrated/handwritten/integrated_equipment_costs/comparison_difference_impl.py",
-      "source_sha256": "b5d2f666322a7bc22a5ec13b740886678560338a9a0b8e7b2f6864144d65cf5c",
-      "target_sha256": "5ec6d89b9a7b39f56e48ff393518f5a4c0067260c225f617e37fc4d857ba4abd",
+      "source_sha256": "422f68699e93e26d5cbaa8575c1cf78be75bd6873fd8d881a01cd811f99b2ab8",
+      "target_sha256": "595bba307b65a3417551bbb55e4754f34c3908d715bd38335d474efe4a1b15c0",
       "prefix_only": false,
       "typed_adapter": true,
       "reviewed_body_ast_unchanged": true

@@ -95,6 +95,12 @@ package integrated_equipment_costs {
         in attribute factor_in : Real;
         out attribute amount : Real;
     }
+    calc def 'Comparison Difference' {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        in attribute left_in : Real;
+        in attribute right_in : Real;
+        out attribute difference : Real;
+    }
     calc def 'Equipment Cost Ledger' {
         doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
         in attribute direct_in : Real;

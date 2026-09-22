@@ -18,7 +18,6 @@ modules:
       mfe_viability_params: MfeViabilityParams ../inputs/mfe_viability_params.json
       plant_params: PlantParams ../inputs/plant_params.json
       plasma_integration_params: PlasmaIntegrationParams ../inputs/plasma_integration_params.json
-      source_budget_accounting_params: SourceBudgetAccountingParams ../inputs/source_budget_accounting_params.json
 
 
   # integrated_equipment_costs.Exchanger_Area_ConductanceModule
@@ -232,6 +231,30 @@ modules:
       capital: float aries_integrated_plant__lipb_inventory__purchase__capital
       extrapolated: float aries_integrated_plant__lipb_inventory__purchase__extrapolated
 
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__source_coil_children__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__source_coil_children__evaluate__amount4_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__source_coil_children__evaluate__amount3_in
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__source_coil_children__evaluate__amount8_in
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__source_coil_children__evaluate__amount7_in
+      amount2_in: float integrated_equipment_costs_params.aries_integrated_plant__source_coil_children__evaluate__amount2_in
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__source_coil_children__evaluate__amount5_in
+      amount1_in: float integrated_equipment_costs_params.aries_integrated_plant__source_coil_children__evaluate__amount1_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__source_coil_children__evaluate__amount6_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_coil_children__evaluate__total
+
+  # integrated_equipment_costs.Comparison_DifferenceModule
+  aries_integrated_plant__source_reconciliation__coil_excess_calc:
+    module_type: integrated_equipment_costs.Comparison_DifferenceModule
+    inputs:
+      right_in: float plant_params.aries_integrated_plant__source_reconciliation__coil_parent
+      left_in: float aries_integrated_plant__source_coil_children__evaluate__total.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_reconciliation__coil_excess_calc__difference
+
   # integrated_equipment_costs.Scaled_AmountModule
   aries_integrated_plant__conversion_services__estimate:
     module_type: integrated_equipment_costs.Scaled_AmountModule
@@ -268,6 +291,54 @@ modules:
     outputs:
       root: RootModel[float] aries_integrated_plant__waste_equipment__purchase__cost
 
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__source_core_children_first__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount3_in: float plant_params.aries_integrated_plant__source_reconciliation__coil_parent
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__source_core_children_first__evaluate__amount8_in
+      amount1_in: float integrated_equipment_costs_params.aries_integrated_plant__source_core_children_first__evaluate__amount1_in
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__source_core_children_first__evaluate__amount5_in
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__source_core_children_first__evaluate__amount4_in
+      amount2_in: float integrated_equipment_costs_params.aries_integrated_plant__source_core_children_first__evaluate__amount2_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__source_core_children_first__evaluate__amount6_in
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__source_core_children_first__evaluate__amount7_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_core_children_first__evaluate__total
+
+  # integrated_equipment_costs.Comparison_DifferenceModule
+  aries_integrated_plant__source_reconciliation__core_excess_calc:
+    module_type: integrated_equipment_costs.Comparison_DifferenceModule
+    inputs:
+      left_in: float aries_integrated_plant__source_core_children_first__evaluate__total.root
+      right_in: float plant_params.aries_integrated_plant__source_reconciliation__core_parent
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_reconciliation__core_excess_calc__difference
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__source_fuel_children__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount5_in: float integrated_equipment_costs_params.aries_integrated_plant__source_fuel_children__evaluate__amount5_in
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__source_fuel_children__evaluate__amount4_in
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__source_fuel_children__evaluate__amount7_in
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__source_fuel_children__evaluate__amount8_in
+      amount2_in: float integrated_equipment_costs_params.aries_integrated_plant__source_fuel_children__evaluate__amount2_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__source_fuel_children__evaluate__amount3_in
+      amount1_in: float integrated_equipment_costs_params.aries_integrated_plant__source_fuel_children__evaluate__amount1_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__source_fuel_children__evaluate__amount6_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_fuel_children__evaluate__total
+
+  # integrated_equipment_costs.Comparison_DifferenceModule
+  aries_integrated_plant__source_reconciliation__fuel_gap_calc:
+    module_type: integrated_equipment_costs.Comparison_DifferenceModule
+    inputs:
+      left_in: float plant_params.aries_integrated_plant__source_reconciliation__fuel_parent
+      right_in: float aries_integrated_plant__source_fuel_children__evaluate__total.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_reconciliation__fuel_gap_calc__difference
+
   # integrated_equipment_costs.Scaled_AmountModule
   aries_integrated_plant__magnet_power_supplies__estimate:
     module_type: integrated_equipment_costs.Scaled_AmountModule
@@ -285,6 +356,15 @@ modules:
       n_mod_in: float plant_params.aries_integrated_plant__magnet_power_supplies__selected_quantity
     outputs:
       root: RootModel[float] aries_integrated_plant__magnet_power_supplies__purchase__cost
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__inventory_comparison__support:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      amount_in: float plant_params.aries_integrated_plant__inventory_comparison__vf_mass_available
+      factor_in: float integrated_equipment_costs_params.aries_integrated_plant__inventory_comparison__support__factor_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__inventory_comparison__support__amount
 
   # integrated_equipment_costs.Eight_Amount_SumModule
   aries_integrated_plant__vacuum_equipment__inventory:
@@ -439,19 +519,37 @@ modules:
       area: float aries_integrated_plant__divertor_hx__evaluate__area
       ua: float aries_integrated_plant__divertor_hx__evaluate__ua
 
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__lipb_comparison__price:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__lipb_comparison__source_unit_rate
+      amount_in: float aries_integrated_plant__lipb_inventory__inventory__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__lipb_comparison__price__amount
+
+  # integrated_equipment_costs.Comparison_DifferenceModule
+  aries_integrated_plant__lipb_comparison__evaluate:
+    module_type: integrated_equipment_costs.Comparison_DifferenceModule
+    inputs:
+      left_in: float aries_integrated_plant__lipb_comparison__price__amount.root
+      right_in: float plant_params.aries_integrated_plant__source_budget__account_7
+    outputs:
+      root: RootModel[float] aries_integrated_plant__lipb_comparison__evaluate__difference
+
   # source_budget_accounting.Disjoint_Capital_BudgetModule
   aries_integrated_plant__source_budget__evaluate:
     module_type: source_budget_accounting.Disjoint_Capital_BudgetModule
     inputs:
-      inclusive_multiplier_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__inclusive_multiplier_in
-      account_2_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_2_in
-      account_8_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_8_in
-      account_1_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_1_in
-      account_4_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_4_in
-      account_3_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_3_in
-      account_5_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_5_in
-      account_6_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_6_in
-      account_7_in: float source_budget_accounting_params.aries_integrated_plant__source_budget__evaluate__account_7_in
+      inclusive_multiplier_in: float plant_params.aries_integrated_plant__source_budget__inclusive_multiplier
+      account_2_in: float plant_params.aries_integrated_plant__source_budget__account_2
+      account_8_in: float plant_params.aries_integrated_plant__source_budget__account_8
+      account_1_in: float plant_params.aries_integrated_plant__source_budget__account_1
+      account_4_in: float plant_params.aries_integrated_plant__source_budget__account_4
+      account_3_in: float plant_params.aries_integrated_plant__source_budget__account_3
+      account_5_in: float plant_params.aries_integrated_plant__source_budget__account_5
+      account_6_in: float plant_params.aries_integrated_plant__source_budget__account_6
+      account_7_in: float plant_params.aries_integrated_plant__source_budget__account_7
     outputs:
       direct_total: float aries_integrated_plant__source_budget__evaluate__direct_total
       inclusive_addition: float aries_integrated_plant__source_budget__evaluate__inclusive_addition
@@ -967,6 +1065,30 @@ modules:
       amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__shield_inventory__inventory__amount6_in
     outputs:
       root: RootModel[float] aries_integrated_plant__shield_inventory__inventory__total
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__known_dry_inventory__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount1_in: float aries_integrated_plant__magnet_inventory__inventory__total.root
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__known_dry_inventory__evaluate__amount7_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__known_dry_inventory__evaluate__amount6_in
+      amount3_in: float aries_integrated_plant__shield_inventory__inventory__total.root
+      amount4_in: float aries_integrated_plant__vacuum_equipment__inventory__total.root
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__known_dry_inventory__evaluate__amount8_in
+      amount2_in: float plant_params.aries_integrated_plant__blanket_inventory__selected_mass
+      amount5_in: float plant_params.aries_integrated_plant__primary_support__selected_mass
+    outputs:
+      root: RootModel[float] aries_integrated_plant__known_dry_inventory__evaluate__total
+
+  # integrated_equipment_costs.Comparison_DifferenceModule
+  aries_integrated_plant__inventory_comparison__evaluate:
+    module_type: integrated_equipment_costs.Comparison_DifferenceModule
+    inputs:
+      left_in: float aries_integrated_plant__known_dry_inventory__evaluate__total.root
+      right_in: float plant_params.aries_integrated_plant__inventory_comparison__source_dry_core_mass
+    outputs:
+      root: RootModel[float] aries_integrated_plant__inventory_comparison__evaluate__difference
 
   # integrated_equipment_costs.Selected_Inventory_PurchaseModule
   aries_integrated_plant__shield_inventory__purchase:
@@ -1623,6 +1745,33 @@ modules:
       event_count: float aries_integrated_plant__replacement__evaluate__event_count
 
   # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__source_replacement_comparison__mass:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__source_replacement_comparison__events
+      amount_in: float plant_params.aries_integrated_plant__source_replacement_comparison__event_mass
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_replacement_comparison__mass__amount
+
+  # integrated_equipment_costs.Scaled_AmountModule
+  aries_integrated_plant__source_replacement_comparison__cost:
+    module_type: integrated_equipment_costs.Scaled_AmountModule
+    inputs:
+      factor_in: float plant_params.aries_integrated_plant__source_replacement_comparison__events
+      amount_in: float plant_params.aries_integrated_plant__source_replacement_comparison__event_cost
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_replacement_comparison__cost__amount
+
+  # integrated_equipment_costs.Comparison_DifferenceModule
+  aries_integrated_plant__source_replacement_comparison__evaluate:
+    module_type: integrated_equipment_costs.Comparison_DifferenceModule
+    inputs:
+      right_in: float plant_params.aries_integrated_plant__source_replacement_comparison__printed_lifetime_cost
+      left_in: float aries_integrated_plant__source_replacement_comparison__cost__amount.root
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_replacement_comparison__evaluate__difference
+
+  # integrated_equipment_costs.Scaled_AmountModule
   aries_integrated_plant__primary_piping__estimate:
     module_type: integrated_equipment_costs.Scaled_AmountModule
     inputs:
@@ -1687,6 +1836,30 @@ modules:
       purchase_cost_in: float aries_integrated_plant__electrical_equipment__estimate__amount.root
     outputs:
       root: RootModel[float] aries_integrated_plant__electrical_equipment__purchase__cost
+
+  # integrated_equipment_costs.Eight_Amount_SumModule
+  aries_integrated_plant__source_reactor_children__evaluate:
+    module_type: integrated_equipment_costs.Eight_Amount_SumModule
+    inputs:
+      amount1_in: float plant_params.aries_integrated_plant__source_reconciliation__core_parent
+      amount2_in: float integrated_equipment_costs_params.aries_integrated_plant__source_reactor_children__evaluate__amount2_in
+      amount3_in: float integrated_equipment_costs_params.aries_integrated_plant__source_reactor_children__evaluate__amount3_in
+      amount4_in: float integrated_equipment_costs_params.aries_integrated_plant__source_reactor_children__evaluate__amount4_in
+      amount5_in: float plant_params.aries_integrated_plant__source_reconciliation__fuel_parent
+      amount7_in: float integrated_equipment_costs_params.aries_integrated_plant__source_reactor_children__evaluate__amount7_in
+      amount6_in: float integrated_equipment_costs_params.aries_integrated_plant__source_reactor_children__evaluate__amount6_in
+      amount8_in: float integrated_equipment_costs_params.aries_integrated_plant__source_reactor_children__evaluate__amount8_in
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_reactor_children__evaluate__total
+
+  # integrated_equipment_costs.Comparison_DifferenceModule
+  aries_integrated_plant__source_reconciliation__reactor_gap_calc:
+    module_type: integrated_equipment_costs.Comparison_DifferenceModule
+    inputs:
+      right_in: float aries_integrated_plant__source_reactor_children__evaluate__total.root
+      left_in: float plant_params.aries_integrated_plant__source_budget__account_3
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference
 
   # integrated_equipment_costs.Selected_Inventory_PurchaseModule
   aries_integrated_plant__primary_support__purchase:
@@ -1849,14 +2022,14 @@ modules:
       direct_in: float aries_integrated_plant__direct_cost__evaluate__total.root
       consumables_in: float plant_params.aries_integrated_plant__cost_ledger__consumables
       om_in: float aries_integrated_plant__annual_om__evaluate__annual_om.root
-      source_reactor_gap_in: float integrated_equipment_costs_params.aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap_in
+      source_reactor_gap_in: float aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference.root
       replacement_total_in: float aries_integrated_plant__replacement__evaluate__lifetime_total
       indirect_in: float aries_integrated_plant__indirect_cost__evaluate__cost.root
-      source_coil_excess_in: float integrated_equipment_costs_params.aries_integrated_plant__cost_ledger__evaluate__source_coil_excess_in
+      source_coil_excess_in: float aries_integrated_plant__source_reconciliation__coil_excess_calc__difference.root
       availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
       tritium_in: float aries_integrated_plant__fuel_inventory__annual__annual_cost
       owner_in: float aries_integrated_plant__owner_commissioning__evaluate__amount.root
-      source_core_excess_in: float integrated_equipment_costs_params.aries_integrated_plant__cost_ledger__evaluate__source_core_excess_in
+      source_core_excess_in: float aries_integrated_plant__source_reconciliation__core_excess_calc__difference.root
       net_power_in: float aries_integrated_plant__plant_ledger__evaluate__net_electric
       contingency_in: float aries_integrated_plant__contingency__evaluate__cost.root
       source_direct_in: float aries_integrated_plant__source_budget__evaluate__direct_total
@@ -2079,12 +2252,19 @@ modules:
       aries_integrated_plant__lipb_inventory__purchase__quantity_ratio: float lipb_inventory__quantity_ratio.json
       aries_integrated_plant__lipb_inventory__purchase__capital: float lipb_inventory__capital_cost.json
       aries_integrated_plant__lipb_inventory__purchase__extrapolated: float lipb_inventory__cost_extrapolated.json
+      aries_integrated_plant__source_coil_children__evaluate__total: RootModel[float] source_coil_children__total.json
+      aries_integrated_plant__source_reconciliation__coil_excess_calc__difference: RootModel[float] source_reconciliation__coil_excess.json
       aries_integrated_plant__conversion_services__estimate__amount: RootModel[float] conversion_services__supplied_budget.json
       aries_integrated_plant__conversion_services__purchase__cost: RootModel[float] conversion_services__capital_cost.json
       aries_integrated_plant__waste_equipment__estimate__amount: RootModel[float] waste_equipment__supplied_budget.json
       aries_integrated_plant__waste_equipment__purchase__cost: RootModel[float] waste_equipment__capital_cost.json
+      aries_integrated_plant__source_core_children_first__evaluate__total: RootModel[float] source_core_children_first__total.json
+      aries_integrated_plant__source_reconciliation__core_excess_calc__difference: RootModel[float] source_reconciliation__core_excess.json
+      aries_integrated_plant__source_fuel_children__evaluate__total: RootModel[float] source_fuel_children__total.json
+      aries_integrated_plant__source_reconciliation__fuel_gap_calc__difference: RootModel[float] source_reconciliation__fuel_gap.json
       aries_integrated_plant__magnet_power_supplies__estimate__amount: RootModel[float] magnet_power_supplies__supplied_budget.json
       aries_integrated_plant__magnet_power_supplies__purchase__cost: RootModel[float] magnet_power_supplies__capital_cost.json
+      aries_integrated_plant__inventory_comparison__support__amount: RootModel[float] inventory_comparison__vf_mass_availability.json
       aries_integrated_plant__vacuum_equipment__inventory__total: RootModel[float] vacuum_equipment__selected_mass.json
       aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity: float vacuum_equipment__inventory_quantity.json
       aries_integrated_plant__vacuum_equipment__purchase__source_budget: float aries_integrated_plant__vacuum_equipment__purchase__source_budget.json
@@ -2116,6 +2296,8 @@ modules:
       aries_integrated_plant__divertor_hx__purchase__extrapolated: float divertor_hx__cost_extrapolated.json
       aries_integrated_plant__divertor_hx__evaluate__area: float divertor_hx__area.json
       aries_integrated_plant__divertor_hx__evaluate__ua: float divertor_hx__ua.json
+      aries_integrated_plant__lipb_comparison__price__amount: RootModel[float] lipb_comparison__material_price.json
+      aries_integrated_plant__lipb_comparison__evaluate__difference: RootModel[float] lipb_comparison__material_minus_source.json
       aries_integrated_plant__source_budget__evaluate__direct_total: float source_budget__direct_total.json
       aries_integrated_plant__source_budget__evaluate__inclusive_addition: float aries_integrated_plant__source_budget__evaluate__inclusive_addition.json
       aries_integrated_plant__source_budget__evaluate__inclusive_capital: float source_budget__inclusive_capital.json
@@ -2229,6 +2411,8 @@ modules:
       aries_integrated_plant__compressor_equipment__purchase__capital: float compressor_equipment__capital_cost.json
       aries_integrated_plant__compressor_equipment__purchase__extrapolated: float compressor_equipment__cost_extrapolated.json
       aries_integrated_plant__shield_inventory__inventory__total: RootModel[float] shield_inventory__selected_mass.json
+      aries_integrated_plant__known_dry_inventory__evaluate__total: RootModel[float] known_dry_inventory__total.json
+      aries_integrated_plant__inventory_comparison__evaluate__difference: RootModel[float] inventory_comparison__known_mass_minus_source.json
       aries_integrated_plant__shield_inventory__purchase__purchased_quantity: float shield_inventory__inventory_quantity.json
       aries_integrated_plant__shield_inventory__purchase__source_budget: float aries_integrated_plant__shield_inventory__purchase__source_budget.json
       aries_integrated_plant__shield_inventory__purchase__quantity_ratio: float shield_inventory__quantity_ratio.json
@@ -2440,12 +2624,17 @@ modules:
       aries_integrated_plant__replacement__evaluate__annual_reserve: float replacement__annual_reserve.json
       aries_integrated_plant__replacement__evaluate__first_event_year: float replacement__first_event_year.json
       aries_integrated_plant__replacement__evaluate__event_count: float replacement__event_count.json
+      aries_integrated_plant__source_replacement_comparison__mass__amount: RootModel[float] source_replacement_comparison__lifetime_mass.json
+      aries_integrated_plant__source_replacement_comparison__cost__amount: RootModel[float] source_replacement_comparison__rounded_lifetime_cost.json
+      aries_integrated_plant__source_replacement_comparison__evaluate__difference: RootModel[float] source_replacement_comparison__rounded_minus_printed.json
       aries_integrated_plant__primary_piping__estimate__amount: RootModel[float] primary_piping__supplied_budget.json
       aries_integrated_plant__primary_piping__purchase__cost: RootModel[float] primary_piping__capital_cost.json
       aries_integrated_plant__primary_heat_cost__evaluate__total: RootModel[float] primary_heat_cost__total.json
       aries_integrated_plant__heat_transport_cost__evaluate__total: RootModel[float] heat_transport_cost__total.json
       aries_integrated_plant__electrical_equipment__estimate__amount: RootModel[float] electrical_equipment__supplied_budget.json
       aries_integrated_plant__electrical_equipment__purchase__cost: RootModel[float] electrical_equipment__capital_cost.json
+      aries_integrated_plant__source_reactor_children__evaluate__total: RootModel[float] source_reactor_children__total.json
+      aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference: RootModel[float] source_reconciliation__reactor_gap.json
       aries_integrated_plant__primary_support__purchase__purchased_quantity: float primary_support__inventory_quantity.json
       aries_integrated_plant__primary_support__purchase__source_budget: float aries_integrated_plant__primary_support__purchase__source_budget.json
       aries_integrated_plant__primary_support__purchase__quantity_ratio: float primary_support__quantity_ratio.json

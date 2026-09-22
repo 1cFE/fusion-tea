@@ -1654,19 +1654,175 @@ package aries_integrated_plant {
     }
     part source_budget {
         doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute account_1 : Real = 12929000.0;
+        attribute account_2 : Real = 336133000.0;
+        attribute account_3 : Real = 1538817000.0;
+        attribute account_4 : Real = 314558000.0;
+        attribute account_5 : Real = 138764000.0;
+        attribute account_6 : Real = 70958000.0;
+        attribute account_7 : Real = 151327000.0;
+        attribute account_8 : Real = 56086000.0;
+        attribute inclusive_multiplier : Real = 1.93;
         calc evaluate : 'Disjoint Capital Budget' {
-            in account_1_in = 12929000.0;
-            in account_2_in = 336133000.0;
-            in account_3_in = 1538817000.0;
-            in account_4_in = 314558000.0;
-            in account_5_in = 138764000.0;
-            in account_6_in = 70958000.0;
-            in account_7_in = 151327000.0;
-            in account_8_in = 56086000.0;
-            in inclusive_multiplier_in = 1.93;
+            in account_1_in = account_1;
+            in account_2_in = account_2;
+            in account_3_in = account_3;
+            in account_4_in = account_4;
+            in account_5_in = account_5;
+            in account_6_in = account_6;
+            in account_7_in = account_7;
+            in account_8_in = account_8;
+            in inclusive_multiplier_in = inclusive_multiplier;
         }
         attribute direct_total : Real = evaluate.direct_total;
         attribute inclusive_capital : Real = evaluate.inclusive_capital;
+    }
+    part source_reactor_children {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::source_reconciliation.core_parent;
+            in amount2_in = 474771000.0;
+            in amount3_in = 3735000.0;
+            in amount4_in = 6655000.0;
+            in amount5_in = aries_integrated_plant::source_reconciliation.fuel_parent;
+            in amount6_in = 60723000.0;
+            in amount7_in = 44558000.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part source_core_children_first {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = 59347000.0;
+            in amount2_in = 228627000.0;
+            in amount3_in = aries_integrated_plant::source_reconciliation.coil_parent;
+            in amount4_in = 66427000.0;
+            in amount5_in = 73126000.0;
+            in amount6_in = 137135000.0;
+            in amount7_in = 70624000.0;
+            in amount8_in = 6561000.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part source_coil_children {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = 115960000.0;
+            in amount2_in = 13358000.0;
+            in amount3_in = 5318000.0;
+            in amount4_in = 93535000.0;
+            in amount5_in = 0.0;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part source_fuel_children {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = 14134000.0;
+            in amount2_in = 16590000.0;
+            in amount3_in = 7067000.0;
+            in amount4_in = 3353000.0;
+            in amount5_in = 7067000.0;
+            in amount6_in = 7067000.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part source_reconciliation {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute core_parent : Real = 864700000.0;
+        attribute coil_parent : Real = 222884000.0;
+        attribute fuel_parent : Real = 55279000.0;
+        calc reactor_gap_calc : 'Comparison Difference' {
+            in left_in = aries_integrated_plant::source_budget.account_3;
+            in right_in = aries_integrated_plant::source_reactor_children.total;
+        }
+        attribute reactor_gap : Real = reactor_gap_calc.difference;
+        calc core_excess_calc : 'Comparison Difference' {
+            in left_in = aries_integrated_plant::source_core_children_first.total;
+            in right_in = core_parent;
+        }
+        attribute core_excess : Real = core_excess_calc.difference;
+        calc coil_excess_calc : 'Comparison Difference' {
+            in left_in = aries_integrated_plant::source_coil_children.total;
+            in right_in = coil_parent;
+        }
+        attribute coil_excess : Real = coil_excess_calc.difference;
+        calc fuel_gap_calc : 'Comparison Difference' {
+            in left_in = fuel_parent;
+            in right_in = aries_integrated_plant::source_fuel_children.total;
+        }
+        attribute fuel_gap : Real = fuel_gap_calc.difference;
+    }
+    part known_dry_inventory {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Eight Amount Sum' {
+            in amount1_in = aries_integrated_plant::magnet_inventory.selected_mass;
+            in amount2_in = aries_integrated_plant::blanket_inventory.selected_mass;
+            in amount3_in = aries_integrated_plant::shield_inventory.selected_mass;
+            in amount4_in = aries_integrated_plant::vacuum_equipment.selected_mass;
+            in amount5_in = aries_integrated_plant::primary_support.selected_mass;
+            in amount6_in = 0.0;
+            in amount7_in = 0.0;
+            in amount8_in = 0.0;
+        }
+        attribute total : Real = evaluate.total;
+    }
+    part inventory_comparison {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute source_dry_core_mass : Real = 13688000.0;
+        attribute vf_mass_available : Real = 0.0;
+        calc evaluate : 'Comparison Difference' {
+            in left_in = aries_integrated_plant::known_dry_inventory.total;
+            in right_in = source_dry_core_mass;
+        }
+        attribute known_mass_minus_source : Real = evaluate.difference;
+        calc support : 'Scaled Amount' {
+            in amount_in = vf_mass_available;
+            in factor_in = 1.0;
+        }
+        attribute vf_mass_availability : Real = support.amount;
+    }
+    part lipb_comparison {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute source_unit_rate : Real = 17.1;
+        calc price : 'Scaled Amount' {
+            in amount_in = aries_integrated_plant::lipb_inventory.total_mass;
+            in factor_in = source_unit_rate;
+        }
+        attribute material_price : Real = price.amount;
+        calc evaluate : 'Comparison Difference' {
+            in left_in = material_price;
+            in right_in = aries_integrated_plant::source_budget.account_7;
+        }
+        attribute material_minus_source : Real = evaluate.difference;
+    }
+    part source_replacement_comparison {
+        doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
+        attribute event_cost : Real = 75000000.0;
+        attribute events : Real = 13.0;
+        attribute event_mass : Real = 842000.0;
+        attribute printed_lifetime_cost : Real = 966000000.0;
+        calc cost : 'Scaled Amount' {
+            in amount_in = event_cost;
+            in factor_in = events;
+        }
+        attribute rounded_lifetime_cost : Real = cost.amount;
+        calc mass : 'Scaled Amount' {
+            in amount_in = event_mass;
+            in factor_in = events;
+        }
+        attribute lifetime_mass : Real = mass.amount;
+        calc evaluate : 'Comparison Difference' {
+            in left_in = rounded_lifetime_cost;
+            in right_in = printed_lifetime_cost;
+        }
+        attribute rounded_minus_printed : Real = evaluate.difference;
     }
     part core_first {
         doc /* **Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22. */
@@ -1916,9 +2072,9 @@ package aries_integrated_plant {
             in net_power_in = aries_integrated_plant::plant_ledger.net_electric;
             in availability_in = aries_integrated_plant::cost_schedule.availability;
             in import_price_in = import_price;
-            in source_reactor_gap_in = 28396000.0;
-            in source_core_excess_in = 31000.0;
-            in source_coil_excess_in = 5287000.0;
+            in source_reactor_gap_in = aries_integrated_plant::source_reconciliation.reactor_gap;
+            in source_core_excess_in = aries_integrated_plant::source_reconciliation.core_excess;
+            in source_coil_excess_in = aries_integrated_plant::source_reconciliation.coil_excess;
             in currency_year_in = 2004.0;
         }
         attribute direct : Real = evaluate.direct;

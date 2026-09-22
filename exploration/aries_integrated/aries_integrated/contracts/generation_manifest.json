@@ -12,7 +12,6 @@
     "inputs/mfe_viability_params.json",
     "inputs/plant_params.json",
     "inputs/plasma_integration_params.json",
-    "inputs/source_budget_accounting_params.json",
     "modules/__init__.py",
     "modules/aries_cs_plasma_integration/__init__.py",
     "modules/aries_cs_plasma_integration/plasma/__init__.py",
@@ -44,6 +43,7 @@
     "modules/ideal_gas_brayton_components/ideal_gas_expander.py",
     "modules/integrated_equipment_costs/__init__.py",
     "modules/integrated_equipment_costs/annual_selected_fuel.py",
+    "modules/integrated_equipment_costs/comparison_difference.py",
     "modules/integrated_equipment_costs/eight_amount_sum.py",
     "modules/integrated_equipment_costs/equipment_cost_ledger.py",
     "modules/integrated_equipment_costs/exchanger_area_conductance.py",
@@ -107,7 +107,6 @@
     "schemas/selected_flow_pump_output.py",
     "schemas/selected_inventory_purchase_output.py",
     "schemas/selected_stock_atoms_output.py",
-    "schemas/source_budget_accounting_params.py",
     "schemas/supplied_profile_plasma_output.py",
     "tests/__init__.py",
     "tests/test_implementations_runnable.py"

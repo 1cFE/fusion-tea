@@ -6,7 +6,7 @@ class Equipment_Cost_LedgerOutput(MultiOutput):
 
 *Source**: work/active/WI-090_aries-integrated-equipment-and-costs/design.md. **Ref**: accepted equations, variable-role table and assumptions E1-E10; source-basis.md linked there. **Basis**: [ASSUMED] conditional engineering estimate, USD2004. **Last Updated**: 2026-09-22.
 
-SysML Source: root-0/integrated_equipment_costs.sysml:98
+SysML Source: root-0/integrated_equipment_costs.sysml:104
     """
     annual_operating: float = Field(description="annual_operating output")
     source_inclusive: float = Field(description="source_inclusive output")

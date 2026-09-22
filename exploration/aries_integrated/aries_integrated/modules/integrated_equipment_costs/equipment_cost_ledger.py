@@ -42,9 +42,9 @@ Outputs:
     - lifetime_replacement: lifetime_replacement result
     - currency_year: currency_year result
 
-SysML Source: root-0/integrated_equipment_costs.sysml:98
+SysML Source: root-0/integrated_equipment_costs.sysml:104
 
-SysML Source: root-0/integrated_equipment_costs.sysml:98
+SysML Source: root-0/integrated_equipment_costs.sysml:104
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/integrated_equipment_costs/equipment_cost_ledger_impl.py
@@ -145,9 +145,9 @@ Outputs:
     - lifetime_replacement: lifetime_replacement result
     - currency_year: currency_year result
 
-SysML Source: root-0/integrated_equipment_costs.sysml:98
+SysML Source: root-0/integrated_equipment_costs.sysml:104
 
-    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    SysML Source: root-0/integrated_equipment_costs.sysml:104
 
     Calculation Specification:
         See documentation:

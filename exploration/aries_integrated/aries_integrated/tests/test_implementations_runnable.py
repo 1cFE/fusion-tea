@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 124 calculation definitions.
+Generated from 140 calculation definitions.
 """
 
 import importlib
@@ -745,6 +745,406 @@ class TestSelected_Inventory_PurchaseRunnable:
             # Expected for stencils - test passes
             pass
 
+class TestEight_Amount_SumRunnable:
+    """Verify eight_amount_sum implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:80
+    """
+
+    def test_import_and_run(self):
+        """Test that run_eight_amount_sum can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.eight_amount_sum_impl")
+        func = getattr(impl, "run_eight_amount_sum")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.eight_amount_sum")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestComparison_DifferenceRunnable:
+    """Verify comparison_difference implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    """
+
+    def test_import_and_run(self):
+        """Test that run_comparison_difference can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.comparison_difference_impl")
+        func = getattr(impl, "run_comparison_difference")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.comparison_difference")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestScaled_AmountRunnable:
+    """Verify scaled_amount implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:92
+    """
+
+    def test_import_and_run(self):
+        """Test that run_scaled_amount can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.scaled_amount_impl")
+        func = getattr(impl, "run_scaled_amount")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.scaled_amount")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestSupplied_Purchase_CostRunnable:
+    """Verify supplied_purchase_cost implementation runs without error.
+
+    SysML Source: root-0/mfe_account_costs.sysml:17
+    """
+
+    def test_import_and_run(self):
+        """Test that run_supplied_purchase_cost can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.mfe_account_costs.supplied_purchase_cost_impl")
+        func = getattr(impl, "run_supplied_purchase_cost")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.mfe_account_costs.supplied_purchase_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestScaled_AmountRunnable:
+    """Verify scaled_amount implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:92
+    """
+
+    def test_import_and_run(self):
+        """Test that run_scaled_amount can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.scaled_amount_impl")
+        func = getattr(impl, "run_scaled_amount")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.scaled_amount")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestSupplied_Purchase_CostRunnable:
+    """Verify supplied_purchase_cost implementation runs without error.
+
+    SysML Source: root-0/mfe_account_costs.sysml:17
+    """
+
+    def test_import_and_run(self):
+        """Test that run_supplied_purchase_cost can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.mfe_account_costs.supplied_purchase_cost_impl")
+        func = getattr(impl, "run_supplied_purchase_cost")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.mfe_account_costs.supplied_purchase_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestEight_Amount_SumRunnable:
+    """Verify eight_amount_sum implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:80
+    """
+
+    def test_import_and_run(self):
+        """Test that run_eight_amount_sum can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.eight_amount_sum_impl")
+        func = getattr(impl, "run_eight_amount_sum")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.eight_amount_sum")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestComparison_DifferenceRunnable:
+    """Verify comparison_difference implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    """
+
+    def test_import_and_run(self):
+        """Test that run_comparison_difference can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.comparison_difference_impl")
+        func = getattr(impl, "run_comparison_difference")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.comparison_difference")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestEight_Amount_SumRunnable:
+    """Verify eight_amount_sum implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:80
+    """
+
+    def test_import_and_run(self):
+        """Test that run_eight_amount_sum can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.eight_amount_sum_impl")
+        func = getattr(impl, "run_eight_amount_sum")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.eight_amount_sum")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestComparison_DifferenceRunnable:
+    """Verify comparison_difference implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    """
+
+    def test_import_and_run(self):
+        """Test that run_comparison_difference can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.comparison_difference_impl")
+        func = getattr(impl, "run_comparison_difference")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.comparison_difference")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestScaled_AmountRunnable:
     """Verify scaled_amount implementation runs without error.
 
@@ -839,126 +1239,6 @@ class TestScaled_AmountRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.scaled_amount")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
-class TestSupplied_Purchase_CostRunnable:
-    """Verify supplied_purchase_cost implementation runs without error.
-
-    SysML Source: root-0/mfe_account_costs.sysml:17
-    """
-
-    def test_import_and_run(self):
-        """Test that run_supplied_purchase_cost can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("aries_integrated.handwritten.mfe_account_costs.supplied_purchase_cost_impl")
-        func = getattr(impl, "run_supplied_purchase_cost")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("aries_integrated.modules.mfe_account_costs.supplied_purchase_cost")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
-class TestScaled_AmountRunnable:
-    """Verify scaled_amount implementation runs without error.
-
-    SysML Source: root-0/integrated_equipment_costs.sysml:92
-    """
-
-    def test_import_and_run(self):
-        """Test that run_scaled_amount can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.scaled_amount_impl")
-        func = getattr(impl, "run_scaled_amount")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.scaled_amount")
-
-        # Find Input class
-        input_class = None
-        for attr_name in dir(module):
-            if attr_name.endswith("Input") and not attr_name.startswith("_"):
-                candidate = getattr(module, attr_name)
-                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
-                    input_class = candidate
-                    break
-
-        assert input_class is not None, "No Input class found in module"
-
-        # Create dummy input
-        dummy_input = create_dummy_input(input_class)
-
-        # Call function - expect NotImplementedError or valid return
-        try:
-            result = func(dummy_input)
-
-            # If implemented, verify return type
-            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
-
-        except NotImplementedError:
-            # Expected for stencils - test passes
-            pass
-
-class TestSupplied_Purchase_CostRunnable:
-    """Verify supplied_purchase_cost implementation runs without error.
-
-    SysML Source: root-0/mfe_account_costs.sysml:17
-    """
-
-    def test_import_and_run(self):
-        """Test that run_supplied_purchase_cost can be imported and called."""
-        # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("aries_integrated.handwritten.mfe_account_costs.supplied_purchase_cost_impl")
-        func = getattr(impl, "run_supplied_purchase_cost")
-
-        # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("aries_integrated.modules.mfe_account_costs.supplied_purchase_cost")
 
         # Find Input class
         input_class = None
@@ -1512,6 +1792,86 @@ class TestExchanger_Area_ConductanceRunnable:
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
             assert len(result) == 2, f"Expected 2 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestScaled_AmountRunnable:
+    """Verify scaled_amount implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:92
+    """
+
+    def test_import_and_run(self):
+        """Test that run_scaled_amount can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.scaled_amount_impl")
+        func = getattr(impl, "run_scaled_amount")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.scaled_amount")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestComparison_DifferenceRunnable:
+    """Verify comparison_difference implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    """
+
+    def test_import_and_run(self):
+        """Test that run_comparison_difference can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.comparison_difference_impl")
+        func = getattr(impl, "run_comparison_difference")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.comparison_difference")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
 
         except NotImplementedError:
             # Expected for stencils - test passes
@@ -2999,6 +3359,86 @@ class TestEight_Amount_SumRunnable:
             # Expected for stencils - test passes
             pass
 
+class TestEight_Amount_SumRunnable:
+    """Verify eight_amount_sum implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:80
+    """
+
+    def test_import_and_run(self):
+        """Test that run_eight_amount_sum can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.eight_amount_sum_impl")
+        func = getattr(impl, "run_eight_amount_sum")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.eight_amount_sum")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestComparison_DifferenceRunnable:
+    """Verify comparison_difference implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    """
+
+    def test_import_and_run(self):
+        """Test that run_comparison_difference can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.comparison_difference_impl")
+        func = getattr(impl, "run_comparison_difference")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.comparison_difference")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestSelected_Inventory_PurchaseRunnable:
     """Verify selected_inventory_purchase implementation runs without error.
 
@@ -4399,6 +4839,126 @@ class TestScaled_AmountRunnable:
             # Expected for stencils - test passes
             pass
 
+class TestScaled_AmountRunnable:
+    """Verify scaled_amount implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:92
+    """
+
+    def test_import_and_run(self):
+        """Test that run_scaled_amount can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.scaled_amount_impl")
+        func = getattr(impl, "run_scaled_amount")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.scaled_amount")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestComparison_DifferenceRunnable:
+    """Verify comparison_difference implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    """
+
+    def test_import_and_run(self):
+        """Test that run_comparison_difference can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.comparison_difference_impl")
+        func = getattr(impl, "run_comparison_difference")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.comparison_difference")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestScaled_AmountRunnable:
+    """Verify scaled_amount implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:92
+    """
+
+    def test_import_and_run(self):
+        """Test that run_scaled_amount can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.scaled_amount_impl")
+        func = getattr(impl, "run_scaled_amount")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.scaled_amount")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestSupplied_Purchase_CostRunnable:
     """Verify supplied_purchase_cost implementation runs without error.
 
@@ -4573,6 +5133,86 @@ class TestSupplied_Purchase_CostRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("aries_integrated.modules.mfe_account_costs.supplied_purchase_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestEight_Amount_SumRunnable:
+    """Verify eight_amount_sum implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:80
+    """
+
+    def test_import_and_run(self):
+        """Test that run_eight_amount_sum can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.eight_amount_sum_impl")
+        func = getattr(impl, "run_eight_amount_sum")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.eight_amount_sum")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestComparison_DifferenceRunnable:
+    """Verify comparison_difference implementation runs without error.
+
+    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    """
+
+    def test_import_and_run(self):
+        """Test that run_comparison_difference can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_equipment_costs.comparison_difference_impl")
+        func = getattr(impl, "run_comparison_difference")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_equipment_costs.comparison_difference")
 
         # Find Input class
         input_class = None
@@ -5084,7 +5724,7 @@ class TestContingency_CostRunnable:
 class TestEquipment_Cost_LedgerRunnable:
     """Verify equipment_cost_ledger implementation runs without error.
 
-    SysML Source: root-0/integrated_equipment_costs.sysml:98
+    SysML Source: root-0/integrated_equipment_costs.sysml:104
     """
 
     def test_import_and_run(self):
