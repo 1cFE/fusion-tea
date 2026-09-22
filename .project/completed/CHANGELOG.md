@@ -4,6 +4,24 @@ Historical record of completed work.
 
 ---
 
+## [2026-09-22] - Integrated ARIES heat and electricity (WI-089)
+
+**Type**: Modeling item and goal
+**Duration**: 1 day (2026-09-22)
+
+### Summary
+
+Delivered and independently reviewed one native plasma/source → heat transport → conversion → net-electricity assembly. The assumed calculated-plasma nominal produces 423.106794 MW net with zero unmet heat; a frozen fourteen-point study retains all adverse source/equipment cases and passes 420 scalar and 140 exact verdict comparisons. The owner closed the goal and WI-089; scientific qualifications and the prompt-02 inventory/cost handoff remain explicit.
+
+### Deliverables
+
+- Native work item: `work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/` (spec, design/assumption register, plan, report and evidence).
+- Goal answer and independent reviews: `work/orchestration/goals/aries-integrated-heat-electricity/`.
+- Native assembly/package: `models/designs/aries_cs_integrated/plant.sysml` and `exploration/aries_integrated/`.
+- Frozen study: `exploration/aries_integrated/studies/20260922-integrated-heat-electricity/@8e6fb2f2`.
+
+---
+
 ## [2026-08-30] - Epic: Goal Strategy and Task Harness
 
 **Type**: Epic (GSTH — 6 items)

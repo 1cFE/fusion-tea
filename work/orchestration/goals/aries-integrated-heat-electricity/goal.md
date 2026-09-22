@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-22. Issuance of the retained owner brief authorizes this slug, grounding, routine assumptions and execution. Scientific choices below remain agent proposals under that authority.
+`closed` — 2026-09-22. [OWNER-VERBATIM] “please close it” authorizes formal closure after the independently reviewed answer. The original grounding and scientific provenance remain recorded below and in the trail.
 
 ## Question
 
@@ -53,3 +53,7 @@ The accepted transfer work executes plasma/fuel, separate branch heat accounting
 [OWNER] Only the owner formally closes the goal or items. Deliver the answer and recommendation with native evidence; leave formal status grounded pending that act.
 
 ## Amendments
+
+### Owner closure — 2026-09-22
+
+[OWNER-VERBATIM] “please close it” The engineering answer is accepted for closure under its documented assumptions and qualifications. WI-089 is archived at `work/completed/20260922_WI-089_aries-integrated-heat-and-electricity`. This closes the goal and its modeling item; it does not extend the scientific claims or authorize push/merge.

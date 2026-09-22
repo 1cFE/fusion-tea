@@ -1,8 +1,11 @@
+---
+Status: complete
+Created: 2026-09-22
+Updated: '2026-09-22'
+---
+
 # WI-089 executable plan
 
-Status: implementation, native integration and committed study complete; independent final review PASS; formal closure owner-held
-Created: 2026-09-22
-Updated: 2026-09-22
 Related Artifacts: spec.md; design.md
 
 ## Phase 1: Resolve design and source gate

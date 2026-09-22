@@ -1,6 +1,6 @@
 # Integrated ARIES heat and electricity
 
-The positive integration goal is met under the documented assumptions. Native integration and the committed fourteen-point study pass their declared verification. The [independent final review](evidence/round-review.md) accepts the result and finding dispositions. Formal goal/item closure remains owner-held.
+The positive integration goal is met under the documented assumptions. Native integration and the committed fourteen-point study pass their declared verification. The [independent final review](evidence/round-review.md) accepts the result and finding dispositions. The owner closed the goal and WI-089 on 2026-09-22.
 
 ## What runs
 
@@ -25,7 +25,7 @@ The nominal whole-plant residual is approximately -7.54e-9 MW against a 2.24e-6 
 
 ## Assumptions and supported use
 
-The sole detailed assumption/source register and interface contract remain in [WI-089 design](../../../active/WI-089_aries-integrated-heat-and-electricity/design.md). Important boundaries are constant fluid properties, nominal compressor/turbine efficiencies, a sequential three-exchanger approximation to the published network, assumed deposition partition and neutron multiplication, supplied primary flows/UA/hot-temperature limits, and named auxiliary-load assumptions. The recuperator/exchanger feedback is solved inside a typed native calculation. Flow, conductance, compressor ratios and offered ratings remain independent supplied choices.
+The sole detailed assumption/source register and interface contract remain in [WI-089 design](../../../completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md). Important boundaries are constant fluid properties, nominal compressor/turbine efficiencies, a sequential three-exchanger approximation to the published network, assumed deposition partition and neutron multiplication, supplied primary flows/UA/hot-temperature limits, and named auxiliary-load assumptions. The recuperator/exchanger feedback is solved inside a typed native calculation. Flow, conductance, compressor ratios and offered ratings remain independent supplied choices.
 
 Deposition transport, hydraulic performance, material limits, machine maps, magnets and breeding remain scientifically unqualified. Native outputs carry conditional-result and unsupported-science flags. Scalar capacity satisfaction is narrower than equipment qualification. A supplied reference value does not turn an unavailable magnetic or breeding calculation into a pass.
 

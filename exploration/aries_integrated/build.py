@@ -9,7 +9,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'aries_integrated'
-EVIDENCE = ROOT / 'work/active/WI-089_aries-integrated-heat-and-electricity/evidence'
+EVIDENCE = ROOT / 'work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/evidence'
 SOURCES = [ROOT / path for path in [
     'models/library/analyses/integrated_heat_electricity.sysml',
     'models/library/analyses/radial_density_profile.sysml',

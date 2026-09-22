@@ -1,6 +1,6 @@
 # Integrated ARIES native package
 
-This directory contains the additive WI-089 model's staged sources, extraction snapshot, stock generated `aries_integrated` package, native completions and execution tools. The physical contract and sole assumptions register are in `work/active/WI-089_aries-integrated-heat-and-electricity/design.md`; implementation results and limits are in that item's `report.md`.
+This directory contains the additive WI-089 model's staged sources, extraction snapshot, stock generated `aries_integrated` package, native completions and execution tools. The physical contract and sole assumptions register are in `work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md`; implementation results and limits are in that item's `report.md`.
 
 Replay the accepted nominal or fourteen-point study into a fresh directory using the commands in [the goal answer](../../work/orchestration/goals/aries-integrated-heat-electricity/answer.md). These preserve the committed model and study evidence. The package's default producer is source-conditioned; the accepted nominal explicitly selects calculated plasma.
 

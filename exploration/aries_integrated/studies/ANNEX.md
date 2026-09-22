@@ -1,6 +1,6 @@
 # Package annex — `aries_integrated`
 
-[AGENT] Preparation state: native author baselines exist, but the combined study and integration seam have not executed. The generated package is `exploration/aries_integrated/aries_integrated`; its build, source snapshot and census belong to the model author. Scientific and numerical authority is the independently reviewed WI-089 design at `work/active/WI-089_aries-integrated-heat-and-electricity/design.md`; its assumption register remains the single source of scenario assumptions.
+[AGENT] Current state: native integration and the fourteen-point study are complete and independently reviewed; the goal and WI-089 were closed by the owner on 2026-09-22. The frozen study preserves its execution-time metadata. The generated package is `exploration/aries_integrated/aries_integrated`; its build, source snapshot and census belong to the model author. Scientific and numerical authority is the independently reviewed WI-089 design at `work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md`; its assumption register remains the single source of scenario assumptions.
 
 ## § Declared ties
 

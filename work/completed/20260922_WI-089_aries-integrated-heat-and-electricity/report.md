@@ -1,6 +1,6 @@
 # WI-089 implementation report
 
-Status: implementation, native integration and committed study complete; independent final review PASS; formal closure owner-held
+Status: closed by owner on 2026-09-22; implementation and independent final review complete
 Created: 2026-09-22
 Updated: 2026-09-22
 
@@ -62,3 +62,5 @@ The original physical review remains applicable to unchanged calculation bodies 
 The second integration attempt reached the census gate and found the missing `derived_against_semantic_fingerprint` field in the newly authored census. `build.py` now writes both the producer-derived classification and the actual semantic fingerprint using `scripts.integrate.rederived_census` and `scripts.study.manifest.read_semantic_fingerprint`. All 122 entry classifications are unchanged; the sole added field is bound to `35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97`. Fresh rederivation matches exactly and the package contract hash is unchanged. Evidence: `evidence/census-completion-verification.json`. No shared seam, source, equation or package bytes changed.
 
 Final independent round review PASS is recorded in `work/orchestration/goals/aries-integrated-heat-electricity/evidence/round-review.md`. It confirms the committed study, frozen identities, all finding dispositions and the bounded positive integration conclusion. Formal item/goal closure remains owner-held.
+
+Owner closure: “please close it” (2026-09-22). Native PM archived WI-089; the accepted evidence and qualification limits remain unchanged.

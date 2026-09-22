@@ -130,3 +130,8 @@ The rules for writing an entry are in `README.md`, in this directory. Do not rew
 
 **Fact:** A comparison failure exits with stderr before writing the requested `--out` summary. Check exit status before loading that file; a failed run does not emit a verification summary.
 **Evidence:** `scripts/study/verify.py:556`; pre-reveal feasibility study `results/generic-verification-refusal.json`, commit `1394d43d`.
+
+## [sysml-codegen] 2026-09-22
+
+**Fact:** In the pinned integration toolchain, smart regeneration can replace handwritten completions with stubs when public function annotations do not match the generated signature or when its scanner treats `inputs.model_dump()` as an input field. WI-089 uses typed public adapters that delegate to unchanged reviewed bodies, and proves the exact `--smart-regen --preserve-handwritten` command is byte-stable.
+**Evidence:** `work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/evidence/smart-normalization-verification.json`; `work/orchestration/goals/aries-integrated-heat-electricity/evidence/packaging-review.md@143a556c`.

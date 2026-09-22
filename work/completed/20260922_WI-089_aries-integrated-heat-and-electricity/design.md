@@ -1,8 +1,11 @@
+---
+Status: complete
+Created: 2026-09-22
+Updated: '2026-09-22'
+---
+
 # Integrated heat/electricity design
 
-Status: proposed for independent review
-Created: 2026-09-22
-Updated: 2026-09-22
 Related Artifacts: spec.md; plan.md; ../../orchestration/goals/aries-integrated-heat-electricity/evidence/owner-brief.md
 
 All choices in this design are [AGENT] proposals unless a source or inherited authority is identified. They remain challengeable. This file is the item's sole assumptions register.

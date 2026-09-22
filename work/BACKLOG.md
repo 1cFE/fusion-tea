@@ -478,8 +478,8 @@ standalone:
   name: ARIES integrated heat and electricity
   scale: standard
   priority: P0
-  status: backlog
-  completed: null
+  status: completed
+  completed: '2026-09-22'
 ---
 
 # Project Backlog
@@ -599,4 +599,4 @@ standalone:
 | WI-078 | Supplied cooling design-point evaluation | standard | P0 | backlog |  |
 | WI-079 | Supplied equipment design bases for residual costs | standard | P0 | backlog |  |
 | WI-080 | Supplied thermal equipment capability and demand checks | standard | P0 | backlog |  |
-| WI-089 | ARIES integrated heat and electricity | standard | P0 | backlog |  |
+| WI-089 | ARIES integrated heat and electricity | standard | P0 | completed | Completed 2026-09-22 |

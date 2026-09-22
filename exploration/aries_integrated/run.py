@@ -7,7 +7,7 @@ import yaml
 ROOT=Path(__file__).resolve().parents[2]
 HERE=Path(__file__).resolve().parent
 PACKAGE=HERE/'aries_integrated'
-EVIDENCE=ROOT/'work/active/WI-089_aries-integrated-heat-and-electricity/evidence'
+EVIDENCE=ROOT/'work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/evidence'
 PREFIX='aries_integrated_plant__'
 SCENARIOS={
     'nominal-source-assumed':{},
