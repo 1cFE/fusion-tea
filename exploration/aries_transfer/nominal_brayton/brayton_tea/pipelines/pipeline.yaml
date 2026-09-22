@@ -1,0 +1,329 @@
+# Generated Pipeline Configuration for brayton_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for brayton_tea"
+  output_folder: "brayton_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      nominal_brayton_params: NominalBraytonParams ../inputs/nominal_brayton_params.json
+
+
+  # ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+  aries_nominal_brayton__compressor_1__performance:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+      temperature_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__low_temperature
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+      ratio_in: float nominal_brayton_params.aries_nominal_brayton__compressor_1__selected_ratio
+      pressure_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__return_pressure
+      gamma_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__gamma
+      efficiency_in: float nominal_brayton_params.aries_nominal_brayton__compressor_1__efficiency
+    outputs:
+      pressure_out: float aries_nominal_brayton__compressor_1__performance__pressure_out
+      shaft_demand: float aries_nominal_brayton__compressor_1__performance__shaft_demand
+      temperature_out: float aries_nominal_brayton__compressor_1__performance__temperature_out
+
+  # ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+  aries_nominal_brayton__intercooler_1__conditioning:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+      heating_role_in: float nominal_brayton_params.aries_nominal_brayton__intercooler_1__heating_role
+      target_temperature_in: float nominal_brayton_params.aries_nominal_brayton__intercooler_1__target_temperature
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+      pressure_in: float aries_nominal_brayton__compressor_1__performance__pressure_out
+      temperature_in: float aries_nominal_brayton__compressor_1__performance__temperature_out
+    outputs:
+      heat_into_fluid: float aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid
+      temperature_out: float aries_nominal_brayton__intercooler_1__conditioning__temperature_out
+      pressure_out: float aries_nominal_brayton__intercooler_1__conditioning__pressure_out
+
+  # ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+  aries_nominal_brayton__compressor_2__performance:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      temperature_in: float aries_nominal_brayton__intercooler_1__conditioning__temperature_out
+      pressure_in: float aries_nominal_brayton__intercooler_1__conditioning__pressure_out
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+      efficiency_in: float nominal_brayton_params.aries_nominal_brayton__compressor_2__efficiency
+      gamma_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__gamma
+      ratio_in: float nominal_brayton_params.aries_nominal_brayton__compressor_2__selected_ratio
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+    outputs:
+      pressure_out: float aries_nominal_brayton__compressor_2__performance__pressure_out
+      shaft_demand: float aries_nominal_brayton__compressor_2__performance__shaft_demand
+      temperature_out: float aries_nominal_brayton__compressor_2__performance__temperature_out
+
+  # ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+  aries_nominal_brayton__intercooler_2__conditioning:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+      target_temperature_in: float nominal_brayton_params.aries_nominal_brayton__intercooler_2__target_temperature
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+      pressure_in: float aries_nominal_brayton__compressor_2__performance__pressure_out
+      heating_role_in: float nominal_brayton_params.aries_nominal_brayton__intercooler_2__heating_role
+      temperature_in: float aries_nominal_brayton__compressor_2__performance__temperature_out
+    outputs:
+      heat_into_fluid: float aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid
+      temperature_out: float aries_nominal_brayton__intercooler_2__conditioning__temperature_out
+      pressure_out: float aries_nominal_brayton__intercooler_2__conditioning__pressure_out
+
+  # ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+  aries_nominal_brayton__compressor_3__performance:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      pressure_in: float aries_nominal_brayton__intercooler_2__conditioning__pressure_out
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+      ratio_in: float nominal_brayton_params.aries_nominal_brayton__compressor_3__selected_ratio
+      gamma_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__gamma
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+      efficiency_in: float nominal_brayton_params.aries_nominal_brayton__compressor_3__efficiency
+      temperature_in: float aries_nominal_brayton__intercooler_2__conditioning__temperature_out
+    outputs:
+      pressure_out: float aries_nominal_brayton__compressor_3__performance__pressure_out
+      shaft_demand: float aries_nominal_brayton__compressor_3__performance__shaft_demand
+      temperature_out: float aries_nominal_brayton__compressor_3__performance__temperature_out
+
+  # ideal_gas_brayton_components.Fractional_Pressure_LossModule
+  aries_nominal_brayton__hot_side_loss__loss:
+    module_type: ideal_gas_brayton_components.Fractional_Pressure_LossModule
+    inputs:
+      pressure_in: float aries_nominal_brayton__compressor_3__performance__pressure_out
+      loss_fraction_in: float nominal_brayton_params.aries_nominal_brayton__hot_side_loss__loss_fraction
+    outputs:
+      root: RootModel[float] aries_nominal_brayton__hot_side_loss__loss__pressure_out
+
+  # ideal_gas_brayton_components.Ideal_Gas_ExpanderModule
+  aries_nominal_brayton__equivalent_turbine__performance:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_ExpanderModule
+    inputs:
+      gamma_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__gamma
+      exit_pressure_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__return_pressure
+      pressure_in: float aries_nominal_brayton__hot_side_loss__loss__pressure_out.root
+      efficiency_in: float nominal_brayton_params.aries_nominal_brayton__equivalent_turbine__efficiency
+      temperature_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__turbine_temperature
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+    outputs:
+      pressure_out: float aries_nominal_brayton__equivalent_turbine__performance__pressure_out
+      shaft_produced: float aries_nominal_brayton__equivalent_turbine__performance__shaft_produced
+      temperature_out: float aries_nominal_brayton__equivalent_turbine__performance__temperature_out
+
+  # ideal_gas_brayton_components.Equal_Capacity_RecuperatorModule
+  aries_nominal_brayton__recuperator__exchange:
+    module_type: ideal_gas_brayton_components.Equal_Capacity_RecuperatorModule
+    inputs:
+      effectiveness_in: float nominal_brayton_params.aries_nominal_brayton__recuperator__effectiveness
+      cold_temperature_in: float aries_nominal_brayton__compressor_3__performance__temperature_out
+      hot_temperature_in: float aries_nominal_brayton__equivalent_turbine__performance__temperature_out
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+    outputs:
+      transferred_heat: float aries_nominal_brayton__recuperator__exchange__transferred_heat
+      hot_temperature_out: float aries_nominal_brayton__recuperator__exchange__hot_temperature_out
+      cold_temperature_out: float aries_nominal_brayton__recuperator__exchange__cold_temperature_out
+
+  # ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+  aries_nominal_brayton__precooler__conditioning:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      heating_role_in: float nominal_brayton_params.aries_nominal_brayton__precooler__heating_role
+      target_temperature_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__low_temperature
+      pressure_in: float aries_nominal_brayton__equivalent_turbine__performance__pressure_out
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+      temperature_in: float aries_nominal_brayton__recuperator__exchange__hot_temperature_out
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+    outputs:
+      heat_into_fluid: float aries_nominal_brayton__precooler__conditioning__heat_into_fluid
+      temperature_out: float aries_nominal_brayton__precooler__conditioning__temperature_out
+      pressure_out: float aries_nominal_brayton__precooler__conditioning__pressure_out
+
+  # ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+  aries_nominal_brayton__heater__conditioning:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      temperature_in: float aries_nominal_brayton__recuperator__exchange__cold_temperature_out
+      heating_role_in: float nominal_brayton_params.aries_nominal_brayton__heater__heating_role
+      target_temperature_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__turbine_temperature
+      flow_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__selected_flow
+      pressure_in: float aries_nominal_brayton__hot_side_loss__loss__pressure_out.root
+      cp_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__cp
+    outputs:
+      heat_into_fluid: float aries_nominal_brayton__heater__conditioning__heat_into_fluid
+      temperature_out: float aries_nominal_brayton__heater__conditioning__temperature_out
+      pressure_out: float aries_nominal_brayton__heater__conditioning__pressure_out
+
+  # ideal_gas_brayton_components.Brayton_Cycle_LedgerModule
+  aries_nominal_brayton__cycle_ledger__balance:
+    module_type: ideal_gas_brayton_components.Brayton_Cycle_LedgerModule
+    inputs:
+      compressor_3_in: float aries_nominal_brayton__compressor_3__performance__shaft_demand
+      turbine_work_in: float aries_nominal_brayton__equivalent_turbine__performance__shaft_produced
+      inlet_pressure_in: float nominal_brayton_params.aries_nominal_brayton__operating_point__return_pressure
+      intercooler_2_in: float aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid
+      intercooler_1_in: float aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid
+      discharge_pressure_in: float aries_nominal_brayton__compressor_3__performance__pressure_out
+      compressor_2_in: float aries_nominal_brayton__compressor_2__performance__shaft_demand
+      heater_in: float aries_nominal_brayton__heater__conditioning__heat_into_fluid
+      precooler_in: float aries_nominal_brayton__precooler__conditioning__heat_into_fluid
+      compressor_1_in: float aries_nominal_brayton__compressor_1__performance__shaft_demand
+    outputs:
+      shaft_efficiency: float aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency
+      net_shaft: float aries_nominal_brayton__cycle_ledger__balance__net_shaft
+      compressor_demand: float aries_nominal_brayton__cycle_ledger__balance__compressor_demand
+      rejected_heat: float aries_nominal_brayton__cycle_ledger__balance__rejected_heat
+      energy_residual: float aries_nominal_brayton__cycle_ledger__balance__energy_residual
+      total_pressure_ratio: float aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_nominal_brayton__heater_capacity__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float nominal_brayton_params.aries_nominal_brayton__heater_capacity__offered_rating
+      applicable_in: bool nominal_brayton_params.aries_nominal_brayton__heater_capacity__scenario_applicable
+      conditions_supported_in: bool nominal_brayton_params.aries_nominal_brayton__heater_capacity__assumed_supported
+      demand_in: float aries_nominal_brayton__heater__conditioning__heat_into_fluid
+      demand_available_in: bool nominal_brayton_params.aries_nominal_brayton__heater_capacity__demand_available
+    outputs:
+      evaluation_defined: float aries_nominal_brayton__heater_capacity__screen__evaluation_defined
+      margin: float aries_nominal_brayton__heater_capacity__screen__margin
+      applicable: bool aries_nominal_brayton__heater_capacity__screen__applicable
+      supported: bool aries_nominal_brayton__heater_capacity__screen__supported
+      capacity_ok: bool aries_nominal_brayton__heater_capacity__screen__capacity_ok
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_nominal_brayton__rejection_capacity__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool nominal_brayton_params.aries_nominal_brayton__rejection_capacity__demand_available
+      conditions_supported_in: bool nominal_brayton_params.aries_nominal_brayton__rejection_capacity__assumed_supported
+      rating_in: float nominal_brayton_params.aries_nominal_brayton__rejection_capacity__offered_rating
+      demand_in: float aries_nominal_brayton__cycle_ledger__balance__rejected_heat
+      applicable_in: bool nominal_brayton_params.aries_nominal_brayton__rejection_capacity__scenario_applicable
+    outputs:
+      evaluation_defined: float aries_nominal_brayton__rejection_capacity__screen__evaluation_defined
+      margin: float aries_nominal_brayton__rejection_capacity__screen__margin
+      applicable: bool aries_nominal_brayton__rejection_capacity__screen__applicable
+      supported: bool aries_nominal_brayton__rejection_capacity__screen__supported
+      capacity_ok: bool aries_nominal_brayton__rejection_capacity__screen__capacity_ok
+
+  # mfe_viability.Offered_Capacity_ScreenModule
+  aries_nominal_brayton__compressor_capacity__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_in: float aries_nominal_brayton__cycle_ledger__balance__compressor_demand
+      conditions_supported_in: bool nominal_brayton_params.aries_nominal_brayton__compressor_capacity__assumed_supported
+      applicable_in: bool nominal_brayton_params.aries_nominal_brayton__compressor_capacity__scenario_applicable
+      demand_available_in: bool nominal_brayton_params.aries_nominal_brayton__compressor_capacity__demand_available
+      rating_in: float nominal_brayton_params.aries_nominal_brayton__compressor_capacity__offered_rating
+    outputs:
+      evaluation_defined: float aries_nominal_brayton__compressor_capacity__screen__evaluation_defined
+      margin: float aries_nominal_brayton__compressor_capacity__screen__margin
+      applicable: bool aries_nominal_brayton__compressor_capacity__screen__applicable
+      supported: bool aries_nominal_brayton__compressor_capacity__screen__supported
+      capacity_ok: bool aries_nominal_brayton__compressor_capacity__screen__capacity_ok
+
+  # aries_nominal_brayton.HeaterCapacityCapacityOkConstraintModule
+  aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9:
+    module_type: aries_nominal_brayton.HeaterCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_nominal_brayton__heater_capacity__screen__margin
+      defined_in: float aries_nominal_brayton__heater_capacity__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation
+
+  # aries_nominal_brayton.RejectionCapacityCapacityOkConstraintModule
+  aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8:
+    module_type: aries_nominal_brayton.RejectionCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_nominal_brayton__rejection_capacity__screen__margin
+      defined_in: float aries_nominal_brayton__rejection_capacity__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation
+
+  # aries_nominal_brayton.CompressorCapacityCapacityOkConstraintModule
+  aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105:
+    module_type: aries_nominal_brayton.CompressorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float aries_nominal_brayton__compressor_capacity__screen__margin
+      defined_in: float aries_nominal_brayton__compressor_capacity__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation
+
+  # constraints.ConstraintReportAggregatorModule
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      aries_nominal_brayton_heater_capacity_capacity_ok_ab792e2afb3f95b9: ConstraintEvaluation aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation
+      aries_nominal_brayton_rejection_capacity_capacity_ok_d42dc23ad06965a8: ConstraintEvaluation aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation
+      aries_nominal_brayton_compressor_capacity_capacity_ok_76efdcdf46482105: ConstraintEvaluation aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      aries_nominal_brayton__compressor_1__performance__pressure_out: float compressor_1__pressure_out.json
+      aries_nominal_brayton__compressor_1__performance__shaft_demand: float compressor_1__shaft_demand.json
+      aries_nominal_brayton__compressor_1__performance__temperature_out: float compressor_1__temperature_out.json
+      aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid: float intercooler_1__heat_into_fluid.json
+      aries_nominal_brayton__intercooler_1__conditioning__temperature_out: float intercooler_1__temperature_out.json
+      aries_nominal_brayton__intercooler_1__conditioning__pressure_out: float intercooler_1__pressure_out.json
+      aries_nominal_brayton__compressor_2__performance__pressure_out: float compressor_2__pressure_out.json
+      aries_nominal_brayton__compressor_2__performance__shaft_demand: float compressor_2__shaft_demand.json
+      aries_nominal_brayton__compressor_2__performance__temperature_out: float compressor_2__temperature_out.json
+      aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid: float intercooler_2__heat_into_fluid.json
+      aries_nominal_brayton__intercooler_2__conditioning__temperature_out: float intercooler_2__temperature_out.json
+      aries_nominal_brayton__intercooler_2__conditioning__pressure_out: float intercooler_2__pressure_out.json
+      aries_nominal_brayton__compressor_3__performance__pressure_out: float compressor_3__pressure_out.json
+      aries_nominal_brayton__compressor_3__performance__shaft_demand: float compressor_3__shaft_demand.json
+      aries_nominal_brayton__compressor_3__performance__temperature_out: float compressor_3__temperature_out.json
+      aries_nominal_brayton__hot_side_loss__loss__pressure_out: RootModel[float] hot_side_loss__pressure_out.json
+      aries_nominal_brayton__equivalent_turbine__performance__pressure_out: float equivalent_turbine__pressure_out.json
+      aries_nominal_brayton__equivalent_turbine__performance__shaft_produced: float equivalent_turbine__shaft_produced.json
+      aries_nominal_brayton__equivalent_turbine__performance__temperature_out: float equivalent_turbine__temperature_out.json
+      aries_nominal_brayton__recuperator__exchange__transferred_heat: float recuperator__transferred_heat.json
+      aries_nominal_brayton__recuperator__exchange__hot_temperature_out: float recuperator__hot_temperature_out.json
+      aries_nominal_brayton__recuperator__exchange__cold_temperature_out: float recuperator__cold_temperature_out.json
+      aries_nominal_brayton__precooler__conditioning__heat_into_fluid: float precooler__heat_into_fluid.json
+      aries_nominal_brayton__precooler__conditioning__temperature_out: float precooler__temperature_out.json
+      aries_nominal_brayton__precooler__conditioning__pressure_out: float precooler__pressure_out.json
+      aries_nominal_brayton__heater__conditioning__heat_into_fluid: float heater__heat_into_fluid.json
+      aries_nominal_brayton__heater__conditioning__temperature_out: float heater__temperature_out.json
+      aries_nominal_brayton__heater__conditioning__pressure_out: float heater__pressure_out.json
+      aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency: float cycle_ledger__shaft_efficiency.json
+      aries_nominal_brayton__cycle_ledger__balance__net_shaft: float cycle_ledger__net_shaft.json
+      aries_nominal_brayton__cycle_ledger__balance__compressor_demand: float cycle_ledger__compressor_demand.json
+      aries_nominal_brayton__cycle_ledger__balance__rejected_heat: float cycle_ledger__rejected_heat.json
+      aries_nominal_brayton__cycle_ledger__balance__energy_residual: float cycle_ledger__energy_residual.json
+      aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio: float cycle_ledger__total_pressure_ratio.json
+      aries_nominal_brayton__heater_capacity__screen__evaluation_defined: float heater_capacity__capacity_defined.json
+      aries_nominal_brayton__heater_capacity__screen__margin: float heater_capacity__capacity_margin.json
+      aries_nominal_brayton__heater_capacity__screen__applicable: bool aries_nominal_brayton__heater_capacity__screen__applicable.json
+      aries_nominal_brayton__heater_capacity__screen__supported: bool aries_nominal_brayton__heater_capacity__screen__supported.json
+      aries_nominal_brayton__heater_capacity__screen__capacity_ok: bool aries_nominal_brayton__heater_capacity__screen__capacity_ok.json
+      aries_nominal_brayton__rejection_capacity__screen__evaluation_defined: float rejection_capacity__capacity_defined.json
+      aries_nominal_brayton__rejection_capacity__screen__margin: float rejection_capacity__capacity_margin.json
+      aries_nominal_brayton__rejection_capacity__screen__applicable: bool aries_nominal_brayton__rejection_capacity__screen__applicable.json
+      aries_nominal_brayton__rejection_capacity__screen__supported: bool aries_nominal_brayton__rejection_capacity__screen__supported.json
+      aries_nominal_brayton__rejection_capacity__screen__capacity_ok: bool aries_nominal_brayton__rejection_capacity__screen__capacity_ok.json
+      aries_nominal_brayton__compressor_capacity__screen__evaluation_defined: float compressor_capacity__capacity_defined.json
+      aries_nominal_brayton__compressor_capacity__screen__margin: float compressor_capacity__capacity_margin.json
+      aries_nominal_brayton__compressor_capacity__screen__applicable: bool aries_nominal_brayton__compressor_capacity__screen__applicable.json
+      aries_nominal_brayton__compressor_capacity__screen__supported: bool aries_nominal_brayton__compressor_capacity__screen__supported.json
+      aries_nominal_brayton__compressor_capacity__screen__capacity_ok: bool aries_nominal_brayton__compressor_capacity__screen__capacity_ok.json
+      aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation: ConstraintEvaluation aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation.json
+      aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation: ConstraintEvaluation aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation.json
+      aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation: ConstraintEvaluation aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

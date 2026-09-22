@@ -1,0 +1,5 @@
+INFO: Generating code from /home/reid/1cfe/fusion-tea/exploration/aries_transfer/nominal_brayton/input_models
+INFO: Output to /home/reid/1cfe/fusion-tea/exploration/aries_transfer/nominal_brayton/brayton_tea
+INFO: Package name: brayton_tea
+INFO: Building pipeline context...
+ERROR: Model failed exact-route validation: SI_EDGE_DANGLING: aries_nominal_brayton__compressor_capacity__screen: typed producer dependency cycle: aries_nominal_brayton__compressor_capacity__screen; SI_EDGE_DANGLING: aries_nominal_brayton__heater_capacity__screen: typed producer dependency cycle: aries_nominal_brayton__heater_capacity__screen; SI_EDGE_DANGLING: aries_nominal_brayton__rejection_capacity__screen: typed producer dependency cycle: aries_nominal_brayton__rejection_capacity__screen

@@ -40,6 +40,7 @@ Physics inventory agent owns physics-inventory.md and physics-* evidence. Therma
 - [x] T02: implement source-supported constituent/sector arithmetic, preserving the distinction between reference and alternative designs.
 - [x] T03–T05: inspect the recorded field, conductor and breeding prerequisites for executable work; park only the dependent claims where scientific data remain missing.
 - [x] T06–T07: extend fuel/maintenance reuse where supplied inputs have clear meaning; keep source-conditioned outputs distinct from independent prediction.
-- [ ] T08–T09: establish heat-transport and conversion interfaces from source definitions; implement independently supportable balances before technology-specific qualification.
+- [x] T08: implement reviewed two-branch heat accounting and fixed-capacity checks; retain hydraulic and equipment-performance limits.
+- [x] T09: implement the reviewed nominal Brayton component cycle; retain source-topology, real-fluid and electrical limits.
 - [ ] T10–T13: implement supported constituent/account/financial mappings; assess whether a conditioned financial comparison is now meaningful.
 - [ ] Integrate each area's changes, review evidence, update the register/log and commit; retain full-plant limitations explicitly.

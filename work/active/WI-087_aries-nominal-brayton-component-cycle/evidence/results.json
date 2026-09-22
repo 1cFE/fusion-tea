@@ -1,0 +1,1774 @@
+{
+  "claim": "Reduced nominal ideal-gas component cycle; shaft work, not electrical output or qualified off-design equipment.",
+  "fingerprint": "9f9f4f41d66da6d8c069d9bfa2155e40d16ee12ae4d620a6ba0d32b2a2c0cccb",
+  "cases": [
+    {
+      "case": "nominal",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 1100.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.93,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": true,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 2000.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1000.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 980.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1200.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 14.999999999999993,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 1812.3980069810873,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 631.1421034120764,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 1282.9072836045223,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 384.09660300681503,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 618.1397086539047,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -394.3907094143906,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 1879.9194429602728,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 980.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": 0.4424605478656407,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": 831.7901866754725,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 980.6078203056148,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1048.1292562848005,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": -1.1368683772161603e-13,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.4999999999999982,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": 120.08055703972718,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": true,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": 151.87074371519952,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": 119.39217969438516,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 120.08055703972718
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 151.87074371519952
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 119.39217969438516
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 120.08055703972718
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 151.87074371519952
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 119.39217969438516
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": true
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": -10.0102913460953,
+        "shaft_vs_published_gross_difference": 0.012460547865640714,
+        "maximum_pressure_MPa_difference": -7.105427357601002e-15,
+        "compression_ratio_difference": -1.7763568394002505e-15
+      }
+    },
+    {
+      "case": "higher_flow_fixed_hardware",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 1100.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.93,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": true,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 2000.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1200.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 980.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1200.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 392.24312812224593,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -392.24312812224593,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 392.24312812224593,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -392.24312812224593,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 14.999999999999993,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 392.24312812224593,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 2174.8776083773046,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 631.1421034120764,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 1539.4887403254268,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 384.09660300681503,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 618.1397086539047,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -473.26885129726867,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 2255.9033315523275,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 980.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": 0.44246054786564065,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": 998.1482240105668,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 1176.7293843667378,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1257.7551075417605,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": 2.2737367544323206e-13,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.4999999999999982,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": -255.90333155232747,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": true,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": false,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": -57.75510754176048,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": false,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": -76.7293843667378,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": false,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -255.90333155232747
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -57.75510754176048
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -76.7293843667378
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -255.90333155232747
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -57.75510754176048
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -76.7293843667378
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": false,
+        "heater": false,
+        "rejection": false
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": -10.0102913460953,
+        "shaft_vs_published_gross_difference": 0.012460547865640659,
+        "maximum_pressure_MPa_difference": -7.105427357601002e-15,
+        "compression_ratio_difference": -1.7763568394002505e-15
+      }
+    },
+    {
+      "case": "smaller_compressor_rating",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 900.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.93,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": true,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 2000.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1000.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 980.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1200.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 14.999999999999993,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 1812.3980069810873,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 631.1421034120764,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 1282.9072836045223,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 384.09660300681503,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 618.1397086539047,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -394.3907094143906,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 1879.9194429602728,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 980.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": 0.4424605478656407,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": 831.7901866754725,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 980.6078203056148,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1048.1292562848005,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": -1.1368683772161603e-13,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.4999999999999982,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": 120.08055703972718,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": true,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": 151.87074371519952,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": -80.60782030561484,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": false,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 120.08055703972718
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 151.87074371519952
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -80.60782030561484
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 120.08055703972718
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 151.87074371519952
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -80.60782030561484
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": false,
+        "heater": true,
+        "rejection": true
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": -10.0102913460953,
+        "shaft_vs_published_gross_difference": 0.012460547865640714,
+        "maximum_pressure_MPa_difference": -7.105427357601002e-15,
+        "compression_ratio_difference": -1.7763568394002505e-15
+      }
+    },
+    {
+      "case": "smaller_heater_rating",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 1100.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.93,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": true,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 1800.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1000.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 980.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1200.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 14.999999999999993,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 1812.3980069810873,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 631.1421034120764,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 1282.9072836045223,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 384.09660300681503,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 618.1397086539047,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -394.3907094143906,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 1879.9194429602728,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 980.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": 0.4424605478656407,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": 831.7901866754725,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 980.6078203056148,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1048.1292562848005,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": -1.1368683772161603e-13,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.4999999999999982,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": -79.91944296027282,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": true,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": false,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": 151.87074371519952,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": 119.39217969438516,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -79.91944296027282
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 151.87074371519952
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 119.39217969438516
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -79.91944296027282
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 151.87074371519952
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 119.39217969438516
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": false,
+        "rejection": true
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": -10.0102913460953,
+        "shaft_vs_published_gross_difference": 0.012460547865640714,
+        "maximum_pressure_MPa_difference": -7.105427357601002e-15,
+        "compression_ratio_difference": -1.7763568394002505e-15
+      }
+    },
+    {
+      "case": "smaller_rejection_rating",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 1100.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.93,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": true,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 2000.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1000.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 980.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1000.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 14.999999999999993,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 1812.3980069810873,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 631.1421034120764,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 1282.9072836045223,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 384.09660300681503,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 618.1397086539047,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -394.3907094143906,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 1879.9194429602728,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 980.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": 0.4424605478656407,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": 831.7901866754725,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 980.6078203056148,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1048.1292562848005,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": -1.1368683772161603e-13,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.4999999999999982,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": 120.08055703972718,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": true,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": -48.129256284800476,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": false,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": 119.39217969438516,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 120.08055703972718
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -48.129256284800476
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 119.39217969438516
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 120.08055703972718
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -48.129256284800476
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 119.39217969438516
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": false
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": -10.0102913460953,
+        "shaft_vs_published_gross_difference": 0.012460547865640714,
+        "maximum_pressure_MPa_difference": -7.105427357601002e-15,
+        "compression_ratio_difference": -1.7763568394002505e-15
+      }
+    },
+    {
+      "case": "one_stage_ratio_changed",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.6,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 1100.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.93,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": true,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 2000.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1000.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 980.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1200.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 10.411162189287985,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 371.8904961992119,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 379.7638063160431,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -371.8904961992119,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 10.411162189287985,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 15.807210144200386,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 15.095885687711368,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 1873.0079748935711,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 619.4706287514787,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 1225.3278140876628,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 383.5130292737851,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 607.0518077263368,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -391.3602110187661,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 1937.4989124771325,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 980.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 15.095885687711368,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": 0.4373571135276447,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": 847.3789318239494,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 1025.6290430696217,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1090.1199806531831,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": 0.0,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.688349033646757,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": 62.501087522867465,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": true,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": 109.88001934681688,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": 74.37095693037827,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 62.501087522867465
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 109.88001934681688
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 74.37095693037827
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 62.501087522867465
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 109.88001934681688
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 74.37095693037827
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": true
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": -21.09819227366313,
+        "shaft_vs_published_gross_difference": 0.007357113527644732,
+        "maximum_pressure_MPa_difference": 0.8072101442003863,
+        "compression_ratio_difference": 0.18834903364675704
+      }
+    },
+    {
+      "case": "higher_turbine_temperature",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 1100.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.93,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": true,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 2000.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1000.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 1030.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1200.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 14.999999999999993,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 1904.8531417554118,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 663.338303147427,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 1441.7424055689144,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 385.70641299358255,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 648.7260984024879,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -402.75045267567424,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 1980.7343209958808,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 1030.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": 0.4666175123300239,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": 924.245321449797,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 980.6078203056148,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1056.4889995460842,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": -3.410605131648481e-13,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.4999999999999982,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": 19.265679004119193,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": true,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": 143.5110004539158,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": 119.39217969438516,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 19.265679004119193
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 143.5110004539158
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 119.39217969438516
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 19.265679004119193
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 143.5110004539158
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 119.39217969438516
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": true
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": 20.5760984024879,
+        "shaft_vs_published_gross_difference": 0.036617512330023916,
+        "maximum_pressure_MPa_difference": -7.105427357601002e-15,
+        "compression_ratio_difference": -1.7763568394002505e-15
+      }
+    },
+    {
+      "case": "unsupported_heater",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 1100.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.93,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": false,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 2000.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1000.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 980.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1200.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 14.999999999999993,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 1812.3980069810873,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 631.1421034120764,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 1282.9072836045223,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 384.09660300681503,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 618.1397086539047,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -394.3907094143906,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 1879.9194429602728,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 980.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": 0.4424605478656407,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": 831.7901866754725,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 980.6078203056148,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1048.1292562848005,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": -1.1368683772161603e-13,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.4999999999999982,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 0.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": 120.08055703972718,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": false,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": false,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": 151.87074371519952,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": 119.39217969438516,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 0.0,
+            "margin_in": 120.08055703972718
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 151.87074371519952
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 119.39217969438516
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 0.0,
+                "margin_in": 120.08055703972718
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 151.87074371519952
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 119.39217969438516
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": false,
+        "rejection": true
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": -10.0102913460953,
+        "shaft_vs_published_gross_difference": 0.012460547865640714,
+        "maximum_pressure_MPa_difference": -7.105427357601002e-15,
+        "compression_ratio_difference": -1.7763568394002505e-15
+      }
+    },
+    {
+      "case": "negative_net_shaft",
+      "effective_inputs": {
+        "aries_nominal_brayton__compressor_1__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_1__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_2__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_2__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_3__efficiency": 0.89,
+        "aries_nominal_brayton__compressor_3__selected_ratio": 1.5182944859378311,
+        "aries_nominal_brayton__compressor_capacity__assumed_supported": true,
+        "aries_nominal_brayton__compressor_capacity__demand_available": true,
+        "aries_nominal_brayton__compressor_capacity__offered_rating": 1100.0,
+        "aries_nominal_brayton__compressor_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__equivalent_turbine__efficiency": 0.15,
+        "aries_nominal_brayton__heater__heating_role": 1.0,
+        "aries_nominal_brayton__heater_capacity__assumed_supported": true,
+        "aries_nominal_brayton__heater_capacity__demand_available": true,
+        "aries_nominal_brayton__heater_capacity__offered_rating": 2000.0,
+        "aries_nominal_brayton__heater_capacity__scenario_applicable": true,
+        "aries_nominal_brayton__hot_side_loss__loss_fraction": 0.045,
+        "aries_nominal_brayton__intercooler_1__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_1__target_temperature": 308.15,
+        "aries_nominal_brayton__intercooler_2__heating_role": 0.0,
+        "aries_nominal_brayton__intercooler_2__target_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__cp": 5193.0,
+        "aries_nominal_brayton__operating_point__gamma": 1.6666666666666667,
+        "aries_nominal_brayton__operating_point__low_temperature": 308.15,
+        "aries_nominal_brayton__operating_point__return_pressure": 4.285714285714286,
+        "aries_nominal_brayton__operating_point__selected_flow": 1000.0,
+        "aries_nominal_brayton__operating_point__turbine_temperature": 980.15,
+        "aries_nominal_brayton__precooler__heating_role": 0.0,
+        "aries_nominal_brayton__recuperator__effectiveness": 0.95,
+        "aries_nominal_brayton__rejection_capacity__assumed_supported": true,
+        "aries_nominal_brayton__rejection_capacity__demand_available": true,
+        "aries_nominal_brayton__rejection_capacity__offered_rating": 1200.0,
+        "aries_nominal_brayton__rejection_capacity__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_nominal_brayton__compressor_1__performance__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_1__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_1__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_1__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_1__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_1__conditioning__pressure_out": 6.50697636830499,
+        "aries_nominal_brayton__compressor_2__performance__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_2__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_2__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__intercooler_2__conditioning__heat_into_fluid": -326.86927343520495,
+        "aries_nominal_brayton__intercooler_2__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__intercooler_2__conditioning__pressure_out": 9.87950634012524,
+        "aries_nominal_brayton__compressor_3__performance__pressure_out": 14.999999999999993,
+        "aries_nominal_brayton__compressor_3__performance__shaft_demand": 326.86927343520495,
+        "aries_nominal_brayton__compressor_3__performance__temperature_out": 371.0942082486433,
+        "aries_nominal_brayton__hot_side_loss__loss__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__equivalent_turbine__performance__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__equivalent_turbine__performance__shaft_produced": 292.3222591904978,
+        "aries_nominal_brayton__equivalent_turbine__performance__temperature_out": 923.8584037761414,
+        "aries_nominal_brayton__recuperator__exchange__transferred_heat": 2726.979244005582,
+        "aries_nominal_brayton__recuperator__exchange__hot_temperature_out": 398.7324180250182,
+        "aries_nominal_brayton__recuperator__exchange__cold_temperature_out": 896.2201939997665,
+        "aries_nominal_brayton__precooler__conditioning__heat_into_fluid": -470.39449680391965,
+        "aries_nominal_brayton__precooler__conditioning__temperature_out": 308.15,
+        "aries_nominal_brayton__precooler__conditioning__pressure_out": 4.285714285714286,
+        "aries_nominal_brayton__heater__conditioning__heat_into_fluid": 435.84748255921255,
+        "aries_nominal_brayton__heater__conditioning__temperature_out": 980.15,
+        "aries_nominal_brayton__heater__conditioning__pressure_out": 14.324999999999992,
+        "aries_nominal_brayton__cycle_ledger__balance__shaft_efficiency": -1.5791890251921077,
+        "aries_nominal_brayton__cycle_ledger__balance__net_shaft": -688.285561115117,
+        "aries_nominal_brayton__cycle_ledger__balance__compressor_demand": 980.6078203056148,
+        "aries_nominal_brayton__cycle_ledger__balance__rejected_heat": 1124.1330436743297,
+        "aries_nominal_brayton__cycle_ledger__balance__energy_residual": -1.1368683772161603e-13,
+        "aries_nominal_brayton__cycle_ledger__balance__total_pressure_ratio": 3.4999999999999982,
+        "aries_nominal_brayton__heater_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__heater_capacity__screen__margin": 1564.1525174407875,
+        "aries_nominal_brayton__heater_capacity__screen__applicable": true,
+        "aries_nominal_brayton__heater_capacity__screen__supported": true,
+        "aries_nominal_brayton__heater_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__rejection_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__rejection_capacity__screen__margin": 75.86695632567034,
+        "aries_nominal_brayton__rejection_capacity__screen__applicable": true,
+        "aries_nominal_brayton__rejection_capacity__screen__supported": true,
+        "aries_nominal_brayton__rejection_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__compressor_capacity__screen__evaluation_defined": 1.0,
+        "aries_nominal_brayton__compressor_capacity__screen__margin": 119.39217969438516,
+        "aries_nominal_brayton__compressor_capacity__screen__applicable": true,
+        "aries_nominal_brayton__compressor_capacity__screen__supported": true,
+        "aries_nominal_brayton__compressor_capacity__screen__capacity_ok": true,
+        "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9__evaluation": {
+          "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 1564.1525174407875
+          }
+        },
+        "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8__evaluation": {
+          "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 75.86695632567034
+          }
+        },
+        "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105__evaluation": {
+          "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 119.39217969438516
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "f35d0aa0b5c9180cdbebb17670f63a366f6f1d7a03d196ce774ec4f64ee4498f",
+          "assessed_entry_count": 3,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 3,
+            "applicable_gate_total": 3,
+            "assessed_gate_count": 3,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_nominal_brayton__heater_capacity__capacity_ok__ab792e2afb3f95b9",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 1564.1525174407875
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__rejection_capacity__capacity_ok__d42dc23ad06965a8",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 75.86695632567034
+              }
+            },
+            {
+              "constraint_id": "aries_nominal_brayton__compressor_capacity__capacity_ok__76efdcdf46482105",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 119.39217969438516
+              }
+            }
+          ]
+        }
+      },
+      "independent_comparisons": 34,
+      "capacity_ok": {
+        "compressor": true,
+        "heater": true,
+        "rejection": true
+      },
+      "source_comparison": {
+        "heater_inlet_C_difference": 268.0701939997665,
+        "shaft_vs_published_gross_difference": -2.0091890251921076,
+        "maximum_pressure_MPa_difference": -7.105427357601002e-15,
+        "compression_ratio_difference": -1.7763568394002505e-15
+      }
+    }
+  ],
+  "refusals": [
+    {
+      "case": "zero_flow",
+      "overrides": {
+        "operating_point__selected_flow": 0.0
+      },
+      "exception": "ValueError",
+      "message": "flow_in must be positive"
+    },
+    {
+      "case": "zero_cp",
+      "overrides": {
+        "operating_point__cp": 0.0
+      },
+      "exception": "ValueError",
+      "message": "cp_in must be positive"
+    },
+    {
+      "case": "bad_gamma",
+      "overrides": {
+        "operating_point__gamma": 1.0
+      },
+      "exception": "ValueError",
+      "message": "gamma must exceed one"
+    },
+    {
+      "case": "zero_temperature",
+      "overrides": {
+        "operating_point__low_temperature": 0.0
+      },
+      "exception": "ValueError",
+      "message": "temperature_in must be positive"
+    },
+    {
+      "case": "zero_pressure",
+      "overrides": {
+        "operating_point__return_pressure": 0.0
+      },
+      "exception": "ValueError",
+      "message": "pressure_in must be positive"
+    },
+    {
+      "case": "bad_ratio",
+      "overrides": {
+        "compressor_1__selected_ratio": 0.9
+      },
+      "exception": "ValueError",
+      "message": "compression ratio must be at least one"
+    },
+    {
+      "case": "zero_compressor_efficiency",
+      "overrides": {
+        "compressor_1__efficiency": 0.0
+      },
+      "exception": "ValueError",
+      "message": "efficiency must be in (0,1]"
+    },
+    {
+      "case": "high_turbine_efficiency",
+      "overrides": {
+        "equivalent_turbine__efficiency": 1.1
+      },
+      "exception": "ValueError",
+      "message": "efficiency must be in (0,1]"
+    },
+    {
+      "case": "bad_effectiveness",
+      "overrides": {
+        "recuperator__effectiveness": 1.1
+      },
+      "exception": "ValueError",
+      "message": "effectiveness must be in [0,1]"
+    },
+    {
+      "case": "bad_loss",
+      "overrides": {
+        "hot_side_loss__loss_fraction": 1.0
+      },
+      "exception": "ValueError",
+      "message": "pressure loss fraction must be in [0,1)"
+    },
+    {
+      "case": "no_expansion",
+      "overrides": {
+        "hot_side_loss__loss_fraction": 0.8
+      },
+      "exception": "ValueError",
+      "message": "expansion inlet pressure must exceed exit pressure"
+    },
+    {
+      "case": "heater_as_cooler",
+      "overrides": {
+        "heater__heating_role": 0.0
+      },
+      "exception": "ValueError",
+      "message": "cooler outlet must not exceed inlet"
+    },
+    {
+      "case": "cooler_as_heater",
+      "overrides": {
+        "intercooler_1__heating_role": 1.0
+      },
+      "exception": "ValueError",
+      "message": "heater requires positive temperature rise"
+    },
+    {
+      "case": "bad_role",
+      "overrides": {
+        "precooler__heating_role": 0.5
+      },
+      "exception": "ValueError",
+      "message": "heating role must be zero or one"
+    },
+    {
+      "case": "hot_cooler_target",
+      "overrides": {
+        "intercooler_1__target_temperature": 500.0
+      },
+      "exception": "ValueError",
+      "message": "cooler outlet must not exceed inlet"
+    },
+    {
+      "case": "reversed_recuperator",
+      "overrides": {
+        "operating_point__turbine_temperature": 400.0
+      },
+      "exception": "ValueError",
+      "message": "recuperator hot inlet below cold inlet"
+    },
+    {
+      "case": "nan_flow",
+      "overrides": {
+        "operating_point__selected_flow": "nan"
+      },
+      "exception": "ValueError",
+      "message": "flow_in must be finite"
+    },
+    {
+      "case": "infinite_ratio",
+      "overrides": {
+        "compressor_2__selected_ratio": "inf"
+      },
+      "exception": "ValueError",
+      "message": "ratio_in must be finite"
+    },
+    {
+      "case": "negative_rating",
+      "overrides": {
+        "heater_capacity__offered_rating": -1.0
+      },
+      "exception": "ValueError",
+      "message": "rating must be finite nonnegative numeric"
+    },
+    {
+      "case": "infinite_rating",
+      "overrides": {
+        "heater_capacity__offered_rating": "inf"
+      },
+      "exception": "ValueError",
+      "message": "rating must be finite nonnegative numeric"
+    },
+    {
+      "case": "overflow_flow",
+      "overrides": {
+        "operating_point__selected_flow": 1e+308
+      },
+      "exception": "ValueError",
+      "message": "nonfinite component output"
+    }
+  ],
+  "generated_wrapper_signed_residuals": [
+    -1.0,
+    1.0
+  ],
+  "all_checks_passed": true
+}

@@ -1,0 +1,27 @@
+{
+  "fingerprint": "9f9f4f41d66da6d8c069d9bfa2155e40d16ee12ae4d620a6ba0d32b2a2c0cccb",
+  "cases": [
+    {
+      "case": "asymmetric_state",
+      "discharge_pressure_MPa": 16.597570651410408,
+      "total_ratio": 4.149392662852602,
+      "compressor_MW": 1320.9276541309064,
+      "heater_MW": 2371.9484579992723,
+      "rejected_MW": 1387.522510844077,
+      "net_shaft_MW": 984.425947155195,
+      "capacity_ok": {
+        "compressor": false,
+        "heater": false,
+        "rejection": false
+      },
+      "energy_residual_MW": 2.2737367544323206e-13
+    },
+    {
+      "case": "cooler_reinterpreted",
+      "refused": true,
+      "message": "intercooler_1_in cooling heat must be nonpositive"
+    }
+  ],
+  "protected_count": 1383,
+  "changed": []
+}

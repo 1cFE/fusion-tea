@@ -1,0 +1,23 @@
+{
+  "source_hashes": {
+    "models/library/analyses/ideal_gas_brayton_components.sysml": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499",
+    "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+    "models/designs/aries_cs_transfer/nominal_brayton.sysml": "996d165e1468e33ce7d4d7fefbcf5b44726516d2f5204b4abec5a13cc4d1b643"
+  },
+  "staged_hashes": {
+    "models/library/analyses/ideal_gas_brayton_components.sysml": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499",
+    "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+    "models/designs/aries_cs_transfer/nominal_brayton.sysml": "996d165e1468e33ce7d4d7fefbcf5b44726516d2f5204b4abec5a13cc4d1b643"
+  },
+  "completion_hashes": {
+    "equal_capacity_recuperator_impl.py": "387f82485d444239010094634229fe03e782cc69b7f0005122a72d6432704a2c",
+    "brayton_cycle_ledger_impl.py": "81e1935295f8e0e283155a1bc565031eb58420a65557b3a1a6040469d64c4533",
+    "fixed_outlet_conditioning_impl.py": "25a159f17462db774b8a30ba1b134dadc3e329c4e9675cdae0726dc46e05b81a",
+    "fractional_pressure_loss_impl.py": "a156f14c570aa4e5d641ac5ee29516527b4871c20d9af984fcdcd7d8694e9445",
+    "ideal_gas_expander_impl.py": "f1df7e5c85ccb7d9193e1de77541da5b26f2506165a3251858c9e03bbba02dad",
+    "ideal_gas_compressor_impl.py": "3c9df1ee5225e29f63e69b4296d043334ad2ce2866d4b60e643129890d398228"
+  },
+  "capacity_original": "7b0b52d46613e1e4830de05e8126849de57550b820d2e0b721f715f730c1a8ee",
+  "capacity_copied": "67529d4aec6e86a55dec899c1bd1562dfe90aec3d386bb52c0599de93fd1b4d5",
+  "capacity_prefix_only": true
+}

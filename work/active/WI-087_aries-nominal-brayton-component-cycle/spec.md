@@ -37,12 +37,14 @@ Updated: 2026-09-21
 
 [AGENT] Require all inputs/outputs finite; absolute temperatures, flow, cp and pressures positive; gamma>1; compressor ratios>=1; isentropic efficiencies in (0,1]; recuperator effectiveness in [0,1]; pressure-loss fraction in [0,1), with actual turbine inlet>outlet pressure; recuperator hot>=cold inlet; cooler target<=inlet; heater target>inlet; heater heat>0 before efficiency division. Refuse arithmetic overflow. No clamping, silently bypassed recuperator or inferred equipment qualification. Signed net shaft and residuals are allowed.
 
-- [ ] Source/design review accepts equations, source bindings, reduced topology and nominal assumptions before edits.
-- [ ] Implement generic definitions, connected component occurrences and three unchanged capacity screens; generate and seal isolated native package.
-- [ ] Execute nominal cycle and compare states, pressure continuity, heat/work and conservation with independent arithmetic; retain source heater-inlet and efficiency differences without fitting.
-- [ ] Increase selected flow with capacities fixed, verifying extensive quantities scale while efficiency remains constant; independently lower each offered rating to produce meaningful shortage.
-- [ ] Perturb one compressor ratio without rebalancing the others; perturb turbine inlet temperature and verify downstream calculated states/work.
-- [ ] Exercise nominal support false and invalid/nonfinite domains, and verify conservation plus signed ledger diagnostics.
-- [ ] Preserve source and reuse hashes, meaningful attempts and generated interface; run scoped validation and obtain independent completion review.
+- [x] Source/design review accepts equations, source bindings, reduced topology and nominal assumptions before edits.
+- [x] Implement generic definitions, connected component occurrences and three unchanged capacity screens; generate and seal isolated native package.
+- [x] Execute nominal cycle and compare states, pressure continuity, heat/work and conservation with independent arithmetic; retain source heater-inlet and efficiency differences without fitting.
+- [x] Increase selected flow with capacities fixed, verifying extensive quantities scale while efficiency remains constant; independently lower each offered rating to produce meaningful shortage.
+- [x] Perturb one compressor ratio without rebalancing the others; perturb turbine inlet temperature and verify downstream calculated states/work.
+- [x] Exercise nominal support false and invalid/nonfinite domains, and verify conservation plus signed ledger diagnostics.
+- [x] Preserve source and reuse hashes, meaningful attempts and generated interface; run scoped validation and obtain independent completion review.
 
 [AGENT] Native package follows the approved SysML/codegen/typed-completion/TEAx route from WI-086. Source images remain durably referenced and will be copied into item evidence. Parent owns registry/log/commit actions. Successful execution supports this declared idealized component model only; source temperatures and efficiencies are not independent prediction validation.
+
+[AGENT] Implementation evidence: nine supported native scenarios, 306 independent Decimal comparisons and 21 native refusals pass. L1–L5 pass; forty plain EXPOSE L6 diagnostics remain, with exact locations and successful generated execution recorded in report.md. Independent completion review accepts the bounded result and the named static exceptions.
