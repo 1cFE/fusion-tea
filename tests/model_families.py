@@ -108,6 +108,8 @@ FAMILIES: dict[str, Family] = {IFE.name: IFE, MFE.name: MFE}
 # Sources: exploration/aries_transfer/<name>/{build,verify}.py staging lists.
 SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
     "aries_integrated": (
+        "analyses/integrated_lifecycle_costs.sysml",
+        "analyses/mfe_lcoe_dcf.sysml",
         "analyses/integrated_heat_electricity.sysml",
         "analyses/integrated_equipment_costs.sysml",
         "structure/integrated_equipment_parts.sysml",

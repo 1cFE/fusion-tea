@@ -32,6 +32,8 @@ Keep `models/designs/aries_cs_integrated/plant.sysml` and package `exploration/a
 
 The owner authorizes transparent scenario assumptions. Their selected values in design.md remain [AGENT], not source facts or settled owner decisions. Independent equation/binding review precedes implementation. Coordinator owns PM registration, source-set integration, goal records, commits, promotion and studies.
 
+[INFERRED] The source-conditioned comparison holds recurring expenses, blanket replacement amounts/dates and terminal/overhaul/salvage fractions fixed. Substituting source inclusive capital changes the absolute fraction-based allowances. Report these changed amounts explicitly alongside the supplied capital and net-power boundary; the comparison does not reconstruct source expenses.
+
 ## References
 
 `work/orchestration/goals/aries-integrated-lcoe/{goal.md,evidence/owner-brief.md,evidence/owner-supplement.md}`; predecessor `work/completed/20260922_WI-090_aries-integrated-equipment-and-costs/{design.md,evidence/financial-handoff.md}`; source review under this goal's evidence directory.
