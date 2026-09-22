@@ -1,6 +1,6 @@
 # Integrated ARIES heat and electricity
 
-The positive integration goal is met under the documented assumptions. Native integration and the committed fourteen-point study pass their declared verification. Final independent round review is pending; formal goal/item closure remains owner-held.
+The positive integration goal is met under the documented assumptions. Native integration and the committed fourteen-point study pass their declared verification. The [independent final review](evidence/round-review.md) accepts the result and finding dispositions. Formal goal/item closure remains owner-held.
 
 ## What runs
 
@@ -62,7 +62,7 @@ Prompt 02 should continue from this single assembly and its explicit interfaces.
 
 ## Replay without replacing accepted evidence
 
-From the repository root, use the pinned `.codex-test` environment. This runs the same fourteen full point maps, including the calculated nominal, into a fresh temporary record and store:
+From the recorded repository checkout, use the pinned `.codex-test` environment. The sealed package archive is not a standalone execution environment; seven native-tool schemas resolve through that recorded checkout. This runs the same fourteen full point maps, including the calculated nominal, into a fresh temporary record and store:
 
 ```bash
 study_replay_dir=$(mktemp -d /tmp/aries-integrated-replay.XXXXXX)

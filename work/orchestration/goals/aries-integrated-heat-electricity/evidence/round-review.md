@@ -1,0 +1,40 @@
+# Round 1 independent review
+
+Date: 2026-09-22. Reviewer: non-author `/root/reviewer`. Verdict: **PASS with the L-001 wording correction below**. The bounded engineering objective is supported. Formal goal and work-item closure remain owner-held.
+
+## Scope and authority
+
+This review covers the frozen fourteen-point study at `8e6fb2f2`, its reading and eight joined dispositions committed at `3b41127f`, the round trail, and the draft answer's engineering conclusions. It reuses `design-review.md`, `ownership-review.md`, `implementation-review.md`, `packaging-review.md`, and the separate `.project/active/study-residual-tolerance/review.md`. Their original identities and limitations remain intact. No additional physical runs or changes to models, completions, or frozen results were needed. The applicable workflow is the run-goal independent round review.
+
+The authoritative result is the native store and its content-addressed evidence, checked against the frozen JSON, CSV, snapshot, integration return, and verifier summary. Narrative readings do not replace those records. The current package seal is `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`; the packaging review preserves the distinction from the earlier implementation seal.
+
+## Independent checks
+
+The reviewer script and receipt are `reviewer-round-check.py` and `reviewer-round-check.json`. They establish fourteen completed declared points with exact proposed input maps, 122 inputs and 211 numerical outputs per case, and all ten full predicate identities. Native SQLite rows, content-addressed artifacts, and JSON agree. CSV contains fourteen rows and 187 numerical output columns with matching values. The verifier sampled all fourteen candidate identities, checked thirty numerical channels per case and ten exact verdicts per case, and reported no mismatch: 420 scalar comparisons and 140 verdict comparisons across five verdict combinations. Eight cases pass all ten predicates. The one absolute tolerance is the reviewed residual-only `1e-7`; it does not relax engineering predicates.
+
+All 75 snapshot-listed artifacts have matching SHA-256 values and are Git-tracked at the frozen commit. All 88 files in the frozen Git study tree remain byte-identical. The snapshot digest is `e888d008f2e740129bdbb39f359a619df53a2d9d6fd789a1df40a982a2bbc4ca`. The SQLite digest remains `7abcf5e3ac1ceed108995f8edd81814459e14d2950e0a3c2300911c2e77d9d51`. The initial read-only SQLite connection created transient sidecars; it was closed, the unchanged database digest was confirmed, and only those sidecars were removed. The saved script uses immutable read mode for subsequent inspection.
+
+Seven schema files named in native-tool source digests are absent from the copied `results/sources/` directory. Each exists at the recorded execution commit `a8912fa4cb9356f14dc18bee4eec841792f544a8` and matches its recorded digest. This is acceptable under `replay.md`, which explicitly requires the recorded repository checkout and external execution environment. The archive must not be represented as a standalone replay environment. The native verifier's `unrecorded` revision field remains visible; the separate snapshot/integration runtime record supplies TEAx revision `8d877460ac4f6f264561d916e40c1708adb13397` and clean-state evidence.
+
+## Engineering reading and MR-7
+
+The calculated-plasma nominal produces 423.106794 MW net with zero unmet heat under its explicit assumed equipment and thermodynamic inputs. Source-conditioned nominal, literal Lyon, and Raffray points retain their adverse thermal outcomes. Raffray also retains its 182.03 MW source energy-basis discrepancy. These distinct configurations cannot be collapsed into a published-plant validation claim. All six scientific support qualifications remain zero in every stored case.
+
+The density pair changes only density with hardware fixed; selected fusion and fuel exhaust scale with density squared and the downstream heat, cycle, auxiliary and net-electric effects remain visible. The fuel and helium rating pairs change only the offered rating, change the corresponding capacity verdict, and preserve physical demand and net export. Compressor-ratio and helium-conductance pairs each change only their declared input. Low helium conductance leaves 47.118607 MW unmet; the higher-conductance point has zero unmet heat. The ratio points establish a local response, not an optimum or a feasibility boundary.
+
+This supplies new execution evidence for the reviewed MR-7 separation of demand, selected hardware rating, adequacy and support qualification. It complements the implementation review's eight-role capacity tests and refusal cases. It does not establish hardware pricing, machine-map validity, materials, magnet, breeding, deposition or hydraulic qualification.
+
+## Discovery dispositions and task scope
+
+All eight study findings have explicit appended joins and dispositions. Original first sightings remain visible. Finding 1 retains the local-name baseline-report limitation while full-identity store/verifier coverage preserves all ten predicates. Finding 2 resolves the numerical residual comparison through the separately reviewed verifier prerequisite. Finding 3 accepts the conditional nominal result with its qualification. Finding 4 defers source/configuration reconciliation to owner-held research and has no dependent execution. Finding 5 accepts fixed-hardware upstream propagation. Finding 6 accepts the independent rating/demand behavior and leaves equipment pricing to a successor. Finding 7 accepts bounded sensitivity without optimization claims. Finding 8 preserves the native revision-field limitation with the separately recorded runtime identity. The named homes and task references support these dispositions; none silently authorizes further physical work.
+
+The trail distinguishes coding ownership, physical modeling, tooling, packaging and metadata prerequisites. The preparation scope recorded late is disclosed. Development harness corrections remain within implementation. The first integration failure and the discovered overwritten completion bodies are retained through the corrective amendment and separately reviewed typed-adapter repair. The second integration failure records the missing census semantic fingerprint and the separately authorized metadata repair; the 122 classifications and physical package were unchanged. The subsequent integration candidate passed its ten gates before the sole frozen study. These were changed prerequisites, not hidden identical retries or claims of mechanical failure. Native phase-four documentation updates are authorized handoff work and do not change frozen engineering evidence.
+
+## Accepted learning delta
+
+- **L-001 accepted with corrected referent:** The explicit assumed **calculated-plasma nominal** connects selected fusion through three heat paths to 423.106794 MW net with zero unmet heat. This establishes bounded integration, not published-plant qualification. Naming the calculated-plasma case prevents confusion with the adverse source-conditioned nominal.
+- **L-002 accepted:** Supplied published source points remain thermally inadequate under the modeled equipment, and Raffray retains its energy-basis discrepancy. Configuration identities must remain visible before stronger comparisons.
+- **L-003 accepted:** Varying plasma density with all hardware fixed propagates through fuel, heat, cycle, auxiliaries and net electricity. Offered rating changes independently switch checks without changing demand or export.
+- **L-004 accepted:** Exchanger conductance can limit accepted heat, and compressor ratio changes export. These points support bounded sensitivity, not an optimum or a feasible-region boundary.
+
+No unresolved material gap prevents acceptance of this bounded round. The answer may report the integration objective achieved with the source and support qualifications above; that engineering verdict does not itself perform formal closure.
