@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "study_commit": "8d322312",
+  "snapshot_sha256": "3d44612d68a513246f18b8184c9022d5ed3dcd93e9002b13497a8460a7dc4041",
+  "snapshot_artifacts": 210,
+  "recovery_time_protected_files": 131,
+  "current_matching_protected_hashes": 130,
+  "post_export_metadata_changes": [
+    "results/execution-context.json"
+  ],
+  "durable_store_artifact_hashes_still_matching": 114,
+  "cases_compared_to_sqlite_and_original_native_artifacts": 113,
+  "attempt_count": 113,
+  "maximum_attempt_number": 1,
+  "type_changes": [
+    [
+      "fixed-budget-nominal",
+      {
+        "aries_integrated_plant__cost_accounts__estimate_mode": [
+          "int",
+          "float"
+        ]
+      }
+    ],
+    [
+      "adequate-area-mode-0",
+      {
+        "aries_integrated_plant__cost_accounts__estimate_mode": [
+          "int",
+          "float"
+        ]
+      }
+    ],
+    [
+      "adequate-area-mode-1",
+      {
+        "aries_integrated_plant__cost_accounts__estimate_mode": [
+          "int",
+          "float"
+        ]
+      }
+    ]
+  ],
+  "verified_channels": 278,
+  "verified_predicates": 14,
+  "conditional_points": 110,
+  "adverse_cases": [
+    "literal-Lyon-source-input",
+    "literal-Raffray-accounting",
+    "nominal-source-assumed"
+  ],
+  "corners": {
+    "combined-low-recovery-0": {
+      "overnight": 1623355845.0,
+      "annual_operating": 893907253.0920147,
+      "lifetime_replacement": 48498750.0,
+      "event_count": 3.0
+    },
+    "combined-low-recovery-100": {
+      "overnight": 1623355845.0,
+      "annual_operating": 36005723.70727192,
+      "lifetime_replacement": 48498750.0,
+      "event_count": 3.0
+    },
+    "combined-high-recovery-0": {
+      "overnight": 13331716800.0,
+      "annual_operating": 11959761809.990408,
+      "lifetime_replacement": 5126241600.0,
+      "event_count": 18.0
+    },
+    "combined-high-recovery-100": {
+      "overnight": 13331716800.0,
+      "annual_operating": 1959761809.9904077,
+      "lifetime_replacement": 5126241600.0,
+      "event_count": 18.0
+    }
+  },
+  "overnight_effects_top_three": [
+    [
+      "fuel_inventory_tritium_price-high",
+      1043000000.0
+    ],
+    [
+      "fuel_inventory_selected_tritium_kg-high",
+      894000000.0
+    ],
+    [
+      "contingency_fraction-high",
+      700704720.0
+    ]
+  ],
+  "historical_first_recovery_database_byte_parity": "Not claimed; no before hash exists.",
+  "scope": "Original stored maps, outputs, verdicts, identities, final export hash proof and material cost reading; no evaluator run."
+}

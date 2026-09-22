@@ -1,6 +1,6 @@
 # WI-090 native implementation report
 
-[AGENT] The integrated equipment/cost graph executes, with the assumed integrated baseline unchanged at 423.106794 MW net. The canonical cases retain their source-conditioned thermal failures. Development verification passes 66 cases: 54 evaluated and 12 expected domain refusals. Independent integration review and the goal's thermal/cost studies remain separate acceptance work; this report does not close the item or goal.
+[AGENT] The integrated equipment/cost graph executes, with the assumed integrated baseline unchanged at 423.106794 MW net. The canonical cases retain their source-conditioned thermal failures. Development verification passes 66 cases: 54 evaluated and 12 expected domain refusals. Independent integration review and both frozen thermal/cost studies now pass, including final goal interpretation. Formal item/goal closure remains owner-held.
 
 ## Delivered graph and identity
 
@@ -27,7 +27,7 @@ All amounts below are USD2004. The installed-direct and overnight figures are de
 | Undiscounted replacement total |433.3881M| Separate from initial capital and annual operations. |
 | Replacement reserve |12.2793295M/y| Alternative financial representation; do not add it to event cashflows. |
 
-An independently selected 100 kg/year delivered T-recovery scenario is exercised in development evidence. It lowers purchased fuel without changing breeding support 0. Annual no-credit cost is an assumption-sensitive boundary, not a recommended financial case. An assumption-ranked range and equipment/economic interpretation await the native studies; no economic ranking is made here.
+An independently selected 100 kg/year delivered T-recovery scenario is exercised in development evidence. It lowers purchased fuel without changing breeding support 0. Annual no-credit cost is an assumption-sensitive boundary, not a recommended financial case. The completed native studies below quantify conditional cost ranges after thermal sensitivity; their assumption ordering does not establish an equipment optimum.
 
 ## Native source reconciliation
 
@@ -56,10 +56,10 @@ Use a fresh evidence location when replaying so accepted receipts remain immutab
 '
 ```
 
-Independent review should consume the accepted design/source reviews, exact generated binding paths, final 66-case receipt, full validator diagnostics and the retained earlier checkpoint. Native promotion and thermal sensitivity interpretation remain coordinator/study tasks. Formal closure remains owner-held.
+Independent review accepted the design/source interpretation, exact generated binding paths, final 66-case receipt and disclosed validator diagnostics. Native promotion and both study interpretations pass. Formal closure remains owner-held.
 
 ## Delivered study evidence — 2026-09-22
 
 [AGENT coordinator] Independent implementation review passes; native CANDIDATE at e8f9cc1d passes all ten gates. The thermal-first study is frozen at494c329e:64points and all17,792scalar/896predicate comparisons, with11adverse cases retained and independent interpretation accepted. The cost-uncertainty study is frozen at8d322312:113points and all31,414scalar/1,582predicate comparisons, with the three source controls still adverse. Every native point ran once. Two bounded export recoveries addressed numeric representation and transient SQLite files without changing proposals, physics or original durable evidence; the complete record retains both failures and the successful copy-query proof.
 
-[AGENT coordinator] The goal answer and `evidence/financial-handoff.md` provide exact selected inventory/cost interfaces, source reconciliation, conditional ranges and replay. Conditional overnight corners span1.623–13.332billion USD2004. Baseline annual operation is3.215billion under no T-recovery credit or215.101million with independently supplied100kg/year recovery, which lacks an incremental recovery-cost/qualification law. These are assumptions, not validated breeding/economic performance.8752protected files remain unchanged and isolated Stellaris behavior matches1352outputs/68responses. Final independent cost/goal interpretation review remains pending; no formal closure is recorded.
+[AGENT coordinator] The goal answer and `evidence/financial-handoff.md` provide exact selected inventory/cost interfaces, source reconciliation, conditional ranges and replay. Conditional overnight corners span1.623–13.332billion USD2004. Baseline annual operation is3.215billion under no T-recovery credit or215.101million with independently supplied100kg/year recovery, which lacks an incremental recovery-cost/qualification law. These are assumptions, not validated breeding/economic performance.8752protected files remain unchanged and isolated Stellaris behavior matches1352outputs/68responses. [Final independent cost/goal review](../../orchestration/goals/aries-integrated-equipment-costs/evidence/cost-study-review.md) passes: the positive integration goal is met under declared assumptions. No formal closure is recorded.

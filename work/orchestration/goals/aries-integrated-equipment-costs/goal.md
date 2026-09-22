@@ -58,4 +58,6 @@ Owner-held after the answer contract and applicable independent review are satis
 
 ## Amendments
 
-None.
+### 2026-09-22 — conditional answer accepted
+
+[AGENT] Independent final review accepts the positive integration goal as met under declared assumptions. See answer.md and evidence/cost-study-review.md. Both frozen studies and the financial handoff are delivered; formal item/goal closure remains owner-held. The grounded contract and scientific limitations are unchanged.
