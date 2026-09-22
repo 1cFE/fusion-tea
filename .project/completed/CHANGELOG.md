@@ -4,6 +4,23 @@ Historical record of completed work.
 
 ---
 
+## [2026-09-22] - Integrated ARIES equipment and costs (WI-090)
+
+**Type**: Modeling item and goal
+**Duration**: 1 day (2026-09-22)
+
+### Summary
+
+Delivered selected equipment inventory, capability/demand checks and disjoint native capital, annual and replacement costs. Independent review accepts the conditional integration goal after a 64-point thermal/equipment study and a 113-point cost study, with every point numerically verified. The 423.106794 MW case remains the assumed integrated baseline; source failures and scientific limitations are preserved. Baseline overnight capital is 4.350 billion USD2004. The owner authorized formal closure; the financial handoff is ready for prompt 03.
+
+### Deliverables
+
+- Archived item and exact financial interface map: `work/completed/20260922_WI-090_aries-integrated-equipment-and-costs/`.
+- Accepted answer, reviews and learning deltas: `work/orchestration/goals/aries-integrated-equipment-costs/`.
+- Frozen thermal/equipment study `494c329e` and cost study `8d322312` under `exploration/aries_integrated/studies/`.
+
+---
+
 ## [2026-09-22] - Integrated ARIES heat and electricity (WI-089)
 
 **Type**: Modeling item and goal

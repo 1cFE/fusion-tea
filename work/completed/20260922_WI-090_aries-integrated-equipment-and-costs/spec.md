@@ -1,9 +1,9 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Owner: reid
 Created: 2026-09-22
-Updated: 2026-09-22
+Updated: '2026-09-22'
 ---
 
 # WI-090: Integrated ARIES equipment and costs

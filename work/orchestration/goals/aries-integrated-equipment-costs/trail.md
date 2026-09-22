@@ -242,3 +242,9 @@ The second mechanical export attempt succeeded from a disposable store copy. Its
 All 59 proposed cost finding dispositions are accepted and appended under the original IDs in the study discovery log. Findings #1–53 retain assumption and missing-response limits; #54–57 retain conditional ranges, supplied recovery, fixed-budget nonresponse and event/reserve separation; process finding #58 retains the wrapper defect and record-local workaround; #59 preserves source failures and unsupported science. No model repair or additional study is required for this bounded answer. The accepted learning delta is appended to learnings.md.
 
 The goal answer and WI-090 delivery are ready for prompt 03. The 423.106794 MW case remains the assumed integrated baseline. Scientific qualification and financial optimization are unestablished; complete-validator exceptions remain disclosed. Formal item/goal closure remains owner-held.
+
+### Owner closure — 2026-09-22
+
+[OWNER-VERBATIM] “please close the goal.” The owner authorizes closure of this goal and its delivered native item WI-090 after final independent PASS at `6690701c`.
+
+The native `pm close-item WI-090` operation succeeded and archived the item to `work/completed/20260922_WI-090_aries-integrated-equipment-and-costs`, updating its stage metadata and backlog state. Current answer, validation and status references follow the archive. Historical evidence references and frozen study records retain their original content. The goal is closed with both accepted round learning deltas, the conditional answer and prompt-03 handoff retained. Scientific qualification limits, source-case failures and reviewed validator exceptions remain unchanged. No model/package change, new study, push or merge accompanies closure.

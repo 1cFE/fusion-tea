@@ -1,7 +1,7 @@
 ---
-Status: proposed
+Status: complete
 Created: 2026-09-22
-Updated: 2026-09-22
+Updated: '2026-09-22'
 ---
 
 # Integrated equipment and cost design

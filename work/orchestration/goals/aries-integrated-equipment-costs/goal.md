@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-22. [OWNER] Issuance of the retained brief authorizes this slug, grounding, execution, routine assumptions, delegation and local commits.
+`closed` — 2026-09-22. [OWNER-VERBATIM] “please close the goal” authorizes formal closure after the independently reviewed answer. The original grounding and scientific provenance remain recorded below and in the trail.
 
 ## Question
 
@@ -61,3 +61,7 @@ Owner-held after the answer contract and applicable independent review are satis
 ### 2026-09-22 — conditional answer accepted
 
 [AGENT] Independent final review accepts the positive integration goal as met under declared assumptions. See answer.md and evidence/cost-study-review.md. Both frozen studies and the financial handoff are delivered; formal item/goal closure remains owner-held. The grounded contract and scientific limitations are unchanged.
+
+### 2026-09-22 — owner closure
+
+[OWNER-VERBATIM] “please close the goal.” The owner authorizes closure after the final independent PASS at `6690701c`. The native work item WI-090 is archived; the accepted answer and financial handoff remain available.

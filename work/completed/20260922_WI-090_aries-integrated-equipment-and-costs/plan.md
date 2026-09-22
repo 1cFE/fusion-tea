@@ -1,7 +1,7 @@
 ---
-Status: active
+Status: complete
 Created: 2026-09-22
-Updated: 2026-09-22
+Updated: '2026-09-22'
 ---
 
 # WI-090 implementation plan
@@ -50,3 +50,7 @@ Related Artifacts: spec.md; design.md; ../../orchestration/goals/aries-integrate
 ## Current handoff
 
 The accepted design is implemented and canonical cases run through the generated package. Initial63-case evidence is preserved in `evidence/checkpoint-a24f9080/`; the corrective native source comparisons and stock adequacy cases pass final66-case verification (`evidence/verification.json`), with54evaluated and12expected refusals. All new writes target WI-090 evidence. Independent integrated review and all ten native promotion gates pass; the64-point thermal study is frozen at494c329e and independently accepted. Round2 cost uncertainty is frozen at8d322312, with all113points independently verified numerically and final interpretation review passing. Both rounds preserve source failures and unsupported scientific qualifications; their reports and the exact financial handoff complete the authored delivery. Coordinator owns PM registration, source research, goal trail, source-family registration and commits; the study worker owns study interfaces. No frozen predecessor evidence was changed.
+
+## Owner-authorized closure — 2026-09-22
+
+The owner requested “please close the goal” after final independent PASS at `6690701c`. Native `pm close-item WI-090` archived this item and updated tracking. Earlier closure-pending statements record the delivery stage; the current item and goal are closed. The accepted scope and limitations remain unchanged.
