@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_transfer/density_profile/verify.py", line 118, in <module>
+    verify(generate())
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_transfer/density_profile/verify.py", line 88, in verify
+    run(f'reference_{rho}', {'rho': rho}, expected)
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_transfer/density_profile/verify.py", line 79, in run
+    assert math.isclose(density, expected, rel_tol=2e-14, abs_tol=1e-15), (name, density, expected)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: must be real number, not RootModel[float]

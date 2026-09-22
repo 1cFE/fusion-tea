@@ -16,9 +16,9 @@
 - [x] Record authority, freeze original evidence and assign parallel inventory work; commit plan.
 - [x] Inspect existing physical and economic components; build a non-overlapping minimum-change register with dependencies and evidence gaps.
 - [x] Select source-supported, independently useful modeling increments; register native work items and record their requirements before implementation.
-- [ ] Implement and validate ready increments through native SysML/executable consumers, using continuing subagent authors and separate independent review. Update the register/log and commit each completed group.
-- [ ] Integrate demonstrated reuse and remaining changes into an assessment of the two milestones. Do not replace missing physics with reference outputs under an independent-prediction label.
-- [ ] Review the combined claims, verify preserved original evidence, and publish a concrete status with completed work, remaining implementation and external data needs.
+- [x] Implement and validate ready increments through native SysML/executable consumers, using continuing subagent authors and separate independent review. Update the register/log and commit each completed group.
+- [x] Integrate demonstrated reuse and remaining changes into an assessment of the two milestones. Do not replace missing physics with reference outputs under an independent-prediction label.
+- [x] Review the combined claims, verify preserved original evidence, and publish a concrete status with completed work, remaining implementation and external data needs.
 
 ## Boundaries and decisions
 
@@ -29,3 +29,5 @@
 ## Coordination
 
 Physics inventory agent owns physics-inventory.md and physics-* evidence. Thermal/cost agent owns thermal-cost-inventory.md and thermal-* evidence. Coordinator owns this plan, the change register, log and native tracking/integration. Implementation ownership is assigned per item after inventory. Fresh reviewers assess relevant source, design or integrated claims without author history.
+
+[AGENT] First round completed the two registered increments and its scoped review. This checklist records the round, not completion of full-plant transfer. Both full-plant milestones remain open; report.md identifies the next source-definition and modeling work.

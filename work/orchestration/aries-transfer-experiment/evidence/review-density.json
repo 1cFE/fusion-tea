@@ -1,0 +1,20 @@
+{
+  "fingerprint": "4a8218785686d5f5984d293563fcab4d906155fc18259d2881661c1c7afa6de0",
+  "checks": [
+    {
+      "case": "nongrid",
+      "actual": 2.391633445361657,
+      "expected": 2.391633445361657
+    },
+    {
+      "case": "upstream_nan",
+      "refused": true,
+      "error": "density profile requires finite inputs"
+    }
+  ],
+  "source_hashes": {
+    "models/library/analyses/radial_density_profile.sysml": "2adf459118a4a6df9a6a0a6461c467860a3ced327c55aaadc0af7c232d1b7632",
+    "models/designs/aries_cs_transfer/density_profile.sysml": "1664d6038efa608c2ef087955caa082b48294c3c7c32ce88e3bf31392892d1a6",
+    "exploration/aries_transfer/density_profile/radial_density_profile_impl.py": "2cf3d393ce2427a84d8f6d4cc04a6154f68d4ffad607cd7ba3be7b3bf171ee8b"
+  }
+}

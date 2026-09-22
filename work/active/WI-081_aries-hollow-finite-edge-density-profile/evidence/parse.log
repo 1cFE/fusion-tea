@@ -1,0 +1,2 @@
+error: Failed to spawn: `syside`
+  Caused by: No such file or directory (os error 2)

@@ -1,6 +1,6 @@
 # Focused density-profile source and proposed-contract review
 
-[AGENT] Independent reviewer, 2026-09-21. Scope: the bounded implementation proposal in `../physics-inventory.md` and visually inspected primary `lyon-p701.png` at `.project/active/aries-comparison-preparation/post-reveal-preparation/mapping/evidence/`. This applies the focused source/design provisions of `audit-models`. Native WI-081 artifacts were not yet present at review time; this is permission to develop the bounded design, not implementation acceptance.
+[AGENT] Independent reviewer, 2026-09-21. Scope: the bounded implementation proposal in `../physics-inventory.md`, the initial `spec.md`, `design.md` and `plan.md` in `work/active/WI-081_aries-hollow-finite-edge-density-profile/`, and visually inspected primary `lyon-p701.png` at `.project/active/aries-comparison-preparation/post-reveal-preparation/mapping/evidence/`. This applies the focused source/design provisions of `audit-models`. Source and design are accepted for implementation; execution acceptance remains pending.
 
 ## Finding
 
@@ -12,4 +12,10 @@
 
 [AGENT] An independent reference oracle can use the expanded polynomial `n/A=0.694+0.306*rho^2-0.594*rho^12-0.306*rho^14`; this follows exact decimal arithmetic and differs structurally from directly transcribing Eq. (3). Include center, edge, an interior point, changed supplied amplitude and off-reference shapes. Check the constant case `e=A` and the `x=1` nonhollow limit if those advertised boundaries remain included.
 
-[AGENT] Allowed bounded implementation: a concept-agnostic calc, a comparison-specific component owning its supplied profile inputs, and calculated local density. Moments, temperature, fusion closure and plant claims require separate evidence. No material source blocker remains within that scope. Native design/interface review and execution acceptance remain pending.
+[AGENT] Allowed bounded implementation: a concept-agnostic calc, a comparison-specific component owning its supplied profile inputs, and calculated local density. Moments, temperature, fusion closure and plant claims require separate evidence. No material source or design blocker remains within that scope.
+
+## Native design disposition
+
+[AGENT] Accepted for implementation. R1–R5 retain the bounded outcome and explicit units. The generic calc owns the equation; the comparison component owns its amplitude, source shape choices and edge-ratio binding. Distinct formal names and density EXPOSE make the intended binding path reviewable without altering existing plant producers. MR-7 is satisfied by the proposed supplied-choice roles, subject to verifying their actual generated bindings and amplitude/shape propagation.
+
+[AGENT] The typed manual completion is acceptable as the proposed route to enforcing the declared domain. Acceptance must still demonstrate generated/native execution, seal identity, finite-input/intermediate/output refusal, and unsupported cases failing through TEAx. Review of these documents is not evidence that those runtime behaviors already exist. The plan correctly keeps that verification and independent final review open. The expanded polynomial and advertised-domain boundary checks above remain focused verification guidance.

@@ -4,12 +4,12 @@
 
 | ID | Responsibility | Existing behavior that can carry over | Required adaptation or evidence | Current experiment |
 |---|---|---|---|---|
-| T01 | Plasma profiles and operating closure | D-T reaction kernel, basic pressure/energy relations | Hollow finite-edge density; compatible temperature/species/geometry integration and confinement | WI-081 implements local profile first; complete closure remains open |
+| T01 | Plasma profiles and operating closure | D-T reaction kernel, basic pressure/energy relations | Hollow finite-edge density; compatible temperature/species/geometry integration and confinement | WI-081 executed one new local-profile calc and case (13 supported cases, 25 refusals); complete closure remains open |
 | T02 | Radial sectors and constituent inventory | Geometry/mass identities | Full/tapered coverage, material constituents and their actual volumes; uniform shells do not encode this | Inventoried; source-supported sector model not yet built |
 | T03 | Magnetic field and mechanical loads | Explicit current/turn and pack arithmetic | Independent coil geometry/current-family inputs; qualified field/force/stress treatment | Missing scientific inputs; scalar rebinding insufficient |
 | T04 | Conductor performance | Capability-versus-demand pattern | Nb3Sn product/temperature/strain performance and winding definitions | Source qualification required; do not expand REBCO interval |
 | T05 | Breeding response | Guard/interface/interpolation pattern | Geometry/material/source-specific transport dataset and validation | New dataset required; current table has fixed geometry |
-| T06 | Fuel handling | Burn, injection, exhaust and conservation balances | Matched burnup/recovery/inventory/processing inputs; full breeding coupling | WI-082 tests unchanged equations and supplied-capacity checks under disclosed assumptions |
+| T06 | Fuel handling | Burn, injection, exhaust and conservation balances | Matched burnup/recovery/inventory/processing inputs; full breeding coupling | WI-082 reviewed: two unchanged calcs and one constraint execute in five cases; actual ARIES equipment/inventory remain open |
 | T07 | Maintenance and availability | Calendar and replacement arithmetic | Source-supported component clocks, maintenance operations or explicitly supplied availability boundary | Conditional use possible; prediction of actual reliability remains unestablished |
 | T08 | Helium and PbLi heat transport | Thermodynamic balances, some helium relationships | Separate branches and interfaces; applicable hydraulics/MHD/properties; prevent friction-heat double counting | New architecture/scientific qualification required |
 | T09 | Power conversion | Generic energy bookkeeping | Recuperated helium Brayton components/states/capabilities instead of Rankine | New cycle model required for predictive conversion |
