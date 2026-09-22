@@ -1,0 +1,593 @@
+{
+  "claim": "Calculated conditioned plasma to fuel demand and selected tritium capacity; no ARIES equipment qualification",
+  "fingerprint": "be2b278b36814a431081e21636140c210a9fe8269d37db9d30eb47f8025e59c8",
+  "reuse": {
+    "sources": {
+      "models/library/analyses/supplied_profile_plasma.sysml": "085ae001e7f97f5906bf3992226446953fbce29acaf9e25ee543a9eae861d49a",
+      "models/library/analyses/radial_density_profile.sysml": "2adf459118a4a6df9a6a0a6461c467860a3ced327c55aaadc0af7c232d1b7632",
+      "models/library/analyses/mfe_plasma_scaling.sysml": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50",
+      "models/library/analyses/mfe_fuel_cycle.sysml": "82464d53fc49af7837c1918706df34f169782cb3cadad385e52d948d717b3397",
+      "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+      "models/designs/aries_cs_transfer/plasma_integration.sysml": "05aad0f2ccad3ba2af303a357c63b2d163d1a962e4a20734ba74c19b4e70e0e4",
+      "models/designs/aries_cs_transfer/plasma_fuel.sysml": "f8d4c88db1fe1efd57bcbc30fa1542abdb6e181a9c839750757a57f4c2511531"
+    },
+    "staged": {
+      "models/library/analyses/supplied_profile_plasma.sysml": "085ae001e7f97f5906bf3992226446953fbce29acaf9e25ee543a9eae861d49a",
+      "models/library/analyses/radial_density_profile.sysml": "2adf459118a4a6df9a6a0a6461c467860a3ced327c55aaadc0af7c232d1b7632",
+      "models/library/analyses/mfe_plasma_scaling.sysml": "b23b0484e3372d54534894a1d699d48c46010b9acc65db7c95760d1df3296e50",
+      "models/library/analyses/mfe_fuel_cycle.sysml": "82464d53fc49af7837c1918706df34f169782cb3cadad385e52d948d717b3397",
+      "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+      "models/designs/aries_cs_transfer/plasma_integration.sysml": "05aad0f2ccad3ba2af303a357c63b2d163d1a962e4a20734ba74c19b4e70e0e4",
+      "models/designs/aries_cs_transfer/plasma_fuel.sysml": "f8d4c88db1fe1efd57bcbc30fa1542abdb6e181a9c839750757a57f4c2511531"
+    },
+    "completions": [
+      {
+        "source": "exploration/aries_transfer/plasma_integration/supplied_profile_plasma_impl.py",
+        "source_sha256": "8e07eaaf91416fb9db3489478253dddb1af182e6f40104c8ae68339bab58b0b7",
+        "target_sha256": "61b560ea88d97122665d63c826bafad4d48aec1e275378534aa28c23bc219504",
+        "prefix_only": true
+      },
+      {
+        "source": "exploration/aries_transfer/density_profile/radial_density_profile_impl.py",
+        "source_sha256": "2cf3d393ce2427a84d8f6d4cc04a6154f68d4ffad607cd7ba3be7b3bf171ee8b",
+        "target_sha256": "62f5f0528bc90ff2ee171f794bcdf24c996507cbfed205a0a1bcd516b4a23c3f",
+        "prefix_only": true
+      },
+      {
+        "source": "exploration/stellarator_e2e/generated/handwritten/mfe_viability/offered_capacity_screen_impl.py",
+        "source_sha256": "7b0b52d46613e1e4830de05e8126849de57550b820d2e0b721f715f730c1a8ee",
+        "target_sha256": "b02fb94fdaf2c0845cdfd933af1e25ed5b685a48901a104d15fd4526ac9443bb",
+        "prefix_only": true
+      }
+    ],
+    "reactivity_ast_sha256": "294f8385bc916b18cf99c59365a0f2b2e81c51c104bb321496a815fba72fb0c6"
+  },
+  "actual_fuel_load_binding": "float aries_cs_plasma_integration__plasma__integration__fusion_power_MW",
+  "cases": [
+    {
+      "case": "nominal",
+      "status": "evaluated",
+      "fusion_power_MW": 1835.4512830147435,
+      "selected_rating_atoms_s": 2e+22,
+      "effective_inputs": {
+        "aries_plasma_fuel__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_cs_plasma_integration__plasma__beta_calculation__mu0": 1.25663706212e-06,
+        "aries_plasma_fuel__fuel_system__assumed_extraction": 1.0,
+        "aries_plasma_fuel__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_plasma_fuel__fuel_system__dormant_inventory_atoms": 0.0,
+        "aries_plasma_fuel__fuel_system__dormant_stock_growth_atoms_s": 0.0,
+        "aries_plasma_fuel__fuel_system__exhaust_recovery": 0.99,
+        "aries_plasma_fuel__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_plasma_fuel__fuel_system__pass_burn_fraction": 0.05,
+        "aries_plasma_fuel__fuel_system__reaction_energy_mev": 17.58,
+        "aries_plasma_fuel__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_plasma_fuel__fuel_system__unused_tbr_placeholder": 0.0,
+        "aries_plasma_fuel__processing__assumed_conditions_supported": 1.0,
+        "aries_plasma_fuel__processing__flow_available": 1.0,
+        "aries_plasma_fuel__processing__scenario_applicable": 1.0,
+        "aries_plasma_fuel__processing__selected_rating_atoms_s": 2e+22,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20,
+        "aries_cs_plasma_integration__plasma__density_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__density_radial_exponent": 12.0,
+        "aries_cs_plasma_integration__plasma__deuterium_fraction": 0.5,
+        "aries_cs_plasma_integration__plasma__edge_ratio": 0.1,
+        "aries_cs_plasma_integration__plasma__field": 5.7,
+        "aries_cs_plasma_integration__plasma__helium_fraction": 0.0335,
+        "aries_cs_plasma_integration__plasma__hollowness": 0.66,
+        "aries_cs_plasma_integration__plasma__sample_rho": 0.5,
+        "aries_cs_plasma_integration__plasma__temperature_axis": 11.83,
+        "aries_cs_plasma_integration__plasma__temperature_edge": 0.2,
+        "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
+        "aries_cs_plasma_integration__plasma__volume": 444.0,
+        "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+      },
+      "outputs": {
+        "aries_cs_plasma_integration__plasma__edge_density__edge_density": 5e+19,
+        "aries_cs_plasma_integration__plasma__integration__thermal_pressure": 724771.480507903,
+        "aries_cs_plasma_integration__plasma__integration__field_for_beta": 5.7,
+        "aries_cs_plasma_integration__plasma__integration__density_weighted_temperature": 6.35553998717378,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_relative_change": 1.5182339612217214e-12,
+        "aries_cs_plasma_integration__plasma__integration__fusion_power_MW": 1835.4512830147435,
+        "aries_cs_plasma_integration__plasma__integration__density_mean": 3.619464285713925e+20,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_intervals": 4096.0,
+        "aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ": 482.69780601826346,
+        "aries_cs_plasma_integration__plasma__density_sample__density": 3.851681518554688e+20,
+        "aries_cs_plasma_integration__plasma__beta_calculation__beta": 0.05606492483679988,
+        "aries_plasma_fuel__fuel_system__flows__burn_kg_per_fpy": 102.92188595497662,
+        "aries_plasma_fuel__fuel_system__flows__inject_rate": 1.303297592567369e+22,
+        "aries_plasma_fuel__fuel_system__flows__burn_rate": 6.516487962836845e+20,
+        "aries_plasma_fuel__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__loss_rate": 1.2381327129390018e+20,
+        "aries_plasma_fuel__fuel_system__flows__exhaust_rate": 1.2381327129390006e+22,
+        "aries_plasma_fuel__processing__capacity__evaluation_defined": 1.0,
+        "aries_plasma_fuel__processing__capacity__margin": 7.618672870609994e+21,
+        "aries_plasma_fuel__processing__capacity__applicable": true,
+        "aries_plasma_fuel__processing__capacity__supported": true,
+        "aries_plasma_fuel__processing__capacity__capacity_ok": true,
+        "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1__evaluation": {
+          "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 7.618672870609994e+21
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "0a09c804e6ba93117c73c764ce02378890de99700b8ab9193ae9b94683c3a5b5",
+          "assessed_entry_count": 1,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 7.618672870609994e+21
+              }
+            }
+          ]
+        }
+      },
+      "exact_flow_checks": 7
+    },
+    {
+      "case": "amplitude_1_5",
+      "status": "evaluated",
+      "fusion_power_MW": 4129.765386783165,
+      "selected_rating_atoms_s": 2e+22,
+      "effective_inputs": {
+        "aries_plasma_fuel__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_cs_plasma_integration__plasma__beta_calculation__mu0": 1.25663706212e-06,
+        "aries_plasma_fuel__fuel_system__assumed_extraction": 1.0,
+        "aries_plasma_fuel__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_plasma_fuel__fuel_system__dormant_inventory_atoms": 0.0,
+        "aries_plasma_fuel__fuel_system__dormant_stock_growth_atoms_s": 0.0,
+        "aries_plasma_fuel__fuel_system__exhaust_recovery": 0.99,
+        "aries_plasma_fuel__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_plasma_fuel__fuel_system__pass_burn_fraction": 0.05,
+        "aries_plasma_fuel__fuel_system__reaction_energy_mev": 17.58,
+        "aries_plasma_fuel__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_plasma_fuel__fuel_system__unused_tbr_placeholder": 0.0,
+        "aries_plasma_fuel__processing__assumed_conditions_supported": 1.0,
+        "aries_plasma_fuel__processing__flow_available": 1.0,
+        "aries_plasma_fuel__processing__scenario_applicable": 1.0,
+        "aries_plasma_fuel__processing__selected_rating_atoms_s": 2e+22,
+        "aries_cs_plasma_integration__plasma__amplitude": 7.5e+20,
+        "aries_cs_plasma_integration__plasma__density_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__density_radial_exponent": 12.0,
+        "aries_cs_plasma_integration__plasma__deuterium_fraction": 0.5,
+        "aries_cs_plasma_integration__plasma__edge_ratio": 0.1,
+        "aries_cs_plasma_integration__plasma__field": 5.7,
+        "aries_cs_plasma_integration__plasma__helium_fraction": 0.0335,
+        "aries_cs_plasma_integration__plasma__hollowness": 0.66,
+        "aries_cs_plasma_integration__plasma__sample_rho": 0.5,
+        "aries_cs_plasma_integration__plasma__temperature_axis": 11.83,
+        "aries_cs_plasma_integration__plasma__temperature_edge": 0.2,
+        "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
+        "aries_cs_plasma_integration__plasma__volume": 444.0,
+        "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+      },
+      "outputs": {
+        "aries_cs_plasma_integration__plasma__edge_density__edge_density": 7.5e+19,
+        "aries_cs_plasma_integration__plasma__integration__thermal_pressure": 1087157.220761853,
+        "aries_cs_plasma_integration__plasma__integration__field_for_beta": 5.7,
+        "aries_cs_plasma_integration__plasma__integration__density_weighted_temperature": 6.3555399871737785,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_relative_change": 1.5163629513708831e-12,
+        "aries_cs_plasma_integration__plasma__integration__fusion_power_MW": 4129.765386783165,
+        "aries_cs_plasma_integration__plasma__integration__density_mean": 5.4291964285708816e+20,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_intervals": 4096.0,
+        "aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ": 724.0467090273941,
+        "aries_cs_plasma_integration__plasma__density_sample__density": 5.777522277832031e+20,
+        "aries_cs_plasma_integration__plasma__beta_calculation__beta": 0.0840973872551997,
+        "aries_plasma_fuel__fuel_system__flows__burn_kg_per_fpy": 231.57424339869698,
+        "aries_plasma_fuel__fuel_system__flows__inject_rate": 2.932419583276575e+22,
+        "aries_plasma_fuel__fuel_system__flows__burn_rate": 1.4662097916382874e+21,
+        "aries_plasma_fuel__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__loss_rate": 2.785798604112749e+20,
+        "aries_plasma_fuel__fuel_system__flows__exhaust_rate": 2.7857986041127463e+22,
+        "aries_plasma_fuel__processing__capacity__evaluation_defined": 1.0,
+        "aries_plasma_fuel__processing__capacity__margin": -7.857986041127463e+21,
+        "aries_plasma_fuel__processing__capacity__applicable": true,
+        "aries_plasma_fuel__processing__capacity__supported": true,
+        "aries_plasma_fuel__processing__capacity__capacity_ok": false,
+        "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1__evaluation": {
+          "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -7.857986041127463e+21
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "0a09c804e6ba93117c73c764ce02378890de99700b8ab9193ae9b94683c3a5b5",
+          "assessed_entry_count": 1,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -7.857986041127463e+21
+              }
+            }
+          ]
+        }
+      },
+      "exact_flow_checks": 7
+    },
+    {
+      "case": "insufficient_rating",
+      "status": "evaluated",
+      "fusion_power_MW": 1835.4512830147435,
+      "selected_rating_atoms_s": 1e+22,
+      "effective_inputs": {
+        "aries_plasma_fuel__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_cs_plasma_integration__plasma__beta_calculation__mu0": 1.25663706212e-06,
+        "aries_plasma_fuel__fuel_system__assumed_extraction": 1.0,
+        "aries_plasma_fuel__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_plasma_fuel__fuel_system__dormant_inventory_atoms": 0.0,
+        "aries_plasma_fuel__fuel_system__dormant_stock_growth_atoms_s": 0.0,
+        "aries_plasma_fuel__fuel_system__exhaust_recovery": 0.99,
+        "aries_plasma_fuel__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_plasma_fuel__fuel_system__pass_burn_fraction": 0.05,
+        "aries_plasma_fuel__fuel_system__reaction_energy_mev": 17.58,
+        "aries_plasma_fuel__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_plasma_fuel__fuel_system__unused_tbr_placeholder": 0.0,
+        "aries_plasma_fuel__processing__assumed_conditions_supported": 1.0,
+        "aries_plasma_fuel__processing__flow_available": 1.0,
+        "aries_plasma_fuel__processing__scenario_applicable": 1.0,
+        "aries_plasma_fuel__processing__selected_rating_atoms_s": 1e+22,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20,
+        "aries_cs_plasma_integration__plasma__density_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__density_radial_exponent": 12.0,
+        "aries_cs_plasma_integration__plasma__deuterium_fraction": 0.5,
+        "aries_cs_plasma_integration__plasma__edge_ratio": 0.1,
+        "aries_cs_plasma_integration__plasma__field": 5.7,
+        "aries_cs_plasma_integration__plasma__helium_fraction": 0.0335,
+        "aries_cs_plasma_integration__plasma__hollowness": 0.66,
+        "aries_cs_plasma_integration__plasma__sample_rho": 0.5,
+        "aries_cs_plasma_integration__plasma__temperature_axis": 11.83,
+        "aries_cs_plasma_integration__plasma__temperature_edge": 0.2,
+        "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
+        "aries_cs_plasma_integration__plasma__volume": 444.0,
+        "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+      },
+      "outputs": {
+        "aries_cs_plasma_integration__plasma__edge_density__edge_density": 5e+19,
+        "aries_cs_plasma_integration__plasma__integration__thermal_pressure": 724771.480507903,
+        "aries_cs_plasma_integration__plasma__integration__field_for_beta": 5.7,
+        "aries_cs_plasma_integration__plasma__integration__density_weighted_temperature": 6.35553998717378,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_relative_change": 1.5182339612217214e-12,
+        "aries_cs_plasma_integration__plasma__integration__fusion_power_MW": 1835.4512830147435,
+        "aries_cs_plasma_integration__plasma__integration__density_mean": 3.619464285713925e+20,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_intervals": 4096.0,
+        "aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ": 482.69780601826346,
+        "aries_cs_plasma_integration__plasma__density_sample__density": 3.851681518554688e+20,
+        "aries_cs_plasma_integration__plasma__beta_calculation__beta": 0.05606492483679988,
+        "aries_plasma_fuel__fuel_system__flows__burn_kg_per_fpy": 102.92188595497662,
+        "aries_plasma_fuel__fuel_system__flows__inject_rate": 1.303297592567369e+22,
+        "aries_plasma_fuel__fuel_system__flows__burn_rate": 6.516487962836845e+20,
+        "aries_plasma_fuel__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__loss_rate": 1.2381327129390018e+20,
+        "aries_plasma_fuel__fuel_system__flows__exhaust_rate": 1.2381327129390006e+22,
+        "aries_plasma_fuel__processing__capacity__evaluation_defined": 1.0,
+        "aries_plasma_fuel__processing__capacity__margin": -2.3813271293900064e+21,
+        "aries_plasma_fuel__processing__capacity__applicable": true,
+        "aries_plasma_fuel__processing__capacity__supported": true,
+        "aries_plasma_fuel__processing__capacity__capacity_ok": false,
+        "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1__evaluation": {
+          "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -2.3813271293900064e+21
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "0a09c804e6ba93117c73c764ce02378890de99700b8ab9193ae9b94683c3a5b5",
+          "assessed_entry_count": 1,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -2.3813271293900064e+21
+              }
+            }
+          ]
+        }
+      },
+      "exact_flow_checks": 7
+    },
+    {
+      "case": "larger_rating",
+      "status": "evaluated",
+      "fusion_power_MW": 1835.4512830147435,
+      "selected_rating_atoms_s": 3e+22,
+      "effective_inputs": {
+        "aries_plasma_fuel__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_cs_plasma_integration__plasma__beta_calculation__mu0": 1.25663706212e-06,
+        "aries_plasma_fuel__fuel_system__assumed_extraction": 1.0,
+        "aries_plasma_fuel__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_plasma_fuel__fuel_system__dormant_inventory_atoms": 0.0,
+        "aries_plasma_fuel__fuel_system__dormant_stock_growth_atoms_s": 0.0,
+        "aries_plasma_fuel__fuel_system__exhaust_recovery": 0.99,
+        "aries_plasma_fuel__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_plasma_fuel__fuel_system__pass_burn_fraction": 0.05,
+        "aries_plasma_fuel__fuel_system__reaction_energy_mev": 17.58,
+        "aries_plasma_fuel__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_plasma_fuel__fuel_system__unused_tbr_placeholder": 0.0,
+        "aries_plasma_fuel__processing__assumed_conditions_supported": 1.0,
+        "aries_plasma_fuel__processing__flow_available": 1.0,
+        "aries_plasma_fuel__processing__scenario_applicable": 1.0,
+        "aries_plasma_fuel__processing__selected_rating_atoms_s": 3e+22,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20,
+        "aries_cs_plasma_integration__plasma__density_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__density_radial_exponent": 12.0,
+        "aries_cs_plasma_integration__plasma__deuterium_fraction": 0.5,
+        "aries_cs_plasma_integration__plasma__edge_ratio": 0.1,
+        "aries_cs_plasma_integration__plasma__field": 5.7,
+        "aries_cs_plasma_integration__plasma__helium_fraction": 0.0335,
+        "aries_cs_plasma_integration__plasma__hollowness": 0.66,
+        "aries_cs_plasma_integration__plasma__sample_rho": 0.5,
+        "aries_cs_plasma_integration__plasma__temperature_axis": 11.83,
+        "aries_cs_plasma_integration__plasma__temperature_edge": 0.2,
+        "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
+        "aries_cs_plasma_integration__plasma__volume": 444.0,
+        "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+      },
+      "outputs": {
+        "aries_cs_plasma_integration__plasma__edge_density__edge_density": 5e+19,
+        "aries_cs_plasma_integration__plasma__integration__thermal_pressure": 724771.480507903,
+        "aries_cs_plasma_integration__plasma__integration__field_for_beta": 5.7,
+        "aries_cs_plasma_integration__plasma__integration__density_weighted_temperature": 6.35553998717378,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_relative_change": 1.5182339612217214e-12,
+        "aries_cs_plasma_integration__plasma__integration__fusion_power_MW": 1835.4512830147435,
+        "aries_cs_plasma_integration__plasma__integration__density_mean": 3.619464285713925e+20,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_intervals": 4096.0,
+        "aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ": 482.69780601826346,
+        "aries_cs_plasma_integration__plasma__density_sample__density": 3.851681518554688e+20,
+        "aries_cs_plasma_integration__plasma__beta_calculation__beta": 0.05606492483679988,
+        "aries_plasma_fuel__fuel_system__flows__burn_kg_per_fpy": 102.92188595497662,
+        "aries_plasma_fuel__fuel_system__flows__inject_rate": 1.303297592567369e+22,
+        "aries_plasma_fuel__fuel_system__flows__burn_rate": 6.516487962836845e+20,
+        "aries_plasma_fuel__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__loss_rate": 1.2381327129390018e+20,
+        "aries_plasma_fuel__fuel_system__flows__exhaust_rate": 1.2381327129390006e+22,
+        "aries_plasma_fuel__processing__capacity__evaluation_defined": 1.0,
+        "aries_plasma_fuel__processing__capacity__margin": 1.7618672870609994e+22,
+        "aries_plasma_fuel__processing__capacity__applicable": true,
+        "aries_plasma_fuel__processing__capacity__supported": true,
+        "aries_plasma_fuel__processing__capacity__capacity_ok": true,
+        "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1__evaluation": {
+          "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 1.7618672870609994e+22
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "0a09c804e6ba93117c73c764ce02378890de99700b8ab9193ae9b94683c3a5b5",
+          "assessed_entry_count": 1,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 1.7618672870609994e+22
+              }
+            }
+          ]
+        }
+      },
+      "exact_flow_checks": 7
+    },
+    {
+      "case": "unsupported_conditions",
+      "status": "evaluated",
+      "fusion_power_MW": 1835.4512830147435,
+      "selected_rating_atoms_s": 2e+22,
+      "effective_inputs": {
+        "aries_plasma_fuel__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_cs_plasma_integration__plasma__beta_calculation__mu0": 1.25663706212e-06,
+        "aries_plasma_fuel__fuel_system__assumed_extraction": 1.0,
+        "aries_plasma_fuel__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_plasma_fuel__fuel_system__dormant_inventory_atoms": 0.0,
+        "aries_plasma_fuel__fuel_system__dormant_stock_growth_atoms_s": 0.0,
+        "aries_plasma_fuel__fuel_system__exhaust_recovery": 0.99,
+        "aries_plasma_fuel__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_plasma_fuel__fuel_system__pass_burn_fraction": 0.05,
+        "aries_plasma_fuel__fuel_system__reaction_energy_mev": 17.58,
+        "aries_plasma_fuel__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_plasma_fuel__fuel_system__unused_tbr_placeholder": 0.0,
+        "aries_plasma_fuel__processing__assumed_conditions_supported": false,
+        "aries_plasma_fuel__processing__flow_available": 1.0,
+        "aries_plasma_fuel__processing__scenario_applicable": 1.0,
+        "aries_plasma_fuel__processing__selected_rating_atoms_s": 2e+22,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20,
+        "aries_cs_plasma_integration__plasma__density_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__density_radial_exponent": 12.0,
+        "aries_cs_plasma_integration__plasma__deuterium_fraction": 0.5,
+        "aries_cs_plasma_integration__plasma__edge_ratio": 0.1,
+        "aries_cs_plasma_integration__plasma__field": 5.7,
+        "aries_cs_plasma_integration__plasma__helium_fraction": 0.0335,
+        "aries_cs_plasma_integration__plasma__hollowness": 0.66,
+        "aries_cs_plasma_integration__plasma__sample_rho": 0.5,
+        "aries_cs_plasma_integration__plasma__temperature_axis": 11.83,
+        "aries_cs_plasma_integration__plasma__temperature_edge": 0.2,
+        "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
+        "aries_cs_plasma_integration__plasma__volume": 444.0,
+        "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+      },
+      "outputs": {
+        "aries_cs_plasma_integration__plasma__edge_density__edge_density": 5e+19,
+        "aries_cs_plasma_integration__plasma__integration__thermal_pressure": 724771.480507903,
+        "aries_cs_plasma_integration__plasma__integration__field_for_beta": 5.7,
+        "aries_cs_plasma_integration__plasma__integration__density_weighted_temperature": 6.35553998717378,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_relative_change": 1.5182339612217214e-12,
+        "aries_cs_plasma_integration__plasma__integration__fusion_power_MW": 1835.4512830147435,
+        "aries_cs_plasma_integration__plasma__integration__density_mean": 3.619464285713925e+20,
+        "aries_cs_plasma_integration__plasma__integration__quadrature_intervals": 4096.0,
+        "aries_cs_plasma_integration__plasma__integration__stored_thermal_MJ": 482.69780601826346,
+        "aries_cs_plasma_integration__plasma__density_sample__density": 3.851681518554688e+20,
+        "aries_cs_plasma_integration__plasma__beta_calculation__beta": 0.05606492483679988,
+        "aries_plasma_fuel__fuel_system__flows__burn_kg_per_fpy": 102.92188595497662,
+        "aries_plasma_fuel__fuel_system__flows__inject_rate": 1.303297592567369e+22,
+        "aries_plasma_fuel__fuel_system__flows__burn_rate": 6.516487962836845e+20,
+        "aries_plasma_fuel__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_plasma_fuel__fuel_system__flows__loss_rate": 1.2381327129390018e+20,
+        "aries_plasma_fuel__fuel_system__flows__exhaust_rate": 1.2381327129390006e+22,
+        "aries_plasma_fuel__processing__capacity__evaluation_defined": 0.0,
+        "aries_plasma_fuel__processing__capacity__margin": 7.618672870609994e+21,
+        "aries_plasma_fuel__processing__capacity__applicable": true,
+        "aries_plasma_fuel__processing__capacity__supported": false,
+        "aries_plasma_fuel__processing__capacity__capacity_ok": false,
+        "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1__evaluation": {
+          "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 0.0,
+            "margin_in": 7.618672870609994e+21
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "0a09c804e6ba93117c73c764ce02378890de99700b8ab9193ae9b94683c3a5b5",
+          "assessed_entry_count": 1,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_plasma_fuel__processing__capacity_ok__62f71c4433846be1",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 0.0,
+                "margin_in": 7.618672870609994e+21
+              }
+            }
+          ]
+        }
+      },
+      "exact_flow_checks": 7
+    },
+    {
+      "case": "unsupported_plasma",
+      "status": "refused",
+      "error": "profile integration outside declared domain; DT temperature must be 0.2..100 keV",
+      "effective_inputs": {
+        "aries_plasma_fuel__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_cs_plasma_integration__plasma__beta_calculation__mu0": 1.25663706212e-06,
+        "aries_plasma_fuel__fuel_system__assumed_extraction": 1.0,
+        "aries_plasma_fuel__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_plasma_fuel__fuel_system__dormant_inventory_atoms": 0.0,
+        "aries_plasma_fuel__fuel_system__dormant_stock_growth_atoms_s": 0.0,
+        "aries_plasma_fuel__fuel_system__exhaust_recovery": 0.99,
+        "aries_plasma_fuel__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_plasma_fuel__fuel_system__pass_burn_fraction": 0.05,
+        "aries_plasma_fuel__fuel_system__reaction_energy_mev": 17.58,
+        "aries_plasma_fuel__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_plasma_fuel__fuel_system__unused_tbr_placeholder": 0.0,
+        "aries_plasma_fuel__processing__assumed_conditions_supported": 1.0,
+        "aries_plasma_fuel__processing__flow_available": 1.0,
+        "aries_plasma_fuel__processing__scenario_applicable": 1.0,
+        "aries_plasma_fuel__processing__selected_rating_atoms_s": 2e+22,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20,
+        "aries_cs_plasma_integration__plasma__density_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__density_radial_exponent": 12.0,
+        "aries_cs_plasma_integration__plasma__deuterium_fraction": 0.5,
+        "aries_cs_plasma_integration__plasma__edge_ratio": 0.1,
+        "aries_cs_plasma_integration__plasma__field": 5.7,
+        "aries_cs_plasma_integration__plasma__helium_fraction": 0.0335,
+        "aries_cs_plasma_integration__plasma__hollowness": 0.66,
+        "aries_cs_plasma_integration__plasma__sample_rho": 0.5,
+        "aries_cs_plasma_integration__plasma__temperature_axis": 11.83,
+        "aries_cs_plasma_integration__plasma__temperature_edge": 0.023,
+        "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
+        "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
+        "aries_cs_plasma_integration__plasma__volume": 444.0,
+        "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+      }
+    }
+  ],
+  "exact_flow_checks": 35,
+  "passed": true
+}

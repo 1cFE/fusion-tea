@@ -1,0 +1,11 @@
+{
+  "fingerprint": "be2b278b36814a431081e21636140c210a9fe8269d37db9d30eb47f8025e59c8",
+  "supplied_volume": 888.0,
+  "calculated_fusion_MW": 3670.902566029487,
+  "exhaust_atoms_s": 2.4762654258780013e+22,
+  "expected_exhaust": 2.476265425878001e+22,
+  "fixed_rating_atoms_s": 2e+22,
+  "capacity_ok": false,
+  "protected_count": 1383,
+  "changed": []
+}
