@@ -2,297 +2,531 @@
   "schema_version": "study-axis-declaration/v1",
   "groups": [
     {
-      "axis": "recuperator_effectiveness",
-      "note": "Purchased recuperator geometry, pressure loss and effectiveness relation absent",
+      "axis": "auxiliary_cooling_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__cycle__recuperator_effectiveness",
+          "key": "aries_integrated_plant__auxiliary_cooling__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "he_hot_limit",
-      "note": "Bulk limit is not a qualified material temperature",
+      "axis": "blanket_inventory_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__heat_exchangers__he_limit",
+          "key": "aries_integrated_plant__blanket_inventory__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "pbli_hot_limit",
-      "note": "Bulk limit is not a qualified material temperature",
+      "axis": "compressor_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__heat_exchangers__pbli_limit",
+          "key": "aries_integrated_plant__compressor_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "divertor_hot_limit",
-      "note": "Bulk limit is not a qualified material temperature",
+      "axis": "conversion_services_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__heat_exchangers__divertor_limit",
+          "key": "aries_integrated_plant__conversion_services__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "cycle_flow",
-      "note": "Machine maps and flow-specific purchased capability absent",
+      "axis": "divertor_duty_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__cycle__selected_flow",
+          "key": "aries_integrated_plant__divertor_duty_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "he_operating_flow",
-      "note": "Cubic fixed-path pump proxy does not qualify gas or MHD hydraulics",
+      "axis": "divertor_hx_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__heat_exchangers__he_flow",
+          "key": "aries_integrated_plant__divertor_hx__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "pbli_operating_flow",
-      "note": "Cubic fixed-path pump proxy does not qualify gas or MHD hydraulics",
+      "axis": "divertor_inventory_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__heat_exchangers__pbli_flow",
+          "key": "aries_integrated_plant__divertor_inventory__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "divertor_operating_flow",
-      "note": "Cubic fixed-path pump proxy does not qualify gas or MHD hydraulics",
+      "axis": "divertor_pump_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__heat_exchangers__divertor_flow",
+          "key": "aries_integrated_plant__divertor_pump__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "he_u",
-      "note": "Fixed-area U uncertainty lacks geometry, pressure-drop and real-fluid qualification",
+      "axis": "electrical_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__he_hx__assumed_u",
+          "key": "aries_integrated_plant__electrical_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "pbli_u",
-      "note": "Fixed-area U uncertainty lacks geometry, pressure-drop and real-fluid qualification",
+      "axis": "facilities_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__pbli_hx__assumed_u",
+          "key": "aries_integrated_plant__facilities__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "divertor_u",
-      "note": "Fixed-area U uncertainty lacks geometry, pressure-drop and real-fluid qualification",
+      "axis": "fuel_processing_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__divertor_hx__assumed_u",
+          "key": "aries_integrated_plant__fuel_processing_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "neutron_multiplier",
-      "note": "No qualified neutron, radiation or inter-coolant transport response",
+      "axis": "fuel_services_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__deposition__neutron_multiplier",
+          "key": "aries_integrated_plant__fuel_services__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "helium_partition",
-      "note": "No qualified neutron, radiation or inter-coolant transport response",
+      "axis": "generator_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__deposition__helium_fraction",
+          "key": "aries_integrated_plant__generator_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "radiation_partition",
-      "note": "No qualified neutron, radiation or inter-coolant transport response",
+      "axis": "he_duty_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__deposition__radiation_fraction",
+          "key": "aries_integrated_plant__he_duty_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "intercoolant_exchange",
-      "note": "No qualified neutron, radiation or inter-coolant transport response",
+      "axis": "he_hx_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__deposition__exchange_fraction",
+          "key": "aries_integrated_plant__he_hx__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "pbli_cp",
-      "note": "Constant-property sensitivity lacks real-fluid qualification",
+      "axis": "he_pump_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__heat_exchangers__pbli_cp",
+          "key": "aries_integrated_plant__he_pump__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "common_cold_sink",
-      "note": "Common operating sink is an executor-declared tie; weather and sink equipment response absent",
+      "axis": "heat_rejection_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__cycle__low_temperature",
-          "provenance": "fan_out"
-        },
-        {
-          "key": "aries_integrated_plant__intercooler_1__target_temperature",
-          "provenance": "tie"
-        },
-        {
-          "key": "aries_integrated_plant__intercooler_2__target_temperature",
-          "provenance": "tie"
-        }
-      ]
-    },
-    {
-      "axis": "pressure_loss",
-      "note": "Pressure loss is not derived from selected geometry",
-      "keys": [
-        {
-          "key": "aries_integrated_plant__pressure_loss__loss_fraction",
+          "key": "aries_integrated_plant__heat_rejection_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "turbine_efficiency",
-      "note": "Machine-map and purchased quality response absent",
+      "axis": "heating_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__cycle__turbine_efficiency",
+          "key": "aries_integrated_plant__heating_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "common_compressor_efficiency",
-      "note": "Common assumed efficiency is an executor-declared tie; machine-map and purchase-quality response absent",
+      "axis": "impurity_control_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__compressor_1__efficiency",
-          "provenance": "fan_out"
-        },
-        {
-          "key": "aries_integrated_plant__compressor_2__efficiency",
-          "provenance": "tie"
-        },
-        {
-          "key": "aries_integrated_plant__compressor_3__efficiency",
-          "provenance": "tie"
-        }
-      ]
-    },
-    {
-      "axis": "he_pump_efficiency",
-      "note": "Efficiency is assumed at fixed installed flow capacity; qualification and price premium absent",
-      "keys": [
-        {
-          "key": "aries_integrated_plant__he_pump__efficiency",
+          "key": "aries_integrated_plant__impurity_control__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "heating_efficiency",
-      "note": "Heating efficiency has no purchased equipment or performance-map response",
+      "axis": "instrumentation_control_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__generator_auxiliaries__heating_efficiency",
+          "key": "aries_integrated_plant__instrumentation_control__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "cryo_load",
-      "note": "Supplied auxiliary demand lacks subsystem physics",
+      "axis": "lipb_inventory_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__generator_auxiliaries__cryo",
+          "key": "aries_integrated_plant__lipb_inventory__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "control_load",
-      "note": "Supplied auxiliary demand lacks subsystem physics",
+      "axis": "magnet_inventory_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__generator_auxiliaries__control",
+          "key": "aries_integrated_plant__magnet_inventory__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "other_electric_load",
-      "note": "Supplied auxiliary demand lacks subsystem physics",
+      "axis": "magnet_power_supplies_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_integrated_plant__generator_auxiliaries__other_electric",
+          "key": "aries_integrated_plant__magnet_power_supplies__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "density_amplitude",
-      "note": "Calculated source sensitivity does not qualify confinement",
+      "axis": "miscellaneous_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
       "keys": [
         {
-          "key": "aries_cs_plasma_integration__plasma__amplitude",
+          "key": "aries_integrated_plant__miscellaneous_equipment__price_factor",
           "provenance": "fan_out"
         }
       ]
     },
     {
-      "axis": "he_hx_area",
-      "note": "Low-area point is a flagged linear-price extrapolation allowed by E2",
+      "axis": "other_reactor_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__other_reactor_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "pbli_duty_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_duty_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "pbli_hx_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_hx__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "pbli_pump_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pbli_pump__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "primary_piping_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__primary_piping__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "primary_support_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__primary_support__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "secondary_transport_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__secondary_transport__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "shield_inventory_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__shield_inventory__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "site_land_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__site_land__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "turbine_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__turbine_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "unallocated_source_scope_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__unallocated_source_scope__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "vacuum_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__vacuum_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "vf_coils_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__vf_coils__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "waste_equipment_price",
+      "note": "Supplied price uncertainty has no market calibration or purchased quality response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__waste_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_inventory_tritium_price",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_inventory_selected_tritium_kg",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__selected_tritium_kg",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_inventory_deuterium_price",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__deuterium_price",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "annual_om_selected_amount",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__annual_om__selected_amount",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cost_ledger_consumables",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_ledger__consumables",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "indirect_cost_fraction",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__indirect_cost__fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "contingency_fraction",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__contingency__fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "owner_commissioning_fraction",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__owner_commissioning__fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cost_schedule_replacement_life_fpy",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__replacement_life_fpy",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cost_schedule_replacement_factor",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__replacement_factor",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cost_schedule_lipb_makeup_fraction",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__lipb_makeup_fraction",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "cost_schedule_availability",
+      "note": "Accounting sensitivity lacks qualified supply, reliability, lifetime or estimation evidence; selected stock retains its scalar diagnostic only.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_schedule__availability",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "supplied_recovery",
+      "note": "Independently supplied recovery is not a calculated breeding capability; support remains zero.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__annual_recovery_kg",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "purchase_mode",
+      "note": "Fixed budget mode deliberately suppresses selected quantity price response.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cost_accounts__estimate_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "adequate_he_area",
+      "note": "Previously tested adequate area is not geometry or hydraulic qualification.",
       "keys": [
         {
           "key": "aries_integrated_plant__he_hx__selected_area",
-          "provenance": "fan_out"
-        }
-      ]
-    },
-    {
-      "axis": "he_pump_capacity",
-      "note": "Offered scalar flow capacity is not hydraulic qualification",
-      "keys": [
-        {
-          "key": "aries_integrated_plant__he_pump__selected_flow_capacity",
           "provenance": "fan_out"
         }
       ]

@@ -183,3 +183,24 @@ Use the same independently accepted package to quantify the declared cost bounda
 ### T-007 start — 2026-09-22
 
 Continuing study executor receives the bounded preparation brief. Existing source/design/implementation and original-family regression evidence is reused under unchanged package/environment; new study metadata and points get their own gates. Coordinator retains commit/freeze ownership.
+
+### T-007 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/cost-preparation-check.json`, `evidence/cost-preparation-readiness.json`, new-record preparation baseline/preflight, exact113maps/53axes and oracle scan.
+- **Reading:** All113oracle points evaluate; new native baseline remains423.106794MW; six preflight gates pass.48axes have no tool-reported constraint response and are explicitly sensitivity-only under owner authority; two suffix advisories concern independent held branch areas. No declared study points have run.
+- **Correction:** Coordinator found the recovery window initially listed100–200 while baseline/corners use0. It now declares0–200 with explicit100midpoint; all point maps, groups, manifest and evaluation receipts are byte-unchanged. This corrects window documentation before execution; no model/point change or retry. Recovery carries no incremental recovery-cost/qualification law at fixed installed scope and is a supplied boundary, not an optimized purchased capability.
+- **Review coverage:** C-001 and the accepted E1–E10 source/math/design review cover unchanged equations, roles and ranges. Coordinator verifies exact declared input/window coverage and current preflight. No new independent pre-execution review is needed for unchanged model semantics. The final interpreted results receive the bounded independent cost-study review.
+
+### T-008 scope
+
+- **Objective:** Execute and verify the113declared cost/supply points, interpret native account contributions/ranges and freeze one second-round record.
+- **Why now:** T-007 preparation and applicable review coverage pass.
+- **Scope:** Existing stock native route, same package, full-point independent verification; retain source failures, uncertainty/scientific limits and fixed-budget nonresponse. One-factor changes and combined corners are conditional scenarios. No model repair, new prices or optimization.
+- **Inputs:** Committed live study tools/manifest/axes; exact preparation digests; reused native CANDIDATE plus new preflight; accepted thermal study.
+- **Done when:** Every point has stored input/output/verdict evidence, all-point verification, complete record/report/findings and immutable snapshot/commit.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-008 start — 2026-09-22
+
+Continuing executor is released after the live-source preparation commit. Coordinator owns snapshot/commit and final independent review. Execution retains the new study baseline/preflight separately from the reused unchanged-package CANDIDATE.

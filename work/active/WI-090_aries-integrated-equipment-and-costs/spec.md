@@ -25,9 +25,9 @@ Updated: 2026-09-22
 
 ## Acceptance
 
-The delivered package executes the four inherited scenarios, with the assumed integrated baseline reproducing 423.106794 MW before any intentional changed assumption. Required tests demonstrate that density changes demand and annual consumption but leave selected inventories/upfront costs unchanged; an exchanger-area alternative changes both finite thermal capability and purchase cost; a rating alternative changes its inventory, capital and adequacy without secretly changing demand. Thermal sensitivities precede any equipment/economic ranking. Every account reconciles to its children with separately exposed published rounding differences. Initial and replacement amounts occupy distinct channels. Price sensitivity changes costs without changing physics. Scientific unsupported states remain unsupported.
+The delivered package executes the four inherited scenarios, with the assumed integrated baseline reproducing 423.106794 MW before any intentional changed assumption. Required tests demonstrate that density changes demand and annual consumption but leave selected inventories/upfront costs unchanged; an exchanger-area alternative changes both finite thermal capability and purchase cost; a rating alternative changes its inventory, capital and adequacy without secretly changing demand. Thermal sensitivities precede any equipment/economic ranking. Every account reconciles to its children with separately exposed source discrepancies. Initial and replacement amounts occupy distinct channels. Price sensitivity changes costs without changing physics. Scientific unsupported states remain unsupported.
 
-Numerical balance tolerances retain WI-089's `max(1e-6 MW, 1e-9 * total input MW)`. Account arithmetic tolerance is `max(0.01 USD2004, 1e-10 * account amount)`; published rounding differences are outputs, not tolerance inflation. Monetary ranges are scenario bounds, not statistical confidence intervals.
+Numerical balance tolerances retain WI-089's `max(1e-6 MW, 1e-9 * total input MW)`. Account arithmetic tolerance is `max(0.01 USD2004, 1e-10 * account amount)`; source discrepancies are outputs, not tolerance inflation. Monetary ranges are scenario bounds, not statistical confidence intervals.
 
 ## Scope and gates
 
@@ -35,4 +35,6 @@ New source interpretation, inventory ownership, equation and public-input change
 
 ## Verification registry
 
-[AGENT] Native verification `SV-134` is pending in `modeling_project/VALIDATION_MATRIX.md`; executable evidence will determine its result. Existing unrelated matrix type warnings were reported by registration and do not establish this item’s validation.
+[AGENT] Native verification `SV-134` is passing in `modeling_project/VALIDATION_MATRIX.md`, based on the66-case native receipt and accepted independent implementation review. Complete-validator L2/L6 exceptions remain explicitly scoped, not a full pass. Existing unrelated matrix type warnings were reported by registration and do not establish this item’s validation.
+
+[AGENT clarification, 2026-09-22] Source residuals are not all rounding. The accepted source review retains unresolved parent/child discrepancies and distinct mass/account boundaries; wording above now names those discrepancies without assigning a cause. No source amount or model equation changes.

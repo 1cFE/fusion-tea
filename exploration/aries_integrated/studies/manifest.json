@@ -1138,24 +1138,7 @@
       "channel": "aries_integrated_plant__waste_equipment__purchase__cost"
     }
   ],
-  "ties": [
-    {
-      "key": "aries_integrated_plant__cycle__low_temperature",
-      "rides_with": [
-        "aries_integrated_plant__intercooler_1__target_temperature",
-        "aries_integrated_plant__intercooler_2__target_temperature"
-      ],
-      "note": "Common operating sink is an executor-declared tie; weather and sink equipment response absent"
-    },
-    {
-      "key": "aries_integrated_plant__compressor_1__efficiency",
-      "rides_with": [
-        "aries_integrated_plant__compressor_2__efficiency",
-        "aries_integrated_plant__compressor_3__efficiency"
-      ],
-      "note": "Common assumed efficiency is an executor-declared tie; machine-map and purchase-quality response absent"
-    }
-  ],
+  "ties": [],
   "baseline": {
     "point": {
       "aries_integrated_plant__contingency_basis__evaluate__amount3_in": 0.0,
