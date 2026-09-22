@@ -59,3 +59,26 @@ A separate study worker inspects the native route while design/source work conti
 ### T-003 start — 2026-09-22
 
 Continuing author is released under the independent PASS. Coordinator registers the additive source set and owns PM/commits; author owns model/build/completions/generated package and WI-091 development evidence. Live study interfaces remain separately owned and unchanged until interface handoff.
+
+### T-004 scope
+
+- **Objective:** Prepare one declared lifecycle accounting and sensitivity study with complete native interface and independent verification.
+- **Why now:** Design review passes and source/supply semantics are fixed; scenario/oracle authoring can proceed while the model author implements separate files.
+- **Scope:** evidence/study-preparation-brief.md; live study interfaces and new record preparation. No declared study point execution before coordinator release. Baseline/gates wait for stable committed package.
+- **Inputs:** goal.md, accepted WI-091 design, source/math review and T-002 route readiness.
+- **Done when:** Exact full-map proposals, axes/rulings, oracle scan and native baseline/preflight are ready for integration and execution.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-004 start — 2026-09-22
+
+Continuing study worker prepares scenarios and independent oracle against reviewed equations while T-003 owns implementation. Separate file ownership avoids write conflicts. Concrete interface preparation waits for the author's handoff; native baseline/gates wait for the committed coherent package.
+
+### T-003 focused design clarification — 2026-09-22
+
+Coordinator identified that the new source-only construction duration was proposed as a public zero default even though source capital already includes financing. The continuing independent reviewer requires zero to be invariant and accepts removal of this unreleased source-only choice, binding literal zero into both source finance occurrences if generation preserves it as non-overridable. Otherwise a branch guard is required. The integrated overnight construction duration remains selected. This is an explicit MR-7 role correction for a newly introduced financial comparison invariant, not removal of predecessor hardware choices. Author will verify generated enforcement and retain an attempted-override/domain test as applicable. Evidence: design-review.md focused follow-up.
+
+### T-003 implementation observations — 2026-09-22
+
+The first native probe lacked the documented simkit PYTHONPATH and failed before evaluating the plant. Author retained probe.log and reran under the documented environment, producing probe-result.json. Conservatively count this as retry 1 of 2 for T-003; same task, inputs, scope and meaning. One mechanical retry remains. Expected domain-refusal tests are acceptance evidence, not failed-task retries.
+
+A development experiment shows the generator lifts literal zero bindings into mutable public inputs. Therefore the literal-only source-duration solution does not establish the financing invariant. Author is applying the independent review's minimal-guard fallback: a generic native duration guard accepts only zero and feeds both source finance calculations, while the integrated construction duration remains selectable. The experiment and final generated/refusal behavior will be retained in WI-091 evidence; continuing reviewer checks the focused correction before release. No source-price or financial comparison meaning changes.
