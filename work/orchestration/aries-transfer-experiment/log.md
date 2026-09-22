@@ -27,3 +27,7 @@
 [AGENT] Fuel reuse was checkpointed as 77612550 after independent acceptance. Registered the new equation trace and verification records SV-125/SV-126 through native PM operations. That tool emitted pre-existing malformed-type warnings for unrelated validation rows; no unrelated row was rewritten. The combined report distinguishes tested unchanged fuel relations, the new profile relationship, 13 provisional transfer areas and the still-open full-plant/LCOE milestones. Further plasma closure and sector/material work require the stated source-definition checks; scientific field/conductor and breeding dependencies remain explicit.
 
 [AGENT] Final integration review accepts the two implementation claims and their limited contribution to the transfer inventory. Both validator runs retain exit 1 for the documented EXPOSE diagnostics; native execution supports only the named exceptions. Final preservation receipt confirms all 1,383 original files unchanged. The full transfer epic remains open.
+
+## Step 5 — Continue one area at a time
+
+[OWNER] Authorized continued sequential work without routine pauses. [AGENT] Resumed T01 with the continuing physics author to resolve profile integration, temperature/species and geometric-measure definitions before extending the native component. The coordinator will retain separate area dispositions and checkpoints; missing scientific inputs are recorded at the affected area rather than stopping all other work.

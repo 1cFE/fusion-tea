@@ -31,3 +31,15 @@
 Physics inventory agent owns physics-inventory.md and physics-* evidence. Thermal/cost agent owns thermal-cost-inventory.md and thermal-* evidence. Coordinator owns this plan, the change register, log and native tracking/integration. Implementation ownership is assigned per item after inventory. Fresh reviewers assess relevant source, design or integrated claims without author history.
 
 [AGENT] First round completed the two registered increments and its scoped review. This checklist records the round, not completion of full-plant transfer. Both full-plant milestones remain open; report.md identifies the next source-definition and modeling work.
+
+## Continued execution — owner authorized 2026-09-21
+
+[OWNER-VERBATIM] “Please proceed with this strategy, one area at a time. you do not need to stop, just track your work as you go.” [AGENT] Continue sequentially across the transfer areas. Within an area use an author and independent reviewer; carry completed components forward. Record each area's actual executable result or specific missing evidence before advancing. Routine source/design review is coordinated here, without owner approval pauses.
+
+- [ ] T01: extend profile representation into source-defined integration where supported; record any remaining closure inputs.
+- [ ] T02: implement source-supported constituent/sector arithmetic, preserving the distinction between reference and alternative designs.
+- [ ] T03–T05: inspect the recorded field, conductor and breeding prerequisites for executable work; park only the dependent claims where scientific data remain missing.
+- [ ] T06–T07: extend fuel/maintenance reuse where supplied inputs have clear meaning; keep source-conditioned outputs distinct from independent prediction.
+- [ ] T08–T09: establish heat-transport and conversion interfaces from source definitions; implement independently supportable balances before technology-specific qualification.
+- [ ] T10–T13: implement supported constituent/account/financial mappings; assess whether a conditioned financial comparison is now meaningful.
+- [ ] Integrate each area's changes, review evidence, update the register/log and commit; retain full-plant limitations explicitly.
