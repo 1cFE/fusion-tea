@@ -12,6 +12,20 @@
     "worst_channel_rel_dev", "outcome"
   ],
   "properties": {
+    "absolute_tolerances": {
+      "type": "array",
+      "description": "Applied manifest declarations; actual relative deviations remain reported even when accepted by this absolute rule.",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["channel", "value", "units", "basis"],
+        "properties": {
+          "channel": {"type": "string", "minLength": 1},
+          "value": {"type": "number", "exclusiveMinimum": 0},
+          "units": {"type": "string", "minLength": 1},
+          "basis": {"type": "string", "minLength": 1}
+        }
+      }
+    },
     "schema_version": {"const": "study-verification-summary/v1"},
     "tool": {
       "type": "object",

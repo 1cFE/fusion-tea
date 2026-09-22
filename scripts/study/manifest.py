@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 from dataclasses import dataclass
 from pathlib import Path
@@ -228,6 +229,7 @@ def validate(data: object) -> dict:
             "baseline",
             "oracle",
         ),
+        ("absolute_tolerances",),
     )
     version = _string(root["schema_version"], "manifest.schema_version")
     if version != MANIFEST_SCHEMA_VERSION:
@@ -243,6 +245,21 @@ def validate(data: object) -> dict:
     _validate_fingerprints(root["fingerprints"])
     _validate_objective_catalog(root["objective_catalog"])
     _validate_ties(root["ties"])
+    if "absolute_tolerances" in root:
+        declarations = _list(root["absolute_tolerances"], "manifest.absolute_tolerances")
+        names = []
+        for index, declaration in enumerate(declarations):
+            where = f"manifest.absolute_tolerances[{index}]"
+            entry = _mapping(declaration, where)
+            _keys(entry, where, ("channel", "value", "units", "basis"))
+            names.append(_string(entry["channel"], where + ".channel"))
+            value = _number(entry["value"], where + ".value")
+            if not math.isfinite(value) or value <= 0:
+                raise ManifestError(f"{where}.value: expected finite positive tolerance")
+            for field in ("units", "basis"):
+                if not _string(entry[field], where + "." + field).strip():
+                    raise ManifestError(f"{where}.{field}: expected nonblank text")
+        _unique(names, "manifest.absolute_tolerances", "channel")
     _validate_baseline(root["baseline"])
     _validate_oracle(root["oracle"])
     return root

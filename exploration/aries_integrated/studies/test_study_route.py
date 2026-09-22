@@ -41,6 +41,12 @@ def test_exact_constraint_identity(declared, monkeypatch):
 
 
 def test_missing_interface_refuses(tmp_path, monkeypatch):
-    monkeypatch.setattr(route, "INTERFACE_PATH", tmp_path / "missing.json")
-    with pytest.raises(route.common.ToolError):
+    monkeypatch.setattr(route, "INTERFACE_MODULE", "nonexistent_aries_study_interface")
+    with pytest.raises(route.RouteError):
         route.interface()
+
+
+def test_reused_local_names_retain_exact_ids():
+    catalog = {cid: {"source_local_identity": "capacity_ok"} for cid in ("one", "two")}
+    case = SimpleNamespace(verdicts={"one": "satisfied", "two": "violated"})
+    assert route._short_verdicts(case, catalog) == case.verdicts

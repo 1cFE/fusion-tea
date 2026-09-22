@@ -1,0 +1,9 @@
+{
+  "source": "work/active/WI-089_aries-integrated-heat-and-electricity/evidence/baseline-execution.json",
+  "case": "nominal-calculated",
+  "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+  "native_value_MW": 7.539028956671245e-09,
+  "analytic_conservation_expectation_MW": 0.0,
+  "scope": "Actual native published balance operand, isolated native check_case reproduction; not a stored study run",
+  "failure": "channel off tolerance on case retained-native-nominal, channel aries_integrated_plant__plant_ledger__evaluate__residual_magnitude: store 7.539028956671245e-09, oracle 0.0, relative deviation 7.539e+21 (tolerance 1e-09)"
+}

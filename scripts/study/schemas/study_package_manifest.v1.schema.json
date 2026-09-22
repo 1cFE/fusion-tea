@@ -15,6 +15,20 @@
     "oracle"
   ],
   "properties": {
+    "absolute_tolerances": {
+      "type": "array",
+      "description": "Optional channel-specific absolute numerical comparison tolerances. Undeclared channels retain strict relative comparison; constraint verdict agreement is unchanged.",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["channel", "value", "units", "basis"],
+        "properties": {
+          "channel": {"type": "string", "minLength": 1},
+          "value": {"type": "number", "exclusiveMinimum": 0},
+          "units": {"type": "string", "minLength": 1},
+          "basis": {"type": "string", "minLength": 1}
+        }
+      }
+    },
     "schema_version": {"const": "study-package-manifest/v1"},
     "package": {
       "type": "object",

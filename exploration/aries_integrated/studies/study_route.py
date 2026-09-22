@@ -1,6 +1,7 @@
 """Package-owned ARIES integrated stored execution through stock TEAx APIs."""
 from __future__ import annotations
 import json
+import importlib
 import math
 from pathlib import Path
 from scripts.study import common, identity
@@ -11,15 +12,21 @@ REPO_ROOT = E2E.parent.parent
 PACKAGE_NAME = "aries_integrated"
 PACKAGE_DIR = E2E / "aries_integrated"
 MANIFEST_PATH = HERE / "manifest.json"
-INTERFACE_PATH = HERE / "interface.json"
+INTERFACE_MODULE = "exploration.aries_integrated.studies.interface_data"
 BASELINE_RESULT_SCHEMA_VERSION = "study-baseline-result/v1"
 
 
 def interface():
     """Read the reviewed package interface; absence prevents premature execution."""
-    document = common.read_json(INTERFACE_PATH, "reviewed study interface")
-    if document.get("schema_version") != "aries-study-interface/v1":
-        raise RouteError("unsupported study interface schema")
+    try:
+        document = importlib.import_module(INTERFACE_MODULE).INTERFACE
+    except (ImportError, AttributeError) as exc:
+        raise RouteError("reviewed interface_data.py is absent or incomplete") from exc
+    if not isinstance(document, dict):
+        raise RouteError("reviewed study interface must be a mapping")
+    for name in ("executable_fingerprint", "semantic_fingerprint"):
+        if not isinstance(document.get(name), str) or not document[name]:
+            raise RouteError(f"reviewed interface requires {name}")
     for name in ("entry_keys", "channels", "constraints"):
         mapping = document.get(name)
         if not isinstance(mapping, dict) or not mapping:
@@ -82,6 +89,11 @@ def prepare(package_dir: Path, work_dir: Path):
         spec_path(package_dir),
         expects_constraint_report=ships_constraint_report(contract),
     )
+    expected = interface()
+    if prepared.fingerprint != expected["executable_fingerprint"]:
+        raise RouteError("prepared executable differs from reviewed interface identity")
+    if contract.semantic_fingerprint != expected["semantic_fingerprint"]:
+        raise RouteError("model semantics differ from reviewed interface identity")
 
     actual = {key: channel for channel, model in prepared.entry_models.items()
               for key in model.model_fields}
@@ -204,8 +216,6 @@ def _export_catalog(package_dir: Path) -> dict[str, dict]:
     identities = [entry.get("source_local_identity") for entry in catalog.values()]
     if any(not isinstance(identity, str) or not identity for identity in identities):
         raise RouteError("every catalogued check must have a source_local_identity")
-    if len(set(identities)) != len(identities):
-        raise RouteError(f"catalogued source_local_identity values are not unique: {identities}")
     return catalog
 
 
@@ -219,15 +229,11 @@ def _short_verdicts(case, catalog: dict[str, dict]) -> dict[str, str]:
             "case verdicts do not match the emitted constraint catalog: "
             f"missing={missing}, unexpected={unexpected}"
         )
-    by_identity = {
-        catalog[constraint_id]["source_local_identity"]: status
-        for constraint_id, status in case.verdicts.items()
-    }
-    return {identity: by_identity[identity] for identity in sorted(by_identity)}
+    return {constraint_id: case.verdicts[constraint_id] for constraint_id in sorted(catalog)}
 
 
 def short_verdicts(case, package_dir: Path = PACKAGE_DIR) -> dict[str, str]:
-    """Resolve verdict names through the emitted contract, never identifier text."""
+    """Keep complete IDs: reused definitions can have duplicate local names."""
     return _short_verdicts(case, _export_catalog(package_dir))
 
 

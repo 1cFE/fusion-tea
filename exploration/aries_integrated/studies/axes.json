@@ -1,0 +1,95 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "density_amplitude",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_cs_plasma_integration__plasma__amplitude",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "fuel_rating",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "helium_rating",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "compressor_stage_1_ratio",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__compressor_1__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "helium_exchanger_ua",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__he_ua",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "producer_mode",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__source__producer_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "source_fusion",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__source__reference_fusion_mw",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "heat_accounting_mode",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__deposition__heat_mode",
+          "provenance": "fan_out"
+        }
+      ]
+    },
+    {
+      "axis": "recuperator_effectiveness",
+      "note": "Explicit single source attribute; generated entry key is unique. No external tie. Sensitivity/scenario framing in protocol.",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__recuperator_effectiveness",
+          "provenance": "fan_out"
+        }
+      ]
+    }
+  ]
+}

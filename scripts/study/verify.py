@@ -7,7 +7,7 @@ Three claims, and each is earned rather than asserted:
   a cap: one case per stratum first, then a seeded random fill to the sample size. A
   plain random sample can miss a small stratum entirely, and the stratum a sample
   misses is exactly the one worth looking at.
-* **Named channels agree at rel < 1e-9.** The worst deviation and where it occurred
+* **Named channels agree at rel < 1e-9 or an explicitly declared absolute tolerance.** The worst deviation and where it occurred
   are recorded, so "agrees" carries a number.
 * **Every verdict is re-derived**, from the package's own `predicate_ir` through the
   bindings the package publishes — never from a threshold hard-coded here. A generic
@@ -309,7 +309,7 @@ def objective_channels(loaded: manifest_mod.LoadedManifest) -> dict[str, str]:
 
 
 def check_case(case, evaluate, bindings, catalog_entries, objectives,
-               package_inputs, identity_digest):
+               package_inputs, identity_digest, absolute_tolerances=None):
     """One sampled case: channels, verdicts, and identity continuity."""
     if case.executable_fingerprint != identity_digest:
         raise VerifyError(
@@ -329,6 +329,10 @@ def check_case(case, evaluate, bindings, catalog_entries, objectives,
         if binding.get("kind") == "channel"
     }
     wanted = set(objectives) | binding_channels
+    absolute_tolerances = absolute_tolerances or {}
+    unused = set(absolute_tolerances) - wanted
+    if unused:
+        raise VerifyError(f"absolute tolerances name unchecked channels: {sorted(unused)}")
     missing_store = sorted(
         channel for channel in wanted
         if channel not in case.outputs or case.outputs[channel] is None
@@ -345,15 +349,20 @@ def check_case(case, evaluate, bindings, catalog_entries, objectives,
     compared = []
     worst = (0.0, None, None, None)
     for channel in sorted(wanted):
+        if not all(math.isfinite(value) for value in (case.outputs[channel], channels[channel])):
+            raise VerifyError(f"channel {channel}: nonfinite comparison value")
         deviation = common.relative_deviation(case.outputs[channel], channels[channel])
         compared.append(channel)
         if deviation > worst[0]:
             worst = (deviation, case.candidate_id, channel, case.outputs[channel])
-        if deviation >= TOLERANCE:
+        absolute_error = abs(case.outputs[channel] - channels[channel])
+        absolute_limit = absolute_tolerances.get(channel, 0.0)
+        if deviation >= TOLERANCE and absolute_error >= absolute_limit:
             raise VerifyError(
                 f"channel off tolerance on case {case.candidate_id}, channel {channel}: "
                 f"store {case.outputs[channel]!r}, oracle {channels[channel]!r}, "
-                f"relative deviation {deviation:.3e} (tolerance {TOLERANCE:g})"
+                f"relative deviation {deviation:.3e} (tolerance {TOLERANCE:g}); "
+                f"absolute error {absolute_error:.3e} (declared tolerance {absolute_limit:g})"
             )
     if not compared:
         raise VerifyError(
@@ -428,6 +437,8 @@ def verify_store(store_path: Path, package_root: Path, loaded, identity_doc,
         case_worst, compared, rederived, channels = check_case(
             case, evaluate, bindings, catalog_entries, objectives,
             package_inputs, identity_digest,
+            {entry["channel"]: entry["value"]
+             for entry in loaded.data.get("absolute_tolerances", [])},
         )
         compared_channels |= set(compared)
         for entry in rederived:
@@ -500,7 +511,7 @@ def build_summary(package_root: Path, manifest_path: Path, identity_path: Path,
     oracle_block = loaded.data["oracle"]
     worst = max((s["worst_channel_rel_dev"] for s in stores), default=0.0)
     objectives = objective_channels(loaded)
-    return {
+    summary = {
         "schema_version": SUMMARY_SCHEMA_VERSION,
         "tool": {
             "path": "scripts/study/verify.py",
@@ -550,6 +561,9 @@ def build_summary(package_root: Path, manifest_path: Path, identity_path: Path,
         "worst_channel_rel_dev": worst,
         "outcome": "pass",
     }
+    if loaded.data.get("absolute_tolerances"):
+        summary["absolute_tolerances"] = loaded.data["absolute_tolerances"]
+    return summary
 
 
 # ----------------------------------------------------------------------- CLI
@@ -584,10 +598,13 @@ def main(argv: list[str] | None = None) -> int:
         print(str(exc), file=sys.stderr)
         return 1
 
+    comparison_rule = f"rel < {TOLERANCE:g}"
+    if summary.get("absolute_tolerances"):
+        comparison_rule += f" or declared absolute tolerance ({len(summary['absolute_tolerances'])} channels)"
     print(
         f"[verify] {len(summary['stores'])} store(s), "
         f"{sum(s['sampling']['sampled_rows'] for s in summary['stores'])} sampled rows, "
-        f"{len(summary['channels_checked'])} channels at rel < {TOLERANCE:g}, "
+        f"{len(summary['channels_checked'])} channels at {comparison_rule}, "
         f"worst {summary['worst_channel_rel_dev']:.2e}, "
         f"{len(summary['constraints_rederived'])} verdicts re-derived",
         file=sys.stderr,

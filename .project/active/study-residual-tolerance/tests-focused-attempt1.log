@@ -1,0 +1,132 @@
+F..F..................                                                   [100%]
+=================================== FAILURES ===================================
+____________ test_actual_native_roundoff_requires_named_declaration ____________
+
+    def test_actual_native_roundoff_requires_named_declaration():
+        with pytest.raises(verify.VerifyError, match='channel off tolerance'):
+            run_check()
+>       worst, compared, rederived, _ = run_check(tolerances={'residual': 1e-7})
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/study/test_absolute_tolerances.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/study/test_absolute_tolerances.py:30: in run_check
+    return verify.check_case(case, lambda _: {'residual': expected, 'other': 100.0},
+scripts/study/verify.py:381: in check_case
+    satisfied, resolved = derive_verdict(
+scripts/study/verify.py:239: in derive_verdict
+    value, count = evaluate_operand(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'balance', operand = {'kind': 'feature', 'name': 'residual'}
+bindings = {'balance': {'residual': {'key': 'residual', 'kind': 'channel'}}}
+case_inputs = {}, package_inputs = {}
+channels = {'other': 100.0, 'residual': 9.094947017729282e-13}
+
+    def evaluate_operand(constraint_id: str, operand: dict, bindings: dict,
+                         case_inputs, package_inputs, channels) -> tuple[float, int]:
+        """Evaluate literals, bound features and binary products; count feature occurrences.
+    
+        Other arithmetic remains unsupported and refuses explicitly. Values come from
+        declared inputs and independent oracle channels, never generated predicates.
+        """
+        kind = operand["kind"]
+        if kind == "literal":
+            return float(operand["literal"]["value"]), 0
+        if kind == "feature_ref":
+            return resolve_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            ), 1
+        if kind == "operator":
+            operator = operand.get("operator")
+            if operator != "*":
+                raise VerifyError(f"{constraint_id}: unsupported arithmetic operator {operator!r}")
+            children = operand.get("operands", [])
+            if len(children) != 2:
+                raise VerifyError(
+                    f"{constraint_id}: expected two multiplication operands, found {len(children)}"
+                )
+            left, left_count = evaluate_operand(
+                constraint_id, children[0], bindings, case_inputs, package_inputs, channels
+            )
+            right, right_count = evaluate_operand(
+                constraint_id, children[1], bindings, case_inputs, package_inputs, channels
+            )
+            return left * right, left_count + right_count
+>       raise VerifyError(f"{constraint_id}: operand kind {kind!r} cannot be re-derived")
+E       scripts.study.verify.VerifyError: balance: operand kind 'feature' cannot be re-derived
+
+scripts/study/verify.py:205: VerifyError
+_____ test_absolute_declaration_does_not_relax_other_channels_or_verdicts ______
+
+    def test_absolute_declaration_does_not_relax_other_channels_or_verdicts():
+        with pytest.raises(verify.VerifyError, match='channel off tolerance'):
+            run_check(tolerances={'residual': 1e-7}, other_got=101.0)
+        with pytest.raises(verify.VerifyError, match='verdict mismatch'):
+>           run_check(tolerances={'residual': 1e-7}, verdict='violated')
+
+tests/study/test_absolute_tolerances.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/study/test_absolute_tolerances.py:30: in run_check
+    return verify.check_case(case, lambda _: {'residual': expected, 'other': 100.0},
+scripts/study/verify.py:381: in check_case
+    satisfied, resolved = derive_verdict(
+scripts/study/verify.py:239: in derive_verdict
+    value, count = evaluate_operand(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+constraint_id = 'balance', operand = {'kind': 'feature', 'name': 'residual'}
+bindings = {'balance': {'residual': {'key': 'residual', 'kind': 'channel'}}}
+case_inputs = {}, package_inputs = {}
+channels = {'other': 100.0, 'residual': 9.094947017729282e-13}
+
+    def evaluate_operand(constraint_id: str, operand: dict, bindings: dict,
+                         case_inputs, package_inputs, channels) -> tuple[float, int]:
+        """Evaluate literals, bound features and binary products; count feature occurrences.
+    
+        Other arithmetic remains unsupported and refuses explicitly. Values come from
+        declared inputs and independent oracle channels, never generated predicates.
+        """
+        kind = operand["kind"]
+        if kind == "literal":
+            return float(operand["literal"]["value"]), 0
+        if kind == "feature_ref":
+            return resolve_operand(
+                constraint_id, operand, bindings, case_inputs, package_inputs, channels
+            ), 1
+        if kind == "operator":
+            operator = operand.get("operator")
+            if operator != "*":
+                raise VerifyError(f"{constraint_id}: unsupported arithmetic operator {operator!r}")
+            children = operand.get("operands", [])
+            if len(children) != 2:
+                raise VerifyError(
+                    f"{constraint_id}: expected two multiplication operands, found {len(children)}"
+                )
+            left, left_count = evaluate_operand(
+                constraint_id, children[0], bindings, case_inputs, package_inputs, channels
+            )
+            right, right_count = evaluate_operand(
+                constraint_id, children[1], bindings, case_inputs, package_inputs, channels
+            )
+            return left * right, left_count + right_count
+>       raise VerifyError(f"{constraint_id}: operand kind {kind!r} cannot be re-derived")
+E       scripts.study.verify.VerifyError: balance: operand kind 'feature' cannot be re-derived
+
+scripts/study/verify.py:205: VerifyError
+
+During handling of the above exception, another exception occurred:
+
+    def test_absolute_declaration_does_not_relax_other_channels_or_verdicts():
+        with pytest.raises(verify.VerifyError, match='channel off tolerance'):
+            run_check(tolerances={'residual': 1e-7}, other_got=101.0)
+>       with pytest.raises(verify.VerifyError, match='verdict mismatch'):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'verdict mismatch'
+E         Actual message: "balance: operand kind 'feature' cannot be re-derived"
+
+tests/study/test_absolute_tolerances.py:52: AssertionError
+=========================== short test summary info ============================
+FAILED tests/study/test_absolute_tolerances.py::test_actual_native_roundoff_requires_named_declaration
+FAILED tests/study/test_absolute_tolerances.py::test_absolute_declaration_does_not_relax_other_channels_or_verdicts
+2 failed, 20 passed in 0.19s

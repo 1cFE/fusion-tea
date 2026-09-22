@@ -103,3 +103,31 @@ T-005 · native coding prerequisite · numerical mismatch evidence and reviewed 
 - **Decision:** complete validator reports 182 plain EXPOSE diagnostics at L6 despite executed native forwards; retain narrow reviewed static-tool exception with L1–L5 passing and full native evidence; execution detail; author/reviewer; WI-089 validation evidence and review. No complete-validator pass is claimed.
 - **Decision:** 40 native cases produced 30 evaluated results and 10 intended refusals; three development-harness fixes changed error matching/import/channel access but not the sealed model. These were native implementation-stage corrections, not retries of a returned failed goal task; preserve attempts and source identities; execution detail; author/coordinator with reviewer evidence; WI-089 retained attempt files. No goal task has returned MECHANICAL_FAILURE or consumed an identical-task retry.
 - **Decision:** native accepted behavior satisfies SV-133; mark passing through the owning PM; execution detail; coordinator; `modeling_project/VALIDATION_MATRIX.md`. Formal item closure remains owner-held.
+
+### T-005 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `.project/active/study-residual-tolerance/spec.md`, `reproduction.json`, `implementation.md`, 62-test focused log and independent `review.md`; native independent comparison receipt in the study preparation directory (unpinned until tooling checkpoint).
+- **Reading:** independent numerical methods agree on physical channels but differ at roundoff-sized conservation residuals. The default verifier's relative-only rule rejects these near-zero values. Explicit per-channel absolute accuracy now supports this case without altering any model, ordinary channel comparison or exact engineering verdict requirement.
+- **Decision:** actual native 7.539e-9 MW residual versus independent 9.095e-13 MW residual; permit explicitly declared 1e-7 MW numerical comparison only for residual_magnitude because it is above solver termination and below minimum engineering tolerance; execution detail; coordinator implementation and fresh reviewer acceptance; new manifest optional declaration, verifier/schema/tests and coding record. Historical evidence remains unchanged.
+
+### T-003 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `exploration/aries_integrated/studies/` route, interface, manifest, axes and ANNEX; draft study protocol, independent range scan and numerical-check receipts. Exact package is the reviewed WI-089 seal at `71b2867a`.
+- **Reading:** fourteen complete 122-entry points cover four modes/scenarios, density sensitivity, independently supplied fuel/thermal ratings, one compressor ratio and helium exchanger conductance. All nine declared indicator groups are reachable; none needs the no-response assumption ruling. No study sweep has run. Independent checking of four retained native baselines passes 120 scalar comparisons and 40 exact verdict comparisons under the reviewed residual-only absolute tolerance.
+- **Decision:** reused capacity assertions share the short local name `capacity_ok`; the baseline manifest schema cannot pin them individually by short name. Pin the two unique baseline assertions and retain/export/independently verify all ten full constraint identities; execution detail; coordinator and study executor; ANNEX, manifest and process finding in draft study. No assertion is dropped from stored evidence or native verification.
+- **Decision:** baseline read observer declares route Python sources but not arbitrary JSON metadata; store the exact reviewed interface as `interface_data.py` and assert it against both sealed fingerprints and runtime schema; execution detail; study executor/coordinator; route/interface source. No acquisition or read-coverage control was disabled.
+
+### T-006 scope
+
+- **Objective:** obtain one native verified CANDIDATE for the accepted integrated ARIES package.
+- **Why now:** accepted model T-004 and prepared consumer T-003 are available; explicit numerical comparison prerequisite T-005 is reviewed.
+- **Scope:** invoke the native integration seam with fixed accepted lineage, tracked snapshot/census, final manifest/groups and package-owned baseline route. Preserve gate refusals. No model changes, study sweep or promotion of a different package.
+- **Inputs:** `goal.md`, WI-089@71b2867a, executable `469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7`, semantic `35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97`, TEAx `8d877460ac4f6f264561d916e40c1708adb13397`.
+- **Done when:** native integration returns CANDIDATE with unchanged package, verified baseline and the exact expected fingerprints, or a named blocker.
+- **Stop when:** native seam refuses, owner gate binds, or a declared cap is reached.
+
+### T-006 start — 2026-09-22
+
+T-006 · `scripts/integrate.py` via goal `evidence/integrate.py` · first native integration return expected after metadata/tooling checkpoint.
