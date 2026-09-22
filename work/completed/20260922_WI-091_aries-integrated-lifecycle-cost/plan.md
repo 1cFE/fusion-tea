@@ -1,7 +1,7 @@
 ---
-Status: active
+Status: complete
 Created: 2026-09-22
-Updated: 2026-09-22
+Updated: '2026-09-22'
 ---
 
 # Persistent lifecycle implementation plan

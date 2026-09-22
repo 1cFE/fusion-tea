@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-22. [OWNER] Issuance of evidence/owner-brief.md authorizes this named goal and execution. The supplemental instruction is retained verbatim in evidence/owner-supplement.md.
+`closed` — 2026-09-22. [OWNER] Closure authorized after the independent final PASS. [OWNER] Issuance of evidence/owner-brief.md authorizes this named goal and execution. The supplemental instruction is retained verbatim in evidence/owner-supplement.md.
 
 ## Question
 
@@ -54,3 +54,7 @@ Owner-held after the answer contract and applicable independent review pass. Iss
 ### Answered assessment — 2026-09-22
 
 [AGENT] Round 1 supplies the positive conditional answer. Independent final review passes; see answer.md and evidence/final-review.md. The grounded contract and owner-held formal closure rule remain unchanged.
+
+### Owner closure — 2026-09-22
+
+[OWNER-VERBATIM] “excellent, please close the goal”. The conditional goal is closed; WI-091 is archived at `work/completed/20260922_WI-091_aries-integrated-lifecycle-cost`. The accepted answer and prompt-04 handoff remain available.

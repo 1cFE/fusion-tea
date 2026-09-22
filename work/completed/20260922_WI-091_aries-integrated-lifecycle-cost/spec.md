@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: null
 Owner: reid
 Created: 2026-09-22
-Updated: 2026-09-22
+Updated: '2026-09-22'
 ---
 
 # Conditional integrated lifecycle cost

@@ -164,3 +164,9 @@ Continuing study executor is released after the CANDIDATE checkpoint. The coordi
 - **Artifact movement:** Live WI-091 report/plan and CURRENT_WORK now describe delivered study/review status. Their frozen copies preserve the original freeze-time documentation. Model, proposals, package, snapshot and results did not move. Study record.md receives only a final-review addendum.
 - **Review budget:** The initial 12-call allowance was extended by three focused calls to align the review script with actual native headline schemas and finish store comparisons; 13 calls were used. These review-script corrections changed neither study evidence nor task execution meaning, and did not extend any goal retry, round or checkpoint cap.
 - **Remaining uncertainty/recommendation:** Retain unqualified scientific/supply boundaries and mismatched source conventions. Consume the sealed case in prompt 04; the goal and WI-091 are ready for owner-held formal closure.
+
+### Owner closure — 2026-09-22
+
+[OWNER-VERBATIM] “excellent, please close the goal”. The owner authorizes closure following the accepted answer and independent final PASS at `2190b85d`.
+
+Native `pm close-item WI-091` succeeded, archiving the item to `work/completed/20260922_WI-091_aries-integrated-lifecycle-cost` and updating its metadata and backlog state. Current answer, validation and status links follow the archive. Historical references and frozen study bytes retain their original content. The goal is closed with its accepted learnings and prompt-04 handoff preserved. Closure does not change the model, conditional assumptions, source failures or scientific qualification limits.
