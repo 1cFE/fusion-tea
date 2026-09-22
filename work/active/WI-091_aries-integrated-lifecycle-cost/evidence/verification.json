@@ -1,0 +1,961 @@
+{
+  "passed": true,
+  "fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
+  "cases": 34,
+  "evaluated": 23,
+  "refused": 11,
+  "checks": [
+    {
+      "case": "no-breeding-credit",
+      "expected": {
+        "integrated": {
+          "lcoe": 1119.4080833905023,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 996.6919114122455,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 0.0,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 473.9514539717135,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 421.70711935232225,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 0.0,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "assumed-new-tritium-feed-100",
+      "expected": {
+        "integrated": {
+          "lcoe": 176.68656941009704,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 75.0795764535829,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "nominal-source-assumed",
+      "expected": {
+        "integrated": {
+          "lcoe": 767.4209310802514,
+          "pv_energy": 101702854.98062491,
+          "contributions": {
+            "capital": 49.51591654966938,
+            "om": 11.810249033898168,
+            "tritium": 702.1888264913279,
+            "deuterium": 0.015563015057788693,
+            "consumables": 0.843589216707012,
+            "imports": 0.0,
+            "supply": 0.0,
+            "replacement": 1.7546730224186864,
+            "other_overhaul": 0.8060480804400194,
+            "terminal": 0.6075820884156276,
+            "salvage": -0.12151641768312552
+          }
+        },
+        "source_comparison": {
+          "lcoe": 611.1934076833633,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 558.9460189822776,
+            "deuterium": 0.012388242281465102,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 0.0,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "expected": {
+        "integrated": {
+          "lcoe": 756.9498247890672,
+          "pv_energy": 103109740.04716916,
+          "contributions": {
+            "capital": 48.840294600490644,
+            "om": 11.649103607769087,
+            "tritium": 692.6077823200116,
+            "deuterium": 0.015350664862111838,
+            "consumables": 0.8320788291263633,
+            "imports": 0.0,
+            "supply": 0.0,
+            "replacement": 1.7307313145763468,
+            "other_overhaul": 0.7950499244290651,
+            "terminal": 0.5992919097525772,
+            "salvage": -0.11985838195051544
+          }
+        },
+        "source_comparison": {
+          "lcoe": 611.1934076833633,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 558.9460189822776,
+            "deuterium": 0.012388242281465102,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 0.0,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "expected": {
+        "integrated": {
+          "lcoe": 737.8553703208381,
+          "pv_energy": 102968456.5016001,
+          "contributions": {
+            "capital": 48.90730861839707,
+            "om": 11.665087402382746,
+            "tritium": 673.4254918329193,
+            "deuterium": 0.014923701044850475,
+            "consumables": 0.8332205287416247,
+            "imports": 0.0,
+            "supply": 0.0,
+            "replacement": 1.733106059861054,
+            "other_overhaul": 0.7961408164948891,
+            "terminal": 0.6001142012456946,
+            "salvage": -0.12002284024913892
+          }
+        },
+        "source_comparison": {
+          "lcoe": 594.9679484692587,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 542.720920837632,
+            "deuterium": 0.012027172822522567,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 0.0,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "zero_discount",
+      "expected": {
+        "integrated": {
+          "lcoe": 120.24581287694875,
+          "pv_energy": 126018127.55751887,
+          "contributions": {
+            "capital": 34.52049760074732,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.43909331458831,
+            "other_overhaul": 1.726024880037366,
+            "terminal": 3.452049760074732,
+            "salvage": -0.6904099520149465
+          }
+        },
+        "source_comparison": {
+          "lcoe": 53.5537241105455,
+          "pv_energy": 297840000.0,
+          "contributions": {
+            "capital": 16.974798415256515,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.4551037469782433,
+            "other_overhaul": 0.8487399207628257,
+            "terminal": 1.6974798415256513,
+            "salvage": -0.3394959683051303
+          }
+        }
+      }
+    },
+    {
+      "case": "zero_construction",
+      "expected": {
+        "integrated": {
+          "lcoe": 164.00222638142262,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 80.47164490832307,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 75.0795764535829,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "terminal_high",
+      "expected": {
+        "integrated": {
+          "lcoe": 177.82963438077988,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 2.286129941365687,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 75.6416569217527,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 1.1241609363395915,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "salvage_zero",
+      "expected": {
+        "integrated": {
+          "lcoe": 176.9151824042336,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.0
+          }
+        },
+        "source_comparison": {
+          "lcoe": 75.19199254721686,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.0
+          }
+        }
+      }
+    },
+    {
+      "case": "overhaul_at_end",
+      "expected": {
+        "integrated": {
+          "lcoe": 175.17012357832516,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 0.0,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 74.33389304543219,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.0,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "overhaul_after_end",
+      "expected": {
+        "integrated": {
+          "lcoe": 175.17012357832516,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 0.0,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 74.33389304543219,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.0,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "no_replacements",
+      "expected": {
+        "integrated": {
+          "lcoe": 173.3854430188316,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 0.0,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 73.68284744922492,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 0.0,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "end_replacement_excluded",
+      "expected": {
+        "integrated": {
+          "lcoe": 209.40482263799322,
+          "pv_energy": 39261610.31487087,
+          "contributions": {
+            "capital": 128.26550005709598,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 0.0,
+            "other_overhaul": 0.0,
+            "terminal": 4.175956634226606,
+            "salvage": -0.8351913268453212
+          }
+        },
+        "source_comparison": {
+          "lcoe": 89.04392565712956,
+          "pv_energy": 92793618.21055274,
+          "contributions": {
+            "capital": 54.484069675225186,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 0.0,
+            "other_overhaul": 0.0,
+            "terminal": 2.053447284471216,
+            "salvage": -0.4106894568942432
+          }
+        }
+      }
+    },
+    {
+      "case": "oversupply",
+      "expected": {
+        "integrated": {
+          "lcoe": 132.23861151341225,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 0.0,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 56.27334348321071,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 0.0,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "internal_recycle",
+      "expected": {
+        "integrated": {
+          "lcoe": 334.9709826450866,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 202.72884878653198,
+            "deuterium": 0.02558334892891382,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 142.05078709491363,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 85.77595328354197,
+            "deuterium": 0.010824488747892746,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "supply_cost_high",
+      "expected": {
+        "integrated": {
+          "lcoe": 198.9055949921268,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 93.1559879369975,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 31.741465117185356,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5164458317718812,
+            "terminal": 1.1430649706828435,
+            "salvage": -0.2286129941365687
+          }
+        },
+        "source_comparison": {
+          "lcoe": 84.4805971358284,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 13.430029546065,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "low_availability",
+      "expected": {
+        "integrated": {
+          "lcoe": 185.68337752436904,
+          "pv_energy": 38159222.34579094,
+          "contributions": {
+            "capital": 131.97098291074647,
+            "om": 31.47695290787548,
+            "tritium": 0.0,
+            "deuterium": 0.022061003786527134,
+            "consumables": 2.248353779133963,
+            "imports": 0.0,
+            "supply": 13.490122674803777,
+            "replacement": 3.0311323529054452,
+            "other_overhaul": 2.148298261676832,
+            "terminal": 1.619342041800695,
+            "salvage": -0.32386840836013897
+          }
+        },
+        "source_comparison": {
+          "lcoe": 79.020473970489,
+          "pv_energy": 90188157.87659478,
+          "contributions": {
+            "capital": 56.05806880896556,
+            "om": 13.318112633181126,
+            "tritium": 0.0,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.9512937595129376,
+            "imports": 0.0,
+            "supply": 5.707762557077626,
+            "replacement": 1.2824926923588527,
+            "other_overhaul": 1.056384828213506,
+            "terminal": 0.7962806632405439,
+            "salvage": -0.15925613264810878
+          }
+        }
+      }
+    },
+    {
+      "case": "long_life",
+      "expected": {
+        "integrated": {
+          "lcoe": 167.3669233883018,
+          "pv_energy": 59635840.548587285,
+          "contributions": {
+            "capital": 84.44435483358079,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.4369612586894274,
+            "other_overhaul": 1.3746329435167883,
+            "terminal": 0.3905213487485631,
+            "salvage": -0.07810426974971262
+          }
+        },
+        "source_comparison": {
+          "lcoe": 71.07078590926555,
+          "pv_energy": 140947489.80367208,
+          "contributions": {
+            "capital": 35.8699113197565,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.4542016596420053,
+            "other_overhaul": 0.6759496164001709,
+            "terminal": 0.1920314489243468,
+            "salvage": -0.03840628978486936
+          }
+        }
+      }
+    },
+    {
+      "case": "high_discount",
+      "expected": {
+        "integrated": {
+          "lcoe": 270.0478480242281,
+          "pv_energy": 30808441.52081581,
+          "contributions": {
+            "capital": 187.93964211587542,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.0106234328510757,
+            "other_overhaul": 1.049437650400559,
+            "terminal": 0.311984439481344,
+            "salvage": -0.06239688789626881
+          }
+        },
+        "source_comparison": {
+          "lcoe": 104.26300216001984,
+          "pv_energy": 72814811.64978868,
+          "contributions": {
+            "capital": 69.43331782984393,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.2738152289440041,
+            "other_overhaul": 0.5160410133990733,
+            "terminal": 0.153412416881788,
+            "salvage": -0.030682483376357598
+          }
+        }
+      }
+    },
+    {
+      "case": "insufficient_he_rating",
+      "expected": {
+        "integrated": {
+          "lcoe": 175.62640715124664,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 92.12278697196273,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.4996268024050379,
+            "terminal": 1.1303871401218526,
+            "salvage": -0.22607742802437053
+          }
+        },
+        "source_comparison": {
+          "lcoe": 75.0795764535829,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "sufficient_he_rating",
+      "expected": {
+        "integrated": {
+          "lcoe": 177.74743891528428,
+          "pv_energy": 54058898.323203824,
+          "contributions": {
+            "capital": 94.18987816218242,
+            "om": 22.21902558202975,
+            "tritium": 44.44795789668481,
+            "deuterium": 0.022061003786527134,
+            "consumables": 1.587073255859268,
+            "imports": 0.0,
+            "supply": 9.522439535155607,
+            "replacement": 3.3011263912654267,
+            "other_overhaul": 1.5332760813050803,
+            "terminal": 1.1557512587692256,
+            "salvage": -0.2311502517538451
+          }
+        },
+        "source_comparison": {
+          "lcoe": 75.0795764535829,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "other_electric_demand",
+      "expected": {
+        "integrated": {
+          "lcoe": 180.96358861988864,
+          "pv_energy": 52781232.7532854,
+          "contributions": {
+            "capital": 95.41099776170512,
+            "om": 22.756877437745057,
+            "tritium": 45.52390141856557,
+            "deuterium": 0.022595030437773382,
+            "consumables": 1.6254912455532184,
+            "imports": 0.0,
+            "supply": 9.75294747331931,
+            "replacement": 3.381036149186084,
+            "other_overhaul": 1.5531541564326128,
+            "terminal": 1.1707349336798782,
+            "salvage": -0.23414698673597564
+          }
+        },
+        "source_comparison": {
+          "lcoe": 75.0795764535829,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 18.806232970372193,
+            "deuterium": 0.00933416058695099,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "higher_plasma_demand",
+      "expected": {
+        "integrated": {
+          "lcoe": 204.53151289693298,
+          "pv_energy": 73556612.88910359,
+          "contributions": {
+            "capital": 68.46305019068858,
+            "om": 16.329409384177108,
+            "tritium": 107.34384187375893,
+            "deuterium": 0.017875135204333703,
+            "consumables": 1.166386384584079,
+            "imports": 0.0,
+            "supply": 6.998318307504475,
+            "replacement": 2.426093982963946,
+            "other_overhaul": 1.1144802324706582,
+            "terminal": 0.8400717569760958,
+            "salvage": -0.16801435139521917
+          }
+        },
+        "source_comparison": {
+          "lcoe": 118.07333128503684,
+          "pv_energy": 127766556.99184261,
+          "contributions": {
+            "capital": 39.570401512210985,
+            "om": 9.401020682245502,
+            "tritium": 61.79903105036597,
+            "deuterium": 0.010290912047113462,
+            "consumables": 0.67150147730325,
+            "imports": 0.0,
+            "supply": 4.0290088638195005,
+            "replacement": 1.3967290043579723,
+            "other_overhaul": 0.7456834081507101,
+            "terminal": 0.5620804681697957,
+            "salvage": -0.11241609363395914
+          }
+        }
+      }
+    },
+    {
+      "case": "nonpositive_energy",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "negative_discount",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "unsupported_discount",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "fractional_life",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "zero_life",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "invalid_overhaul",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "invalid_replacement",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "double_source_financing",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "negative_source_financing",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "nonfinite_source_financing",
+      "expected_refusal": true,
+      "upstream_files": 0
+    },
+    {
+      "case": "infinite_source_financing",
+      "expected_refusal": true,
+      "upstream_files": 0
+    }
+  ]
+}

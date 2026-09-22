@@ -1,5 +1,5 @@
 ---
-Status: draft
+Status: active
 Created: 2026-09-22
 Updated: 2026-09-22
 ---
@@ -8,7 +8,7 @@ Updated: 2026-09-22
 
 Related Artifacts: spec.md; plan.md; work/orchestration/goals/aries-integrated-lcoe/goal.md.
 
-All choices below are [AGENT] proposals for independent review. Retained source numbers remain [INHERITED] under the WI-090 financial handoff. No implementation has been released.
+All choices below retain [AGENT] authority. Retained source numbers remain [INHERITED] under the WI-090 financial handoff. Independent design review passed and coordinator released implementation; the native result and validation limits are in report.md.
 
 ## Architecture and reuse
 

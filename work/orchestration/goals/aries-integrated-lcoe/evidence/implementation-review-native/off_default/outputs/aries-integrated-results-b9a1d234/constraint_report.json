@@ -1,0 +1,156 @@
+{
+  "assessed_entry_count": 14,
+  "catalog_fingerprint": "b2fdfd4e0b31a376f963243a06c935cdb4295e916d307d31cfaddc9ade75ce5f",
+  "coverage": {
+    "applicable_gate_total": 14,
+    "assessed_gate_count": 14,
+    "authored_usage_total": 14,
+    "coverage_state": "complete",
+    "inapplicable_gate_count": 0,
+    "unassessed_gate_count": 0,
+    "unassessed_reasons": {}
+  },
+  "headline": "full_satisfaction",
+  "results": [
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 928.3404699173973
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 1458.4195344065724
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 227.14905157213934
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 9.937990999710028
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 760.4738113517697
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 495.68230754778847
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 1.7618672870609994e+22
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 603.454833859811
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 1144.6450731777445
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+      "margin": 2.2403890472406306e-06,
+      "observed": {
+        "tolerance_in": 2.2403890472406306e-06,
+        "unmet_in": 0.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+      "margin": 2.2328500182839593e-06,
+      "observed": {
+        "magnitude_in": 7.539028956671245e-09,
+        "tolerance_in": 2.2403890472406306e-06
+      },
+      "status": "satisfied"
+    }
+  ]
+}

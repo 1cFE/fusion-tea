@@ -1,6 +1,6 @@
 # Integrated ARIES LCOE — in progress — 2026-09-22
 
-[OWNER] Issued prompt 03 and required separate no-breeding-credit and explicit tritium-supply scenarios, no double-counted exhaust recycling, complete terminal costs, financing once and one replacement convention. [AGENT] The [goal](../work/orchestration/goals/aries-integrated-lcoe/goal.md) is grounded; [trail](../work/orchestration/goals/aries-integrated-lcoe/trail.md) records the run. Native WI-091 is registered. Design authoring and retained-source/fuel-boundary investigation are underway before independent review and implementation. Formal closure remains owner-held.
+[OWNER] Issued prompt 03 and required separate no-breeding-credit and explicit tritium-supply scenarios, no double-counted exhaust recycling, complete terminal costs, financing once and one replacement convention. [AGENT] The [goal](../work/orchestration/goals/aries-integrated-lcoe/goal.md) is grounded; [trail](../work/orchestration/goals/aries-integrated-lcoe/trail.md) records the run. Native WI-091 is registered. Source/math/design review passes. The native package is implemented at `e44a0ded`; 34 development cases pass (23 evaluated, 11 expected refusals). Executed integration review and study preparation are underway, including retained upstream evidence for the nonpositive-power refusal. The source capital branch guards its construction duration at zero. Formal closure remains owner-held.
 
 # Integrated ARIES equipment and costs — closed — 2026-09-22
 

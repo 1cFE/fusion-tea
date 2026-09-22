@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/work/active/WI-091_aries-integrated-lifecycle-cost/evidence/probe.py", line 6, in <module>
+    row=execute_case('base',{PREFIX+'source__producer_mode':1.},load_runtime(),root=root)
+                                                                ^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/aries_integrated/run.py", line 22, in load_runtime
+    from simkit.evaluation.package_load import ProvisionalPackageLoader
+ModuleNotFoundError: No module named 'simkit'
