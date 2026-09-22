@@ -11,7 +11,7 @@ package aries_integrated_plant {
     private import dual_circuit_heat_accounting::*;
     private import ideal_gas_brayton_components::*;
     part source {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: source owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: source owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute reference_fusion_mw : Real = 2436.0;
         attribute producer_mode : Real = 0.0;
         calc evaluate : 'Fusion Source Selector' {
@@ -23,7 +23,7 @@ package aries_integrated_plant {
         attribute selected_mode : Real = evaluate.selected_mode;
     }
     part deposition {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: deposition owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: deposition owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute heat_mode : Real = 0.0;
         attribute neutron_multiplier : Real = 1.16;
         attribute radiation_fraction : Real = 0.25;
@@ -76,7 +76,7 @@ package aries_integrated_plant {
         attribute pump_recovered : Real = evaluate.pump_recovered;
     }
     part he_coolant {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: he_coolant owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: he_coolant owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         calc evaluate : 'Coolant Branch Heat' {
             in deposited_heat_in = deposition.he_deposition;
             in received_exchange_in = deposition.exchange;
@@ -86,7 +86,7 @@ package aries_integrated_plant {
         attribute delivered_heat : Real = evaluate.delivered_heat;
     }
     part pbli_coolant {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: pbli_coolant owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: pbli_coolant owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         calc evaluate : 'Coolant Branch Heat' {
             in deposited_heat_in = deposition.pbli_deposition;
             in received_exchange_in = deposition.topology_zero;
@@ -96,7 +96,7 @@ package aries_integrated_plant {
         attribute delivered_heat : Real = evaluate.delivered_heat;
     }
     part divertor_coolant {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: divertor_coolant owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: divertor_coolant owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         calc evaluate : 'Coolant Branch Heat' {
             in deposited_heat_in = deposition.divertor_deposition;
             in received_exchange_in = deposition.topology_zero;
@@ -106,7 +106,7 @@ package aries_integrated_plant {
         attribute delivered_heat : Real = evaluate.delivered_heat;
     }
     part fuel {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: fuel owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: fuel owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute reaction_energy_mev : Real = 17.58;
         attribute mev_joules : Real = 1.6021766339999998e-13;
         attribute tritium_atom_kg : Real = 5.008267663228036e-27;
@@ -138,7 +138,7 @@ package aries_integrated_plant {
         attribute tbr_required : Real = evaluate.tbr_required;
     }
     part cycle {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: A3/S3 selected operating conditions, ideal helium. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: A3/S3 selected operating conditions, ideal helium. **Last Updated**: 2026-09-22. */
         attribute selected_flow : Real = 1400.0;
         attribute cp : Real = 5193.0;
         attribute gamma : Real = 1.6666666666666667;
@@ -148,7 +148,7 @@ package aries_integrated_plant {
         attribute recuperator_effectiveness : Real = 0.8;
     }
     part compressor_1 {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: compressor_1 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: compressor_1 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_ratio : Real = 1.5182944859378311;
         attribute efficiency : Real = 0.89;
         calc evaluate : 'Ideal Gas Compressor' {
@@ -165,7 +165,7 @@ package aries_integrated_plant {
         attribute shaft_demand : Real = evaluate.shaft_demand;
     }
     part intercooler_1 {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: intercooler_1 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: intercooler_1 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute target_temperature : Real = 308.15;
         attribute heating_role : Real = 0.0;
         calc evaluate : 'Fixed Outlet Conditioning' {
@@ -181,7 +181,7 @@ package aries_integrated_plant {
         attribute heat_into_fluid : Real = evaluate.heat_into_fluid;
     }
     part compressor_2 {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: compressor_2 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: compressor_2 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_ratio : Real = 1.5182944859378311;
         attribute efficiency : Real = 0.89;
         calc evaluate : 'Ideal Gas Compressor' {
@@ -198,7 +198,7 @@ package aries_integrated_plant {
         attribute shaft_demand : Real = evaluate.shaft_demand;
     }
     part intercooler_2 {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: intercooler_2 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: intercooler_2 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute target_temperature : Real = 308.15;
         attribute heating_role : Real = 0.0;
         calc evaluate : 'Fixed Outlet Conditioning' {
@@ -214,7 +214,7 @@ package aries_integrated_plant {
         attribute heat_into_fluid : Real = evaluate.heat_into_fluid;
     }
     part compressor_3 {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: compressor_3 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: compressor_3 owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_ratio : Real = 1.5182944859378311;
         attribute efficiency : Real = 0.89;
         calc evaluate : 'Ideal Gas Compressor' {
@@ -231,7 +231,7 @@ package aries_integrated_plant {
         attribute shaft_demand : Real = evaluate.shaft_demand;
     }
     part pressure_loss {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: pressure_loss owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: pressure_loss owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute loss_fraction : Real = 0.045;
         calc evaluate : 'Fractional Pressure Loss' {
             in pressure_in = compressor_3.pressure_out;
@@ -240,7 +240,7 @@ package aries_integrated_plant {
         attribute pressure_out : Real = evaluate.pressure_out;
     }
     part heat_exchangers {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: heat_exchangers owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: heat_exchangers owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute he_flow : Real = 3261.0;
         attribute he_cp : Real = 5193.0;
         attribute he_ua : Real = he_hx.ua;
@@ -320,7 +320,7 @@ package aries_integrated_plant {
         attribute pbli_secondary_out : Real = evaluate.pbli_secondary_out;
     }
     part turbine {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: turbine owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: turbine owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         calc evaluate : 'Ideal Gas Expander' {
             in temperature_in = heat_exchangers.turbine_temperature;
             in pressure_in = pressure_loss.pressure_out;
@@ -335,7 +335,7 @@ package aries_integrated_plant {
         attribute shaft_produced : Real = evaluate.shaft_produced;
     }
     part recuperator {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: recuperator owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: recuperator owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         calc evaluate : 'Passive Recuperator' {
             in cold_temperature_in = compressor_3.temperature_out;
             in hot_temperature_in = turbine.temperature_out;
@@ -349,7 +349,7 @@ package aries_integrated_plant {
         attribute bypass_active : Real = evaluate.bypass_active;
     }
     part precooler {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: precooler owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: precooler owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute heating_role : Real = 0.0;
         calc evaluate : 'Fixed Outlet Conditioning' {
             in temperature_in = recuperator.hot_out;
@@ -364,7 +364,7 @@ package aries_integrated_plant {
         attribute heat_into_fluid : Real = evaluate.heat_into_fluid;
     }
     part generator_auxiliaries {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator and auxiliary electrical responsibilities; S/A provenance retained. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator and auxiliary electrical responsibilities; S/A provenance retained. **Last Updated**: 2026-09-22. */
         attribute heating_efficiency : Real = 0.5;
         attribute generator_efficiency : Real = 0.98;
         attribute motor_efficiency : Real = 0.95;
@@ -412,7 +412,7 @@ package aries_integrated_plant {
         attribute primary_pump_electric : Real = evaluate.primary_pump_electric;
     }
     part plant_ledger {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: plant_ledger owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: plant_ledger owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute reference_fusion : Real = 2436.0;
         attribute reference_gross : Real = 1253.0;
         attribute reference_net : Real = 1000.0;
@@ -536,7 +536,7 @@ package aries_integrated_plant {
         }
     }
     part he_capacity {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: he_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: he_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_rating : Real = 1500.0;
         attribute assumed_supported : Boolean = true;
         attribute scenario_applicable : Boolean = true;
@@ -556,7 +556,7 @@ package aries_integrated_plant {
         }
     }
     part pbli_capacity {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: pbli_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: pbli_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_rating : Real = 1800.0;
         attribute assumed_supported : Boolean = true;
         attribute scenario_applicable : Boolean = true;
@@ -576,7 +576,7 @@ package aries_integrated_plant {
         }
     }
     part divertor_capacity {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: divertor_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: divertor_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_rating : Real = 800.0;
         attribute assumed_supported : Boolean = true;
         attribute scenario_applicable : Boolean = true;
@@ -596,7 +596,7 @@ package aries_integrated_plant {
         }
     }
     part compressor_capacity {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: compressor_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: compressor_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_rating : Real = 1600.0;
         attribute assumed_supported : Boolean = true;
         attribute scenario_applicable : Boolean = true;
@@ -616,7 +616,7 @@ package aries_integrated_plant {
         }
     }
     part turbine_capacity {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: turbine_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: turbine_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_rating : Real = 3500.0;
         attribute assumed_supported : Boolean = true;
         attribute scenario_applicable : Boolean = true;
@@ -636,7 +636,7 @@ package aries_integrated_plant {
         }
     }
     part rejection_capacity {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: rejection_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: rejection_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_rating : Real = 2500.0;
         attribute assumed_supported : Boolean = true;
         attribute scenario_applicable : Boolean = true;
@@ -656,7 +656,7 @@ package aries_integrated_plant {
         }
     }
     part generator_capacity {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_rating : Real = 1800.0;
         attribute assumed_supported : Boolean = true;
         attribute scenario_applicable : Boolean = true;
@@ -676,7 +676,7 @@ package aries_integrated_plant {
         }
     }
     part fuel_capacity {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: fuel_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: fuel_capacity owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
         attribute selected_rating : Real = 3e+22;
         attribute assumed_supported : Boolean = true;
         attribute scenario_applicable : Boolean = true;

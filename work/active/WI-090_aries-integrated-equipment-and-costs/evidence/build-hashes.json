@@ -1,6 +1,6 @@
 {
   "sources": {
-    "models/library/analyses/integrated_heat_electricity.sysml": "6a692de868866d48ba463f761e841dbf4666573bf1067a07d74123aeff96b5aa",
+    "models/library/analyses/integrated_heat_electricity.sysml": "0a34724ddf07a7976867a3a07e204d435defef7eac2a2e978f8f7cac9cbf5db5",
     "models/library/analyses/integrated_equipment_costs.sysml": "168622201450221ee40a9465434ed9801f06de8379b520ac01870377a0c4fc2f",
     "models/library/structure/integrated_equipment_parts.sysml": "0a9e0717612957c09db3a397d94eb4db28915946aac34eb5888af60e73c2bc47",
     "models/library/foundation/costed_component.sysml": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
@@ -14,10 +14,10 @@
     "models/library/analyses/dual_circuit_heat_accounting.sysml": "8c311602a904ef499463d7857a7369dca67eb887f75298d9b637fa2816a2b99a",
     "models/library/analyses/ideal_gas_brayton_components.sysml": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499",
     "models/designs/aries_cs_transfer/plasma_integration.sysml": "05aad0f2ccad3ba2af303a357c63b2d163d1a962e4a20734ba74c19b4e70e0e4",
-    "models/designs/aries_cs_integrated/plant.sysml": "6387973f773b3fae97878c919196434eac8c46ac769a37d49655073036c6de2f"
+    "models/designs/aries_cs_integrated/plant.sysml": "938f400c49161fae22d7416c02f7f1aa0092ed59ba86558161ac1850b778db3e"
   },
   "staged": {
-    "models/library/analyses/integrated_heat_electricity.sysml": "6a692de868866d48ba463f761e841dbf4666573bf1067a07d74123aeff96b5aa",
+    "models/library/analyses/integrated_heat_electricity.sysml": "0a34724ddf07a7976867a3a07e204d435defef7eac2a2e978f8f7cac9cbf5db5",
     "models/library/analyses/integrated_equipment_costs.sysml": "168622201450221ee40a9465434ed9801f06de8379b520ac01870377a0c4fc2f",
     "models/library/structure/integrated_equipment_parts.sysml": "0a9e0717612957c09db3a397d94eb4db28915946aac34eb5888af60e73c2bc47",
     "models/library/foundation/costed_component.sysml": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72",
@@ -31,7 +31,7 @@
     "models/library/analyses/dual_circuit_heat_accounting.sysml": "8c311602a904ef499463d7857a7369dca67eb887f75298d9b637fa2816a2b99a",
     "models/library/analyses/ideal_gas_brayton_components.sysml": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499",
     "models/designs/aries_cs_transfer/plasma_integration.sysml": "05aad0f2ccad3ba2af303a357c63b2d163d1a962e4a20734ba74c19b4e70e0e4",
-    "models/designs/aries_cs_integrated/plant.sysml": "6387973f773b3fae97878c919196434eac8c46ac769a37d49655073036c6de2f"
+    "models/designs/aries_cs_integrated/plant.sysml": "938f400c49161fae22d7416c02f7f1aa0092ed59ba86558161ac1850b778db3e"
   },
   "completions": [
     {

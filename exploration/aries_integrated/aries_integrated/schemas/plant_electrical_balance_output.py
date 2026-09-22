@@ -4,7 +4,7 @@ from simkit.config.schema import MultiOutput
 class Plant_Electrical_BalanceOutput(MultiOutput):
     """Multi-output container for Plant_Electrical_Balance.
 
-*Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator/auxiliary owner and electrical energy ledger equations; efficiencies dimensionless, rates atoms/s, all powers MW. **Last Updated**: 2026-09-22.
+*Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator/auxiliary owner and electrical energy ledger equations; efficiencies dimensionless, rates atoms/s, all powers MW. **Last Updated**: 2026-09-22.
 
 SysML Source: root-0/integrated_heat_electricity.sysml:124
     """

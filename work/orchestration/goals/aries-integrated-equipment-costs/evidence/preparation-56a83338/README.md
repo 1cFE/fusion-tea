@@ -1,0 +1,3 @@
+# Preparation receipts at56a83338
+
+[AGENT] Preserved before a citation-only package reseal changed the executable identity. This is prior preparation evidence, not an immutable native study record or new study. It retains four canonical maps/results,1,112 scalar and56 predicate checks,64 oracle scan points,28 complete indicator groups and their exact hashes. The manifest identifies the package and captured source digests; the coordinator supplies the committed live-tool checkpoint. Tool copies from the earlier a24 preservation remain separate historical evidence, not the source identity for these corrected receipts.

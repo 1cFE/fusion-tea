@@ -4,7 +4,7 @@ from simkit.config.schema import MultiOutput
 class Heat_Driven_ClosureOutput(MultiOutput):
     """Multi-output container for Heat_Driven_Closure.
 
-*Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic heat driven closure. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
+*Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic heat driven closure. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
 
 SysML Source: root-0/integrated_heat_electricity.sysml:46
     """

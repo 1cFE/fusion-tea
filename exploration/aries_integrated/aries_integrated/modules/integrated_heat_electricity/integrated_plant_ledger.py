@@ -2,7 +2,7 @@
 
 TEAx module for Integrated_Plant_Ledger calculation.
 
-*Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
+*Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
 
 Inputs:
     - divertor_friction_in: divertor_friction_in parameter
@@ -252,7 +252,7 @@ class Integrated_Plant_LedgerInput(BaseModel):
 class Integrated_Plant_LedgerModule(ModuleBase[Integrated_Plant_LedgerInput, Integrated_Plant_LedgerOutput]):
     """TEAx module for Integrated_Plant_Ledger calculation.
 
-*Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
+*Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
 
 Inputs:
     - divertor_friction_in: divertor_friction_in parameter
@@ -369,7 +369,7 @@ SysML Source: root-0/integrated_heat_electricity.sysml:162
 
     Calculation Specification:
         See documentation:
-*Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
+*Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22.
 
     IMPLEMENTATION: See aries_integrated.handwritten.integrated_heat_electricity.integrated_plant_ledger_impl
     for manual implementation.

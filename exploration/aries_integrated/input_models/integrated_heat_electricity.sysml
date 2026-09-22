@@ -1,7 +1,7 @@
 package integrated_heat_electricity {
     private import ScalarValues::*;
     calc def 'Fusion Source Selector' {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic fusion source selector. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic fusion source selector. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
         in attribute calculated_power_in : Real;
         in attribute reference_power_in : Real;
         in attribute mode_in : Real;
@@ -9,7 +9,7 @@ package integrated_heat_electricity {
         out attribute selected_mode : Real;
     }
     calc def 'Integrated Heat Source' {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated heat source. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated heat source. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
         in attribute fusion_power_in : Real;
         in attribute heat_mode_in : Real;
         in attribute neutron_multiplier_in : Real;
@@ -44,7 +44,7 @@ package integrated_heat_electricity {
         out attribute pump_recovered : Real;
     }
     calc def 'Heat Driven Closure' {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic heat driven closure. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic heat driven closure. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
         in attribute cold_temperature_in : Real;
         in attribute flow_in : Real;
         in attribute cp_in : Real;
@@ -110,7 +110,7 @@ package integrated_heat_electricity {
         out attribute pbli_secondary_out : Real;
     }
     calc def 'Passive Recuperator' {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic passive recuperator. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic passive recuperator. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
         in attribute cold_temperature_in : Real;
         in attribute hot_temperature_in : Real;
         in attribute flow_in : Real;
@@ -122,7 +122,7 @@ package integrated_heat_electricity {
         out attribute bypass_active : Real;
     }
     calc def 'Plant Electrical Balance' {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator/auxiliary owner and electrical energy ledger equations; efficiencies dimensionless, rates atoms/s, all powers MW. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator/auxiliary owner and electrical energy ledger equations; efficiencies dimensionless, rates atoms/s, all powers MW. **Last Updated**: 2026-09-22. */
         in attribute turbine_work_in : Real;
         in attribute compressor_1_in : Real;
         in attribute compressor_2_in : Real;
@@ -160,7 +160,7 @@ package integrated_heat_electricity {
         out attribute primary_pump_electric : Real;
     }
     calc def 'Integrated Plant Ledger' {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
         in attribute fusion_power_in : Real;
         in attribute producer_mode_in : Real;
         in attribute nuclear_gain_in : Real;
@@ -268,13 +268,13 @@ package integrated_heat_electricity {
         out attribute primary_pump_electric : Real;
     }
     constraint def 'Heat Removal Adequate' {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: WI-089 residual tolerance and unmet-removal acceptance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: WI-089 residual tolerance and unmet-removal acceptance. **Last Updated**: 2026-09-22. */
         in unmet_in : Real;
         in tolerance_in : Real;
         unmet_in <= tolerance_in
     }
     constraint def 'Integrated Ledger Balanced' {
-        doc /* **Source**: work/active/WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: WI-089 residual tolerance and unmet-removal acceptance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: WI-089 residual tolerance and unmet-removal acceptance. **Last Updated**: 2026-09-22. */
         in magnitude_in : Real;
         in tolerance_in : Real;
         magnitude_in <= tolerance_in
