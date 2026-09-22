@@ -1,6 +1,6 @@
 # WI-089 executable plan
 
-Status: implementing after independent design PASS
+Status: implementation, native integration and committed study complete; final round review pending; formal closure owner-held
 Created: 2026-09-22
 Updated: 2026-09-22
 Related Artifacts: spec.md; design.md
@@ -25,9 +25,9 @@ Related Artifacts: spec.md; design.md
 
 ## Phase 4: Package and study handoff
 
-- [ ] Provide accepted sealed package, snapshot/census, manifest/oracle, canonical scenario inputs and exact grouped entry-key mapping to coordinator. No promotion before applicable review.
-- [ ] Coordinator runs native integration and one committed study under the goal round. Author repairs only scoped findings; semantic changes discovered by a study follow the reviewed disposition and subsequent round.
-- [ ] Record report, supported boundaries, comparison classification, adverse/unsupported points and successor inventory/cost needs. Update this checklist as work completes. Formal closure remains owner-held.
+- [x] Provide accepted sealed package, snapshot/census, manifest/oracle, canonical scenario inputs and exact grouped entry-key mapping to coordinator. Native candidate accepted after all gates at `a8912fa4`; physical and corrective packaging reviews pass.
+- [x] Coordinator runs native integration and one committed study under the goal round. Author repairs only scoped findings; semantic changes discovered by a study follow the reviewed disposition and subsequent round.
+- [x] Record report, supported boundaries, comparison classification, adverse/unsupported points and successor inventory/cost needs. Update this checklist as work completes. Formal closure remains owner-held.
 
 ## Implementation notes
 
@@ -48,3 +48,5 @@ The normalized executable fingerprint is `cebe17fd3ca0dae4c5102365b384cc40635406
 - [x] Make the normal build write this complete census automatically. The only census change is `derived_against_semantic_fingerprint`; package seal and classifications are unchanged. Evidence: `evidence/census-completion-verification.json`.
 
 Native integration retry and the committed study remain coordinator-owned.
+
+2026-09-22: Native integration passes all gates at `a8912fa4`; the sole fourteen-point study is frozen at `8e6fb2f2`. All points complete; 420 scalar and 140 exact verdict comparisons pass. Six adverse cases remain in the record. The goal answer carries exact identities, assumptions, comparisons, safe replay and inventory/cost handoff. Final round review checks remaining study/closure coverage; original physical and corrective reviews remain valid. Formal item closure is reserved.

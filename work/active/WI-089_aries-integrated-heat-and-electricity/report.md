@@ -1,6 +1,6 @@
 # WI-089 implementation report
 
-Status: physical implementation and packaging correction independently accepted; complete census ready for native integration/study retry
+Status: implementation, native integration and committed study complete; final round review pending; formal closure owner-held
 Created: 2026-09-22
 Updated: 2026-09-22
 
@@ -39,13 +39,13 @@ Complete scoped validation exits 1: levels 1–5 pass; level 6 reports 182 unsup
 
 ## Replay
 
-From the repository root, build with `.codex-test/run python exploration/aries_integrated/build.py`. Execute scenarios with `PYTHONPATH=/home/reid/1cfe/fusion-tea:/home/reid/1cfe/teax/packages/teax-simkit .codex-test/run python exploration/aries_integrated/run.py`; add `--case nominal-calculated` for the thermally closed nominal. Execute development checks with the same PYTHONPATH followed by `.codex-test/run python exploration/aries_integrated/verify.py`. Run scoped validation with `.codex-test/run agentic-mbse validate --complete exploration/aries_integrated/input_models` and expect the documented level-6 failure.
+Use the fresh-directory nominal and study replay commands in `work/orchestration/goals/aries-integrated-heat-electricity/answer.md` and the committed study record. They preserve existing receipts. The development build, `run.py` and `verify.py` are authoring workflows that write work-item evidence. Scoped validation uses `.codex-test/run agentic-mbse validate --complete exploration/aries_integrated/input_models`; expect the documented level-6 failure.
 
-The supported native study/integration route, manifest/oracle and exact grouped entry map are coordinated under `exploration/aries_integrated/studies/`. Development executions above do not substitute for a committed native study. The owner retains formal item/goal closure.
+The native candidate passes all integration gates at `a8912fa4`; see goal `evidence/integration-attempt3/integration_return.json`. The combined fourteen-point study is frozen at `exploration/aries_integrated/studies/20260922-integrated-heat-electricity/@8e6fb2f2`. All points completed; 420 selected scalar and 140 exact verdict comparisons pass, with six adverse cases retained. The owner retains formal item/goal closure.
 
 ## Handoff
 
-The goal coordinator can promote this reviewed package and run the single committed study with explicit calculated-mode baseline overrides. Preserve the literal source failures and compare only matching source boundaries. Inventory/cost work receives fixed chosen flows, UA, temperature bounds, ratios and offered ratings; it still needs actual equipment geometry/materials, machine/hydraulic maps, cost/installation inventories and qualified breeding/magnet inputs. It must not price unmet demand as installed hardware.
+The goal coordinator promoted the sole native candidate and committed the combined study with explicit calculated-mode baseline overrides. Preserve the literal source failures and compare only matching source boundaries. Inventory/cost work receives fixed chosen flows, UA, temperature bounds, ratios and offered ratings; it still needs actual equipment geometry/materials, machine/hydraulic maps, cost/installation inventories and qualified breeding/magnet inputs. It must not price unmet demand as installed hardware.
 
 ## T-007: Normalize the exact integration regeneration route
 
