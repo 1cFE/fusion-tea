@@ -1,60 +1,48 @@
-# ARIES transfer experiment: first implemented results
+# ARIES model transfer: implemented components and remaining work
 
-[AGENT] The first two increments demonstrate that some components transfer unchanged and that a missing profile relationship can be added through the existing modeling tools. They do not yet evaluate the complete ARIES plant. This is post-reveal development, with the original unsuccessful comparison preserved.
+[AGENT] The experiment demonstrates useful component reuse, but does not yet evaluate the complete ARIES plant. Seven reviewed native increments now execute: density, plasma integration, constituent inventory, two fuel cases, blanket heat accounting and a nominal Brayton cycle. These are explicitly post-reveal developments. The original unsuccessful comparison remains unchanged.
 
-## What actually ran
+## What transferred, and what had to be added
 
-| Increment | Existing definitions reused unchanged | New modeling work | Executed evidence | What remains unproved |
-|---|---|---|---|---|
-| Fuel flow and processing-capacity check (WI-082) | Two calculations and one constraint | One case assembly with supplied load, operating assumptions and capacity; one native completion copied with import-prefix adjustment | Five native cases; 35 exact baseline comparisons; independent energy/conservation checks; reviewer replay at a new load | Actual ARIES processing equipment, operating fractions, inventory, breeding and costs |
-| Hollow finite-edge density profile (WI-081) | Existing parser, generator and TEAx route; no claim of unchanged plasma-equation reuse | One generic local-density calculation, one case assembly and a guarded typed completion | 13 supported native cases; 25 invalid-input refusals; independent polynomial oracle and supplied-choice propagation | Absolute ARIES density, profile moments, temperature/composition and coupled fusion prediction |
+| Area | Implemented result | Reuse and new work | Remaining source or scientific requirement |
+|---|---|---|---|
+| Plasma profiles (T01) | Supplied density/temperature/species choices calculate fusion power, thermal pressure and stored energy | New density and integration definitions; existing reaction helper copied unchanged; existing beta definition reused | Actual reference normalization, profiles, three-dimensional volume measure and operating closure |
+| Constituents (T02) | Three regions and nine material children calculate volumes, known mass and source-rate subtotals | Four new elementary inventory/aggregation definitions | Actual midpoint geometry and taper distribution; helium mass/price; installed account mapping |
+| Field, conductor, breeding (T03–T05) | Specific prerequisites documented; no new prediction claimed | No interval widening or substitution of source outputs | Coil/current/pack geometry, applicable Nb3Sn performance and geometry-specific neutron transport |
+| Fuel (T06) | Calculated plasma power reaches fuel demand and fixed processing-capacity checks | Existing fuel and capacity definitions unchanged; new case connections | Actual equipment, inventory, burn/recovery assumptions and breeding coupling |
+| Maintenance (T07) | Accounting boundary identified | Existing calendar arithmetic potentially reusable | Separate component lives, replacement scope and outage schedule |
+| Blanket heat (T08) | Separate helium/PbLi branch heat and one internal transfer conserve energy | Two new generic definitions; existing capacity screens unchanged | Hydraulics/MHD, divertor circuit, exchanger and electrical pump qualification |
+| Conversion (T09) | Three compressors, intercooling, recuperation and equivalent expansion calculate nominal net shaft work | Six new generic definitions; existing capacity screens unchanged | Real-fluid performance, shaft split, primary-exchanger matching, electrical losses and equipment maps |
+| Equipment, facilities, accounts, finance (T10–T13) | Source/account review underway | Constituent pricing is already demonstrated; generic accounting is the next candidate | Technology prices, civil quantities, disjoint account scope and financial convention mapping |
 
-[AGENT] The fuel case takes the published 2436 MW fusion load as an input. With explicitly assumed 5% burn fraction and 99% recovery, exhaust is 1.6432423549621273e22 tritium atoms/s. Assumed capacity 2e22 passes; 1e22 fails. Doubling demand makes the original capacity fail without resizing it. The input load and assumed equipment are not predictions or verified ARIES hardware.
+[AGENT] The [change register](change-register.md) contains 13 provisional engineering work areas. This is neither a proved minimum change count nor 13 completed changes. The seven increments added 14 generic calculation definitions. Definitions are not independent engineering changes, and file counts do not provide a meaningful reuse percentage.
 
-[AGENT] The density case reproduces the source equation's shape with a supplied demonstration amplitude. The source uses conflicting descriptions of the amplitude and axis density. The model therefore does not infer an absolute ARIES density. Supplying a different amplitude or shape changes the calculated local density through the generated bindings.
+[AGENT] Reuse has two distinct meanings here. Fuel balances, capacity checks and beta existed before the experiment. The new density/plasma definitions were then reused by later increments. The reaction helper was copied with its mathematics unchanged; it is not a shared runtime dependency. The item reports record these distinctions and generated-completion adaptations.
 
-## How much work is still required?
+## What the executions establish
 
-[AGENT] The [change register](change-register.md) identifies 13 provisional engineering work areas. Two have partial executed evidence; neither is complete at plant level. This is not a demonstrated minimum of 13 changes, and counting source files would give a misleading reuse percentage.
+[AGENT] The connected plasma/fuel case calculates 1835.451283 MW fusion power under explicit scenario assumptions. Its exhaust demand is 1.238132713e22 tritium atoms/s, below the supplied 2e22 rating. Increasing density amplitude by 50% raises fusion power to 4129.765387 MW and exhaust demand to 2.785798604e22 atoms/s. The same equipment then fails. No equipment is resized, and the integrated fuel case has no source fusion-power input.
 
-- Full engineering evaluation still needs consistent plasma closure, sector/material representation, qualified magnetic-field and conductor calculations, geometry-specific breeding evidence, actual fuel equipment, maintenance assumptions, dual helium/PbLi heat transport and Brayton conversion.
-- Comparable LCOE additionally needs technology-specific equipment prices, facility quantities, disjoint cost-account boundaries and matched finance conventions.
-- Coil geometry/current definitions, applicable conductor evidence and new breeding response data are scientific or source dependencies. Changing input guards does not supply them.
+[AGENT] The constituent case represents the reference material recipes. Its areas are normalized supplied inputs, so its mass and USD2004 price subtotal are not whole-plant estimates. The source assigns LiPb separately from the blanket account; combining them into an installed blanket price would lose that distinction.
 
-[AGENT] The thermal inventory also found a concrete interface hazard: the published helium duty includes friction heating. Supplying that number directly as source heat to the existing loop would count recovered work twice. No such substitution was made.
+[AGENT] The blanket heat case reconstructs 1192 MW helium and 1444 MW PbLi removal from supplied source-derived heat boundaries. Friction heat is counted once. Its internal energy residual is zero, while the comparison to the printed deposited-heat total retains a -1 MW difference. This establishes heat accounting, not an independent prediction of deposited heat or pump electricity.
 
-## Verification and next work
+[AGENT] The nominal Brayton case calculates 831.790187 MW net fluid shaft work from 1879.919443 MW heater input. Flow and all three compressor ratios remain supplied independent choices. Changing them can fail fixed equipment ratings. This result is not plant electricity, and the cycle is not yet matched to the blanket heat case.
 
-[AGENT] Independent review is recorded in [implementation-review.md](evidence/implementation-review.md). The fuel case has a narrowly accepted static-check exception: L1–L5 pass, while L6 rejects three EXPOSE expressions that actual generation and native execution resolve. The density case also passes L1–L5 and has one independently accepted L6 EXPOSE exception, verified by native replay. Both complete-validator runs return exit 1; neither is a six-level pass. No full-plant regression claim follows from either isolated case. Failed attempts and repairs remain in the item evidence. All 1,383 protected original files match their baseline hashes, as recorded in [preservation-final.json](evidence/preservation-final.json).
+[AGENT] These cases deliberately retain their source identities. The original fuel demonstration supplies Lyon's 2436 MW reference output. The integrated plasma/fuel case calculates its own scenario output. Blanket heat and Brayton use the separate Raffray engineering scenario and additional disclosed assumptions. They are not one qualified plant operating point.
 
-[AGENT] Next, extend the source-supported plasma profile into explicitly defined density/temperature moments and reaction integration, after resolving the coordinate, species and normalization definitions. In parallel, develop the sector/material inventory from published geometry and recipes. Record inputs still missing before claiming source correspondence. Continue to treat field/conductor and breeding qualification as separate dependencies; do not feed published output targets into those checks to manufacture an independent prediction.
+## Verification
 
-[AGENT] The first implementation round is bounded to the two registered items. The full transfer epic and both full-plant milestones remain open. The plan, inventories, native models, reproduction scripts and continuing [log](log.md) provide the starting point for further increments.
+| Increment and result | Native evidence | Independent review |
+|---|---|---|
+| [WI-081 density](../../active/WI-081_aries-hollow-finite-edge-density-profile/) | 13 supported cases; 25 refusals | [Initial implementation review](evidence/implementation-review.md) |
+| [WI-082 fuel reuse](../../active/WI-082_aries-existing-component-transfer-proof/) | 5 cases; 35 exact baseline comparisons | [Initial implementation review](evidence/implementation-review.md) |
+| [WI-083 plasma integration](../../active/WI-083_aries-supplied-profile-plasma-integration/implementation.md) | 14 supported cases; 25 refusals | [Review](evidence/plasma-integration-review.md) |
+| [WI-084 constituents](../../active/WI-084_aries-sector-constituent-inventory/report.md) | 5 cases; 230 comparisons; 14 refusals | [Review](evidence/constituent-review.md) |
+| [WI-085 plasma to fuel](../../active/WI-085_aries-calculated-plasma-to-fuel-integration/implementation.md) | 6 cases; 35 exact fuel comparisons | [Review](evidence/plasma-fuel-review.md) |
+| [WI-086 blanket heat](../../active/WI-086_aries-dual-blanket-heat-accounting/report.md) | 7 cases; 42 heat comparisons; 11 physical/interface refusals | [Review](evidence/heat-transport-review.md) |
+| [WI-087 Brayton](../../active/WI-087_aries-nominal-brayton-component-cycle/report.md) | 9 cases; 306 comparisons; 21 refusals | [Review](evidence/power-conversion-review.md) |
 
-## Continued area T01: connected plasma integration
+[AGENT] Each item passes validation levels 1–5. Level 6 reports unsupported EXPOSE expressions that generated native execution resolves. Independently reviewed, item-specific exceptions are recorded; complete validation still returns exit 1. These are isolated component/case checks, not a full-plant regression or scientific qualification. Failed attempts and repairs remain in the item evidence and [log](log.md).
 
-[AGENT] WI-083 adds one forward integration calculation and case. It reuses the accepted density component, copies the existing reaction helper unchanged, and feeds calculated thermal pressure into the unchanged beta definition. Fourteen native supported cases pass and 25 invalid or numerically unresolved cases refuse. Independent review accepts the bounded result and nine named static EXPOSE exceptions; aggregate validation still exits 1 with L1–L5 passing.
-
-[AGENT] The selected scenario calculates 1835.451283 MW fusion power and 5.60649% thermal beta. Density amplitude, temperature sensitivity shape, local species and volume measure are explicit supplied choices, not fitted to reference outputs. This establishes a connected forward calculation; it does not establish actual ARIES profiles, confinement closure or numerical agreement with the reference. [Implementation and exact evidence](../../active/WI-083_aries-supplied-profile-plasma-integration/implementation.md), [independent review](evidence/plasma-integration-review.md).
-
-## Continued area T02: reference constituent inventory
-
-[AGENT] WI-084 adds four elementary calculation/aggregation definitions and one assembly with three reference regions and nine material children. Five native cases pass 230 independent comparisons; 14 invalid inputs refuse, including inconsistent coverage at zero volume. Independent review accepts the repaired model and 39 named static EXPOSE exceptions; L1–L5 pass and aggregate validation remains exit 1.
-
-[AGENT] Supplied geometry now drives constituent volume, known non-helium mass and an unmapped USD2004 source-rate subtotal. No unchanged physical-definition reuse is claimed for this increment. Existing blanket-cost proxies do not express these constituent semantics. Actual midpoint areas, taper distribution and helium mass/price remain missing; source LiPb accounting also prevents calling the combined subtotal installed blanket cost. [Result and reproduction](../../active/WI-084_aries-sector-constituent-inventory/report.md), [review](evidence/constituent-review.md).
-
-## Continued area T06: calculated plasma power reaches fuel equipment checks
-
-[AGENT] WI-085 adds one assembly and no new physical definitions. It imports the reviewed plasma case and binds its calculated fusion-power output into existing fuel balances and then into the fixed-capacity check. Six native cases and 35 exact fuel-output comparisons pass. Independent review's separate doubled-volume test also increases demand enough to fail unchanged supplied capacity. The integrated fuel case has no public source-power input. [Implementation](../../active/WI-085_aries-calculated-plasma-to-fuel-integration/implementation.md), [review](evidence/plasma-fuel-review.md).
-
-[AGENT] The result demonstrates cross-component reuse and supplied-choice preservation. Burn/recovery fractions and processing rating remain scenario assumptions; actual ARIES inventory, equipment cost and breeding are unqualified. L1–L5 pass, with twelve narrowly accepted L6 EXPOSE exceptions and aggregate exit 1 retained.
-
-## Continued area T08: two blanket heat branches
-
-[AGENT] WI-086 adds two generic heat-accounting definitions and an assembly with a single shared transfer, two branch owners and unchanged capacity screens. Seven native scenarios pass 42 heat comparisons; eleven refusal tests include both physical-domain and generated-input-schema checks. Independent review accepts the repaired interface and six named static EXPOSE exceptions (L1–L5 pass; aggregate exit 1).
-
-[AGENT] The Raffray engineering case reconstructs 1192 MW helium and 1444 MW PbLi removal from supplied source-derived boundaries. Internal conservation is zero; comparison to the printed deposited-heat total retains a -1 MW residual. This is a separate engineering source case, not a connection to the Lyon or WI-083 plasma point. Hydraulics, MHD, the omitted divertor circuit, actual exchangers and electrical pumping remain unqualified. [Report](../../active/WI-086_aries-dual-blanket-heat-accounting/report.md), [review](evidence/heat-transport-review.md).
-
-## Nominal Brayton component execution (T09)
-
-[AGENT] WI-087 adds six ideal-gas component/ledger definitions and a connected nominal cycle using three unchanged capacity screens and constraints. Nine scenarios, 306 independent comparisons and 21 refusals pass independent review. Selected flow and three compressor ratios remain independent inputs; equipment ratings stay fixed. Nominal net shaft work is 831.790186675 MW, not plant electricity. Real-fluid accuracy, primary heat-exchanger matching, source shaft split, electrical losses and installed equipment remain open. [Result](../../active/WI-087_aries-nominal-brayton-component-cycle/report.md).
+[AGENT] Independent review through WI-087 confirms all 1,383 protected original files unchanged. The experiment's models, cases and packages are separate additions. Full-plant evaluation, comparable independently predicted LCOE and formal epic closure remain open. The [plan](plan.md) tracks continued work and the [scientific prerequisites](scientific-prerequisites.md) identify the blocked predictions.

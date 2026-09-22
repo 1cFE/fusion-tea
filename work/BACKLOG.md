@@ -282,6 +282,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-088
+    name: ARIES source-budget cost contribution
+    scale: standard
+    status: backlog
+    completed: null
 standalone:
 - id: WI-026
   name: Pytest Baseline Re-Record
@@ -551,6 +556,7 @@ standalone:
 | WI-085 | ARIES calculated plasma to fuel integration | standard | backlog |  |
 | WI-086 | ARIES dual blanket heat accounting | standard | backlog |  |
 | WI-087 | ARIES nominal Brayton component cycle | standard | backlog |  |
+| WI-088 | ARIES source-budget cost contribution | standard | backlog |  |
 
 ## Standalone Items
 

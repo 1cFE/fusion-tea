@@ -1,6 +1,6 @@
 # The nominal Brayton components execute and conserve energy
 
-[AGENT] The new native cycle computes compression, expansion, recuperation, required heating and heat rejection from independently supplied flow, ratios and temperatures. Nine supported cases pass 306 independent 50-digit Decimal state/pressure/heat/work comparisons. Twenty-one invalid cases refuse execution. The result is net fluid shaft work under declared ideal-gas assumptions, not electrical plant output or qualified off-design equipment. Independent completion review is pending.
+[AGENT] The new native cycle computes compression, expansion, recuperation, required heating and heat rejection from independently supplied flow, ratios and temperatures. Nine supported cases pass 306 independent 50-digit Decimal state/pressure/heat/work comparisons. Twenty-one invalid cases refuse execution. The result is net fluid shaft work under declared ideal-gas assumptions, not electrical plant output or qualified off-design equipment. Independent completion review accepts the bounded result.
 
 ## Native outcomes
 
