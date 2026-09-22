@@ -9,7 +9,7 @@ Updated: 2026-09-21
 
 # WI-083: Supplied-profile plasma integration
 
-**Status:** source/design accepted; implementation in progress. **Date:** 2026-09-21. **Author:** transfer_physics_inventory.
+**Status:** implementation independently accepted. **Date:** 2026-09-21. **Author:** transfer_physics_inventory.
 
 ## Requirements and authority
 
@@ -65,4 +65,4 @@ Updated: 2026-09-21
 - [x] Run native forward, scaling, domain, convergence and complete scoped validation checks.
 - [x] Record final evidence, independent review and coordinator tracking handoff.
 
-[AGENT] Implementation results: 14 supported native cases and 25 refusals, seven exact reactivity-helper comparisons, successful parser and semantic checks. Complete scoped validation exits 1: levels 1–5 pass, level 6 reports nine EXPOSE diagnostics despite executed native outputs. Source/design acceptance and numerical clarification are retained in the experiment review evidence; final integrated review is pending. See `implementation.md` and `evidence/verification.json`.
+[AGENT] Implementation results: 14 supported native cases and 25 refusals, seven exact reactivity-helper comparisons, successful parser and semantic checks. Complete scoped validation exits 1: levels 1–5 pass, level 6 reports nine EXPOSE diagnostics despite executed native outputs. Source/design acceptance and numerical clarification are retained in the experiment review evidence; final integrated review accepted the bounded result and named L6 exceptions. See `implementation.md` and `evidence/verification.json`.

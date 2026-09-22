@@ -262,6 +262,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-084
+    name: ARIES sector constituent inventory
+    scale: standard
+    status: backlog
+    completed: null
 standalone:
 - id: WI-026
   name: Pytest Baseline Re-Record
@@ -527,6 +532,7 @@ standalone:
 | WI-081 | ARIES hollow finite-edge density profile | standard | backlog |  |
 | WI-082 | ARIES existing-component transfer proof | standard | backlog |  |
 | WI-083 | ARIES supplied-profile plasma integration | standard | backlog |  |
+| WI-084 | ARIES sector constituent inventory | standard | backlog |  |
 
 ## Standalone Items
 
