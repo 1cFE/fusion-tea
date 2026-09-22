@@ -22,5 +22,9 @@ def test_rating_changes_no_physical_demand(baseline):
     changed = evaluate(baseline | {P+"fuel_capacity__selected_rating": 1e22})
     margin = output("fuel_capacity", "margin")
     assert changed[margin] < 0 < original[margin]
-    assert {k: v for k, v in changed.items() if k != margin} == {
-        k: v for k, v in original.items() if k != margin}
+    physical_owners=('source','fuel','he_coolant','pbli_coolant','divertor_coolant',
+                     'heat_exchangers','deposition','plant_ledger','generator_auxiliaries')
+    physical=lambda row:{k:v for k,v in row.items() if any(k.startswith(P+owner+'__') for owner in physical_owners)}
+    assert physical(changed)==physical(original)
+    cost=P+'fuel_processing_equipment__purchase__capital'
+    assert changed[cost]<original[cost]

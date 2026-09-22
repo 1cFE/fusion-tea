@@ -12,6 +12,7 @@ from scipy.integrate import quad
 from scipy.optimize import brentq
 
 from exploration.aries_integrated.studies import study_route
+from exploration.aries_integrated.studies import equipment_bindings
 
 P = "aries_integrated_plant__"
 A = "aries_cs_plasma_integration__plasma__"
@@ -64,6 +65,7 @@ def evaluate(point):
     exhaust = power*1e6/(get("fuel", "reaction_energy_mev")*get("fuel", "mev_joules"))*(1/get("fuel", "pass_burn_fraction")-1)
     put("fuel", "exhaust_rate", exhaust)
     d = lambda name: get("deposition", name)
+    pump_powers, ua = equipment_bindings.thermal_inputs(point)
     gain = .8*power*(d("neutron_multiplier")-1)
     blanket = power*(.8*d("neutron_multiplier")+.2*d("radiation_fraction"))
     deposits = {"he": blanket*d("helium_fraction"), "pbli": blanket*(1-d("helium_fraction")),
@@ -72,7 +74,7 @@ def evaluate(point):
     if d("heat_mode") == 1:
         deposits = {b: d("literal_"+b) for b in deposits}
         exchange = d("literal_exchange")
-    friction = {b: d(b+"_pump")*d(b+"_recovery") for b in deposits}
+    friction = {b: pump_powers[b]*d(b+"_recovery") for b in deposits}
     duties = {b: deposits[b]+friction[b] for b in deposits}
     duties["he"] += exchange
     duties["pbli"] -= exchange
@@ -101,7 +103,7 @@ def evaluate(point):
     for b in branches:
         ch = get("heat_exchangers", b+"_flow")*get("heat_exchangers", b+"_cp")/1e6
         minimum, maximum = min(c, ch), max(c, ch)
-        ratio, ntu = minimum/maximum, get("heat_exchangers", b+"_ua")/minimum
+        ratio, ntu = minimum/maximum, ua[b]/minimum
         eps = ntu/(1+ntu) if abs(1-ratio)<1e-10 else -expm1(-ntu*(1-ratio))/(1-ratio*exp(-ntu*(1-ratio)))
         conductances[b] = minimum*eps
 
@@ -125,7 +127,7 @@ def evaluate(point):
     gross = e("generator_efficiency")*max(shaft, 0)
     imported = max(-shaft, 0)/e("motor_efficiency")
     heating = d("auxiliary_heat")/e("heating_efficiency")
-    pump = sum(d(b+"_pump") for b in branches)
+    pump = sum(pump_powers.values())
     fuel = e("fuel_base")+e("fuel_coefficient")*exhaust
     dissipated = e("cryo")+fuel+e("control")+e("other_electric")
     net = gross-imported-pump-heating-dissipated
@@ -151,6 +153,12 @@ def evaluate(point):
         defined = applicable and get(name, "assumed_supported") >= 1 and get(name, "demand_available") >= 1
         put(name, "evaluation_defined", float(defined))
         put(name, "margin", get(name, "selected_rating")-demand if applicable else 0)
+    for branch in branches:
+        put("heat_exchangers", branch+"_transferred", transferred[branch])
+        put("heat_exchangers", branch+"_unmet", duties[branch]-transferred[branch])
+        put("deposition", branch+"_friction", friction[branch])
+    put("deposition", "pump_electric", pump)
+    result.update(equipment_bindings.evaluate(point, power, exhaust, net))
     if not all(isfinite(value) for value in result.values()):
         raise ValueError("development checker produced nonfinite output")
     return result
@@ -160,9 +168,35 @@ def operand_bindings():
     bindings = {}
     for cid, local in study_route.interface()["constraints"].items():
         owner = cid.removeprefix(P).split("__")[0]
-        names = ({"defined_in": "evaluation_defined", "margin_in": "margin"} if local == "capacity_ok"
-                 else {"unmet_in": "unmet_heat", "tolerance_in": "energy_tolerance"} if local == "heat_removal_ok"
-                 else {"magnitude_in": "residual_magnitude", "tolerance_in": "energy_tolerance"})
-        bindings[cid] = {name: {"kind": "channel", "key": output(
-            "heat_exchangers" if value == "unmet_heat" else owner, value)} for name, value in names.items()}
+        supported = {
+            "capacity_ok": {"defined_in": "evaluation_defined", "margin_in": "margin"},
+            "heat_removal_ok": {"unmet_in": "unmet_heat", "tolerance_in": "energy_tolerance"},
+            "balances_ok": {"magnitude_in": "residual_magnitude", "tolerance_in": "energy_tolerance"},
+        }
+        if local not in supported or not cid.startswith(P):
+            raise ValueError(f"independent oracle has no reviewed predicate mapping for {cid}")
+        capacity_owners={name+"_capacity" for name in ("he","pbli","divertor","fuel","compressor","turbine","generator","rejection")}|{
+            "he_pump","pbli_pump","divertor_pump","fuel_inventory"}
+        if (local=="capacity_ok" and owner not in capacity_owners) or (local!="capacity_ok" and owner!="plant_ledger"):
+            raise ValueError(f"independent oracle has no reviewed predicate owner for {cid}")
+        names = supported[local]
+        occurrence = "screen" if owner in ("he_pump", "pbli_pump", "divertor_pump", "fuel_inventory") else "evaluate"
+        bindings[cid] = {name: {"kind": "channel", "key": equipment_bindings.out(
+            "heat_exchangers" if value == "unmet_heat" else owner, occurrence, value)} for name, value in names.items()}
     return bindings
+
+
+def comparison_catalog():
+    """Channels with actual independent equations; never infer coverage by publication."""
+    pairs=[('source','selected_power'),('fuel','exhaust_rate'),
+           ('heat_exchangers','accepted_heat'),('heat_exchangers','unmet_heat'),
+           ('heat_exchangers','turbine_temperature'),('heat_exchangers','heater_inlet'),
+           ('generator_auxiliaries','fuel_variable_electric'),('plant_ledger','net_electric'),
+           ('plant_ledger','gross_electric'),('plant_ledger','residual_magnitude'),
+           ('plant_ledger','energy_tolerance'),('deposition','pump_electric')]
+    for branch in ('he','pbli','divertor'):
+        pairs.extend([(branch+'_coolant','delivered_heat'),('heat_exchangers',branch+'_transferred'),
+                      ('heat_exchangers',branch+'_unmet'),('deposition',branch+'_friction')])
+    for owner in ('he','pbli','divertor','fuel','compressor','turbine','generator','rejection'):
+        pairs.extend([(owner+'_capacity','evaluation_defined'),(owner+'_capacity','margin')])
+    return sorted(set(output(*pair) for pair in pairs)|set(equipment_bindings.comparison_catalog()))
