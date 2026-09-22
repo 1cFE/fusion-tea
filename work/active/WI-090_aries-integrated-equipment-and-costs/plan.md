@@ -14,6 +14,7 @@ Related Artifacts: spec.md; design.md; ../../orchestration/goals/aries-integrate
 - [x] Capture requirements, equations, proposed binding roles, public-input migration, account boundaries and new assumptions.
 - [x] Incorporate `work/orchestration/goals/aries-integrated-equipment-costs/evidence/source-basis.md`; preserve source27 as heat rejection and material parent-child discrepancies as unallocated differences, with separate nominal and source replacement schedules.
 - [ ] Fresh independent review of source interpretation/equations, MR-7 roles, thermal/cost coupling and disjointness; record findings and revise before implementation.
+- [x] Address review R1 in the proposed design: selected kg converts to atoms for the existing required-breeding calculation, with shared mass/decay constants and explicit dormant-stock input migration. Same-reviewer acceptance remains pending.
 
 ## Native implementation after review
 
@@ -35,6 +36,7 @@ Related Artifacts: spec.md; design.md; ../../orchestration/goals/aries-integrate
 |R3,R4| Independent recomputation of all leaf/parent sums; source eight-parent total2619.572 MUSD2004; explicit rounding residuals; source1.93 multiplier only in inclusive comparison. | Original images/source review; disjoint account map. | Pending |
 |R3| Initial T and LiPb purchase once; replacement event0 absent, permanent coils/shield absent from blanket replacement, LiPb replacement only selected makeup fraction. | Declared account scope. | Pending |
 |R5| Replacement events just before/at/after plant lifetime; event at lifetime excluded; availability change rescales calendar interval and fuel productive time, calendar decay uses full year. | Independent schedule construction and dimensional arithmetic. | Pending |
+|R2,R5,R7| Change selected tritium stock10→20kg at fixed source power, burn/recovery fractions and availability. Initial stock cost and calendar decay double; required breeding increases by `lambda_T*(10kg/atom_mass)/(eta_extract*burn_rate)`. Burn/exhaust/loss and heat/net electricity remain unchanged; breeding support stays0. Inspect generated `I_total_in` and annual-decay bindings for one selected-stock owner, no independent dormant-atoms entry or duplicated mass/decay constants. | Design-review R1; unchanged `Fuel Cycle Flows` equation and independent dimensional calculation. | Pending |
 |R5| Negative net output retained with import channel; no negative annual energy masquerading as sales, no auxiliary electricity double charge. | Plant export convention and financial boundary. | Pending |
 |R6| Principal thermal sensitivity completed and interpreted before ranking; fixed inventories/costs in uncertainty sweeps, all adverse outcomes retained. | Owner quote and design sensitivity scope. | Pending |
 |R7| Unsupported magnet/breeding/material/hydraulic flags stay0 in every source substitution; numerical domain refusal distinct from failed adequacy. | Scientific evidence limits. | Pending |

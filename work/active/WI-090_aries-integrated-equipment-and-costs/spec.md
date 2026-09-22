@@ -32,3 +32,7 @@ Numerical balance tolerances retain WI-089's `max(1e-6 MW, 1e-9 * total input MW
 ## Scope and gates
 
 New source interpretation, inventory ownership, equation and public-input changes require independent review. `design.md` is the single new assumption register; `plan.md` tracks remaining work. Detailed structural stress, coil field/current/conductor qualification, neutronics, machine maps, vendor quotations, financing/LCOE and optimization remain successor work. A provisional cost is permitted; an unknown silently represented as zero is not.
+
+## Verification registry
+
+[AGENT] Native verification `SV-134` is pending in `modeling_project/VALIDATION_MATRIX.md`; executable evidence will determine its result. Existing unrelated matrix type warnings were reported by registration and do not establish this item’s validation.
