@@ -23,3 +23,9 @@
 ## Continue independent work
 
 [AGENT] These dependencies prevent supported whole-plant engineering evaluation. They do not prevent testing the implemented plasma producer against unchanged downstream fuel balances or testing accounting under explicitly supplied boundaries. Advance to T06 while keeping all three scientific areas open in the change register. This is a documented implementation choice under the owner's instruction to continue area by area, not a claim that the missing work is impossible.
+
+## T07: maintenance and availability
+
+[INHERITED: physics-inventory.md; models/library/analyses/mfe_lifecycle.sysml] Existing lifecycle arithmetic models one bundled replacement clock. It does not describe independently timed ARIES blanket/divertor/other maintenance operations. The source availability and full-power-year conventions can be supplied as accounting assumptions; doing so does not predict plant reliability or replacement schedules.
+
+[AGENT] Disposition: preserve calendar arithmetic as potentially reusable but keep actual maintenance prediction open pending component lives, outage durations, replacement scope and damage/loading definitions. Do not populate missing maintenance hardware or events with Stellaris choices and label them ARIES. Carry annual/calendar versus full-power-year conversion into the T13 financial-convention work, where it directly affects the comparison. No new lifecycle execution or availability prediction is claimed for this area.

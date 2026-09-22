@@ -272,6 +272,11 @@ epics:
     scale: standard
     status: backlog
     completed: null
+  - id: WI-086
+    name: ARIES dual blanket heat accounting
+    scale: standard
+    status: backlog
+    completed: null
 standalone:
 - id: WI-026
   name: Pytest Baseline Re-Record
@@ -539,6 +544,7 @@ standalone:
 | WI-083 | ARIES supplied-profile plasma integration | standard | backlog |  |
 | WI-084 | ARIES sector constituent inventory | standard | backlog |  |
 | WI-085 | ARIES calculated plasma to fuel integration | standard | backlog |  |
+| WI-086 | ARIES dual blanket heat accounting | standard | backlog |  |
 
 ## Standalone Items
 
