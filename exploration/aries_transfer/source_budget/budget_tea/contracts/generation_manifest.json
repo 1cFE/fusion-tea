@@ -1,0 +1,30 @@
+{
+  "codegen_produced": [
+    "IMPLEMENTATION_BACKLOG.md",
+    "__init__.py",
+    "contracts/generation_manifest.json",
+    "contracts/model_contract.json",
+    "contracts/verify.py",
+    "inputs/__init__.py",
+    "inputs/source_budget_params.json",
+    "modules/__init__.py",
+    "modules/mfe_account_costs/__init__.py",
+    "modules/mfe_account_costs/n_1cfe_form_lcoe.py",
+    "modules/source_budget_accounting/__init__.py",
+    "modules/source_budget_accounting/budget_period_allocation.py",
+    "modules/source_budget_accounting/disjoint_capital_budget.py",
+    "pipelines/__init__.py",
+    "pipelines/pipeline.yaml",
+    "primitives.py",
+    "schemas/__init__.py",
+    "schemas/budget_period_allocation_output.py",
+    "schemas/disjoint_capital_budget_output.py",
+    "schemas/source_budget_params.py",
+    "tests/__init__.py",
+    "tests/test_implementations_runnable.py"
+  ],
+  "handwritten_globs": [
+    "handwritten/**"
+  ],
+  "runtime_globs": []
+}

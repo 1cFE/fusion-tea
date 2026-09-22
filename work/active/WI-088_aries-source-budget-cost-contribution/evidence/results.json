@@ -1,0 +1,486 @@
+{
+  "claim": "Partial supplied capital and operating-replacement cost contribution under explicit period conventions; not plant LCOE or reconciliation.",
+  "fingerprint": "4e33fc1b541e8243e22b9e265f3ed60800e552445d9de9bd644015d39457aab0",
+  "cases": [
+    {
+      "case": "literal_expression",
+      "effective_inputs": {
+        "aries_source_budget__budget_period__selected_availability": 0.85,
+        "aries_source_budget__budget_period__selected_mode": 0.0,
+        "aries_source_budget__budget_period__selected_net_power": 1000.0,
+        "aries_source_budget__budget_period__selected_period": 40.0,
+        "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+        "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+        "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+        "aries_source_budget__land__selected_cost_usd2004": 12929000.0,
+        "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+        "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+        "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 966000000.0,
+        "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+        "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+        "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+      },
+      "outputs": {
+        "aries_source_budget__capital_budget__total__direct_total": 2619572000.0,
+        "aries_source_budget__capital_budget__total__inclusive_addition": 2436201960.0,
+        "aries_source_budget__capital_budget__total__inclusive_capital": 5055773960.0,
+        "aries_source_budget__budget_period__period__annual_replacement": 24150000.0,
+        "aries_source_budget__budget_period__period__module_count": 1.0,
+        "aries_source_budget__budget_period__period__validated_availability": 0.85,
+        "aries_source_budget__budget_period__period__annual_energy": 7446000.0,
+        "aries_source_budget__budget_period__period__lifetime_energy": 297840000.0,
+        "aries_source_budget__budget_period__period__excluded_annual_channel": 0.0,
+        "aries_source_budget__budget_period__period__comparison_period": 40.0,
+        "aries_source_budget__budget_period__period__partial_annual_cost": 150544349.0,
+        "aries_source_budget__budget_period__period__annual_capital": 126394349.0,
+        "aries_source_budget__budget_period__period__validated_net_power": 1000.0,
+        "aries_source_budget__partial_cost__cost_per_energy__lcoe": 20.21815055063121
+      },
+      "independent_comparisons": 14,
+      "reused_formula_exact": true,
+      "capital_only_cost_per_mwh": 16.974798415256515
+    },
+    {
+      "case": "inferred_fpy_calendar",
+      "effective_inputs": {
+        "aries_source_budget__budget_period__selected_availability": 0.85,
+        "aries_source_budget__budget_period__selected_mode": 1.0,
+        "aries_source_budget__budget_period__selected_net_power": 1000.0,
+        "aries_source_budget__budget_period__selected_period": 40.0,
+        "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+        "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+        "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+        "aries_source_budget__land__selected_cost_usd2004": 12929000.0,
+        "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+        "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+        "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 966000000.0,
+        "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+        "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+        "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+      },
+      "outputs": {
+        "aries_source_budget__capital_budget__total__direct_total": 2619572000.0,
+        "aries_source_budget__capital_budget__total__inclusive_addition": 2436201960.0,
+        "aries_source_budget__capital_budget__total__inclusive_capital": 5055773960.0,
+        "aries_source_budget__budget_period__period__annual_replacement": 20527500.0,
+        "aries_source_budget__budget_period__period__module_count": 1.0,
+        "aries_source_budget__budget_period__period__validated_availability": 0.85,
+        "aries_source_budget__budget_period__period__annual_energy": 7446000.0,
+        "aries_source_budget__budget_period__period__lifetime_energy": 350400000.0,
+        "aries_source_budget__budget_period__period__excluded_annual_channel": 0.0,
+        "aries_source_budget__budget_period__period__comparison_period": 47.05882352941177,
+        "aries_source_budget__budget_period__period__partial_annual_cost": 127962696.64999999,
+        "aries_source_budget__budget_period__period__annual_capital": 107435196.64999999,
+        "aries_source_budget__budget_period__period__validated_net_power": 1000.0,
+        "aries_source_budget__partial_cost__cost_per_energy__lcoe": 17.185427968036528
+      },
+      "independent_comparisons": 14,
+      "reused_formula_exact": true,
+      "capital_only_cost_per_mwh": 14.428578652968035
+    },
+    {
+      "case": "land_cost_plus_one_million",
+      "effective_inputs": {
+        "aries_source_budget__budget_period__selected_availability": 0.85,
+        "aries_source_budget__budget_period__selected_mode": 0.0,
+        "aries_source_budget__budget_period__selected_net_power": 1000.0,
+        "aries_source_budget__budget_period__selected_period": 40.0,
+        "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+        "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+        "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+        "aries_source_budget__land__selected_cost_usd2004": 13929000.0,
+        "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+        "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+        "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 966000000.0,
+        "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+        "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+        "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+      },
+      "outputs": {
+        "aries_source_budget__capital_budget__total__direct_total": 2620572000.0,
+        "aries_source_budget__capital_budget__total__inclusive_addition": 2437131960.0,
+        "aries_source_budget__capital_budget__total__inclusive_capital": 5057703960.0,
+        "aries_source_budget__budget_period__period__annual_replacement": 24150000.0,
+        "aries_source_budget__budget_period__period__module_count": 1.0,
+        "aries_source_budget__budget_period__period__validated_availability": 0.85,
+        "aries_source_budget__budget_period__period__annual_energy": 7446000.0,
+        "aries_source_budget__budget_period__period__lifetime_energy": 297840000.0,
+        "aries_source_budget__budget_period__period__excluded_annual_channel": 0.0,
+        "aries_source_budget__budget_period__period__comparison_period": 40.0,
+        "aries_source_budget__budget_period__period__partial_annual_cost": 150592599.0,
+        "aries_source_budget__budget_period__period__annual_capital": 126442599.0,
+        "aries_source_budget__budget_period__period__validated_net_power": 1000.0,
+        "aries_source_budget__partial_cost__cost_per_energy__lcoe": 20.224630539887187
+      },
+      "independent_comparisons": 14,
+      "reused_formula_exact": true,
+      "capital_only_cost_per_mwh": 16.98127840451249
+    },
+    {
+      "case": "literal_availability_070",
+      "effective_inputs": {
+        "aries_source_budget__budget_period__selected_availability": 0.7,
+        "aries_source_budget__budget_period__selected_mode": 0.0,
+        "aries_source_budget__budget_period__selected_net_power": 1000.0,
+        "aries_source_budget__budget_period__selected_period": 40.0,
+        "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+        "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+        "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+        "aries_source_budget__land__selected_cost_usd2004": 12929000.0,
+        "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+        "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+        "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 966000000.0,
+        "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+        "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+        "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+      },
+      "outputs": {
+        "aries_source_budget__capital_budget__total__direct_total": 2619572000.0,
+        "aries_source_budget__capital_budget__total__inclusive_addition": 2436201960.0,
+        "aries_source_budget__capital_budget__total__inclusive_capital": 5055773960.0,
+        "aries_source_budget__budget_period__period__annual_replacement": 24150000.0,
+        "aries_source_budget__budget_period__period__module_count": 1.0,
+        "aries_source_budget__budget_period__period__validated_availability": 0.7,
+        "aries_source_budget__budget_period__period__annual_energy": 6132000.0,
+        "aries_source_budget__budget_period__period__lifetime_energy": 245280000.0,
+        "aries_source_budget__budget_period__period__excluded_annual_channel": 0.0,
+        "aries_source_budget__budget_period__period__comparison_period": 40.0,
+        "aries_source_budget__budget_period__period__partial_annual_cost": 150544349.0,
+        "aries_source_budget__budget_period__period__annual_capital": 126394349.0,
+        "aries_source_budget__budget_period__period__validated_net_power": 1000.0,
+        "aries_source_budget__partial_cost__cost_per_energy__lcoe": 24.550611382909327
+      },
+      "independent_comparisons": 14,
+      "reused_formula_exact": true,
+      "capital_only_cost_per_mwh": 20.612255218525767
+    },
+    {
+      "case": "inferred_availability_070",
+      "effective_inputs": {
+        "aries_source_budget__budget_period__selected_availability": 0.7,
+        "aries_source_budget__budget_period__selected_mode": 1.0,
+        "aries_source_budget__budget_period__selected_net_power": 1000.0,
+        "aries_source_budget__budget_period__selected_period": 40.0,
+        "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+        "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+        "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+        "aries_source_budget__land__selected_cost_usd2004": 12929000.0,
+        "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+        "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+        "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 966000000.0,
+        "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+        "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+        "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+      },
+      "outputs": {
+        "aries_source_budget__capital_budget__total__direct_total": 2619572000.0,
+        "aries_source_budget__capital_budget__total__inclusive_addition": 2436201960.0,
+        "aries_source_budget__capital_budget__total__inclusive_capital": 5055773960.0,
+        "aries_source_budget__budget_period__period__annual_replacement": 16905000.0,
+        "aries_source_budget__budget_period__period__module_count": 1.0,
+        "aries_source_budget__budget_period__period__validated_availability": 0.7,
+        "aries_source_budget__budget_period__period__annual_energy": 6132000.0,
+        "aries_source_budget__budget_period__period__lifetime_energy": 350400000.0,
+        "aries_source_budget__budget_period__period__excluded_annual_channel": 0.0,
+        "aries_source_budget__budget_period__period__comparison_period": 57.142857142857146,
+        "aries_source_budget__budget_period__period__partial_annual_cost": 105381044.3,
+        "aries_source_budget__budget_period__period__annual_capital": 88476044.3,
+        "aries_source_budget__budget_period__period__validated_net_power": 1000.0,
+        "aries_source_budget__partial_cost__cost_per_energy__lcoe": 17.185427968036528
+      },
+      "independent_comparisons": 14,
+      "reused_formula_exact": true,
+      "capital_only_cost_per_mwh": 14.428578652968037
+    },
+    {
+      "case": "rounded_replacement_975M",
+      "effective_inputs": {
+        "aries_source_budget__budget_period__selected_availability": 0.85,
+        "aries_source_budget__budget_period__selected_mode": 0.0,
+        "aries_source_budget__budget_period__selected_net_power": 1000.0,
+        "aries_source_budget__budget_period__selected_period": 40.0,
+        "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+        "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+        "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+        "aries_source_budget__land__selected_cost_usd2004": 12929000.0,
+        "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+        "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+        "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 975000000.0,
+        "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+        "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+        "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+      },
+      "outputs": {
+        "aries_source_budget__capital_budget__total__direct_total": 2619572000.0,
+        "aries_source_budget__capital_budget__total__inclusive_addition": 2436201960.0,
+        "aries_source_budget__capital_budget__total__inclusive_capital": 5055773960.0,
+        "aries_source_budget__budget_period__period__annual_replacement": 24375000.0,
+        "aries_source_budget__budget_period__period__module_count": 1.0,
+        "aries_source_budget__budget_period__period__validated_availability": 0.85,
+        "aries_source_budget__budget_period__period__annual_energy": 7446000.0,
+        "aries_source_budget__budget_period__period__lifetime_energy": 297840000.0,
+        "aries_source_budget__budget_period__period__excluded_annual_channel": 0.0,
+        "aries_source_budget__budget_period__period__comparison_period": 40.0,
+        "aries_source_budget__budget_period__period__partial_annual_cost": 150769349.0,
+        "aries_source_budget__budget_period__period__annual_capital": 126394349.0,
+        "aries_source_budget__budget_period__period__validated_net_power": 1000.0,
+        "aries_source_budget__partial_cost__cost_per_energy__lcoe": 20.24836811710986
+      },
+      "independent_comparisons": 14,
+      "reused_formula_exact": true,
+      "capital_only_cost_per_mwh": 16.974798415256515
+    },
+    {
+      "case": "supplied_net_power_900MW",
+      "effective_inputs": {
+        "aries_source_budget__budget_period__selected_availability": 0.85,
+        "aries_source_budget__budget_period__selected_mode": 0.0,
+        "aries_source_budget__budget_period__selected_net_power": 900.0,
+        "aries_source_budget__budget_period__selected_period": 40.0,
+        "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+        "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+        "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+        "aries_source_budget__land__selected_cost_usd2004": 12929000.0,
+        "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+        "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+        "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 966000000.0,
+        "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+        "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+        "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+      },
+      "outputs": {
+        "aries_source_budget__capital_budget__total__direct_total": 2619572000.0,
+        "aries_source_budget__capital_budget__total__inclusive_addition": 2436201960.0,
+        "aries_source_budget__capital_budget__total__inclusive_capital": 5055773960.0,
+        "aries_source_budget__budget_period__period__annual_replacement": 24150000.0,
+        "aries_source_budget__budget_period__period__module_count": 1.0,
+        "aries_source_budget__budget_period__period__validated_availability": 0.85,
+        "aries_source_budget__budget_period__period__annual_energy": 6701400.0,
+        "aries_source_budget__budget_period__period__lifetime_energy": 268056000.0,
+        "aries_source_budget__budget_period__period__excluded_annual_channel": 0.0,
+        "aries_source_budget__budget_period__period__comparison_period": 40.0,
+        "aries_source_budget__budget_period__period__partial_annual_cost": 150544349.0,
+        "aries_source_budget__budget_period__period__annual_capital": 126394349.0,
+        "aries_source_budget__budget_period__period__validated_net_power": 900.0,
+        "aries_source_budget__partial_cost__cost_per_energy__lcoe": 22.464611722923568
+      },
+      "independent_comparisons": 14,
+      "reused_formula_exact": true,
+      "capital_only_cost_per_mwh": 18.860887128062792
+    },
+    {
+      "case": "capital_only_boundary",
+      "effective_inputs": {
+        "aries_source_budget__budget_period__selected_availability": 0.85,
+        "aries_source_budget__budget_period__selected_mode": 0.0,
+        "aries_source_budget__budget_period__selected_net_power": 1000.0,
+        "aries_source_budget__budget_period__selected_period": 40.0,
+        "aries_source_budget__capital_budget__inclusive_multiplier": 1.93,
+        "aries_source_budget__electrical_equipment__selected_cost_usd2004": 138764000.0,
+        "aries_source_budget__heat_rejection__selected_cost_usd2004": 56086000.0,
+        "aries_source_budget__land__selected_cost_usd2004": 12929000.0,
+        "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004": 70958000.0,
+        "aries_source_budget__reactor_equipment__selected_cost_usd2004": 1538817000.0,
+        "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004": 0.0,
+        "aries_source_budget__special_materials__selected_cost_usd2004": 151327000.0,
+        "aries_source_budget__structures__selected_cost_usd2004": 336133000.0,
+        "aries_source_budget__turbine_equipment__selected_cost_usd2004": 314558000.0
+      },
+      "outputs": {
+        "aries_source_budget__capital_budget__total__direct_total": 2619572000.0,
+        "aries_source_budget__capital_budget__total__inclusive_addition": 2436201960.0,
+        "aries_source_budget__capital_budget__total__inclusive_capital": 5055773960.0,
+        "aries_source_budget__budget_period__period__annual_replacement": 0.0,
+        "aries_source_budget__budget_period__period__module_count": 1.0,
+        "aries_source_budget__budget_period__period__validated_availability": 0.85,
+        "aries_source_budget__budget_period__period__annual_energy": 7446000.0,
+        "aries_source_budget__budget_period__period__lifetime_energy": 297840000.0,
+        "aries_source_budget__budget_period__period__excluded_annual_channel": 0.0,
+        "aries_source_budget__budget_period__period__comparison_period": 40.0,
+        "aries_source_budget__budget_period__period__partial_annual_cost": 126394349.0,
+        "aries_source_budget__budget_period__period__annual_capital": 126394349.0,
+        "aries_source_budget__budget_period__period__validated_net_power": 1000.0,
+        "aries_source_budget__partial_cost__cost_per_energy__lcoe": 16.974798415256515
+      },
+      "independent_comparisons": 14,
+      "reused_formula_exact": true,
+      "capital_only_cost_per_mwh": 16.974798415256515
+    }
+  ],
+  "refusals": [
+    {
+      "case": "negative_account",
+      "overrides": {
+        "land__selected_cost_usd2004": -1.0
+      },
+      "exception": "ValueError",
+      "message": "account_1_in cost must be nonnegative"
+    },
+    {
+      "case": "nonfinite_account",
+      "overrides": {
+        "structures__selected_cost_usd2004": "inf"
+      },
+      "exception": "ValueError",
+      "message": "account_2_in must be finite"
+    },
+    {
+      "case": "negative_replacement",
+      "overrides": {
+        "replacement_budget__selected_lifetime_cost_usd2004": -1.0
+      },
+      "exception": "ValueError",
+      "message": "budget costs must be nonnegative"
+    },
+    {
+      "case": "nan_replacement",
+      "overrides": {
+        "replacement_budget__selected_lifetime_cost_usd2004": "nan"
+      },
+      "exception": "ValueError",
+      "message": "replacement_budget_in must be finite"
+    },
+    {
+      "case": "zero_multiplier",
+      "overrides": {
+        "capital_budget__inclusive_multiplier": 0.0
+      },
+      "exception": "ValueError",
+      "message": "inclusive multiplier must be positive"
+    },
+    {
+      "case": "infinite_multiplier",
+      "overrides": {
+        "capital_budget__inclusive_multiplier": "inf"
+      },
+      "exception": "ValueError",
+      "message": "inclusive_multiplier_in must be finite"
+    },
+    {
+      "case": "zero_period",
+      "overrides": {
+        "budget_period__selected_period": 0.0
+      },
+      "exception": "ValueError",
+      "message": "selected period must be positive"
+    },
+    {
+      "case": "nan_period",
+      "overrides": {
+        "budget_period__selected_period": "nan"
+      },
+      "exception": "ValueError",
+      "message": "selected_period_in must be finite"
+    },
+    {
+      "case": "invalid_mode",
+      "overrides": {
+        "budget_period__selected_mode": 0.5
+      },
+      "exception": "ValueError",
+      "message": "period mode must be zero or one"
+    },
+    {
+      "case": "zero_power",
+      "overrides": {
+        "budget_period__selected_net_power": 0.0
+      },
+      "exception": "ValueError",
+      "message": "net power must be positive"
+    },
+    {
+      "case": "nonfinite_power",
+      "overrides": {
+        "budget_period__selected_net_power": "inf"
+      },
+      "exception": "ValueError",
+      "message": "net_power_in must be finite"
+    },
+    {
+      "case": "zero_availability",
+      "overrides": {
+        "budget_period__selected_availability": 0.0
+      },
+      "exception": "ValueError",
+      "message": "availability must be in (0,1]"
+    },
+    {
+      "case": "availability_above_one",
+      "overrides": {
+        "budget_period__selected_availability": 1.01
+      },
+      "exception": "ValueError",
+      "message": "availability must be in (0,1]"
+    },
+    {
+      "case": "nonfinite_availability",
+      "overrides": {
+        "budget_period__selected_availability": "nan"
+      },
+      "exception": "ValueError",
+      "message": "availability_in must be finite"
+    },
+    {
+      "case": "budget_overflow",
+      "overrides": {
+        "land__selected_cost_usd2004": 1e+308
+      },
+      "exception": "ValueError",
+      "message": "nonfinite budget output"
+    },
+    {
+      "case": "period_overflow",
+      "overrides": {
+        "budget_period__selected_mode": 1.0,
+        "budget_period__selected_period": 1e+308,
+        "budget_period__selected_availability": 1e-308
+      },
+      "exception": "ValueError",
+      "message": "nonfinite allocated budget or energy"
+    },
+    {
+      "case": "zero_energy_underflow",
+      "overrides": {
+        "budget_period__selected_net_power": 5e-324,
+        "budget_period__selected_availability": 5e-324
+      },
+      "exception": "ValueError",
+      "message": "annual and lifetime energy must be positive"
+    },
+    {
+      "case": "quotient_overflow",
+      "overrides": {
+        "land__selected_cost_usd2004": 1e+300,
+        "budget_period__selected_net_power": 1e-300
+      },
+      "exception": "ValueError",
+      "message": "nonfinite partial cost quotient"
+    },
+    {
+      "case": "excluded_channel_override",
+      "overrides": {
+        "budget_period__excluded_annual_channel": 1.0
+      },
+      "exception": "ValidationError",
+      "message": "1 validation error for SourceBudgetParams\naries_source_budget__budget_period__excluded_annual_channel\n  Extra inputs are not permitted [type=extra_forbidden, input_value=1.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+    },
+    {
+      "case": "module_count_override",
+      "overrides": {
+        "budget_period__module_count": 2.0
+      },
+      "exception": "ValidationError",
+      "message": "1 validation error for SourceBudgetParams\naries_source_budget__budget_period__module_count\n  Extra inputs are not permitted [type=extra_forbidden, input_value=2.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+    }
+  ],
+  "source_diagnostics": {
+    "published_total_cost_per_mwh": 77.6,
+    "published_approximate_capital_share": 0.82,
+    "share_implied_capital_cost_per_mwh": 63.63199999999999,
+    "literal_capital_contribution": 16.974798415256515,
+    "table_vii_replacement_USD2004": 966000000.0,
+    "rounded_75M_times13_USD2004": 975000000.0,
+    "replacement_difference_USD2004": 9000000.0
+  },
+  "all_checks_passed": true
+}

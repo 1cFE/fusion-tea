@@ -29,15 +29,19 @@ Updated: 2026-09-21
 
 [AGENT] One unchanged `1cfe-Form LCOE` occurrence consumes only these allocation outputs. `cas90` receives allocated inclusive-capital budget and `cas70` receives allocated replacement budget. This new case reuses their money-per-year numerator positions, not the original model's CRF or O&M category assignment. `cas80` receives the computed zero for excluded scope, `n_mod_in` computed1, and power/availability receive the validated values. Every input path therefore passes the guard. Expose its output as `partial_capital_replacement_cost_per_mwh`; do not present it as full LCOE merely because the reused definition contains that name.
 
+[AGENT] Independent design review additionally requires allocation to preflight the exact reused numerator/denominator quotient for finiteness. Finite costs and positive finite energy alone do not prevent overflow of their ratio. This check guards the downstream unchanged calculation without replacing it; a dedicated native quotient-overflow case must refuse.
+
 [AGENT] Formula reuse is unchanged `(cas90+cas70+cas80)/(8760*power*module_count*availability)`, including operation order. Carry the existing generated completion with only package import-prefix remap, record exact hashes and compare native outputs bit-for-bit against that implementation at identical allocated inputs. No overnight-plus-IDC, CRF, discounted-cash-flow or rate-fitting component is introduced.
 
 ## Verification and plan
 
 - [x] Independent source/design review accepts replacement scope, source identities, period alternatives and actual guard-to-consumer architecture.
-- [ ] Implement two generic definitions, eight account owners, budget/allocation owners and the unchanged formula occurrence; generate/seal an isolated package in `exploration/aries_transfer/source_budget/`.
-- [ ] Execute literal and inferred-period cases, compare with independent Decimal account/energy arithmetic and exact reused implementation outputs; retain source77.6/82% discrepancy outside physical inputs.
-- [ ] Perturb one disjoint account, availability under both period conventions, replacement budget and net power; verify supplied budgets/power/period remain unchanged except explicit overrides and no hidden financing addition occurs.
-- [ ] Refuse negative/nonfinite costs, invalid multiplier, period/mode/power/availability and overflow/zero energy; reject attempted public overrides of generated excluded-cost/module constants.
-- [ ] Preserve primary images, source/completion hashes, meaningful attempts and compact native results; run scoped validation and obtain independent completion review.
+- [x] Implement two generic definitions, eight account owners, budget/allocation owners and the unchanged formula occurrence; generate/seal an isolated package in `exploration/aries_transfer/source_budget/`.
+- [x] Execute literal and inferred-period cases, compare with independent Decimal account/energy arithmetic and exact reused implementation outputs; retain source77.6/82% discrepancy outside physical inputs.
+- [x] Perturb one disjoint account, availability under both period conventions, replacement budget and net power; verify supplied budgets/power/period remain unchanged except explicit overrides and no hidden financing addition occurs.
+- [x] Refuse negative/nonfinite costs, invalid multiplier, period/mode/power/availability and overflow/zero energy; reject attempted public overrides of generated excluded-cost/module constants.
+- [x] Preserve primary images, source/completion hashes, meaningful attempts and compact native results; run scoped validation and obtain independent completion review.
 
 [AGENT] Invalid inclusive multiplier means nonfinite or nonpositive; a positive multiplier is a supplied convention, not an endogenous financing law. The selected source factor remains1.93. Eight-term sum is fixed only to this bounded disjoint-account consumer; do not build a general account framework. Parent owns registry/log/commit and final closure. Accepted scope establishes partial supplied-budget accounting with explicit period alternatives; T10/T11 independent equipment/facility costs and full T12/T13 reconciliation remain open.
+
+[AGENT] Native evidence: eight cases,112 independent Decimal comparisons,eight exact original-formula comparisons and20 refusals pass. Complete validation retains14 plain EXPOSE diagnostics at L6; L1–L5 pass. Independent completion review accepts the result and the narrow static exception.

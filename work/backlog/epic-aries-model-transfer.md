@@ -23,3 +23,7 @@ Updated: 2026-09-21
 - Existing design choices remain explicit under MR-7; old models and frozen comparison results are preserved or any deliberately affected shared consumers are proportionally tested.
 - Native execution and independent review support reuse claims; standalone copied formulas do not.
 - Final reporting separates actual completed changes, still-required changes and external scientific/data dependencies. No clean hold-out or full-plant prediction is inferred from a conditioned subsystem test.
+
+## Sequential implementation record — 2026-09-21
+
+[AGENT] WI-081 through WI-087 have independently accepted native results: local density, supplied-load fuel reuse, plasma integration, sector constituents, calculated plasma-to-fuel integration, dual-blanket heat accounting and nominal Brayton components. WI-088 supplied-budget accounting is also independently accepted. The [current assessment](../orchestration/aries-transfer-experiment/report.md) gives exact evidence, reuse distinctions and limitations. All thirteen provisional areas have been considered; areas requiring additional scientific or source data remain open. Formal item/epic closure has not been requested.

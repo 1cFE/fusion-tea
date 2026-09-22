@@ -1,0 +1,89 @@
+# Generated Pipeline Configuration for budget_tea
+#
+# Auto-generated from SysML calc def dependency analysis
+# DO NOT EDIT - Regenerate using code generator
+
+metadata:
+  run_description: "Generated pipeline for budget_tea"
+  output_folder: "budget_tea_results"
+
+modules:
+  # Entry point - load inputs from JSON
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      source_budget_params: SourceBudgetParams ../inputs/source_budget_params.json
+
+
+  # source_budget_accounting.Disjoint_Capital_BudgetModule
+  aries_source_budget__capital_budget__total:
+    module_type: source_budget_accounting.Disjoint_Capital_BudgetModule
+    inputs:
+      account_8_in: float source_budget_params.aries_source_budget__heat_rejection__selected_cost_usd2004
+      account_3_in: float source_budget_params.aries_source_budget__reactor_equipment__selected_cost_usd2004
+      account_5_in: float source_budget_params.aries_source_budget__electrical_equipment__selected_cost_usd2004
+      account_4_in: float source_budget_params.aries_source_budget__turbine_equipment__selected_cost_usd2004
+      account_7_in: float source_budget_params.aries_source_budget__special_materials__selected_cost_usd2004
+      inclusive_multiplier_in: float source_budget_params.aries_source_budget__capital_budget__inclusive_multiplier
+      account_6_in: float source_budget_params.aries_source_budget__miscellaneous_equipment__selected_cost_usd2004
+      account_1_in: float source_budget_params.aries_source_budget__land__selected_cost_usd2004
+      account_2_in: float source_budget_params.aries_source_budget__structures__selected_cost_usd2004
+    outputs:
+      direct_total: float aries_source_budget__capital_budget__total__direct_total
+      inclusive_addition: float aries_source_budget__capital_budget__total__inclusive_addition
+      inclusive_capital: float aries_source_budget__capital_budget__total__inclusive_capital
+
+  # source_budget_accounting.Budget_Period_AllocationModule
+  aries_source_budget__budget_period__period:
+    module_type: source_budget_accounting.Budget_Period_AllocationModule
+    inputs:
+      period_mode_in: float source_budget_params.aries_source_budget__budget_period__selected_mode
+      availability_in: float source_budget_params.aries_source_budget__budget_period__selected_availability
+      capital_budget_in: float aries_source_budget__capital_budget__total__inclusive_capital
+      replacement_budget_in: float source_budget_params.aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004
+      net_power_in: float source_budget_params.aries_source_budget__budget_period__selected_net_power
+      selected_period_in: float source_budget_params.aries_source_budget__budget_period__selected_period
+    outputs:
+      annual_replacement: float aries_source_budget__budget_period__period__annual_replacement
+      module_count: float aries_source_budget__budget_period__period__module_count
+      validated_availability: float aries_source_budget__budget_period__period__validated_availability
+      annual_energy: float aries_source_budget__budget_period__period__annual_energy
+      lifetime_energy: float aries_source_budget__budget_period__period__lifetime_energy
+      excluded_annual_channel: float aries_source_budget__budget_period__period__excluded_annual_channel
+      comparison_period: float aries_source_budget__budget_period__period__comparison_period
+      partial_annual_cost: float aries_source_budget__budget_period__period__partial_annual_cost
+      annual_capital: float aries_source_budget__budget_period__period__annual_capital
+      validated_net_power: float aries_source_budget__budget_period__period__validated_net_power
+
+  # mfe_account_costs.n_1cfe_Form_LCOEModule
+  aries_source_budget__partial_cost__cost_per_energy:
+    module_type: mfe_account_costs.n_1cfe_Form_LCOEModule
+    inputs:
+      net_electric_mw: float aries_source_budget__budget_period__period__validated_net_power
+      cas80: float aries_source_budget__budget_period__period__excluded_annual_channel
+      cas90: float aries_source_budget__budget_period__period__annual_capital
+      availability_in: float aries_source_budget__budget_period__period__validated_availability
+      n_mod_in: float aries_source_budget__budget_period__period__module_count
+      cas70: float aries_source_budget__budget_period__period__annual_replacement
+    outputs:
+      root: RootModel[float] aries_source_budget__partial_cost__cost_per_energy__lcoe
+
+
+  # Exit point - capture all results
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      aries_source_budget__capital_budget__total__direct_total: float capital_budget__direct_total.json
+      aries_source_budget__capital_budget__total__inclusive_addition: float capital_budget__inclusive_addition.json
+      aries_source_budget__capital_budget__total__inclusive_capital: float capital_budget__inclusive_capital.json
+      aries_source_budget__budget_period__period__annual_replacement: float budget_period__annual_replacement.json
+      aries_source_budget__budget_period__period__module_count: float budget_period__module_count.json
+      aries_source_budget__budget_period__period__validated_availability: float budget_period__validated_availability.json
+      aries_source_budget__budget_period__period__annual_energy: float budget_period__annual_energy.json
+      aries_source_budget__budget_period__period__lifetime_energy: float budget_period__lifetime_energy.json
+      aries_source_budget__budget_period__period__excluded_annual_channel: float budget_period__excluded_annual_channel.json
+      aries_source_budget__budget_period__period__comparison_period: float budget_period__comparison_period.json
+      aries_source_budget__budget_period__period__partial_annual_cost: float budget_period__partial_annual_cost.json
+      aries_source_budget__budget_period__period__annual_capital: float budget_period__annual_capital.json
+      aries_source_budget__budget_period__period__validated_net_power: float budget_period__validated_net_power.json
+      aries_source_budget__partial_cost__cost_per_energy__lcoe: RootModel[float] partial_cost__partial_capital_replacement_cost_per_mwh.json

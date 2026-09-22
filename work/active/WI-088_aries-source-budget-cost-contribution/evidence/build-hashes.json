@@ -1,0 +1,19 @@
+{
+  "source_hashes": {
+    "models/library/analyses/source_budget_accounting.sysml": "0bedd48e099d566496302e5ccd334c9e8c0a22cdb2f4988104d844e67fd3c087",
+    "models/library/analyses/mfe_account_costs.sysml": "3f114bc1ec5d6f78ca98771b552948e3def6de07372e4b9abe834a4a54f0ba48",
+    "models/designs/aries_cs_transfer/source_budget.sysml": "c67f1fc296bc5c6380a3fb4602636fc48df2069e39ed05bbf8e7615f52c1fa1a"
+  },
+  "staged_hashes": {
+    "models/library/analyses/source_budget_accounting.sysml": "0bedd48e099d566496302e5ccd334c9e8c0a22cdb2f4988104d844e67fd3c087",
+    "models/library/analyses/mfe_account_costs.sysml": "3f114bc1ec5d6f78ca98771b552948e3def6de07372e4b9abe834a4a54f0ba48",
+    "models/designs/aries_cs_transfer/source_budget.sysml": "c67f1fc296bc5c6380a3fb4602636fc48df2069e39ed05bbf8e7615f52c1fa1a"
+  },
+  "completion_hashes": {
+    "budget_period_allocation_impl.py": "0c6db6798dc365a2fb4231d9ef4c89d341ed945a69062fe406ba695e848f20bb",
+    "disjoint_capital_budget_impl.py": "f42d91c299788c3bfe07a631b0a0f7a9eaab10d4d6894afeba60a86a8ab1c4e1"
+  },
+  "reused_formula_original": "a1744ab4366c96ce0b8ec97553903329cf374cb58093c1d8d7b78126b0e0717c",
+  "reused_formula_copied": "a9f6819b0a4ed3fe704daeb33d41a2cfc5905a6c2d219c133ce1f42c61d305d6",
+  "reused_formula_prefix_only": true
+}

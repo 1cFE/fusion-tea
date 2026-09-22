@@ -1,0 +1,178 @@
+{
+  "catalog_schema_version": "3.0.0",
+  "constraint_catalog": null,
+  "evaluation_semantics": "kleene-three-valued",
+  "outputs": [
+    {
+      "channel_name": "aries_source_budget__capital_budget__total__direct_total",
+      "field_name": "direct_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__capital_budget__total__inclusive_addition",
+      "field_name": "inclusive_addition",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__capital_budget__total__inclusive_capital",
+      "field_name": "inclusive_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__annual_replacement",
+      "field_name": "annual_replacement",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__module_count",
+      "field_name": "module_count",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__validated_availability",
+      "field_name": "validated_availability",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__annual_energy",
+      "field_name": "annual_energy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__lifetime_energy",
+      "field_name": "lifetime_energy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__excluded_annual_channel",
+      "field_name": "excluded_annual_channel",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__comparison_period",
+      "field_name": "comparison_period",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__partial_annual_cost",
+      "field_name": "partial_annual_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__annual_capital",
+      "field_name": "annual_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__budget_period__period__validated_net_power",
+      "field_name": "validated_net_power",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_source_budget__partial_cost__cost_per_energy__lcoe",
+      "field_name": "root",
+      "python_type": "float"
+    }
+  ],
+  "parameters": [
+    {
+      "default_value": 0.85,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__budget_period__selected_availability"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__budget_period__selected_mode"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__budget_period__selected_net_power"
+    },
+    {
+      "default_value": 40.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__budget_period__selected_period"
+    },
+    {
+      "default_value": 1.93,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__capital_budget__inclusive_multiplier"
+    },
+    {
+      "default_value": 138764000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__electrical_equipment__selected_cost_usd2004"
+    },
+    {
+      "default_value": 56086000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__heat_rejection__selected_cost_usd2004"
+    },
+    {
+      "default_value": 12929000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__land__selected_cost_usd2004"
+    },
+    {
+      "default_value": 70958000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__miscellaneous_equipment__selected_cost_usd2004"
+    },
+    {
+      "default_value": 1538817000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__reactor_equipment__selected_cost_usd2004"
+    },
+    {
+      "default_value": 966000000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__replacement_budget__selected_lifetime_cost_usd2004"
+    },
+    {
+      "default_value": 151327000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__special_materials__selected_cost_usd2004"
+    },
+    {
+      "default_value": 336133000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__structures__selected_cost_usd2004"
+    },
+    {
+      "default_value": 314558000.0,
+      "entry_type": "design_attribute",
+      "param_group": "source_budget_params",
+      "python_type": "float",
+      "qualified_name": "aries_source_budget__turbine_equipment__selected_cost_usd2004"
+    }
+  ],
+  "semantic_fingerprint": "aff2e7a87b793096573011264020b306b617af8d276bfb0de328d32537439ee2"
+}

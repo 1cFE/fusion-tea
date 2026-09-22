@@ -1,0 +1,38 @@
+{
+  "fingerprint": "4e33fc1b541e8243e22b9e265f3ed60800e552445d9de9bd644015d39457aab0",
+  "cases": [
+    {
+      "case": "literal",
+      "period": 40.0,
+      "annual_energy_MWh": 5256000.0,
+      "lifetime_energy_MWh": 210240000.0,
+      "partial_cost_USD2004_MWh": 28.66139169520548,
+      "original_formula_exact": true
+    },
+    {
+      "case": "fpy",
+      "period": 66.66666666666667,
+      "annual_energy_MWh": 5256000.0,
+      "lifetime_energy_MWh": 350400000.0,
+      "partial_cost_USD2004_MWh": 17.196835017123288,
+      "original_formula_exact": true
+    },
+    {
+      "case": "ratio_overflow",
+      "refused": true,
+      "message": "nonfinite partial cost quotient"
+    },
+    {
+      "case": "extra_module",
+      "refused": true,
+      "message": "1 validation error for SourceBudgetParams\naries_source_budget__budget_period__module_count\n  Extra inputs are not permitted [type=extra_forbidden, input_value=2.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+    },
+    {
+      "case": "extra_cost",
+      "refused": true,
+      "message": "1 validation error for SourceBudgetParams\naries_source_budget__budget_period__excluded_annual_channel\n  Extra inputs are not permitted [type=extra_forbidden, input_value=100.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+    }
+  ],
+  "protected_count": 1383,
+  "changed": []
+}

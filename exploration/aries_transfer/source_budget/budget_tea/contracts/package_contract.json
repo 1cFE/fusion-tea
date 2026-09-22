@@ -1,0 +1,43 @@
+{
+  "artifact_hashes": {
+    "IMPLEMENTATION_BACKLOG.md": "90f7876a0ea922d42ffc47f32fce7b4fdc5993e604224efa4b41ed939957e631",
+    "__init__.py": "07181b6db1763318fe9a881bda6cea0b24e56fb4c372a8b947f37b652c5871cf",
+    "contracts/generation_manifest.json": "823e3a96f5c9b89e12db52503313098ce995fff2cdbf9ffc576331343bfb6730",
+    "contracts/model_contract.json": "4345540f78e9f24147ef6902ea64aafdf90ff90ed551c8f40c92153f056809aa",
+    "contracts/verify.py": "ad0a855af17d18af5f3e8c36b1a6c500f492d88ec777b40f307c646306c67284",
+    "handwritten/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "handwritten/mfe_account_costs/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/mfe_account_costs/n_1cfe_form_lcoe_impl.py": "a9f6819b0a4ed3fe704daeb33d41a2cfc5905a6c2d219c133ce1f42c61d305d6",
+    "handwritten/source_budget_accounting/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
+    "handwritten/source_budget_accounting/budget_period_allocation_impl.py": "0c6db6798dc365a2fb4231d9ef4c89d341ed945a69062fe406ba695e848f20bb",
+    "handwritten/source_budget_accounting/disjoint_capital_budget_impl.py": "f42d91c299788c3bfe07a631b0a0f7a9eaab10d4d6894afeba60a86a8ab1c4e1",
+    "inputs/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "inputs/source_budget_params.json": "f266adee8068f7553176069731d7180cb69d5af7eda39a6c9a6cffd7e4f27eb8",
+    "modules/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "modules/mfe_account_costs/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/mfe_account_costs/n_1cfe_form_lcoe.py": "336dbcd15e286c15fce4d9fb946fbbf73592ad5c4cf2923afb889ca0ebaf3a61",
+    "modules/source_budget_accounting/__init__.py": "0fc3fea2d8e92bff93b86e656a302cf2800727bd2c3f9ff8d264930dcc73c8e1",
+    "modules/source_budget_accounting/budget_period_allocation.py": "14d30bd4e1f37190a0a3ded12565dc480320b910eec1cf53daa9f80e2d422c1e",
+    "modules/source_budget_accounting/disjoint_capital_budget.py": "2d1a7ce3588808d03aedac999a34267c41c19a2a5d4fec1e107c9042af3746ee",
+    "pipelines/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "pipelines/pipeline.yaml": "80be4c5137b515ac2ac430d15f12aebc09e7631cd1ee435623207f9c0c55029a",
+    "primitives.py": "1bc6be58e5290b102d762227c33f138ecc4f9feaa00fa2f4cfd02f87f5f71998",
+    "schemas/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "schemas/budget_period_allocation_output.py": "02848f246351108f0d359163be8194a063387943049aa5689fd0769a4c3f92a9",
+    "schemas/disjoint_capital_budget_output.py": "5d8327d252bd11fe40f6a8c3676472c27fa2c5dd2d0272aaf8321a61e4c7dc17",
+    "schemas/source_budget_params.py": "afeee3a9e8db5d863a72f3c30a81995596bcf9b4c8777705bc77d0dbb9e8cdd0",
+    "tests/__init__.py": "fdb87b916dfcceb58c446d8769dc3583722ec7cbc0206ceec05ecd830cbe440c",
+    "tests/test_implementations_runnable.py": "41b99fd011d5f9520ba42438d2ea5667e8e2e84206a6fbdc86f5b7c94c05b846"
+  },
+  "coverage_policy": {
+    "exclude_globs": [
+      "contracts/package_contract.json",
+      "**/__pycache__/**"
+    ],
+    "runtime_output_globs": []
+  },
+  "executable_fingerprint": "4e33fc1b541e8243e22b9e265f3ed60800e552445d9de9bd644015d39457aab0",
+  "generator_version": "0.1.1",
+  "package_name": "budget_tea",
+  "runtime_contract_version": "2.0.0"
+}
