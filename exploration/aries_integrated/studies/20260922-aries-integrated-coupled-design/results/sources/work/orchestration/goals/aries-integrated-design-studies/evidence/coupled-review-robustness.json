@@ -1,0 +1,305 @@
+{
+  "status": "PASS",
+  "scenario_inputs": [
+    {
+      "key": "aries_integrated_plant__he_hx__assumed_u",
+      "baseline": 1000.0,
+      "levels": [
+        500,
+        1500
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__he_hx__evaluate",
+          "port": "u_in",
+          "binding": "float plant_params.aries_integrated_plant__he_hx__assumed_u"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__pbli_hx__assumed_u",
+      "baseline": 1000.0,
+      "levels": [
+        500,
+        1500
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__pbli_hx__evaluate",
+          "port": "u_in",
+          "binding": "float plant_params.aries_integrated_plant__pbli_hx__assumed_u"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__deposition__neutron_multiplier",
+      "baseline": 1.16,
+      "levels": [
+        1,
+        1.25
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__deposition__evaluate",
+          "port": "neutron_multiplier_in",
+          "binding": "float plant_params.aries_integrated_plant__deposition__neutron_multiplier"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__deposition__helium_fraction",
+      "baseline": 0.38,
+      "levels": [
+        0.3,
+        0.46
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__deposition__evaluate",
+          "port": "helium_fraction_in",
+          "binding": "float plant_params.aries_integrated_plant__deposition__helium_fraction"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__deposition__exchange_fraction",
+      "baseline": 0.04,
+      "levels": [
+        0.02,
+        0.06
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__deposition__evaluate",
+          "port": "exchange_fraction_in",
+          "binding": "float plant_params.aries_integrated_plant__deposition__exchange_fraction"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__generator_auxiliaries__other_electric",
+      "baseline": 5.0,
+      "levels": [
+        2.5,
+        7.5
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__generator_auxiliaries__evaluate",
+          "port": "other_electric_in",
+          "binding": "float plant_params.aries_integrated_plant__generator_auxiliaries__other_electric"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__he_hx__price_factor",
+      "baseline": 1.0,
+      "levels": [
+        0.5,
+        1.5
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__he_hx__purchase",
+          "port": "price_factor_in",
+          "binding": "float plant_params.aries_integrated_plant__he_hx__price_factor"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__pbli_hx__price_factor",
+      "baseline": 1.0,
+      "levels": [
+        0.5,
+        1.5
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__pbli_hx__purchase",
+          "port": "price_factor_in",
+          "binding": "float plant_params.aries_integrated_plant__pbli_hx__price_factor"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__cost_schedule__availability",
+      "baseline": 0.85,
+      "levels": [
+        0.75,
+        0.95
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__source_finance_energy__evaluate",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        },
+        {
+          "module": "aries_integrated_plant__fuel_inventory__deuterium",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        },
+        {
+          "module": "aries_integrated_plant__fuel_inventory__annual",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        },
+        {
+          "module": "aries_integrated_plant__replacement__evaluate",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        },
+        {
+          "module": "aries_integrated_plant__cost_ledger__evaluate",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        },
+        {
+          "module": "aries_integrated_plant__lifecycle_accounts__evaluate",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        },
+        {
+          "module": "aries_integrated_plant__lifecycle_price__evaluate",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        },
+        {
+          "module": "aries_integrated_plant__source_lifecycle_accounts__evaluate",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        },
+        {
+          "module": "aries_integrated_plant__source_lifecycle_price__evaluate",
+          "port": "availability_in",
+          "binding": "float plant_params.aries_integrated_plant__cost_schedule__availability"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+      "baseline": 30000000.0,
+      "levels": [
+        10000000.0,
+        100000000.0
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__fuel_inventory__purchase",
+          "port": "factor_in",
+          "binding": "float plant_params.aries_integrated_plant__fuel_inventory__tritium_price"
+        },
+        {
+          "module": "aries_integrated_plant__fuel_inventory__annual",
+          "port": "tritium_price_in",
+          "binding": "float plant_params.aries_integrated_plant__fuel_inventory__tritium_price"
+        }
+      ]
+    },
+    {
+      "key": "aries_integrated_plant__finance__discount_rate",
+      "baseline": 0.05,
+      "levels": [
+        0.03,
+        0.08
+      ],
+      "consumers": [
+        {
+          "module": "aries_integrated_plant__operating_levelization__evaluate",
+          "port": "interest_rate",
+          "binding": "float plant_params.aries_integrated_plant__finance__discount_rate"
+        },
+        {
+          "module": "aries_integrated_plant__lifecycle_accounts__evaluate",
+          "port": "discount_in",
+          "binding": "float plant_params.aries_integrated_plant__finance__discount_rate"
+        },
+        {
+          "module": "aries_integrated_plant__lifecycle_price__evaluate",
+          "port": "discount_rate_in",
+          "binding": "float plant_params.aries_integrated_plant__finance__discount_rate"
+        },
+        {
+          "module": "aries_integrated_plant__source_lifecycle_accounts__evaluate",
+          "port": "discount_in",
+          "binding": "float plant_params.aries_integrated_plant__finance__discount_rate"
+        },
+        {
+          "module": "aries_integrated_plant__source_lifecycle_price__evaluate",
+          "port": "discount_rate_in",
+          "binding": "float plant_params.aries_integrated_plant__finance__discount_rate"
+        }
+      ]
+    }
+  ],
+  "correlated_price_keys": [
+    "aries_integrated_plant__he_hx__price_factor",
+    "aries_integrated_plant__pbli_hx__price_factor"
+  ],
+  "scenario_count": 21,
+  "physical_design_count": 4,
+  "supply_scenarios": 2,
+  "source_controls": 6,
+  "total": 174,
+  "paired_maps_exact": true,
+  "grid_same_density_power_and_fuel_invariant_to_area": true,
+  "grid_purchase_invariant_to_density_at_same_area": true,
+  "design_groups": [
+    {
+      "name": "baseline",
+      "values": {
+        "aries_integrated_plant__he_hx__selected_area": 50000,
+        "aries_integrated_plant__pbli_hx__selected_area": 50000,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20
+      }
+    },
+    {
+      "name": "area45k",
+      "values": {
+        "aries_integrated_plant__he_hx__selected_area": 45000,
+        "aries_integrated_plant__pbli_hx__selected_area": 45000,
+        "aries_cs_plasma_integration__plasma__amplitude": 5e+20
+      }
+    },
+    {
+      "name": "near-feed-floor",
+      "values": {
+        "aries_integrated_plant__he_hx__selected_area": 45000,
+        "aries_integrated_plant__pbli_hx__selected_area": 45000,
+        "aries_cs_plasma_integration__plasma__amplitude": 4.875e+20
+      }
+    },
+    {
+      "name": "high-density-demand",
+      "values": {
+        "aries_integrated_plant__he_hx__selected_area": 45000,
+        "aries_integrated_plant__pbli_hx__selected_area": 45000,
+        "aries_cs_plasma_integration__plasma__amplitude": 5.25e+20
+      }
+    }
+  ],
+  "supply_groups": [
+    {
+      "name": "no-credit",
+      "values": {
+        "aries_integrated_plant__fuel_inventory__annual_recovery_kg": 0,
+        "aries_integrated_plant__finance__supply_service_annual": 0
+      }
+    },
+    {
+      "name": "feed100-service30m",
+      "values": {
+        "aries_integrated_plant__fuel_inventory__annual_recovery_kg": 100,
+        "aries_integrated_plant__finance__supply_service_annual": 30000000
+      }
+    }
+  ],
+  "rules": [
+    "OAT ten groups; both HX price factors vary together as one explicit correlated scenario.",
+    "Hold each physical design and supply group fixed during all assumption comparisons.",
+    "Tritium price changes initial stock capital as well as annual purchases.",
+    "Other-load sensitivity covers only generator_auxiliaries.other_electric; cryogenic/control assumptions remain held.",
+    "Repeat six source controls at inherited assumption settings; preserve adverse status.",
+    "All scenarios are engineered sensitivity settings, not source boundaries, probabilities or optimized choices."
+  ]
+}

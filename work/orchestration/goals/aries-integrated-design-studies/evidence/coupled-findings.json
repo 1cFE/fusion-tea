@@ -1,0 +1,62 @@
+{
+  "study_id": "20260922-aries-integrated-coupled-design",
+  "authority": "AGENT executor interpretation; proposed dispositions",
+  "findings": [
+    {
+      "id": "20260922-aries-integrated-coupled-design#1",
+      "kind": "model",
+      "finding": "Exchanger geometry/hydraulics and MHD qualification remain absent despite explicit selected-area inventory/cost and UA bindings.",
+      "disposition": "Preserve conditional scope; do not infer physical feasibility.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/dependency-audit.md"
+    },
+    {
+      "id": "20260922-aries-integrated-coupled-design#2",
+      "kind": "model",
+      "finding": "Flow and independent stage ratios still lack machine envelopes and priced flow/pressure capability.",
+      "disposition": "Keep declined machinery axes held.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/axis-review.md"
+    },
+    {
+      "id": "20260922-aries-integrated-coupled-design#3",
+      "kind": "model",
+      "finding": "Grid and interior density changes impose demand at fixed selected hardware without qualified confinement/control.",
+      "disposition": "Retain separate demand interpretation and held hardware.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/dependency-audit.md"
+    },
+    {
+      "id": "20260922-aries-integrated-coupled-design#4",
+      "kind": "model",
+      "finding": "The interior density probe reaches zero external purchases and gives the lowest sampled feed-scenario LCOE, while high density is lowest without feed credit.",
+      "disposition": "Attribute scenario ordering to output and fixed purchase-floor effects; claim no continuous operating optimum.",
+      "home": "record.md \u00a73 and \u00a76; results/cases.json"
+    },
+    {
+      "id": "20260922-aries-integrated-coupled-design#5",
+      "kind": "model",
+      "finding": "Breeding and feed-service support remain unqualified in every paired scenario.",
+      "disposition": "Keep feed/service fixed; preserve gross makeup, purchase, curtailment and contribution channels.",
+      "home": "results/sources/work/orchestration/goals/aries-integrated-design-studies/evidence/dependency-audit.md"
+    },
+    {
+      "id": "20260922-aries-integrated-coupled-design#6",
+      "kind": "model",
+      "finding": "All three source controls fail heat removal; literal Raffray also fails balance; both undersized-area controls remain adverse.",
+      "disposition": "Preserve all ten paired adverse cases outside rankings.",
+      "home": "record.md \u00a74; results/constraint_catalog.json"
+    },
+    {
+      "id": "20260922-aries-integrated-coupled-design#7",
+      "kind": "model",
+      "finding": "Paired area reductions preserve modeled output at every tested grid density and the interior probe while reducing purchased cost.",
+      "disposition": "Carry the selected-equipment candidate into representative assumption sensitivity; no minimum-area claim.",
+      "home": "record.md \u00a76; results/cases.json"
+    },
+    {
+      "id": "20260922-aries-integrated-coupled-design#8",
+      "kind": "process",
+      "finding": "record.md was assembled immediately after launch; intake, full maps, pre-execution framing/review, indicators, oracle scan and preflight already existed.",
+      "disposition": "Preserve actual timing, record no missed authorization or rerun, and deposit future intake/pre-run record sections before launch.",
+      "home": "results/execution-context.json; results/sources/work/orchestration/goals/aries-integrated-design-studies/trail.md"
+    }
+  ]
+}
