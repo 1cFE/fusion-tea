@@ -1,0 +1,11 @@
+[integrate] CANDIDATE
+  pass         repo     pinned-packages: tests/test_dependency_provenance.py passed
+  pass         request  teax-revision: teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397
+  pass         request  regeneration: regeneration through aries_integrated rewrote no byte outside handwritten/
+  pass         request  handwritten-preservation: 31 file(s) under handwritten/ are byte-identical
+  pass         request  census-snapshot: the snapshot recaptures byte-identically and 122 entry points re-derive to the census as bound
+  pass         repo     model-family-spine: tests/models/test_model_family_spines.py passed
+  pass         request  manifest: manifest identity, pin 55d5e43ae88b6bd5cf720ce7a8a41422d67d100a18e14b6367775860d0caacfb and resolved reference coverage pass
+  pass         request  preflight: baseline Python read coverage cfcb3b4eb5d6eee5b3670670f333a26f9e6fb6558cdb2f785c3760fd3abaad87 and all six preflight gates pass
+  pass         request  verification: oracle parity holds and every verdict re-derived
+  pass         request  lineage: semantic 35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97 and executable cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd are the lineage the request named

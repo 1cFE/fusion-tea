@@ -10,7 +10,7 @@ args = parser.parse_args()
 base = Path('exploration/aries_integrated')
 package = base / 'aries_integrated'
 command = [str(ROOT / '.codex-test/run'), 'python', 'scripts/integrate.py',
-    '--audited-work', 'work/active/WI-089_aries-integrated-heat-and-electricity@143a556c',
+    '--audited-work', 'work/active/WI-089_aries-integrated-heat-and-electricity@687a57ad',
     '--models-root', str(base / 'input_models'), '--package', str(package),
     '--manifest', str(base / 'studies/manifest.json'), '--groups', str(base / 'studies/axes.json'),
     '--census-file', str(base / 'census.json'),

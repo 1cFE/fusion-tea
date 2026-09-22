@@ -202,3 +202,36 @@ T-009 · native WI-089 census metadata · complete derived census and repeatable
 - **Evidence:** WI-089 `evidence/census-completion-verification.json`, updated `exploration/aries_integrated/build.py` and `census.json` (pending checkpoint).
 - **Reading:** all 122 classifications remain identical under native recomputation; the complete census now includes the actual unchanged semantic fingerprint. The build repeats this derivation. Package contract and all executable files remain unchanged.
 - **Decision:** missing derived metadata is objectively repaired using native producers, so coordinator verification suffices without repeating physical review; execution detail; coordinator; census producer and receipt. This corrects an input artifact and therefore is not classified as an identical-input retry.
+
+### T-010 scope
+
+- **Objective:** obtain the round's verified native CANDIDATE with complete census metadata.
+- **Why now:** T-009 corrects the concrete metadata prerequisite at `687a57ad`.
+- **Scope:** full native integration against the same accepted executable; no model changes or study sweep.
+- **Inputs:** `goal.md`, WI-089@687a57ad, complete native census, unchanged T-008 fingerprints and final consumer manifest/groups.
+- **Done when:** the native seam returns CANDIDATE or a named blocker.
+- **Stop when:** seam refusal, reserved gate or declared cap.
+
+### T-010 start — 2026-09-22
+
+T-010 · native integration via `evidence/integrate.py` · candidate under corrected census input expected. T-008 remains the preserved incomplete-input attempt.
+
+### T-010 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/integration-attempt3/integration_return.json`, preflight/verification receipts and repository test results (pending integration checkpoint).
+- **Reading:** native CANDIDATE. All ten seam gates pass, including byte-stable regeneration, handwritten preservation, exact snapshot/census, repository family spine, manifest, observed baseline read coverage, all six preflight checks, independent scalar/verdict verification and expected lineage.
+- **Decision:** promote this round's sole candidate, executable `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`, semantic `35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97`, indicator-input pin `55d5e43ae88b6bd5cf720ce7a8a41422d67d100a18e14b6367775860d0caacfb`; execution detail; coordinator following the accepted physical/packaging reviews and native gate; T-011 receives this exact candidate. No earlier attempt promoted a package.
+
+### T-011 scope
+
+- **Objective:** execute and record one combined study answering the declared baseline, fixed-hardware demand, rating and conversion/interface questions.
+- **Why now:** T-010 supplies the first and only verified candidate; reviewed point declarations and range scans already exist.
+- **Scope:** the fourteen existing complete proposals through stock StudyRunner/PreparedListStrategy, retained adverse outcomes, independent verdict-stratified verification, complete immutable native record and executor reading. Own only study artifacts. No new points, model edits or semantic repair.
+- **Inputs:** `goal.md`, T-010 candidate receipt, native study manifest/groups, reviewed WI-089 design/behavior, prepared record at `exploration/aries_integrated/studies/20260922-integrated-heat-electricity/`, and `evidence/study-execution-brief.md`.
+- **Done when:** one committed record and evidence-grounded reading exist, or a named blocker is retained.
+- **Stop when:** mechanical gate refusal, semantic defect, reserved gate or cap. Any semantic follow-up requires a reviewed later round.
+
+### T-011 start — 2026-09-22
+
+T-011 · delegated study executor · fourteen native points, all ten full predicate identities, stratified verification and complete frozen record expected. Coordinator commits the completed record. Other agents do not edit study artifacts.
