@@ -13,7 +13,7 @@ def finish(values):
     outputs = dict(zip(['temperature_out', 'pressure_out', 'shaft_demand'], values))
     return tuple(outputs[name] for name in Ideal_Gas_CompressorOutput.model_fields)
 
-def run_ideal_gas_compressor(inputs):
+def _reviewed_run_ideal_gas_compressor(inputs):
     for name, value in inputs.model_dump().items():
         if not math.isfinite(value):
             raise ValueError(name + " must be finite")
@@ -26,3 +26,11 @@ def run_ideal_gas_compressor(inputs):
     pressure = inputs.pressure_in * inputs.ratio_in
     work = inputs.flow_in * inputs.cp_in * (temperature-inputs.temperature_in)/1e6
     return finish((temperature, pressure, work))
+
+
+from aries_integrated.modules.ideal_gas_brayton_components.ideal_gas_compressor import Ideal_Gas_CompressorInput
+
+
+def run_ideal_gas_compressor(inputs: Ideal_Gas_CompressorInput) -> tuple[float, float, float]:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_ideal_gas_compressor(inputs)

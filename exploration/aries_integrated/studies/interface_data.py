@@ -318,5 +318,5 @@ INTERFACE = {'channels': {'aries_cs_plasma_integration__plasma__beta_calculation
                 'aries_integrated_plant__turbine_capacity__demand_available': 'plant_params',
                 'aries_integrated_plant__turbine_capacity__scenario_applicable': 'plant_params',
                 'aries_integrated_plant__turbine_capacity__selected_rating': 'plant_params'},
- 'executable_fingerprint': '469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7',
+ 'executable_fingerprint': 'cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd',
  'semantic_fingerprint': '35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97'}

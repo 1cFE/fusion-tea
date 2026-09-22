@@ -32,3 +32,12 @@ Related Artifacts: spec.md; design.md
 ## Implementation notes
 
 2026-09-22: Forty native scenarios pass their stated expectations (30 evaluated, 10 refused); package fingerprint `469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7`. The calculated nominal has zero unmet heat and 423.106794 MW net output. Source-conditioned scenarios retain heat-removal failures. All eight selected capacity pairs switch correctly with demand unchanged. L1–L5 pass; L6 retains 182 identified EXPOSE diagnostics. Three harness-only failures and the initial syntax failure are preserved in evidence. Independent completion review PASS is in the goal evidence/implementation-review.md. Native goal integration/study remains the coordinator handoff; see report.md.
+
+## T-007 integration prerequisite repair
+
+- [x] Preserve first native integration refusal and reproduce exact smart-regeneration behavior in a scratch package.
+- [x] Add typed public adapters with original module/body AST identity retained; update build to verify the integration producer's exact flags.
+- [x] Verify all four native canonical scenarios match every old-seal output/input exactly; preserve original baseline and forty-case receipts.
+- [ ] Obtain focused corrective review and retry native integration under the new executable fingerprint.
+
+The normalized executable fingerprint is `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`. Source/model identity is unchanged. The fourteen-file package diff consists of thirteen typed adapters and the package contract; see report.md and evidence/smart-normalization-verification.json.

@@ -1,0 +1,210 @@
+{
+  "schema_version": "integration-seam-return/v1",
+  "tool": {
+    "path": "scripts/integrate.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "b71751c7ce86645736285d05e4c065eb4d3e10ef82cf284fae4c366adc1ec504",
+      "files": [
+        {
+          "path": "scripts/integrate.py",
+          "sha256": "6dd5ab46530f9dc1e259af2ca8aa62e95304ba97b29615b8963d6c04773cdc2f"
+        },
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/indicators.py",
+          "sha256": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87"
+        },
+        {
+          "path": "scripts/study/read_coverage.py",
+          "sha256": "3a63ba15c37d889c40420c66317ed8c685089ac1bb778b60fbe7e7c0e808412c"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/integrate.py",
+    "--audited-work",
+    "work/active/WI-089_aries-integrated-heat-and-electricity@71b2867a",
+    "--models-root",
+    "exploration/aries_integrated/input_models",
+    "--package",
+    "exploration/aries_integrated/aries_integrated",
+    "--manifest",
+    "exploration/aries_integrated/studies/manifest.json",
+    "--groups",
+    "exploration/aries_integrated/studies/axes.json",
+    "--census-file",
+    "exploration/aries_integrated/census.json",
+    "--expected-semantic-fingerprint",
+    "35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97",
+    "--expected-executable-fingerprint",
+    "469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7",
+    "--expected-teax-revision",
+    "8d877460ac4f6f264561d916e40c1708adb13397",
+    "--route-sys-path",
+    "exploration/aries_integrated/studies",
+    "--route-module",
+    "study_route",
+    "--route-callable",
+    "execute_baseline",
+    "--out-dir",
+    "work/orchestration/goals/aries-integrated-heat-electricity/evidence/integration-attempt1"
+  ],
+  "request": {
+    "audited_work": [
+      {
+        "path": "work/active/WI-089_aries-integrated-heat-and-electricity",
+        "commit": "71b2867a"
+      }
+    ],
+    "models_root": "exploration/aries_integrated/input_models",
+    "package": [
+      "exploration/aries_integrated/aries_integrated"
+    ],
+    "manifest": [
+      "exploration/aries_integrated/studies/manifest.json"
+    ],
+    "groups": "exploration/aries_integrated/studies/axes.json",
+    "census": "exploration/aries_integrated/census.json",
+    "expected": {
+      "semantic_fingerprint": "35c6023027b2a842b3a681ae44bb782485394c60a5dd18dde382bc3b3f269c97",
+      "executable_fingerprint": "469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7",
+      "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397"
+    }
+  },
+  "class": "BLOCKER",
+  "exit_code": 1,
+  "candidate": null,
+  "blocker": {
+    "gate": "regeneration",
+    "producer": "sysml-codegen generate",
+    "scope": "request",
+    "mode": "refused",
+    "condition": "package-not-integrated",
+    "detail": "regenerating on the pin rewrote the package, so what is committed is not the integrated form of the model it was generated from \u2014 1 file(s) moved",
+    "expected": null,
+    "actual": null,
+    "evidence": [
+      "work/orchestration/goals/aries-integrated-heat-electricity/evidence/integration-attempt1/moved_files.txt"
+    ]
+  },
+  "gates": [
+    {
+      "gate": "pinned-packages",
+      "producer": "tests/test_dependency_provenance.py",
+      "scope": "repo",
+      "status": "pass",
+      "checked": "the pinned package revisions and installed wheel artifacts",
+      "detail": "tests/test_dependency_provenance.py passed",
+      "evidence": [
+        "work/orchestration/goals/aries-integrated-heat-electricity/evidence/integration-attempt1/junit/pinned-packages.xml"
+      ]
+    },
+    {
+      "gate": "teax-revision",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "pass",
+      "checked": "the teax checkout's revision against the expected one",
+      "detail": "teax is at 8d877460ac4f6f264561d916e40c1708adb13397, matching the expected 8d877460ac4f6f264561d916e40c1708adb13397",
+      "evidence": []
+    },
+    {
+      "gate": "regeneration",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "fail",
+      "checked": "regeneration in place moves no package byte",
+      "detail": "regenerating on the pin rewrote the package, so what is committed is not the integrated form of the model it was generated from \u2014 1 file(s) moved",
+      "evidence": [
+        "work/orchestration/goals/aries-integrated-heat-electricity/evidence/integration-attempt1/moved_files.txt"
+      ]
+    },
+    {
+      "gate": "handwritten-preservation",
+      "producer": "sysml-codegen generate",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the handwritten implementations survive regeneration byte for byte",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "census-snapshot",
+      "producer": "sysml_codegen.snapshot.capture; the spine census helper",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the recaptured snapshot and the re-derived entry-point census",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "model-family-spine",
+      "producer": "tests/models/test_model_family_spines.py",
+      "scope": "repo",
+      "status": "not reached",
+      "checked": "the canonical tree, the family twins and the tracked census",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "manifest",
+      "producer": "scripts/study/manifest.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the manifest's schema, package identity and recomputed pin",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "preflight",
+      "producer": "scripts/study/preflight.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the six mechanical gates a study passes",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "verification",
+      "producer": "scripts/study/verify.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "oracle parity and re-derived verdicts over an executed store",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    },
+    {
+      "gate": "lineage",
+      "producer": "scripts/integrate.py",
+      "scope": "request",
+      "status": "not reached",
+      "checked": "the live fingerprints against the lineage the request named",
+      "detail": "the sequence stopped before this gate",
+      "evidence": []
+    }
+  ],
+  "toolchain": {
+    "agentic_mbse": "0.1.3",
+    "sysml_codegen": "0.1.1",
+    "costingfe": "0.1.0",
+    "teax_revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "teax_module_path": "/home/reid/1cfe/teax/packages/teax-simkit/simkit"
+  }
+}

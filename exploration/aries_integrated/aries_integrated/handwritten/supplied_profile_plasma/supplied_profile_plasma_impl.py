@@ -92,6 +92,14 @@ def evaluate(inputs):
     raise ValueError('profile integration did not meet numerical convergence criterion by 65536 intervals')
 
 
-def run_supplied_profile_plasma(inputs: Supplied_Profile_PlasmaInput) -> tuple:
+def _reviewed_run_supplied_profile_plasma(inputs: Supplied_Profile_PlasmaInput) -> tuple:
     result = evaluate(inputs)
     return tuple(result[name] for name in OUTPUT_ORDER)
+
+
+from aries_integrated.modules.supplied_profile_plasma.supplied_profile_plasma import Supplied_Profile_PlasmaInput
+
+
+def run_supplied_profile_plasma(inputs: Supplied_Profile_PlasmaInput) -> tuple[float, float, float, float, float, float, float, float]:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_supplied_profile_plasma(inputs)

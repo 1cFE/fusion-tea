@@ -1,0 +1,5 @@
+# T-007 corrective packaging review brief
+
+Review only the thirteen schema-facing typed adapters and the resulting package-contract change. Reuse the accepted physical review at executable `469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7`; the proposed executable is `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`. Inspect the native WI-089 `smart-normalization-*` evidence, original module/body AST equality, four-baseline exact input/output parity and the exact seam command's fixed point. Confirm the public adapter actually delegates to the preserved computation and that the reuse description distinguishes signature adaptation from byte-identical reuse. Do not repeat the physical design review or edit the model. Report PASS/FINDINGS with scope in `packaging-review.md`.
+
+This brief records the coordinator's dispatch message; it was deposited immediately after dispatch. The reviewer is the same independent non-author used for the accepted implementation, and owns only the corrective review artifact.

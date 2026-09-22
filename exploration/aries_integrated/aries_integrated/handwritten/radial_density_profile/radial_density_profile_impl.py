@@ -8,7 +8,7 @@ from aries_integrated.modules.radial_density_profile.radial_density_profile impo
 AUTO_IMPLEMENTED = False
 
 
-def run_radial_density_profile(inputs: Radial_Density_ProfileInput) -> float:
+def _reviewed_run_radial_density_profile(inputs: Radial_Density_ProfileInput) -> float:
     values = inputs.model_dump()
     if not all(math.isfinite(value) for value in values.values()):
         raise ValueError("density profile requires finite inputs")
@@ -31,3 +31,11 @@ def run_radial_density_profile(inputs: Radial_Density_ProfileInput) -> float:
     )):
         raise ValueError("density profile arithmetic is nonfinite")
     return density
+
+
+from aries_integrated.modules.radial_density_profile.radial_density_profile import Radial_Density_ProfileInput
+
+
+def run_radial_density_profile(inputs: Radial_Density_ProfileInput) -> float:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_radial_density_profile(inputs)

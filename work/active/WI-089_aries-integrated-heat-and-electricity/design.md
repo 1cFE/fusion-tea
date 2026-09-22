@@ -91,10 +91,10 @@ Nominal choices are starting scenarios, not optimized hardware. If initial execu
 
 | Existing asset | Planned reuse / change |
 |---|---|
-| WI-083 plasma case, density/profile definitions, reaction kernel and typed integration | Stage/import unchanged; completion package-prefix rewrite only, record normalized hashes |
+| WI-083 plasma case, density/profile definitions, reaction kernel and typed integration | Stage/import unchanged; completion package-prefix rewrite plus typed interface adapter when required by stock smart regeneration; preserve original body AST and record both hashes |
 | WI-085 fuel chain | Reuse exact `Fuel Cycle Flows` definition/generated behavior; new occurrence binds selector rather than fixed imported plasma. Preserve fuel assumptions, expose outputs. |
-| WI-086 branch heat and dual ledger | Exact definitions/completions reused for He/PbLi; new partition supplies their inputs. Divertor and full-plant ledger are additions. |
-| WI-087 compressors, coolers, expander, pressure loss | Exact definitions/completions reused; turbine input now solved by new closure. |
+| WI-086 branch heat and dual ledger | Exact definitions and completion bodies reused for He/PbLi; new partition supplies their inputs. Divertor and full-plant ledger are additions. |
+| WI-087 compressors, coolers, expander, pressure loss | Exact definitions and completion bodies reused; turbine input now solved by new closure. |
 | WI-087 recuperator/ledger | Equation lineage retained; new passive bypass and zero-heat-aware ledger are additions, not unchanged reuse. |
 | Offered capacity screens/constraints | Exact generic definition/completion reused for every new selected rating. |
 | Existing build route | Same stock generator, handwritten completion preservation, seal and TEAx execution; add native integration snapshot/census contract. No separate Python plant implementation. |

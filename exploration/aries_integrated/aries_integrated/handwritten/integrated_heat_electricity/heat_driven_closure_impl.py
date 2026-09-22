@@ -9,7 +9,7 @@ AUTO_IMPLEMENTED = False
 BRANCHES = ('he', 'divertor', 'pbli')
 
 
-def run_heat_driven_closure(inputs):
+def _reviewed_run_heat_driven_closure(inputs):
     v = values(inputs)
     for key in ('cold_temperature', 'flow', 'cp', 'turbine_pressure', 'return_pressure'):
         require(v[key] > 0, key + ' must be positive')
@@ -80,3 +80,11 @@ def run_heat_driven_closure(inputs):
                accepted_heat=accepted,unmet_heat=sum(out[b+'_unmet'] for b in BRANCHES),
                closure_residual=residual,iterations=float(iteration))
     return finish('heat_driven_closure',out)
+
+
+from aries_integrated.modules.integrated_heat_electricity.heat_driven_closure import Heat_Driven_ClosureInput
+
+
+def run_heat_driven_closure(inputs: Heat_Driven_ClosureInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_heat_driven_closure(inputs)

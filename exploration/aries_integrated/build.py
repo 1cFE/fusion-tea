@@ -49,11 +49,40 @@ def build():
         content = source.read_text()
         if old_prefix:
             content = content.replace('from '+old_prefix+'.','from aries_integrated.')
-        target.write_text(content)
         normalized = content.replace('from aries_integrated.','from '+old_prefix+'.') if old_prefix else content
         assert normalized == source.read_text()
+        before_tree = ast.parse(content)
+        original = next((n for n in before_tree.body if isinstance(n,ast.FunctionDef) and n.name.startswith('run_')),None)
+        expected = None
+        if target.exists():
+            expected = next((n for n in ast.parse(target.read_text()).body if isinstance(n,ast.FunctionDef) and n.name.startswith('run_')),None)
+        adapted = False
+        if original is not None and expected is not None:
+            same_types = (ast.dump(original.args)==ast.dump(expected.args) and
+                          original.returns is not None and expected.returns is not None and
+                          ast.dump(original.returns)==ast.dump(expected.returns))
+            method_ref = any(isinstance(n,ast.Attribute) and isinstance(n.value,ast.Name) and
+                             n.value.id=='inputs' and n.attr=='model_dump' for n in ast.walk(original))
+            if not same_types or method_ref:
+                # The stock smart-regeneration signature reader treats BaseModel APIs
+                # as input fields. A typed public adapter keeps that reader on the
+                # actual interface while preserving the reviewed body byte-for-byte.
+                reviewed_name = '_reviewed_'+original.name
+                content = content.replace('def '+original.name+'(', 'def '+reviewed_name+'(',1)
+                module_path = relative.removesuffix('_impl.py').replace('/','.')
+                input_type = ast.unparse(expected.args.args[0].annotation)
+                return_type = ast.unparse(expected.returns)
+                content += ('\n\nfrom aries_integrated.modules.'+module_path+' import '+input_type+'\n\n\n'
+                            +'def '+original.name+'(inputs: '+input_type+') -> '+return_type+':\n'
+                            +'    """Typed native adapter; delegates unchanged reviewed calculation."""\n'
+                            +'    return '+reviewed_name+'(inputs)\n')
+                adapted = True
+                reviewed = next(n for n in ast.parse(content).body if isinstance(n,ast.FunctionDef) and n.name==reviewed_name)
+                assert [ast.dump(n) for n in original.body]==[ast.dump(n) for n in reviewed.body]
+        target.write_text(content)
         receipts.append(dict(source=str(source.relative_to(ROOT)),target=str(target.relative_to(ROOT)),
-                             source_sha256=sha(source),target_sha256=sha(target),prefix_only=bool(old_prefix)))
+                             source_sha256=sha(source),target_sha256=sha(target),prefix_only=bool(old_prefix) and not adapted,
+                             typed_adapter=adapted,reviewed_body_ast_unchanged=True))
     reused = [
         ('exploration/aries_transfer/plasma_integration/supplied_profile_plasma_impl.py','supplied_profile_plasma/supplied_profile_plasma_impl.py','aries_plasma_tea'),
         ('exploration/aries_transfer/density_profile/radial_density_profile_impl.py','radial_density_profile/radial_density_profile_impl.py','aries_density_tea'),
@@ -72,9 +101,10 @@ def build():
     node = next(n for n in ast.parse(kernel.read_text()).body if isinstance(n,ast.FunctionDef) and n.name=='_sigv_dt')
     (PACKAGE/'handwritten/supplied_profile_plasma/reused_reactivity.py').write_text(
         '"""Unchanged accepted kernel; integration guards its domain."""\nimport math\n\n'+ast.get_source_segment(kernel.read_text(),node)+'\n')
-    run(command+['--preserve-handwritten'], 'completion-generation.log')
+    command += ['--smart-regen','--preserve-handwritten']
+    run(command, 'completion-generation.log')
     before = {str(p.relative_to(PACKAGE)):sha(p) for p in PACKAGE.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
-    run(command+['--preserve-handwritten'], 'fixed-point-generation.log')
+    run(command, 'fixed-point-generation.log')
     after = {str(p.relative_to(PACKAGE)):sha(p) for p in PACKAGE.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
     assert before == after, sorted(key for key in set(before)|set(after) if before.get(key)!=after.get(key))
     run(['sysml-codegen','snapshot','--models',str(staging),'--output',str(HERE/'integrated.snapshot.json')], 'snapshot.log')

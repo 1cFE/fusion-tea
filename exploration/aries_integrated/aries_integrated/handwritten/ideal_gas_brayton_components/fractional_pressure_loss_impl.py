@@ -11,7 +11,7 @@ def finish(values):
         raise ValueError('nonfinite component output')
     return values
 
-def run_fractional_pressure_loss(inputs):
+def _reviewed_run_fractional_pressure_loss(inputs):
     for name, value in inputs.model_dump().items():
         if not math.isfinite(value):
             raise ValueError(name + " must be finite")
@@ -20,3 +20,11 @@ def run_fractional_pressure_loss(inputs):
     pressure = inputs.pressure_in*(1-inputs.loss_fraction_in)
     positive('outlet pressure', pressure)
     return finish((pressure,))[0]
+
+
+from aries_integrated.modules.ideal_gas_brayton_components.fractional_pressure_loss import Fractional_Pressure_LossInput
+
+
+def run_fractional_pressure_loss(inputs: Fractional_Pressure_LossInput) -> float:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_fractional_pressure_loss(inputs)

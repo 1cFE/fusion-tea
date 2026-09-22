@@ -7,7 +7,7 @@ from aries_integrated.handwritten.integrated_heat_electricity.common import valu
 AUTO_IMPLEMENTED = False
 
 
-def run_integrated_plant_ledger(inputs):
+def _reviewed_run_integrated_plant_ledger(inputs):
     v = values(inputs)
     signed = {'source_residual','intercooler_1','intercooler_2','precooler','closure_residual','electric_net_shaft','electric_net_electric'}
     for key,value in v.items():
@@ -61,3 +61,11 @@ def run_integrated_plant_ledger(inputs):
                supported_materials=0.,supported_machine_map=0.,assumed_auxiliary_demands=1.,conditional_net_result=1.,net_result_producer_mode=v['producer_mode'],
                cryo_electric=e['cryo_electric'],control_electric=e['control_electric'],other_electric_demand=e['other_electric_demand'],primary_pump_electric=e['primary_pump_electric'])
     return finish('integrated_plant_ledger',out)
+
+
+from aries_integrated.modules.integrated_heat_electricity.integrated_plant_ledger import Integrated_Plant_LedgerInput
+
+
+def run_integrated_plant_ledger(inputs: Integrated_Plant_LedgerInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_integrated_plant_ledger(inputs)

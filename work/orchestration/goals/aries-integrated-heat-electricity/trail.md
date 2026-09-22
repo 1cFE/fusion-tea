@@ -131,3 +131,34 @@ T-005 · native coding prerequisite · numerical mismatch evidence and reviewed 
 ### T-006 start — 2026-09-22
 
 T-006 · `scripts/integrate.py` via goal `evidence/integrate.py` · first native integration return expected after metadata/tooling checkpoint.
+
+### T-006 return — 2026-09-22
+
+- **Outcome:** PREREQUISITE.
+- **Evidence:** `evidence/integration-attempt1/integration_return.json` and `moved_files.txt` (unpinned until next checkpoint).
+- **Reading:** pinned toolchain and TEAx revision pass, but native smart regeneration changes only `contracts/package_contract.json`. The seam restored the original package. No candidate was promoted and no study sweep ran. The model item's overwrite-only fixed-point proof did not establish the seam's smart-regeneration fixed point.
+- **Decision:** return normalization to native WI-089 package author; preserve the refusal and inspect the exact contract difference without changing physics; execution detail; coordinator following native prerequisite contract; T-007.
+
+### T-007 scope
+
+- **Objective:** make the accepted package a verified fixed point under the native seam's actual smart-regeneration invocation.
+- **Why now:** T-006 returned package-not-integrated on one contract file despite stable authored model behavior.
+- **Scope:** WI-089 build/seal/metadata normalization, exact contract diff evidence and applicable identity updates. No physics or selected-input change. Preserve accepted numerical results at their original seal and explicitly determine whether executable/semantic identities change.
+- **Inputs:** `goal.md`, T-006 native refusal, accepted WI-089 package and actual `scripts/integrate.py` regeneration invocation.
+- **Done when:** the exact producer invocation is byte-stable and any metadata/identity consequences are verified; relevant reviewer evidence remains applicable or is refreshed.
+- **Stop when:** this requires altered physical semantics, a distinct seam repair, reserved gate or cap.
+
+### T-007 start — 2026-09-22
+
+T-007 · WI-089 package normalization · exact mismatch explanation, stable regeneration and updated native evidence expected. Model author owns package/build; study worker waits on identity before updating metadata.
+
+### T-007 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-089 `evidence/smart-normalization-verification.json`, retained original receipts, and goal `evidence/packaging-review.md`, `reviewer-packaging.json`, `preservation-packaging.json` (pending corrective checkpoint).
+- **Reading:** smart regeneration did not recognize thirteen completion signatures and replaced them with stubs in the retained scratch probe. Typed public adapters now delegate unchanged inputs to preserved reviewed functions. The entire original module AST is recovered after removing the adapter and undoing the private rename. Exact smart regeneration is byte-stable. Four native canonical scenarios retain exact all-input/output parity; the reviewer independently repeats calculated nominal and checks the zero-load guard.
+- **Decision:** adopt the normalized executable `cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd`, with semantic identity unchanged; execution detail; author with independent corrective reviewer PASS. Reuse means preserved calculation bodies plus explicit typed adapters, not prefix-only copies. Original forty-case evidence remains identified at its old seal. All 8,657 protected files remain unchanged.
+
+### Amendment — 2026-09-22
+
+T-006's moved-file report names only the contract because its regeneration gate excludes the handwritten subtree until the following gate. The scratch investigation found thirteen completions replaced with stubs as well. The native seam restored the original package; the T-007 explanation and retained probe supersede the initial metadata-only interpretation.

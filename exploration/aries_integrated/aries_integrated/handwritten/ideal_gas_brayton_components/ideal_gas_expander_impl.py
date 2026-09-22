@@ -13,7 +13,7 @@ def finish(values):
     outputs = dict(zip(['temperature_out', 'pressure_out', 'shaft_produced'], values))
     return tuple(outputs[name] for name in Ideal_Gas_ExpanderOutput.model_fields)
 
-def run_ideal_gas_expander(inputs):
+def _reviewed_run_ideal_gas_expander(inputs):
     for name, value in inputs.model_dump().items():
         if not math.isfinite(value):
             raise ValueError(name + " must be finite")
@@ -26,3 +26,11 @@ def run_ideal_gas_expander(inputs):
     positive('outlet temperature', temperature)
     work = inputs.flow_in * inputs.cp_in * (inputs.temperature_in-temperature)/1e6
     return finish((temperature, inputs.exit_pressure_in, work))
+
+
+from aries_integrated.modules.ideal_gas_brayton_components.ideal_gas_expander import Ideal_Gas_ExpanderInput
+
+
+def run_ideal_gas_expander(inputs: Ideal_Gas_ExpanderInput) -> tuple[float, float, float]:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_ideal_gas_expander(inputs)

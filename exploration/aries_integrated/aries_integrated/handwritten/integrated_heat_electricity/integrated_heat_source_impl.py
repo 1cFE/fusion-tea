@@ -3,7 +3,7 @@ from aries_integrated.handwritten.integrated_heat_electricity.common import valu
 AUTO_IMPLEMENTED = False
 
 
-def run_integrated_heat_source(inputs):
+def _reviewed_run_integrated_heat_source(inputs):
     v = values(inputs)
     require(v['fusion_power'] > 0, 'fusion power must be positive')
     require(v['heat_mode'] in (0, 1), 'heat mode must be 0 or 1')
@@ -29,3 +29,11 @@ def run_integrated_heat_source(inputs):
                pump_recovered=sum(friction.values()))
     out.update({b+'_friction': q for b, q in friction.items()})
     return finish('integrated_heat_source', out)
+
+
+from aries_integrated.modules.integrated_heat_electricity.integrated_heat_source import Integrated_Heat_SourceInput
+
+
+def run_integrated_heat_source(inputs: Integrated_Heat_SourceInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_integrated_heat_source(inputs)

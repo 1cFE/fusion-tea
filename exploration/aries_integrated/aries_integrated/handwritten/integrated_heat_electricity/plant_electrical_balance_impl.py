@@ -3,7 +3,7 @@ from aries_integrated.handwritten.integrated_heat_electricity.common import valu
 AUTO_IMPLEMENTED = False
 
 
-def run_plant_electrical_balance(inputs):
+def _reviewed_run_plant_electrical_balance(inputs):
     v = values(inputs)
     require(all(x >= 0 for x in v.values()), 'electrical inputs must be nonnegative')
     for key in ('heating_efficiency','generator_efficiency','motor_efficiency'):
@@ -26,3 +26,11 @@ def run_plant_electrical_balance(inputs):
         pump_loss=v['pump_electric']-v['pump_recovered'],dissipated_auxiliary=dissipated,
         cryo_electric=v['cryo'],control_electric=v['control'],other_electric_demand=v['other_electric'],
         primary_pump_electric=v['pump_electric']))
+
+
+from aries_integrated.modules.integrated_heat_electricity.plant_electrical_balance import Plant_Electrical_BalanceInput
+
+
+def run_plant_electrical_balance(inputs: Plant_Electrical_BalanceInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:
+    """Typed native adapter; delegates unchanged reviewed calculation."""
+    return _reviewed_run_plant_electrical_balance(inputs)

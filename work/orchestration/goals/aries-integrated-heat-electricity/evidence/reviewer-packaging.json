@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "old_commit": "71b2867a",
+  "old_fingerprint": "469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7",
+  "new_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+  "adapter_count": 13,
+  "exact_changed_files": [
+    "contracts/package_contract.json",
+    "handwritten/integrated_heat_electricity/plant_electrical_balance_impl.py",
+    "handwritten/integrated_heat_electricity/heat_driven_closure_impl.py",
+    "handwritten/integrated_heat_electricity/passive_recuperator_impl.py",
+    "handwritten/integrated_heat_electricity/integrated_plant_ledger_impl.py",
+    "handwritten/integrated_heat_electricity/fusion_source_selector_impl.py",
+    "handwritten/integrated_heat_electricity/integrated_heat_source_impl.py",
+    "handwritten/radial_density_profile/radial_density_profile_impl.py",
+    "handwritten/ideal_gas_brayton_components/fixed_outlet_conditioning_impl.py",
+    "handwritten/ideal_gas_brayton_components/fractional_pressure_loss_impl.py",
+    "handwritten/ideal_gas_brayton_components/ideal_gas_expander_impl.py",
+    "handwritten/ideal_gas_brayton_components/ideal_gas_compressor_impl.py",
+    "handwritten/dual_circuit_heat_accounting/coolant_branch_heat_impl.py",
+    "handwritten/supplied_profile_plasma/supplied_profile_plasma_impl.py"
+  ],
+  "whole_original_module_ast_preserved": true,
+  "public_adapters_only_forward_same_input": true,
+  "other_contract_fields_unchanged": true,
+  "calculated_baseline_all_outputs_and_inputs_exact": true,
+  "zero_selected_power_refusal_preserved": true,
+  "scratch": "/tmp/reviewer-aries-adapter-po0vqbc1"
+}
