@@ -1,0 +1,42 @@
+{
+  "aries_density_profile": {
+    "staging_script": "exploration/aries_transfer/density_profile/verify.py",
+    "exact_match": true,
+    "source_count": 2
+  },
+  "aries_fuel_reuse": {
+    "staging_script": "exploration/aries_transfer/fuel_reuse/build.py",
+    "exact_match": true,
+    "source_count": 3
+  },
+  "aries_plasma_integration": {
+    "staging_script": "exploration/aries_transfer/plasma_integration/verify.py",
+    "exact_match": true,
+    "source_count": 4
+  },
+  "aries_constituent_inventory": {
+    "staging_script": "exploration/aries_transfer/constituent_inventory/build.py",
+    "exact_match": true,
+    "source_count": 2
+  },
+  "aries_plasma_fuel": {
+    "staging_script": "exploration/aries_transfer/plasma_fuel/verify.py",
+    "exact_match": true,
+    "source_count": 7
+  },
+  "aries_dual_blanket_heat": {
+    "staging_script": "exploration/aries_transfer/dual_blanket_heat/build.py",
+    "exact_match": true,
+    "source_count": 3
+  },
+  "aries_nominal_brayton": {
+    "staging_script": "exploration/aries_transfer/nominal_brayton/build.py",
+    "exact_match": true,
+    "source_count": 3
+  },
+  "aries_source_budget": {
+    "staging_script": "exploration/aries_transfer/source_budget/build.py",
+    "exact_match": true,
+    "source_count": 3
+  }
+}

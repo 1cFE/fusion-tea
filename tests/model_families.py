@@ -8,7 +8,8 @@ generates must pick a family (design D6–D8):
 
 * each family owns a set of **logical paths** — the layout the exploration twins use, i.e.
   the canonical path with the ``library/`` prefix stripped;
-* the union of the owned paths must cover every canonical ``.sysml`` file;
+* family ownership plus independently generated source collections must exactly
+  cover every canonical ``.sysml`` file;
 * a path owned by both families is a shared file and must be byte-identical in canonical,
   the IFE twin and the MFE twin;
 * a family generates from a **materialized canonical subset**: its owned canonical files
@@ -103,6 +104,54 @@ MFE = Family(
 
 FAMILIES: dict[str, Family] = {IFE.name: IFE, MFE.name: MFE}
 
+# Separate generation units, not exploration twins or a combined plant family.
+# Sources: exploration/aries_transfer/<name>/{build,verify}.py staging lists.
+SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
+    "aries_density_profile": (
+        "analyses/radial_density_profile.sysml",
+        "designs/aries_cs_transfer/density_profile.sysml",
+    ),
+    "aries_fuel_reuse": (
+        "analyses/mfe_fuel_cycle.sysml",
+        "analyses/mfe_viability.sysml",
+        "designs/aries_cs_transfer/fuel_reuse.sysml",
+    ),
+    "aries_plasma_integration": (
+        "analyses/supplied_profile_plasma.sysml",
+        "analyses/radial_density_profile.sysml",
+        "analyses/mfe_plasma_scaling.sysml",
+        "designs/aries_cs_transfer/plasma_integration.sysml",
+    ),
+    "aries_constituent_inventory": (
+        "analyses/sector_constituent_inventory.sysml",
+        "designs/aries_cs_transfer/constituent_inventory.sysml",
+    ),
+    "aries_plasma_fuel": (
+        "analyses/supplied_profile_plasma.sysml",
+        "analyses/radial_density_profile.sysml",
+        "analyses/mfe_plasma_scaling.sysml",
+        "analyses/mfe_fuel_cycle.sysml",
+        "analyses/mfe_viability.sysml",
+        "designs/aries_cs_transfer/plasma_integration.sysml",
+        "designs/aries_cs_transfer/plasma_fuel.sysml",
+    ),
+    "aries_dual_blanket_heat": (
+        "analyses/dual_circuit_heat_accounting.sysml",
+        "analyses/mfe_viability.sysml",
+        "designs/aries_cs_transfer/dual_blanket_heat.sysml",
+    ),
+    "aries_nominal_brayton": (
+        "analyses/ideal_gas_brayton_components.sysml",
+        "analyses/mfe_viability.sysml",
+        "designs/aries_cs_transfer/nominal_brayton.sysml",
+    ),
+    "aries_source_budget": (
+        "analyses/source_budget_accounting.sysml",
+        "analyses/mfe_account_costs.sysml",
+        "designs/aries_cs_transfer/source_budget.sysml",
+    ),
+}
+
 SHARED_PATHS: tuple[str, ...] = tuple(sorted(set(IFE.owned) & set(MFE.owned)))
 
 
@@ -144,3 +193,14 @@ def materialize_canonical_subset(family: Family, destination: Path) -> Path:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
     return destination
+
+
+def assert_canonical_ownership(root: Path = CANONICAL) -> None:
+    """Refuse unregistered canonical files and missing registered files alike."""
+    owned = {path for family in FAMILIES.values() for path in family.owned}
+    owned.update(path for paths in SOURCE_COLLECTIONS.values() for path in paths)
+    actual = set(canonical_files(root))
+    assert owned == actual, {
+        "unregistered": sorted(actual - owned),
+        "missing": sorted(owned - actual),
+    }

@@ -46,8 +46,10 @@ from sysml_codegen.snapshot.capture import capture_instance_graph_snapshot
 
 from tests.model_families import (
     FAMILIES,
+    SOURCE_COLLECTIONS,
     SHARED_PATHS,
     Family,
+    assert_canonical_ownership,
     canonical_files,
     canonical_path,
     materialize_canonical_subset,
@@ -264,9 +266,27 @@ def baselines(tmp_path_factory) -> dict[str, Path]:
 
 
 def test_owned_paths_cover_every_canonical_file() -> None:
-    """D8: the union of the families' owned paths is exactly the canonical tree."""
+    """D8: explicit family and standalone ownership exactly covers the tree."""
+    assert_canonical_ownership()
+
+
+@pytest.mark.parametrize("mutation", ["unregistered", "missing"])
+def test_canonical_ownership_rejects_unregistered_or_missing_files(
+    tmp_path: Path, mutation: str
+) -> None:
     owned = {path for family in FAMILIES.values() for path in family.owned}
-    assert owned == set(canonical_files()), sorted(owned ^ set(canonical_files()))
+    owned.update(path for paths in SOURCE_COLLECTIONS.values() for path in paths)
+    for logical in owned:
+        target = tmp_path / (logical if logical.startswith("designs/") else "library/" + logical)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.touch()
+    assert_canonical_ownership(tmp_path)
+    if mutation == "unregistered":
+        (tmp_path / "library/analyses/unregistered.sysml").touch()
+    else:
+        (tmp_path / "library/analyses/radial_density_profile.sysml").unlink()
+    with pytest.raises(AssertionError, match=mutation):
+        assert_canonical_ownership(tmp_path)
 
 
 @pytest.mark.parametrize("family", sorted(FAMILIES))

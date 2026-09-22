@@ -1,3 +1,9 @@
+# Integrated ARIES heat/electricity goal — active — 2026-09-22
+
+[OWNER] Issued `/tmp/aries-integrated-model-prompts/01-integrate-heat-and-electricity.md`, retained in the [goal evidence](../work/orchestration/goals/aries-integrated-heat-electricity/evidence/owner-brief.md). Authorizes grounding/execution, transparent assumptions, local commits and fresh modeling/review agents; preserves Stellaris and reserves formal closure/push/merge. [AGENT] [Grounded goal](../work/orchestration/goals/aries-integrated-heat-electricity/goal.md), [live trail](../work/orchestration/goals/aries-integrated-heat-electricity/trail.md), native WI-089. Design review precedes implementation; one combined native thermal/electrical study is intended under round 1.
+
+[AGENT] Isolated Stellaris replay matches all 1,352 outputs and 68 responses exactly; 8,657 protected files unchanged. [Evidence](../work/orchestration/goals/aries-integrated-heat-electricity/evidence/stellaris-regression.md). Existing integration ownership gate fails on prior ARIES additions; bounded coding prerequisite is tracked separately at `.project/active/aries-model-ownership/`. Unrelated untracked writing prompt and design-choice audit are preserved.
+
 # ARIES model transfer experiment — sequential pass reviewed — 2026-09-21
 
 [OWNER] Requested step-by-step transfer work with subagents, a persistent plan/log and regular commits; authorized continued work one area at a time without routine pauses. [AGENT] All thirteen provisional areas have been assessed. Eight native increments (WI-081 through WI-088) are independently accepted: density, plasma integration, constituent inventory, two fuel cases, blanket heat accounting, nominal Brayton conversion and supplied-budget accounting. Sixteen new generic calculations were added; existing fuel, beta, capacity and annual cost/energy components were reused with the distinctions recorded in the report.
