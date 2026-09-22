@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 133 functions to implement
+**Total**: 139 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -134,6 +134,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
+| [ ] | Already_Financed_Duration | `run_already_financed_duration` | `root-0/integrated_lifecycle_costs.sysml:79` | High |
 | [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
 | [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
 | [ ] | Replacement_Events | `run_replacement_events` | `root-0/integrated_equipment_costs.sysml:66` | High |
@@ -159,6 +160,11 @@ Complete all stages in order for a production-ready system.
 | [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
 | [ ] | Eight_Amount_Sum | `run_eight_amount_sum` | `root-0/integrated_equipment_costs.sysml:80` | High |
 | [ ] | Equipment_Cost_Ledger | `run_equipment_cost_ledger` | `root-0/integrated_equipment_costs.sysml:104` | High |
+| [ ] | Levelized_Annual_Cost | `run_levelized_annual_cost` | `root-0/mfe_account_costs.sysml:747` | High |
+| [ ] | Lifecycle_Cashflow_Accounts | `run_lifecycle_cashflow_accounts` | `root-0/integrated_lifecycle_costs.sysml:3` | High |
+| [ ] | LCOE_DCF | `run_lcoe_dcf` | `root-0/mfe_lcoe_dcf.sysml:4` | High |
+| [ ] | Lifecycle_Cashflow_Accounts | `run_lifecycle_cashflow_accounts` | `root-0/integrated_lifecycle_costs.sysml:3` | High |
+| [ ] | LCOE_DCF | `run_lcoe_dcf` | `root-0/mfe_lcoe_dcf.sysml:4` | High |
 
 **1 computed attribute module(s) auto-implemented** (not included in manual count above).
 
@@ -185,7 +191,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 133 implementation functions
+- 139 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -220,7 +226,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 133 functions implemented
+- Stage 1: All 139 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

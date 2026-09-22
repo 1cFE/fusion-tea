@@ -770,6 +770,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "aries_integrated_plant__source_finance_energy__evaluate__annual_energy",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "aries_integrated_plant__source_core_children_first__evaluate__total",
       "field_name": "root",
       "python_type": "float"
@@ -2550,6 +2555,11 @@
       "python_type": "bool"
     },
     {
+      "channel_name": "aries_integrated_plant__source_finance__boundary__years",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
       "channel_name": "aries_integrated_plant__annual_om__evaluate__annual_om",
       "field_name": "root",
       "python_type": "float"
@@ -2807,6 +2817,426 @@
     {
       "channel_name": "aries_integrated_plant__cost_ledger__evaluate__currency_year",
       "field_name": "currency_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__operating_levelization__evaluate__levelized",
+      "field_name": "levelized",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__operating_levelization__evaluate__crf",
+      "field_name": "crf",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__real_convention",
+      "field_name": "real_convention",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_cost",
+      "field_name": "other_overhaul_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__gross_makeup",
+      "field_name": "gross_makeup",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__supply_lcoe",
+      "field_name": "supply_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "field_name": "other_overhaul_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__lcoe_sum",
+      "field_name": "lcoe_sum",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__noncapital_annual",
+      "field_name": "noncapital_annual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_total_cost",
+      "field_name": "pv_total_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__breeding_supported",
+      "field_name": "breeding_supported",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_supply",
+      "field_name": "pv_supply",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "field_name": "other_overhaul_occurs",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed",
+      "field_name": "curtailed_feed",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__replacement_lcoe",
+      "field_name": "replacement_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__gross_terminal",
+      "field_name": "gross_terminal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__salvage_lcoe",
+      "field_name": "salvage_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__financial_defined",
+      "field_name": "financial_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__idc",
+      "field_name": "idc",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__annual_capital",
+      "field_name": "annual_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_replacement",
+      "field_name": "pv_replacement",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__supply_supported",
+      "field_name": "supply_supported",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__om_lcoe",
+      "field_name": "om_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_gross",
+      "field_name": "pv_terminal_gross",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__tritium_lcoe",
+      "field_name": "tritium_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__capital_lcoe",
+      "field_name": "capital_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__annual_energy",
+      "field_name": "annual_energy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall",
+      "field_name": "external_shortfall",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_salvage",
+      "field_name": "pv_salvage",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_operating",
+      "field_name": "pv_operating",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__new_feed",
+      "field_name": "new_feed",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__lifetime_energy",
+      "field_name": "lifetime_energy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__financed_capital",
+      "field_name": "financed_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_other_overhaul",
+      "field_name": "pv_other_overhaul",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__terminal_lcoe",
+      "field_name": "terminal_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__currency_year",
+      "field_name": "currency_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_energy",
+      "field_name": "pv_energy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__salvage",
+      "field_name": "salvage",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__deuterium_lcoe",
+      "field_name": "deuterium_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_net",
+      "field_name": "pv_terminal_net",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__imports_lcoe",
+      "field_name": "imports_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_accounts__evaluate__consumables_lcoe",
+      "field_name": "consumables_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__real_convention",
+      "field_name": "real_convention",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_cost",
+      "field_name": "other_overhaul_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_makeup",
+      "field_name": "gross_makeup",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_lcoe",
+      "field_name": "supply_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "field_name": "other_overhaul_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__lcoe_sum",
+      "field_name": "lcoe_sum",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__noncapital_annual",
+      "field_name": "noncapital_annual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_total_cost",
+      "field_name": "pv_total_cost",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__breeding_supported",
+      "field_name": "breeding_supported",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_supply",
+      "field_name": "pv_supply",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "field_name": "other_overhaul_occurs",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed",
+      "field_name": "curtailed_feed",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__replacement_lcoe",
+      "field_name": "replacement_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_terminal",
+      "field_name": "gross_terminal",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage_lcoe",
+      "field_name": "salvage_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__financial_defined",
+      "field_name": "financial_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__idc",
+      "field_name": "idc",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_capital",
+      "field_name": "annual_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_replacement",
+      "field_name": "pv_replacement",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_supported",
+      "field_name": "supply_supported",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__om_lcoe",
+      "field_name": "om_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_gross",
+      "field_name": "pv_terminal_gross",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__tritium_lcoe",
+      "field_name": "tritium_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__capital_lcoe",
+      "field_name": "capital_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_energy",
+      "field_name": "annual_energy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall",
+      "field_name": "external_shortfall",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_salvage",
+      "field_name": "pv_salvage",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_operating",
+      "field_name": "pv_operating",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__new_feed",
+      "field_name": "new_feed",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__lifetime_energy",
+      "field_name": "lifetime_energy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__financed_capital",
+      "field_name": "financed_capital",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_other_overhaul",
+      "field_name": "pv_other_overhaul",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__terminal_lcoe",
+      "field_name": "terminal_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__currency_year",
+      "field_name": "currency_year",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_energy",
+      "field_name": "pv_energy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage",
+      "field_name": "salvage",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__deuterium_lcoe",
+      "field_name": "deuterium_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_net",
+      "field_name": "pv_terminal_net",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__imports_lcoe",
+      "field_name": "imports_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_accounts__evaluate__consumables_lcoe",
+      "field_name": "consumables_lcoe",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe",
+      "field_name": "root",
       "python_type": "float"
     },
     {
@@ -3552,6 +3982,20 @@
       "qualified_name": "aries_integrated_plant__indirect_cost__evaluate__reference_construction_time"
     },
     {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__operating_levelization__evaluate__inflation_rate_in"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_account_costs_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__operating_levelization__evaluate__project_time"
+    },
+    {
       "default_value": 1.25663706212e-06,
       "entry_type": "library_default",
       "param_group": "mfe_plasma_scaling_params",
@@ -4236,6 +4680,55 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__facilities__selected_quantity"
+    },
+    {
+      "default_value": 6.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__finance__construction_years"
+    },
+    {
+      "default_value": 0.05,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__finance__discount_rate"
+    },
+    {
+      "default_value": 0.05,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__finance__other_overhaul_fraction"
+    },
+    {
+      "default_value": 20.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__finance__other_overhaul_year"
+    },
+    {
+      "default_value": 0.02,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__finance__salvage_fraction"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__finance__supply_service_annual"
+    },
+    {
+      "default_value": 0.1,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__finance__terminal_fraction"
     },
     {
       "default_value": 1.0,
@@ -5463,6 +5956,20 @@
       "qualified_name": "aries_integrated_plant__source_budget__inclusive_multiplier"
     },
     {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_finance__construction_years"
+    },
+    {
+      "default_value": 1000.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__source_finance__net_power"
+    },
+    {
       "default_value": 222884000.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
@@ -5764,5 +6271,5 @@
       "qualified_name": "aries_cs_plasma_integration__plasma__volume_exponent"
     }
   ],
-  "semantic_fingerprint": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f"
+  "semantic_fingerprint": "419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131"
 }

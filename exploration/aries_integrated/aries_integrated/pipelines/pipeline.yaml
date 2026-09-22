@@ -291,6 +291,15 @@ modules:
     outputs:
       root: RootModel[float] aries_integrated_plant__waste_equipment__purchase__cost
 
+  # integrated_lifecycle_costs.Supplied_Annual_EnergyModule
+  aries_integrated_plant__source_finance_energy__evaluate:
+    module_type: integrated_lifecycle_costs.Supplied_Annual_EnergyModule
+    inputs:
+      net_power_in: float plant_params.aries_integrated_plant__source_finance__net_power
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_finance_energy__evaluate__annual_energy
+
   # integrated_equipment_costs.Eight_Amount_SumModule
   aries_integrated_plant__source_core_children_first__evaluate:
     module_type: integrated_equipment_costs.Eight_Amount_SumModule
@@ -1690,6 +1699,14 @@ modules:
       supported: bool aries_integrated_plant__generator_capacity__evaluate__supported
       capacity_ok: bool aries_integrated_plant__generator_capacity__evaluate__capacity_ok
 
+  # integrated_lifecycle_costs.Already_Financed_DurationModule
+  aries_integrated_plant__source_finance__boundary:
+    module_type: integrated_lifecycle_costs.Already_Financed_DurationModule
+    inputs:
+      years_in: float plant_params.aries_integrated_plant__source_finance__construction_years
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_finance__boundary__years
+
   # mfe_account_costs.Annual_OM_CostModule
   aries_integrated_plant__annual_om__evaluate:
     module_type: mfe_account_costs.Annual_OM_CostModule
@@ -2054,6 +2071,193 @@ modules:
       lifetime_replacement: float aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement
       currency_year: float aries_integrated_plant__cost_ledger__evaluate__currency_year
 
+  # mfe_account_costs.Levelized_Annual_CostModule
+  aries_integrated_plant__operating_levelization__evaluate:
+    module_type: mfe_account_costs.Levelized_Annual_CostModule
+    inputs:
+      interest_rate: float plant_params.aries_integrated_plant__finance__discount_rate
+      operational_years_in: float plant_params.aries_integrated_plant__cost_schedule__plant_years
+      inflation_rate_in: float mfe_account_costs_params.aries_integrated_plant__operating_levelization__evaluate__inflation_rate_in
+      annual_cost: float aries_integrated_plant__cost_ledger__evaluate__annual_operating
+      project_time: float mfe_account_costs_params.aries_integrated_plant__operating_levelization__evaluate__project_time
+    outputs:
+      levelized: float aries_integrated_plant__operating_levelization__evaluate__levelized
+      crf: float aries_integrated_plant__operating_levelization__evaluate__crf
+
+  # integrated_lifecycle_costs.Lifecycle_Cashflow_AccountsModule
+  aries_integrated_plant__lifecycle_accounts__evaluate:
+    module_type: integrated_lifecycle_costs.Lifecycle_Cashflow_AccountsModule
+    inputs:
+      annual_energy_in: float aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh
+      annual_feed_in: float plant_params.aries_integrated_plant__fuel_inventory__annual_recovery_kg
+      crf_in: float aries_integrated_plant__operating_levelization__evaluate__crf
+      interval_years_in: float aries_integrated_plant__replacement__evaluate__interval_years
+      construction_years_in: float plant_params.aries_integrated_plant__finance__construction_years
+      overnight_in: float aries_integrated_plant__cost_ledger__evaluate__overnight
+      deuterium_in: float aries_integrated_plant__fuel_inventory__deuterium__annual_fuel.root
+      tritium_in: float aries_integrated_plant__fuel_inventory__annual__annual_cost
+      external_shortfall_in: float aries_integrated_plant__fuel_inventory__annual__annual_external
+      event_cost_in: float aries_integrated_plant__replacement__evaluate__event_cost
+      annual_loss_in: float aries_integrated_plant__fuel_inventory__annual__annual_loss
+      consumables_in: float plant_params.aries_integrated_plant__cost_ledger__consumables
+      discount_in: float plant_params.aries_integrated_plant__finance__discount_rate
+      salvage_fraction_in: float plant_params.aries_integrated_plant__finance__salvage_fraction
+      supply_service_in: float plant_params.aries_integrated_plant__finance__supply_service_annual
+      imports_in: float aries_integrated_plant__cost_ledger__evaluate__annual_import_cost
+      other_overhaul_year_in: float plant_params.aries_integrated_plant__finance__other_overhaul_year
+      annual_operating_in: float aries_integrated_plant__cost_ledger__evaluate__annual_operating
+      other_overhaul_fraction_in: float plant_params.aries_integrated_plant__finance__other_overhaul_fraction
+      annual_decay_in: float aries_integrated_plant__fuel_inventory__annual__annual_decay
+      plant_years_in: float plant_params.aries_integrated_plant__cost_schedule__plant_years
+      event_count_in: float aries_integrated_plant__replacement__evaluate__event_count
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+      net_power_in: float aries_integrated_plant__plant_ledger__evaluate__net_electric
+      om_in: float aries_integrated_plant__annual_om__evaluate__annual_om.root
+      terminal_fraction_in: float plant_params.aries_integrated_plant__finance__terminal_fraction
+      annual_burn_in: float aries_integrated_plant__fuel_inventory__annual__annual_burn
+    outputs:
+      real_convention: float aries_integrated_plant__lifecycle_accounts__evaluate__real_convention
+      other_overhaul_cost: float aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_cost
+      gross_makeup: float aries_integrated_plant__lifecycle_accounts__evaluate__gross_makeup
+      supply_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__supply_lcoe
+      other_overhaul_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_lcoe
+      lcoe_sum: float aries_integrated_plant__lifecycle_accounts__evaluate__lcoe_sum
+      noncapital_annual: float aries_integrated_plant__lifecycle_accounts__evaluate__noncapital_annual
+      pv_total_cost: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_total_cost
+      breeding_supported: float aries_integrated_plant__lifecycle_accounts__evaluate__breeding_supported
+      pv_supply: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_supply
+      other_overhaul_occurs: float aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_occurs
+      curtailed_feed: float aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed
+      replacement_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__replacement_lcoe
+      gross_terminal: float aries_integrated_plant__lifecycle_accounts__evaluate__gross_terminal
+      salvage_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__salvage_lcoe
+      financial_defined: float aries_integrated_plant__lifecycle_accounts__evaluate__financial_defined
+      idc: float aries_integrated_plant__lifecycle_accounts__evaluate__idc
+      annual_capital: float aries_integrated_plant__lifecycle_accounts__evaluate__annual_capital
+      pv_replacement: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_replacement
+      supply_supported: float aries_integrated_plant__lifecycle_accounts__evaluate__supply_supported
+      om_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__om_lcoe
+      pv_terminal_gross: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_gross
+      tritium_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__tritium_lcoe
+      capital_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__capital_lcoe
+      annual_energy: float aries_integrated_plant__lifecycle_accounts__evaluate__annual_energy
+      external_shortfall: float aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall
+      pv_salvage: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_salvage
+      pv_operating: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_operating
+      new_feed: float aries_integrated_plant__lifecycle_accounts__evaluate__new_feed
+      lifetime_energy: float aries_integrated_plant__lifecycle_accounts__evaluate__lifetime_energy
+      financed_capital: float aries_integrated_plant__lifecycle_accounts__evaluate__financed_capital
+      pv_other_overhaul: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_other_overhaul
+      terminal_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__terminal_lcoe
+      currency_year: float aries_integrated_plant__lifecycle_accounts__evaluate__currency_year
+      pv_energy: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_energy
+      salvage: float aries_integrated_plant__lifecycle_accounts__evaluate__salvage
+      deuterium_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__deuterium_lcoe
+      pv_terminal_net: float aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_net
+      imports_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__imports_lcoe
+      consumables_lcoe: float aries_integrated_plant__lifecycle_accounts__evaluate__consumables_lcoe
+
+  # mfe_lcoe_dcf.LCOE_DCFModule
+  aries_integrated_plant__lifecycle_price__evaluate:
+    module_type: mfe_lcoe_dcf.LCOE_DCFModule
+    inputs:
+      net_electric_mw: float aries_integrated_plant__plant_ledger__evaluate__net_electric
+      construction_years_in: float plant_params.aries_integrated_plant__finance__construction_years
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+      discount_rate_in: float plant_params.aries_integrated_plant__finance__discount_rate
+      annual_om_in: float aries_integrated_plant__lifecycle_accounts__evaluate__noncapital_annual
+      total_capital_in: float aries_integrated_plant__cost_ledger__evaluate__overnight
+      operational_years_in: float plant_params.aries_integrated_plant__cost_schedule__plant_years
+    outputs:
+      root: RootModel[float] aries_integrated_plant__lifecycle_price__evaluate__lcoe
+
+  # integrated_lifecycle_costs.Lifecycle_Cashflow_AccountsModule
+  aries_integrated_plant__source_lifecycle_accounts__evaluate:
+    module_type: integrated_lifecycle_costs.Lifecycle_Cashflow_AccountsModule
+    inputs:
+      crf_in: float aries_integrated_plant__operating_levelization__evaluate__crf
+      salvage_fraction_in: float plant_params.aries_integrated_plant__finance__salvage_fraction
+      annual_operating_in: float aries_integrated_plant__cost_ledger__evaluate__annual_operating
+      annual_energy_in: float aries_integrated_plant__source_finance_energy__evaluate__annual_energy.root
+      event_count_in: float aries_integrated_plant__replacement__evaluate__event_count
+      other_overhaul_fraction_in: float plant_params.aries_integrated_plant__finance__other_overhaul_fraction
+      annual_decay_in: float aries_integrated_plant__fuel_inventory__annual__annual_decay
+      external_shortfall_in: float aries_integrated_plant__fuel_inventory__annual__annual_external
+      discount_in: float plant_params.aries_integrated_plant__finance__discount_rate
+      imports_in: float aries_integrated_plant__cost_ledger__evaluate__annual_import_cost
+      annual_feed_in: float plant_params.aries_integrated_plant__fuel_inventory__annual_recovery_kg
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+      supply_service_in: float plant_params.aries_integrated_plant__finance__supply_service_annual
+      construction_years_in: float aries_integrated_plant__source_finance__boundary__years.root
+      other_overhaul_year_in: float plant_params.aries_integrated_plant__finance__other_overhaul_year
+      deuterium_in: float aries_integrated_plant__fuel_inventory__deuterium__annual_fuel.root
+      overnight_in: float aries_integrated_plant__source_budget__evaluate__inclusive_capital
+      annual_loss_in: float aries_integrated_plant__fuel_inventory__annual__annual_loss
+      tritium_in: float aries_integrated_plant__fuel_inventory__annual__annual_cost
+      event_cost_in: float aries_integrated_plant__replacement__evaluate__event_cost
+      plant_years_in: float plant_params.aries_integrated_plant__cost_schedule__plant_years
+      om_in: float aries_integrated_plant__annual_om__evaluate__annual_om.root
+      annual_burn_in: float aries_integrated_plant__fuel_inventory__annual__annual_burn
+      interval_years_in: float aries_integrated_plant__replacement__evaluate__interval_years
+      net_power_in: float plant_params.aries_integrated_plant__source_finance__net_power
+      terminal_fraction_in: float plant_params.aries_integrated_plant__finance__terminal_fraction
+      consumables_in: float plant_params.aries_integrated_plant__cost_ledger__consumables
+    outputs:
+      real_convention: float aries_integrated_plant__source_lifecycle_accounts__evaluate__real_convention
+      other_overhaul_cost: float aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_cost
+      gross_makeup: float aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_makeup
+      supply_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_lcoe
+      other_overhaul_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_lcoe
+      lcoe_sum: float aries_integrated_plant__source_lifecycle_accounts__evaluate__lcoe_sum
+      noncapital_annual: float aries_integrated_plant__source_lifecycle_accounts__evaluate__noncapital_annual
+      pv_total_cost: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_total_cost
+      breeding_supported: float aries_integrated_plant__source_lifecycle_accounts__evaluate__breeding_supported
+      pv_supply: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_supply
+      other_overhaul_occurs: float aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_occurs
+      curtailed_feed: float aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed
+      replacement_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__replacement_lcoe
+      gross_terminal: float aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_terminal
+      salvage_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage_lcoe
+      financial_defined: float aries_integrated_plant__source_lifecycle_accounts__evaluate__financial_defined
+      idc: float aries_integrated_plant__source_lifecycle_accounts__evaluate__idc
+      annual_capital: float aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_capital
+      pv_replacement: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_replacement
+      supply_supported: float aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_supported
+      om_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__om_lcoe
+      pv_terminal_gross: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_gross
+      tritium_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__tritium_lcoe
+      capital_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__capital_lcoe
+      annual_energy: float aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_energy
+      external_shortfall: float aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall
+      pv_salvage: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_salvage
+      pv_operating: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_operating
+      new_feed: float aries_integrated_plant__source_lifecycle_accounts__evaluate__new_feed
+      lifetime_energy: float aries_integrated_plant__source_lifecycle_accounts__evaluate__lifetime_energy
+      financed_capital: float aries_integrated_plant__source_lifecycle_accounts__evaluate__financed_capital
+      pv_other_overhaul: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_other_overhaul
+      terminal_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__terminal_lcoe
+      currency_year: float aries_integrated_plant__source_lifecycle_accounts__evaluate__currency_year
+      pv_energy: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_energy
+      salvage: float aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage
+      deuterium_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__deuterium_lcoe
+      pv_terminal_net: float aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_net
+      imports_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__imports_lcoe
+      consumables_lcoe: float aries_integrated_plant__source_lifecycle_accounts__evaluate__consumables_lcoe
+
+  # mfe_lcoe_dcf.LCOE_DCFModule
+  aries_integrated_plant__source_lifecycle_price__evaluate:
+    module_type: mfe_lcoe_dcf.LCOE_DCFModule
+    inputs:
+      construction_years_in: float aries_integrated_plant__source_finance__boundary__years.root
+      discount_rate_in: float plant_params.aries_integrated_plant__finance__discount_rate
+      net_electric_mw: float plant_params.aries_integrated_plant__source_finance__net_power
+      total_capital_in: float aries_integrated_plant__source_budget__evaluate__inclusive_capital
+      operational_years_in: float plant_params.aries_integrated_plant__cost_schedule__plant_years
+      annual_om_in: float aries_integrated_plant__source_lifecycle_accounts__evaluate__noncapital_annual
+      availability_in: float plant_params.aries_integrated_plant__cost_schedule__availability
+    outputs:
+      root: RootModel[float] aries_integrated_plant__source_lifecycle_price__evaluate__lcoe
+
   # aries_integrated_plant.DivertorPumpCapacityOkConstraintModule
   aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c:
     module_type: aries_integrated_plant.DivertorPumpCapacityOkConstraintModule
@@ -2258,6 +2462,7 @@ modules:
       aries_integrated_plant__conversion_services__purchase__cost: RootModel[float] conversion_services__capital_cost.json
       aries_integrated_plant__waste_equipment__estimate__amount: RootModel[float] waste_equipment__supplied_budget.json
       aries_integrated_plant__waste_equipment__purchase__cost: RootModel[float] waste_equipment__capital_cost.json
+      aries_integrated_plant__source_finance_energy__evaluate__annual_energy: RootModel[float] source_finance_energy__annual_energy.json
       aries_integrated_plant__source_core_children_first__evaluate__total: RootModel[float] source_core_children_first__total.json
       aries_integrated_plant__source_reconciliation__core_excess_calc__difference: RootModel[float] source_reconciliation__core_excess.json
       aries_integrated_plant__source_fuel_children__evaluate__total: RootModel[float] source_fuel_children__total.json
@@ -2614,6 +2819,7 @@ modules:
       aries_integrated_plant__generator_capacity__evaluate__applicable: bool aries_integrated_plant__generator_capacity__evaluate__applicable.json
       aries_integrated_plant__generator_capacity__evaluate__supported: bool aries_integrated_plant__generator_capacity__evaluate__supported.json
       aries_integrated_plant__generator_capacity__evaluate__capacity_ok: bool aries_integrated_plant__generator_capacity__evaluate__capacity_ok.json
+      aries_integrated_plant__source_finance__boundary__years: RootModel[float] source_finance__validated_years.json
       aries_integrated_plant__annual_om__evaluate__annual_om: RootModel[float] annual_om__amount.json
       aries_integrated_plant__replacement_scope__evaluate__total: RootModel[float] replacement_scope__total.json
       aries_integrated_plant__replacement_price__evaluate__amount: RootModel[float] replacement_price__amount.json
@@ -2666,6 +2872,90 @@ modules:
       aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh: float cost_ledger__annual_import_mwh.json
       aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement: float cost_ledger__lifetime_replacement.json
       aries_integrated_plant__cost_ledger__evaluate__currency_year: float cost_ledger__currency_year.json
+      aries_integrated_plant__operating_levelization__evaluate__levelized: float operating_levelization__annual.json
+      aries_integrated_plant__operating_levelization__evaluate__crf: float operating_levelization__factor.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__real_convention: float lifecycle_accounts__real_convention.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_cost: float lifecycle_accounts__other_overhaul_cost.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__gross_makeup: float lifecycle_accounts__gross_makeup.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__supply_lcoe: float lifecycle_accounts__supply_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_lcoe: float lifecycle_accounts__other_overhaul_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__lcoe_sum: float lifecycle_accounts__lcoe_sum.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__noncapital_annual: float lifecycle_accounts__noncapital_annual.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_total_cost: float lifecycle_accounts__pv_total_cost.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__breeding_supported: float lifecycle_accounts__breeding_supported.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_supply: float lifecycle_accounts__pv_supply.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_occurs: float lifecycle_accounts__other_overhaul_occurs.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed: float lifecycle_accounts__curtailed_feed.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__replacement_lcoe: float lifecycle_accounts__replacement_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__gross_terminal: float lifecycle_accounts__gross_terminal.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__salvage_lcoe: float lifecycle_accounts__salvage_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__financial_defined: float lifecycle_accounts__financial_defined.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__idc: float lifecycle_accounts__idc.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__annual_capital: float lifecycle_accounts__annual_capital.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_replacement: float lifecycle_accounts__pv_replacement.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__supply_supported: float lifecycle_accounts__supply_supported.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__om_lcoe: float lifecycle_accounts__om_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_gross: float lifecycle_accounts__pv_terminal_gross.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__tritium_lcoe: float lifecycle_accounts__tritium_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__capital_lcoe: float lifecycle_accounts__capital_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__annual_energy: float lifecycle_accounts__annual_energy.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall: float lifecycle_accounts__external_shortfall.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_salvage: float lifecycle_accounts__pv_salvage.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_operating: float lifecycle_accounts__pv_operating.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__new_feed: float lifecycle_accounts__new_feed.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__lifetime_energy: float lifecycle_accounts__lifetime_energy.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__financed_capital: float lifecycle_accounts__financed_capital.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_other_overhaul: float lifecycle_accounts__pv_other_overhaul.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__terminal_lcoe: float lifecycle_accounts__terminal_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__currency_year: float lifecycle_accounts__currency_year.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_energy: float lifecycle_accounts__pv_energy.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__salvage: float lifecycle_accounts__salvage.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__deuterium_lcoe: float lifecycle_accounts__deuterium_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_net: float lifecycle_accounts__pv_terminal_net.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__imports_lcoe: float lifecycle_accounts__imports_lcoe.json
+      aries_integrated_plant__lifecycle_accounts__evaluate__consumables_lcoe: float lifecycle_accounts__consumables_lcoe.json
+      aries_integrated_plant__lifecycle_price__evaluate__lcoe: RootModel[float] lifecycle_price__lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__real_convention: float source_lifecycle_accounts__real_convention.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_cost: float source_lifecycle_accounts__other_overhaul_cost.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_makeup: float source_lifecycle_accounts__gross_makeup.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_lcoe: float source_lifecycle_accounts__supply_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_lcoe: float source_lifecycle_accounts__other_overhaul_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__lcoe_sum: float source_lifecycle_accounts__lcoe_sum.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__noncapital_annual: float source_lifecycle_accounts__noncapital_annual.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_total_cost: float source_lifecycle_accounts__pv_total_cost.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__breeding_supported: float source_lifecycle_accounts__breeding_supported.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_supply: float source_lifecycle_accounts__pv_supply.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_occurs: float source_lifecycle_accounts__other_overhaul_occurs.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed: float source_lifecycle_accounts__curtailed_feed.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__replacement_lcoe: float source_lifecycle_accounts__replacement_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_terminal: float source_lifecycle_accounts__gross_terminal.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage_lcoe: float source_lifecycle_accounts__salvage_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__financial_defined: float source_lifecycle_accounts__financial_defined.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__idc: float source_lifecycle_accounts__idc.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_capital: float source_lifecycle_accounts__annual_capital.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_replacement: float source_lifecycle_accounts__pv_replacement.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_supported: float source_lifecycle_accounts__supply_supported.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__om_lcoe: float source_lifecycle_accounts__om_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_gross: float source_lifecycle_accounts__pv_terminal_gross.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__tritium_lcoe: float source_lifecycle_accounts__tritium_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__capital_lcoe: float source_lifecycle_accounts__capital_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_energy: float source_lifecycle_accounts__annual_energy.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall: float source_lifecycle_accounts__external_shortfall.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_salvage: float source_lifecycle_accounts__pv_salvage.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_operating: float source_lifecycle_accounts__pv_operating.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__new_feed: float source_lifecycle_accounts__new_feed.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__lifetime_energy: float source_lifecycle_accounts__lifetime_energy.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__financed_capital: float source_lifecycle_accounts__financed_capital.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_other_overhaul: float source_lifecycle_accounts__pv_other_overhaul.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__terminal_lcoe: float source_lifecycle_accounts__terminal_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__currency_year: float source_lifecycle_accounts__currency_year.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_energy: float source_lifecycle_accounts__pv_energy.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage: float source_lifecycle_accounts__salvage.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__deuterium_lcoe: float source_lifecycle_accounts__deuterium_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_net: float source_lifecycle_accounts__pv_terminal_net.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__imports_lcoe: float source_lifecycle_accounts__imports_lcoe.json
+      aries_integrated_plant__source_lifecycle_accounts__evaluate__consumables_lcoe: float source_lifecycle_accounts__consumables_lcoe.json
+      aries_integrated_plant__source_lifecycle_price__evaluate__lcoe: RootModel[float] source_lifecycle_price__lcoe.json
       aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation: ConstraintEvaluation aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c__evaluation.json
       aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation: ConstraintEvaluation aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608__evaluation.json
       aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation: ConstraintEvaluation aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1__evaluation.json

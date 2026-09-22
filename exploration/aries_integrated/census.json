@@ -1,5 +1,5 @@
 {
-  "entry_points": 411,
+  "entry_points": 422,
   "by_entry_type": {
     "usage_literal": [
       "aries_integrated_plant__annual_om__evaluate__alpha",
@@ -59,6 +59,8 @@
       "aries_integrated_plant__magnet_inventory__inventory__amount6_in",
       "aries_integrated_plant__magnet_inventory__inventory__amount7_in",
       "aries_integrated_plant__magnet_inventory__inventory__amount8_in",
+      "aries_integrated_plant__operating_levelization__evaluate__inflation_rate_in",
+      "aries_integrated_plant__operating_levelization__evaluate__project_time",
       "aries_integrated_plant__pbli_pump__screen__applicable_in",
       "aries_integrated_plant__pbli_pump__screen__conditions_supported_in",
       "aries_integrated_plant__pbli_pump__screen__demand_available_in",
@@ -214,6 +216,13 @@
       "aries_integrated_plant__facilities__price_factor",
       "aries_integrated_plant__facilities__reference_cost",
       "aries_integrated_plant__facilities__selected_quantity",
+      "aries_integrated_plant__finance__construction_years",
+      "aries_integrated_plant__finance__discount_rate",
+      "aries_integrated_plant__finance__other_overhaul_fraction",
+      "aries_integrated_plant__finance__other_overhaul_year",
+      "aries_integrated_plant__finance__salvage_fraction",
+      "aries_integrated_plant__finance__supply_service_annual",
+      "aries_integrated_plant__finance__terminal_fraction",
       "aries_integrated_plant__fuel__assumed_extraction",
       "aries_integrated_plant__fuel__decay_constant_s",
       "aries_integrated_plant__fuel__dormant_stock_growth_atoms_s",
@@ -389,6 +398,8 @@
       "aries_integrated_plant__source_budget__account_7",
       "aries_integrated_plant__source_budget__account_8",
       "aries_integrated_plant__source_budget__inclusive_multiplier",
+      "aries_integrated_plant__source_finance__construction_years",
+      "aries_integrated_plant__source_finance__net_power",
       "aries_integrated_plant__source_reconciliation__coil_parent",
       "aries_integrated_plant__source_reconciliation__core_parent",
       "aries_integrated_plant__source_reconciliation__fuel_parent",
@@ -419,5 +430,5 @@
       "aries_integrated_plant__waste_equipment__selected_quantity"
     ]
   },
-  "derived_against_semantic_fingerprint": "10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f"
+  "derived_against_semantic_fingerprint": "419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131"
 }

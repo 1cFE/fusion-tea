@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 140 calculation definitions.
+Generated from 147 calculation definitions.
 """
 
 import importlib
@@ -959,6 +959,46 @@ class TestSupplied_Purchase_CostRunnable:
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
         module = importlib.import_module("aries_integrated.modules.mfe_account_costs.supplied_purchase_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestSupplied_Annual_EnergyRunnable:
+    """Verify supplied_annual_energy implementation runs without error.
+
+    SysML Source: root-0/integrated_lifecycle_costs.sysml:73
+    """
+
+    def test_import_and_run(self):
+        """Test that run_supplied_annual_energy can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_lifecycle_costs.supplied_annual_energy_impl")
+        func = getattr(impl, "run_supplied_annual_energy")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_lifecycle_costs.supplied_annual_energy")
 
         # Find Input class
         input_class = None
@@ -4637,6 +4677,46 @@ class TestOffered_Capacity_ScreenRunnable:
             # Expected for stencils - test passes
             pass
 
+class TestAlready_Financed_DurationRunnable:
+    """Verify already_financed_duration implementation runs without error.
+
+    SysML Source: root-0/integrated_lifecycle_costs.sysml:79
+    """
+
+    def test_import_and_run(self):
+        """Test that run_already_financed_duration can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_lifecycle_costs.already_financed_duration_impl")
+        func = getattr(impl, "run_already_financed_duration")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_lifecycle_costs.already_financed_duration")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
 class TestAnnual_OM_CostRunnable:
     """Verify annual_om_cost implementation runs without error.
 
@@ -5758,6 +5838,212 @@ class TestEquipment_Cost_LedgerRunnable:
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
             assert len(result) == 15, f"Expected 15 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestLevelized_Annual_CostRunnable:
+    """Verify levelized_annual_cost implementation runs without error.
+
+    SysML Source: root-0/mfe_account_costs.sysml:747
+    """
+
+    def test_import_and_run(self):
+        """Test that run_levelized_annual_cost can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.mfe_account_costs.levelized_annual_cost_impl")
+        func = getattr(impl, "run_levelized_annual_cost")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.mfe_account_costs.levelized_annual_cost")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 2, f"Expected 2 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestLifecycle_Cashflow_AccountsRunnable:
+    """Verify lifecycle_cashflow_accounts implementation runs without error.
+
+    SysML Source: root-0/integrated_lifecycle_costs.sysml:3
+    """
+
+    def test_import_and_run(self):
+        """Test that run_lifecycle_cashflow_accounts can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_lifecycle_costs.lifecycle_cashflow_accounts_impl")
+        func = getattr(impl, "run_lifecycle_cashflow_accounts")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_lifecycle_costs.lifecycle_cashflow_accounts")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 40, f"Expected 40 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestLCOE_DCFRunnable:
+    """Verify lcoe_dcf implementation runs without error.
+
+    SysML Source: root-0/mfe_lcoe_dcf.sysml:4
+    """
+
+    def test_import_and_run(self):
+        """Test that run_lcoe_dcf can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.mfe_lcoe_dcf.lcoe_dcf_impl")
+        func = getattr(impl, "run_lcoe_dcf")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.mfe_lcoe_dcf.lcoe_dcf")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestLifecycle_Cashflow_AccountsRunnable:
+    """Verify lifecycle_cashflow_accounts implementation runs without error.
+
+    SysML Source: root-0/integrated_lifecycle_costs.sysml:3
+    """
+
+    def test_import_and_run(self):
+        """Test that run_lifecycle_cashflow_accounts can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_lifecycle_costs.lifecycle_cashflow_accounts_impl")
+        func = getattr(impl, "run_lifecycle_cashflow_accounts")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.integrated_lifecycle_costs.lifecycle_cashflow_accounts")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 40, f"Expected 40 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestLCOE_DCFRunnable:
+    """Verify lcoe_dcf implementation runs without error.
+
+    SysML Source: root-0/mfe_lcoe_dcf.sysml:4
+    """
+
+    def test_import_and_run(self):
+        """Test that run_lcoe_dcf can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("aries_integrated.handwritten.mfe_lcoe_dcf.lcoe_dcf_impl")
+        func = getattr(impl, "run_lcoe_dcf")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("aries_integrated.modules.mfe_lcoe_dcf.lcoe_dcf")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, (float, int)), f"Expected number, got {type(result)}"
 
         except NotImplementedError:
             # Expected for stencils - test passes

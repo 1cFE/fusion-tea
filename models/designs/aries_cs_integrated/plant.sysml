@@ -1,5 +1,7 @@
 package aries_integrated_plant {
     private import ScalarValues::*;
+    private import integrated_lifecycle_costs::*;
+    private import mfe_lcoe_dcf::*;
     private import integrated_equipment_costs::*;
     private import integrated_equipment_parts::*;
     private import mfe_account_costs::*;
@@ -1586,6 +1588,7 @@ package aries_integrated_plant {
         :>> cas_code = "26.fuel";
         attribute selected_tritium_kg : Real = 10.0;
         attribute process_residence_s : Real = 1000.0;
+        // New usable T feed [kg/calendar year], excluding already recycled exhaust; no breeding qualification.
         attribute annual_recovery_kg : Real = 0.0;
         attribute tritium_price : Real = 30000000.0;
         attribute deuterium_price : Real = 1000.0;
@@ -2092,5 +2095,215 @@ package aries_integrated_plant {
         attribute source_core_excess : Real = evaluate.source_core_excess;
         attribute source_coil_excess : Real = evaluate.source_coil_excess;
         attribute currency_year : Real = evaluate.currency_year;
+    }
+    part finance {
+        doc /* **Source**: work/active/WI-091_aries-integrated-lifecycle-cost/design.md. **Ref**: reviewed financial convention, roles and F1-F9 assumptions; work/orchestration/goals/aries-integrated-lcoe/evidence/source-boundary.md. **Basis**: conditional real USD2004 dated lifecycle accounts; assumptions are not scientific qualification. **Last Updated**: 2026-09-22. */
+        attribute discount_rate : Real = 0.05;
+        attribute construction_years : Real = 6.0;
+        attribute terminal_fraction : Real = 0.1;
+        attribute salvage_fraction : Real = 0.02;
+        attribute other_overhaul_fraction : Real = 0.05;
+        attribute other_overhaul_year : Real = 20.0;
+        attribute supply_service_annual : Real = 0.0;
+    }
+    part source_finance {
+        doc /* **Source**: work/active/WI-091_aries-integrated-lifecycle-cost/design.md. **Ref**: reviewed financial convention, roles and F1-F9 assumptions; work/orchestration/goals/aries-integrated-lcoe/evidence/source-boundary.md. **Basis**: conditional real USD2004 dated lifecycle accounts; assumptions are not scientific qualification. **Last Updated**: 2026-09-22. */
+        attribute net_power : Real = 1000.0;
+        // Boundary validation only: supported domain {0}; not a sensitivity axis.
+        attribute construction_years : Real = 0.0;
+        calc boundary : 'Already Financed Duration' {
+            in years_in = construction_years;
+        }
+        attribute validated_years : Real = boundary.years;
+    }
+    part operating_levelization {
+        doc /* **Source**: work/active/WI-091_aries-integrated-lifecycle-cost/design.md. **Ref**: reviewed financial convention, roles and F1-F9 assumptions; work/orchestration/goals/aries-integrated-lcoe/evidence/source-boundary.md. **Basis**: conditional real USD2004 dated lifecycle accounts; assumptions are not scientific qualification. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Levelized Annual Cost' {
+            in annual_cost = aries_integrated_plant::cost_ledger.annual_operating;
+            in interest_rate = aries_integrated_plant::finance.discount_rate;
+            in inflation_rate_in = 0.0;
+            in operational_years_in = aries_integrated_plant::cost_schedule.plant_years;
+            in project_time = 0.0;
+        }
+        attribute factor : Real = evaluate.crf;
+        attribute annual : Real = evaluate.levelized;
+    }
+    part source_finance_energy {
+        doc /* **Source**: work/active/WI-091_aries-integrated-lifecycle-cost/design.md. **Ref**: reviewed financial convention, roles and F1-F9 assumptions; work/orchestration/goals/aries-integrated-lcoe/evidence/source-boundary.md. **Basis**: conditional real USD2004 dated lifecycle accounts; assumptions are not scientific qualification. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Supplied Annual Energy' {
+            in net_power_in = aries_integrated_plant::source_finance.net_power;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+        }
+        attribute annual_energy : Real = evaluate.annual_energy;
+    }
+    part lifecycle_accounts {
+        doc /* **Source**: work/active/WI-091_aries-integrated-lifecycle-cost/design.md. **Ref**: reviewed financial convention, roles and F1-F9 assumptions; work/orchestration/goals/aries-integrated-lcoe/evidence/source-boundary.md. **Basis**: conditional real USD2004 dated lifecycle accounts; assumptions are not scientific qualification. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Lifecycle Cashflow Accounts' {
+            in overnight_in = aries_integrated_plant::cost_ledger.overnight;
+            in net_power_in = aries_integrated_plant::plant_ledger.net_electric;
+            in annual_energy_in = aries_integrated_plant::cost_ledger.annual_export_mwh;
+            in annual_operating_in = aries_integrated_plant::cost_ledger.annual_operating;
+            in om_in = aries_integrated_plant::annual_om.amount;
+            in tritium_in = aries_integrated_plant::fuel_inventory.annual_cost;
+            in deuterium_in = aries_integrated_plant::fuel_inventory.annual_deuterium_cost;
+            in consumables_in = aries_integrated_plant::cost_ledger.consumables;
+            in imports_in = aries_integrated_plant::cost_ledger.annual_import_cost;
+            in supply_service_in = aries_integrated_plant::finance.supply_service_annual;
+            in crf_in = aries_integrated_plant::operating_levelization.factor;
+            in discount_in = aries_integrated_plant::finance.discount_rate;
+            in construction_years_in = aries_integrated_plant::finance.construction_years;
+            in plant_years_in = aries_integrated_plant::cost_schedule.plant_years;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+            in event_cost_in = aries_integrated_plant::replacement.event_cost;
+            in interval_years_in = aries_integrated_plant::replacement.interval_years;
+            in event_count_in = aries_integrated_plant::replacement.event_count;
+            in terminal_fraction_in = aries_integrated_plant::finance.terminal_fraction;
+            in salvage_fraction_in = aries_integrated_plant::finance.salvage_fraction;
+            in other_overhaul_fraction_in = aries_integrated_plant::finance.other_overhaul_fraction;
+            in other_overhaul_year_in = aries_integrated_plant::finance.other_overhaul_year;
+            in annual_burn_in = aries_integrated_plant::fuel_inventory.annual_burn;
+            in annual_loss_in = aries_integrated_plant::fuel_inventory.annual_loss;
+            in annual_decay_in = aries_integrated_plant::fuel_inventory.annual_decay;
+            in annual_feed_in = aries_integrated_plant::fuel_inventory.annual_recovery_kg;
+            in external_shortfall_in = aries_integrated_plant::fuel_inventory.annual_external;
+        }
+        attribute noncapital_annual : Real = evaluate.noncapital_annual;
+        attribute financed_capital : Real = evaluate.financed_capital;
+        attribute idc : Real = evaluate.idc;
+        attribute annual_capital : Real = evaluate.annual_capital;
+        attribute annual_energy : Real = evaluate.annual_energy;
+        attribute lifetime_energy : Real = evaluate.lifetime_energy;
+        attribute pv_energy : Real = evaluate.pv_energy;
+        attribute pv_operating : Real = evaluate.pv_operating;
+        attribute pv_supply : Real = evaluate.pv_supply;
+        attribute pv_replacement : Real = evaluate.pv_replacement;
+        attribute pv_other_overhaul : Real = evaluate.pv_other_overhaul;
+        attribute gross_terminal : Real = evaluate.gross_terminal;
+        attribute salvage : Real = evaluate.salvage;
+        attribute pv_terminal_gross : Real = evaluate.pv_terminal_gross;
+        attribute pv_salvage : Real = evaluate.pv_salvage;
+        attribute pv_terminal_net : Real = evaluate.pv_terminal_net;
+        attribute other_overhaul_cost : Real = evaluate.other_overhaul_cost;
+        attribute other_overhaul_occurs : Real = evaluate.other_overhaul_occurs;
+        attribute pv_total_cost : Real = evaluate.pv_total_cost;
+        attribute lcoe_sum : Real = evaluate.lcoe_sum;
+        attribute capital_lcoe : Real = evaluate.capital_lcoe;
+        attribute om_lcoe : Real = evaluate.om_lcoe;
+        attribute tritium_lcoe : Real = evaluate.tritium_lcoe;
+        attribute deuterium_lcoe : Real = evaluate.deuterium_lcoe;
+        attribute consumables_lcoe : Real = evaluate.consumables_lcoe;
+        attribute imports_lcoe : Real = evaluate.imports_lcoe;
+        attribute supply_lcoe : Real = evaluate.supply_lcoe;
+        attribute replacement_lcoe : Real = evaluate.replacement_lcoe;
+        attribute other_overhaul_lcoe : Real = evaluate.other_overhaul_lcoe;
+        attribute terminal_lcoe : Real = evaluate.terminal_lcoe;
+        attribute salvage_lcoe : Real = evaluate.salvage_lcoe;
+        attribute gross_makeup : Real = evaluate.gross_makeup;
+        attribute new_feed : Real = evaluate.new_feed;
+        attribute external_shortfall : Real = evaluate.external_shortfall;
+        attribute curtailed_feed : Real = evaluate.curtailed_feed;
+        attribute supply_supported : Real = evaluate.supply_supported;
+        attribute breeding_supported : Real = evaluate.breeding_supported;
+        attribute financial_defined : Real = evaluate.financial_defined;
+        attribute currency_year : Real = evaluate.currency_year;
+        attribute real_convention : Real = evaluate.real_convention;
+    }
+    part lifecycle_price {
+        doc /* **Source**: work/active/WI-091_aries-integrated-lifecycle-cost/design.md. **Ref**: reviewed financial convention, roles and F1-F9 assumptions; work/orchestration/goals/aries-integrated-lcoe/evidence/source-boundary.md. **Basis**: conditional real USD2004 dated lifecycle accounts; assumptions are not scientific qualification. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'LCOE DCF' {
+            in total_capital_in = aries_integrated_plant::cost_ledger.overnight;
+            in annual_om_in = aries_integrated_plant::lifecycle_accounts.noncapital_annual;
+            in net_electric_mw = aries_integrated_plant::plant_ledger.net_electric;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+            in discount_rate_in = aries_integrated_plant::finance.discount_rate;
+            in construction_years_in = aries_integrated_plant::finance.construction_years;
+            in operational_years_in = aries_integrated_plant::cost_schedule.plant_years;
+        }
+        attribute lcoe : Real = evaluate.lcoe;
+    }
+    part source_lifecycle_accounts {
+        doc /* **Source**: work/active/WI-091_aries-integrated-lifecycle-cost/design.md. **Ref**: reviewed financial convention, roles and F1-F9 assumptions; work/orchestration/goals/aries-integrated-lcoe/evidence/source-boundary.md. **Basis**: conditional real USD2004 dated lifecycle accounts; assumptions are not scientific qualification. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'Lifecycle Cashflow Accounts' {
+            in overnight_in = aries_integrated_plant::source_budget.inclusive_capital;
+            in net_power_in = aries_integrated_plant::source_finance.net_power;
+            in annual_energy_in = aries_integrated_plant::source_finance_energy.annual_energy;
+            in annual_operating_in = aries_integrated_plant::cost_ledger.annual_operating;
+            in om_in = aries_integrated_plant::annual_om.amount;
+            in tritium_in = aries_integrated_plant::fuel_inventory.annual_cost;
+            in deuterium_in = aries_integrated_plant::fuel_inventory.annual_deuterium_cost;
+            in consumables_in = aries_integrated_plant::cost_ledger.consumables;
+            in imports_in = aries_integrated_plant::cost_ledger.annual_import_cost;
+            in supply_service_in = aries_integrated_plant::finance.supply_service_annual;
+            in crf_in = aries_integrated_plant::operating_levelization.factor;
+            in discount_in = aries_integrated_plant::finance.discount_rate;
+            in construction_years_in = aries_integrated_plant::source_finance.validated_years;
+            in plant_years_in = aries_integrated_plant::cost_schedule.plant_years;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+            in event_cost_in = aries_integrated_plant::replacement.event_cost;
+            in interval_years_in = aries_integrated_plant::replacement.interval_years;
+            in event_count_in = aries_integrated_plant::replacement.event_count;
+            in terminal_fraction_in = aries_integrated_plant::finance.terminal_fraction;
+            in salvage_fraction_in = aries_integrated_plant::finance.salvage_fraction;
+            in other_overhaul_fraction_in = aries_integrated_plant::finance.other_overhaul_fraction;
+            in other_overhaul_year_in = aries_integrated_plant::finance.other_overhaul_year;
+            in annual_burn_in = aries_integrated_plant::fuel_inventory.annual_burn;
+            in annual_loss_in = aries_integrated_plant::fuel_inventory.annual_loss;
+            in annual_decay_in = aries_integrated_plant::fuel_inventory.annual_decay;
+            in annual_feed_in = aries_integrated_plant::fuel_inventory.annual_recovery_kg;
+            in external_shortfall_in = aries_integrated_plant::fuel_inventory.annual_external;
+        }
+        attribute noncapital_annual : Real = evaluate.noncapital_annual;
+        attribute financed_capital : Real = evaluate.financed_capital;
+        attribute idc : Real = evaluate.idc;
+        attribute annual_capital : Real = evaluate.annual_capital;
+        attribute annual_energy : Real = evaluate.annual_energy;
+        attribute lifetime_energy : Real = evaluate.lifetime_energy;
+        attribute pv_energy : Real = evaluate.pv_energy;
+        attribute pv_operating : Real = evaluate.pv_operating;
+        attribute pv_supply : Real = evaluate.pv_supply;
+        attribute pv_replacement : Real = evaluate.pv_replacement;
+        attribute pv_other_overhaul : Real = evaluate.pv_other_overhaul;
+        attribute gross_terminal : Real = evaluate.gross_terminal;
+        attribute salvage : Real = evaluate.salvage;
+        attribute pv_terminal_gross : Real = evaluate.pv_terminal_gross;
+        attribute pv_salvage : Real = evaluate.pv_salvage;
+        attribute pv_terminal_net : Real = evaluate.pv_terminal_net;
+        attribute other_overhaul_cost : Real = evaluate.other_overhaul_cost;
+        attribute other_overhaul_occurs : Real = evaluate.other_overhaul_occurs;
+        attribute pv_total_cost : Real = evaluate.pv_total_cost;
+        attribute lcoe_sum : Real = evaluate.lcoe_sum;
+        attribute capital_lcoe : Real = evaluate.capital_lcoe;
+        attribute om_lcoe : Real = evaluate.om_lcoe;
+        attribute tritium_lcoe : Real = evaluate.tritium_lcoe;
+        attribute deuterium_lcoe : Real = evaluate.deuterium_lcoe;
+        attribute consumables_lcoe : Real = evaluate.consumables_lcoe;
+        attribute imports_lcoe : Real = evaluate.imports_lcoe;
+        attribute supply_lcoe : Real = evaluate.supply_lcoe;
+        attribute replacement_lcoe : Real = evaluate.replacement_lcoe;
+        attribute other_overhaul_lcoe : Real = evaluate.other_overhaul_lcoe;
+        attribute terminal_lcoe : Real = evaluate.terminal_lcoe;
+        attribute salvage_lcoe : Real = evaluate.salvage_lcoe;
+        attribute gross_makeup : Real = evaluate.gross_makeup;
+        attribute new_feed : Real = evaluate.new_feed;
+        attribute external_shortfall : Real = evaluate.external_shortfall;
+        attribute curtailed_feed : Real = evaluate.curtailed_feed;
+        attribute supply_supported : Real = evaluate.supply_supported;
+        attribute breeding_supported : Real = evaluate.breeding_supported;
+        attribute financial_defined : Real = evaluate.financial_defined;
+        attribute currency_year : Real = evaluate.currency_year;
+        attribute real_convention : Real = evaluate.real_convention;
+    }
+    part source_lifecycle_price {
+        doc /* **Source**: work/active/WI-091_aries-integrated-lifecycle-cost/design.md. **Ref**: reviewed financial convention, roles and F1-F9 assumptions; work/orchestration/goals/aries-integrated-lcoe/evidence/source-boundary.md. **Basis**: conditional real USD2004 dated lifecycle accounts; assumptions are not scientific qualification. **Last Updated**: 2026-09-22. */
+        calc evaluate : 'LCOE DCF' {
+            in total_capital_in = aries_integrated_plant::source_budget.inclusive_capital;
+            in annual_om_in = aries_integrated_plant::source_lifecycle_accounts.noncapital_annual;
+            in net_electric_mw = aries_integrated_plant::source_finance.net_power;
+            in availability_in = aries_integrated_plant::cost_schedule.availability;
+            in discount_rate_in = aries_integrated_plant::finance.discount_rate;
+            in construction_years_in = aries_integrated_plant::source_finance.validated_years;
+            in operational_years_in = aries_integrated_plant::cost_schedule.plant_years;
+        }
+        attribute lcoe : Real = evaluate.lcoe;
     }
 }

@@ -13,5 +13,7 @@ class MfeAccountCostsParams(BaseModel):
     aries_integrated_plant__annual_om__evaluate__ref_net_power: float = Field(default=1000.0, description="Entry point: ref_net_power")
     aries_integrated_plant__indirect_cost__evaluate__construction_time: float = Field(default=6.0, description="Entry point: construction_time")
     aries_integrated_plant__indirect_cost__evaluate__reference_construction_time: float = Field(default=6.0, description="Entry point: reference_construction_time")
+    aries_integrated_plant__operating_levelization__evaluate__inflation_rate_in: float = Field(default=0.0, description="Entry point: inflation_rate_in")
+    aries_integrated_plant__operating_levelization__evaluate__project_time: float = Field(default=0.0, description="Entry point: project_time")
 
     model_config = {"frozen": True, "extra": "forbid", "populate_by_name": True}
