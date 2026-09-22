@@ -1,0 +1,43 @@
+
+======================================================================
+SysML Quality Validation
+Models path: exploration/aries_integrated/input_models
+Mode: Fail-fast
+Running: Level 2 only
+======================================================================
+
+Running: Level 2: Structural Completeness...
+
+============================================================
+Level 2: Structural Completeness
+============================================================
+Found 15 SysML files
+
+❌ Level 2: Structural Completeness
+   Unused definitions: 0
+   Unbound inputs: 0
+   Undefined bindings: 0
+   Placeholder bindings: 82
+   Self-named bindings: 0
+   Orphaned elements: 0
+
+   Issues found: 82
+   - WARN: Input 'applicable_in' bound to literal value in calc 'aries_integrated_plant::he_pump::screen' - consider binding to attribute or calc output at file:exploration/aries_integrated/input_models/plant.sysml:776
+   - WARN: Input 'conditions_supported_in' bound to literal value in calc 'aries_integrated_plant::he_pump::screen' - consider binding to attribute or calc output at file:exploration/aries_integrated/input_models/plant.sysml:776
+   - WARN: Input 'demand_available_in' bound to literal value in calc 'aries_integrated_plant::he_pump::screen' - consider binding to attribute or calc output at file:exploration/aries_integrated/input_models/plant.sysml:776
+   - WARN: Input 'applicable_in' bound to literal value in calc 'aries_integrated_plant::pbli_pump::screen' - consider binding to attribute or calc output at file:exploration/aries_integrated/input_models/plant.sysml:873
+   - WARN: Input 'conditions_supported_in' bound to literal value in calc 'aries_integrated_plant::pbli_pump::screen' - consider binding to attribute or calc output at file:exploration/aries_integrated/input_models/plant.sysml:873
+   ... and 77 more
+
+❌ Stopping at first failure (Level 2)
+   Use --complete to run all levels regardless of failures
+
+======================================================================
+Summary
+======================================================================
+Checks run: 1
+✅ Passed: 0
+❌ Failed: 1
+
+❌ Quality checks failed
+   Review issues above and fix before proceeding

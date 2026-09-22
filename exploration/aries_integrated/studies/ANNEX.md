@@ -1,6 +1,6 @@
 # Package annex — aries_integrated
 
-[AGENT] WI-090 preparation at package checkpoint `56a83338`: 411 entry fields across native channels, 14 predicate occurrences, 28 declared axes and 64 complete proposed points. The historical WI-089 record `20260922-integrated-heat-electricity/` is immutable. Its own source snapshot and package metadata remain replayable. The new record is `20260922-aries-integrated-equipment-costs/`; no stored study point has run yet. The corrected package includes independently checked source parent/child, known dry inventory, LiPb-price and source replacement comparisons. Prior a24f9080 preparation is preserved separately in the goal evidence.
+[AGENT] WI-090 preparation at package checkpoint `36cb6aed`: 411 entry fields across native channels, 14 predicate occurrences, 28 declared axes and 64 complete proposed points. The historical WI-089 record `20260922-integrated-heat-electricity/` is immutable. Its own source snapshot and package metadata remain replayable. The new record is `20260922-aries-integrated-equipment-costs/`; no stored study point has run yet. The corrected package includes independently checked source parent/child, known dry inventory, LiPb-price and source replacement comparisons. Prior a24f9080 and56a83338 preparation receipts are preserved separately in the goal evidence. The final citation-only reseal preserves every canonical input/output and model equation; its new executable identity was checked explicitly.
 
 ## Declared ties and migrated inputs
 
@@ -30,6 +30,6 @@ All28 indicator groups report possible constraint paths and no warnings. Reachab
 
 ## Execution route and environment
 
-Use the strict native loader, prepared evaluator, prepared-list strategy, `StudyRunner`, store lease and query lifecycle in `study_route.py`. Glue ledger: none. The route verifies exact current interface identities and all concrete predicate IDs. The new manifest identifies executable `524c13a905320a5ca35664bdb035043f3588fca22a772503e8383e88f51a0734` and semantic `10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f`.
+Use the strict native loader, prepared evaluator, prepared-list strategy, `StudyRunner`, store lease and query lifecycle in `study_route.py`. Glue ledger: none. The route verifies exact current interface identities and all concrete predicate IDs. The new manifest identifies executable `01f8f89c42a98621ff4c6868156d9b7938b7c80102f1c8321b35504ffcc7a021` and semantic `10ea8ab0c94ef4bd126465b2bf664a86bc3a38fa892b39591aa3057069f13a6f`.
 
 Inside `.codex-test/run`, evaluator commands need `PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" STUDY_REQUIRE_TEAX=1`; the plain launcher alone lacks the simkit path. The new record's replay-preparation.md supplies metadata, checker, scan and indicator commands. Native integration owns the baseline/preflight execution; stored study execution requires the matching native CANDIDATE and coordinator release. Neither occurred in this preparation task.

@@ -1,4 +1,4 @@
-"""Native MR-7, conservation, adverse-state and domain evidence for WI-089.
+"""Native MR-7, conservation, adverse-state and domain evidence for WI-090.
 
 Independent checks use energy/state identities, not a second plant implementation.
 """
@@ -85,7 +85,7 @@ def main():
               ('zero_selected_power',{P+'source__producer_mode':1.,PLASMA+'deuterium_fraction':0.},'strictly positive'),
               ('invalid_mode',{P+'source__producer_mode':2.},'mode'),
               ('invalid_fraction',{P+'deposition__radiation_fraction':1.1},'[0,1]'),
-              ('negative_ua',{P+'heat_exchangers__he_ua':-1.},'nonnegative'),
+              ('negative_ua',{P+'heat_exchangers__he_ua':-1.},'invalid'),
               ('negative_flow',{P+'cycle__selected_flow':-1.},'positive'),
               ('invalid_recuperator',{P+'cycle__recuperator_effectiveness':1.1},'[0,1]'),
               ('invalid_heating_efficiency',{P+'generator_auxiliaries__heating_efficiency':0.},'(0,1]'),
@@ -95,7 +95,9 @@ def main():
                   (owner+'_high',{**base,P+owner+'__selected_rating':1e24 if owner=='fuel_capacity' else 10000.},None)]
     # Explicit native nonfinite test is retained as a refusal, never a study point.
     cases += [('nonfinite_ua',{P+'heat_exchangers__he_ua':float('nan')},'finite')]
+    cases += equipment_cases(base)
     for name,changes,error in cases:
+        changes = {((P+k[len(P+'heat_exchangers__'):-3]+'_hx__selected_area') if k.startswith(P+'heat_exchangers__') and k.endswith('_ua') else k): (v*1000 if k.startswith(P+'heat_exchangers__') and k.endswith('_ua') else v) for k,v in changes.items()}
         row=execute_case(name,changes,runtime);rows.append(row)
         (EVIDENCE/'verification-attempt.json').write_text(json.dumps(rows,indent=2)+'\n')
         if error:
@@ -147,11 +149,107 @@ def main():
     outputs=dict(zip(Integrated_Plant_LedgerOutput.model_fields,run_integrated_plant_ledger(Integrated_Plant_LedgerInput(**resolved))))
     assert outputs['efficiency_defined']==0 and outputs['thermal_efficiency']==0
     assert outputs['residual_magnitude']>outputs['energy_tolerance']
+    check_equipment(by)
     summary=dict(passed=True,case_count=len(rows),evaluated=sum(r['status']=='evaluated' for r in rows),
                  refused=sum(r['status']=='refused' for r in rows),fingerprint=runtime[2],
                  zero_heat_ledger='undefined efficiency and nonclosing energy reported; not a valid operating point',cases=rows)
     (EVIDENCE/'verification.json').write_text(json.dumps(summary,indent=2)+'\n')
     print(json.dumps({k:v for k,v in summary.items() if k!='cases'}))
+
+
+def equipment_cases(base):
+    result = [
+        ('u_low',{**base,P+'he_hx__assumed_u':500.},None),
+        ('u_high',{**base,P+'he_hx__assumed_u':1500.},None),
+        ('area_low',{**base,P+'he_hx__selected_area':5000.},None),
+        ('area_high',{**base,P+'he_hx__selected_area':75000.},None),
+        ('stock_low',{**base,P+'fuel_inventory__selected_tritium_kg':.01},None),
+        ('stock_high',{**base,P+'fuel_inventory__selected_tritium_kg':1.},None),
+        ('source_parent_change',{**base,P+'source_budget__account_3':1548817000.},None),
+        ('stock_double',{**base,P+'fuel_inventory__selected_tritium_kg':20.},None),
+        ('recovery_supplied',{**base,P+'fuel_inventory__annual_recovery_kg':100.},None),
+        ('source_budget_mode',{**base,P+'cost_accounts__estimate_mode':1.},None),
+        ('fixed_budget_area',{**base,P+'cost_accounts__estimate_mode':1.,P+'he_hx__selected_area':75000.},None),
+        ('magnet_price',{**base,P+'magnet_inventory__price_factor':1.5},None),
+        ('schedule_at',{**base,P+'cost_schedule__plant_years':10.,P+'cost_schedule__availability':1.,P+'cost_schedule__replacement_life_fpy':5.},None),
+        ('schedule_before',{**base,P+'cost_schedule__plant_years':9.999,P+'cost_schedule__availability':1.,P+'cost_schedule__replacement_life_fpy':5.},None),
+        ('schedule_after',{**base,P+'cost_schedule__plant_years':10.001,P+'cost_schedule__availability':1.,P+'cost_schedule__replacement_life_fpy':5.},None),
+        ('invalid_schedule',{**base,P+'cost_schedule__replacement_life_fpy':0.},'replacement'),
+        ('invalid_stock',{**base,P+'fuel_inventory__selected_tritium_kg':-1.},'nonnegative'),
+    ]
+    for b,m in [('he',3261.),('pbli',26860.),('divertor',500.)]:
+        for label,factor in [('low',.5),('high',1.5)]:
+            result.append((b+'_pump_capacity_'+label,{**base,P+b+'_pump__selected_flow_capacity':m*factor},None))
+        result.append((b+'_flow_low',{**base,P+'heat_exchangers__'+b+'_flow':m*.5},None))
+    return result
+
+
+def check_equipment(by):
+    base=by['nominal-calculated']; f=lambda r,o,k,c='evaluate':r['outputs'][P+o+'__'+c+'__'+k]
+    manifest=json.loads((EVIDENCE/'account-manifest.json').read_text())
+    def cost(r,entry):return f(r,entry['owner'],entry.get('cost_output','capital'),'purchase')
+    total=sum(cost(base,e) for e in manifest)+f(base,'fuel_inventory','amount','purchase')
+    close(total,f(base,'cost_ledger','direct'),.01)
+    close(f(base,'cost_ledger','source_direct'),2619572000.,.01)
+    close(f(base,'cost_ledger','source_inclusive'),2619572000.*1.93,.01)
+    close(f(base,'cost_ledger','direct_difference'),300031000.,.01)
+    close(f(base,'cost_ledger','overnight'),total*1.49,.01)
+    for name in ['density_lower','density_higher']:
+        for e in manifest:assert cost(by[name],e)==cost(base,e),(name,e['owner'])
+        assert f(by[name],'fuel_inventory','annual_burn','annual')!=f(base,'fuel_inventory','annual_burn','annual')
+    for name in ['u_low','u_high']:
+        assert f(by[name],'he_hx','capital','purchase')==f(base,'he_hx','capital','purchase')
+        assert f(by[name],'he_hx','ua')!=f(base,'he_hx','ua')
+    for name,mult in [('area_low',.1),('area_high',1.5)]:
+        close(f(by[name],'he_hx','capital','purchase'),f(base,'he_hx','capital','purchase')*mult,.01)
+        close(f(by[name],'he_hx','ua'),50*mult)
+    assert status(by['area_low'],'plant_ledger','heat_removal_ok')=='violated'
+    assert status(by['area_high'],'plant_ledger','heat_removal_ok')=='satisfied'
+    assert f(by['fixed_budget_area'],'he_hx','capital','purchase')==f(base,'he_hx','capital','purchase')
+    for owner in ['he','pbli','divertor']:
+        lo=by[owner+'_pump_capacity_low'];hi=by[owner+'_pump_capacity_high']
+        assert status(lo,owner+'_pump','capacity_ok')=='violated'
+        assert status(hi,owner+'_pump','capacity_ok')=='satisfied'
+        assert f(lo,owner+'_pump','electric')==f(hi,owner+'_pump','electric')==f(base,owner+'_pump','electric')
+        close(f(hi,owner+'_pump','capital','purchase')/f(lo,owner+'_pump','capital','purchase'),3.)
+        flow=by[owner+'_flow_low']
+        close(f(flow,owner+'_pump','electric'),f(base,owner+'_pump','electric')/8.)
+        assert f(flow,owner+'_pump','capital','purchase')==f(base,owner+'_pump','capital','purchase')
+    rated={'he':'he_duty_equipment','pbli':'pbli_duty_equipment','divertor':'divertor_duty_equipment','compressor':'compressor_equipment','turbine':'turbine_equipment','generator':'generator_equipment','rejection':'heat_rejection_equipment','fuel':'fuel_processing_equipment'}
+    for rating,owner in rated.items():assert f(by[rating+'_capacity_high'],owner,'capital','purchase')>f(by[rating+'_capacity_low'],owner,'capital','purchase')
+    assert status(by['stock_low'],'fuel_inventory','capacity_ok')=='violated'
+    assert status(by['stock_high'],'fuel_inventory','capacity_ok')=='satisfied'
+    assert f(by['stock_low'],'fuel_inventory','required_stock','annual')==f(by['stock_high'],'fuel_inventory','required_stock','annual')
+    close(f(base,'source_reconciliation','difference','fuel_gap_calc'),1000.,.01)
+    close(f(base,'inventory_comparison','difference'),1333700.,.01)
+    close(f(base,'lipb_comparison','difference'),8830000.*17.1-151327000.,.01)
+    close(f(base,'source_replacement_comparison','amount','cost'),975000000.,.01)
+    close(f(base,'source_replacement_comparison','amount','mass'),10946000.,.01)
+    close(f(base,'source_replacement_comparison','difference'),9000000.,.01)
+    close(f(by['source_parent_change'],'cost_ledger','source_reactor_gap')-f(base,'cost_ledger','source_reactor_gap'),10000000.,.01)
+    assert f(by['source_parent_change'],'cost_ledger','direct')==f(base,'cost_ledger','direct')
+    stock=by['stock_double']
+    close(f(stock,'fuel_inventory','annual_decay','annual'),2*f(base,'fuel_inventory','annual_decay','annual'))
+    close(f(stock,'fuel_inventory','amount','purchase'),2*f(base,'fuel_inventory','amount','purchase'),.01)
+    ins=base['effective_inputs'];delta=ins[P+'fuel__decay_constant_s']*(10/ins[P+'fuel__tritium_atom_kg'])/(ins[P+'fuel__assumed_extraction']*f(base,'fuel','burn_rate'))
+    close(f(stock,'fuel','tbr_required')-f(base,'fuel','tbr_required'),delta,1e-12)
+    for key in ['burn_rate','exhaust_rate','loss_rate']:assert f(stock,'fuel',key)==f(base,'fuel',key)
+    assert f(stock,'plant_ledger','net_electric')==f(base,'plant_ledger','net_electric')
+    assert f(stock,'fuel_inventory','breeding_supported','annual')==0
+    assert f(by['recovery_supplied'],'fuel_inventory','annual_external','annual')<f(base,'fuel_inventory','annual_external','annual')
+    for n,count in [('schedule_before',1),('schedule_at',1),('schedule_after',2)]:
+        assert f(by[n],'replacement','event_count')==count
+        assert f(by[n],'replacement','first_event_year')==5
+    assert f(base,'replacement','event_count')==6
+    expected=f(base,'blanket_inventory','capital','purchase')+f(base,'divertor_inventory','cost','purchase')+.05*f(base,'lipb_inventory','capital','purchase')
+    close(f(base,'replacement','event_cost'),expected,.01)
+    imported=by['bypass_motor']
+    assert f(imported,'plant_ledger','net_electric')<0
+    close(f(imported,'cost_ledger','annual_import_mwh'),-f(imported,'plant_ledger','net_electric')*8760*.85,.0001)
+    close(f(imported,'cost_ledger','annual_import_cost'),f(imported,'cost_ledger','annual_import_mwh')*50.,.01)
+    assert f(imported,'cost_ledger','annual_export_mwh')==0
+    assert f(by['magnet_price'],'plant_ledger','net_electric')==f(base,'plant_ledger','net_electric')
+    close(f(by['magnet_price'],'magnet_inventory','capital','purchase'),1.5*f(base,'magnet_inventory','capital','purchase'),.01)
 
 
 if __name__=='__main__':main()

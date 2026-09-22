@@ -91,3 +91,28 @@ The study preparer reconciled proposed windows to the accepted design and identi
 ### T-003 integration-review correction — 2026-09-22
 
 At checkpoint `a24f9080`, canonical thermal/source behavior and independent selected-cost arithmetic pass, but the reviewer found missing promised graph comparisons and a missing insufficient/sufficient stock-capacity test. The existing source reactor/core/coil residual outputs were supplied literals rather than subtraction tied to the source amounts. Decision: complete the accepted graph contract before promotion, preserving prior receipts. The reviewer concurred with additive source-reference subtraction, LiPb rate comparison, replacement-source comparison and explicitly named known-mass arithmetic. The known mass sum includes cryostat and lacks VF mass; its difference from printed dry-core mass is not an authenticated source reconciliation. This is an implementation correction within T-003, not a study-triggered semantic repair or mechanical retry. T-004 dependent preparation pauses until the corrected package is stable; no package has been promoted and no study points have run.
+
+### T-003 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-090 report and66-case development receipt; final citation parity; `evidence/implementation-review.md` corrective PASS on36cb6aed; `evidence/preintegration-preservation.json`.
+- **Reading:** Native selected inventory/cost ownership and source arithmetic pass independent review. Four canonical thermal results and8752 protected files are preserved. Complete validation remains4passed/2failed with reviewed L2/L6 limits. No study or economic ranking is accepted here.
+
+### T-004 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** New study preparation-readiness.json, exact411inputs/64points/28axes,1112scalar and56predicate canonical comparisons,64-point oracle scan without refusals.
+- **Reading:** Final package metadata and independent checker are ready. Stored execution awaits native integration.
+
+### T-005 scope
+
+- **Objective:** Run the native integration seam on the independently accepted equipment package and final study metadata.
+- **Why now:** T-003/T-004 completed; scientific limitations and validator exceptions are explicit.
+- **Scope:** One candidate attempt through native family regression, regeneration, package identity, baseline and study preflight. No physical changes.
+- **Inputs:** Final package01f8f89c, WI-090 report/review and live study manifest/axes.
+- **Done when:** Native integration returns CANDIDATE with matching identity and preflight.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-005 start — 2026-09-22
+
+Coordinator invokes `evidence/integrate.py`; outputs go to `evidence/integration-attempt1/`. The audited-work argument pins the committed reviewed native item.
