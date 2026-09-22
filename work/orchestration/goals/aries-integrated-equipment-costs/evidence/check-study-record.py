@@ -35,9 +35,11 @@ assert con.execute('select count(*) from cases').fetchone()[0]==len(rows)
 con.close()
 ids=lambda text:{line.split('|')[1].strip(' `') for line in text.splitlines() if line.startswith('|') and line.split('|')[1].strip(' `').startswith(r.name+'#')}
 findings=ids(body)
+assert all(line.split('|')[2].strip(' `') in {'model','process'} for line in body.splitlines() if line.startswith('|') and line.split('|')[1].strip(' `').startswith(r.name+'#'))
 log=(r.parent/'DISCOVERY_LOG.md').read_text()
 joined={line.split('|')[3].strip(' `') for line in log.splitlines() if line.startswith('| 20') and line.split('|')[3].strip(' `').startswith(r.name+'#')}
 assert findings and findings==joined
+assert all(line.split('|')[2].strip(' `') in {'model','process'} for line in log.splitlines() if line.startswith('| 20') and line.split('|')[3].strip(' `').startswith(r.name+'#'))
 receipt={'record':str(r),'passed':True,'cases':len(rows),'hashed_artifacts':len(artifacts),'findings':sorted(findings),'snapshot_sha256':hashlib.sha256((r/'snapshot.json').read_bytes()).hexdigest(),'coverage':'record identities, retained artifact digests, full stored/proposed input maps, completed store count, findings joins; no repeated physical evaluation'}
 args.out.write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps(receipt))

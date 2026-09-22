@@ -1,0 +1,6 @@
+{
+  "checks": "all noncanonical differences declared; 411 keys each; horizon/import/residence held; 113 unique cases; prior frozen record diff empty",
+  "passed": true,
+  "preparation_commit": "c7a9e098b7b070835046261ff218da208392a8e4",
+  "native_evaluations": "one preparation baseline only; no declared study points"
+}

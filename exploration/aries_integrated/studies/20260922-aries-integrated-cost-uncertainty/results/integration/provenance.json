@@ -1,0 +1,17 @@
+{
+  "reused_files": [
+    "integration_return.json",
+    "clean.json",
+    "read_coverage.json",
+    "manifest_read_coverage.json"
+  ],
+  "reused_from": "work/orchestration/goals/aries-integrated-equipment-costs/evidence/integration-attempt1",
+  "reused_commit": "e8f9cc1d59a0583fb1b2b2ca4eaa51d87b891c2f",
+  "new_study_files": [
+    "package_identity.json",
+    "baseline_result.json",
+    "preflight_results.json"
+  ],
+  "new_study_from": "preparation/",
+  "executable_and_semantic_unchanged": true
+}

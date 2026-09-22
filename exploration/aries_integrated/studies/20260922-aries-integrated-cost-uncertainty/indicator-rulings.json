@@ -1,0 +1,385 @@
+{
+  "rulings": [
+    {
+      "axis": "auxiliary_cooling_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#1"
+    },
+    {
+      "axis": "blanket_inventory_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#2"
+    },
+    {
+      "axis": "compressor_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#3"
+    },
+    {
+      "axis": "conversion_services_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#4"
+    },
+    {
+      "axis": "divertor_duty_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#5"
+    },
+    {
+      "axis": "divertor_hx_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#6"
+    },
+    {
+      "axis": "divertor_inventory_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#7"
+    },
+    {
+      "axis": "divertor_pump_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#8"
+    },
+    {
+      "axis": "electrical_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#9"
+    },
+    {
+      "axis": "facilities_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#10"
+    },
+    {
+      "axis": "fuel_processing_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#11"
+    },
+    {
+      "axis": "fuel_services_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#12"
+    },
+    {
+      "axis": "generator_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#13"
+    },
+    {
+      "axis": "he_duty_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#14"
+    },
+    {
+      "axis": "he_hx_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#15"
+    },
+    {
+      "axis": "he_pump_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#16"
+    },
+    {
+      "axis": "heat_rejection_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#17"
+    },
+    {
+      "axis": "heating_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#18"
+    },
+    {
+      "axis": "impurity_control_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#19"
+    },
+    {
+      "axis": "instrumentation_control_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#20"
+    },
+    {
+      "axis": "lipb_inventory_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#21"
+    },
+    {
+      "axis": "magnet_inventory_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#22"
+    },
+    {
+      "axis": "magnet_power_supplies_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#23"
+    },
+    {
+      "axis": "miscellaneous_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#24"
+    },
+    {
+      "axis": "other_reactor_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#25"
+    },
+    {
+      "axis": "pbli_duty_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#26"
+    },
+    {
+      "axis": "pbli_hx_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#27"
+    },
+    {
+      "axis": "pbli_pump_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#28"
+    },
+    {
+      "axis": "primary_piping_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#29"
+    },
+    {
+      "axis": "primary_support_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#30"
+    },
+    {
+      "axis": "secondary_transport_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#31"
+    },
+    {
+      "axis": "shield_inventory_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#32"
+    },
+    {
+      "axis": "site_land_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#33"
+    },
+    {
+      "axis": "turbine_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#34"
+    },
+    {
+      "axis": "unallocated_source_scope_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#35"
+    },
+    {
+      "axis": "vacuum_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#36"
+    },
+    {
+      "axis": "vf_coils_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#37"
+    },
+    {
+      "axis": "waste_equipment_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#38"
+    },
+    {
+      "axis": "fuel_inventory_tritium_price",
+      "no_constraint_response": false,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#39"
+    },
+    {
+      "axis": "fuel_inventory_selected_tritium_kg",
+      "no_constraint_response": false,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#40"
+    },
+    {
+      "axis": "fuel_inventory_deuterium_price",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#41"
+    },
+    {
+      "axis": "annual_om_selected_amount",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#42"
+    },
+    {
+      "axis": "cost_ledger_consumables",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#43"
+    },
+    {
+      "axis": "indirect_cost_fraction",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#44"
+    },
+    {
+      "axis": "contingency_fraction",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#45"
+    },
+    {
+      "axis": "owner_commissioning_fraction",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#46"
+    },
+    {
+      "axis": "cost_schedule_replacement_life_fpy",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#47"
+    },
+    {
+      "axis": "cost_schedule_replacement_factor",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#48"
+    },
+    {
+      "axis": "cost_schedule_lipb_makeup_fraction",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#49"
+    },
+    {
+      "axis": "cost_schedule_availability",
+      "no_constraint_response": false,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#50"
+    },
+    {
+      "axis": "supplied_recovery",
+      "no_constraint_response": false,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#51"
+    },
+    {
+      "axis": "purchase_mode",
+      "no_constraint_response": true,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#52"
+    },
+    {
+      "axis": "adequate_he_area",
+      "no_constraint_response": false,
+      "ruling": "Proceed as assumption sensitivity under existing owner authorization.",
+      "authority": "prerequisite/cost-study-brief.md and prerequisite/goal.md (Invariants and Reserved gates)",
+      "finding": "20260922-aries-integrated-cost-uncertainty#53"
+    }
+  ],
+  "top_level_indicator_warnings": [],
+  "suffix_advisories": {
+    "count": 2,
+    "ruling": "Independent PbLi/divertor selected-area inputs held at canonical values; no equality tie implied by suffix."
+  },
+  "not_derivable": [
+    "monotonicity",
+    "physical quantity identity across keys",
+    "intra-module operand dependency"
+  ]
+}

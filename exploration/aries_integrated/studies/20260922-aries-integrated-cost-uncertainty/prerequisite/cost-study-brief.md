@@ -1,0 +1,25 @@
+# Cost study executor brief
+
+[AGENT coordinator] This brief is preparation only until the coordinator records Round2 and explicitly releases its task. Continuing study worker owns one new record, additive cost-proposal/preparation tools, and necessary live manifest/axes/ANNEX updates. No original frozen record, model, package, physical equation or existing oracle body changes. You are not alone; preserve others' edits. Coordinator owns trail, commits and final snapshot.
+
+## Question and authority
+
+Use the accepted thermal study reading before this accounting sensitivity. `round2-cost-question.md` states the question. Accepted WI-090 design E1–E10 and `financial-handoff.md` supply exact native keys, boundaries and ranges. Same assumed423.106794MW thermal baseline; source-case failures remain distinct. All economic axes are assumption sensitivities, never optimized design variables. Owner explicitly authorizes unresisted sensitivity with pre-execution findings. No new financial metrics, market data, currency conversion or discounting.
+
+## Exact preparation responsibility
+
+Choose new record `exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/`. Retain four full canonical maps. Use native411-field public inputs. Declare every varied economic key and any scenario tie with units, engineered bounds and missing-response finding. An uncomplicated one-factor sweep of all38 existing price-factor inputs is acceptable and avoids invented aggregation ownership; use accepted0.5–1.5 bounds, with the disclosed unknown `unallocated_source_scope` allowed0.5–2. No source comparison parent is itself an extra purchased cost. No duplicated price/scope multiplier exists.
+
+Include accepted T price and selected stock, D price, O&M/consumables, indirect/contingency/owner fractions, replacement life/event factor/LiPb makeup and availability endpoints. Keep40-year horizon fixed. Include independently selected100kg/year and200kg/year supplied T recovery, with0already represented by baseline; support remains0. Do not tie recovery to calculated requirement. Include fixed budget mode at nominal selected hardware and the already tested adequate75000m² He exchanger choice in both purchase modes, showing unchanged thermal capability and exposed price nonresponse. A variable held constant need not acquire a study axis. Import tariff need not be swept with positive export; explicitly state its branch is unexercised.
+
+For an assumption-ranked range, add a small number of explicitly declared combined economic low/high scenarios using only accepted ranges. State which variables co-vary, preserve all full maps, and separate initial capital, annual operating and replacement outputs. These are scenario corners, not a probability envelope, calibrated bounds or an optimum. Report one-factor finite changes from stored results alongside them. The cost range describes the assumed integrated baseline family; source-conditioned failing cases are preservation controls and must not enter a usable-alternative range. Keep the no-credit and100kg/year recovery boundaries distinguishable in annual interpretation. Do not invent caller-side plant arithmetic.
+
+## Native route and evidence reuse
+
+Same executable01f8f89c and semantic10ea8ab0; reuse accepted original source/math/design/MR-7 and native integration CANDIDATE at e8f9cc1d while scope/environment/identity remain exact. New metadata/groups need their own indicators, explicit rulings, oracle window scan, actual native baseline and complete preflight. Inspect actual CLI help. No need to regenerate the unchanged package or rerun original family regression merely to repeat valid coverage. Retain a compact copy of the accepted thermal report/reading and its immutable commit/snapshot identity as this study’s prerequisite. Retain the prior accepted integration return and identify the new preflight separately; `results/integration/preflight_results.json` must be the actual new study preflight for freeze. All other integration artifacts must say where reused. Baseline/preflight may be prepared before study release; no declared study points before coordinator checks preparation and commits live source metadata.
+
+Use existing study_route and execute_study after release; stock TEAx lifecycle only. Verify ALL points with the independent oracle, not a12-point sample. Retain every adverse/refused case. Any native failure is reported before a retry; any uncovered equation/domain semantics goes back for review. No fixed-package count other than1 is allowed. Do not modify frozen evidence to make a checker pass.
+
+## Return
+
+Preparation: exact count/axes/windows, input coverage, indicators/rulings, preflight and oracle scan, identity, needed review uncertainties. Then await explicit release. Execution: all-point stored verification, clear cost-contribution/range interpretation,17-section record, report/replay, findings and append-only six-column discovery rows. Prior first sightings remain intact; corrections append. No snapshot/archive or commit by worker. Coordinator freezes and reviews the completed record.
