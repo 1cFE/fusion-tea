@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "record_sections": 17,
+  "native_cases": 14,
+  "numeric_channels_per_case": 211,
+  "exact_verdicts_per_case": 10,
+  "digested_result_artifacts": 75,
+  "findings_joined": 8,
+  "snapshot_fingerprint_names_resolve": true,
+  "snapshot_store_ids_resolve": true,
+  "absolute_tolerance_captured": true,
+  "sealed_archive_hashes_match": true,
+  "snapshot_sha256": "e888d008f2e740129bdbb39f359a619df53a2d9d6fd789a1df40a982a2bbc4ca"
+}

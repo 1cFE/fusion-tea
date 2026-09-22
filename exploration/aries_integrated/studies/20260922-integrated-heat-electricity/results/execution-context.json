@@ -1,0 +1,8 @@
+{
+  "repo_commit_at_execution": "a8912fa4cb9356f14dc18bee4eec841792f544a8",
+  "study_id": "20260922-integrated-heat-electricity",
+  "native_points": 14,
+  "native_store": "exploration/aries_integrated/studies/20260922-integrated-heat-electricity/results/native/20260922-integrated-heat-electricity.db",
+  "route": "study-local direct API; PreparedListStrategy + StudyRunner",
+  "command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.execute_study --record exploration/aries_integrated/studies/20260922-integrated-heat-electricity --integration-return work/orchestration/goals/aries-integrated-heat-electricity/evidence/integration-attempt3/integration_return.json'"
+}

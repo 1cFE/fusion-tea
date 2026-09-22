@@ -1,0 +1,166 @@
+{
+  "scope": "Reporting-only comparison of stored complete inputs and model-published outputs; no inferred resizing or caller-side physical values",
+  "input_checks": [
+    {
+      "case": "nominal-calculated",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {},
+      "unchanged_input_count": 122
+    },
+    {
+      "case": "nominal-source-assumed",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__source__producer_mode": 0.0
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "literal-Lyon-source-input",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__cycle__recuperator_effectiveness": 0.95,
+        "aries_integrated_plant__source__producer_mode": 0.0
+      },
+      "unchanged_input_count": 120
+    },
+    {
+      "case": "literal-Raffray-accounting",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__cycle__recuperator_effectiveness": 0.95,
+        "aries_integrated_plant__deposition__heat_mode": 1.0,
+        "aries_integrated_plant__source__producer_mode": 0.0,
+        "aries_integrated_plant__source__reference_fusion_mw": 2365.0
+      },
+      "unchanged_input_count": 118
+    },
+    {
+      "case": "density-low",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_cs_plasma_integration__plasma__amplitude": 4.5e+20
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "density-high",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_cs_plasma_integration__plasma__amplitude": 5.5e+20
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "fuel-rating-low",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__fuel_capacity__selected_rating": 1e+22
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "fuel-rating-high",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__fuel_capacity__selected_rating": 2e+22
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "helium-rating-low",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__he_capacity__selected_rating": 500.0
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "helium-rating-high",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__he_capacity__selected_rating": 1800.0
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "compressor-ratio-low",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__compressor_1__selected_ratio": 1.4
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "compressor-ratio-high",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__compressor_1__selected_ratio": 1.65
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "helium-ua-low",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__heat_exchangers__he_ua": 5.0
+      },
+      "unchanged_input_count": 121
+    },
+    {
+      "case": "helium-ua-high",
+      "exact_declared_point_match": true,
+      "changed_from_calculated_nominal": {
+        "aries_integrated_plant__heat_exchangers__he_ua": 75.0
+      },
+      "unchanged_input_count": 121
+    }
+  ],
+  "density_propagation": [
+    {
+      "case": "density-low",
+      "channels": {
+        "aries_integrated_plant__source__evaluate__selected_power": 1486.7155392419395,
+        "aries_integrated_plant__fuel__evaluate__exhaust_rate": 1.0028874974805885e+22,
+        "aries_integrated_plant__he_coolant__evaluate__delivered_heat": 752.9915845735519,
+        "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat": 842.0162128050648,
+        "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat": 252.0073308862909,
+        "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat": 1847.0151282649076,
+        "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature": 677.0431890757587,
+        "aries_integrated_plant__turbine__evaluate__shaft_produced": 1752.6913402330606,
+        "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric": 1.0028874974805886,
+        "aries_integrated_plant__plant_ledger__evaluate__net_electric": 140.23069647161535
+      }
+    },
+    {
+      "case": "nominal-calculated",
+      "channels": {
+        "aries_integrated_plant__source__evaluate__selected_power": 1835.4512830147435,
+        "aries_integrated_plant__fuel__evaluate__exhaust_rate": 1.2381327129390006e+22,
+        "aries_integrated_plant__he_coolant__evaluate__delivered_heat": 896.545166140189,
+        "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat": 1039.5261886482303,
+        "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat": 304.31769245221153,
+        "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat": 2240.389047240631,
+        "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature": 788.6375184556719,
+        "aries_integrated_plant__turbine__evaluate__shaft_produced": 2041.5804655934276,
+        "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric": 1.2381327129390007,
+        "aries_integrated_plant__plant_ledger__evaluate__net_electric": 423.10679410931664
+      }
+    },
+    {
+      "case": "density-high",
+      "channels": {
+        "aries_integrated_plant__source__evaluate__selected_power": 2220.8960524478384,
+        "aries_integrated_plant__fuel__evaluate__exhaust_rate": 1.4981405826561897e+22,
+        "aries_integrated_plant__he_coolant__evaluate__delivered_heat": 1055.2096510296283,
+        "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat": 1257.826688264358,
+        "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat": 362.1344078671758,
+        "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat": 2675.170747161162,
+        "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature": 911.9786193458287,
+        "aries_integrated_plant__turbine__evaluate__shaft_produced": 2360.878972561793,
+        "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric": 1.4981405826561898,
+        "aries_integrated_plant__plant_ledger__evaluate__net_electric": 735.7593230685975
+      }
+    }
+  ]
+}

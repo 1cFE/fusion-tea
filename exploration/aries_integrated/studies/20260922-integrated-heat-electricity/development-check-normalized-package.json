@@ -1,0 +1,417 @@
+{
+  "scope": "Native check_case over four retained smart-normalized author baselines; no new native execution, study store or study point",
+  "old_receipts": "development-check-relative-refusal.json and development-check-reviewed-tolerance.json remain evidence for old executable 469191fd32c624ccf70e0b4ebc1065b34920df8174c37a09e8f45ecfb241a7d7",
+  "executable_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+  "absolute_tolerances": [
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Native root termination1e-8MW plus roundoff allowance; below minimum1e-6MW engineering balance tolerance; independently reviewed T-005"
+    }
+  ],
+  "sources": [
+    {
+      "path": "work/active/WI-089_aries-integrated-heat-and-electricity/evidence/smart-normalization-verification.json",
+      "sha256": "9e22a6955380f98439a00c3ed0ce901c556fc8955e28a4cb735c716cdacddfea"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/oracle_entry.py",
+      "sha256": "fa49336ed5b0d2ab8a184413b3a18cd312850fff1cb7aac47af7fc1df8b5aeeb"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/interface_data.py",
+      "sha256": "4d8d65dc1b774cf9bba58f2b3f8a0706f8dd60f28366788e4defd05ff54037d7"
+    },
+    {
+      "path": "exploration/aries_integrated/studies/manifest.json",
+      "sha256": "1e3d867011d5cd54d3e4780df19e6b75afd180c789f9fbe41a14638732b19e6f"
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+    }
+  ],
+  "cases": [
+    {
+      "case": "smart-normalized-nominal-source-assumed",
+      "executable_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+      "status": "passed",
+      "compared_channels": [
+        "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__compressor_capacity__evaluate__margin",
+        "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__divertor_capacity__evaluate__margin",
+        "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+        "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__fuel_capacity__evaluate__margin",
+        "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+        "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__generator_capacity__evaluate__margin",
+        "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__he_capacity__evaluate__margin",
+        "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+        "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+        "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+        "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+        "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__pbli_capacity__evaluate__margin",
+        "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+        "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+        "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__rejection_capacity__evaluate__margin",
+        "aries_integrated_plant__source__evaluate__selected_power",
+        "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__turbine_capacity__evaluate__margin"
+      ],
+      "rederived_verdicts": [
+        {
+          "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+          "source_local_identity": "balances_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+          "source_local_identity": "heat_removal_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        }
+      ],
+      "worst_relative_deviation": [
+        1892.3333333333333,
+        "smart-normalized-nominal-source-assumed",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        1.291482476517558e-09
+      ]
+    },
+    {
+      "case": "smart-normalized-nominal-calculated",
+      "executable_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+      "status": "passed",
+      "compared_channels": [
+        "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__compressor_capacity__evaluate__margin",
+        "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__divertor_capacity__evaluate__margin",
+        "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+        "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__fuel_capacity__evaluate__margin",
+        "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+        "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__generator_capacity__evaluate__margin",
+        "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__he_capacity__evaluate__margin",
+        "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+        "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+        "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+        "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+        "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__pbli_capacity__evaluate__margin",
+        "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+        "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+        "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__rejection_capacity__evaluate__margin",
+        "aries_integrated_plant__source__evaluate__selected_power",
+        "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__turbine_capacity__evaluate__margin"
+      ],
+      "rederived_verdicts": [
+        {
+          "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+          "source_local_identity": "balances_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+          "source_local_identity": "heat_removal_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        }
+      ],
+      "worst_relative_deviation": [
+        8288.25,
+        "smart-normalized-nominal-calculated",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        7.539028956671245e-09
+      ]
+    },
+    {
+      "case": "smart-normalized-literal-Lyon-source-input",
+      "executable_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+      "status": "passed",
+      "compared_channels": [
+        "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__compressor_capacity__evaluate__margin",
+        "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__divertor_capacity__evaluate__margin",
+        "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+        "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__fuel_capacity__evaluate__margin",
+        "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+        "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__generator_capacity__evaluate__margin",
+        "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__he_capacity__evaluate__margin",
+        "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+        "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+        "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+        "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+        "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__pbli_capacity__evaluate__margin",
+        "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+        "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+        "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__rejection_capacity__evaluate__margin",
+        "aries_integrated_plant__source__evaluate__selected_power",
+        "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__turbine_capacity__evaluate__margin"
+      ],
+      "rederived_verdicts": [
+        {
+          "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+          "source_local_identity": "balances_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+          "source_local_identity": "heat_removal_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        }
+      ],
+      "worst_relative_deviation": [
+        12869.0,
+        "smart-normalized-literal-Lyon-source-input",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        5.852598405908793e-09
+      ]
+    },
+    {
+      "case": "smart-normalized-literal-Raffray-accounting",
+      "executable_fingerprint": "cebe17fd3ca0dae4c5102365b384cc40635406b3c470c29dd7f55c086b9657bd",
+      "status": "passed",
+      "compared_channels": [
+        "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__compressor_capacity__evaluate__margin",
+        "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__divertor_capacity__evaluate__margin",
+        "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+        "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__fuel_capacity__evaluate__margin",
+        "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+        "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__generator_capacity__evaluate__margin",
+        "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__he_capacity__evaluate__margin",
+        "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+        "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+        "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+        "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+        "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__pbli_capacity__evaluate__margin",
+        "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+        "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+        "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+        "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+        "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+        "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__rejection_capacity__evaluate__margin",
+        "aries_integrated_plant__source__evaluate__selected_power",
+        "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+        "aries_integrated_plant__turbine_capacity__evaluate__margin"
+      ],
+      "rederived_verdicts": [
+        {
+          "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+          "source_local_identity": "balances_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+          "source_local_identity": "heat_removal_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        },
+        {
+          "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+          "source_local_identity": "capacity_ok",
+          "operands_resolved": 2
+        }
+      ],
+      "worst_relative_deviation": [
+        2.2131311379717427e-12,
+        "smart-normalized-literal-Raffray-accounting",
+        "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+        502.1342023793469
+      ]
+    }
+  ]
+}
