@@ -1,0 +1,3 @@
+?? docs/write-up/writing-prompt.md
+?? work/analysis/20260920-184131_design-choice-assignment-audit.md
+?? work/orchestration/goals/aries-integrated-heat-electricity/
