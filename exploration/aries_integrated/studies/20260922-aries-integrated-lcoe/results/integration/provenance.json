@@ -1,0 +1,8 @@
+{
+  "study_preparation": [
+    "package_identity.json",
+    "baseline_result.json",
+    "preflight_results.json"
+  ],
+  "other_files": "Retained native integration CANDIDATE at f4ea4795; package identity unchanged."
+}

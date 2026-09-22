@@ -1,0 +1,191 @@
+[
+  {
+    "id": 1,
+    "kind": "model",
+    "finding": "discount: Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 2,
+    "kind": "model",
+    "finding": "construction: Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 3,
+    "kind": "model",
+    "finding": "terminal: Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 4,
+    "kind": "model",
+    "finding": "salvage: Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 5,
+    "kind": "model",
+    "finding": "overhaul_fraction: Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 6,
+    "kind": "model",
+    "finding": "overhaul_date: Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 7,
+    "kind": "model",
+    "finding": "life: Financial assumption lacks financing, liability or service-life evidence; no engineering optimum.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 8,
+    "kind": "model",
+    "finding": "availability: Supplied availability has no outage/reliability response; no additional downtime charge.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 9,
+    "kind": "model",
+    "finding": "magnet_inventory_price: Supplied price factor has no calibrated market or equipment-quality response.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 10,
+    "kind": "model",
+    "finding": "unallocated_source_scope_price: Supplied price factor has no calibrated market or equipment-quality response.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 11,
+    "kind": "model",
+    "finding": "tritium_price: Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 12,
+    "kind": "model",
+    "finding": "routine_om: Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 13,
+    "kind": "model",
+    "finding": "consumables: Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 14,
+    "kind": "model",
+    "finding": "replacement_life: Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 15,
+    "kind": "model",
+    "finding": "replacement_factor: Supply/lifetime/operating-cost assumption lacks calibrated engineering evidence.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 16,
+    "kind": "model",
+    "finding": "new_feed: Net extracted breeder feed has no qualified capability or extraction-cost model; internal exhaust recycling is already accounted.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 17,
+    "kind": "model",
+    "finding": "supply_service: Incremental assumed extraction/service cost has no price-versus-capability relationship.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 18,
+    "kind": "model",
+    "finding": "density_amplitude: Fixed-hardware source-demand change does not qualify confinement.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 19,
+    "kind": "model",
+    "finding": "he_hx_area: Selected area has linear provisional price response; hydraulic/geometric qualification absent.",
+    "disposition": "Retain sensitivity-only assumption and missing-response limit",
+    "home": "modeling_project/STUDY_POLICY.md"
+  },
+  {
+    "id": 20,
+    "kind": "model",
+    "finding": "No-credit LCOE1119.408 versus assumed-feed100/service30m LCOE176.687 is driven mainly by external T purchases.",
+    "disposition": "Carry both explicit supply cases; no implied breeding qualification",
+    "home": "work/orchestration/goals/aries-integrated-lcoe/answer.md"
+  },
+  {
+    "id": 21,
+    "kind": "model",
+    "finding": "Fixed feed under availability/density changes crosses external-purchase floor; response is not an operating optimum.",
+    "disposition": "Carry held100kg/calendar-year supply and30m/year cost with every comparison",
+    "home": "work/orchestration/goals/aries-integrated-lcoe/answer.md"
+  },
+  {
+    "id": 22,
+    "kind": "model",
+    "finding": "All three inherited source configurations and insufficient5000m2 helium area retain engineering failures with finite LCOE.",
+    "disposition": "Preserve all four adverse rows and separate numerical/scientific status",
+    "home": "work/orchestration/goals/aries-integrated-lcoe/answer.md"
+  },
+  {
+    "id": 23,
+    "kind": "model",
+    "finding": "Source-conditioned75.079576 is a capital/power substitution with integrated fuel throughput;77.6 comparison does not reconstruct source finance.",
+    "disposition": "Retain unmatched life, terminal price year, O&M provenance and replacement schedule",
+    "home": "work/orchestration/goals/aries-integrated-lcoe/answer.md"
+  },
+  {
+    "id": 24,
+    "kind": "model",
+    "finding": "Complete dated events and gross terminal/salvage/refurbishment are charged; alternative replacement reserve is excluded.",
+    "disposition": "Preserve financial convention in successor handoff",
+    "home": "work/orchestration/goals/aries-integrated-lcoe/answer.md"
+  },
+  {
+    "id": 25,
+    "kind": "process",
+    "finding": "Eleven stock refusals and isolated partial diagnostics retain undefined financial outputs separately from completed study points.",
+    "disposition": "Carry exact identity/diagnostic runtime and publication/root-cause evidence",
+    "home": "exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/diagnostics"
+  },
+  {
+    "id": 26,
+    "kind": "process",
+    "finding": "Exact full numeric-map export succeeds with64single attempts and unchanged persistent native evidence.",
+    "disposition": "Reuse reviewed record-local transport and preserve original predecessor failure",
+    "home": "exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/execute_study.py"
+  },
+  {
+    "id": 27,
+    "kind": "process",
+    "finding": "Tiny-rate IDC subtractive cancellation needs only a two-ULP capital-scale tolerance; all other finance thresholds unchanged.",
+    "disposition": "Retain declared channel-specific tolerance and arithmetic proof",
+    "home": "exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/tiny-rate-tolerance.json"
+  }
+]

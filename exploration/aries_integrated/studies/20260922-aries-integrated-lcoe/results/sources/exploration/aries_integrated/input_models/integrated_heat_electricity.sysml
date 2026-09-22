@@ -1,0 +1,282 @@
+package integrated_heat_electricity {
+    private import ScalarValues::*;
+    calc def 'Fusion Source Selector' {
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic fusion source selector. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        in attribute calculated_power_in : Real;
+        in attribute reference_power_in : Real;
+        in attribute mode_in : Real;
+        out attribute selected_power : Real;
+        out attribute selected_mode : Real;
+    }
+    calc def 'Integrated Heat Source' {
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated heat source. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        in attribute fusion_power_in : Real;
+        in attribute heat_mode_in : Real;
+        in attribute neutron_multiplier_in : Real;
+        in attribute radiation_fraction_in : Real;
+        in attribute helium_fraction_in : Real;
+        in attribute exchange_fraction_in : Real;
+        in attribute auxiliary_heat_in : Real;
+        in attribute he_pump_in : Real;
+        in attribute pbli_pump_in : Real;
+        in attribute divertor_pump_in : Real;
+        in attribute he_recovery_in : Real;
+        in attribute pbli_recovery_in : Real;
+        in attribute divertor_recovery_in : Real;
+        in attribute literal_he_in : Real;
+        in attribute literal_pbli_in : Real;
+        in attribute literal_exchange_in : Real;
+        in attribute literal_divertor_in : Real;
+        out attribute neutron_power : Real;
+        out attribute charged_power : Real;
+        out attribute nuclear_gain : Real;
+        out attribute he_deposition : Real;
+        out attribute pbli_deposition : Real;
+        out attribute divertor_deposition : Real;
+        out attribute exchange : Real;
+        out attribute he_friction : Real;
+        out attribute pbli_friction : Real;
+        out attribute divertor_friction : Real;
+        out attribute other_heat : Real;
+        out attribute source_residual : Real;
+        out attribute topology_zero : Real;
+        out attribute pump_electric : Real;
+        out attribute pump_recovered : Real;
+    }
+    calc def 'Heat Driven Closure' {
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic heat driven closure. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        in attribute cold_temperature_in : Real;
+        in attribute flow_in : Real;
+        in attribute cp_in : Real;
+        in attribute gamma_in : Real;
+        in attribute turbine_efficiency_in : Real;
+        in attribute turbine_pressure_in : Real;
+        in attribute return_pressure_in : Real;
+        in attribute recuperator_effectiveness_in : Real;
+        in attribute he_available_in : Real;
+        in attribute divertor_available_in : Real;
+        in attribute pbli_available_in : Real;
+        in attribute he_flow_in : Real;
+        in attribute he_cp_in : Real;
+        in attribute he_ua_in : Real;
+        in attribute he_limit_in : Real;
+        in attribute divertor_flow_in : Real;
+        in attribute divertor_cp_in : Real;
+        in attribute divertor_ua_in : Real;
+        in attribute divertor_limit_in : Real;
+        in attribute pbli_flow_in : Real;
+        in attribute pbli_cp_in : Real;
+        in attribute pbli_ua_in : Real;
+        in attribute pbli_limit_in : Real;
+        out attribute turbine_temperature : Real;
+        out attribute heater_inlet : Real;
+        out attribute expansion_factor : Real;
+        out attribute accepted_heat : Real;
+        out attribute unmet_heat : Real;
+        out attribute closure_residual : Real;
+        out attribute iterations : Real;
+        out attribute he_transferred : Real;
+        out attribute he_unmet : Real;
+        out attribute he_capability : Real;
+        out attribute he_hot : Real;
+        out attribute he_return : Real;
+        out attribute he_state_defined : Real;
+        out attribute he_hot_terminal_difference : Real;
+        out attribute he_cold_terminal_difference : Real;
+        out attribute he_hot_bound_margin : Real;
+        out attribute he_secondary_in : Real;
+        out attribute he_secondary_out : Real;
+        out attribute divertor_transferred : Real;
+        out attribute divertor_unmet : Real;
+        out attribute divertor_capability : Real;
+        out attribute divertor_hot : Real;
+        out attribute divertor_return : Real;
+        out attribute divertor_state_defined : Real;
+        out attribute divertor_hot_terminal_difference : Real;
+        out attribute divertor_cold_terminal_difference : Real;
+        out attribute divertor_hot_bound_margin : Real;
+        out attribute divertor_secondary_in : Real;
+        out attribute divertor_secondary_out : Real;
+        out attribute pbli_transferred : Real;
+        out attribute pbli_unmet : Real;
+        out attribute pbli_capability : Real;
+        out attribute pbli_hot : Real;
+        out attribute pbli_return : Real;
+        out attribute pbli_state_defined : Real;
+        out attribute pbli_hot_terminal_difference : Real;
+        out attribute pbli_cold_terminal_difference : Real;
+        out attribute pbli_hot_bound_margin : Real;
+        out attribute pbli_secondary_in : Real;
+        out attribute pbli_secondary_out : Real;
+    }
+    calc def 'Passive Recuperator' {
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic passive recuperator. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        in attribute cold_temperature_in : Real;
+        in attribute hot_temperature_in : Real;
+        in attribute flow_in : Real;
+        in attribute cp_in : Real;
+        in attribute effectiveness_in : Real;
+        out attribute cold_out : Real;
+        out attribute hot_out : Real;
+        out attribute recovered_heat : Real;
+        out attribute bypass_active : Real;
+    }
+    calc def 'Plant Electrical Balance' {
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator/auxiliary owner and electrical energy ledger equations; efficiencies dimensionless, rates atoms/s, all powers MW. **Last Updated**: 2026-09-22. */
+        in attribute turbine_work_in : Real;
+        in attribute compressor_1_in : Real;
+        in attribute compressor_2_in : Real;
+        in attribute compressor_3_in : Real;
+        in attribute auxiliary_heat_in : Real;
+        in attribute pump_electric_in : Real;
+        in attribute pump_recovered_in : Real;
+        in attribute heating_efficiency_in : Real;
+        in attribute generator_efficiency_in : Real;
+        in attribute motor_efficiency_in : Real;
+        in attribute cryo_in : Real;
+        in attribute fuel_base_in : Real;
+        in attribute fuel_coefficient_in : Real;
+        in attribute fuel_exhaust_in : Real;
+        in attribute control_in : Real;
+        in attribute other_electric_in : Real;
+        out attribute compressor_demand : Real;
+        out attribute net_shaft : Real;
+        out attribute gross_electric : Real;
+        out attribute shaft_import : Real;
+        out attribute generator_loss : Real;
+        out attribute motor_loss : Real;
+        out attribute heating_electric : Real;
+        out attribute heating_loss : Real;
+        out attribute fuel_electric : Real;
+        out attribute fuel_base_electric : Real;
+        out attribute fuel_variable_electric : Real;
+        out attribute auxiliary_electric : Real;
+        out attribute net_electric : Real;
+        out attribute pump_loss : Real;
+        out attribute dissipated_auxiliary : Real;
+        out attribute cryo_electric : Real;
+        out attribute control_electric : Real;
+        out attribute other_electric_demand : Real;
+        out attribute primary_pump_electric : Real;
+    }
+    calc def 'Integrated Plant Ledger' {
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: accepted WI-089 design and source/assumption register; generic integrated plant ledger. Normative equations, units and operating domains are in the named design sections; typed native completion enforces them. MW/K/MPa/kg/s/J per kg K/atoms per s as documented; dimensionless flags use 0/1. **Last Updated**: 2026-09-22. */
+        in attribute fusion_power_in : Real;
+        in attribute producer_mode_in : Real;
+        in attribute nuclear_gain_in : Real;
+        in attribute auxiliary_heat_in : Real;
+        in attribute he_available_in : Real;
+        in attribute pbli_available_in : Real;
+        in attribute divertor_available_in : Real;
+        in attribute he_deposition_in : Real;
+        in attribute pbli_deposition_in : Real;
+        in attribute divertor_deposition_in : Real;
+        in attribute he_friction_in : Real;
+        in attribute pbli_friction_in : Real;
+        in attribute divertor_friction_in : Real;
+        in attribute other_heat_in : Real;
+        in attribute source_residual_in : Real;
+        in attribute accepted_heat_in : Real;
+        in attribute unmet_heat_in : Real;
+        in attribute turbine_work_in : Real;
+        in attribute compressor_1_in : Real;
+        in attribute compressor_2_in : Real;
+        in attribute compressor_3_in : Real;
+        in attribute intercooler_1_in : Real;
+        in attribute intercooler_2_in : Real;
+        in attribute precooler_in : Real;
+        in attribute pump_electric_in : Real;
+        in attribute pump_recovered_in : Real;
+        in attribute turbine_temperature_in : Real;
+        in attribute turbine_exhaust_in : Real;
+        in attribute expansion_factor_in : Real;
+        in attribute heater_inlet_in : Real;
+        in attribute recuperator_cold_out_in : Real;
+        in attribute closure_residual_in : Real;
+        in attribute reference_fusion_in : Real;
+        in attribute reference_gross_in : Real;
+        in attribute reference_net_in : Real;
+        in attribute reference_turbine_temperature_in : Real;
+        in attribute reference_heater_temperature_in : Real;
+        in attribute reference_blanket_deposition_in : Real;
+        in attribute electric_compressor_demand_in : Real;
+        in attribute electric_net_shaft_in : Real;
+        in attribute electric_gross_electric_in : Real;
+        in attribute electric_shaft_import_in : Real;
+        in attribute electric_generator_loss_in : Real;
+        in attribute electric_motor_loss_in : Real;
+        in attribute electric_heating_electric_in : Real;
+        in attribute electric_heating_loss_in : Real;
+        in attribute electric_fuel_electric_in : Real;
+        in attribute electric_fuel_base_electric_in : Real;
+        in attribute electric_fuel_variable_electric_in : Real;
+        in attribute electric_auxiliary_electric_in : Real;
+        in attribute electric_net_electric_in : Real;
+        in attribute electric_pump_loss_in : Real;
+        in attribute electric_dissipated_auxiliary_in : Real;
+        in attribute electric_cryo_electric_in : Real;
+        in attribute electric_control_electric_in : Real;
+        in attribute electric_other_electric_demand_in : Real;
+        in attribute electric_primary_pump_electric_in : Real;
+        out attribute compressor_demand : Real;
+        out attribute net_shaft : Real;
+        out attribute cycle_rejection : Real;
+        out attribute gross_electric : Real;
+        out attribute shaft_import : Real;
+        out attribute generator_loss : Real;
+        out attribute motor_loss : Real;
+        out attribute heating_electric : Real;
+        out attribute heating_loss : Real;
+        out attribute fuel_electric : Real;
+        out attribute fuel_base_electric : Real;
+        out attribute fuel_variable_electric : Real;
+        out attribute auxiliary_electric : Real;
+        out attribute net_electric : Real;
+        out attribute pump_loss : Real;
+        out attribute dissipated_auxiliary : Real;
+        out attribute branch_residual : Real;
+        out attribute cycle_residual : Real;
+        out attribute electrical_residual : Real;
+        out attribute plant_residual : Real;
+        out attribute source_energy_residual : Real;
+        out attribute unmatched_source_heat : Real;
+        out attribute energy_tolerance : Real;
+        out attribute residual_magnitude : Real;
+        out attribute thermal_efficiency : Real;
+        out attribute efficiency_defined : Real;
+        out attribute total_available_heat : Real;
+        out attribute comparison_fusion_difference : Real;
+        out attribute comparison_gross_difference : Real;
+        out attribute comparison_net_difference : Real;
+        out attribute comparison_turbine_temperature_difference : Real;
+        out attribute comparison_heater_temperature_difference : Real;
+        out attribute comparison_blanket_deposition_difference : Real;
+        out attribute turbine_state_residual : Real;
+        out attribute recuperator_state_residual : Real;
+        out attribute supported_magnet : Real;
+        out attribute supported_breeding : Real;
+        out attribute supported_deposition : Real;
+        out attribute supported_hydraulics : Real;
+        out attribute supported_materials : Real;
+        out attribute supported_machine_map : Real;
+        out attribute assumed_auxiliary_demands : Real;
+        out attribute conditional_net_result : Real;
+        out attribute net_result_producer_mode : Real;
+        out attribute cryo_electric : Real;
+        out attribute control_electric : Real;
+        out attribute other_electric_demand : Real;
+        out attribute primary_pump_electric : Real;
+    }
+    constraint def 'Heat Removal Adequate' {
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: WI-089 residual tolerance and unmet-removal acceptance. **Last Updated**: 2026-09-22. */
+        in unmet_in : Real;
+        in tolerance_in : Real;
+        unmet_in <= tolerance_in
+    }
+    constraint def 'Integrated Ledger Balanced' {
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: WI-089 residual tolerance and unmet-removal acceptance. **Last Updated**: 2026-09-22. */
+        in magnitude_in : Real;
+        in tolerance_in : Real;
+        magnitude_in <= tolerance_in
+    }
+}

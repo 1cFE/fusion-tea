@@ -1,0 +1,19 @@
+{
+  "repo_commit_at_execution": "f4ea479506cae17d2a9aafe0f914346c555193e7",
+  "recorded_at_utc": "2026-09-22T19:03:22.396577+00:00",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/execute_study.py --record exploration/aries_integrated/studies/20260922-aries-integrated-lcoe --integration-return work/orchestration/goals/aries-integrated-lcoe/evidence/integration-attempt1/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/manifest.json --identity exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/results/package_identity.json --store exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/results/native/20260922-aries-integrated-lcoe.db --sample-size 64 --out exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/results/verification_summary.json'",
+  "execution_invocations": 1,
+  "native_attempts": 64,
+  "completed_points": 64,
+  "proposed_points": 64,
+  "export_failure": null,
+  "mechanical_export_recovery_attempts": 0,
+  "evaluator_reruns": 0,
+  "package_mutations": false,
+  "coordinator_release": "T006 after native integration CANDIDATE all10gates passed, f4ea4795",
+  "no_runtime_physical_adapter": true,
+  "verification_outcome": "pass",
+  "analysis_command": ".codex-test/run python exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/analyze_results.py",
+  "diagnostics": "Separate reused author attempts and isolated diagnostic runtime, not included in64study attempts."
+}
