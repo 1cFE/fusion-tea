@@ -57,3 +57,9 @@ Use a fresh evidence location when replaying so accepted receipts remain immutab
 ```
 
 Independent review should consume the accepted design/source reviews, exact generated binding paths, final 66-case receipt, full validator diagnostics and the retained earlier checkpoint. Native promotion and thermal sensitivity interpretation remain coordinator/study tasks. Formal closure remains owner-held.
+
+## Delivered study evidence — 2026-09-22
+
+[AGENT coordinator] Independent implementation review passes; native CANDIDATE at e8f9cc1d passes all ten gates. The thermal-first study is frozen at494c329e:64points and all17,792scalar/896predicate comparisons, with11adverse cases retained and independent interpretation accepted. The cost-uncertainty study is frozen at8d322312:113points and all31,414scalar/1,582predicate comparisons, with the three source controls still adverse. Every native point ran once. Two bounded export recoveries addressed numeric representation and transient SQLite files without changing proposals, physics or original durable evidence; the complete record retains both failures and the successful copy-query proof.
+
+[AGENT coordinator] The goal answer and `evidence/financial-handoff.md` provide exact selected inventory/cost interfaces, source reconciliation, conditional ranges and replay. Conditional overnight corners span1.623–13.332billion USD2004. Baseline annual operation is3.215billion under no T-recovery credit or215.101million with independently supplied100kg/year recovery, which lacks an incremental recovery-cost/qualification law. These are assumptions, not validated breeding/economic performance.8752protected files remain unchanged and isolated Stellaris behavior matches1352outputs/68responses. Final independent cost/goal interpretation review remains pending; no formal closure is recorded.

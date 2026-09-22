@@ -956,3 +956,7 @@ The coordinator captured snapshot.json and sealed-package.tar.gz. Snapshot SHA25
 ## 17. What this record does not contain
 
 No market calibration, inflation conversion, financing/discounting, LCOE, sales-price scenario or economic optimum is supplied. The ranges cover discrete engineered assumptions only. Recovery lacks an incremental cost/qualification law at fixed installed scope. Positive export leaves the import-tariff branch unexercised. Scientific field/conductor, breeding, deposition, hydraulics, materials and machine-map qualification remain unsupported. Source-conditioned failing net outputs are not usable alternatives. Independent completed-study interpretation and final goal assessment are subsequent goal-review work, outside this executor record.
+
+## Addendum 2026-09-22 — loader links
+
+The committed `preparation/_work/pkg_link/aries_integrated` and `results/native/pkg_link/aries_integrated` symlinks are transient loader conveniences pointing at the working package. They are excluded from snapshot artifact hashes and are not retained model evidence. The immutable executable content is `sealed-package.tar.gz`, with its digest in snapshot.json. Replay creates a fresh loader link against the restored, identity-checked package; no claim in this record depends on either old symlink target. Frozen results, snapshot and archive are unchanged.

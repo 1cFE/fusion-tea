@@ -1,6 +1,6 @@
 # Integrated ARIES equipment and costs
 
-[AGENT] Status: native equipment/cost integration and thermal-first sensitivity are independently accepted. The assumption-ranked cost range is still being executed; the positive goal answer and financial handoff are not yet final. Formal item/goal closure remains owner-held.
+[AGENT] Status: native equipment/cost integration and thermal-first sensitivity are independently accepted. Both native studies are frozen and fully verified. The positive integration answer below is ready for final independent interpretation review; formal completion assessment follows that review. Formal item/goal closure remains owner-held.
 
 ## Executable case
 
@@ -16,6 +16,7 @@ The native graph owns selected aggregate magnet/structure, blanket/divertor, shi
 | TEAx revision | `8d877460ac4f6f264561d916e40c1708adb13397` |
 | Native CANDIDATE | `e8f9cc1d`, [all ten integration gates](evidence/integration-attempt1/integration_return.json) |
 | Thermal/equipment study | `494c329e`, `exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/` |
+| Cost study | `8d322312`, `exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/`; executed at `bd9b9aec` |
 
 ## Thermal assumptions precede economic interpretation
 
@@ -61,7 +62,23 @@ Annual operating cost includes fixed O&M, consumables, external T, deuterium and
 
 ### Cost uncertainty
 
-Pending the second native study. No economic optimum or qualified equipment ranking is asserted.
+The 113-point second study varies all 38 purchase-price factors plus stock/fuel, annual allowances, capital fractions, availability, replacement assumptions and explicit supplied-recovery scenarios. It verifies every point against 278 independent numeric channels and 14 predicates: 31,414 scalar and 1,582 predicate comparisons pass. All 110 assumed-baseline-family points retain 423.106794 MW net and satisfy the represented checks; the three source controls retain their failures. No scientific support flag is upgraded.
+
+| Conditional native scenario | Overnight capital | Annual operating cost | Undiscounted lifetime replacements |
+|---|---:|---:|---:|
+| Baseline, no recovery credit |$4.350 billion|$3.215 billion/year|$433.388 million|
+| Same baseline, supplied 100 kg/year recovery |$4.350 billion|$215.101 million/year|$433.388 million|
+| Combined lower-cost assumptions, no credit |$1.623 billion|$893.907 million/year|$48.499 million|
+| Combined higher-cost assumptions, no credit |$13.332 billion|$11.960 billion/year|$5.126 billion|
+| Same combined lower/higher assumptions, 100 kg/year recovery |$1.623–13.332 billion|$36.006 million–1.960 billion/year|$48.499 million–5.126 billion|
+
+The [cost report](../../../../exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/report.md) and exact native cases supply these values. All entries are USD2004. The combined cases simultaneously vary explicitly declared engineering bounds, including availability and replacement life; they are scenario corners, not confidence intervals or independently predicted plant costs. Full inputs are retained. Their annual export also changes with availability, so a smaller expense is not a demonstrated better economic outcome.
+
+Over the declared one-factor windows, the largest overnight changes are tritium unit price (+$1.043 billion at the high endpoint), selected T stock (+$894 million) and contingency (+$700.705 million). Annual cost is dominated by tritium price and the independent recovery boundary; availability follows among the tested continuous annual-cost assumptions. Replacement life and event-price factor dominate the tested lifetime replacement changes. These are finite effects over unequal assumption windows, not a probability ranking or equipment recommendation.
+
+At nominal assumptions, 100 kg/year supplied recovery leaves 4.667707 kg/year external T purchase; 200 kg/year reduces modeled purchase to zero and annual operating cost to $75.070 million. Recovery is an independently supplied boundary, with no incremental recovery-cost or qualification law at fixed installed scope. These lower expenses do not establish breeding sufficiency, free recovery equipment or an optimum.
+
+Buying the adequate 75000 m² He exchanger changes overnight capital to $4.393661 billion in selected-quantity mode, while fixed-budget mode leaves it at $4.350208 billion. Both retain the same calculated thermal result. That explicit nonresponse prevents treating the fixed-budget placeholder as a credible hardware-cost law. The separate source direct/inclusive channels remain unchanged comparisons, not substitutes silently added to these costs.
 
 ## Source reconciliation and remaining response limits
 
@@ -73,10 +90,10 @@ Selected-quantity prices are local linear scenarios; fixed source-package altern
 
 The 66-case development receipt retains 54 evaluated cases and 12 expected domain refusals. Exact generated-code/SysML-body and canonical-output parity covers the final citation-only package rebuild. Independent source, design and implementation reviews accepted the affected MR-7 ownership and disjointness. Complete model validation remains four levels passing and two failing: reviewed L2 literal-binding warnings and L6 static EXPOSE/reference limitations are retained; there is no complete-validator pass claim.
 
-All 8752 protected original and frozen-predecessor files remain unchanged through Round1. The separate isolated Stellaris replay matches 1352 numeric outputs and 68 responses exactly. [Preservation](evidence/round1-preservation.json) and [behavioral regression](evidence/stellaris-regression.md) are distinct evidence. No original Stellaris definition, input, package, completion or frozen result was changed.
+All 8752 protected original and frozen-predecessor files remain unchanged through both rounds. The separate isolated Stellaris replay matches 1352 numeric outputs and 68 responses exactly. [Preservation](evidence/round2-preservation.json) and [behavioral regression](evidence/stellaris-regression.md) are distinct evidence. No original Stellaris definition, input, package, completion or frozen result was changed.
 
 ## Replay and prompt 03 handoff
 
 Use the licensed runtime documented in `.project/codex-test-setup.md`, the pinned TEAx revision and a fresh checkout/output location. Do not run replay commands into frozen record directories. The thermal study's [replay instructions](../../../../exploration/aries_integrated/studies/20260922-aries-integrated-equipment-costs/replay.md) give exact native execution and all-point verification commands; its snapshot, sealed package, source copies and complete maps are committed at 494c329e.
 
-The [financial handoff](../../../active/WI-090_aries-integrated-equipment-and-costs/evidence/financial-handoff.md) lists 99 exact public input keys and 114 native output IDs, including the separate source-inclusive, overnight, annual-export and scheduled-event boundaries. Prompt 03 must choose its declared supply/cost scenarios and financing treatment without treating this assumed plant as scientifically qualified. Final cost-study identity, ranges and goal completion remain pending.
+The [financial handoff](../../../active/WI-090_aries-integrated-equipment-and-costs/evidence/financial-handoff.md) lists 99 exact public input keys and 114 native output IDs, including the separate source-inclusive, overnight, annual-export and scheduled-event boundaries. Prompt 03 must choose its declared supply/cost scenarios and financing treatment without treating this assumed plant as scientifically qualified. The [cost-study replay](../../../../exploration/aries_integrated/studies/20260922-aries-integrated-cost-uncertainty/replay.md) identifies execution checkpoint `bd9b9aec`, frozen record `8d322312`, all113-point verification and the retained export-only recovery. Native evaluation ran once per point; exact full maps and original evidence remain intact. The final independent goal assessment remains pending.
