@@ -1,3 +1,7 @@
+# Integrated ARIES equipment and costs — in progress — 2026-09-22
+
+[OWNER] Issued prompt 02 and required principal thermal sensitivity before equipment/economic ranking, capability-to-inventory/cost/operating-demand connections, preserved source-case failures and the label “assumed integrated baseline” for 423.1 MW. [AGENT] The [new goal](../work/orchestration/goals/aries-integrated-equipment-costs/goal.md) is grounded under the retained brief; [trail](../work/orchestration/goals/aries-integrated-equipment-costs/trail.md) carries ongoing work. The predecessor below is the accepted starting evidence. Formal closure remains owner-held.
+
 # Integrated ARIES heat/electricity — closed — 2026-09-22
 
 [OWNER] Issued `/tmp/aries-integrated-model-prompts/01-integrate-heat-and-electricity.md`, retained in the [goal evidence](../work/orchestration/goals/aries-integrated-heat-electricity/evidence/owner-brief.md). Authorizes grounding/execution, transparent assumptions, local commits and fresh modeling/review agents; preserves Stellaris and reserves formal closure/push/merge. [AGENT] [Grounded goal](../work/orchestration/goals/aries-integrated-heat-electricity/goal.md), [live trail](../work/orchestration/goals/aries-integrated-heat-electricity/trail.md), native WI-089.
