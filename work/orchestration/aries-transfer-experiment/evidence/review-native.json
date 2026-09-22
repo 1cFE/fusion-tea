@@ -1,0 +1,26 @@
+{
+  "protected_file_count": 1383,
+  "changed": [],
+  "fuel_cases": [
+    {
+      "case": "new_load",
+      "exhaust": 2.0236974814804526e+22,
+      "expected": 2.023697481480452e+22,
+      "selected_rating": 2e+22,
+      "defined": 1.0,
+      "capacity_ok": false,
+      "constraint_status": "violated"
+    },
+    {
+      "case": "unsupported",
+      "exhaust": 1.6432423549621273e+22,
+      "expected": 1.6432423549621273e+22,
+      "selected_rating": 2e+22,
+      "defined": 0.0,
+      "capacity_ok": false,
+      "constraint_status": "violated"
+    }
+  ],
+  "capacity_completion_prefix_only": true,
+  "fuel_fingerprint": "0950b8c128d20f94a571a8ad20e67bd93f235e086d32835720370f4179f13fcc"
+}

@@ -1,0 +1,4 @@
+input_models/
+runtime/
+__pycache__/
+fuel_tea/**/__pycache__/

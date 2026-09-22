@@ -1,0 +1,392 @@
+{
+  "claim": "Conditioned tritium-flow and supplied scalar capacity reuse only; breeding channels are out of scope placeholders, not predictions.",
+  "fingerprint": "4d7f92db6741eac05e61f0c18b78576de84d34146e0829b8856015534ea3c202",
+  "cases": [
+    {
+      "case": "reference",
+      "fusion_load_MW": 2436.0,
+      "selected_rating_atoms_s": 2e+22,
+      "conditions_supported_assumption": true,
+      "expected_capacity_ok": true,
+      "outputs": {
+        "aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy": 136.59731342720096,
+        "aries_fuel_reuse__fuel_system__flows__inject_rate": 1.729728794696976e+22,
+        "aries_fuel_reuse__fuel_system__flows__burn_rate": 8.648643973484881e+20,
+        "aries_fuel_reuse__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__loss_rate": 1.643242354962129e+20,
+        "aries_fuel_reuse__fuel_system__flows__exhaust_rate": 1.6432423549621273e+22,
+        "aries_fuel_reuse__processing__capacity__evaluation_defined": 1.0,
+        "aries_fuel_reuse__processing__capacity__margin": 3.5675764503787266e+21,
+        "aries_fuel_reuse__processing__capacity__applicable": true,
+        "aries_fuel_reuse__processing__capacity__supported": true,
+        "aries_fuel_reuse__processing__capacity__capacity_ok": true,
+        "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation": {
+          "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 3.5675764503787266e+21
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "1ef426576ac705f265c1b8072afe51e47f9ad44f27b27779b7541493910b3bd3",
+          "assessed_entry_count": 1,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 3.5675764503787266e+21
+              }
+            }
+          ]
+        }
+      },
+      "effective_inputs": {
+        "aries_fuel_reuse__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_fuel_reuse__fuel_system__exhaust_recovery": 0.99,
+        "aries_fuel_reuse__fuel_system__fusion_load_mw": 2436.0,
+        "aries_fuel_reuse__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_fuel_reuse__fuel_system__pass_burn_fraction": 0.05,
+        "aries_fuel_reuse__fuel_system__reaction_energy_mev": 17.58,
+        "aries_fuel_reuse__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_fuel_reuse__processing__assumed_conditions_supported": true,
+        "aries_fuel_reuse__processing__selected_rating_atoms_s": 2e+22,
+        "aries_fuel_reuse__fuel_system__flows__G_stock_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__I_total_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__eta_extract_in": 1.0,
+        "aries_fuel_reuse__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_fuel_reuse__fuel_system__flows__tbr_available_in": 0.0,
+        "aries_fuel_reuse__processing__capacity__applicable_in": true,
+        "aries_fuel_reuse__processing__capacity__demand_available_in": true
+      },
+      "exact_baseline_flow_comparisons": 7,
+      "independent_checks_passed": true
+    },
+    {
+      "case": "inadequate",
+      "fusion_load_MW": 2436.0,
+      "selected_rating_atoms_s": 1e+22,
+      "conditions_supported_assumption": true,
+      "expected_capacity_ok": false,
+      "outputs": {
+        "aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy": 136.59731342720096,
+        "aries_fuel_reuse__fuel_system__flows__inject_rate": 1.729728794696976e+22,
+        "aries_fuel_reuse__fuel_system__flows__burn_rate": 8.648643973484881e+20,
+        "aries_fuel_reuse__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__loss_rate": 1.643242354962129e+20,
+        "aries_fuel_reuse__fuel_system__flows__exhaust_rate": 1.6432423549621273e+22,
+        "aries_fuel_reuse__processing__capacity__evaluation_defined": 1.0,
+        "aries_fuel_reuse__processing__capacity__margin": -6.432423549621273e+21,
+        "aries_fuel_reuse__processing__capacity__applicable": true,
+        "aries_fuel_reuse__processing__capacity__supported": true,
+        "aries_fuel_reuse__processing__capacity__capacity_ok": false,
+        "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation": {
+          "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -6.432423549621273e+21
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "1ef426576ac705f265c1b8072afe51e47f9ad44f27b27779b7541493910b3bd3",
+          "assessed_entry_count": 1,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -6.432423549621273e+21
+              }
+            }
+          ]
+        }
+      },
+      "effective_inputs": {
+        "aries_fuel_reuse__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_fuel_reuse__fuel_system__exhaust_recovery": 0.99,
+        "aries_fuel_reuse__fuel_system__fusion_load_mw": 2436.0,
+        "aries_fuel_reuse__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_fuel_reuse__fuel_system__pass_burn_fraction": 0.05,
+        "aries_fuel_reuse__fuel_system__reaction_energy_mev": 17.58,
+        "aries_fuel_reuse__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_fuel_reuse__processing__assumed_conditions_supported": true,
+        "aries_fuel_reuse__processing__selected_rating_atoms_s": 1e+22,
+        "aries_fuel_reuse__fuel_system__flows__G_stock_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__I_total_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__eta_extract_in": 1.0,
+        "aries_fuel_reuse__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_fuel_reuse__fuel_system__flows__tbr_available_in": 0.0,
+        "aries_fuel_reuse__processing__capacity__applicable_in": true,
+        "aries_fuel_reuse__processing__capacity__demand_available_in": true
+      },
+      "exact_baseline_flow_comparisons": 7,
+      "independent_checks_passed": true
+    },
+    {
+      "case": "double_load",
+      "fusion_load_MW": 4872.0,
+      "selected_rating_atoms_s": 2e+22,
+      "conditions_supported_assumption": true,
+      "expected_capacity_ok": false,
+      "outputs": {
+        "aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy": 273.1946268544019,
+        "aries_fuel_reuse__fuel_system__flows__inject_rate": 3.459457589393952e+22,
+        "aries_fuel_reuse__fuel_system__flows__burn_rate": 1.7297287946969762e+21,
+        "aries_fuel_reuse__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__loss_rate": 3.286484709924258e+20,
+        "aries_fuel_reuse__fuel_system__flows__exhaust_rate": 3.2864847099242547e+22,
+        "aries_fuel_reuse__processing__capacity__evaluation_defined": 1.0,
+        "aries_fuel_reuse__processing__capacity__margin": -1.2864847099242547e+22,
+        "aries_fuel_reuse__processing__capacity__applicable": true,
+        "aries_fuel_reuse__processing__capacity__supported": true,
+        "aries_fuel_reuse__processing__capacity__capacity_ok": false,
+        "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation": {
+          "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -1.2864847099242547e+22
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "1ef426576ac705f265c1b8072afe51e47f9ad44f27b27779b7541493910b3bd3",
+          "assessed_entry_count": 1,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -1.2864847099242547e+22
+              }
+            }
+          ]
+        }
+      },
+      "effective_inputs": {
+        "aries_fuel_reuse__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_fuel_reuse__fuel_system__exhaust_recovery": 0.99,
+        "aries_fuel_reuse__fuel_system__fusion_load_mw": 4872.0,
+        "aries_fuel_reuse__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_fuel_reuse__fuel_system__pass_burn_fraction": 0.05,
+        "aries_fuel_reuse__fuel_system__reaction_energy_mev": 17.58,
+        "aries_fuel_reuse__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_fuel_reuse__processing__assumed_conditions_supported": true,
+        "aries_fuel_reuse__processing__selected_rating_atoms_s": 2e+22,
+        "aries_fuel_reuse__fuel_system__flows__G_stock_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__I_total_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__eta_extract_in": 1.0,
+        "aries_fuel_reuse__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_fuel_reuse__fuel_system__flows__tbr_available_in": 0.0,
+        "aries_fuel_reuse__processing__capacity__applicable_in": true,
+        "aries_fuel_reuse__processing__capacity__demand_available_in": true
+      },
+      "exact_baseline_flow_comparisons": 7,
+      "independent_checks_passed": true
+    },
+    {
+      "case": "half_load",
+      "fusion_load_MW": 1218.0,
+      "selected_rating_atoms_s": 2e+22,
+      "conditions_supported_assumption": true,
+      "expected_capacity_ok": true,
+      "outputs": {
+        "aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy": 68.29865671360048,
+        "aries_fuel_reuse__fuel_system__flows__inject_rate": 8.64864397348488e+21,
+        "aries_fuel_reuse__fuel_system__flows__burn_rate": 4.3243219867424404e+20,
+        "aries_fuel_reuse__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__loss_rate": 8.216211774810644e+19,
+        "aries_fuel_reuse__fuel_system__flows__exhaust_rate": 8.216211774810637e+21,
+        "aries_fuel_reuse__processing__capacity__evaluation_defined": 1.0,
+        "aries_fuel_reuse__processing__capacity__margin": 1.1783788225189363e+22,
+        "aries_fuel_reuse__processing__capacity__applicable": true,
+        "aries_fuel_reuse__processing__capacity__supported": true,
+        "aries_fuel_reuse__processing__capacity__capacity_ok": true,
+        "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation": {
+          "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 1.1783788225189363e+22
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "1ef426576ac705f265c1b8072afe51e47f9ad44f27b27779b7541493910b3bd3",
+          "assessed_entry_count": 1,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 1.1783788225189363e+22
+              }
+            }
+          ]
+        }
+      },
+      "effective_inputs": {
+        "aries_fuel_reuse__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_fuel_reuse__fuel_system__exhaust_recovery": 0.99,
+        "aries_fuel_reuse__fuel_system__fusion_load_mw": 1218.0,
+        "aries_fuel_reuse__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_fuel_reuse__fuel_system__pass_burn_fraction": 0.05,
+        "aries_fuel_reuse__fuel_system__reaction_energy_mev": 17.58,
+        "aries_fuel_reuse__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_fuel_reuse__processing__assumed_conditions_supported": true,
+        "aries_fuel_reuse__processing__selected_rating_atoms_s": 2e+22,
+        "aries_fuel_reuse__fuel_system__flows__G_stock_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__I_total_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__eta_extract_in": 1.0,
+        "aries_fuel_reuse__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_fuel_reuse__fuel_system__flows__tbr_available_in": 0.0,
+        "aries_fuel_reuse__processing__capacity__applicable_in": true,
+        "aries_fuel_reuse__processing__capacity__demand_available_in": true
+      },
+      "exact_baseline_flow_comparisons": 7,
+      "independent_checks_passed": true
+    },
+    {
+      "case": "unsupported",
+      "fusion_load_MW": 2436.0,
+      "selected_rating_atoms_s": 2e+22,
+      "conditions_supported_assumption": false,
+      "expected_capacity_ok": false,
+      "outputs": {
+        "aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy": 136.59731342720096,
+        "aries_fuel_reuse__fuel_system__flows__inject_rate": 1.729728794696976e+22,
+        "aries_fuel_reuse__fuel_system__flows__burn_rate": 8.648643973484881e+20,
+        "aries_fuel_reuse__fuel_system__flows__tbr_margin": -1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__tbr_required": 1.1900000000000002,
+        "aries_fuel_reuse__fuel_system__flows__loss_rate": 1.643242354962129e+20,
+        "aries_fuel_reuse__fuel_system__flows__exhaust_rate": 1.6432423549621273e+22,
+        "aries_fuel_reuse__processing__capacity__evaluation_defined": 0.0,
+        "aries_fuel_reuse__processing__capacity__margin": 3.5675764503787266e+21,
+        "aries_fuel_reuse__processing__capacity__applicable": true,
+        "aries_fuel_reuse__processing__capacity__supported": false,
+        "aries_fuel_reuse__processing__capacity__capacity_ok": false,
+        "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation": {
+          "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 0.0,
+            "margin_in": 3.5675764503787266e+21
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "1ef426576ac705f265c1b8072afe51e47f9ad44f27b27779b7541493910b3bd3",
+          "assessed_entry_count": 1,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 1,
+            "applicable_gate_total": 1,
+            "assessed_gate_count": 1,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 0.0,
+                "margin_in": 3.5675764503787266e+21
+              }
+            }
+          ]
+        }
+      },
+      "effective_inputs": {
+        "aries_fuel_reuse__fuel_system__decay_constant_s": 1.782785958230312e-09,
+        "aries_fuel_reuse__fuel_system__exhaust_recovery": 0.99,
+        "aries_fuel_reuse__fuel_system__fusion_load_mw": 2436.0,
+        "aries_fuel_reuse__fuel_system__mev_joules": 1.6021766339999998e-13,
+        "aries_fuel_reuse__fuel_system__pass_burn_fraction": 0.05,
+        "aries_fuel_reuse__fuel_system__reaction_energy_mev": 17.58,
+        "aries_fuel_reuse__fuel_system__tritium_atom_kg": 5.008267663228036e-27,
+        "aries_fuel_reuse__processing__assumed_conditions_supported": false,
+        "aries_fuel_reuse__processing__selected_rating_atoms_s": 2e+22,
+        "aries_fuel_reuse__fuel_system__flows__G_stock_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__I_total_in": 0.0,
+        "aries_fuel_reuse__fuel_system__flows__eta_extract_in": 1.0,
+        "aries_fuel_reuse__fuel_system__flows__s_per_fpy_in": 31536000.0,
+        "aries_fuel_reuse__fuel_system__flows__tbr_available_in": 0.0,
+        "aries_fuel_reuse__processing__capacity__applicable_in": true,
+        "aries_fuel_reuse__processing__capacity__demand_available_in": true
+      },
+      "exact_baseline_flow_comparisons": 7,
+      "independent_checks_passed": true
+    }
+  ],
+  "checks_passed": true
+}

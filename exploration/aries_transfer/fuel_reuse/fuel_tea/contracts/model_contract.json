@@ -1,0 +1,242 @@
+{
+  "catalog_schema_version": "3.0.0",
+  "constraint_catalog": {
+    "concrete_entries": [
+      {
+        "constraint_id": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c",
+        "declaration_id": "15d5640f-e41f-56f6-9fa4-dfaa7386f062",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_fuel_reuse__processing",
+        "owner_qualified_name": "aries_fuel_reuse::processing",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_fuel_reuse::processing::capacity_ok"
+      }
+    ],
+    "excluded_records": [],
+    "fingerprint": "1ef426576ac705f265c1b8072afe51e47f9ad44f27b27779b7541493910b3bd3",
+    "source_records": [
+      {
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "formal_names": [
+          "defined_in",
+          "margin_in"
+        ]
+      }
+    ],
+    "usage_records": [
+      {
+        "declaration_id": "15d5640f-e41f-56f6-9fa4-dfaa7386f062",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_fuel_reuse::processing::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_fuel_reuse::processing",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_fuel_reuse::processing::capacity_ok"
+      }
+    ]
+  },
+  "evaluation_semantics": "kleene-three-valued",
+  "outputs": [
+    {
+      "channel_name": "aries_fuel_reuse__fuel_system__flows__burn_kg_per_fpy",
+      "field_name": "burn_kg_per_fpy",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__fuel_system__flows__inject_rate",
+      "field_name": "inject_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__fuel_system__flows__burn_rate",
+      "field_name": "burn_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__fuel_system__flows__tbr_margin",
+      "field_name": "tbr_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__fuel_system__flows__tbr_required",
+      "field_name": "tbr_required",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__fuel_system__flows__loss_rate",
+      "field_name": "loss_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__fuel_system__flows__exhaust_rate",
+      "field_name": "exhaust_rate",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__processing__capacity__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__processing__capacity__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__processing__capacity__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__processing__capacity__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__processing__capacity__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_fuel_reuse__processing__capacity_ok__b37dfbe88f556a9c__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "constraint_report",
+      "field_name": "constraint_report",
+      "python_type": "ConstraintReport"
+    }
+  ],
+  "parameters": [
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__assumed_extraction"
+    },
+    {
+      "default_value": 1.782785958230312e-09,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__decay_constant_s"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__dormant_inventory_atoms"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__dormant_stock_growth_atoms_s"
+    },
+    {
+      "default_value": 0.99,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__exhaust_recovery"
+    },
+    {
+      "default_value": 2436.0,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__fusion_load_mw"
+    },
+    {
+      "default_value": 1.6021766339999998e-13,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__mev_joules"
+    },
+    {
+      "default_value": 0.05,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__pass_burn_fraction"
+    },
+    {
+      "default_value": 17.58,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__reaction_energy_mev"
+    },
+    {
+      "default_value": 5.008267663228036e-27,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__tritium_atom_kg"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__unused_tbr_placeholder"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "bool",
+      "qualified_name": "aries_fuel_reuse__processing__assumed_conditions_supported"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "bool",
+      "qualified_name": "aries_fuel_reuse__processing__flow_available"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "bool",
+      "qualified_name": "aries_fuel_reuse__processing__scenario_applicable"
+    },
+    {
+      "default_value": 2e+22,
+      "entry_type": "design_attribute",
+      "param_group": "fuel_reuse_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__processing__selected_rating_atoms_s"
+    },
+    {
+      "default_value": 31536000.0,
+      "entry_type": "usage_literal",
+      "param_group": "mfe_fuel_cycle_params",
+      "python_type": "float",
+      "qualified_name": "aries_fuel_reuse__fuel_system__flows__s_per_fpy_in"
+    }
+  ],
+  "semantic_fingerprint": "4a2740b73bd67e46760448e432703824fb1e939ffbc6b2483acc4a146e6150c8"
+}
