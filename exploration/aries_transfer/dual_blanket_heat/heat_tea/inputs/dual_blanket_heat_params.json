@@ -1,0 +1,15 @@
+{
+  "aries_dual_blanket_heat__helium__assumed_conditions_supported": 1.0,
+  "aries_dual_blanket_heat__helium__deposited_heat_mw": 940.0,
+  "aries_dual_blanket_heat__helium__duty_available": 1.0,
+  "aries_dual_blanket_heat__helium__offered_duty_mw": 1250.0,
+  "aries_dual_blanket_heat__helium__recovered_friction_mw": 141.0,
+  "aries_dual_blanket_heat__helium__scenario_applicable": 1.0,
+  "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 111.0,
+  "aries_dual_blanket_heat__pbli__assumed_conditions_supported": 1.0,
+  "aries_dual_blanket_heat__pbli__deposited_heat_mw": 1555.0,
+  "aries_dual_blanket_heat__pbli__duty_available": 1.0,
+  "aries_dual_blanket_heat__pbli__offered_duty_mw": 1500.0,
+  "aries_dual_blanket_heat__pbli__recovered_friction_mw": 0.0,
+  "aries_dual_blanket_heat__pbli__scenario_applicable": 1.0
+}

@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "case": "source_boundaries",
+      "helium_MW": 1192.0,
+      "pbli_MW": 1444.0,
+      "total_MW": 2636.0,
+      "energy_residual_MW": 0.0,
+      "source_residual_MW": -1.0,
+      "capacity_ok": [
+        true,
+        true
+      ]
+    },
+    {
+      "case": "smaller_helium_rating",
+      "helium_MW": 1192.0,
+      "pbli_MW": 1444.0,
+      "total_MW": 2636.0,
+      "energy_residual_MW": 0.0,
+      "source_residual_MW": -1.0,
+      "capacity_ok": [
+        false,
+        true
+      ]
+    },
+    {
+      "case": "smaller_pbli_rating",
+      "helium_MW": 1192.0,
+      "pbli_MW": 1444.0,
+      "total_MW": 2636.0,
+      "energy_residual_MW": 0.0,
+      "source_residual_MW": -1.0,
+      "capacity_ok": [
+        true,
+        false
+      ]
+    },
+    {
+      "case": "higher_deposition_fixed_hardware",
+      "helium_MW": 1286.0,
+      "pbli_MW": 1599.5,
+      "total_MW": 2885.5,
+      "energy_residual_MW": 0.0,
+      "source_residual_MW": 248.5,
+      "capacity_ok": [
+        false,
+        false
+      ]
+    },
+    {
+      "case": "changed_internal_exchange",
+      "helium_MW": 1281.0,
+      "pbli_MW": 1355.0,
+      "total_MW": 2636.0,
+      "energy_residual_MW": 0.0,
+      "source_residual_MW": -1.0,
+      "capacity_ok": [
+        false,
+        true
+      ]
+    },
+    {
+      "case": "zero_helium_friction",
+      "helium_MW": 1051.0,
+      "pbli_MW": 1444.0,
+      "total_MW": 2495.0,
+      "energy_residual_MW": 0.0,
+      "source_residual_MW": -1.0,
+      "capacity_ok": [
+        true,
+        true
+      ]
+    },
+    {
+      "case": "unsupported_helium_conditions",
+      "helium_MW": 1192.0,
+      "pbli_MW": 1444.0,
+      "total_MW": 2636.0,
+      "energy_residual_MW": 0.0,
+      "source_residual_MW": -1.0,
+      "capacity_ok": [
+        false,
+        true
+      ]
+    }
+  ],
+  "independent_heat_comparisons": 42,
+  "native_refusals": 9,
+  "signed_residuals_MW": [
+    -1.0,
+    1.0
+  ],
+  "all_checks_passed": true
+}

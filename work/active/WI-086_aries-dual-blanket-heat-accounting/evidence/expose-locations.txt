@@ -1,0 +1,6 @@
+26:        attribute delivered_heat_mw : Real = heat.delivered_heat;
+34:        attribute capacity_margin_mw : Real = capacity.margin;
+35:        attribute capacity_defined : Real = capacity.evaluation_defined;
+55:        attribute delivered_heat_mw : Real = heat.delivered_heat;
+63:        attribute capacity_margin_mw : Real = capacity.margin;
+64:        attribute capacity_defined : Real = capacity.evaluation_defined;

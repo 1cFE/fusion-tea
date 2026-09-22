@@ -1,0 +1,32 @@
+{
+  "fingerprint": "fd0d6f41adafb81d47c5c648d03383798bbdb5bbf0202a5257cd00ae4d57f409",
+  "single_public_exchange": true,
+  "cases": [
+    {
+      "case": "exchange_and_friction",
+      "outputs": {
+        "aries_dual_blanket_heat__helium__heat__delivered_heat": 1131.0,
+        "aries_dual_blanket_heat__pbli__heat__delivered_heat": 1515.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total": 2646.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total": 2495.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__friction_total": 151.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual": 0.0
+      },
+      "helium_capacity_ok": true,
+      "pbli_capacity_ok": false,
+      "source_residual": -1.0
+    },
+    {
+      "case": "legacy_extra",
+      "refused": true,
+      "message": "1 validation error for DualBlanketHeatParams\naries_dual_blanket_heat__pbli__absent_incoming_exchange_mw\n  Extra inputs are not permitted [type=extra_forbidden, input_value=3.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.12/v/extra_forbidden"
+    },
+    {
+      "case": "infinite_transfer",
+      "refused": true,
+      "message": "received_exchange_in must be finite nonnegative heat"
+    }
+  ],
+  "protected_count": 1383,
+  "changed": []
+}

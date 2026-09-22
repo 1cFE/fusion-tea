@@ -1,0 +1,19 @@
+{
+  "source_hashes": {
+    "models/library/analyses/dual_circuit_heat_accounting.sysml": "8c311602a904ef499463d7857a7369dca67eb887f75298d9b637fa2816a2b99a",
+    "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+    "models/designs/aries_cs_transfer/dual_blanket_heat.sysml": "935ef4176ba045ff11f0555a574fce33e33d9e0fcd7f2858bae0dd1702448269"
+  },
+  "staged_hashes": {
+    "models/library/analyses/dual_circuit_heat_accounting.sysml": "8c311602a904ef499463d7857a7369dca67eb887f75298d9b637fa2816a2b99a",
+    "models/library/analyses/mfe_viability.sysml": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9",
+    "models/designs/aries_cs_transfer/dual_blanket_heat.sysml": "935ef4176ba045ff11f0555a574fce33e33d9e0fcd7f2858bae0dd1702448269"
+  },
+  "completion_hashes": {
+    "coolant_branch_heat_impl.py": "f47a6b224695e57687c19a7c9a0dfdb5867354124e99ae5c2f61400021bf0210",
+    "dual_circuit_heat_ledger_impl.py": "ee0c9377b5090cc71ab0df772d8fa10d5929b79f5328866528bc89aa396b2fec"
+  },
+  "capacity_original": "7b0b52d46613e1e4830de05e8126849de57550b820d2e0b721f715f730c1a8ee",
+  "capacity_copied": "648684bed6d27aceeaccb92781eba4f764039ef7741ac5dc80e78295fe50f182",
+  "capacity_prefix_only": true
+}

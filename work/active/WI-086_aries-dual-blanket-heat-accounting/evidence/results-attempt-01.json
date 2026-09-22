@@ -1,0 +1,786 @@
+{
+  "claim": "Source-conditioned two-blanket-branch heat accounting and hypothetical scalar capacities; not hydraulic/equipment or whole-plant prediction.",
+  "fingerprint": "065d8466cc9d0d6977deb912cf6c4ede9c95b241a88566d95714b6bf1c0b81c7",
+  "cases": [
+    {
+      "case": "source_boundaries",
+      "effective_inputs": {
+        "aries_dual_blanket_heat__helium__absent_outgoing_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__helium__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": 940.0,
+        "aries_dual_blanket_heat__helium__duty_available": true,
+        "aries_dual_blanket_heat__helium__offered_duty_mw": 1250.0,
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": 141.0,
+        "aries_dual_blanket_heat__helium__scenario_applicable": true,
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 111.0,
+        "aries_dual_blanket_heat__pbli__absent_incoming_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__pbli__deposited_heat_mw": 1555.0,
+        "aries_dual_blanket_heat__pbli__duty_available": true,
+        "aries_dual_blanket_heat__pbli__offered_duty_mw": 1500.0,
+        "aries_dual_blanket_heat__pbli__recovered_friction_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_dual_blanket_heat__pbli__heat__delivered_heat": 1444.0,
+        "aries_dual_blanket_heat__pbli__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__pbli__capacity__margin": 56.0,
+        "aries_dual_blanket_heat__pbli__capacity__applicable": true,
+        "aries_dual_blanket_heat__pbli__capacity__supported": true,
+        "aries_dual_blanket_heat__pbli__capacity__capacity_ok": true,
+        "aries_dual_blanket_heat__helium__heat__delivered_heat": 1192.0,
+        "aries_dual_blanket_heat__helium__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__helium__capacity__margin": 58.0,
+        "aries_dual_blanket_heat__helium__capacity__applicable": true,
+        "aries_dual_blanket_heat__helium__capacity__supported": true,
+        "aries_dual_blanket_heat__helium__capacity__capacity_ok": true,
+        "aries_dual_blanket_heat__blanket_ledger__energy__friction_total": 141.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total": 2495.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total": 2636.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual": 0.0,
+        "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 56.0
+          }
+        },
+        "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 58.0
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "8ad8c40829a1eb112c8ff79a2221c0f0cff5882ad39d533842c5c75db5cff716",
+          "assessed_entry_count": 2,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 2,
+            "applicable_gate_total": 2,
+            "assessed_gate_count": 2,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 56.0
+              }
+            },
+            {
+              "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 58.0
+              }
+            }
+          ]
+        }
+      },
+      "source_deposition_residual_MW": -1.0,
+      "independent_heat_comparisons": 6,
+      "expected_capacity_ok": [
+        true,
+        true
+      ]
+    },
+    {
+      "case": "smaller_helium_rating",
+      "effective_inputs": {
+        "aries_dual_blanket_heat__helium__absent_outgoing_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__helium__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": 940.0,
+        "aries_dual_blanket_heat__helium__duty_available": true,
+        "aries_dual_blanket_heat__helium__offered_duty_mw": 1100.0,
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": 141.0,
+        "aries_dual_blanket_heat__helium__scenario_applicable": true,
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 111.0,
+        "aries_dual_blanket_heat__pbli__absent_incoming_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__pbli__deposited_heat_mw": 1555.0,
+        "aries_dual_blanket_heat__pbli__duty_available": true,
+        "aries_dual_blanket_heat__pbli__offered_duty_mw": 1500.0,
+        "aries_dual_blanket_heat__pbli__recovered_friction_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_dual_blanket_heat__pbli__heat__delivered_heat": 1444.0,
+        "aries_dual_blanket_heat__pbli__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__pbli__capacity__margin": 56.0,
+        "aries_dual_blanket_heat__pbli__capacity__applicable": true,
+        "aries_dual_blanket_heat__pbli__capacity__supported": true,
+        "aries_dual_blanket_heat__pbli__capacity__capacity_ok": true,
+        "aries_dual_blanket_heat__helium__heat__delivered_heat": 1192.0,
+        "aries_dual_blanket_heat__helium__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__helium__capacity__margin": -92.0,
+        "aries_dual_blanket_heat__helium__capacity__applicable": true,
+        "aries_dual_blanket_heat__helium__capacity__supported": true,
+        "aries_dual_blanket_heat__helium__capacity__capacity_ok": false,
+        "aries_dual_blanket_heat__blanket_ledger__energy__friction_total": 141.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total": 2495.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total": 2636.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual": 0.0,
+        "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 56.0
+          }
+        },
+        "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -92.0
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "8ad8c40829a1eb112c8ff79a2221c0f0cff5882ad39d533842c5c75db5cff716",
+          "assessed_entry_count": 2,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 2,
+            "applicable_gate_total": 2,
+            "assessed_gate_count": 2,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 56.0
+              }
+            },
+            {
+              "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -92.0
+              }
+            }
+          ]
+        }
+      },
+      "source_deposition_residual_MW": -1.0,
+      "independent_heat_comparisons": 6,
+      "expected_capacity_ok": [
+        false,
+        true
+      ]
+    },
+    {
+      "case": "smaller_pbli_rating",
+      "effective_inputs": {
+        "aries_dual_blanket_heat__helium__absent_outgoing_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__helium__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": 940.0,
+        "aries_dual_blanket_heat__helium__duty_available": true,
+        "aries_dual_blanket_heat__helium__offered_duty_mw": 1250.0,
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": 141.0,
+        "aries_dual_blanket_heat__helium__scenario_applicable": true,
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 111.0,
+        "aries_dual_blanket_heat__pbli__absent_incoming_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__pbli__deposited_heat_mw": 1555.0,
+        "aries_dual_blanket_heat__pbli__duty_available": true,
+        "aries_dual_blanket_heat__pbli__offered_duty_mw": 1400.0,
+        "aries_dual_blanket_heat__pbli__recovered_friction_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_dual_blanket_heat__pbli__heat__delivered_heat": 1444.0,
+        "aries_dual_blanket_heat__pbli__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__pbli__capacity__margin": -44.0,
+        "aries_dual_blanket_heat__pbli__capacity__applicable": true,
+        "aries_dual_blanket_heat__pbli__capacity__supported": true,
+        "aries_dual_blanket_heat__pbli__capacity__capacity_ok": false,
+        "aries_dual_blanket_heat__helium__heat__delivered_heat": 1192.0,
+        "aries_dual_blanket_heat__helium__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__helium__capacity__margin": 58.0,
+        "aries_dual_blanket_heat__helium__capacity__applicable": true,
+        "aries_dual_blanket_heat__helium__capacity__supported": true,
+        "aries_dual_blanket_heat__helium__capacity__capacity_ok": true,
+        "aries_dual_blanket_heat__blanket_ledger__energy__friction_total": 141.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total": 2495.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total": 2636.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual": 0.0,
+        "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -44.0
+          }
+        },
+        "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 58.0
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "8ad8c40829a1eb112c8ff79a2221c0f0cff5882ad39d533842c5c75db5cff716",
+          "assessed_entry_count": 2,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 2,
+            "applicable_gate_total": 2,
+            "assessed_gate_count": 2,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -44.0
+              }
+            },
+            {
+              "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 58.0
+              }
+            }
+          ]
+        }
+      },
+      "source_deposition_residual_MW": -1.0,
+      "independent_heat_comparisons": 6,
+      "expected_capacity_ok": [
+        true,
+        false
+      ]
+    },
+    {
+      "case": "higher_deposition_fixed_hardware",
+      "effective_inputs": {
+        "aries_dual_blanket_heat__helium__absent_outgoing_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__helium__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": 1034.0,
+        "aries_dual_blanket_heat__helium__duty_available": true,
+        "aries_dual_blanket_heat__helium__offered_duty_mw": 1250.0,
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": 141.0,
+        "aries_dual_blanket_heat__helium__scenario_applicable": true,
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 111.0,
+        "aries_dual_blanket_heat__pbli__absent_incoming_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__pbli__deposited_heat_mw": 1710.5,
+        "aries_dual_blanket_heat__pbli__duty_available": true,
+        "aries_dual_blanket_heat__pbli__offered_duty_mw": 1500.0,
+        "aries_dual_blanket_heat__pbli__recovered_friction_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_dual_blanket_heat__pbli__heat__delivered_heat": 1599.5,
+        "aries_dual_blanket_heat__pbli__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__pbli__capacity__margin": -99.5,
+        "aries_dual_blanket_heat__pbli__capacity__applicable": true,
+        "aries_dual_blanket_heat__pbli__capacity__supported": true,
+        "aries_dual_blanket_heat__pbli__capacity__capacity_ok": false,
+        "aries_dual_blanket_heat__helium__heat__delivered_heat": 1286.0,
+        "aries_dual_blanket_heat__helium__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__helium__capacity__margin": -36.0,
+        "aries_dual_blanket_heat__helium__capacity__applicable": true,
+        "aries_dual_blanket_heat__helium__capacity__supported": true,
+        "aries_dual_blanket_heat__helium__capacity__capacity_ok": false,
+        "aries_dual_blanket_heat__blanket_ledger__energy__friction_total": 141.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total": 2744.5,
+        "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total": 2885.5,
+        "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual": 0.0,
+        "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -99.5
+          }
+        },
+        "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -36.0
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "8ad8c40829a1eb112c8ff79a2221c0f0cff5882ad39d533842c5c75db5cff716",
+          "assessed_entry_count": 2,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 2,
+            "applicable_gate_total": 2,
+            "assessed_gate_count": 2,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -99.5
+              }
+            },
+            {
+              "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -36.0
+              }
+            }
+          ]
+        }
+      },
+      "source_deposition_residual_MW": 248.5,
+      "independent_heat_comparisons": 6,
+      "expected_capacity_ok": [
+        false,
+        false
+      ]
+    },
+    {
+      "case": "changed_internal_exchange",
+      "effective_inputs": {
+        "aries_dual_blanket_heat__helium__absent_outgoing_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__helium__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": 940.0,
+        "aries_dual_blanket_heat__helium__duty_available": true,
+        "aries_dual_blanket_heat__helium__offered_duty_mw": 1250.0,
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": 141.0,
+        "aries_dual_blanket_heat__helium__scenario_applicable": true,
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 200.0,
+        "aries_dual_blanket_heat__pbli__absent_incoming_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__pbli__deposited_heat_mw": 1555.0,
+        "aries_dual_blanket_heat__pbli__duty_available": true,
+        "aries_dual_blanket_heat__pbli__offered_duty_mw": 1500.0,
+        "aries_dual_blanket_heat__pbli__recovered_friction_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_dual_blanket_heat__pbli__heat__delivered_heat": 1355.0,
+        "aries_dual_blanket_heat__pbli__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__pbli__capacity__margin": 145.0,
+        "aries_dual_blanket_heat__pbli__capacity__applicable": true,
+        "aries_dual_blanket_heat__pbli__capacity__supported": true,
+        "aries_dual_blanket_heat__pbli__capacity__capacity_ok": true,
+        "aries_dual_blanket_heat__helium__heat__delivered_heat": 1281.0,
+        "aries_dual_blanket_heat__helium__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__helium__capacity__margin": -31.0,
+        "aries_dual_blanket_heat__helium__capacity__applicable": true,
+        "aries_dual_blanket_heat__helium__capacity__supported": true,
+        "aries_dual_blanket_heat__helium__capacity__capacity_ok": false,
+        "aries_dual_blanket_heat__blanket_ledger__energy__friction_total": 141.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total": 2495.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total": 2636.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual": 0.0,
+        "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 145.0
+          }
+        },
+        "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": -31.0
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "8ad8c40829a1eb112c8ff79a2221c0f0cff5882ad39d533842c5c75db5cff716",
+          "assessed_entry_count": 2,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 2,
+            "applicable_gate_total": 2,
+            "assessed_gate_count": 2,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 145.0
+              }
+            },
+            {
+              "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": -31.0
+              }
+            }
+          ]
+        }
+      },
+      "source_deposition_residual_MW": -1.0,
+      "independent_heat_comparisons": 6,
+      "expected_capacity_ok": [
+        false,
+        true
+      ]
+    },
+    {
+      "case": "zero_helium_friction",
+      "effective_inputs": {
+        "aries_dual_blanket_heat__helium__absent_outgoing_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__helium__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": 940.0,
+        "aries_dual_blanket_heat__helium__duty_available": true,
+        "aries_dual_blanket_heat__helium__offered_duty_mw": 1250.0,
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": 0.0,
+        "aries_dual_blanket_heat__helium__scenario_applicable": true,
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 111.0,
+        "aries_dual_blanket_heat__pbli__absent_incoming_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__pbli__deposited_heat_mw": 1555.0,
+        "aries_dual_blanket_heat__pbli__duty_available": true,
+        "aries_dual_blanket_heat__pbli__offered_duty_mw": 1500.0,
+        "aries_dual_blanket_heat__pbli__recovered_friction_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_dual_blanket_heat__pbli__heat__delivered_heat": 1444.0,
+        "aries_dual_blanket_heat__pbli__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__pbli__capacity__margin": 56.0,
+        "aries_dual_blanket_heat__pbli__capacity__applicable": true,
+        "aries_dual_blanket_heat__pbli__capacity__supported": true,
+        "aries_dual_blanket_heat__pbli__capacity__capacity_ok": true,
+        "aries_dual_blanket_heat__helium__heat__delivered_heat": 1051.0,
+        "aries_dual_blanket_heat__helium__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__helium__capacity__margin": 199.0,
+        "aries_dual_blanket_heat__helium__capacity__applicable": true,
+        "aries_dual_blanket_heat__helium__capacity__supported": true,
+        "aries_dual_blanket_heat__helium__capacity__capacity_ok": true,
+        "aries_dual_blanket_heat__blanket_ledger__energy__friction_total": 0.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total": 2495.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total": 2495.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual": 0.0,
+        "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 56.0
+          }
+        },
+        "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 199.0
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "8ad8c40829a1eb112c8ff79a2221c0f0cff5882ad39d533842c5c75db5cff716",
+          "assessed_entry_count": 2,
+          "headline": "full_satisfaction",
+          "coverage": {
+            "authored_usage_total": 2,
+            "applicable_gate_total": 2,
+            "assessed_gate_count": 2,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 56.0
+              }
+            },
+            {
+              "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 199.0
+              }
+            }
+          ]
+        }
+      },
+      "source_deposition_residual_MW": -1.0,
+      "independent_heat_comparisons": 6,
+      "expected_capacity_ok": [
+        true,
+        true
+      ]
+    },
+    {
+      "case": "unsupported_helium_conditions",
+      "effective_inputs": {
+        "aries_dual_blanket_heat__helium__absent_outgoing_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__helium__assumed_conditions_supported": false,
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": 940.0,
+        "aries_dual_blanket_heat__helium__duty_available": true,
+        "aries_dual_blanket_heat__helium__offered_duty_mw": 1250.0,
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": 141.0,
+        "aries_dual_blanket_heat__helium__scenario_applicable": true,
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 111.0,
+        "aries_dual_blanket_heat__pbli__absent_incoming_exchange_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__assumed_conditions_supported": true,
+        "aries_dual_blanket_heat__pbli__deposited_heat_mw": 1555.0,
+        "aries_dual_blanket_heat__pbli__duty_available": true,
+        "aries_dual_blanket_heat__pbli__offered_duty_mw": 1500.0,
+        "aries_dual_blanket_heat__pbli__recovered_friction_mw": 0.0,
+        "aries_dual_blanket_heat__pbli__scenario_applicable": true
+      },
+      "outputs": {
+        "aries_dual_blanket_heat__pbli__heat__delivered_heat": 1444.0,
+        "aries_dual_blanket_heat__pbli__capacity__evaluation_defined": 1.0,
+        "aries_dual_blanket_heat__pbli__capacity__margin": 56.0,
+        "aries_dual_blanket_heat__pbli__capacity__applicable": true,
+        "aries_dual_blanket_heat__pbli__capacity__supported": true,
+        "aries_dual_blanket_heat__pbli__capacity__capacity_ok": true,
+        "aries_dual_blanket_heat__helium__heat__delivered_heat": 1192.0,
+        "aries_dual_blanket_heat__helium__capacity__evaluation_defined": 0.0,
+        "aries_dual_blanket_heat__helium__capacity__margin": 58.0,
+        "aries_dual_blanket_heat__helium__capacity__applicable": true,
+        "aries_dual_blanket_heat__helium__capacity__supported": false,
+        "aries_dual_blanket_heat__helium__capacity__capacity_ok": false,
+        "aries_dual_blanket_heat__blanket_ledger__energy__friction_total": 141.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total": 2495.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total": 2636.0,
+        "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual": 0.0,
+        "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+          "actual_value": true,
+          "status": "satisfied",
+          "margin": null,
+          "observed": {
+            "defined_in": 1.0,
+            "margin_in": 56.0
+          }
+        },
+        "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation": {
+          "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+          "actual_value": false,
+          "status": "violated",
+          "margin": null,
+          "observed": {
+            "defined_in": 0.0,
+            "margin_in": 58.0
+          }
+        },
+        "constraint_report": {
+          "catalog_fingerprint": "8ad8c40829a1eb112c8ff79a2221c0f0cff5882ad39d533842c5c75db5cff716",
+          "assessed_entry_count": 2,
+          "headline": "violation",
+          "coverage": {
+            "authored_usage_total": 2,
+            "applicable_gate_total": 2,
+            "assessed_gate_count": 2,
+            "unassessed_gate_count": 0,
+            "inapplicable_gate_count": 0,
+            "unassessed_reasons": {},
+            "coverage_state": "complete"
+          },
+          "results": [
+            {
+              "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+              "actual_value": true,
+              "status": "satisfied",
+              "margin": null,
+              "observed": {
+                "defined_in": 1.0,
+                "margin_in": 56.0
+              }
+            },
+            {
+              "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+              "actual_value": false,
+              "status": "violated",
+              "margin": null,
+              "observed": {
+                "defined_in": 0.0,
+                "margin_in": 58.0
+              }
+            }
+          ]
+        }
+      },
+      "source_deposition_residual_MW": -1.0,
+      "independent_heat_comparisons": 6,
+      "expected_capacity_ok": [
+        false,
+        true
+      ]
+    }
+  ],
+  "refusals": [
+    {
+      "case": "negative_deposition",
+      "overrides": {
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": -1.0
+      },
+      "exception": "ValueError",
+      "message": "deposited_heat_in must be finite nonnegative heat"
+    },
+    {
+      "case": "negative_transfer",
+      "overrides": {
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": -1.0
+      },
+      "exception": "ValueError",
+      "message": "exported_exchange_in must be finite nonnegative heat"
+    },
+    {
+      "case": "negative_friction",
+      "overrides": {
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": -1.0
+      },
+      "exception": "ValueError",
+      "message": "recovered_friction_in must be finite nonnegative heat"
+    },
+    {
+      "case": "negative_net_branch",
+      "overrides": {
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": 2000.0
+      },
+      "exception": "ValueError",
+      "message": "delivered heat must be finite nonnegative; supplied export exceeds net branch heat or output overflowed"
+    },
+    {
+      "case": "nonfinite_deposition",
+      "overrides": {
+        "aries_dual_blanket_heat__pbli__deposited_heat_mw": "inf"
+      },
+      "exception": "ValueError",
+      "message": "deposited_heat_in must be finite nonnegative heat"
+    },
+    {
+      "case": "nonfinite_transfer",
+      "overrides": {
+        "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw": "nan"
+      },
+      "exception": "ValueError",
+      "message": "exported_exchange_in must be finite nonnegative heat"
+    },
+    {
+      "case": "negative_capacity",
+      "overrides": {
+        "aries_dual_blanket_heat__helium__offered_duty_mw": -1.0
+      },
+      "exception": "ValueError",
+      "message": "rating must be finite nonnegative numeric"
+    },
+    {
+      "case": "nonfinite_capacity",
+      "overrides": {
+        "aries_dual_blanket_heat__pbli__offered_duty_mw": "inf"
+      },
+      "exception": "ValueError",
+      "message": "rating must be finite nonnegative numeric"
+    },
+    {
+      "case": "overflow_heat",
+      "overrides": {
+        "aries_dual_blanket_heat__helium__deposited_heat_mw": 1e+308,
+        "aries_dual_blanket_heat__helium__recovered_friction_mw": 1e+308
+      },
+      "exception": "ValueError",
+      "message": "delivered heat must be finite nonnegative; supplied export exceeds net branch heat or output overflowed"
+    }
+  ],
+  "generated_wrapper_signed_residuals_MW": [
+    -1.0,
+    1.0
+  ],
+  "all_checks_passed": true
+}

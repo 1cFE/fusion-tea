@@ -37,16 +37,18 @@ Updated: 2026-09-21
 
 [AGENT] The new design owns a single inter-coolant exchange occurrence, one helium occurrence, one PbLi occurrence and an assembly ledger. The sole exchange attribute feeds PbLi exported heat and He received heat. Each branch exposes its computed duty to the ledger and to its own occurrence of unchanged `Offered Capacity Screen`; each asserts unchanged `Offered Equipment Capacity`. Cross-component consumers bind public exposed outputs, not internal calculations.
 
+[AGENT] Implementation review found that named absent-direction zeros became independently overridable generated inputs. Literal/default bindings also lower as entries on this tool route. The design therefore uses the permitted same-part identity `transferred_heat_mw - transferred_heat_mw` as a non-public computed topology zero, feeding both absent directions. This is a topology constant, not an additional physical transfer. The actual generated parameter schema and input template must expose only the one shared exchange input; NaN/Inf transfer cases must still refuse execution.
+
 [AGENT] New arithmetic is guarded through typed native completions: all supplied heat inputs and branch duties must be finite nonnegative; reject negative net branch heat rather than clamping; totals and residuals must be finite. Zero input heat is allowed. Signed residuals remain visible. The unchanged offered-capacity implementation enforces its documented nonnegative/finite and support rules. No current DEMO primary-loop, salt transport or Rankine model is reused with new physical labels.
 
 ## Native acceptance
 
-- [ ] Independent source/design review accepts the bounded accounting contract before model implementation.
-- [ ] Implement two generic definitions, one four-owner assembly and two unchanged capacity-screen/constraint occurrences; generate and seal an isolated native package.
-- [ ] Execute baseline and independently smaller He/PbLi ratings. Verify duties and source residual, meaningful capacity changes and unchanged supplied equipment.
-- [ ] Execute 10% higher supplied depositions with original capacities held, changed exchange with total heat unchanged, and zero He friction with thermal duty reduced exactly once.
-- [ ] Execute an unsupported He capability condition and ensure undefinedness prevents capacity credit; do not mislabel it physical shortage.
-- [ ] Refuse negative/nonfinite heat inputs, negative net branch heat and invalid capacities through native execution; retain meaningful attempts.
-- [ ] Compare native branch/ledger outputs with independent dimensional energy arithmetic and reused capacity behavior; run scoped validation and obtain completion review.
+- [x] Independent source/design review accepts the bounded accounting contract before model implementation. Accepted 2026-09-21; `work/orchestration/aries-transfer-experiment/evidence/heat-transport-review.md` records the gate.
+- [x] Implement two generic definitions, one four-owner assembly and two unchanged capacity-screen/constraint occurrences; generate and seal an isolated native package.
+- [x] Execute baseline and independently smaller He/PbLi ratings. Verify duties and source residual, meaningful capacity changes and unchanged supplied equipment.
+- [x] Execute 10% higher supplied depositions with original capacities held, changed exchange with total heat unchanged, and zero He friction with thermal duty reduced exactly once.
+- [x] Execute an unsupported He capability condition and ensure undefinedness prevents capacity credit; do not mislabel it physical shortage.
+- [x] Refuse negative/nonfinite heat inputs, negative net branch heat and invalid capacities through native execution; retain meaningful attempts. Final candidate passes seven supported cases and eleven intended refusals, including the repaired single-transfer interface; evidence/results.json and execution.log. First candidate evidence is preserved separately.
+- [x] Compare native branch/ledger outputs with independent dimensional energy arithmetic and reused capacity behavior; run scoped validation and obtain completion review.
 
 [AGENT] A successful result establishes two modeled heat branches and preserved capacity choices. It does not close hydraulic/equipment qualification, the omitted divertor circuit, conversion efficiency, electrical recirculation, costs or LCOE. T09 power conversion requires a separate supported contract after this item.

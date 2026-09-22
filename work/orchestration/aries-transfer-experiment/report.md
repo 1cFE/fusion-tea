@@ -48,3 +48,9 @@
 [AGENT] WI-085 adds one assembly and no new physical definitions. It imports the reviewed plasma case and binds its calculated fusion-power output into existing fuel balances and then into the fixed-capacity check. Six native cases and 35 exact fuel-output comparisons pass. Independent review's separate doubled-volume test also increases demand enough to fail unchanged supplied capacity. The integrated fuel case has no public source-power input. [Implementation](../../active/WI-085_aries-calculated-plasma-to-fuel-integration/implementation.md), [review](evidence/plasma-fuel-review.md).
 
 [AGENT] The result demonstrates cross-component reuse and supplied-choice preservation. Burn/recovery fractions and processing rating remain scenario assumptions; actual ARIES inventory, equipment cost and breeding are unqualified. L1–L5 pass, with twelve narrowly accepted L6 EXPOSE exceptions and aggregate exit 1 retained.
+
+## Continued area T08: two blanket heat branches
+
+[AGENT] WI-086 adds two generic heat-accounting definitions and an assembly with a single shared transfer, two branch owners and unchanged capacity screens. Seven native scenarios pass 42 heat comparisons; eleven refusal tests include both physical-domain and generated-input-schema checks. Independent review accepts the repaired interface and six named static EXPOSE exceptions (L1–L5 pass; aggregate exit 1).
+
+[AGENT] The Raffray engineering case reconstructs 1192 MW helium and 1444 MW PbLi removal from supplied source-derived boundaries. Internal conservation is zero; comparison to the printed deposited-heat total retains a -1 MW residual. This is a separate engineering source case, not a connection to the Lyon or WI-083 plasma point. Hydraulics, MHD, the omitted divertor circuit, actual exchangers and electrical pumping remain unqualified. [Report](../../active/WI-086_aries-dual-blanket-heat-accounting/report.md), [review](evidence/heat-transport-review.md).

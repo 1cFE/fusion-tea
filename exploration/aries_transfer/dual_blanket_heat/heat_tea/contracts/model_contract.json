@@ -1,0 +1,285 @@
+{
+  "catalog_schema_version": "3.0.0",
+  "constraint_catalog": {
+    "concrete_entries": [
+      {
+        "constraint_id": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6",
+        "declaration_id": "113e7b2f-36f5-55d4-836f-3e147ea8e367",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_dual_blanket_heat__pbli",
+        "owner_qualified_name": "aries_dual_blanket_heat::pbli",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_dual_blanket_heat::pbli::capacity_ok"
+      },
+      {
+        "constraint_id": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a",
+        "declaration_id": "bc302a34-7b39-5494-a156-60a07f905a1c",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "aries_dual_blanket_heat__helium",
+        "owner_qualified_name": "aries_dual_blanket_heat::helium",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_dual_blanket_heat::helium::capacity_ok"
+      }
+    ],
+    "excluded_records": [],
+    "fingerprint": "8ad8c40829a1eb112c8ff79a2221c0f0cff5882ad39d533842c5c75db5cff716",
+    "source_records": [
+      {
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "formal_names": [
+          "defined_in",
+          "margin_in"
+        ]
+      }
+    ],
+    "usage_records": [
+      {
+        "declaration_id": "113e7b2f-36f5-55d4-836f-3e147ea8e367",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_dual_blanket_heat::pbli::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_dual_blanket_heat::pbli",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_dual_blanket_heat::pbli::capacity_ok"
+      },
+      {
+        "declaration_id": "bc302a34-7b39-5494-a156-60a07f905a1c",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "aries_dual_blanket_heat::helium::capacity_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "aries_dual_blanket_heat::helium",
+        "source_form": "definition_typed",
+        "source_local_identity": "capacity_ok",
+        "usage_qualified_name": "aries_dual_blanket_heat::helium::capacity_ok"
+      }
+    ]
+  },
+  "evaluation_semantics": "kleene-three-valued",
+  "outputs": [
+    {
+      "channel_name": "aries_dual_blanket_heat__inter_coolant_exchange__absent_boundary_exchange_mw__absent_boundary_exchange_mw",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__pbli__heat__delivered_heat",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__pbli__capacity__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__pbli__capacity__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__pbli__capacity__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__pbli__capacity__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__pbli__capacity__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__helium__heat__delivered_heat",
+      "field_name": "root",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__helium__capacity__evaluation_defined",
+      "field_name": "evaluation_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__helium__capacity__margin",
+      "field_name": "margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__helium__capacity__applicable",
+      "field_name": "applicable",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__helium__capacity__supported",
+      "field_name": "supported",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__helium__capacity__capacity_ok",
+      "field_name": "capacity_ok",
+      "python_type": "bool"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__blanket_ledger__energy__friction_total",
+      "field_name": "friction_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__blanket_ledger__energy__deposited_total",
+      "field_name": "deposited_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__blanket_ledger__energy__delivered_total",
+      "field_name": "delivered_total",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__blanket_ledger__energy__energy_residual",
+      "field_name": "energy_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__pbli__capacity_ok__24d83956889b2fa6__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "aries_dual_blanket_heat__helium__capacity_ok__1ebe7a3e536db96a__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "constraint_report",
+      "field_name": "constraint_report",
+      "python_type": "ConstraintReport"
+    }
+  ],
+  "parameters": [
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "bool",
+      "qualified_name": "aries_dual_blanket_heat__helium__assumed_conditions_supported"
+    },
+    {
+      "default_value": 940.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "float",
+      "qualified_name": "aries_dual_blanket_heat__helium__deposited_heat_mw"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "bool",
+      "qualified_name": "aries_dual_blanket_heat__helium__duty_available"
+    },
+    {
+      "default_value": 1250.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "float",
+      "qualified_name": "aries_dual_blanket_heat__helium__offered_duty_mw"
+    },
+    {
+      "default_value": 141.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "float",
+      "qualified_name": "aries_dual_blanket_heat__helium__recovered_friction_mw"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "bool",
+      "qualified_name": "aries_dual_blanket_heat__helium__scenario_applicable"
+    },
+    {
+      "default_value": 111.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "float",
+      "qualified_name": "aries_dual_blanket_heat__inter_coolant_exchange__transferred_heat_mw"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "bool",
+      "qualified_name": "aries_dual_blanket_heat__pbli__assumed_conditions_supported"
+    },
+    {
+      "default_value": 1555.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "float",
+      "qualified_name": "aries_dual_blanket_heat__pbli__deposited_heat_mw"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "bool",
+      "qualified_name": "aries_dual_blanket_heat__pbli__duty_available"
+    },
+    {
+      "default_value": 1500.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "float",
+      "qualified_name": "aries_dual_blanket_heat__pbli__offered_duty_mw"
+    },
+    {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "float",
+      "qualified_name": "aries_dual_blanket_heat__pbli__recovered_friction_mw"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "dual_blanket_heat_params",
+      "python_type": "bool",
+      "qualified_name": "aries_dual_blanket_heat__pbli__scenario_applicable"
+    }
+  ],
+  "semantic_fingerprint": "e36fbe8debfb36892b0c647f120e18cedd1f4b2a2f889e7587bed08fcb06c360"
+}
