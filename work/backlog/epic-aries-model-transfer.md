@@ -13,7 +13,8 @@ Updated: 2026-09-21
 
 1. Plasma-profile representation: express the hollow finite-edge reference shape, retain explicit density input roles and validate through the native generated route. Existing source cannot be represented by a simple exponent rebind.
 2. Existing-component transfer: assemble and execute an unchanged library relationship on matched published subsystem inputs, with explicit conditioned-test boundaries. Exact component is selected from the thermal/cost inventory before implementation.
-3. Remaining physical and economic changes: maintain an evidence-linked minimum-change register from the inventories; register implementation items as source/domain prerequisites become sufficient. Coil geometry and new neutronic response data remain real dependencies, not permission to substitute output targets.
+3. Supplied-profile plasma integration (WI-083): calculate density moments, reaction power and thermal pressure with an explicit averaging measure and species choices; reuse the pressure-to-beta relationship. Source temperature sensitivity shapes do not establish the exact reference plasma.
+4. Remaining physical and economic changes: maintain an evidence-linked minimum-change register from the inventories; register implementation items as source/domain prerequisites become sufficient. Coil geometry and new neutronic response data remain real dependencies, not permission to substitute output targets.
 
 ## Success evidence
 

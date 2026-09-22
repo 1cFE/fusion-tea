@@ -31,3 +31,7 @@
 ## Step 5 — Continue one area at a time
 
 [OWNER] Authorized continued sequential work without routine pauses. [AGENT] Resumed T01 with the continuing physics author to resolve profile integration, temperature/species and geometric-measure definitions before extending the native component. The coordinator will retain separate area dispositions and checkpoints; missing scientific inputs are recorded at the affected area rather than stopping all other work.
+
+## Step 6 — Define the connected plasma calculation (T01)
+
+[AGENT] Registered WI-083. Primary review supports Lyon's temperature sensitivity family, but does not establish the exact reference VMEC profile, physical volume measure, amplitude normalization or local ash distribution. The implementation contract therefore keeps those choices explicit and calculates density moments, reaction power, thermal pressure and energy, then feeds pressure into the existing beta calculation. The selected edge temperature stays inside the inherited reaction-kernel domain; it is not the published edge temperature. No source output is used to fit an input. Review also checks quadrature convergence for sharp profiles rather than assuming a fixed grid is accurate throughout the declared domain.

@@ -1,6 +1,8 @@
-# ARIES model transfer experiment — first two increments reviewed — 2026-09-21
+# ARIES model transfer experiment — continued sequential work — 2026-09-21
 
 [OWNER] Requested step-by-step model transfer work with subagents, a plan, continuing log and commits. [AGENT] WI-081 added a local density-profile equation and case: 13 native supported cases and 25 refusals. WI-082 reused two calculations and one constraint unchanged: five native cases and 35 exact comparisons. Independent implementation review accepts both bounded results. Both complete-validator runs retain documented L6 EXPOSE exceptions despite successful native execution; L1–L5 pass. All 1,383 protected original files remain unchanged.
+
+[OWNER] Authorized continued execution one area at a time without routine pauses. [AGENT] WI-083 is active: supplied-profile integration into fusion power and thermal pressure, with existing beta calculation reuse. Exact ARIES profile normalization, three-dimensional averaging and species distributions remain explicitly distinct from selected scenario assumptions.
 
 [AGENT] The inventory identifies 13 provisional work areas, not a proven minimum change count. T01 and T06 have partial evidence; full-plant evaluation and comparable LCOE remain open. Next work is source-defined profile integration and sector/material representation; field/conductor and breeding need their recorded scientific inputs. [Report](../work/orchestration/aries-transfer-experiment/report.md), [plan](../work/orchestration/aries-transfer-experiment/plan.md), [change register](../work/orchestration/aries-transfer-experiment/change-register.md), [log](../work/orchestration/aries-transfer-experiment/log.md).
 
