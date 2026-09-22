@@ -14,8 +14,8 @@
 ## Execution plan
 
 - [x] Record authority, freeze original evidence and assign parallel inventory work; commit plan.
-- [ ] Inspect existing physical and economic components; build a non-overlapping minimum-change register with dependencies and evidence gaps.
-- [ ] Select source-supported, independently useful modeling increments; register native work items and record their requirements before implementation.
+- [x] Inspect existing physical and economic components; build a non-overlapping minimum-change register with dependencies and evidence gaps.
+- [x] Select source-supported, independently useful modeling increments; register native work items and record their requirements before implementation.
 - [ ] Implement and validate ready increments through native SysML/executable consumers, using continuing subagent authors and separate independent review. Update the register/log and commit each completed group.
 - [ ] Integrate demonstrated reuse and remaining changes into an assessment of the two milestones. Do not replace missing physics with reference outputs under an independent-prediction label.
 - [ ] Review the combined claims, verify preserved original evidence, and publish a concrete status with completed work, remaining implementation and external data needs.

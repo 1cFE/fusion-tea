@@ -1,0 +1,10 @@
+{
+  "fingerprint": "49b11d5289101f206e50bede5717aea34798d3b85868824019f1dd629427230b",
+  "outputs": {
+    "route_probe__probe__heating__p_wallplug_total": 10.0,
+    "route_probe__probe__heating__p_delivered": 5.0,
+    "route_probe__probe__heating__p_coupled": 4.0,
+    "route_probe__probe__heating__eta_pin_eff": 0.4
+  },
+  "synthetic_tooling_probe": true
+}

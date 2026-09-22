@@ -241,6 +241,22 @@ epics:
     scale: standard
     status: completed
     completed: '2026-07-05'
+- name: ARIES model transfer experiment
+  goal: null
+  priority: P0
+  status: draft
+  file: backlog/epic-aries-model-transfer.md
+  items:
+  - id: WI-081
+    name: ARIES hollow finite-edge density profile
+    scale: standard
+    status: backlog
+    completed: null
+  - id: WI-082
+    name: ARIES existing-component transfer proof
+    scale: standard
+    status: backlog
+    completed: null
 standalone:
 - id: WI-026
   name: Pytest Baseline Re-Record
@@ -496,6 +512,15 @@ standalone:
 | WI-015 | IFE End-to-End Demonstration | standard | completed | Completed 2026-07-05 |
 | WI-016 | H2 Probe: Blind Physics Derivation + 1costingfe Differential | standard | completed | Completed 2026-07-05 |
 | WI-017 | Demonstration Dossier & Explainer | standard | completed | Completed 2026-07-05 |
+
+## Epic: ARIES model transfer experiment
+**Priority**: P0 | **Status**: draft
+**Epic file**: [backlog/epic-aries-model-transfer.md](backlog/epic-aries-model-transfer.md)
+
+| ID | Item | Scale | Status | Notes |
+|------|------|-------|--------|-------|
+| WI-081 | ARIES hollow finite-edge density profile | standard | backlog |  |
+| WI-082 | ARIES existing-component transfer proof | standard | backlog |  |
 
 ## Standalone Items
 
