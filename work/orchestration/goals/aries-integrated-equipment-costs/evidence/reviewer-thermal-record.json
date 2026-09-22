@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "study_commit": "494c329e",
+  "snapshot_sha256": "894a81ddc6142bc983c95a783a3ff32783ac6b9f4b58a5d1a727269a3b8f4fcc",
+  "artifacts_checked": 138,
+  "cases_compared_to_sqlite_and_native_artifacts": 64,
+  "verified_channels": 278,
+  "verified_predicates": 14,
+  "fixed_purchase_cases": 56,
+  "purchase_channels": 39,
+  "adverse_cases": [
+    "nominal-source-assumed",
+    "literal-Lyon-source-input",
+    "literal-Raffray-accounting",
+    "cycle_flow-low",
+    "cycle_flow-high",
+    "he_operating_flow-high",
+    "pbli_operating_flow-low",
+    "pbli_operating_flow-high",
+    "divertor_operating_flow-high",
+    "he_hx_area-low",
+    "he_pump_capacity-low"
+  ],
+  "baseline_net_mw": 423.10679410931664,
+  "scope": "Frozen identities and original stored outputs; material interpretation and dependency checks; no repeated physical evaluator run."
+}

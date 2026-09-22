@@ -152,3 +152,34 @@ Continuing study executor is released to run all64points after the committed CAN
 - **Proposed learning delta:** (1) Principal thermal assumptions materially affect export; cycle-flow endpoints both fail represented constraints, while finite net-flat U/limit/partition windows do not establish global irrelevance. (2)56thermal/demand points preserve purchases; selected area/pump capacity change cost and adequacy through owned inputs. (3) Source failures and scientific support limits remain; no qualified source plant or optimum is established. (4) Declared no-credit tritium supply dominates baseline annual expenses and needs the accepted supply/price sensitivity before financial use.
 - **Finding dispositions:** Study#1–3 retain declared scientific/proxy/extrapolation limits; #4–5 retain finite thermal outcomes without optimum/global-boundary claims; #6–7 accept bounded demand/purchase dependency evidence; #8 preserves source failures; #9 proposes the next cost/supply question on the same package; #10 preserves source discrepancies and disjoint accounting. These use the existing IDs, with joined disposition rows to land after review. No finding requests a model-equation change.
 - **Remaining review:** Continuing fresh non-author reviewer checks the frozen interpretation/identity and proposed dispositions under `evidence/thermal-study-review-brief.md`; existing source/math/MR-7/implementation coverage is reused. Formal goal/item closure remains owner-held.
+
+### Round 1 review — 2026-09-22
+
+Continuing fresh non-author reviewer returns PASS in `evidence/thermal-study-review.md`, with targeted original-store checks in reviewer-thermal-record receipts. All64stored maps,138artifact hashes, adverse outcomes, independent verification and purchase invariance are accepted. Prior source/math/MR-7/implementation review remains applicable. Proposed learning delta is accepted; all ten findings retain their declared limits/dispositions. No frozen-record correction or semantic model repair is needed. Recommendation: proceed with the accepted unchanged-package cost-sensitivity question; formal closure is not requested yet.
+
+### Checkpoint C-001.r1 — 2026-09-22
+
+- **Reviewer:** Continuing fresh non-author equipment reviewer, with coordinator scope/identity check.
+- **Reading:** Frozen thermal/equipment study494c329e and Round1 result16062faa.
+- **Dispositions:** Retain study#1–8/#10 limitations and dependency findings; address#9 through accepted price/supply uncertainty. No equation, source meaning or ownership changes.
+- **Verdict:** PASS; `evidence/thermal-study-review.md` accepts unchanged-package follow-up through its new preparation/execution gates. One joined disposition row per existing finding is appended to the discovery log.
+- **Changes:** None to frozen record/package. New metadata, exact points, baseline/preflight and oracle-domain coverage remain pre-execution duties.
+
+## Round 2 — conditional-cost-and-supply-uncertainty
+
+### Strategy revision — 2026-09-22
+
+Use the same independently accepted package to quantify the declared cost boundary under accepted E1–E10 assumptions, after the thermal-first study. Keep physical baseline inputs fixed except explicitly selected adequate hardware controls; vary actual price/supply/schedule/allowance inputs without hidden sizing. Separate one-factor effects, jointly varied scenario corners, source comparison boundaries and fixed-budget response. Assumptions are conditional source budgets, engineering price/scope ranges and independently supplied annual T recovery with unsupported breeding qualification. Abandon this strategy if oracle/native behavior reveals a semantic defect or a source/ownership interpretation changes; preserve that evidence and review its disposition before repair. No model increment is planned: only a new study on the existing promoted executable01f8f89c. Question: which declared financial assumptions control the integrated capital/annual/replacement range, and where do price laws fail to respond to selected hardware?
+
+### T-007 scope
+
+- **Objective:** Prepare the native cost/supply uncertainty study with exact full maps and new metadata/gates.
+- **Why now:** Round1 review and C-001 accept thermal interpretation and unchanged-equation economic follow-up.
+- **Scope:** `evidence/cost-study-brief.md`: one new record, additive proposals/preparation, live metadata updates. No physical equations, package changes or declared study point execution.
+- **Inputs:** Accepted thermal study494c329e and review; WI-090 design E1–E10/financial-handoff; existing CANDIDATE and same package.
+- **Done when:** Explicit axes/rulings/windows, exact points, indicators, oracle scan and new baseline/preflight are ready for coordinator release.
+- **Stop when:** Discovered prerequisite, strategy blocker, owner gate or declared limit.
+
+### T-007 start — 2026-09-22
+
+Continuing study executor receives the bounded preparation brief. Existing source/design/implementation and original-family regression evidence is reused under unchanged package/environment; new study metadata and points get their own gates. Coordinator retains commit/freeze ownership.
