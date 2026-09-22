@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "protected_files": 9387,
+  "changed": [],
+  "stored_stellaris_replay_exact": true,
+  "stellaris_outputs": 1352,
+  "stellaris_responses": 68,
+  "attempts": {
+    "committed": 174,
+    "started": 174
+  },
+  "all_attempt_numbers": [
+    1
+  ],
+  "pass_evaluated": 168,
+  "adverse": 6,
+  "verification_channels": 364,
+  "verification_predicates": 14
+}

@@ -197,3 +197,30 @@ T-005 · exploration/aries_integrated/studies/20260922-aries-integrated-design-r
 ### Amendment 2026-09-22 — T-005 pre-execution framing
 
 [AGENT] All 174 oracle scans and six native preflight gates pass. Thirteen groups contain fourteen exact keys, including the explicitly correlated two-key HX price scenario. Discount and HX price factor report no_constraint_response; record §8 quotes the owner's existing sensitivity authorization and records missing financing/credit and price/quality responses before native launch. Forty-one suffix warnings concern distinct held inputs and do not imply physical identity. Coordinator releases the exact declared native run; no extra owner gate or optimized assumption is introduced.
+
+### T-005 return — 2026-09-22
+
+- **Outcome:** COMPLETE.
+- **Evidence:** robustness record @ d57ee5cd; evidence/robustness-record-check.json, candidate-ledger.csv and final-preservation.json at that commit.
+- **Reading:** The small area saving survives all matched OAT comparisons, while demand-candidate ordering depends on supplied fuel, neutron multiplication, availability and T price. All attempted cases and source failures are retained; no whole-plant scientific qualification is asserted.
+- **Decision:** Propose the eight findings as declared seams and accept the bounded positive goal subject to final independent review; additional physics/source work remains outside the answered conditional comparison · execution detail · coordinator · draft answer.md and proposed final learning delta.
+
+### Round 3 result — 2026-09-22
+
+- **Intent:** Met: representative candidates are compared under declared uncertainty settings with full paired accounting.
+- **Task sequence:** T-005 COMPLETE; all 174 native cases execute once, no retry or refusal. Record skeleton and unresisted-axis rulings precede native launch.
+- **Last semantic outcome:** COMPLETE with a valid robustness study reading.
+- **Stop reason:** The valid study reading closes round 3 and completes the proposed answer contract; independent final coverage remains to be obtained.
+- **Evidence refs:** robustness record @ d57ee5cd; local/coupled records @ a396a2e0/d976da47; answer.md and candidate ledger.
+- **Learning delta:** Area-only savings remain lower under every tested matched OAT setting, without locating a physical minimum. Demand-case rankings are not robust to the supplied-fuel threshold and selected thermal/economic assumptions. Existing generated machinery can answer these conditional questions without model changes.
+- **Finding dispositions:** Propose 20260922-aries-integrated-design-robustness#1–#8 as concrete declared seams; final reviewer checks the reading and dispositions before accepted joins/learnings are appended.
+
+### Round 3 review — 2026-09-22
+
+- **Reviewer:** Independent continuing design_reviewer; evidence/final-review.md. Reuses its valid axis/local/coupled coverage.
+- **Verdict:** PASS. The positive conditional goal is met; no further study is required for the stated question.
+- **Checks:** All 174 native cases, 126 matched comparisons and 266 ledger rows checked; eight isolated replays exactly match 546 outputs and 14 predicates each. Independent preservation rehash confirms 9,387 unchanged files and stored Stellaris replay equality (1,352 outputs/68 responses). Coordinator final local/coupled integrity checks pass.
+- **Dispositions:** All eight robustness findings accepted as declared seams and appended under their original IDs in DISCOVERY_LOG.md. L-004–L-006 record the accepted bounded learning delta.
+- **Retry/process coverage:** One presentation-only local freeze retry and the coupled record-deposition timing deviation remain retained. No native execution retry or new model/package change. The final review corrected one omitted deuterium attribution term in answer.md and stale learning introduction; frozen results were unchanged.
+- **Remaining uncertainty:** Scientific qualification, joint uncertainty and continuous optima remain unsupported. Full model validation retains its reviewed four-pass/two-fail result.
+- **Recommendation:** Ready for owner-held formal closure. The answer and complete candidate ledger satisfy the grounded contract; no push, merge or formal closure performed.

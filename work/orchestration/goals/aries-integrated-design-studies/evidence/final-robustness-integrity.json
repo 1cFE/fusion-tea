@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "cases": 174,
+  "physical_pairs": 87,
+  "hashed_artifacts": 346,
+  "attempts": {
+    "committed": 174,
+    "started": 174
+  },
+  "finding_joins": 8,
+  "snapshot_sha256": "328c8fda45a91620683c1abe92eea6d051ce898bdc78474e26870d68c73f5999"
+}

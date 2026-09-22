@@ -412,3 +412,7 @@ Coordinator replaces the digest token at freeze.
 
 This record contains no joint multi-assumption uncertainty distribution, probability of cost advantage, continuous optimum, adaptive resizing, qualified machinery/confinement/breeding result or vendor-cost calibration. It tests OAT settings for four fixed representatives, not all possible designs. No new undersized-area controls are added here; the six inherited source controls retain their adverse status. Independent final review follows the immutable study and round result; this executor record does not assert its outcome.
 
+
+## Addendum — independent final acceptance, 2026-09-22
+
+[AGENT coordinator] The [independent final review](../../../../work/orchestration/goals/aries-integrated-design-studies/evidence/final-review.md) passes after the immutable study checkpoint d57ee5cd and Round 3 result. It checks all 174 cases, 126 matched comparisons, all 266 cross-study ledger rows and eight exact isolated native replays. All eight findings and the bounded final learning delta are accepted. This addendum updates review coverage only; snapshot, results, report and executed maps remain unchanged. The conditional goal is met; scientific qualification and formal owner-held closure remain separate.
