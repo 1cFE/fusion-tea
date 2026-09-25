@@ -422,3 +422,23 @@ T-002 · `knowledge/research/requests/REQ-ARIES-CYCLE-HX-01.json` → run direct
 ### T-003 start — 2026-09-25
 
 T-003 · `evidence/ref15-reading.md`, `evidence/ref15-reading-brief.md`, `evidence/ref15-reading-review.md` · read-only. Coordinator reads; fresh reviewer checks.
+
+### T-003 return — 2026-09-25
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/ref15-reading.md` (revised r1 after the source check; corrections marked `[sc]`); `evidence/ref15-reading-brief.md`; `evidence/ref15-reading-review.md` (fresh source-check reviewer at `6b40a8d3`: FINDINGS, five correct-before-use and three notes, all applied; the absence claim confirmed by a full-text search: no per-branch exchanger, blanket duty, divertor, approach, pinch or ΔT anywhere in the five pages; equation (2) has no heat-source term).
+- **Reading:** Raffray's cited cycle method (Schleicher, Raffray and Wong 2000/2001) treats the heat source as a boundary "To/from In-Reactor Components or Intermediate Heat Exchanger" with the turbine inlet temperature as an independent design input and the return temperature as a dependent variable of the compression ratio (constrainable by materials); gross efficiency follows from two expressions in Tin, ε_rec, η_T, η_C, Pout, ΔP/Pout, r_p, T_min and γ, expressions the source attributes to Malang, Schnauder and Tillack 1998 (its Ref. [4]). Raffray's Table III lists the same variables except Tin, which it replaces by an "HX temperature difference between hot and cold legs 30 °C" the cited method does not have; that Tin = 737 − 30 = 707 °C was set that way is an inference consistent with the Fig. 12 inset, not a statement in either source; Raffray's compression ratio 3.5 lies outside the source's plotted range. Bounded result: the cited reference answers the methodology question (a lumped heat-source boundary with Tin as input) and does not resolve the inconsistency among the published branch duties and temperature spans; the lumped-heater reading of the inset stays a hypothesis at the ARIES-CS level, with the method's lumped heat source as support for its plausibility only.
+- **Decision:** the reviewer's finding 1 identifies the expressions' origin (Malang, Schnauder and Tillack 1998, a liquid-metal-blanket plus gas-turbine coupling paper) as a direct lead on how the ARIES lineage delivered blanket heat to the cycle; one more bounded request is issued for it (6 searches, 2 captures) before the round closes; the chain stops there unless the owner extends it; execution detail; coordinator.
+
+### T-004 scope
+
+- **Objective:** acquire Malang, Schnauder and Tillack 1998 (Fusion Eng. Des. 39–40, 561) through the research route and, if obtained, read how it represents blanket-to-cycle heat delivery.
+- **Why now:** it is the origin of the cited method's efficiency expressions and the nearest source on blanket-to-cycle coupling in the ARIES lineage.
+- **Scope:** `knowledge/research/requests/REQ-ARIES-CYCLE-HX-02.json`; a fresh researcher on `research-acquire.md`; the return class and, if registered, a reading with a fresh source check; no model, package or study change.
+- **Inputs:** the request; `evidence/ref15-reading.md` § 3; the hold-out protocol as applied by the registry.
+- **Done when:** the run closes with a class and the run directory is committed; a registered source is read and checked.
+- **Stop when:** a paywall or hold-out hit queues the candidate (documented; the owner decides), or the limits are reached.
+
+### T-004 start — 2026-09-25
+
+T-004 · `REQ-ARIES-CYCLE-HX-02.json` → run directory and return · fresh researcher; coordinator records.
