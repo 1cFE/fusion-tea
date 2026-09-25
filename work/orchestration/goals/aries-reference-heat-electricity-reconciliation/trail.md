@@ -354,3 +354,50 @@ T-002 · new study record under `exploration/aries_integrated/studies/` · propo
 - **Remaining uncertainty:** the reviewer did not open the page images, the thermal-cycle physics, `learnings.md`, the logs or cost channels; Q1's two undetermined items are the owner's research decision.
 - **Next:** do not open a further round; the answer stands as partially answered with the Q1 result and its limits stated at the owner's framing; formal closure and the research decision are the owner's.
 
+
+## Round 4 — cited-cycle-reference
+
+### Owner supplement — 2026-09-25
+
+[OWNER] Received after round 3; retained verbatim in `evidence/owner-supplement-r4.md`. Directs pursuit of Raffray's cited cycle/exchanger reference; the current calculations are preserved; the missing reference is not assumed to resolve the issue; the lumped-heater explanation stays a hypothesis until the source supports it; a bounded negative is documented if the reference cannot be obtained or does not answer. Two qualifications applied at the owner's emphasis in `answer.md`, `evidence/discrepancy-ledger.md`, `evidence/reference-case-contract.md` § 6a, `learnings.md` L-010 and `.project/CURRENT_WORK.md`: "these published quantities cannot all hold under the stated heat-exchanger assumptions" replaces "no arrangement can work"; 891 MW is a modeled alternative, not the reconstructed ARIES reference, whose changed flow and compressor rating still need cost evaluation before economic comparison.
+
+### Strategy revision — 2026-09-25
+
+- **Approach:** identify the cycle/exchanger reference Raffray cites on p737 from the retained paper's reference list (rendered page image under evidence); check the internal registers (`knowledge/SOURCE_INDEX.md`, `knowledge/research/`, concept research) for it; if absent, form a research request and acquire it through the prescribed route (`research-acquire`, `research_seam.py`, `source_registry.py`, hold-out screen applied by the registry); read what it says about heat delivery to the cycle (single or per-branch heaters, approach, temperatures, duties) and decide whether it resolves the inconsistency among the published branch duties and temperatures; record the result or the bounded negative; no model, package, manifest or study change.
+- **Assumptions:** the reference is identifiable from the retained page; the registry's hold-out screen decides admissibility (never waived by the agent); reading is post-reveal authorized by the owner brief for this goal.
+- **Abandonment conditions:** the reference cannot be obtained within the request limits (bounded negative documented); a hold-out hit (queued for the owner, not waived); the source does not describe the exchanger treatment (bounded negative); a reserved gate.
+- **Intended model increment:** none.
+- **Intended study question:** none.
+
+### T-001 scope
+
+- **Objective:** identify the cited reference and determine whether it is already in the repository.
+- **Why now:** the owner directed the pursuit; the citation text is on the retained page.
+- **Scope:** render the Raffray reference-list page(s) from the retained PDF into `evidence/`; read the citation; search the internal registers; record the identification. No acquisition in this task.
+- **Inputs:** `knowledge/holdout/aries-cs/08-FST-Raffray.pdf` (retained primary paper, post-reveal reading authorized by the owner brief for this goal); `work/active/WI-086_aries-dual-blanket-heat-accounting/evidence/raffray-p737.png`; `knowledge/SOURCE_INDEX.md`; `knowledge/research/`.
+- **Done when:** the reference is named (authors, title, venue, year) with the page image cited, and its presence or absence in the registers is recorded.
+- **Stop when:** the citation cannot be read from the retained page (surface).
+
+### T-001 start — 2026-09-25
+
+T-001 · `evidence/raffray-p<N>.png` renders and the trail · read-only. Coordinator executes directly.
+
+### T-001 return — 2026-09-25
+
+- **Outcome:** COMPLETE (with a correction of the round-3 attribution).
+- **Evidence:** `evidence/raffray-p745.png`, `evidence/raffray-p746.png` (reference list rendered from the retained paper); a citation-marker scan of every page of the retained paper (superscript numerals with their preceding text), recorded here: Ref. 7 appears on p726 only ("physics, engineering and system studies"; "to the divertor. From the system studies"); p737's cycle paragraph ("The overall thermal-hydraulic optimization was done by considering the efficiency of the Brayton cycle for an example 1000 MW(electric) case … for a given set of material constraints and cycle parameters") carries no reference marker; Ref. 15 is attached on p735 to "three compression stages and a single expansion stage" and on p745 in the conclusions; Ref. 13 is attached on p732 to "the blanket coupled to a Brayton power cycle".
+- **Reading:** Ref. 7 is Lyon's systems paper (retained as `08-FST-Lyon.pdf`); it takes the 43% thermal conversion efficiency as a systems constant ("90% of the power for helium pumping and balance of plant is returned as thermal power, which is converted with a 43% thermal conversion efficiency", p703) and contains no exchanger or cycle representation, so it cannot answer the question. The cycle references Raffray actually cites are Ref. 15, R. Schleicher, A. R. Raffray and C. P. Wong, "An Assessment of the Brayton Cycle for High Performance Power Plant", Fusion Technol. 39, 823 (2001), and Ref. 13, X. Wang, S. Malang and A. R. Raffray, "Modular Dual Coolant Pb-17Li Blanket Design for ARIES-CS Compact Stellarator Power Plant", Proc. 20th IEEE SOFE, Knoxville, 2005. Neither is in `knowledge/SOURCE_INDEX.md`, `knowledge/research/` or the concept research.
+- **Decision:** the round-3 "p737 Ref. 7" attribution is corrected in the contract § 6a, the answer, the ledger, the current-work entry and by an appended note on the review; the pursuit targets Refs. 15 and 13; execution detail; coordinator.
+
+### T-002 scope
+
+- **Objective:** acquire Raffray's cited cycle references (Ref. 15 Schleicher et al. 2001; Ref. 13 Wang et al. 2005) through the prescribed research route and, if obtained, read how they represent heat delivery to the cycle.
+- **Why now:** T-001 identified them; neither is in the repository.
+- **Scope:** `knowledge/research/requests/REQ-ARIES-CYCLE-HX-01.json` (one request, two candidates, limits 8 searches and 3 captures); a fresh researcher carrying `.claude/commands/research-acquire.md` with `scripts/research_seam.py` and `scripts/source_registry.py`; the registry's hold-out screen decides admissibility and is never waived; the return class and, if registered, the source locations; no model, package or study change. Reading of a registered source is the next task.
+- **Inputs:** the request file; the trail T-001 return; `docs/research_seam_operator_guide.md`; the hold-out protocol as applied by the registry.
+- **Done when:** the run closes with a class (REGISTERED, BOUNDED_NEGATIVE, OPERATOR_QUEUE or BLOCKER) and the run directory is committed.
+- **Stop when:** a hold-out hit or a paywall queues a candidate for the owner (documented; the owner decides), or the limits are reached.
+
+### T-002 start — 2026-09-25
+
+T-002 · `knowledge/research/requests/REQ-ARIES-CYCLE-HX-01.json` → run directory and `return.json` · fresh researcher; coordinator records.

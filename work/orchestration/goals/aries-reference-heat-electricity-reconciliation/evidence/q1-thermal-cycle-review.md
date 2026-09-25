@@ -46,3 +46,5 @@ How Raffray's cycle code treated the exchangers, and whether Lyon's 2916 MW incl
 ε-NTU numerics beyond spot checks; Lyon's thermal-power composition; cost channels.
 
 — fresh thermal-cycle reviewer, 2026-09-25
+
+[AGENT correction, 2026-09-25, round 4] "The cycle/HX calculation behind p737's Ref. 7" misattributes the citation: p737's cycle paragraph carries no reference marker, and Ref. 7 is Lyon's systems paper (retained), cited on p726 for the system studies. The cycle references Raffray attaches are Ref. 15 (p735, Schleicher, Raffray and Wong 2001) and Ref. 13 (p732, Wang, Malang and Raffray 2005). Evidence: `raffray-p745.png`, `raffray-p746.png` and the citation scan in the trail's round-4 T-001 return.
