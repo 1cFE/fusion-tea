@@ -1,0 +1,13 @@
+# Scratch first-principles check (not model code, not a study result). Series row reproduces native C3 exactly.
+case                                      Tt(K)    gross    unmet   q_pbli      eta
+series C3 (check vs native 907.89/1094.74/151.0)   907.89  1094.74   151.00  1334.78   0.3945
+parallel C3 split 0.70                   915.19  1115.89   127.47  1384.79   0.3988
+parallel C3 split 0.75                   917.74  1123.29   119.24  1405.66   0.4002
+parallel C3 split 0.80                   919.46  1128.29   113.68  1419.78   0.4012
+parallel C3 split 0.85                   920.64  1131.70   109.87  1429.42   0.4019
+parallel C3 split 0.90                   921.46  1134.08   107.23  1436.12   0.4024
+parallel C3 1500 kg/s split 0.80         931.00  1089.13   254.54  1399.69   0.4077
+parallel C3 1400 kg/s split 0.80         943.00  1046.97   398.73  1374.39   0.4143
+parallel, original inputs 1400/0.8/500 s0.8   965.74  1104.66    53.12  1375.69   0.3856
+parallel, orig inputs but eps .95        965.80  1104.81   326.43  1373.62   0.4263
+parallel C3 UAx10 split 0.8              925.40  1145.49    94.53  1439.16   0.4046

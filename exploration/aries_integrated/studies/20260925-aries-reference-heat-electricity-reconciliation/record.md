@@ -458,3 +458,7 @@ No snapshot content is restated here.
 - No source reconstruction of the Lyon case's per-circuit heat split at 2436 MW: the per-circuit comparison values in the goal ledger use the stated scaling rule from Raffray's 2365 MW case and are not in this record.
 - The TEAx revision is reported as `unrecorded` by the verifier and resolved through `results/integration_return_used.json`, as in the predecessor records.
 - The goal-level attribution and discrepancy ledger (original → revised → cause) live in the goal directory, not here; this record holds the native cases and the presentation arithmetic only.
+
+## Addendum 2026-09-25
+
+Corrections of statement after the goal's round-1 review (`work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/round1-review.md`); no result artifact changes. (1) Finding #7 should read "after every source-supported correction at the 1600 kg/s convention, 151 MW remains unremoved in the PbLi stage"; on this package the heat is also removable at 0.8 recuperation with 1600 kg/s (all checks satisfied) and at 0.95 recuperation with 1800 kg/s (assumed compressor rating exceeded). (2) The PbLi return temperatures quoted in the goal trail (≈ 499 °C) and in finding #7 (≈ 475 °C) refer to different cases: `nominal-source-assumed` (771.912 K) and `combined-c3-partition` (749.596 K). (3) The declared point count grew from 21 to 27 when the partition axes were added after the source check; the record's § 7 and § 9 describe the final declaration, and the goal trail carries the dated scope amendment.
