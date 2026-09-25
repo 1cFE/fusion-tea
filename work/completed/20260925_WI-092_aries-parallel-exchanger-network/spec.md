@@ -1,5 +1,5 @@
 ---
-Status: active
+Status: completed
 Scale: standard
 Epic: null
 Owner: reid

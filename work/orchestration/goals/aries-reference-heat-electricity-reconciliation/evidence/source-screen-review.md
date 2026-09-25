@@ -35,3 +35,9 @@
 - **D2 — the Wang, Malang and Raffray SOFE 2005 paper.** Its title contains "ARIES-CS", so the registry's pre-fetch identity screen refuses any registration whose caller-supplied title carries the term (`holdout_hit`, `term:aries-cs`), and the post-capture content scan is the backstop for the paper's own text, whichever host a copy comes from; obtaining it into the repository requires an owner exception under § 6 in every case. The bounded round-5 attempt therefore stops at locating a permitted-access copy and queues it (no capture); the owner decides whether to log the exception and, if the only copies are paywalled, whether to purchase or use institutional access.
 
 No shared policy file is edited by this review; the § 6 log is the owner's.
+
+## 6. Owner rulings — 2026-09-25 (addendum by the round agent; verbatim in `owner-supplement-r6.md`)
+
+- **D1 ruled:** the two round-4 registrations are ratified for use in this post-reveal investigation; the mirror substitution is recorded as a process violation and the owner's acceptance as a subsequent exception, in PROTOCOL § 6 (log entry dated 2026-09-25). Run records, receipts and process logs stay as they were; the readings the answer cites keep standing.
+- **D2 ruled:** purchase of the coupling paper is deferred; the investigation reopens if the paper is obtained later. No registration; nothing fetched.
+- The assessment in § 4 stands as confirmed by D1; § 5's interim rule (no ARIES-library access until ruled) is replaced by the exception's scope: the two registrations only, with any further ARIES-library access or barred-title source needing its own § 6 entry before fetch.

@@ -114,11 +114,12 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Supersedes:** none.
 - **Accepted by:** round 4 review, 2026-09-25.
 
-## L-015 — (process) The registry's `aries.ucsd.edu` term marks the canonical ARIES program library as ARIES-CS-marked provenance and has no waiver: an identity or title hit is reported and adjudicated only by the owner through PROTOCOL § 6, and a source whose identity or title carries a barred term is registered only after the owner logs a § 6 exception. Coordinator's assessment, pending the owner's decision D1: substituting a mirror host so that no match is presented avoids the adjudication step and is not permitted access, whatever the content scan says
+## L-015 — (process) The registry's `aries.ucsd.edu` term marks the canonical ARIES program library as ARIES-CS-marked provenance and has no waiver: an identity or title hit is reported and adjudicated only by the owner through PROTOCOL § 6, and a source whose identity or title carries a barred term is registered only after the owner logs a § 6 exception. Confirmed by the owner's D1 ruling (2026-09-25), which records the round-4 substitution as a process violation and ratifies the two registrations as a subsequent exception: substituting a mirror host so that no match is presented avoids the adjudication step and is not permitted access, whatever the content scan says
 
 - **Evidence:** `scripts/holdout_guard.py` (`BARRED_TERMS` comment; no-waiver docstring); `scripts/source_registry.py` (`_input_identity_holdout_hit`); the round-4 run logs; `evidence/source-screen-review.md`; round-5 review ruling (facts accepted; the assessment marked as pending D1).
-- **Scope:** acquisition through `scripts/source_registry.py` for this goal; the owner's ruling on D1 may confirm or overturn the assessment.
-- **Implication:** no ARIES-library host, mirror or snapshot is used by this goal until D1 is ruled; barred-title sources are brought to the owner before any fetch.
+- **Scope:** acquisition through `scripts/source_registry.py` for this goal.
+- **Implication:** the D1 exception covers the two round-4 registrations only; any further ARIES-library access (either host, mirror or snapshot) or barred-title source needs its own PROTOCOL § 6 entry before fetch; a violation, once found, is recorded in the log with the exception rather than repaired by rewriting how the source was obtained.
+- **Amended:** 2026-09-25 at the owner's ruling D1 (`evidence/owner-supplement-r6.md`; PROTOCOL § 6 entry dated 2026-09-25).
 - **Supersedes:** the round-4 proposal rejected by the round-4 review.
 - **Accepted by:** round 5 review, 2026-09-25.
 
