@@ -1609,6 +1609,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: b09de07ca67b04a136b07a659c928ac1ac0a76bea9e834d748c4b47ea7a30694
 - **Date Added**: 2026-09-20
 
+### Schleicher Raffray Wong 2001 An Assessment of the Brayton Cycle for High Performance Power Plants
+- **Type**: url
+- **Location**: knowledge/sources/schleicher_raffray_wong_2001_an_assessment_of_the_brayton/
+- **Use for**: Establishes how the Brayton reference cited as Ref. 15 by Raffray et al., Fusion Sci. Technol. 54 (2008) 725, p. 735, represents heat delivery to the power cycle: Fig. 1 (p. 2) heats the cycle helium through one lumped block labelled to/from in-reactor components or intermediate heat exchanger, feeding a three-stage intercooled compressor train (HP, IP, LP with two intercoolers and a precooler) and a single split-shaft expansion (compressor turbine plus power turbine); it defines no per-branch exchangers, no approach temperature and no branch duties. The cycle is fixed by turbine inlet temperature Tin (850 C current, 1200 C near-term), recuperator effectiveness 95/96 percent, outlet pressure 7/15 MPa, turbine and compressor adiabatic efficiencies 93/94 and 89/92 percent, pressure-loss fraction 0.07/0.04 and a 35 C lowest cycle temperature (Table 1), giving optimized compression ratios 2.38/2.43, gross efficiencies 51/64 percent and in-reactor or IHX return temperatures Tout 522/759 C (Fig. 2, p. 3). Serves REQ-ARIES-CYCLE-HX-01 (goal aries-reference-heat-electricity-reconciliation, Q1): the reference is a cycle-parameter study, so it fixes only the cycle side (Tin, Tout, compression ratio) and treats the heat source as one terminal; it does not by itself resolve the published branch-duty and temperature-span inconsistency.
+- **Validation**: Check Fig. 1 on p. 2 for the single heat-source block and the three-compressor, split-shaft-turbine layout; Table 1 on p. 2 for the six independent variables and their current and near-term values; Fig. 2 on p. 3 and the text immediately above it for the optimized compression ratios 2.38 and 2.43, gross efficiencies 51 and 64 percent and outlet temperatures 522 and 759 C; Eq. (2) on p. 2 for the gross-efficiency expression in Tin, Tmin, compression ratio, recuperator effectiveness and pressure-loss fraction.
+- **Caveat**: This is the author-posted ARIES program library copy (aries.ucsd.edu mirror at qedfusion.org) of the 14th TOFE paper, Park City, October 2000, whose proceedings appeared as Fusion Technology 39 (2001) 823-827; page numbers here are the 5-page manuscript, not the journal pagination. It is a generic current-versus-near-term-technology cycle assessment written in 2001 for helium-cooled fusion plants of the ARIES-AT era, not for a specific plant, so its temperatures and efficiencies are parameter-study values rather than the cycle state points of any later design.
+
+#### Extended Metadata
+- **Source URL**: https://qedfusion.org/LIB/REPORT/CONF/ANS00/schleicher.pdf
+- **Source ID**: 392f145d292c8912af4c9ac5998764fe67b6b7f97acea01762111439dfa9ad9a
+- **Raw SHA256**: 392f145d292c8912af4c9ac5998764fe67b6b7f97acea01762111439dfa9ad9a
+- **Raw Artifact SHA256**: 392f145d292c8912af4c9ac5998764fe67b6b7f97acea01762111439dfa9ad9a
+- **Extracted Path**: knowledge/sources/schleicher_raffray_wong_2001_an_assessment_of_the_brayton/
+- **Extract SHA256**: deab35b0f02b735562d19f68c02b1dd2fe21a8b36886ff01c1ef0da94dc3a0ad
+- **Date Added**: 2026-09-25
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

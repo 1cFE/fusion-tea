@@ -1,0 +1,26 @@
+{
+  "request_id": "REQ-ARIES-CYCLE-HX-01",
+  "run": "knowledge/research/requests/runs/REQ-ARIES-CYCLE-HX-01/20260925T203030790830",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "schleicher_raffray_wong_2001_an_assessment_of_the_brayton",
+      "path": "knowledge/sources/schleicher_raffray_wong_2001_an_assessment_of_the_brayton/",
+      "source_id": "392f145d292c8912af4c9ac5998764fe67b6b7f97acea01762111439dfa9ad9a",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://www.tandfonline.com/doi/abs/10.13182/FST01-A11963341",
+      "reason": "paywalled: Taylor and Francis journal-typeset version of Schleicher et al. Fusion Technol. 39 (2001) 823, landing page returns HTTP 403 to the fetcher and full text requires purchase or institutional login. The author-posted ARIES library copy of the same TOFE paper is registered in this run; operator decides whether the typeset journal pagination is also needed"
+    },
+    {
+      "candidate": "https://ieeexplore.ieee.org/document/4018989/",
+      "reason": "paywalled: IEEE Xplore record for Wang, Malang, Raffray, Modular Dual Coolant Pb-17Li Blanket Design for ARIES-CS Compact Stellarator Power Plant, 20th IEEE/NPSS SOFE Knoxville 2005; full text requires IEEE subscription or purchase and the landing page returned no content to the fetcher"
+    }
+  ],
+  "negative": null,
+  "limit_reached": "max_searches",
+  "reason": "at least one source is registered and citable"
+}

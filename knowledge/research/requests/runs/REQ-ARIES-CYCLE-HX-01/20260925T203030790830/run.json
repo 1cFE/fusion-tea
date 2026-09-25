@@ -1,0 +1,12 @@
+{
+  "request_id": "REQ-ARIES-CYCLE-HX-01",
+  "request_key": "d9e9df6e3234218f81ea5cc43b2fffe24313af1d2ce7321e9221b66f5a84461a",
+  "request_path": "knowledge/research/requests/REQ-ARIES-CYCLE-HX-01.json",
+  "home_root": "knowledge/research/requests",
+  "limits": {
+    "max_searches": 8,
+    "max_captures": 3
+  },
+  "opened_at": "2026-09-25T20:30:30.791090+00:00",
+  "override_reason": null
+}
