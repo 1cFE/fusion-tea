@@ -265,3 +265,32 @@ T-005 · `answer.md` and two delivery receipts under `evidence/` · assembled fr
 - **Remaining uncertainty:** the reviewer did not open `attribution.json`, the constraint catalog, the WI-092 spec/design or the source images, and checked the migration replay's full channel count on one sampled entry; Q1's scientific meaning remains the owner's gate.
 - **Next:** do not open a further round; the answer stands as partially answered pending the owner's Q1 decision and formal closure.
 
+
+## Round 3 — q1-thermal-cycle-check
+
+### Owner supplement — 2026-09-25
+
+[OWNER] Received after the round-2 answer; retained verbatim in `evidence/owner-supplement-r3.md`. The reconciliation is not closed; the conclusion about the published design was stronger than the evidence supports; three corrections and the narrow Q1 investigation are directed.
+
+- **Corrections applied at the owner's emphasis:** the claim that the published network cannot reach 708 °C and that Lyon's 43% is therefore a systems constant the described hardware does not deliver is withdrawn from `answer.md` (§ 1, § 5, § 6, § 12, § 13), `evidence/discrepancy-ledger.md` (v2.2), `learnings.md` (L-003 and L-007 amended in place with the owner citation), `.project/CURRENT_WORK.md`, and by addendum on the sealed `record.md` and `synthesis.md`; the supported statement is that we cannot yet reconcile the published thermal description with our interpretation and implementation. The 110 MW residual is now stated as 53.5 MW in the helium stage and 56.4 MW in the PbLi stream. The 891 MW case is stated as the best tested steady case, not an upper bound. The gross/net shortfall's ledger status changes from "explained" to "unresolved, model mechanism identified". The answer's completion assessment stays "partially answered".
+
+### Strategy revision — 2026-09-25
+
+- **Approach:** a fresh thermal-cycle reviewer with a bounded brief examines the primary diagrams, the temperature and duty definitions, the cross-paper mapping and our cycle representation, and determines whether Q1 survives. If it does not survive, the round scopes the implied interpretation or model change as a further task (design review before any implementation, MR-7 binding). If it survives, the answer records the reconciliation as open on that specific inconsistency and names the missing evidence. No model, package, manifest or study change in this task.
+- **Assumptions:** the retained page images and the reviewed contract carry enough of the primary papers to decide the diagram and definition questions; the reviewer can view the images; the executed channels on the network package are the right description of our representation.
+- **Abandonment conditions:** the reviewer returns `UNDETERMINED` with a named missing source (surface to the owner; the research route applies); a finding that changes stated modeling intent (reserved gate); the round-3 limits.
+- **Intended model increment:** none in this task.
+- **Intended study question:** none in this task.
+
+### T-001 scope
+
+- **Objective:** obtain the fresh thermal-cycle review of Q1 and record whether the apparent contradiction survives, the deciding check, and the implied change.
+- **Why now:** the owner funded this investigation before closure; the round-2 answer's remaining gap rests on it.
+- **Scope:** `evidence/q1-thermal-cycle-review-brief.md` and the reviewer's return `evidence/q1-thermal-cycle-review.md`; the coordinator applies wording consequences to `answer.md` and the ledger. No model, package, manifest or study change.
+- **Inputs:** the contract; the retained page images; WI-089 design § Heat-driven recuperated cycle; the cycle library and completions; the network closure; the executed round-2 channels.
+- **Done when:** the reviewer returns a verdict with the deciding check and the implied change, and the trail records it with the next action.
+- **Stop when:** the reviewer cannot decide from the retained material (park; owner research decision), or a reserved gate binds.
+
+### T-001 start — 2026-09-25
+
+T-001 · `evidence/q1-thermal-cycle-review-brief.md` → `evidence/q1-thermal-cycle-review.md` · read-only review of sources and representation. Fresh reviewer; coordinator records.

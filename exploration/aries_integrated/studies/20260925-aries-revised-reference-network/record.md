@@ -188,3 +188,9 @@ All 27 stored cases were verified against the package-owned independent oracle (
 - § 3, § 6 and finding #2: "needs 1700 kg/s" is a bracket statement, not a threshold: 1700 kg/s suffices and 1600 does not with the network at 0.95 recuperation; the flow between them was not sampled.
 - § 15 and the ledger: mechanism 2 of the unmet heat (helium-stage bound) is bounded by a missing-input range, not corrected, because the inputs that remove it are not stated by the source.
 - § 13 attempt history: the live-manifest tolerance amendment was outside T-004's written scope ("no … live-manifest change") and is recorded as a reviewed deviation in the trail.
+
+## Addendum 2026-09-25 — owner supplement (`…/evidence/owner-supplement-r3.md`)
+
+- § 3, § 15 finding #6 and the ledger: "with the published duties the network cannot reach 708 °C at any split" is a statement about this implementation and interpretation of the published network; it does not establish that the published design could not achieve its stated efficiency. The supported reading is that the published thermal description and our interpretation and implementation cannot yet be reconciled (Q1), which round 3 investigates.
+- § 3: the 109.876 MW residual at the 0.85 split is 53.514 MW in the helium stage and 56.362 MW in the PbLi stream, not helium heat alone.
+- § 3 and finding #2: `resized-compressor-1700-network-0.85` (net 891.003) is the best tested steady case, not a demonstrated upper bound; flows between 1600 and 1700 kg/s and other splits at 1700 kg/s were not sampled.

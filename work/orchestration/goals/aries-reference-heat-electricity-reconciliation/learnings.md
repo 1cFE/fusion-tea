@@ -18,7 +18,7 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Supersedes:** none.
 - **Accepted by:** round 1 review, 2026-09-25.
 
-## L-003 — The Lyon reference is a systems-constant chain (2916 MW → 43% → 1253 → −253 → 1000), and the independently checked Q1 shows the published temperatures, duties and series-first arrangement cannot all hold, so part of the disagreement is a property of the published description
+## L-003 — The Lyon reference is a systems-constant chain (2916 MW → 43% → 1253 → −253 → 1000); the independently checked Q1 records an apparent inconsistency between the published duties, temperature spans and our interpretation of the exchanger arrangement, so part of the disagreement lies in what we cannot yet reconcile between the published description and our interpretation and implementation (amended 2026-09-25 at the owner's direction, `evidence/owner-supplement-r3.md`)
 
 - **Evidence:** `evidence/reference-case-contract.md` § 3 and § 6 with `evidence/source-check-review.md` r1–r3 (page images `lyon-p703/p704/p708.png`, `raffray-p734/p736/p737.png`); accepted by the round-1 review as a source-reading claim, conditioned on the owner's reserved gate on Q1's scientific meaning.
 - **Scope:** the Lyon systems paper and Raffray engineering paper as printed; not a statement about any other ARIES-CS document.
@@ -50,11 +50,11 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Supersedes:** none.
 - **Accepted by:** round 2 review, 2026-09-25.
 
-## L-007 — At the best steady point the entire remaining gap to Lyon's 1253 / 1000 MW (110 / 109 MW) is the thermal-efficiency shortfall at the heat-limited turbine inlet (628 against 708 °C); with the published duties the published network cannot reach 708 °C at any split, so Lyon's 43% is a systems constant that the described hardware does not deliver in this model
+## L-007 — At the best tested steady case the entire remaining gap to Lyon's 1253 / 1000 MW (110 / 109 MW) is the thermal-efficiency shortfall at the heat-limited turbine inlet (628 against 708 °C); our implementation of the published network with the published duties does not reach 708 °C at any split; whether that reflects the published design or our interpretation of it is unresolved (amended 2026-09-25 at the owner's direction, `evidence/owner-supplement-r3.md`)
 
 - **Evidence:** `resized-compressor-1700-network-0.85` (gross 1143.013, efficiency 0.3907, turbine 901.351 K); split sweep (PbLi stream at most 731 °C while starving the divertor); `evidence/discrepancy-ledger.md` v2.1; round-2 review L-007 ruling (gross gap 109.987 equals the efficiency shortfall).
 - **Scope:** the model's own cycle relation (WI-089) and the contract's Q1; not a statement about the actual ARIES design.
-- **Implication:** the reconciliation ends as a well-supported disagreement conditioned on Q1; closing it needs source evidence about the cycle arrangement beyond the retained papers.
+- **Implication:** the reconciliation stays open on the narrow question of why our heat-delivery and cycle model gives a lower turbine-inlet temperature and efficiency than the published calculation; round 3 checks the primary diagrams, definitions, cross-paper mapping and our cycle representation.
 - **Supersedes:** none; extends L-003.
 - **Accepted by:** round 2 review, 2026-09-25.
 
