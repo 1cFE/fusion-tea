@@ -1,0 +1,26 @@
+{
+  "request_id": "REQ-ARIES-CYCLE-HX-02",
+  "run": "knowledge/research/requests/runs/REQ-ARIES-CYCLE-HX-02/20260925T204659541052",
+  "class": "REGISTERED",
+  "registered": [
+    {
+      "slug": "combination_of_a_self_cooled_liquid_metal_breeder_blanket",
+      "path": "knowledge/sources/combination_of_a_self_cooled_liquid_metal_breeder_blanket/",
+      "source_id": "3c5633b12e3250b0620129631a51f0eb80f6799da5373bdcec3a742c2c87d0d3",
+      "pre_existing": false
+    }
+  ],
+  "queued": [
+    {
+      "candidate": "https://www.sciencedirect.com/science/article/abs/pii/S0920379698002208",
+      "reason": "paywalled: Elsevier ScienceDirect journal-typeset version of Malang, Schnauder, Tillack, FED 39-40 (1998) 561-567, DOI 10.1016/S0920-3796(98)00220-8; landing page returns HTTP 403 to the fetcher and full text requires purchase or institutional login. Needed only if journal pagination matters; the author-posted ARIES library copy of the same ISFNT-4 paper is pursued in this run"
+    },
+    {
+      "candidate": "https://www.academia.edu/9364646/Combination_of_a_self_cooled_liquid_metal_breeder_blanket_with_a_gas_turbine_power_conversion_system",
+      "reason": "login-walled: academia.edu user-uploaded copy of the same paper; page returns HTTP 403 to the fetcher and the PDF download requires an academia.edu account. Redundant if the ARIES library copy registers in this run"
+    }
+  ],
+  "negative": null,
+  "limit_reached": null,
+  "reason": "at least one source is registered and citable"
+}

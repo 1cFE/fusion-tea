@@ -1625,6 +1625,22 @@ Research questions (RQ-1 through RQ-5) are defined in `modeling_project/OVERVIEW
 - **Extract SHA256**: deab35b0f02b735562d19f68c02b1dd2fe21a8b36886ff01c1ef0da94dc3a0ad
 - **Date Added**: 2026-09-25
 
+### Combination of a self-cooled liquid metal breeder blanket with a gas turbine power conversion system
+- **Type**: url
+- **Location**: knowledge/sources/combination_of_a_self_cooled_liquid_metal_breeder_blanket/
+- **Use for**: Establishes how the paper from which Raffray's cited Brayton-cycle method takes its efficiency expressions delivers blanket heat to the helium cycle: one lumped lithium-to-helium intermediate heat exchanger (Fig. 1, Section 4), sized as three identical parallel units of 900 MW thermal each (2700 MW total), with both streams' terminal temperatures stated rather than an approach-temperature parameter: helium 436 C in and 650 C out at 18 MPa with 0.4 MPa drop, lithium 670 C in and 470 C out, so the hot-end difference is 20 K and the cold-end difference 34 K; no divertor loop and no per-loop exchangers appear. Cycle parameters (Table 1): turbine inlet To 923 K (650 C), heat-sink temperature Ts 308 K (35 C), To/Ts 3.0, overall compressor pressure ratio r 2.0, recuperator effectiveness 0.96, compressor and turbine efficiencies 0.92, pressure-loss ratio beta 1.02 (sum dp/p 0.05), gamma 1.66, thermal efficiency 46 percent, three intercooled compression stages with the closed-form efficiency expression and its assumptions (intercooler outlets at Ts, constant heat capacity, equal stage pressure ratios). Serves REQ-ARIES-CYCLE-HX-02 for goal aries-reference-heat-electricity-reconciliation round 4 Q1: whether the cited method's single-heater representation bears on the branch-duty and temperature-span inconsistency in Raffray et al. 2008 (Tables II and III, Fig. 12).
+- **Validation**: Journal-paginated PDF, Fusion Eng. Des. 41 (1998) 561-567. Single-IHX layout: Fig. 1, p. 562. Cycle parameters: Table 1, p. 564. Efficiency expression for three compression stages and its assumptions: pp. 563-564; sensitivity to recuperator effectiveness and to To/Ts: Figs. 2 and 3, pp. 564-565. IHX helium and lithium inlet and outlet temperatures, 18 MPa and 0.4 MPa helium drop, three 900 MW units, 8175 m2 heat-transfer surface, 3.6 m by 9.0 m bundle, 20/24 mm vanadium tubes, 0.04 MPa lithium drop: Section 4, pp. 565-566. Check numbers against the page images of raw.pdf; the efficiency equation on p. 564 exists only as typeset math and is garbled in the text extraction.
+- **Caveat**: 1998 journal article (Fusion Eng. Des. 41, 561-567, the ISFNT-4 Tokyo 1997 proceedings volume), captured from the ARIES program library mirror on qedfusion.org as the publisher-typeset PDF, so pagination matches the journal; not a report version. Written for a self-cooled lithium/vanadium blanket of the ARIES-RS type with a single lithium primary loop and no separately treated divertor, so the one-IHX representation describes that plant and is not a general cycle rule for multi-loop blankets. The cycle parameters are scoping values the authors say are slightly modified from Wong et al. 1995 (UCSD-ENG-006), and the IHX layout is a stated first approach awaiting optimization. It predates the 2008 compact-stellarator reference case by a decade and says nothing about PbLi, dual-coolant blankets, or per-loop heat delivery.
+
+#### Extended Metadata
+- **Source URL**: https://qedfusion.org/LIB/REPORT/CONF/ISFNT4/malang2.pdf
+- **Source ID**: 3c5633b12e3250b0620129631a51f0eb80f6799da5373bdcec3a742c2c87d0d3
+- **Raw SHA256**: 3c5633b12e3250b0620129631a51f0eb80f6799da5373bdcec3a742c2c87d0d3
+- **Raw Artifact SHA256**: 3c5633b12e3250b0620129631a51f0eb80f6799da5373bdcec3a742c2c87d0d3
+- **Extracted Path**: knowledge/sources/combination_of_a_self_cooled_liquid_metal_breeder_blanket/
+- **Extract SHA256**: 9b4eaf61b7f494610982ba1408fbdf9694c0e7e3f22706c27d84ea831c4c3509
+- **Date Added**: 2026-09-25
+
 ## How Sources Are Used
 
 1. **Domain research** is conducted against extracted sources, producing DI-XXX entries in KNOWLEDGE.md

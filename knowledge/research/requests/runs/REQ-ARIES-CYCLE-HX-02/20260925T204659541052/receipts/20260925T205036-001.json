@@ -1,0 +1,13 @@
+{
+  "attempt": 1,
+  "outcome": "registered",
+  "candidate": "https://qedfusion.org/LIB/REPORT/CONF/ISFNT4/malang2.pdf",
+  "slug": "combination_of_a_self_cooled_liquid_metal_breeder_blanket",
+  "path": "knowledge/sources/combination_of_a_self_cooled_liquid_metal_breeder_blanket/",
+  "source_id": "3c5633b12e3250b0620129631a51f0eb80f6799da5373bdcec3a742c2c87d0d3",
+  "triage": "keeper",
+  "reason": "",
+  "rule_id": null,
+  "captured": true,
+  "at": "2026-09-25T20:50:36.946281+00:00"
+}
