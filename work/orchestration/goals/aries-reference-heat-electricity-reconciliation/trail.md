@@ -294,3 +294,49 @@ T-005 · `answer.md` and two delivery receipts under `evidence/` · assembled fr
 ### T-001 start — 2026-09-25
 
 T-001 · `evidence/q1-thermal-cycle-review-brief.md` → `evidence/q1-thermal-cycle-review.md` · read-only review of sources and representation. Fresh reviewer; coordinator records.
+
+### T-001 return — 2026-09-25
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/q1-thermal-cycle-review.md` (fresh thermal-cycle reviewer at `812b79bf`: verdict SURVIVES, deciding check the first-principles reconstruction; three correct-before-use findings, three notes); brief `evidence/q1-thermal-cycle-review-brief.md` with an appended correction of its image list; contract § 6a addendum; `answer.md` § 1, § 5, § 6, § 12, § 13 revised.
+- **Reading:** the apparent contradiction is independent of the exchanger arrangement: with Raffray's printed per-branch duties and temperatures, the blanket-helium stage needs ≥ 11.8 MW/K (zero approach) or 16.8 MW/K (30 °C approach) against a whole-cycle capacity rate of 8.0 MW/K, so no counterflow arrangement delivers 707 °C; Fig. 13's inset draws one lumped hot leg 385 → 737 °C, consistent with a lumped-heater cycle calculation. Definitions (456 °C helium hot inlet; 30 °C exchanger terminal difference; 0.95 recuperator; duties as loop heat to the exchanger, friction included) and the cross-paper mapping (2907 against 2916 MW; 3% on flow) close the escape routes. Our representation agrees with Fig. 13's chain and is generous to the source (4–5 K approaches). Undetermined: how the ARIES-CS cycle calculation treated the exchangers (p737 Ref. 7, not retained) and whether Lyon's 2916 MW includes ≈ 50 MW of balance-of-plant heat. The reviewer also found a mapping artefact on our side: duties scaled by 1.030 with Raffray's primary flows pinch the PbLi cold end, so part of the 56 MW PbLi shortfall at 1600 kg/s is ours.
+- **Decision:** the answer states what the review establishes (the published per-branch description cannot be reconciled with the published cycle outlet by any arrangement; our representation is not the cause) and what it does not (the source's own cycle treatment; the actual design's attainable efficiency), at the owner's framing; execution detail; coordinator; `answer.md` § 1.
+- **Decision:** the scaling artefact is quantified natively rather than recorded: one small study on the unchanged package with the primary flows and pump capacities scaled with the duties, and a 1650 kg/s point to narrow the round-2 review's unbracketed threshold; the flow and capacity values are declared in the configuration as the cross-paper mapping's own hardware values, never derived from demand; execution detail; coordinator; T-002 below.
+- **Decision:** the brief's page-image mislabel is corrected by an appended note, and future briefs cite the WI-086 Raffray pages for Tables II–III and Figs. 12–14; execution detail; coordinator.
+
+### T-002 scope
+
+- **Objective:** quantify the cross-paper flow-scaling artefact and narrow the cycle-flow threshold with one committed study on the unchanged WI-092 package: the network case at C3 with primary flows and pump capacities scaled by 2436/2365 (all three loops, PbLi only, helium only) at 1600 kg/s, and the declared resized-compressor alternative at 1650 and 1700 kg/s with and without scaled flows; controls `combined-c3-partition`, `network-c3-0.85` and `resized-compressor-1700-network-0.85` retained verbatim.
+- **Why now:** the Q1 review attributes part of the 56 MW PbLi shortfall to our mapping, which the ledger must quantify rather than list; the round-2 review left the 1600–1700 kg/s threshold unbracketed.
+- **Scope:** record `exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/` on `revised_reference_support.py` (round-2 canonical receipt reused; same package identity, same live manifest), 25 declared axes (round-2's 21 plus `he_primary_flow`, `pbli_primary_flow`, `he_pump_capacity`, `pbli_pump_capacity`), 11 declared points, indicators, baseline, preflight, scan, execution on the round-2 integration candidate, all-point verification, report, record, freeze, commit. No model, package or manifest change.
+- **Inputs:** `evidence/q1-thermal-cycle-review.md` finding 2; contract § 6a and § 8; round-2 record; the round-2 canonical replay receipt.
+- **Done when:** all 11 points complete and verify, the record is frozen and committed, and the ledger states the artefact's size in MW.
+- **Stop when:** a mechanical gate fails past the retry cap, or a reserved gate binds.
+
+### T-002 start — 2026-09-25
+
+T-002 · new study record under `exploration/aries_integrated/studies/` · proposals, indicators, native baseline point, preflight, scan now; execution, verification, freeze after. Coordinator executes directly.
+
+### Amendment 2026-09-25 — amends T-002 scope (round 3)
+
+[AGENT] The T-002 scope declared eleven points; the configuration declares twelve, because the C1 and C2 composition steps are stored as controls alongside C3 (the composer builds C3 from them). Recorded before execution; no result affected.
+
+### T-002 return — 2026-09-25
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/` (record, synthesis, snapshot `342d97318902abfb7803559d4fca7e5ee1dabd688f1344bb146904df5c2ca471`, 12 stored cases, all-point verification pass over 364 channels and 14 exact verdicts, sealed package, retained sources); `results/attribution.json` and `.md` (`evidence/flow-scaling-ledger.py`); four discovery rows `20260925-aries-flow-scaling-check#1`–`#4`; `evidence/t002-r3-execute.log`, `t002-r3-verify.log`; contract § 6a rule amendment; ledger v2.3; `answer.md` § 3, § 6, § 9, § 11.
+- **Reading:** the mapping artefact is ≈ 34 MW of the 56 MW PbLi shortfall at 1600 kg/s, but ≈ 20 MW of it migrates to the helium stage (bounded by its 456 °C hot inlet, whose capability falls as the heater inlet rises), so the network case's total shortfall falls by 14.2 MW (to 95.7) and net rises by 12.8 MW (to 892.4); the case stays not steady. The helium flow itself is irrelevant to the helium-stage limit (−0.3 MW). The threshold for complete removal lies between 1650 kg/s (42.7 MW unremoved; 26.3 with scaled flows) and 1700 kg/s under either mapping; the 1700 kg/s steady case's plant outputs are unchanged to 1e-3 MW.
+- **Decision:** the contract's § 8 mapping scales flows with duties from here on, with the unscaled mapping retained as the round-1/round-2 convention and both quantified; execution detail; coordinator; contract § 6a.
+- **Decision:** the round-2 integration candidate and canonical receipt were reused for this study because the package identity and manifest pin are unchanged; process note `…#4`; execution detail; coordinator.
+
+### Round 3 result — 2026-09-25
+
+- **Intent:** met for the strategy: the owner-funded Q1 investigation returned a verdict (SURVIVES) with the deciding check and the implied change; its side finding (our flow-scaling artefact) was quantified natively rather than listed. For the goal question the answer stays partially answered, now with the remaining gap characterised as a source-internal inconsistency that survives independent review, and with the limit of that statement kept at the owner's framing (the source's own cycle treatment and the actual design's attainable efficiency are not decided).
+- **Task sequence:** T-001 COMPLETE (fresh thermal-cycle review); T-002 COMPLETE (flow-scaling study sealed at `342d9731…`, no retries).
+- **Last semantic outcome:** COMPLETE with a valid review and a valid study reading; no package promoted; one study committed.
+- **Stop reason:** last outcome `COMPLETE` + no limit reached → round closes on trigger 1. Retries: none in round 3; checkpoint revisions: none; rounds: 3 of 6.
+- **Evidence refs:** `evidence/owner-supplement-r3.md`; `evidence/q1-thermal-cycle-review.md`; contract § 6a; `evidence/discrepancy-ledger.md` v2.3; study snapshot `342d9731…`; `answer.md`.
+- **Learning delta (proposed):** L-010 with Raffray's printed per-branch duties and temperatures, no counterflow arrangement of the three exchangers can deliver the printed 707 °C cycle outlet, because the blanket-helium loop (hot inlet 456 °C) carries 42% of the heat over 21% of the span and would need ≥ 11.8 MW/K against 8.0 MW/K for the whole cycle flow; Raffray's Fig. 13 inset draws one lumped hot leg 385 → 737 °C, consistent with a lumped-heater cycle calculation; what the ARIES-CS cycle calculation actually did is not in the retained pages (supersedes the wording of L-003 and L-007 on this point, not their numbers). L-011 the cross-paper mapping must scale primary flows with duties: holding Raffray's flows while scaling duties by 1.030 pinches the PbLi cold end and is worth ≈ 34 MW on the PbLi stage at 1600 kg/s, of which ≈ 20 MW migrates to the helium stage, so the total shortfall changes by only ≈ 14 MW and no steady result changes. L-012 (process) a per-branch model shortfall can migrate between stages when one input is corrected; attribute by stage and by total, never by a single stage's change.
+- **Finding dispositions:** four rows `…flow-scaling-check#1`–`#4` with dispositions written; none unrouted; joined rows after the round review.
+- **Constraints carried forward:** the owner's framing on Q1 (established versus not established) governs every restatement; Q1's remaining undetermined items (Raffray p737 Ref. 7; Lyon's balance-of-plant heat) are named for the owner's research decision; the budget stands; the resized cases remain declared alternatives.
+- **Native-state check:** no model, package or manifest change in round 3; one study committed; frozen records, Stellaris and shared files unchanged (delivery preservation and Stellaris replay from round 2 stand; the package identity is unchanged since).
