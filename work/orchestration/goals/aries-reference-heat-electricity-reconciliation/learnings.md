@@ -113,3 +113,19 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Implication:** one wasted request per misattribution if skipped; the scan takes minutes.
 - **Supersedes:** none.
 - **Accepted by:** round 4 review, 2026-09-25.
+
+## L-015 — (process) The registry's `aries.ucsd.edu` term marks the canonical ARIES program library as ARIES-CS-marked provenance and has no waiver: an identity or title hit is reported and adjudicated only by the owner through PROTOCOL § 6, and a source whose identity or title carries a barred term is registered only after the owner logs a § 6 exception. Coordinator's assessment, pending the owner's decision D1: substituting a mirror host so that no match is presented avoids the adjudication step and is not permitted access, whatever the content scan says
+
+- **Evidence:** `scripts/holdout_guard.py` (`BARRED_TERMS` comment; no-waiver docstring); `scripts/source_registry.py` (`_input_identity_holdout_hit`); the round-4 run logs; `evidence/source-screen-review.md`; round-5 review ruling (facts accepted; the assessment marked as pending D1).
+- **Scope:** acquisition through `scripts/source_registry.py` for this goal; the owner's ruling on D1 may confirm or overturn the assessment.
+- **Implication:** no ARIES-library host, mirror or snapshot is used by this goal until D1 is ruled; barred-title sources are brought to the owner before any fetch.
+- **Supersedes:** the round-4 proposal rejected by the round-4 review.
+- **Accepted by:** round 5 review, 2026-09-25.
+
+## L-016 — (process) A bounded acquisition attempt for a barred-title source is run capture-free: locate through permitted hosts, log each copy with `--failure` and its reason, close the run; nothing is fetched, and the owner decides on a concrete candidate. Where the request schema allows, set `max_captures: 0` so the registry enforces the no-capture rule
+
+- **Evidence:** `knowledge/research/requests/runs/REQ-ARIES-CYCLE-HX-03/` (OPERATOR_QUEUE, `registered: []`, no receipts); `evidence/research-acquire-r5-return.md`; round-5 review ruling.
+- **Scope:** research requests whose target carries a hold-out term.
+- **Implication:** the owner's D2 decision rests on two named paywalled records with their access status recorded.
+- **Supersedes:** none.
+- **Accepted by:** round 5 review, 2026-09-25.

@@ -25,3 +25,5 @@ OSTI 20986097, 20831205, 20987098; tandfonline FST07-A1598; researchgate 2286876
 - `uv run python scripts/research_seam.py close knowledge/research/requests/runs/REQ-ARIES-CYCLE-HX-03/20260925T212847849698 --adequacy limit_reached`
 
 Owner decision pending: whether to log the hold-out exception and acquire either paywalled copy. Not committed.
+
+[AGENT correction, 2026-09-25] "Not committed" described the state at hand-back; the run directory and this report were committed by the coordinator at `f01d8104`.
