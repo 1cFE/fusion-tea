@@ -73,3 +73,27 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Implication:** one wasted seam run per goal if forgotten; recorded in the trail's T-003 decision and here.
 - **Supersedes:** none.
 - **Accepted by:** round 2 review, 2026-09-25.
+
+## L-010 — With Raffray's printed per-branch duties and temperatures, no counterflow arrangement of the three exchangers can deliver the printed 707 °C cycle outlet: the blanket-helium loop (hot inlet 456 °C) carries 42% of the heat over 21% of the span and would need ≥ 11.8 MW/K at zero approach (16.8 at the printed 30 °C) against 8.0 MW/K for the whole cycle flow; Raffray's Fig. 12 inset ("Typical Fluid Temperatures in HX") draws one lumped hot leg 385 → 737 °C, consistent with a lumped-heater cycle calculation; what the ARIES-CS cycle calculation actually did is not in the retained pages
+
+- **Evidence:** `evidence/q1-thermal-cycle-review.md` (fresh thermal-cycle reviewer, checks (a)–(e)); `work/active/WI-086_aries-dual-blanket-heat-accounting/evidence/raffray-p736.png` (Fig. 12 with its inset; Fig. 13); contract § 6a; round-3 review F1 (inset attribution).
+- **Scope:** the printed per-branch description in Raffray Tables II, III and V and Fig. 12; our per-branch representation on the WI-092 package.
+- **Implication:** supersedes the wording of L-003 and L-007 on this point, not their numbers: the disagreement is a source-internal inconsistency that survives independent review; it does not establish what the actual design could achieve (owner framing, `evidence/owner-supplement-r3.md`).
+- **Supersedes:** L-003 and L-007 wording on the arrangement claim.
+- **Accepted by:** round 3 review, 2026-09-25.
+
+## L-011 — The cross-paper mapping must scale the primary flows with the duties: holding Raffray's flows while scaling duties by 1.030 pinches the PbLi cold end and is worth ≈ 34 MW on the PbLi stage at 1600 kg/s, of which ≈ 20 MW migrates to the helium stage, so the total shortfall changes by only ≈ 14 MW and the steady 1700 kg/s result is unchanged to 1e-3 MW
+
+- **Evidence:** `20260925-aries-flow-scaling-check` `results/attribution.md` (`network-c3-0.85` against `network-c3-scaledflows-0.85` and `-pbli-only-0.85`; the two 1700 kg/s cases); contract § 6a rule amendment.
+- **Scope:** the WI-092 package at the C3 inputs, 1600–1700 kg/s, split 0.85–0.90.
+- **Implication:** the contract's § 8 mapping now scales flows with duties; earlier rounds' unscaled convention is retained and both are quantified.
+- **Supersedes:** none.
+- **Accepted by:** round 3 review, 2026-09-25.
+
+## L-012 — (process) A per-branch model shortfall can migrate between stages when one input is corrected; attribute by stage and by total, never by a single stage's change
+
+- **Evidence:** round-3 review check 6: `he_unmet` 53.514 → 73.604 while `pbli_unmet` 56.362 → 22.077 under the flow scaling.
+- **Scope:** any multi-stage heat-driven closure with bounded stages.
+- **Implication:** ledger rows report per-stage and total unmet heat side by side.
+- **Supersedes:** none.
+- **Accepted by:** round 3 review, 2026-09-25.

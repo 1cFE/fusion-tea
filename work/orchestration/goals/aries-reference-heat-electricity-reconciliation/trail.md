@@ -340,3 +340,17 @@ T-002 · new study record under `exploration/aries_integrated/studies/` · propo
 - **Finding dispositions:** four rows `…flow-scaling-check#1`–`#4` with dispositions written; none unrouted; joined rows after the round review.
 - **Constraints carried forward:** the owner's framing on Q1 (established versus not established) governs every restatement; Q1's remaining undetermined items (Raffray p737 Ref. 7; Lyon's balance-of-plant heat) are named for the owner's research decision; the budget stands; the resized cases remain declared alternatives.
 - **Native-state check:** no model, package or manifest change in round 3; one study committed; frozen records, Stellaris and shared files unchanged (delivery preservation and Stellaris replay from round 2 stand; the package identity is unchanged since).
+
+### Amendment 2026-09-25 — amends T-002 scope (round 3), second
+
+[AGENT] The first amendment did not reconcile the count (round-3 review F3). The twelve declared points are: `combined-source-thermal`, `combined-source-thermal-lyon-aux`, `combined-c3-partition`, `network-c3-0.85`, `network-c3-scaledflows-0.85`, `network-c3-scaledflows-0.90`, `network-c3-scaledflows-pbli-only-0.85`, `network-c3-scaledflows-he-only-0.85`, `resized-compressor-1650-network-0.85`, `resized-compressor-1650-network-scaledflows-0.85`, `resized-compressor-1700-network-0.85`, `resized-compressor-1700-network-scaledflows-0.85`. The split-0.90 scaled case was declared in the configuration and omitted from the scope text. Recorded after execution on the reviewer's finding; no result affected.
+
+### Round 3 review — 2026-09-25
+
+- **Reviewer and verdict:** fresh non-author reviewer at `77098a41`, `evidence/round3-review.md`; FINDINGS, none blocking (four correct-before-use, one note). Brief: `evidence/round3-review-brief.md`.
+- **Checks:** owner framing FINDING (F1, F4); reporting details PASS; native evidence PASS (six figures confirmed; verification pass 12 of 12); study fidelity and MR-7 PASS (scaled flows and capacities declared, nothing tuned, one study, identity unchanged); scope and count FINDING (F3, amended above); migration PASS (stored channels); discovery rows PASS; unsupported claims F2, F5.
+- **Findings applied:** F1 the "Typical Fluid Temperatures in HX" inset belongs to Fig. 12 (p736), not Fig. 13; corrected in the contract § 6a, the ledger, the answer and L-010, and here for the T-001 return above, after the coordinator checked the page image. F2 stale sentences in `answer.md` § 5 and § 13 replaced with the 1650–1700 kg/s bracket and the returned Q1 status. F3 amendment above. F4 answer § 12 now says "the heat sources as printed". F5 the T-001 return above overstates the review's note count (the committed review has one note, finding 4); contract § 6a's "reviewer note 5" corrected to "finding 4"; the ledger's ambiguous "which of the two" sentence rewritten.
+- **Accepted learning delta:** L-010 (with F1 and the zero-approach / 30 °C qualifier), L-011 ("unchanged to 1e-3 MW"), L-012 accepted and appended to `learnings.md`. Joined disposition rows for `…flow-scaling-check#1`–`#4` appended to the discovery log.
+- **Remaining uncertainty:** the reviewer did not open the page images, the thermal-cycle physics, `learnings.md`, the logs or cost channels; Q1's two undetermined items are the owner's research decision.
+- **Next:** do not open a further round; the answer stands as partially answered with the Q1 result and its limits stated at the owner's framing; formal closure and the research decision are the owner's.
+
