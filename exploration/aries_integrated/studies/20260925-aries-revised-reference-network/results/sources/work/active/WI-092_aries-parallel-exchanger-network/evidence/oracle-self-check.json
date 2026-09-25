@@ -1,0 +1,12 @@
+{
+ "oracle_vs_native_worst_relative": {
+  "heat_exchangers__evaluate__turbine_temperature": 2.713736881679586e-12,
+  "heat_exchangers__evaluate__unmet_heat": 2.3614986287767895e-10,
+  "heat_exchangers__evaluate__pbli_unmet": 2.36135898602185e-10,
+  "heat_exchangers__evaluate__he_unmet": 1.4888991836059321e-10,
+  "heat_exchangers__evaluate__divertor_unmet": 8.619502324581099e-11,
+  "plant_ledger__evaluate__net_electric": 1.2832890998629374e-11,
+  "plant_ledger__evaluate__gross_electric": 8.285103456706007e-12
+ },
+ "cases": 37
+}

@@ -1,0 +1,27 @@
+{
+  "manifest_sha256": "0b76ccf90da03b7dbc61829e92a92ad92d1e020b993354479d2b7d18ed4701be",
+  "canonical_receipt": "exploration/aries_integrated/studies/20260925-aries-revised-reference-network/canonical-replay-receipt.json",
+  "canonical_receipt_sha256": "399a31dc55ac2a003b477ac618ceabd02f8a5caca303c7cb1f250071a1148bb1",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "06e0627ca37475e7ceaaaefa245e71f2fdfe4acca2af8ccae4a7a049396e9021",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "semantic_fingerprint": "78dd23bf4c4a2d431ce8223d973db08e955e6f378175623ced8b976db4231f93"
+    }
+  },
+  "native_evaluations": 0,
+  "source_comparisons": "Canonical controls are copied verbatim from the mode-0 replay receipt on this package; every other case composes declared changes on a named base."
+}

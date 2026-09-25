@@ -13,7 +13,7 @@ Related Artifacts: spec.md; design.md. Owner: goal coordinator (author); fresh r
 - [x] Build on the stock route (`exploration/aries_integrated/build.py`, evidence path updated to this item), verify fixed-point regeneration, run the development checks (a)–(f), write the migration report.
 - [x] Re-pin the live study manifest; run scoped validation; check the goal preservation manifest and isolated Stellaris replay.
 - [x] Obtain fresh independent implementation review of executed behaviour (mode-0 exactness, mode-1 network, split pair, MR-7 compliance).
-- [ ] Hand the coherent package to the goal for the integration seam and one committed study.
+- [x] Hand the coherent package to the goal for the integration seam and one committed study.
 
 | Acceptance | Verification | Evidence |
 |---|---|---|
@@ -23,3 +23,9 @@ Related Artifacts: spec.md; design.md. Owner: goal coordinator (author); fresh r
 | R4 | Preservation manifest and Stellaris replay | goal evidence |
 | R5 | Fixed point, migration report, re-pinned manifest, CANDIDATE | build receipts, integration return |
 | R6 | Refusals and closure diagnostics | development receipts |
+
+## Implementation notes (2026-09-25)
+
+- Echo outputs renamed `network_mode_used` / `pbli_split_used` (generator refuses a calc output sharing a part input attribute's name). Build reached a fixed point on the stock route; mode 0 replays 31 points bit-exactly (`evidence/migration-report.json`).
+- Re-pin `6828df18` (executable `f739dbce…`, semantic `78dd23bf…`); integration seam CANDIDATE at goal `evidence/integration-attempt2/` (attempt 1 refused on an outer PYTHONPATH, retained); implementation review PASS with notes (`evidence/implementation-review-notes.md`).
+- First study on the package: `exploration/aries_integrated/studies/20260925-aries-revised-reference-network/` (snapshot `c6551b71…`).
