@@ -28,3 +28,5 @@ Seven of 27 points satisfy every evaluated check. `heat_removal_ok` fails in 18 
 ## What the record does not support
 
 Reproduction of the ARIES operating point; an optimum split, flow or recuperation; any hydraulic or control statement for the branches; a cost conclusion for the resized alternative; prediction credit for the supplied fusion power, arrangement or split.
+
+[AGENT correction, 2026-09-25, round-2 review] "the arrangement no longer matters" and "identical outputs" apply to the plant-ledger and cycle-state outputs; exchanger-stage channels differ between the arrangements. "Needs 1700 kg/s" means 1700 suffices and 1600 does not; the threshold between them was not bracketed. Mechanism 2 of the unmet heat is bounded by a missing-input range, not corrected.

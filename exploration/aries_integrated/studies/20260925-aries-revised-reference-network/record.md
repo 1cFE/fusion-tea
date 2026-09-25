@@ -181,3 +181,10 @@ All 27 stored cases were verified against the package-owned independent oracle (
 - No hydraulic, pressure-loss or control-law statement for the parallel branches; no compressor map; no cost conclusion for the resized alternative.
 - No prediction credit for the supplied fusion power (2436 MW), the supplied arrangement or the supplied split.
 - No change to the Stellaris model, its package or any frozen record; the original series closure remains bound as mode 0 and reproduces bit-exactly.
+
+## Addendum 2026-09-25 — corrections on the round-2 review (`…/evidence/round2-review.md`)
+
+- § 3 and § 6 (`network_mode`), finding #3 and its discovery row: "identical outputs" / "no effect on any plant output" is restricted to the plant-ledger and cycle-state outputs (net, gross, auxiliary, turbine inlet, efficiency, mixed outlet, ledger residual). In each pair (`c3-minus-recuperator` / `network-c3-eps0.8-0.85`; `resized-compressor-1800-series` / `-network-0.85`) 19 of 551 outputs differ: the divertor stream and secondary outlets, divertor hot temperature, stage capabilities, terminal differences and the mode echo.
+- § 3, § 6 and finding #2: "needs 1700 kg/s" is a bracket statement, not a threshold: 1700 kg/s suffices and 1600 does not with the network at 0.95 recuperation; the flow between them was not sampled.
+- § 15 and the ledger: mechanism 2 of the unmet heat (helium-stage bound) is bounded by a missing-input range, not corrected, because the inputs that remove it are not stated by the source.
+- § 13 attempt history: the live-manifest tolerance amendment was outside T-004's written scope ("no … live-manifest change") and is recorded as a reviewed deviation in the trail.

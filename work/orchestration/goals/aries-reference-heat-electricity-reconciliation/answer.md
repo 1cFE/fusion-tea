@@ -12,7 +12,7 @@ Goal: `work/orchestration/goals/aries-reference-heat-electricity-reconciliation/
 2. The original 796 MW was low for input-level reasons that round 1 quantified and corrected from the sources: assumed 0.8 recuperation (source 0.95), 1400 kg/s cycle flow (1600 derived from Lyon's 2916 MW over Raffray's cycle temperatures), 500 kg/s divertor flow (source 283), a deposition partition that sent about 218 MW too much heat to the divertor and 198 MW too little to the blanket circuits, and an auxiliary itemisation 20 MW below Lyon's 252 MW. Together these are worth +46.727 MW net on the series arrangement; with the network the combined correction is +83.687 MW (order interaction +7.6 MW).
 3. The remaining gap to the reference is not reproducible from the published hardware description. At the best steady point the model is 109.987 MW gross and 108.997 MW net short, and all of it is thermal efficiency (0.3907 against the reference 0.43), which is the turbine inlet (628 °C against the published 708 °C). The published 43% needs a 708 °C turbine inlet, and with the published duties the published network cannot reach it at any split (the PbLi stream leaves at 655 °C at the 0.85 split and mixes with a cooler divertor stream). This is the independently checked source-reading Q1 in the contract: the published temperatures, duties and arrangement cannot all hold, and the reference 2916 → 43% → 1253 → −253 → 1000 is a systems-code chain, not an exchanger result.
 
-So: the original case was a thermally inadequate scenario, not a steady operating point; its two causes are corrected (one by the reviewed architecture change, one by a declared operating or hardware choice); and the model's steady result disagrees with the published 1000 MW by about 108.997 MW for a reason that is explained and bounded but cannot be settled from the retained sources. Net 1000 was never a target and is not reached at any steady point.
+**Completion condition: partially answered.** The unmet heat is traced to two mechanisms: the series-order limit is corrected by the reviewed architecture change, and the helium-stage bound is bounded by a missing-input range (a cycle flow and compressor rating, or a recuperation, that the sources do not state; 0 MW unmet across net 759.886–891.003 MW). The revised case does not reproduce the reported gross and net within the ±15 MW budget at any steady point, the shortfall is explained numerically and by subsystem, and one owner-visible premise (Q1) stays open. So: the original case was a thermally inadequate scenario, not a steady operating point; its two causes are corrected or bounded; and the model's steady result disagrees with the published 1000 MW by about 108.997 MW for a reason that is explained and bounded but cannot be settled from the retained sources. Net 1000 was never a target and is not reached at any steady point.
 
 ## 2. Source case definition
 
@@ -34,7 +34,7 @@ All values MW unless stated; stored outputs of `20260925-aries-revised-reference
 | Same at split 0.90 | 2925.762 | 2818.528 | 107.234 (57.575 / 49.660 / 0.000) | 648.3 | 0.4024 | 1134.077 | 252.010 | 882.067 | no | plant_ledger.heat_removal_ok |
 | Steady candidate A: C3 + network, 0.8 recuperation, 1600 kg/s | 2925.762 | 2925.762 | 0.000 (0.000 / 0.000 / 0.000) | 606.2 | 0.3459 | 1011.896 | 252.010 | 759.886 | yes | — |
 | Steady candidate B (declared resized compressor): C3 + network, 0.95 recuperation, 1700 kg/s, rating 1700 MW | 2925.762 | 2925.762 | 0.000 (0.000 / 0.000 / 0.000) | 628.2 | 0.3907 | 1143.013 | 252.010 | 891.003 | yes | — |
-| Declared resized compressor at 1800 kg/s (network or series) | 2925.762 | 2925.762 | 0.000 (0.000 / 0.000 / 0.000) | 580.8 | 0.3608 | 1055.573 | 252.010 | 803.563 | yes | — |
+| Declared resized compressor at 1800 kg/s (network; the series case has the same plant-ledger and cycle-state outputs) | 2925.762 | 2925.762 | 0.000 (0.000 / 0.000 / 0.000) | 580.8 | 0.3608 | 1055.573 | 252.010 | 803.563 | yes | — |
 | Published Lyon reference (Table IV) | 2916 | 2916 | 0 | 708 | 0.43 | 1253 | 253 (252 itemised) | 1000 | — | — |
 
 Heat by circuit and stage temperatures for the same cases:
@@ -49,7 +49,7 @@ Heat by circuit and stage temperatures for the same cases:
 | Same at split 0.90 | 1248.568 | 1485.785 | 191.410 | 1190.993 | 1436.125 | 191.410 | 309.1 | 452.4 | 644.5 | 682.8 | 456.6 |
 | Steady candidate A: C3 + network, 0.8 recuperation, 1600 kg/s | 1248.568 | 1485.785 | 191.410 | 1248.568 | 1485.785 | 191.410 | 254.0 | 404.3 | 614.7 | 557.9 | 410.0 |
 | Steady candidate B (declared resized compressor): C3 + network, 0.95 recuperation, 1700 kg/s, rating 1700 MW | 1248.568 | 1485.785 | 191.410 | 1248.568 | 1485.785 | 191.410 | 296.8 | 438.2 | 636.2 | 582.8 | 442.5 |
-| Declared resized compressor at 1800 kg/s (network or series) | 1248.568 | 1485.785 | 191.410 | 1248.568 | 1485.785 | 191.410 | 267.8 | 401.4 | 588.4 | 537.9 | 404.6 |
+| Declared resized compressor at 1800 kg/s (network; the series case has the same plant-ledger and cycle-state outputs) | 1248.568 | 1485.785 | 191.410 | 1248.568 | 1485.785 | 191.410 | 267.8 | 401.4 | 588.4 | 537.9 | 404.6 |
 | Raffray engineering case scaled to 2436 MW (contract § 8) | 1223.6 | 1487.4 | 190.9 | — | — | — | 355 | 456 (He outlet) | 708 (738 − 30) | 700 | 451 |
 
 Split sensitivity of the revised source-conditioned case at C3 (0.95 recuperation, 1600 kg/s):
@@ -86,7 +86,7 @@ From the original 796.005 MW net (ledger v2, `evidence/discrepancy-ledger.md`; `
 
 | Discrepancy | Status | How |
 |---|---|---|
-| 158.7 MW unremoved heat | **Corrected** in two parts | Series-order PbLi limit removed by the reviewed network increment (WI-092); helium-stage bound at 1600 kg/s with 0.95 recuperation removed by a declared choice the sources do not state: 1700 kg/s with a 1700 MW compressor (resized alternative, all checks) or 0.8 recuperation at 1600 kg/s (all checks). No case with unremoved heat is presented as a steady reconstruction. |
+| 158.7 MW unremoved heat | **Corrected** (mechanism 1) and **bounded** (mechanism 2) | Series-order PbLi limit removed by the reviewed network increment (WI-092), an evidence-supported connection change. The helium-stage bound at 1600 kg/s with 0.95 recuperation is removed only by inputs the sources do not state, so it is bounded by a missing-input range: 1700 kg/s with a 1700 MW compressor (resized alternative, all checks, net 891.003) or 0.8 recuperation at 1600 kg/s (all checks, net 759.886); 1700 kg/s suffices and 1600 does not, the threshold between them was not bracketed. No case with unremoved heat is presented as a steady reconstruction. |
 | Recirculating power (232.7 vs 253) | **Corrected** | Accounting alignment to Lyon's itemisation (252.010; inside ±15). |
 | Heat by circuit (He −80, PbLi −108, divertor +204) | **Corrected** | Source-informed deposition partition (0.657 radiated, 0.0469 exchanged); residual He +25 MW bounded by the pump-heat return fraction (Lyon 170 versus Raffray 141). |
 | Thermal power composition | **Bounded** (≈ 60 MW thermal, ≈ 26 MW gross) | No model input for the source's 90% return of balance-of-plant power; inside the ±10 MW total-thermal budget at every revised case (+9.8). |
@@ -161,6 +161,7 @@ The model was handed the published ARIES fusion power and asked to work out how 
 ## 13. Owner gates and next actions
 
 - **Q1** (reserved): decide whether to pursue source evidence on the actual ARIES cycle arrangement through the research route, or accept the published 43% as a systems assumption in the write-up.
+- **Completion status** (reserved): the answer assesses the completion condition as partially answered; the owner decides whether that is accepted as the goal's result or whether the Q1 source route is pursued first.
 - **Resized-compressor alternative** (reserved): whether the 1700 kg/s / 1700 MW case may stand as the named revised reference case for later cost work; its purpose and changed hardware are explicit in the record.
 - **Wording notes on the sealed package** (deferred): the completion docstring and calc-def doc comment say "line for line" where "equation for equation, bit-exact on replay" is accurate; scheduled for the next package edit (`work/active/WI-092_aries-parallel-exchanger-network/evidence/implementation-review-notes.md`).
 - WI-092 remains registered `backlog` in `work/BACKLOG.md` (no activate operation exists); its close is the owner's through `pm close-item`.

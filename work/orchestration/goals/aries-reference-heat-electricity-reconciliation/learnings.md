@@ -33,3 +33,43 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Implication:** the revised reference case carries these inputs; the divertor's ≈ 67 MW unlabelled share stays a bounded item until a divertor nuclear-heating term exists.
 - **Supersedes:** none.
 - **Accepted by:** round 1 review, 2026-09-25.
+
+## L-005 — The published series-then-parallel exchanger network removes the series-order PbLi limit (41 MW of the 151 MW C3 shortfall at unchanged hardware), but at 1600 kg/s with 0.95 recuperation the blanket-helium stage binds: the cycle helium enters it at 309 °C and reaches only 452 °C against the 456 °C helium hot inlet, leaving 107–114 MW unremoved at every split from 0.80 to 0.90; with the network 1700 kg/s suffices for complete removal at 0.95 recuperation and 1600 does not (threshold unbracketed); in series 1800 suffices and 1700 does not
+
+- **Evidence:** `20260925-aries-revised-reference-network` `results/cases.json` (`network-c3-0.50…0.98`, `network-c3-1700-0.85`, `resized-compressor-1700-series`); record § 3 and § 6; round-2 review check 2.
+- **Scope:** the WI-092 package at the C3 inputs; the split window 0.50–0.98; cycle flows 1600, 1700, 1800 kg/s only.
+- **Implication:** a steady source-conditioned case at 0.95 recuperation needs more cycle flow than the inherited compressor rating admits; the choice between more flow (resized compressor) and lower recuperation is the owner's, not a model result.
+- **Supersedes:** none; extends L-001.
+- **Accepted by:** round 2 review, 2026-09-25.
+
+## L-006 — Once all heat is removed, the exchanger arrangement has no effect on the plant-ledger and cycle-state outputs (net, gross, auxiliary, turbine inlet, efficiency, mixed outlet), because the turbine inlet then follows from the energy balance alone; exchanger-stage channels (stream outlets, capabilities, terminal differences) still differ, and the arrangement matters only where a stage is limited
+
+- **Evidence:** `c3-minus-recuperator` against `network-c3-eps0.8-0.85` and `resized-compressor-1800-series` against `-network-0.85`: plant-level channels identical, 19 of 551 exchanger-stage channels differ (round-2 review F2); record § Addendum.
+- **Scope:** the bounded ε-NTU closure of WI-089/WI-092 with fixed hardware.
+- **Implication:** arrangement studies are informative only in the heat-limited regime; a steady point's plant outputs do not identify the arrangement.
+- **Supersedes:** none.
+- **Accepted by:** round 2 review, 2026-09-25.
+
+## L-007 — At the best steady point the entire remaining gap to Lyon's 1253 / 1000 MW (110 / 109 MW) is the thermal-efficiency shortfall at the heat-limited turbine inlet (628 against 708 °C); with the published duties the published network cannot reach 708 °C at any split, so Lyon's 43% is a systems constant that the described hardware does not deliver in this model
+
+- **Evidence:** `resized-compressor-1700-network-0.85` (gross 1143.013, efficiency 0.3907, turbine 901.351 K); split sweep (PbLi stream at most 731 °C while starving the divertor); `evidence/discrepancy-ledger.md` v2.1; round-2 review L-007 ruling (gross gap 109.987 equals the efficiency shortfall).
+- **Scope:** the model's own cycle relation (WI-089) and the contract's Q1; not a statement about the actual ARIES design.
+- **Implication:** the reconciliation ends as a well-supported disagreement conditioned on Q1; closing it needs source evidence about the cycle arrangement beyond the retained papers.
+- **Supersedes:** none; extends L-003.
+- **Accepted by:** round 2 review, 2026-09-25.
+
+## L-008 — The verifier's relative-only rule (1e-9) fails on small difference channels of a root solve, such as unmet heat, at the solver's termination order (1e-8 MW); declare absolute tolerances at that order for those channels, with focused independent review, before verifying a study whose points can have small nonzero differences
+
+- **Evidence:** `evidence/t004-verify-attempt1.log` (2.03 MW channel refused at 1.6e-9 relative, 3.3e-9 MW absolute); `evidence/unmet-tolerance-declaration.md` and `unmet-tolerance-review.md`; `results/attempt-comparison.json` (re-execution bit-identical).
+- **Scope:** studies on the ARIES packages verified with `scripts/study/verify.py`; the manifest's `absolute_tolerances` list.
+- **Implication:** the live manifest now carries 1e-7 MW on the four unmet-heat channels; future studies with other small difference channels should declare theirs before execution, not after a refusal.
+- **Supersedes:** none.
+- **Accepted by:** round 2 review, 2026-09-25.
+
+## L-009 — The integration seam and the study commands must run under the launcher's own environment (`.codex-test/run …` or `.codex-test/run bash -c '…'` with the TEAx root expanded inside); an outer PYTHONPATH built from an unset `STOP_PARSER_TEAX_ROOT` puts `/packages/teax-simkit` on the path and trips the seam's read-coverage gate
+
+- **Evidence:** `evidence/integration-attempt1.log` (BLOCKER: undeclared dependency read `/packages/teax-simkit`) against `integration-attempt2.log` (CANDIDATE); trail T-003 return.
+- **Scope:** this checkout's `.codex-test/run` launcher and `scripts/integrate.py`.
+- **Implication:** one wasted seam run per goal if forgotten; recorded in the trail's T-003 decision and here.
+- **Supersedes:** none.
+- **Accepted by:** round 2 review, 2026-09-25.
