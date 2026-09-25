@@ -444,3 +444,9 @@ No snapshot content is restated here. (`snapshot.json` records the package at re
 - No change to any model, package, assembly, frozen record, the Stellaris models or the six shared library files; the only repository change outside this record and its two thin modules is the reviewed four-entry tolerance addition to the live manifest.
 - No claim that the fixed 100 kg/year feed is achievable or that its ranking of the 891 MW and 423 MW plants is physical.
 
+
+## Addendum 2026-09-25 — corrections on the round-1 review (`…/evidence/round1-review.md`)
+
+- § 3, § 6 (`pbli_pump_fixed_power`) and finding #8: the PbLi pumping bound +8.291 USD2004/MWh is stated on the feed100 base (238.028) and is a pure denominator effect (overnight unchanged; 246.319 / 238.028 = 891.0017 / 861.0127); on the aligned combined case (59.313) the same 30 MW is worth ≈ +2.1, and on the source branch (supplied 1000 MW) ≈ 0. The recuperator and cycle-side bounds are capital and the same on any base.
+- § 2 and MR-7 disclosure: the He and PbLi pump capacities of the canonical case (3359 and 27,666 kg/s) are supplied choices set equal to the operating flows, as WI-090 set the baseline's; their screen margins are 0 by that choice, not by sizing.
+- § 13 attempt history: the retry kept task, inputs and meaning identical; its scope was not identical, because the live manifest's tolerance list was amended (a deliberate, recorded deviation from the goal task's written scope; the record manifest and `results/manifest_used.json` carry the amended list).
