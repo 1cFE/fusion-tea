@@ -1,0 +1,26 @@
+{
+  "manifest_sha256": "484fb39087fc337717b05ec162389e2315b7887e7a4f4d1a1dd5cf947bcab105",
+  "canonical_receipt": "exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/canonical-author-receipt.json",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "cbce7125673b74e8636791b88ee576c642b53529de374d4a6d03ac6d357075e0",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
+      "semantic_fingerprint": "419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131"
+    }
+  },
+  "native_evaluations": 0,
+  "source_comparisons": "Canonical source controls are copied verbatim; every other case composes declared changes on a named base."
+}
