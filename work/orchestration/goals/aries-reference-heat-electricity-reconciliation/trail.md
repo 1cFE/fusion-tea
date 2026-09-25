@@ -442,3 +442,22 @@ T-003 · `evidence/ref15-reading.md`, `evidence/ref15-reading-brief.md`, `eviden
 ### T-004 start — 2026-09-25
 
 T-004 · `REQ-ARIES-CYCLE-HX-02.json` → run directory and return · fresh researcher; coordinator records.
+
+### T-004 return — 2026-09-25
+
+- **Outcome:** COMPLETE (class REGISTERED).
+- **Evidence:** `evidence/research-acquire-r4b-return.md`; run `knowledge/research/requests/runs/REQ-ARIES-CYCLE-HX-02/20260925T204659541052/`; registered source `knowledge/sources/combination_of_a_self_cooled_liquid_metal_breeder_blanket/` (publisher-typeset ISFNT-4 paper, Fusion Eng. Des. 41, 561–567, 1998; the request's "39–40" was one volume off); two paywalled copies queued as redundant; three candidates rejected; 3 of 6 searches and 1 of 2 captures; no hold-out hit.
+- **Decision:** the source is read in T-005 against `raw.pdf` and its page images (the extraction scrambles the title line and the p. 564 equation), with a fresh source check before the answer changes; the researcher's registration summary is not adopted as the reading; execution detail; coordinator.
+
+### T-005 scope
+
+- **Objective:** read Malang, Schnauder and Tillack 1998 and determine how it represents blanket-to-cycle heat delivery, whether that bears on the inconsistency among the published ARIES-CS branch duties and temperature spans, and what it establishes about the ARIES lineage's method.
+- **Why now:** it is the origin of the cited method's expressions and the nearest coupling paper obtained.
+- **Scope:** `evidence/malang98-reading.md`, `evidence/malang98-reading-brief.md`, `evidence/malang98-reading-review.md`; then the round-4 result; no model, package or study change.
+- **Inputs:** the registered source; `evidence/ref15-reading.md`; Raffray Tables II–III and Fig. 12; the owner supplement r4.
+- **Done when:** the reading names, with page, figure and table, the exchanger arrangement, the temperature differences and the cycle parameters; the reviewer returns PASS or resolvable FINDINGS; the trail states the bounded result.
+- **Stop when:** the reading cannot be checked against page images (surface).
+
+### T-005 start — 2026-09-25
+
+T-005 · reading, brief and review under `evidence/` · read-only. Coordinator reads; fresh reviewer checks.
