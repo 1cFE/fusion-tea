@@ -34,7 +34,7 @@ The main post describes exploratory modeling as a cycle: build a rough design, e
 
 **Model updates** change the SysML v2 in an organized way. Before an edit, the agent writes down what will change, which definitions and consumers it touches, and what source the change rests on. Then it makes the change, regenerates the program, and records the result so a reviewer can check the change against what was intended rather than only whether the numbers moved the right way. The stages that exist for this (spec, design, plan, implement, review) can be brief or skipped when the change is small, but the evidence obligation does not shrink with the stage count (`modeling_project/MODELING_PROCESS.md`).
 
-**Studies** probe a generated program after codegen. A study pins the exact program version it runs against, sweeps inputs, and records what pushed back, what did not, and what the agent judges that to mean. It stops only on mechanical faults, never on a result that looks wrong; a surprising result is recorded and argued, not suppressed (`.claude/skills/run-study/runbook.md`). Part 2 covered the machinery; here the point is that a study is a bounded unit of work with a record that a later session can read cold.
+**Studies** probe a generated program after codegen. A study runs against one pinned version of the generated program, sweeps inputs, and records what pushed back, what did not, and what the agent judges that to mean. It stops only on mechanical faults, never on a result that looks wrong; a surprising result is recorded and argued, not suppressed (`.claude/skills/run-study/runbook.md`). Part 2 covered the machinery; here the point is that a study is a bounded unit of work with a record that a later session can read cold.
 
 | Class | Deterministic tool | Agent prompt | Record |
 |---|---|---|---|
@@ -50,17 +50,15 @@ What makes a goal different from a task is the shape of the uncertainty:
 
 - We start with a clear motivation. There is a specific question, and we know what an answer would look like.
 - We do not have a known series of actions to take. The next step depends on what the last one found.
-- The total amount of work is not set. It might be one study, or it might be three model changes and a research round.
+- The total amount of work is not set. It might be one study, or it might be three model changes and some research.
 
-A plan cannot carry that, because a plan lists the actions in advance. What can carry it is a fixed question, a bounded attempt at a time, and a record of each attempt that the next one builds on. That is the structure in Figure 1.
+A plan cannot carry that, because a plan lists the actions in advance. What can carry it is a fixed question, a bounded attempt at a time, and a record of each attempt that the next one builds on. Figure 1 shows that structure, and the rest of this section walks it from top to bottom.
 
-![A goal: a fixed question at the top; one round in the middle, which writes an approach, runs research, model-change and study tasks one at a time, and ends in a written record; below, a fresh review and the owner, who either closes the goal or sends it into the next round with a revised approach.](harness-assets/goal-loop.png)
+![A goal: a fixed question at the top; below it, rounds, each opening with an approach, working through tasks one at a time, pinning the model at most once and ending with a study; below that, a check and the owner's decision to close the goal or open the next round.](harness-assets/goal-loop.png)
 
-*Figure 1. One goal, pursued in rounds. The middle panel is one round seen from inside; the cards behind it stand for the other rounds. The only path from one round to the next runs through the review and the owner. Rendered by `harness-assets/render_goal_loop.py`.*
+*Figure 1. One goal, pursued in rounds. The only path from one round to the next runs through the check and the owner. Rendered by `harness-assets/render_goal_loop.py`.*
 
-Read it top to bottom. The question is written once and stays fixed. Each round opens with an approach: a bet on how to answer the question, with no list of tasks. The agent then runs research, model changes and studies one task at a time, choosing each next task from what the last one found, and ends the round with a written record. Before anything builds on that record, someone who did not do the work checks it, and the owner decides whether the goal is answered. If not, the next round opens with a revised approach.
-
-**The goal** is written with the operator before any work starts (`work/orchestration/GOAL_RUNBOOK.md` § Grounding a goal). It carries:
+**The goal is written first** Before any work starts, the owner and an agent write the goal (`work/orchestration/GOAL_RUNBOOK.md` § Grounding a goal). It carries:
 
 - the question, in one sentence, and who is asking;
 - what would count as answered, concrete enough that two people would agree;
@@ -68,23 +66,20 @@ Read it top to bottom. The question is written once and stays fixed. Each round 
 - the evidence already in the repository, so a round is not spent on a question already answered;
 - the limits on rounds and retries, and the decisions the owner keeps.
 
-A goal missing any of those is a draft, and a draft authorizes no task. The goal walked in section 4 was drafted while the owner was away; the agent filled every field, ran one cheap diagnostic as grounding evidence, and stopped until the owner ratified the question the next day (`work/orchestration/goals/stored-energy-basis/goal.md`).
+The goal is not changed as it executes. 
 
-**A round** is one agent's bounded attempt at one approach. It opens by writing down the approach, what it assumes, what would make the agent abandon it, and what model change and study question it intends. It carries no task list. Each task is chosen from the returns so far and gets a written scope before it starts, because a task list written before the evidence arrives is authority granted in advance (`.project/adr/0001-strategy-and-task.md`). Tasks may run in parallel only when neither can invalidate the other. A round may change the model once and run one study, and it records each task's result in the trail.
+**A round is one bounded attempt at the question.** It opens with an approach: the agent's bet on how to answer the question, what that bet assumes, what would make the agent abandon it, and what model change and study it expects to need. The approach carries no task list, because a list written before the evidence arrives is authority granted in advance (`.project/adr/0001-strategy-and-task.md`).
 
-**A round stops** for exactly one of six reasons (`work/orchestration/GOAL_RUNBOOK.md` § Opening and closing a round):
+**The round then works through tasks one at a time.** Each task is a piece of research, a model change or a study, carried out through that class's own workflow. It gets a written scope before it starts and a written return when it finishes, and that return feeds the decision on what to do next. This is how the agent follows the evidence without a plan.
 
-1. a valid study reading, including a disappointing one;
-2. the premise the approach rested on turned out wrong;
-3. the meaning of "better" moved, so results are no longer comparable;
-4. an owner decision is pending;
-5. a declared limit was hit;
-6. the goal is answered.
+**A round pins the model at most once.** That limit keeps rounds bounded. When the round's model changes have landed, codegen regenerates the program and the round pins that exact version. Any and all studies then belong to one known version of the model and can be compared with earlier ones. Learnings from the studies inform the next round.
 
-A round may close with no model change and no study. Finding nothing is a recorded result, and that is what makes rounds finite: a round that went nowhere still leaves a record where its hardest judgment was made.
+A round can also stop early, for example when the premise of its approach proves wrong or it hits a declared limit. Either way, it ends by writing down what it tried, what it found and why it stopped.
 
-**Two checks** sit around the round. Before follow-up work builds on a study reading, the reading and its proposed dispositions are checked, by a fresh session when the reading reinterprets a source or changes an interface. After the round closes, a reviewer who did not do the work walks the record against the cited evidence: did the round pursue the approach it declared, did each task stay in scope, did every finding it touched get its disposition, and is the proposed learning right (`.project/adr/0002-round-boundary.md`, `.project/adr/0005-review-topology.md`). "Fresh" means a different session, not a different task: an agent reading its own round with its own reasoning still in front of it is not a reviewer. Then the owner closes the goal, or the next round opens.
+**Nothing builds on a round until it has been checked.** Two checks sit at the boundary between rounds. Before any follow-up acts on a study's reading, the reading and the proposed dispositions (what will be done about each finding) are checked. After the round closes, a fresh reviewer, one who did not do the work, walks the record against the cited evidence: did the round pursue the approach it declared, did each task stay in scope, did every finding it touched get its disposition, and is the proposed learning right (`.project/adr/0002-round-boundary.md`, `.project/adr/0005-review-topology.md`).
 
-That gives three roles. The operator sets the question and holds the gates: merges, closures, and the scientific calls reserved in the goal. The round agent pursues one approach and writes the result. The fresh reviewer checks it (`.claude/skills/run-goal/SKILL.md`). A human or an agent can take any of the three, and the runbook is the same document for both.
+**Then the owner decides whether the goal is answered.** If it is, the owner closes it. If not, the next round opens with a revised approach that starts from what the last round found.
+
+That gives three roles. The owner sets the question and holds the gates: merges, closures, and the scientific calls reserved in the goal. The round agent pursues one approach and writes the result. The fresh reviewer checks it (`.claude/skills/run-goal/SKILL.md`). A human or an agent can take any of the three, and the runbook is the same document for both.
 
 The reader can now place any piece of the harness: it is a tool, a prompt, or a record belonging to one of the three classes, or it is part of the loop that decides which class to call next. The next section shows where each of those lives on disk.
