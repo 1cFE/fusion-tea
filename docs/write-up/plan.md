@@ -16,7 +16,7 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 |---|---|---|
 | 1. Why SysMLv2 | The existing blog post | Done. Main post only needs the short argument (strict semantics fight AI entropy; composability enables categorical trade studies). |
 | 2. Model execution and studies | [sysml-codegen-model-evaluation.md](sysml-codegen-model-evaluation.md), to become HTML | Prose revised through the writing prompt. Figures and evidence live in `sysml-codegen-assets/`. Needs HTML conversion. |
-| 3. The full harness | [harness-outline.md](harness-outline.md) | Story outline drafted 2026-09-25, awaiting owner discussion. |
+| 3. The full harness | [harness-outline.md](harness-outline.md) | Outline at the right shape and level as of 2026-09-25. Next: settle open questions, then fill-in. |
 | 4. The demo, support 1: modeling Stellaris | Evolution viewer (`feat/model-viz-evolution`, page at `~/1cfe/stellarator_evolution.html`) | Viewer built, 29 frames (baseline plus 28 goals). Capture of the evolution as a narrative still TODO. |
 | 4. The demo, support 2: the ARIES test | [aries-model-transfer-outline.md](aries-model-transfer-outline.md) | Narrative draft awaiting owner discussion. |
 | 5. Takeaways and forward outlook | Probably none | Main post only. |
@@ -26,7 +26,9 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 [OWNER]
 
 1. Highest-level story first. Done: the main post outline exists.
-2. Supporting explainers next. For each: first make the flow and story clear in bullet or outline form, then an agent uses the writing prompt to fill in the content.
+2. Supporting explainers next. For each: first make the flow and story clear in outline form, then an agent uses the writing prompt to fill in the content.
+   - **Outline stage shape** (settled 2026-09-25 on [harness-outline.md](harness-outline.md), which is the reference example). One numbered beat per section. Each beat is a bold title, one sentence of setup if needed, then the point in one sentence, then a few short bullets. Every sentence says an idea in plain words; no naming parts or systems as shorthand for the idea. No evidence paths, no figure specs, no sub-sections. The whole outline fits on one screen. Evidence and detail belong to the fill-in stage.
+   - **Fill-in stage.** An agent takes the settled outline and [writing-prompt.md](writing-prompt.md) and drafts the prose, section by section, with evidence links and figures.
 3. Once all supporting pieces are ready, return to the main post and integrate diagrams, plots and links to the supports.
 
 Working order for step 2, by readiness and dependency:
@@ -58,14 +60,7 @@ Main post framing to preserve (from the outline): a harness is a large set of to
 - Existing visuals to consider reusing or redrawing: `docs/workflow.d2` and `docs/workflow.png`, `docs/demo/closed-loop.html`.
 - Harness size and shape data for the "repo size over time, actively used vs left behind" figure the main post sketches: `.project/active/harness-right-size/report.md` may already have counts.
 
-[AGENT] Proposed outline for discussion:
-
-1. What the harness is for: the goals above, and why a plain chat loop does not hold up as the model grows.
-2. The filesystem view: `models/`, `knowledge/`, `work/`, `.project/`, `exploration/` and what each owns. One diagram.
-3. The logical view: goal → round → tasks → native workflows (modeling PM, research, study) → review → learnings. One diagram.
-4. A goal round walked once, using the example the main post sketches (Research, Ingest, Update model X, Update model Y, Study, Eval).
-5. The checks that keep it honest: citations, the integration gates, fresh review, owner-held gates.
-6. What we would change next.
+The outline is in [harness-outline.md](harness-outline.md). The source material above is for the fill-in stage.
 
 ## Part 4, support 1: capturing the Stellaris evolution
 
