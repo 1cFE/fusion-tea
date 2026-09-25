@@ -491,3 +491,48 @@ T-005 · reading, brief and review under `evidence/` · read-only. Coordinator r
 - **Remaining uncertainty:** the reviewer did not open the PDFs, the p732/p735 markers, the receipts beyond `return.json`, or the frozen-records claim; Ref. 13 and the composition of Lyon's 2916 MW remain the owner's decisions.
 - **Next:** do not open a further round; the answer stands as partially answered with the citation-chain result at the owner's framing; formal closure, the Ref. 13 acquisition and the F3 screen question are the owner's.
 
+
+## Round 5 — coupling-paper-question
+
+### Owner supplement — 2026-09-25
+
+[OWNER] Received after round 4; retained verbatim in `evidence/owner-supplement-r5.md`. One question for the round (does the Wang, Malang and Raffray SOFE 2005 paper provide the missing information), the source-screen question first, a bounded permitted-access attempt with no purchase without asking, the four precise conclusions, the "41 MW of 151 MW" correction, updates to the answer, ledger and findings log, independent review, commit; closure reserved. Corrections applied on receipt: `answer.md` § 12 now says the network change "removed about 41 MW of the 151 MW of trapped heat at the source-supported inputs"; § 13 states 891 MW as the best tested steady alternative, not an upper bound or a reconstructed reference, with costing outside this goal.
+
+### Strategy revision — 2026-09-25
+
+- **Approach:** T-001 reviews the `aries.ucsd.edu` term bar's intended scope against the existing authorization and the two round-4 registrations from the run records, preserving their receipts, and states the decisions the owner must make; T-002 makes one bounded attempt to locate a permitted-access copy of the coupling paper outside the ARIES library hosts, registering nothing (its ARIES-CS title makes any registration a hold-out hit reserved to the owner) and queuing what it finds; the round then closes with the bounded result and the decisions, or, if the owner rules in time and a copy is registered, proceeds to reading with a fresh source check and a comparison with the model under the goal's workflow. No model, package, manifest or study change unless step 4 of the supplement is reached.
+- **Assumptions:** the rule home and the run records state the screen's purpose and what was done; the registry's pre-fetch identity screen refuses an ARIES-CS-titled registration before any fetch.
+- **Abandonment conditions:** the owner's decisions D1/D2 are needed before any ARIES-library or ARIES-CS-titled access (park, report); the paper is unavailable through permitted access (record the limit, finish the round); the round-5 limits.
+- **Intended model increment:** none unless the paper resolves a material assumption (then the smallest justified correction through spec, design review, implementation and a targeted study).
+- **Intended study question:** none unless the above.
+
+### T-001 scope
+
+- **Objective:** resolve or precisely state the source-screen question: the intended scope of the `aries.ucsd.edu` restriction against the existing research authorization, and a review of the two round-4 registrations including mirror access and Wayback triage, with provenance and receipts preserved.
+- **Why now:** the owner requires it before dependent source access.
+- **Scope:** `evidence/source-screen-review.md` from `scripts/holdout_guard.py`, `scripts/source_registry.py`, `knowledge/holdout/aries-cs/PROTOCOL.md` (rule text only; no sealed PDF opened), the owner brief and supplements, and the two run directories; no edit to any shared policy file or run record.
+- **Inputs:** as listed. **Done when:** the review states the scope, the authorization, what was done, and either a resolution under existing authorization or the specific decisions needed. **Stop when:** a decision is needed (surface; do not access dependent sources).
+
+### T-001 start — 2026-09-25
+
+T-001 · `evidence/source-screen-review.md` · read-only. Coordinator.
+
+### T-001 return — 2026-09-25
+
+- **Outcome:** COMPLETE (decisions surfaced; not resolved by existing authorization).
+- **Evidence:** `evidence/source-screen-review.md` § 1–5, quoting `scripts/holdout_guard.py` ("the host is the canonical program mirror"; "There is no waiver … adjudicating it is the owner's job, through the protocol's own § 6 exception log"), `scripts/source_registry.py` (pre-fetch identity screen on URL and title; post-capture content scan), PROTOCOL § 3/§ 6/§ 7, and the two run records and receipts (`8bbb7e3c`, `620e341f`, untouched).
+- **Reading:** the host term marks ARIES-library provenance for owner adjudication; the round-4 researcher substituted the `qedfusion.org` mirror so that no match was presented, and used Wayback index listings of the barred host for triage; on content both papers are clean. The existing authorization covers reading and route-based acquisition, forbids bypassing safeguards, and does not delegate the adjudication step; it cannot resolve the conflict.
+- **Decision:** two owner decisions are surfaced before any dependent access: D1 ratify (log under § 6) or withdraw the two round-4 registrations; D2 the Wang 2005 paper's ARIES-CS title makes any registration a hold-out hit reserved to the owner, so the round-5 attempt locates and queues a permitted-access copy without capturing it, and the owner decides on the exception and on paywalled access; no ARIES-library host, mirror or snapshot is used by this goal until D1 is ruled; reserved gate; coordinator; `evidence/source-screen-review.md` § 5.
+
+### T-002 scope
+
+- **Objective:** one bounded attempt to locate a permitted-access copy of the coupling paper outside the ARIES library hosts, queued for the owner's decision; nothing captured or registered; no purchase.
+- **Why now:** the owner's item 2; the outcome makes D2 concrete (exception plus registration, purchase, or stop).
+- **Scope:** `knowledge/research/requests/REQ-ARIES-CYCLE-HX-03.json` (4 searches, 1 capture allowed by the schema but no registration attempted); a fresh researcher on `research-acquire.md` with the standing rules and this round's restriction (no `aries.ucsd.edu`, no `qedfusion.org`, no Wayback snapshots of either); the run directory and `evidence/research-acquire-r5-return.md`.
+- **Inputs:** the request; the round-4 HX-01 log (IEEE Xplore paywalled; no author copy found on the ARIES hosts); `evidence/source-screen-review.md` § 5.
+- **Done when:** the run closes with its class and the candidates it queued, or a bounded negative.
+- **Stop when:** the limits are reached, or a candidate would need the barred hosts.
+
+### T-002 start — 2026-09-25
+
+T-002 · `REQ-ARIES-CYCLE-HX-03.json` → run directory and return · fresh researcher; coordinator records.
