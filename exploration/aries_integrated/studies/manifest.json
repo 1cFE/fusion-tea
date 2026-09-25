@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "cbce7125673b74e8636791b88ee576c642b53529de374d4a6d03ac6d357075e0",
+      "digest": "06e0627ca37475e7ceaaaefa245e71f2fdfe4acca2af8ccae4a7a049396e9021",
       "files": [
         "contracts/model_contract.json",
         "inputs/integrated_equipment_costs_params.json",
@@ -20,8 +20,8 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "d13f4153accc48a3d6533a2d29a8e8b6b7cecd86644c322bb64f59fa402e419b",
-      "semantic_fingerprint": "419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131"
+      "executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "semantic_fingerprint": "78dd23bf4c4a2d431ce8223d973db08e955e6f378175623ced8b976db4231f93"
     }
   },
   "objective_catalog": [
@@ -1906,7 +1906,9 @@
       "aries_cs_plasma_integration__plasma__temperature_profile_exponent": 1.0,
       "aries_cs_plasma_integration__plasma__temperature_radial_exponent": 2.0,
       "aries_cs_plasma_integration__plasma__volume": 444.0,
-      "aries_cs_plasma_integration__plasma__volume_exponent": 2.0
+      "aries_cs_plasma_integration__plasma__volume_exponent": 2.0,
+      "aries_integrated_plant__heat_exchangers__network_mode": 0.0,
+      "aries_integrated_plant__heat_exchangers__pbli_split_fraction": 0.85
     },
     "headline": {
       "channel": "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
