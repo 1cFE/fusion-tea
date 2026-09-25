@@ -74,7 +74,7 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Supersedes:** none.
 - **Accepted by:** round 2 review, 2026-09-25.
 
-## L-010 — With Raffray's printed per-branch duties and temperatures, these published quantities cannot all hold under the stated heat-exchanger assumptions (qualified 2026-09-25 at the owner's direction, `evidence/owner-supplement-r4.md`); in every arrangement checked the cycle does not reach the printed 707 °C outlet: the blanket-helium loop (hot inlet 456 °C) carries 42% of the heat over 21% of the span and would need ≥ 11.8 MW/K at zero approach (16.8 at the printed 30 °C) against 8.0 MW/K for the whole cycle flow; Raffray's Fig. 12 inset ("Typical Fluid Temperatures in HX") draws one lumped hot leg 385 → 737 °C; a lumped-heater cycle calculation would be consistent with it but is a hypothesis until the cited source supports it; what the ARIES-CS cycle calculation actually did is being pursued through Raffray's cited reference (round 4)
+## L-010 — With Raffray's printed per-branch duties and temperatures, these published quantities cannot all hold under the stated heat-exchanger assumptions (qualified 2026-09-25 at the owner's direction, `evidence/owner-supplement-r4.md`); in every arrangement checked the cycle does not reach the printed 707 °C outlet: the blanket-helium loop (hot inlet 456 °C) carries 42% of the heat over 21% of the span and would need ≥ 11.8 MW/K at zero approach (16.8 at the printed 30 °C) against 8.0 MW/K for the whole cycle flow; Raffray's Fig. 12 inset ("Typical Fluid Temperatures in HX") draws one lumped hot leg 385 → 737 °C; a lumped-heater cycle calculation would be consistent with it but is a hypothesis until the cited source supports it; what the ARIES-CS cycle calculation actually did was pursued through Raffray's cited cycle references in round 4: the cited method takes the turbine inlet as an input from a single heat source or IHX and does not state how ARIES-CS combined its loops (L-013)
 
 - **Evidence:** `evidence/q1-thermal-cycle-review.md` (fresh thermal-cycle reviewer, checks (a)–(e)); `work/active/WI-086_aries-dual-blanket-heat-accounting/evidence/raffray-p736.png` (Fig. 12 with its inset; Fig. 13); contract § 6a; round-3 review F1 (inset attribution).
 - **Scope:** the printed per-branch description in Raffray Tables II, III and V and Fig. 12; our per-branch representation on the WI-092 package.
@@ -97,3 +97,19 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Implication:** ledger rows report per-stage and total unmet heat side by side.
 - **Supersedes:** none.
 - **Accepted by:** round 3 review, 2026-09-25.
+
+## L-013 — The ARIES-CS Brayton cycle method (Raffray Ref. 15, Schleicher, Raffray and Wong 2000/2001; expressions from Malang, Schnauder and Tillack 1998) takes the turbine inlet temperature as an independent input from a single heat source: Schleicher draws the heat source as a boundary "to/from in-reactor components or IHX" and makes the return temperature a dependent variable of the compression ratio; Malang states both terminals of one lithium-to-helium IHX and takes the turbine inlet from its helium outlet; in the obtained sources the method was never extended to several primary loops at different temperature levels, so a branch-level inconsistency like Q1 would not surface in that calculation; whether ARIES-CS combined its three loops in a single hot leg is inferred, not stated
+
+- **Evidence:** `evidence/ref15-reading.md` and `ref15-reading-review.md`; `evidence/malang98-reading.md` and `malang98-reading-review.md`; contract § 6a `[r4]`; round-4 review ruling (Schleicher alone makes Tout dependent).
+- **Scope:** the two registered sources and Raffray 2008 Tables II–III and Fig. 12; not the paywalled Ref. 13.
+- **Implication:** the answer's remaining gap stays a source-internal inconsistency under the stated heat-exchanger assumptions; the lumped-heater reading of the Fig. 12 inset is consistent with the cited method and remains an inference (owner framing).
+- **Supersedes:** wording of L-010 on what the cited references say; none of its numbers.
+- **Accepted by:** round 4 review, 2026-09-25.
+
+## L-014 — (process) A citation named by a reviewer or a summary must be verified against the reference list and a citation-marker scan, with each marker's context checked, before it is pursued: the round-3 "p737 Ref. 7" was Lyon's retained systems paper, the cycle references were Refs. 15 and 13, and Raffray's p745 markers are off by one (the conclusion's markers belong to Ref. 16), so they do not corroborate the cycle attribution
+
+- **Evidence:** trail round-4 T-001 return (citation scan); `evidence/raffray-p745.png`, `raffray-p746.png`; round-4 review finding 4.
+- **Scope:** any pursuit of a cited source from a retained paper.
+- **Implication:** one wasted request per misattribution if skipped; the scan takes minutes.
+- **Supersedes:** none.
+- **Accepted by:** round 4 review, 2026-09-25.
