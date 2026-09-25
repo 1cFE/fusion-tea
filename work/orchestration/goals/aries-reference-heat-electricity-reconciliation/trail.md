@@ -401,3 +401,24 @@ T-001 · `evidence/raffray-p<N>.png` renders and the trail · read-only. Coordin
 ### T-002 start — 2026-09-25
 
 T-002 · `knowledge/research/requests/REQ-ARIES-CYCLE-HX-01.json` → run directory and `return.json` · fresh researcher; coordinator records.
+
+### T-002 return — 2026-09-25
+
+- **Outcome:** COMPLETE (class REGISTERED with one candidate queued for the owner).
+- **Evidence:** `evidence/research-acquire-r4-return.md`; run `knowledge/research/requests/runs/REQ-ARIES-CYCLE-HX-01/20260925T203030790830/` (`return.json`, `process_log.md`, `run.jsonl`, receipts); registered source `knowledge/sources/schleicher_raffray_wong_2001_an_assessment_of_the_brayton/` (`raw.pdf`, `output.md`, `images/`; `SOURCE_INDEX.md` and `MANIFEST.jsonl` updated by the registry); commit `HEAD` after this entry.
+- **Reading:** Ref. 15 (Schleicher, Raffray and Wong, TOFE 2000 / Fusion Technol. 39, 823, 2001) is captured from the ARIES library mirror at qedfusion.org (the registry's identity screen bars the `aries.ucsd.edu` term; no hold-out hit). Ref. 13 (Wang, Malang and Raffray, SOFE 2005) is paywalled at IEEE Xplore with no author-posted copy found in eight searches; it is queued for the owner with the journal-typeset Schleicher copy (not needed). Three candidates rejected (abstract only; wrong paper; the 2007 successor of Ref. 13, also paywalled). One of three captures used; closed `limit_reached` on searches.
+- **Decision:** the registered source is read in T-003 against its page images, with a fresh independent check of the reading before any conclusion is written into the answer; the researcher's registration summary is not adopted as the reading; execution detail; coordinator.
+- **Owner queue:** whether to obtain Ref. 13 (IEEE Xplore, paywalled) through institutional access; the run's failure receipt names it.
+
+### T-003 scope
+
+- **Objective:** read the registered Ref. 15 and determine how it represents heat delivery to the cycle, whether that representation resolves the inconsistency among the published branch duties and temperatures, and what it does and does not establish about ARIES-CS's own cycle calculation.
+- **Why now:** the source is registered and citable; the owner's question turns on its content.
+- **Scope:** `evidence/ref15-reading.md` written from `output.md` and the page images (not from the researcher's summary); a fresh source-check reviewer with a bounded brief confirms the reading against the page images before the answer changes; no model, package or study change.
+- **Inputs:** the registered source; Raffray p735–p737 (Table III cycle parameters; the citing sentence); contract § 6a; the owner supplement r4 (no lumped-heater conclusion without source support).
+- **Done when:** the reading names, with page and figure, how the source treats heat addition, its approach or terminal-difference assumptions, its efficiency dependence on turbine inlet temperature, and its plant context; the reviewer returns PASS or resolvable FINDINGS; and the trail states the bounded result.
+- **Stop when:** the reading cannot be checked against page images (surface).
+
+### T-003 start — 2026-09-25
+
+T-003 · `evidence/ref15-reading.md`, `evidence/ref15-reading-brief.md`, `evidence/ref15-reading-review.md` · read-only. Coordinator reads; fresh reviewer checks.
