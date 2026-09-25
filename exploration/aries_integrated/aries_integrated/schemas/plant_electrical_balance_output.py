@@ -6,7 +6,7 @@ class Plant_Electrical_BalanceOutput(MultiOutput):
 
 *Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: generator/auxiliary owner and electrical energy ledger equations; efficiencies dimensionless, rates atoms/s, all powers MW. **Last Updated**: 2026-09-22.
 
-SysML Source: root-0/integrated_heat_electricity.sysml:124
+SysML Source: root-0/integrated_heat_electricity.sysml:197
     """
     fuel_base_electric: float = Field(description="fuel_base_electric output")
     other_electric_demand: float = Field(description="other_electric_demand output")

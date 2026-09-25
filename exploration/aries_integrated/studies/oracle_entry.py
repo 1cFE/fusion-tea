@@ -99,22 +99,35 @@ def evaluate(point):
         1/(pressure_ratio*(1-get("pressure_loss", "loss_fraction"))))**exponent)
     effectiveness = get("cycle", "recuperator_effectiveness")
     branches = ("he", "divertor", "pbli")
+    # WI-092: network mode 0 is the reviewed series pass; mode 1 is the published series-then-parallel
+    # network with a supplied PbLi split. Independent re-derivation for verification only.
+    network_mode = get("heat_exchangers", "network_mode")
+    split = get("heat_exchangers", "pbli_split_fraction")
+    if network_mode not in (0, 1) or not (0 < split < 1):
+        raise ValueError("network mode must be 0 or 1 and split strictly inside (0,1)")
+    stream = {"he": c, "divertor": c, "pbli": c} if network_mode == 0 else {"he": c, "divertor": (1-split)*c, "pbli": split*c}
     conductances = {}
     for b in branches:
         ch = get("heat_exchangers", b+"_flow")*get("heat_exchangers", b+"_cp")/1e6
-        minimum, maximum = min(c, ch), max(c, ch)
+        minimum, maximum = min(stream[b], ch), max(stream[b], ch)
         ratio, ntu = minimum/maximum, ua[b]/minimum
         eps = ntu/(1+ntu) if abs(1-ratio)<1e-10 else -expm1(-ntu*(1-ratio))/(1-ratio*exp(-ntu*(1-ratio)))
         conductances[b] = minimum*eps
 
     def heater_pass(turbine_temperature):
         inlet = ends[-1]+effectiveness*max(expansion*turbine_temperature-ends[-1], 0)
-        t = inlet
         transferred = {}
-        for b in branches:
-            transferred[b] = min(duties[b], conductances[b]*max(get("heat_exchangers", b+"_limit")-t, 0))
-            t += transferred[b]/c
-        return t, inlet, transferred
+        if network_mode == 0:
+            t = inlet
+            for b in branches:
+                transferred[b] = min(duties[b], conductances[b]*max(get("heat_exchangers", b+"_limit")-t, 0))
+                t += transferred[b]/c
+            return t, inlet, transferred
+        transferred["he"] = min(duties["he"], conductances["he"]*max(get("heat_exchangers", "he_limit")-inlet, 0))
+        t1 = inlet+transferred["he"]/c
+        for b in ("pbli", "divertor"):
+            transferred[b] = min(duties[b], conductances[b]*max(get("heat_exchangers", b+"_limit")-t1, 0))
+        return t1+(transferred["pbli"]+transferred["divertor"])/c, inlet, transferred
 
     upper = max([ends[-1]]+[get("heat_exchangers", b+"_limit") for b in branches])
     turbine_t = brentq(lambda t: t-heater_pass(t)[0], ends[-1], upper, xtol=1e-11, rtol=1e-14)

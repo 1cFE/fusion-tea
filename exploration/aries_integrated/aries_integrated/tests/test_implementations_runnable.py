@@ -3893,20 +3893,20 @@ class TestCoolant_Branch_HeatRunnable:
             # Expected for stencils - test passes
             pass
 
-class TestHeat_Driven_ClosureRunnable:
-    """Verify heat_driven_closure implementation runs without error.
+class TestNetwork_Heat_Driven_ClosureRunnable:
+    """Verify network_heat_driven_closure implementation runs without error.
 
-    SysML Source: root-0/integrated_heat_electricity.sysml:46
+    SysML Source: root-0/integrated_heat_electricity.sysml:112
     """
 
     def test_import_and_run(self):
-        """Test that run_heat_driven_closure can be imported and called."""
+        """Test that run_network_heat_driven_closure can be imported and called."""
         # Import implementation module (ADR-003: namespaced path)
-        impl = importlib.import_module("aries_integrated.handwritten.integrated_heat_electricity.heat_driven_closure_impl")
-        func = getattr(impl, "run_heat_driven_closure")
+        impl = importlib.import_module("aries_integrated.handwritten.integrated_heat_electricity.network_heat_driven_closure_impl")
+        func = getattr(impl, "run_network_heat_driven_closure")
 
         # Import module wrapper for Input schema (ADR-003: namespaced path)
-        module = importlib.import_module("aries_integrated.modules.integrated_heat_electricity.heat_driven_closure")
+        module = importlib.import_module("aries_integrated.modules.integrated_heat_electricity.network_heat_driven_closure")
 
         # Find Input class
         input_class = None
@@ -3928,7 +3928,7 @@ class TestHeat_Driven_ClosureRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
-            assert len(result) == 40, f"Expected 40 outputs"
+            assert len(result) == 45, f"Expected 45 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
@@ -4022,7 +4022,7 @@ class TestOffered_Capacity_ScreenRunnable:
 class TestPlant_Electrical_BalanceRunnable:
     """Verify plant_electrical_balance implementation runs without error.
 
-    SysML Source: root-0/integrated_heat_electricity.sysml:124
+    SysML Source: root-0/integrated_heat_electricity.sysml:197
     """
 
     def test_import_and_run(self):
@@ -4064,7 +4064,7 @@ class TestPlant_Electrical_BalanceRunnable:
 class TestPassive_RecuperatorRunnable:
     """Verify passive_recuperator implementation runs without error.
 
-    SysML Source: root-0/integrated_heat_electricity.sysml:112
+    SysML Source: root-0/integrated_heat_electricity.sysml:185
     """
 
     def test_import_and_run(self):
@@ -4512,7 +4512,7 @@ class TestSupplied_Purchase_CostRunnable:
 class TestIntegrated_Plant_LedgerRunnable:
     """Verify integrated_plant_ledger implementation runs without error.
 
-    SysML Source: root-0/integrated_heat_electricity.sysml:162
+    SysML Source: root-0/integrated_heat_electricity.sysml:235
     """
 
     def test_import_and_run(self):

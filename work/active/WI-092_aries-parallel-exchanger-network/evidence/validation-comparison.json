@@ -1,0 +1,35 @@
+{
+ "L2_warn_lines": 5,
+ "L2_error_lines": 0,
+ "L6_finding_lines": 5,
+ "L2_summary": [
+  "Level 2: Structural Completeness",
+  "Found 17 SysML files",
+  "\u274c Level 2: Structural Completeness",
+  "   Unused definitions: 0",
+  "   Unbound inputs: 0",
+  "   Undefined bindings: 0"
+ ],
+ "L6_summary": [
+  "Level 6: Architecture & Pipeline Readiness",
+  "\u274c Level 6: Architecture & Pipeline Readiness",
+  "   Calc defs checked: 81",
+  "   Calc usages checked: 147",
+  "   Bindings validated: 803",
+  "   Design attrs checked: 0",
+  "   Manifests checked: 0",
+  "   L6_MISSING_QUALIFIED_NAME: 0"
+ ],
+ "inherited_baseline_WI-091": {
+  "L2_literal_warnings": 105,
+  "L6_static_findings": 493
+ },
+ "levels": {
+  "passed": 4,
+  "failed": 2,
+  "failing": [
+   "L2",
+   "L6"
+  ]
+ }
+}

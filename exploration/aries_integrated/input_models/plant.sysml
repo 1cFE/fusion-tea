@@ -242,7 +242,7 @@ package aries_integrated_plant {
         attribute pressure_out : Real = evaluate.pressure_out;
     }
     part heat_exchangers {
-        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: heat_exchangers owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */
+        doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md; work/active/WI-092_aries-parallel-exchanger-network/design.md. **Reference**: heat_exchangers owner/interface; values retain register S1-S3/A1-A9 provenance; network mode (default 0, series as reviewed) and supplied PbLi split fraction (N1) per WI-092. **Last Updated**: 2026-09-25. */
         attribute he_flow : Real = 3261.0;
         attribute he_cp : Real = 5193.0;
         attribute he_ua : Real = he_hx.ua;
@@ -255,7 +255,9 @@ package aries_integrated_plant {
         attribute pbli_cp : Real = 190.0;
         attribute pbli_ua : Real = pbli_hx.ua;
         attribute pbli_limit : Real = 1011.15;
-        calc evaluate : 'Heat Driven Closure' {
+        attribute network_mode : Real = 0.0;
+        attribute pbli_split_fraction : Real = 0.85;
+        calc evaluate : 'Network Heat Driven Closure' {
             in cold_temperature_in = compressor_3.temperature_out;
             in flow_in = cycle.selected_flow;
             in cp_in = cycle.cp;
@@ -279,6 +281,8 @@ package aries_integrated_plant {
             in pbli_cp_in = pbli_cp;
             in pbli_ua_in = pbli_ua;
             in pbli_limit_in = pbli_limit;
+            in network_mode_in = network_mode;
+            in pbli_split_in = pbli_split_fraction;
         }
         attribute turbine_temperature : Real = evaluate.turbine_temperature;
         attribute heater_inlet : Real = evaluate.heater_inlet;
@@ -320,6 +324,11 @@ package aries_integrated_plant {
         attribute pbli_hot_bound_margin : Real = evaluate.pbli_hot_bound_margin;
         attribute pbli_secondary_in : Real = evaluate.pbli_secondary_in;
         attribute pbli_secondary_out : Real = evaluate.pbli_secondary_out;
+        attribute pbli_stream_out : Real = evaluate.pbli_stream_out;
+        attribute divertor_stream_out : Real = evaluate.divertor_stream_out;
+        attribute mixed_outlet : Real = evaluate.mixed_outlet;
+        attribute network_mode_used : Real = evaluate.network_mode_used;
+        attribute pbli_split_used : Real = evaluate.pbli_split_used;
     }
     part turbine {
         doc /* **Source**: work/completed/20260922_WI-089_aries-integrated-heat-and-electricity/design.md. **Reference**: turbine owner/interface; values retain register S1-S3/A1-A9 provenance. **Last Updated**: 2026-09-22. */

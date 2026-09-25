@@ -17,9 +17,9 @@ Outputs:
     - hot_out: hot_out result
     - recovered_heat: recovered_heat result
 
-SysML Source: root-0/integrated_heat_electricity.sysml:112
+SysML Source: root-0/integrated_heat_electricity.sysml:185
 
-SysML Source: root-0/integrated_heat_electricity.sysml:112
+SysML Source: root-0/integrated_heat_electricity.sysml:185
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/integrated_heat_electricity/passive_recuperator_impl.py
@@ -67,9 +67,9 @@ Outputs:
     - hot_out: hot_out result
     - recovered_heat: recovered_heat result
 
-SysML Source: root-0/integrated_heat_electricity.sysml:112
+SysML Source: root-0/integrated_heat_electricity.sysml:185
 
-    SysML Source: root-0/integrated_heat_electricity.sysml:112
+    SysML Source: root-0/integrated_heat_electricity.sysml:185
 
     Calculation Specification:
         See documentation:

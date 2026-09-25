@@ -113,9 +113,9 @@ Outputs:
     - comparison_net_difference: comparison_net_difference result
     - net_result_producer_mode: net_result_producer_mode result
 
-SysML Source: root-0/integrated_heat_electricity.sysml:162
+SysML Source: root-0/integrated_heat_electricity.sysml:235
 
-SysML Source: root-0/integrated_heat_electricity.sysml:162
+SysML Source: root-0/integrated_heat_electricity.sysml:235
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/integrated_heat_electricity/integrated_plant_ledger_impl.py
@@ -363,9 +363,9 @@ Outputs:
     - comparison_net_difference: comparison_net_difference result
     - net_result_producer_mode: net_result_producer_mode result
 
-SysML Source: root-0/integrated_heat_electricity.sysml:162
+SysML Source: root-0/integrated_heat_electricity.sysml:235
 
-    SysML Source: root-0/integrated_heat_electricity.sysml:162
+    SysML Source: root-0/integrated_heat_electricity.sysml:235
 
     Calculation Specification:
         See documentation:

@@ -1267,9 +1267,9 @@ modules:
     outputs:
       root: RootModel[float] aries_integrated_plant__he_coolant__evaluate__delivered_heat
 
-  # integrated_heat_electricity.Heat_Driven_ClosureModule
+  # integrated_heat_electricity.Network_Heat_Driven_ClosureModule
   aries_integrated_plant__heat_exchangers__evaluate:
-    module_type: integrated_heat_electricity.Heat_Driven_ClosureModule
+    module_type: integrated_heat_electricity.Network_Heat_Driven_ClosureModule
     inputs:
       pbli_cp_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_cp
       divertor_available_in: float aries_integrated_plant__divertor_coolant__evaluate__delivered_heat.root
@@ -1293,48 +1293,55 @@ modules:
       he_ua_in: float aries_integrated_plant__he_hx__evaluate__ua
       he_cp_in: float plant_params.aries_integrated_plant__heat_exchangers__he_cp
       divertor_ua_in: float aries_integrated_plant__divertor_hx__evaluate__ua
+      pbli_split_in: float plant_params.aries_integrated_plant__heat_exchangers__pbli_split_fraction
       he_flow_in: float plant_params.aries_integrated_plant__heat_exchangers__he_flow
+      network_mode_in: float plant_params.aries_integrated_plant__heat_exchangers__network_mode
     outputs:
-      he_return: float aries_integrated_plant__heat_exchangers__evaluate__he_return
-      he_unmet: float aries_integrated_plant__heat_exchangers__evaluate__he_unmet
-      turbine_temperature: float aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature
-      he_hot: float aries_integrated_plant__heat_exchangers__evaluate__he_hot
-      accepted_heat: float aries_integrated_plant__heat_exchangers__evaluate__accepted_heat
-      divertor_return: float aries_integrated_plant__heat_exchangers__evaluate__divertor_return
-      divertor_transferred: float aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred
-      he_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in
-      divertor_unmet: float aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet
-      he_state_defined: float aries_integrated_plant__heat_exchangers__evaluate__he_state_defined
-      divertor_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference
-      pbli_hot: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot
-      he_capability: float aries_integrated_plant__heat_exchangers__evaluate__he_capability
-      divertor_cold_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference
-      unmet_heat: float aries_integrated_plant__heat_exchangers__evaluate__unmet_heat
-      iterations: float aries_integrated_plant__heat_exchangers__evaluate__iterations
-      he_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out
-      pbli_return: float aries_integrated_plant__heat_exchangers__evaluate__pbli_return
-      pbli_capability: float aries_integrated_plant__heat_exchangers__evaluate__pbli_capability
-      pbli_unmet: float aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet
-      divertor_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in
-      divertor_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin
-      pbli_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out
-      divertor_state_defined: float aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined
-      pbli_transferred: float aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred
-      he_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin
-      divertor_capability: float aries_integrated_plant__heat_exchangers__evaluate__divertor_capability
-      pbli_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in
-      heater_inlet: float aries_integrated_plant__heat_exchangers__evaluate__heater_inlet
-      closure_residual: float aries_integrated_plant__heat_exchangers__evaluate__closure_residual
-      he_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference
-      pbli_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin
-      pbli_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference
-      divertor_hot: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot
       pbli_state_defined: float aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined
-      divertor_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out
-      he_transferred: float aries_integrated_plant__heat_exchangers__evaluate__he_transferred
+      he_hot: float aries_integrated_plant__heat_exchangers__evaluate__he_hot
+      network_mode_used: float aries_integrated_plant__heat_exchangers__evaluate__network_mode_used
       pbli_cold_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference
+      divertor_hot: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot
+      divertor_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin
+      pbli_stream_out: float aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out
+      he_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin
       he_cold_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference
+      divertor_unmet: float aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet
+      pbli_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out
+      accepted_heat: float aries_integrated_plant__heat_exchangers__evaluate__accepted_heat
+      divertor_transferred: float aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred
+      divertor_state_defined: float aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined
+      he_state_defined: float aries_integrated_plant__heat_exchangers__evaluate__he_state_defined
       expansion_factor: float aries_integrated_plant__heat_exchangers__evaluate__expansion_factor
+      pbli_hot: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot
+      pbli_transferred: float aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred
+      pbli_split_used: float aries_integrated_plant__heat_exchangers__evaluate__pbli_split_used
+      divertor_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference
+      he_transferred: float aries_integrated_plant__heat_exchangers__evaluate__he_transferred
+      divertor_stream_out: float aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out
+      pbli_return: float aries_integrated_plant__heat_exchangers__evaluate__pbli_return
+      he_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in
+      pbli_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in
+      divertor_secondary_in: float aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in
+      closure_residual: float aries_integrated_plant__heat_exchangers__evaluate__closure_residual
+      unmet_heat: float aries_integrated_plant__heat_exchangers__evaluate__unmet_heat
+      heater_inlet: float aries_integrated_plant__heat_exchangers__evaluate__heater_inlet
+      he_return: float aries_integrated_plant__heat_exchangers__evaluate__he_return
+      he_capability: float aries_integrated_plant__heat_exchangers__evaluate__he_capability
+      pbli_hot_bound_margin: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin
+      turbine_temperature: float aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature
+      pbli_capability: float aries_integrated_plant__heat_exchangers__evaluate__pbli_capability
+      he_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out
+      he_unmet: float aries_integrated_plant__heat_exchangers__evaluate__he_unmet
+      divertor_cold_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference
+      pbli_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference
+      divertor_capability: float aries_integrated_plant__heat_exchangers__evaluate__divertor_capability
+      mixed_outlet: float aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet
+      divertor_return: float aries_integrated_plant__heat_exchangers__evaluate__divertor_return
+      he_hot_terminal_difference: float aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference
+      divertor_secondary_out: float aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out
+      iterations: float aries_integrated_plant__heat_exchangers__evaluate__iterations
+      pbli_unmet: float aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet
 
   # ideal_gas_brayton_components.Ideal_Gas_ExpanderModule
   aries_integrated_plant__turbine__evaluate:
@@ -2665,46 +2672,51 @@ modules:
       aries_integrated_plant__divertor_capacity__evaluate__supported: bool aries_integrated_plant__divertor_capacity__evaluate__supported.json
       aries_integrated_plant__divertor_capacity__evaluate__capacity_ok: bool aries_integrated_plant__divertor_capacity__evaluate__capacity_ok.json
       aries_integrated_plant__he_coolant__evaluate__delivered_heat: RootModel[float] he_coolant__delivered_heat.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_return: float heat_exchangers__he_return.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_unmet: float heat_exchangers__he_unmet.json
-      aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature: float heat_exchangers__turbine_temperature.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_hot: float heat_exchangers__he_hot.json
-      aries_integrated_plant__heat_exchangers__evaluate__accepted_heat: float heat_exchangers__accepted_heat.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_return: float heat_exchangers__divertor_return.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred: float heat_exchangers__divertor_transferred.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in: float heat_exchangers__he_secondary_in.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet: float heat_exchangers__divertor_unmet.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_state_defined: float heat_exchangers__he_state_defined.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference: float heat_exchangers__divertor_hot_terminal_difference.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot: float heat_exchangers__pbli_hot.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_capability: float heat_exchangers__he_capability.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference: float heat_exchangers__divertor_cold_terminal_difference.json
-      aries_integrated_plant__heat_exchangers__evaluate__unmet_heat: float heat_exchangers__unmet_heat.json
-      aries_integrated_plant__heat_exchangers__evaluate__iterations: float heat_exchangers__iterations.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out: float heat_exchangers__he_secondary_out.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_return: float heat_exchangers__pbli_return.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_capability: float heat_exchangers__pbli_capability.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet: float heat_exchangers__pbli_unmet.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in: float heat_exchangers__divertor_secondary_in.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin: float heat_exchangers__divertor_hot_bound_margin.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out: float heat_exchangers__pbli_secondary_out.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined: float heat_exchangers__divertor_state_defined.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred: float heat_exchangers__pbli_transferred.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin: float heat_exchangers__he_hot_bound_margin.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_capability: float heat_exchangers__divertor_capability.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in: float heat_exchangers__pbli_secondary_in.json
-      aries_integrated_plant__heat_exchangers__evaluate__heater_inlet: float heat_exchangers__heater_inlet.json
-      aries_integrated_plant__heat_exchangers__evaluate__closure_residual: float heat_exchangers__closure_residual.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference: float heat_exchangers__he_hot_terminal_difference.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin: float heat_exchangers__pbli_hot_bound_margin.json
-      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference: float heat_exchangers__pbli_hot_terminal_difference.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot: float heat_exchangers__divertor_hot.json
       aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined: float heat_exchangers__pbli_state_defined.json
-      aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out: float heat_exchangers__divertor_secondary_out.json
-      aries_integrated_plant__heat_exchangers__evaluate__he_transferred: float heat_exchangers__he_transferred.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_hot: float heat_exchangers__he_hot.json
+      aries_integrated_plant__heat_exchangers__evaluate__network_mode_used: float heat_exchangers__network_mode_used.json
       aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference: float heat_exchangers__pbli_cold_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot: float heat_exchangers__divertor_hot.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin: float heat_exchangers__divertor_hot_bound_margin.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out: float heat_exchangers__pbli_stream_out.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin: float heat_exchangers__he_hot_bound_margin.json
       aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference: float heat_exchangers__he_cold_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet: float heat_exchangers__divertor_unmet.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out: float heat_exchangers__pbli_secondary_out.json
+      aries_integrated_plant__heat_exchangers__evaluate__accepted_heat: float heat_exchangers__accepted_heat.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred: float heat_exchangers__divertor_transferred.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined: float heat_exchangers__divertor_state_defined.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_state_defined: float heat_exchangers__he_state_defined.json
       aries_integrated_plant__heat_exchangers__evaluate__expansion_factor: float heat_exchangers__expansion_factor.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot: float heat_exchangers__pbli_hot.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred: float heat_exchangers__pbli_transferred.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_split_used: float heat_exchangers__pbli_split_used.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference: float heat_exchangers__divertor_hot_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_transferred: float heat_exchangers__he_transferred.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out: float heat_exchangers__divertor_stream_out.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_return: float heat_exchangers__pbli_return.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in: float heat_exchangers__he_secondary_in.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in: float heat_exchangers__pbli_secondary_in.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in: float heat_exchangers__divertor_secondary_in.json
+      aries_integrated_plant__heat_exchangers__evaluate__closure_residual: float heat_exchangers__closure_residual.json
+      aries_integrated_plant__heat_exchangers__evaluate__unmet_heat: float heat_exchangers__unmet_heat.json
+      aries_integrated_plant__heat_exchangers__evaluate__heater_inlet: float heat_exchangers__heater_inlet.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_return: float heat_exchangers__he_return.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_capability: float heat_exchangers__he_capability.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin: float heat_exchangers__pbli_hot_bound_margin.json
+      aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature: float heat_exchangers__turbine_temperature.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_capability: float heat_exchangers__pbli_capability.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out: float heat_exchangers__he_secondary_out.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_unmet: float heat_exchangers__he_unmet.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference: float heat_exchangers__divertor_cold_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference: float heat_exchangers__pbli_hot_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_capability: float heat_exchangers__divertor_capability.json
+      aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet: float heat_exchangers__mixed_outlet.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_return: float heat_exchangers__divertor_return.json
+      aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference: float heat_exchangers__he_hot_terminal_difference.json
+      aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out: float heat_exchangers__divertor_secondary_out.json
+      aries_integrated_plant__heat_exchangers__evaluate__iterations: float heat_exchangers__iterations.json
+      aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet: float heat_exchangers__pbli_unmet.json
       aries_integrated_plant__turbine__evaluate__pressure_out: float turbine__pressure_out.json
       aries_integrated_plant__turbine__evaluate__shaft_produced: float turbine__shaft_produced.json
       aries_integrated_plant__turbine__evaluate__temperature_out: float turbine__temperature_out.json

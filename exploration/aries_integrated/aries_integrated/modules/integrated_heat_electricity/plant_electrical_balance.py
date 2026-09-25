@@ -43,9 +43,9 @@ Outputs:
     - pump_loss: pump_loss result
     - control_electric: control_electric result
 
-SysML Source: root-0/integrated_heat_electricity.sysml:124
+SysML Source: root-0/integrated_heat_electricity.sysml:197
 
-SysML Source: root-0/integrated_heat_electricity.sysml:124
+SysML Source: root-0/integrated_heat_electricity.sysml:197
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/integrated_heat_electricity/plant_electrical_balance_impl.py
@@ -141,9 +141,9 @@ Outputs:
     - pump_loss: pump_loss result
     - control_electric: control_electric result
 
-SysML Source: root-0/integrated_heat_electricity.sysml:124
+SysML Source: root-0/integrated_heat_electricity.sysml:197
 
-    SysML Source: root-0/integrated_heat_electricity.sysml:124
+    SysML Source: root-0/integrated_heat_electricity.sysml:197
 
     Calculation Specification:
         See documentation:

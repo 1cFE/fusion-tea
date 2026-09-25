@@ -119,3 +119,47 @@ T-004 · new study record under `exploration/aries_integrated/studies/` and one 
 - **Accepted learning delta:** L-001, L-002 accepted; L-003 accepted as a source-reading claim conditioned on the owner's Q1 gate; L-004 accepted with the note that the 218/198 MW deposition figures trace to the contract, not the study. Appended to `learnings.md`.
 - **Remaining uncertainty:** temperature channels were not read by the reviewer; Q1's scientific meaning is an owner gate; the parallel-network effect is known only from the first-principles scratch check, not from the model.
 - **Next:** do not close; open round 2 on the parallel PbLi/divertor topology increment after MR-7 design review, with the original series closure retained and evaluable.
+
+## Round 2 — topology-increment
+
+### Strategy revision — 2026-09-25
+
+- **Approach:** represent the published exchanger network (Raffray Fig. 12: series blanket-helium stage, then parallel PbLi and divertor-helium stages rejoining before the turbine) as an additive generic closure selectable by a network mode, with mode 0 reproducing the current series closure exactly and the cycle-flow split between the parallel stages supplied as a chosen operating quantity. Register a modeling item, write its spec/design with the MR-7 role table and equations, obtain fresh design review before implementation, implement with the stock build route and fixed-point checks, prove exact reproduction of the four canonical cases and the 27 sealed points in mode 0, pass the integration seam, then commit one study of revised reference cases: mode 1 at the 1600 kg/s convention with a split sensitivity, the steady all-checks point, and a separately named resized-compressor alternative at 1800 kg/s, with the original failing case retained.
+- **Assumptions:** the parallel network fits the existing bounded bisection closure (each stage's accepted heat is nonincreasing in the heater inlet, mixing is linear, so the residual stays strictly increasing); downstream consumers keep their interfaces; the split is an operating choice, not equipment sizing; the first-principles scratch check (`evidence/parallel-network-scratch.txt`) is right that the network reduces but does not remove the unmet heat at 1600 kg/s.
+- **Abandonment conditions:** the closure's monotonicity or bracket fails for the network; the design review finds an MR-7 violation not resolvable within the split's declared role; the integration seam blocks outside this increment; an owner gate on Q1 or on the resized-compressor alternative; the round-2 limits.
+- **Intended model increment:** new `Network Heat Driven Closure` definition and completion in `integrated_heat_electricity.sysml` (ARIES-only file), the assembly's `heat_exchangers` part rebound to it with `network_mode` (default 0) and `pbli_split_fraction` inputs, the reviewed `Heat Driven Closure` definition left in the library and its equations disclosed as copied in mode 0; regenerated package, re-pinned live manifest, one native CANDIDATE.
+- **Intended study question:** with the published network represented, how much of the remaining unremoved heat and gross shortfall is removed at the source-supported inputs, how the result depends on the supplied split, and what a steady all-checks revised reference case gives at 1600 kg/s and at the declared 1800 kg/s resized-compressor alternative.
+
+### T-001 scope
+
+- **Objective:** register modeling item WI-092 and write one reviewable spec/design record with the MR-7 variable-role table, equations, migration and validation plan for the network closure; obtain fresh independent design review.
+- **Why now:** round 1 located the remaining thermal inadequacy in the series arrangement; the owner brief permits an architecture correction only after review.
+- **Scope:** native PM registration; `work/active/WI-092_*/spec.md`, `design.md`, `plan.md`; the design-review brief and return under goal evidence. No model, package or completion edits before the review passes.
+- **Inputs:** `goal.md`; round-1 learnings L-001–L-004; `evidence/reference-case-contract.md` § 4; `evidence/parallel-network-scratch.py`; WI-089 design (closure equations) and `heat_driven_closure_impl.py@96914299`; MR-7.
+- **Done when:** the record names every affected quantity, role, binding and consumer, the mode-0 exactness proof and the insufficient/sufficient tests, and a fresh reviewer returns PASS or resolvable FINDINGS.
+- **Stop when:** the reviewer returns OWNER_GATE or the revision cap is reached.
+
+### T-001 start — 2026-09-25
+
+T-001 · modeling PM (`pm add-item`) and `work/active/WI-092_*/` · spec/design/plan and `evidence/design-review.md`. Coordinator authors; fresh reviewer reviews.
+
+### T-001 return — 2026-09-25
+
+- **Outcome:** COMPLETE.
+- **Evidence:** WI-092 registered in `work/BACKLOG.md` (`pm add-item`); `work/active/WI-092_aries-parallel-exchanger-network/{spec,design,plan}.md` (revised r1); `evidence/design-review.md` (fresh non-author reviewer: r1 FINDINGS two correct-before-implementation and three notes; r2 PASS; MR-7 compliant at design level); briefs `design-review-brief.md`, `design-review-recheck-brief.md`; scratch draft and standalone test under the session scratchpad reproduced the reviewed series closure bit-for-bit in mode 0 and the first-principles network check in mode 1.
+- **Reading:** the additive `Network Heat Driven Closure` with a supplied split is an admissible architecture alternative: equations, monotonicity and bracket verified by the reviewer; consumers keep meaning (only whole-network channels are read downstream); the split is an operating stand-in for the unmodelled branch hydraulic balance, not sizing. The reviewer corrected the R3 test to a direction test and noted that at the C3 inputs the PbLi heat is not fully transferred in any mode, because the PbLi primary capacity rate and the helium-stage bound limit it.
+- **Decision:** proceed to implementation on the stock build route with the old definition retained unbound and its equations disclosed as copied; execution detail; coordinator with reviewer PASS; WI-092 design.
+- **Decision:** the package-owned oracle must learn the network mode so the study verifier can re-derive mode-1 points independently; this is a checker extension, not model arithmetic, and is disclosed in the record; execution detail; coordinator; `exploration/aries_integrated/studies/oracle_entry.py`.
+
+### T-002 scope
+
+- **Objective:** implement WI-092 (definition, completion, assembly rebinding), rebuild the package on the stock route with fixed-point regeneration, run the development checks (mode-0 exact replay of the four canonical maps and the 27 sealed points, mode-1 network at C3 and original inputs, direction triple, refusals, zero-UA definedness), write the migration report, extend the oracle for mode 1, re-pin the live manifest and interface, run scoped validation, preservation and the isolated Stellaris replay, and obtain fresh independent implementation review.
+- **Why now:** the design review passed; the increment is the round's declared model change.
+- **Scope:** files named in the WI-092 plan plus `exploration/aries_integrated/build.py` (evidence path only), `studies/oracle_entry.py` (mode-1 branch), `studies/interface_data.py` and `studies/manifest.json` (re-pin). No shared-family file, no frozen record, no study execution.
+- **Inputs:** WI-092 spec/design/plan; `evidence/design-review.md`; the scratch draft; `goal.md` invariants.
+- **Done when:** all development checks pass with the receipts in WI-092 evidence and the implementation reviewer returns PASS (or resolvable FINDINGS), MR-7 recorded compliant/violated/unverified on executed behaviour.
+- **Stop when:** the build route cannot reach a fixed point (mechanical, retry within cap), mode-0 replay is not exact (strategy blocker), or a reserved gate binds.
+
+### T-002 start — 2026-09-25
+
+T-002 · `models/library/analyses/integrated_heat_electricity.sysml`, `models/designs/aries_cs_integrated/plant.sysml`, `exploration/aries_integrated/native_completions/network_heat_driven_closure_impl.py`, `build.py`, regenerated `aries_integrated` package, study oracle/interface/manifest · WI-092 evidence receipts and `evidence/implementation-review.md`. Coordinator implements; fresh reviewer reviews.

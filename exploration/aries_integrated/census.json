@@ -1,5 +1,5 @@
 {
-  "entry_points": 422,
+  "entry_points": 424,
   "by_entry_type": {
     "usage_literal": [
       "aries_integrated_plant__annual_om__evaluate__alpha",
@@ -292,9 +292,11 @@
       "aries_integrated_plant__heat_exchangers__he_cp",
       "aries_integrated_plant__heat_exchangers__he_flow",
       "aries_integrated_plant__heat_exchangers__he_limit",
+      "aries_integrated_plant__heat_exchangers__network_mode",
       "aries_integrated_plant__heat_exchangers__pbli_cp",
       "aries_integrated_plant__heat_exchangers__pbli_flow",
       "aries_integrated_plant__heat_exchangers__pbli_limit",
+      "aries_integrated_plant__heat_exchangers__pbli_split_fraction",
       "aries_integrated_plant__heat_rejection_equipment__price_factor",
       "aries_integrated_plant__heat_rejection_equipment__reference_cost",
       "aries_integrated_plant__heat_rejection_equipment__reference_quantity",
@@ -430,5 +432,5 @@
       "aries_integrated_plant__waste_equipment__selected_quantity"
     ]
   },
-  "derived_against_semantic_fingerprint": "419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131"
+  "derived_against_semantic_fingerprint": "78dd23bf4c4a2d431ce8223d973db08e955e6f378175623ced8b976db4231f93"
 }

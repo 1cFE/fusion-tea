@@ -115,11 +115,11 @@ Complete all stages in order for a production-ready system.
 | [ ] | Coolant_Branch_Heat | `run_coolant_branch_heat` | `root-0/dual_circuit_heat_accounting.sysml:4` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Coolant_Branch_Heat | `run_coolant_branch_heat` | `root-0/dual_circuit_heat_accounting.sysml:4` | High |
-| [ ] | Heat_Driven_Closure | `run_heat_driven_closure` | `root-0/integrated_heat_electricity.sysml:46` | High |
+| [ ] | Network_Heat_Driven_Closure | `run_network_heat_driven_closure` | `root-0/integrated_heat_electricity.sysml:112` | High |
 | [ ] | Ideal_Gas_Expander | `run_ideal_gas_expander` | `root-0/ideal_gas_brayton_components.sysml:16` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
-| [ ] | Plant_Electrical_Balance | `run_plant_electrical_balance` | `root-0/integrated_heat_electricity.sysml:124` | High |
-| [ ] | Passive_Recuperator | `run_passive_recuperator` | `root-0/integrated_heat_electricity.sysml:112` | High |
+| [ ] | Plant_Electrical_Balance | `run_plant_electrical_balance` | `root-0/integrated_heat_electricity.sysml:197` | High |
+| [ ] | Passive_Recuperator | `run_passive_recuperator` | `root-0/integrated_heat_electricity.sysml:185` | High |
 | [ ] | Fixed_Outlet_Conditioning | `run_fixed_outlet_conditioning` | `root-0/ideal_gas_brayton_components.sysml:29` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
@@ -130,7 +130,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
 | [ ] | Scaled_Amount | `run_scaled_amount` | `root-0/integrated_equipment_costs.sysml:92` | High |
 | [ ] | Supplied_Purchase_Cost | `run_supplied_purchase_cost` | `root-0/mfe_account_costs.sysml:17` | High |
-| [ ] | Integrated_Plant_Ledger | `run_integrated_plant_ledger` | `root-0/integrated_heat_electricity.sysml:162` | High |
+| [ ] | Integrated_Plant_Ledger | `run_integrated_plant_ledger` | `root-0/integrated_heat_electricity.sysml:235` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |

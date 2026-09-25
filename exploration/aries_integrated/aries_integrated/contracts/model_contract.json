@@ -1785,18 +1785,8 @@
       "python_type": "float"
     },
     {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_return",
-      "field_name": "he_return",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
-      "field_name": "he_unmet",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
-      "field_name": "turbine_temperature",
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined",
+      "field_name": "pbli_state_defined",
       "python_type": "float"
     },
     {
@@ -1805,168 +1795,8 @@
       "python_type": "float"
     },
     {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
-      "field_name": "accepted_heat",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return",
-      "field_name": "divertor_return",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred",
-      "field_name": "divertor_transferred",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in",
-      "field_name": "he_secondary_in",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
-      "field_name": "divertor_unmet",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_state_defined",
-      "field_name": "he_state_defined",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
-      "field_name": "divertor_hot_terminal_difference",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot",
-      "field_name": "pbli_hot",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_capability",
-      "field_name": "he_capability",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
-      "field_name": "divertor_cold_terminal_difference",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
-      "field_name": "unmet_heat",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__iterations",
-      "field_name": "iterations",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out",
-      "field_name": "he_secondary_out",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return",
-      "field_name": "pbli_return",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability",
-      "field_name": "pbli_capability",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
-      "field_name": "pbli_unmet",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in",
-      "field_name": "divertor_secondary_in",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
-      "field_name": "divertor_hot_bound_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out",
-      "field_name": "pbli_secondary_out",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined",
-      "field_name": "divertor_state_defined",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred",
-      "field_name": "pbli_transferred",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
-      "field_name": "he_hot_bound_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability",
-      "field_name": "divertor_capability",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in",
-      "field_name": "pbli_secondary_in",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
-      "field_name": "heater_inlet",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
-      "field_name": "closure_residual",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
-      "field_name": "he_hot_terminal_difference",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
-      "field_name": "pbli_hot_bound_margin",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
-      "field_name": "pbli_hot_terminal_difference",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot",
-      "field_name": "divertor_hot",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined",
-      "field_name": "pbli_state_defined",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out",
-      "field_name": "divertor_secondary_out",
-      "python_type": "float"
-    },
-    {
-      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_transferred",
-      "field_name": "he_transferred",
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__network_mode_used",
+      "field_name": "network_mode_used",
       "python_type": "float"
     },
     {
@@ -1975,13 +1805,208 @@
       "python_type": "float"
     },
     {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot",
+      "field_name": "divertor_hot",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "field_name": "divertor_hot_bound_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out",
+      "field_name": "pbli_stream_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "field_name": "he_hot_bound_margin",
+      "python_type": "float"
+    },
+    {
       "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference",
       "field_name": "he_cold_terminal_difference",
       "python_type": "float"
     },
     {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+      "field_name": "divertor_unmet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out",
+      "field_name": "pbli_secondary_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+      "field_name": "accepted_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred",
+      "field_name": "divertor_transferred",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined",
+      "field_name": "divertor_state_defined",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_state_defined",
+      "field_name": "he_state_defined",
+      "python_type": "float"
+    },
+    {
       "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__expansion_factor",
       "field_name": "expansion_factor",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot",
+      "field_name": "pbli_hot",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred",
+      "field_name": "pbli_transferred",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_split_used",
+      "field_name": "pbli_split_used",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+      "field_name": "divertor_hot_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_transferred",
+      "field_name": "he_transferred",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out",
+      "field_name": "divertor_stream_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return",
+      "field_name": "pbli_return",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in",
+      "field_name": "he_secondary_in",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in",
+      "field_name": "pbli_secondary_in",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in",
+      "field_name": "divertor_secondary_in",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "field_name": "closure_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+      "field_name": "unmet_heat",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+      "field_name": "heater_inlet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_return",
+      "field_name": "he_return",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_capability",
+      "field_name": "he_capability",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "field_name": "pbli_hot_bound_margin",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+      "field_name": "turbine_temperature",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability",
+      "field_name": "pbli_capability",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out",
+      "field_name": "he_secondary_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+      "field_name": "he_unmet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+      "field_name": "divertor_cold_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+      "field_name": "pbli_hot_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability",
+      "field_name": "divertor_capability",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet",
+      "field_name": "mixed_outlet",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return",
+      "field_name": "divertor_return",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+      "field_name": "he_hot_terminal_difference",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out",
+      "field_name": "divertor_secondary_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__iterations",
+      "field_name": "iterations",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+      "field_name": "pbli_unmet",
       "python_type": "float"
     },
     {
@@ -5214,6 +5239,13 @@
       "qualified_name": "aries_integrated_plant__heat_exchangers__he_limit"
     },
     {
+      "default_value": 0.0,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__network_mode"
+    },
+    {
       "default_value": 190.0,
       "entry_type": "design_attribute",
       "param_group": "plant_params",
@@ -5233,6 +5265,13 @@
       "param_group": "plant_params",
       "python_type": "float",
       "qualified_name": "aries_integrated_plant__heat_exchangers__pbli_limit"
+    },
+    {
+      "default_value": 0.85,
+      "entry_type": "design_attribute",
+      "param_group": "plant_params",
+      "python_type": "float",
+      "qualified_name": "aries_integrated_plant__heat_exchangers__pbli_split_fraction"
     },
     {
       "default_value": 1.0,
@@ -6271,5 +6310,5 @@
       "qualified_name": "aries_cs_plasma_integration__plasma__volume_exponent"
     }
   ],
-  "semantic_fingerprint": "419e6e3d7ba46320a1f88b5f478d36abb5ead85d2ecb6fcdb7aff5fcb2c1e131"
+  "semantic_fingerprint": "78dd23bf4c4a2d431ce8223d973db08e955e6f378175623ced8b976db4231f93"
 }
