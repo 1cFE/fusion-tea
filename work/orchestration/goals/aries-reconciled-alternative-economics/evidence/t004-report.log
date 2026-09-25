@@ -1,0 +1,60 @@
+{
+ "cases": 64,
+ "scenarios": {
+  "alt-canonical-no-credit": 685.695,
+  "alt-canonical-feed100": 238.028179,
+  "alt-unscaled-no-credit": 685.676132,
+  "alt-unscaled-feed100": 238.009777,
+  "baseline-no-credit": 1119.408083,
+  "baseline-feed100": 176.686569,
+  "original-source-assumed-no-credit": 767.420931
+ },
+ "ladder_last": [
+  [
+   "diag-L8-aligned-discount-0.00",
+   31.885,
+   30.659
+  ],
+  [
+   "diag-L8-aligned-discount-0.03",
+   46.008,
+   42.74
+  ],
+  [
+   "diag-L8-aligned-discount-0.08",
+   84.687,
+   70.745
+  ],
+  [
+   "diag-L8-aligned-discount-0.10",
+   104.898,
+   83.404
+  ]
+ ],
+ "top_sens": [
+  [
+   "sens-tritium-price-1e+08-no-credit",
+   1474.637
+  ],
+  [
+   "sens-tritium-price-1e+07-no-credit",
+   -421.325
+  ],
+  [
+   "sens-tritium-price-1e+08-feed100",
+   419.53
+  ],
+  [
+   "sens-feed-50-service30m",
+   226.094
+  ],
+  [
+   "sens-feed-makeup-service30m",
+   -175.135
+  ],
+  [
+   "sens-feed-150-service30m",
+   -175.135
+  ]
+ ]
+}

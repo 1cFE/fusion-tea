@@ -1,0 +1,35 @@
+{
+  "manifest_sha256": "cbda88980f2fa5c6a3aa625f87deedf4499f3f86e219cb8e7c128ef30e9a111b",
+  "canonical_sources": {
+    "exploration/aries_integrated/studies/20260925-aries-flow-scaling-check/results/cases.json": "1b8c00458caef32e415d22b2c2cf43431d2262c7886ebb672b4a1165aa56ecc1",
+    "exploration/aries_integrated/studies/20260925-aries-revised-reference-network/results/cases.json": "fc9b0ce798419b18461c866a41e15db62c632ee24d9691c936f1ea0f46721aff"
+  },
+  "canonical_cases": [
+    "nominal-calculated",
+    "nominal-source-assumed",
+    "resized-compressor-1700-network-0.85",
+    "resized-compressor-1700-network-scaledflows-0.85"
+  ],
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "06e0627ca37475e7ceaaaefa245e71f2fdfe4acca2af8ccae4a7a049396e9021",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_plasma_scaling_params.json",
+        "inputs/mfe_viability_params.json",
+        "inputs/plant_params.json",
+        "inputs/plasma_integration_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+      "semantic_fingerprint": "78dd23bf4c4a2d431ce8223d973db08e955e6f378175623ced8b976db4231f93"
+    }
+  },
+  "native_evaluations": 0,
+  "source_comparisons": "Canonical bases are the verbatim stored input maps of four sealed cases on this package identity; every other case composes declared changes on a named base."
+}

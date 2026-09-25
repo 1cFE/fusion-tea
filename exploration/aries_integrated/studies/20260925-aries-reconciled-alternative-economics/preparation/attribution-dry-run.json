@@ -1,0 +1,1613 @@
+{
+  "source": "exploration/aries_integrated/studies/20260925-aries-reconciled-alternative-economics/oracle-window-scan.json",
+  "published": {
+    "lcoe": 77.6,
+    "net": 1000.0,
+    "annual_mwh": 7446000.0,
+    "direct_musd": 2619.572,
+    "inclusive_musd": 5055.77396
+  },
+  "materiality": {
+    "lcoe_reported_not_separated": 0.1,
+    "lcoe_material_aligned": 1.0,
+    "lcoe_material_fraction": 0.01,
+    "overnight_material": 10000000.0
+  },
+  "scenarios": {
+    "alt-canonical-no-credit": {
+      "net": 891.0016527229654,
+      "gross": 1143.0125802299515,
+      "unmet": 0.0,
+      "annual_mwh": 6634398.3061752,
+      "direct": 2925685641.045218,
+      "overnight": 4359271605.157375,
+      "idc": 687130186.7629312,
+      "financed": 5046401791.920306,
+      "annual_operating": 4237004300.1940665,
+      "annual_om": 70000000.0,
+      "tritium_cost": 4161912057.3420386,
+      "deuterium_cost": 92242.85202778914,
+      "gross_makeup": 138.7304019114013,
+      "new_feed": 0.0,
+      "external_kg": 138.7304019114013,
+      "curtailed": 0.0,
+      "event_count": 6.0,
+      "event_cost": 72231350.0,
+      "lifetime_replacement": 433388100.0,
+      "pv_replacement": 178455255.93746245,
+      "overhaul": 217963580.25786874,
+      "gross_terminal": 435927160.5157375,
+      "salvage": 87185432.1031475,
+      "pv_total": 78059665154.94102,
+      "pv_energy": 113840213.44245471,
+      "lcoe": 685.6949999869734,
+      "branch_lcoe": 611.1934076833633,
+      "compressor_margin": 32.96670548045495,
+      "compressor_purchase": 83554468.75,
+      "contributions": {
+        "capital": 44.32881526940584,
+        "om": 10.551069858866482,
+        "tritium": 627.3232123353511,
+        "supply": 0.0,
+        "deuterium": 0.013903725367518386,
+        "consumables": 0.7536478470618916,
+        "replacement": 1.5675941790786443,
+        "other_overhaul": 0.7216095135842412,
+        "terminal": 0.5439340728220045,
+        "salvage": -0.10878681456440088,
+        "imports": 0.0
+      },
+      "branch_contributions": {
+        "capital": 39.570401512210985,
+        "om": 9.401020682245502,
+        "tritium": 558.9460189822776,
+        "supply": 0.0,
+        "deuterium": 0.0123882422814651,
+        "consumables": 0.67150147730325,
+        "replacement": 1.3967290043579723,
+        "other_overhaul": 0.7456834081507101,
+        "terminal": 0.5620804681697957,
+        "salvage": -0.11241609363395914,
+        "imports": 0.0
+      },
+      "checks": {
+        "all": false,
+        "failed": []
+      }
+    },
+    "alt-canonical-feed100": {
+      "net": 891.0016527229654,
+      "gross": 1143.0125802299515,
+      "unmet": 0.0,
+      "annual_mwh": 6634398.3061752,
+      "direct": 2925685641.045218,
+      "overnight": 4359271605.157375,
+      "idc": 687130186.7629312,
+      "financed": 5046401791.920306,
+      "annual_operating": 1237004300.1940665,
+      "annual_om": 70000000.0,
+      "tritium_cost": 1161912057.3420386,
+      "deuterium_cost": 92242.85202778914,
+      "gross_makeup": 138.7304019114013,
+      "new_feed": 100.0,
+      "external_kg": 38.730401911401295,
+      "curtailed": 0.0,
+      "event_count": 6.0,
+      "event_cost": 72231350.0,
+      "lifetime_replacement": 433388100.0,
+      "pv_replacement": 178455255.93746245,
+      "overhaul": 217963580.25786874,
+      "gross_terminal": 435927160.5157375,
+      "salvage": 87185432.1031475,
+      "pv_total": 27097178683.57753,
+      "pv_energy": 113840213.44245471,
+      "lcoe": 238.02817883220968,
+      "branch_lcoe": 212.32153016523273,
+      "compressor_margin": 32.96670548045495,
+      "compressor_purchase": 83554468.75,
+      "contributions": {
+        "capital": 44.32881526940584,
+        "om": 10.551069858866482,
+        "tritium": 175.13450409821613,
+        "supply": 4.52188708237135,
+        "deuterium": 0.013903725367518386,
+        "consumables": 0.7536478470618916,
+        "replacement": 1.5675941790786443,
+        "other_overhaul": 0.7216095135842412,
+        "terminal": 0.5439340728220045,
+        "salvage": -0.10878681456440088,
+        "imports": 0.0
+      },
+      "branch_contributions": {
+        "capital": 39.570401512210985,
+        "om": 9.401020682245502,
+        "tritium": 156.0451326003275,
+        "supply": 4.0290088638195005,
+        "deuterium": 0.0123882422814651,
+        "consumables": 0.67150147730325,
+        "replacement": 1.3967290043579723,
+        "other_overhaul": 0.7456834081507101,
+        "terminal": 0.5620804681697957,
+        "salvage": -0.11241609363395914,
+        "imports": 0.0
+      },
+      "checks": {
+        "all": false,
+        "failed": []
+      }
+    },
+    "alt-unscaled-no-credit": {
+      "net": 891.002580229951,
+      "gross": 1143.012580229951,
+      "unmet": 0.0,
+      "annual_mwh": 6634405.212392215,
+      "direct": 2924517968.75,
+      "overnight": 4357531773.4375,
+      "idc": 686855945.7880859,
+      "financed": 5044387719.225586,
+      "annual_operating": 4237004300.1940665,
+      "annual_om": 70000000.0,
+      "tritium_cost": 4161912057.3420386,
+      "deuterium_cost": 92242.85202778914,
+      "gross_makeup": 138.7304019114013,
+      "new_feed": 0.0,
+      "external_kg": 138.7304019114013,
+      "curtailed": 0.0,
+      "event_count": 6.0,
+      "event_cost": 72231350.0,
+      "lifetime_replacement": 433388100.0,
+      "pv_replacement": 178455255.93746245,
+      "overhaul": 217876588.671875,
+      "gross_terminal": 435753177.34375,
+      "salvage": 87150635.46875,
+      "pv_total": 78057598525.18575,
+      "pv_energy": 113840331.94682886,
+      "lcoe": 685.6761324417424,
+      "branch_lcoe": 611.1934076833633,
+      "compressor_margin": 32.96670548045495,
+      "compressor_purchase": 83554468.75,
+      "contributions": {
+        "capital": 44.311077040619104,
+        "om": 10.55105887551894,
+        "tritium": 627.3225593106858,
+        "supply": 0.0,
+        "deuterium": 0.013903710894156927,
+        "consumables": 0.7536470625370671,
+        "replacement": 1.5675925472600796,
+        "other_overhaul": 0.7213207606688102,
+        "terminal": 0.5437164169480548,
+        "salvage": -0.10874328338961096,
+        "imports": 0.0
+      },
+      "branch_contributions": {
+        "capital": 39.570401512210985,
+        "om": 9.401020682245502,
+        "tritium": 558.9460189822776,
+        "supply": 0.0,
+        "deuterium": 0.0123882422814651,
+        "consumables": 0.67150147730325,
+        "replacement": 1.3967290043579723,
+        "other_overhaul": 0.7456834081507101,
+        "terminal": 0.5620804681697957,
+        "salvage": -0.11241609363395914,
+        "imports": 0.0
+      },
+      "checks": {
+        "all": false,
+        "failed": []
+      }
+    },
+    "alt-unscaled-feed100": {
+      "net": 891.002580229951,
+      "gross": 1143.012580229951,
+      "unmet": 0.0,
+      "annual_mwh": 6634405.212392215,
+      "direct": 2924517968.75,
+      "overnight": 4357531773.4375,
+      "idc": 686855945.7880859,
+      "financed": 5044387719.225586,
+      "annual_operating": 1237004300.1940665,
+      "annual_om": 70000000.0,
+      "tritium_cost": 1161912057.3420386,
+      "deuterium_cost": 92242.85202778914,
+      "gross_makeup": 138.7304019114013,
+      "new_feed": 100.0,
+      "external_kg": 38.730401911401295,
+      "curtailed": 0.0,
+      "event_count": 6.0,
+      "event_cost": 72231350.0,
+      "lifetime_replacement": 433388100.0,
+      "pv_replacement": 178455255.93746245,
+      "overhaul": 217876588.671875,
+      "gross_terminal": 435753177.34375,
+      "salvage": 87150635.46875,
+      "pv_total": 27095112053.822254,
+      "pv_energy": 113840331.94682886,
+      "lcoe": 238.00977729472456,
+      "branch_lcoe": 212.32153016523273,
+      "compressor_margin": 32.96670548045495,
+      "compressor_purchase": 83554468.75,
+      "contributions": {
+        "capital": 44.311077040619104,
+        "om": 10.55105887551894,
+        "tritium": 175.13432178844553,
+        "supply": 4.521882375222403,
+        "deuterium": 0.013903710894156927,
+        "consumables": 0.7536470625370671,
+        "replacement": 1.5675925472600796,
+        "other_overhaul": 0.7213207606688102,
+        "terminal": 0.5437164169480548,
+        "salvage": -0.10874328338961096,
+        "imports": 0.0
+      },
+      "branch_contributions": {
+        "capital": 39.570401512210985,
+        "om": 9.401020682245502,
+        "tritium": 156.0451326003275,
+        "supply": 4.0290088638195005,
+        "deuterium": 0.0123882422814651,
+        "consumables": 0.67150147730325,
+        "replacement": 1.3967290043579723,
+        "other_overhaul": 0.7456834081507101,
+        "terminal": 0.5620804681697957,
+        "salvage": -0.11241609363395914,
+        "imports": 0.0
+      },
+      "checks": {
+        "all": false,
+        "failed": []
+      }
+    },
+    "baseline-no-credit": {
+      "net": 423.10679410388695,
+      "gross": 655.3549268168259,
+      "unmet": 0.0,
+      "annual_mwh": 3150453.188897542,
+      "direct": 2919603000.0,
+      "overnight": 4350208470.0,
+      "idc": 685701610.08375,
+      "financed": 5035910080.08375,
+      "annual_operating": 3215100712.857115,
+      "annual_om": 70000000.0,
+      "tritium_cost": 3140031210.6973844,
+      "deuterium_cost": 69502.15973043694,
+      "gross_makeup": 104.66770702324615,
+      "new_feed": 0.0,
+      "external_kg": 104.66770702324615,
+      "curtailed": 0.0,
+      "event_count": 6.0,
+      "event_cost": 72231350.0,
+      "lifetime_replacement": 433388100.0,
+      "pv_replacement": 178455255.93746245,
+      "overhaul": 217510423.5,
+      "gross_terminal": 435020847.0,
+      "salvage": 87004169.4,
+      "pv_total": 60513967762.179504,
+      "pv_energy": 54058898.322510086,
+      "lcoe": 1119.4080834048652,
+      "branch_lcoe": 473.9514539717125,
+      "compressor_margin": 227.14905157213934,
+      "compressor_purchase": 78639500.0,
+      "contributions": {
+        "capital": 93.15598793819296,
+        "om": 22.219025582314888,
+        "tritium": 996.6919114250338,
+        "supply": 0.0,
+        "deuterium": 0.0220610037868102,
+        "consumables": 1.5870732558796348,
+        "replacement": 3.3011263913077897,
+        "other_overhaul": 1.5164458317913418,
+        "terminal": 1.1430649706975125,
+        "salvage": -0.22861299413950248,
+        "imports": 0.0
+      },
+      "branch_contributions": {
+        "capital": 39.570401512210985,
+        "om": 9.401020682245502,
+        "tritium": 421.7071193523213,
+        "supply": 0.0,
+        "deuterium": 0.009334160586950972,
+        "consumables": 0.67150147730325,
+        "replacement": 1.3967290043579723,
+        "other_overhaul": 0.7456834081507101,
+        "terminal": 0.5620804681697957,
+        "salvage": -0.11241609363395914,
+        "imports": 0.0
+      },
+      "checks": {
+        "all": false,
+        "failed": []
+      }
+    },
+    "baseline-feed100": {
+      "net": 423.10679410388695,
+      "gross": 655.3549268168259,
+      "unmet": 0.0,
+      "annual_mwh": 3150453.188897542,
+      "direct": 2919603000.0,
+      "overnight": 4350208470.0,
+      "idc": 685701610.08375,
+      "financed": 5035910080.08375,
+      "annual_operating": 215100712.857115,
+      "annual_om": 70000000.0,
+      "tritium_cost": 140031210.69738457,
+      "deuterium_cost": 69502.15973043694,
+      "gross_makeup": 104.66770702324615,
+      "new_feed": 100.0,
+      "external_kg": 4.667707023246155,
+      "curtailed": 0.0,
+      "event_count": 6.0,
+      "event_cost": 72231350.0,
+      "lifetime_replacement": 433388100.0,
+      "pv_replacement": 178455255.93746245,
+      "overhaul": 217510423.5,
+      "gross_terminal": 435020847.0,
+      "salvage": 87004169.4,
+      "pv_total": 9551481290.816015,
+      "pv_energy": 54058898.322510086,
+      "lcoe": 176.6865694123623,
+      "branch_lcoe": 75.07957645358199,
+      "compressor_margin": 227.14905157213934,
+      "compressor_purchase": 78639500.0,
+      "contributions": {
+        "capital": 93.15598793819296,
+        "om": 22.219025582314888,
+        "tritium": 44.447957897253055,
+        "supply": 9.522439535277808,
+        "deuterium": 0.0220610037868102,
+        "consumables": 1.5870732558796348,
+        "replacement": 3.3011263913077897,
+        "other_overhaul": 1.5164458317913418,
+        "terminal": 1.1430649706975125,
+        "salvage": -0.22861299413950248,
+        "imports": 0.0
+      },
+      "branch_contributions": {
+        "capital": 39.570401512210985,
+        "om": 9.401020682245502,
+        "tritium": 18.806232970371283,
+        "supply": 4.0290088638195005,
+        "deuterium": 0.009334160586950972,
+        "consumables": 0.67150147730325,
+        "replacement": 1.3967290043579723,
+        "other_overhaul": 0.7456834081507101,
+        "terminal": 0.5620804681697957,
+        "salvage": -0.11241609363395914,
+        "imports": 0.0
+      },
+      "checks": {
+        "all": false,
+        "failed": []
+      }
+    },
+    "original-source-assumed-no-credit": {
+      "net": 796.0052878864825,
+      "gross": 1028.6585302414446,
+      "unmet": 158.72584788928134,
+      "annual_mwh": 5927055.373602749,
+      "direct": 2919603000.0,
+      "overnight": 4350208470.0,
+      "idc": 685701610.08375,
+      "financed": 5035910080.08375,
+      "annual_operating": 4237004300.1940665,
+      "annual_om": 70000000.0,
+      "tritium_cost": 4161912057.3420386,
+      "deuterium_cost": 92242.85202778914,
+      "gross_makeup": 138.7304019114013,
+      "new_feed": 0.0,
+      "external_kg": 138.7304019114013,
+      "curtailed": 0.0,
+      "event_count": 6.0,
+      "event_cost": 72231350.0,
+      "lifetime_replacement": 433388100.0,
+      "pv_replacement": 178455255.93746245,
+      "overhaul": 217510423.5,
+      "gross_terminal": 435020847.0,
+      "salvage": 87004169.4,
+      "pv_total": 78048899662.75096,
+      "pv_energy": 101702854.98055635,
+      "lcoe": 767.4209310807687,
+      "branch_lcoe": 611.1934076833633,
+      "compressor_margin": 227.14905157213934,
+      "compressor_purchase": 78639500.0,
+      "contributions": {
+        "capital": 49.51591654970276,
+        "om": 11.81024903390613,
+        "tritium": 702.1888264918011,
+        "supply": 0.0,
+        "deuterium": 0.015563015057799182,
+        "consumables": 0.8435892167075807,
+        "replacement": 1.754673022419869,
+        "other_overhaul": 0.8060480804405628,
+        "terminal": 0.6075820884160371,
+        "salvage": -0.12151641768320742,
+        "imports": 0.0
+      },
+      "branch_contributions": {
+        "capital": 39.570401512210985,
+        "om": 9.401020682245502,
+        "tritium": 558.9460189822776,
+        "supply": 0.0,
+        "deuterium": 0.0123882422814651,
+        "consumables": 0.67150147730325,
+        "replacement": 1.3967290043579723,
+        "other_overhaul": 0.7456834081507101,
+        "terminal": 0.5620804681697957,
+        "salvage": -0.11241609363395914,
+        "imports": 0.0
+      },
+      "checks": {
+        "all": false,
+        "failed": []
+      }
+    }
+  },
+  "attributions": [
+    {
+      "from": "baseline-no-credit",
+      "to": "alt-canonical-no-credit",
+      "lcoe_from": 1119.4080834048652,
+      "lcoe_to": 685.6949999869734,
+      "delta": -433.7130834178919,
+      "by_contribution": {
+        "capital": -48.82717266878713,
+        "om": -11.667955723448406,
+        "tritium": -369.36869908968276,
+        "supply": 0.0,
+        "deuterium": -0.008157278419291814,
+        "consumables": -0.8334254088177432,
+        "replacement": -1.7335322122291454,
+        "other_overhaul": -0.7948363182071007,
+        "terminal": -0.599130897875508,
+        "salvage": 0.1198261795751016,
+        "imports": 0.0
+      },
+      "sum_of_parts": -433.713083417892,
+      "net_from": 423.10679410388695,
+      "net_to": 891.0016527229654,
+      "overnight_from": 4350208470.0,
+      "overnight_to": 4359271605.157375
+    },
+    {
+      "from": "baseline-feed100",
+      "to": "alt-canonical-feed100",
+      "lcoe_from": 176.6865694123623,
+      "lcoe_to": 238.02817883220968,
+      "delta": 61.34160941984737,
+      "by_contribution": {
+        "capital": -48.82717266878713,
+        "om": -11.667955723448406,
+        "tritium": 130.68654620096308,
+        "supply": -5.000552452906458,
+        "deuterium": -0.008157278419291814,
+        "consumables": -0.8334254088177432,
+        "replacement": -1.7335322122291454,
+        "other_overhaul": -0.7948363182071007,
+        "terminal": -0.599130897875508,
+        "salvage": 0.1198261795751016,
+        "imports": 0.0
+      },
+      "sum_of_parts": 61.3416094198474,
+      "net_from": 423.10679410388695,
+      "net_to": 891.0016527229654,
+      "overnight_from": 4350208470.0,
+      "overnight_to": 4359271605.157375
+    },
+    {
+      "from": "alt-unscaled-no-credit",
+      "to": "alt-canonical-no-credit",
+      "lcoe_from": 685.6761324417424,
+      "lcoe_to": 685.6949999869734,
+      "delta": 0.018867545230932592,
+      "by_contribution": {
+        "capital": 0.017738228786733146,
+        "om": 1.0983347541682065e-05,
+        "tritium": 0.0006530246652118876,
+        "supply": 0.0,
+        "deuterium": 1.447336145897482e-08,
+        "consumables": 7.845248244375824e-07,
+        "replacement": 1.6318185647179462e-06,
+        "other_overhaul": 0.0002887529154309565,
+        "terminal": 0.00021765587394961816,
+        "salvage": -4.353117478991808e-05,
+        "imports": 0.0
+      },
+      "sum_of_parts": 0.018867545230827988,
+      "net_from": 891.002580229951,
+      "net_to": 891.0016527229654,
+      "overnight_from": 4357531773.4375,
+      "overnight_to": 4359271605.157375
+    },
+    {
+      "from": "alt-canonical-no-credit",
+      "to": "alt-canonical-feed100",
+      "lcoe_from": 685.6949999869734,
+      "lcoe_to": 238.02817883220968,
+      "delta": -447.6668211547637,
+      "by_contribution": {
+        "capital": 0.0,
+        "om": 0.0,
+        "tritium": -452.18870823713496,
+        "supply": 4.52188708237135,
+        "deuterium": 0.0,
+        "consumables": 0.0,
+        "replacement": 0.0,
+        "other_overhaul": 0.0,
+        "terminal": 0.0,
+        "salvage": 0.0,
+        "imports": 0.0
+      },
+      "sum_of_parts": -447.6668211547636,
+      "net_from": 891.0016527229654,
+      "net_to": 891.0016527229654,
+      "overnight_from": 4359271605.157375,
+      "overnight_to": 4359271605.157375
+    }
+  ],
+  "ladder": {
+    "steps": [
+      {
+        "case": "alt-canonical-feed100",
+        "lcoe_ours": 238.02817883220968,
+        "lcoe_branch": 212.32153016523273,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920306,
+        "event_count": 6.0,
+        "external_kg": 38.730401911401295,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": 160.42817883220968,
+        "gap_branch_vs_published": 134.72153016523274
+      },
+      {
+        "case": "diag-L3-om-source-derived-feed100",
+        "lcoe_ours": 239.6701278827906,
+        "lcoe_branch": 213.78450948298723,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920306,
+        "event_count": 6.0,
+        "external_kg": 38.730401911401295,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": 162.07012788279062,
+        "gap_branch_vs_published": 136.18450948298724,
+        "step_from": "alt-canonical-feed100",
+        "step_delta_ours": 1.6419490505809335
+      },
+      {
+        "case": "diag-L34-cumulative-om-life47-feed100",
+        "lcoe_ours": 237.4803514244975,
+        "lcoe_branch": 211.80543119116317,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920306,
+        "event_count": 7.0,
+        "external_kg": 38.730401911401295,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": 159.88035142449752,
+        "gap_branch_vs_published": 134.20543119116317,
+        "step_from": "diag-L3-om-source-derived-feed100",
+        "step_delta_ours": -2.189776458293096
+      },
+      {
+        "case": "diag-L345-cumulative-om-life47-cadence-feed100",
+        "lcoe_ours": 238.9694222726862,
+        "lcoe_branch": 213.13219577792086,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920306,
+        "event_count": 13.0,
+        "external_kg": 38.730401911401295,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": 161.3694222726862,
+        "gap_branch_vs_published": 135.53219577792086,
+        "step_from": "diag-L34-cumulative-om-life47-feed100",
+        "step_delta_ours": 1.4890708481886747
+      },
+      {
+        "case": "diag-L7-aligned-combined-at-1000",
+        "lcoe_ours": 59.31303109209871,
+        "lcoe_branch": 53.05805431377386,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920306,
+        "event_count": 13.0,
+        "external_kg": 0.0,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": -18.286968907901283,
+        "gap_branch_vs_published": -24.541945686226136,
+        "step_from": "diag-L345-cumulative-om-life47-cadence-feed100",
+        "step_delta_ours": -179.6563911805875
+      },
+      {
+        "case": "alt-canonical-no-credit",
+        "lcoe_ours": 685.6949999869734,
+        "lcoe_branch": 611.1934076833633,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920306,
+        "event_count": 6.0,
+        "external_kg": 138.7304019114013,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": 608.0949999869733,
+        "gap_branch_vs_published": 533.5934076833632
+      },
+      {
+        "case": "diag-L6-fuel-self-sufficient",
+        "lcoe_ours": 58.37178765162222,
+        "lcoe_branch": 52.24738870108572,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920306,
+        "event_count": 6.0,
+        "external_kg": 0.0,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": -19.228212348377774,
+        "gap_branch_vs_published": -25.352611298914276
+      },
+      {
+        "case": "diag-L7-aligned-combined-at-our-net",
+        "lcoe_ours": 59.31303109209871,
+        "lcoe_branch": 59.54877204961946,
+        "branch_annual_mwh": 6634398.306167672,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920306,
+        "event_count": 13.0,
+        "external_kg": 0.0,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": -18.286968907901283,
+        "gap_branch_vs_published": -18.051227950380536
+      },
+      {
+        "case": "diag-L8-aligned-discount-0.00",
+        "lcoe_ours": 31.88507493578435,
+        "lcoe_branch": 30.65860623966404,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 4359271605.157375,
+        "event_count": 13.0,
+        "external_kg": 0.0,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": -45.71492506421565,
+        "gap_branch_vs_published": -46.941393760335956
+      },
+      {
+        "case": "diag-L8-aligned-discount-0.03",
+        "lcoe_ours": 46.00797841592214,
+        "lcoe_branch": 42.739783870349754,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 4763493783.288803,
+        "event_count": 13.0,
+        "external_kg": 0.0,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": -31.592021584077855,
+        "gap_branch_vs_published": -34.86021612965024
+      },
+      {
+        "case": "diag-L8-aligned-discount-0.08",
+        "lcoe_ours": 84.68661991284704,
+        "lcoe_branch": 70.74508283755604,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5491426752.276008,
+        "event_count": 13.0,
+        "external_kg": 0.0,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": 7.086619912847041,
+        "gap_branch_vs_published": -6.854917162443954
+      },
+      {
+        "case": "diag-L8-aligned-discount-0.10",
+        "lcoe_ours": 104.89780577705223,
+        "lcoe_branch": 83.40366025318424,
+        "branch_annual_mwh": 7446000.0,
+        "annual_mwh": 6634398.3061752,
+        "net": 891.0016527229654,
+        "overnight": 4359271605.157375,
+        "financed": 5802190506.464466,
+        "event_count": 13.0,
+        "external_kg": 0.0,
+        "checks": {
+          "all": false,
+          "failed": []
+        },
+        "gap_ours_vs_published": 27.297805777052233,
+        "gap_branch_vs_published": 5.803660253184248
+      }
+    ],
+    "one_at_a_time": [
+      {
+        "case": "diag-L3-om-source-derived-feed100",
+        "base": "alt-canonical-feed100",
+        "lcoe_base": 238.02817883220968,
+        "lcoe": 239.6701278827906,
+        "delta": 1.6419490505809335,
+        "branch_lcoe": 213.78450948298723
+      },
+      {
+        "case": "diag-L4-life-47y-feed100",
+        "base": "alt-canonical-feed100",
+        "lcoe_base": 238.02817883220968,
+        "lcoe": 235.83840237391658,
+        "delta": -2.189776458293096,
+        "branch_lcoe": 210.34245187340866
+      },
+      {
+        "case": "diag-L5-source-cadence-40y-feed100",
+        "base": "alt-canonical-feed100",
+        "lcoe_base": 238.02817883220968,
+        "lcoe": 239.50949085239776,
+        "delta": 1.481312020188085,
+        "branch_lcoe": 213.6413816234187
+      },
+      {
+        "case": "diag-L5-source-cadence-47y-feed100",
+        "base": "diag-L4-life-47y-feed100",
+        "lcoe_base": 235.83840237391658,
+        "lcoe": 237.32747322210525,
+        "delta": 1.4890708481886747,
+        "branch_lcoe": 211.66921646016635
+      },
+      {
+        "case": "diag-L6-fuel-self-sufficient",
+        "base": "alt-canonical-no-credit",
+        "lcoe_base": 685.6949999869734,
+        "lcoe": 58.37178765162222,
+        "delta": -627.3232123353512,
+        "branch_lcoe": 52.24738870108572
+      }
+    ],
+    "interaction_L4_L5": {
+      "L4_alone": -2.189776458293096,
+      "L5_alone": 1.481312020188085,
+      "sum": -0.7084644381050111,
+      "combined_L4_L5": -0.7007056101044213,
+      "interaction": 0.007758828000589801
+    },
+    "combined_interaction": {
+      "from_no_credit_L6_fuel": -627.3232123353512,
+      "L3_om_on_feed100": 1.6419490505809335,
+      "L4_L5_on_feed100": -0.7007056101044213,
+      "sum_L6_plus_L3_plus_L45": -626.3819688948747,
+      "combined_L7_from_no_credit": -626.3819688948746,
+      "interaction": 1.1368683772161603e-13
+    },
+    "branch_reads": {
+      "diag-L1-source-capital-at-our-net-no-credit": {
+        "lcoe_branch_at_our_net": 685.9621481241988,
+        "lcoe_ours": 685.6949999869734,
+        "capital_scope_effect": 0.26714813722549025,
+        "lcoe_branch_at_1000": 611.1934076833633,
+        "denominator_effect_at_source_capital": -74.76874044083559
+      },
+      "diag-L1-source-capital-at-our-net-feed100": {
+        "lcoe_branch_at_our_net": 238.2953269689273,
+        "lcoe_ours": 238.02817883220968,
+        "capital_scope_effect": 0.2671481367176227,
+        "lcoe_branch_at_1000": 212.32153016523273,
+        "denominator_effect_at_source_capital": -25.97379680369457
+      },
+      "diag-L7-aligned-combined-at-our-net": {
+        "lcoe_branch_at_our_net": 59.54877204961946,
+        "lcoe_ours": 59.31303109209871,
+        "capital_scope_effect": 0.23574095752074697,
+        "lcoe_branch_at_1000": 53.05805431377386,
+        "denominator_effect_at_source_capital": -6.4907177358456
+      }
+    }
+  },
+  "sensitivities": [
+    {
+      "case": "sens-tritium-price-1e+08-no-credit",
+      "base": "alt-canonical-no-credit",
+      "lcoe": 2160.332047120302,
+      "delta_lcoe": 1474.6370471333285,
+      "relative": 2.1505728453049,
+      "overnight": 5402271605.157375,
+      "delta_overnight": 1043000000.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 138.7304019114013,
+      "branch_lcoe": 1915.4007853086778,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-tritium-price-1e+07-no-credit",
+      "base": "alt-canonical-no-credit",
+      "lcoe": 264.3701293774509,
+      "delta_lcoe": -421.32487060952246,
+      "relative": -0.6144493843728286,
+      "overnight": 4061271605.157375,
+      "delta_overnight": -298000000.0000005,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 138.7304019114013,
+      "branch_lcoe": 238.56272836184493,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-tritium-price-1e+08-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 657.55824007889,
+      "delta_lcoe": 419.5300612466803,
+      "relative": 1.7625226698155538,
+      "overnight": 5402271605.157375,
+      "delta_overnight": 1043000000.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 576.4268395659969,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-feed-50-service30m",
+      "base": "alt-canonical-feed100",
+      "lcoe": 464.12253295077716,
+      "delta_lcoe": 226.09435411856748,
+      "relative": 0.9498638154012238,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 88.73040191140129,
+      "branch_lcoe": 413.77197335620775,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-feed-makeup-service30m",
+      "base": "alt-canonical-feed100",
+      "lcoe": 62.89367473399357,
+      "delta_lcoe": -175.1345040982161,
+      "relative": -0.7357721466317294,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 0.0,
+      "branch_lcoe": 56.27639756490522,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-feed-150-service30m",
+      "base": "alt-canonical-feed100",
+      "lcoe": 62.89367473399357,
+      "delta_lcoe": -175.1345040982161,
+      "relative": -0.7357721466317294,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 0.0,
+      "branch_lcoe": 56.27639756490522,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-tritium-price-1e+07-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 118.16244704744388,
+      "delta_lcoe": -119.8657317847658,
+      "relative": -0.5035779056615868,
+      "overnight": 4061271605.157375,
+      "delta_overnight": -298000000.0000005,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 108.2914417650144,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-availability-0.75-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 186.18551185957512,
+      "delta_lcoe": -51.84266697263456,
+      "relative": -0.21780054456989054,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 22.475321613564383,
+      "branch_lcoe": 166.16136546852852,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-discount-0.10-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 282.4549702592692,
+      "delta_lcoe": 44.42679142705953,
+      "relative": 0.18664509237948995,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 241.50495587166967,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-availability-0.95-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 278.9556222369028,
+      "delta_lcoe": 40.92744340469312,
+      "relative": 0.17194369005168758,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 54.9854822092382,
+      "branch_lcoe": 248.7628941509508,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-discount-0.08-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 262.6709519726494,
+      "delta_lcoe": 24.642773140439715,
+      "relative": 0.10352880596465365,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 229.2467726863785,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-discount-0.03-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 225.12790239944766,
+      "delta_lcoe": -12.900276432762013,
+      "relative": -0.054196425381448844,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 202.4988006350128,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-service-1e+08-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 248.57924869107617,
+      "delta_lcoe": 10.551069858866498,
+      "relative": 0.044326978052057174,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 221.72255084747823,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-om-140e6-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 248.57924869107617,
+      "delta_lcoe": 10.551069858866498,
+      "relative": 0.044326978052057174,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 221.72255084747823,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-cycle-side-2.0",
+      "base": "alt-canonical-feed100",
+      "lcoe": 247.36034553075248,
+      "delta_lcoe": 9.332166698542807,
+      "relative": 0.03920614250097346,
+      "overnight": 5253652998.594875,
+      "delta_overnight": 894381393.4375,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-pbli-pump-30MW-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 246.31870149620235,
+      "delta_lcoe": 8.290522663992675,
+      "relative": 0.034830005021534924,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 861.0125802299515,
+      "delta_net": -29.989072493013964,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-availability-0.75-no-credit",
+      "base": "alt-canonical-no-credit",
+      "lcoe": 693.5412425016406,
+      "delta_lcoe": 7.84624251466721,
+      "relative": 0.011442758828365776,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 122.47532161356439,
+      "branch_lcoe": 618.2161599890765,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-availability-0.95-no-credit",
+      "base": "alt-canonical-no-credit",
+      "lcoe": 679.4996201122176,
+      "delta_lcoe": -6.1953798747557585,
+      "relative": -0.00903518309871511,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 154.9854822092382,
+      "branch_lcoe": 605.6482582461202,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-construction-0y-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 231.9922608908728,
+      "delta_lcoe": -6.035917941336862,
+      "relative": -0.025357997405810045,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-plant-years-30-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 243.67574775498224,
+      "delta_lcoe": 5.647568922772564,
+      "relative": 0.02372647201049938,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 217.4246742385268,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-om-35e6-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 232.75264390277644,
+      "delta_lcoe": -5.275534929433235,
+      "relative": -0.022163489026028528,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 207.62101982410996,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-conversion-services-6",
+      "base": "alt-canonical-feed100",
+      "lcoe": 242.9186053255493,
+      "delta_lcoe": 4.890426493339618,
+      "relative": 0.020545577911542007,
+      "overnight": 4827963025.157375,
+      "delta_overnight": 468691420.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-cycle-side-1.5",
+      "base": "alt-canonical-feed100",
+      "lcoe": 242.6942621814811,
+      "delta_lcoe": 4.6660833492714175,
+      "relative": 0.019603071250486787,
+      "overnight": 4806462301.876125,
+      "delta_overnight": 447190696.71875,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-cycle-side-0.5",
+      "base": "alt-canonical-feed100",
+      "lcoe": 233.3620954829383,
+      "delta_lcoe": -4.666083349271389,
+      "relative": -0.01960307125048667,
+      "overnight": 3912080908.438625,
+      "delta_overnight": -447190696.7187505,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-construction-10y-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 242.57188239732378,
+      "delta_lcoe": 4.5437035651141,
+      "relative": 0.019088931350086234,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-plant-years-60-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 233.5932370232818,
+      "delta_lcoe": -4.434941808927874,
+      "relative": -0.018632003280813842,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 208.31273962091538,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-service-1e+07-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 235.0135874439621,
+      "delta_lcoe": -3.014591388247567,
+      "relative": -0.012664850872016319,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 209.63552425601972,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-conversion-services-4",
+      "base": "alt-canonical-feed100",
+      "lcoe": 240.96243472821345,
+      "delta_lcoe": 2.9342558960037763,
+      "relative": 0.012327346746925228,
+      "overnight": 4640486457.157375,
+      "delta_overnight": 281214852.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-replacement-life-2-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 240.84536179489857,
+      "delta_lcoe": 2.8171829626888893,
+      "relative": 0.011835501899440116,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 214.8316448410115,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-pbli-pump-10MW-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 240.7269833522478,
+      "delta_lcoe": 2.6988045200381237,
+      "relative": 0.011338172367989082,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 881.0125802299515,
+      "delta_net": -9.989072493013964,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": true
+    },
+    {
+      "case": "sens-conversion-services-2",
+      "base": "alt-canonical-feed100",
+      "lcoe": 239.0062641308776,
+      "delta_lcoe": 0.9780852986679349,
+      "relative": 0.004109115582308449,
+      "overnight": 4453009889.157375,
+      "delta_overnight": 93738284.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-replacement-life-fluence-3.767-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 238.71354418130366,
+      "delta_lcoe": 0.6853653490939848,
+      "relative": 0.0028793454306815965,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.93219182399451,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-secondary-transport-1.5",
+      "base": "alt-canonical-feed100",
+      "lcoe": 238.6961780880737,
+      "delta_lcoe": 0.6679992558640322,
+      "relative": 0.0028063872905355327,
+      "overnight": 4423291690.157375,
+      "delta_overnight": 64020085.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-replacement-life-8-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 237.3758165862521,
+      "delta_lcoe": -0.652362245957562,
+      "relative": -0.0027406933463009174,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 211.7402743259105,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-compressor-price-1.5",
+      "base": "alt-canonical-feed100",
+      "lcoe": 238.67768860085636,
+      "delta_lcoe": 0.6495097686466806,
+      "relative": 0.002728709566376726,
+      "overnight": 4421519684.376125,
+      "delta_overnight": 62248079.21875,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-compressor-price-0.5",
+      "base": "alt-canonical-feed100",
+      "lcoe": 237.37866906356302,
+      "delta_lcoe": -0.6495097686466522,
+      "relative": -0.0027287095663766064,
+      "overnight": 4297023525.938625,
+      "delta_overnight": -62248079.21875,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-terminal-0.2-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 238.57211290503167,
+      "delta_lcoe": 0.5439340728219975,
+      "relative": 0.002285166720556335,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.88361063340253,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-secondary-transport-1.214",
+      "base": "alt-canonical-feed100",
+      "lcoe": 238.31408251371948,
+      "delta_lcoe": 0.28590368150980794,
+      "relative": 0.0012011337603492172,
+      "overnight": 4386672201.5373745,
+      "delta_overnight": 27400596.37999916,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "sens-terminal-0.05-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 237.7562117957987,
+      "delta_lcoe": -0.2719670364109845,
+      "relative": -0.0011425833602781079,
+      "overnight": 4359271605.157375,
+      "delta_overnight": 0.0,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.04048993114782,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "diag-estimate-mode-1-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 237.93361214206985,
+      "delta_lcoe": -0.09456669013982832,
+      "relative": -0.00039729199544264913,
+      "overnight": 4350208470.0,
+      "delta_overnight": -9063135.157375336,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "adverse-compressor-rating-1600-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 237.95176591825125,
+      "delta_lcoe": -0.07641291395842131,
+      "relative": -0.00032102465486780093,
+      "overnight": 4351948301.719875,
+      "delta_overnight": -7323303.4375,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    },
+    {
+      "case": "adverse-he-pump-capacity-3261-feed100",
+      "base": "alt-canonical-feed100",
+      "lcoe": 238.01909519077728,
+      "delta_lcoe": -0.009083641432397371,
+      "relative": -3.8162042313488405e-05,
+      "overnight": 4358401042.066911,
+      "delta_overnight": -870563.090464592,
+      "net": 891.0016527229654,
+      "delta_net": 0.0,
+      "external_kg": 38.730401911401295,
+      "branch_lcoe": 212.32153016523273,
+      "checks": {
+        "all": false,
+        "failed": []
+      },
+      "material_independent": false
+    }
+  ]
+}

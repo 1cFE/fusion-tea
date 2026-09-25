@@ -1,0 +1,913 @@
+{
+  "store": "/tmp/claude-1000/-home-reid-1cfe-fusion-tea/8c6487aa-f921-4972-87a9-e6b02e552ee4/scratchpad/interim2/aries-alternative-interim-checks.db",
+  "cases": {
+    "alt-canonical": {
+      "state": "completed",
+      "candidate_id": "aries-alternative-interim-checks:c0000",
+      "inputs_changed": {},
+      "channels": {
+        "compressor demand": 1667.033294519545,
+        "compressor rating": 1700.0,
+        "compressor margin": 32.96670548045495,
+        "compressor purchase": 83554468.75,
+        "compressor ratio": 1.0625,
+        "compressor extrapolated": 0.0,
+        "He pump margin": 0.0,
+        "He pump purchase": 20026170.530512113,
+        "direct": 2925685641.045218,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920307,
+        "annual operating": 4237004300.1940665,
+        "external T kg/yr": 138.7304019114013,
+        "curtailed feed": 0.0,
+        "supply LCOE": 0.0,
+        "tritium LCOE": 627.3232123360629,
+        "LCOE": 685.6949999877514,
+        "net MW": 891.0016527219543,
+        "unmet MW": 0.0,
+        "turbine K": 901.350587668063
+      },
+      "verdicts": {
+        "compressor": "satisfied",
+        "he_pump": "satisfied",
+        "heat_removal": "satisfied",
+        "balances": "satisfied"
+      },
+      "all_checks": true
+    },
+    "alt-compressor-rating-1600": {
+      "state": "completed",
+      "candidate_id": "aries-alternative-interim-checks:c0001",
+      "inputs_changed": {
+        "compressor_capacity__selected_rating": 1600.0
+      },
+      "channels": {
+        "compressor demand": 1667.033294519545,
+        "compressor rating": 1600.0,
+        "compressor margin": -67.03329451954505,
+        "compressor purchase": 78639500.0,
+        "compressor ratio": 1.0,
+        "compressor extrapolated": 0.0,
+        "He pump margin": 0.0,
+        "He pump purchase": 20026170.530512113,
+        "direct": 2920770672.295218,
+        "overnight": 4351948301.719875,
+        "financed": 5037924152.778471,
+        "annual operating": 4237004300.1940665,
+        "external T kg/yr": 138.7304019114013,
+        "curtailed feed": 0.0,
+        "supply LCOE": 0.0,
+        "tritium LCOE": 627.3232123360629,
+        "LCOE": 685.6185870737929,
+        "net MW": 891.0016527219543,
+        "unmet MW": 0.0,
+        "turbine K": 901.350587668063
+      },
+      "verdicts": {
+        "compressor": "violated",
+        "he_pump": "satisfied",
+        "heat_removal": "satisfied",
+        "balances": "satisfied"
+      },
+      "all_checks": false
+    },
+    "alt-compressor-rating-1800": {
+      "state": "completed",
+      "candidate_id": "aries-alternative-interim-checks:c0002",
+      "inputs_changed": {
+        "compressor_capacity__selected_rating": 1800.0
+      },
+      "channels": {
+        "compressor demand": 1667.033294519545,
+        "compressor rating": 1800.0,
+        "compressor margin": 132.96670548045495,
+        "compressor purchase": 88469437.5,
+        "compressor ratio": 1.125,
+        "compressor extrapolated": 0.0,
+        "He pump margin": 0.0,
+        "He pump purchase": 20026170.530512113,
+        "direct": 2930600609.795218,
+        "overnight": 4366594908.594875,
+        "financed": 5054879431.062143,
+        "annual operating": 4237004300.1940665,
+        "external T kg/yr": 138.7304019114013,
+        "curtailed feed": 0.0,
+        "supply LCOE": 0.0,
+        "tritium LCOE": 627.3232123360629,
+        "LCOE": 685.7714129017098,
+        "net MW": 891.0016527219543,
+        "unmet MW": 0.0,
+        "turbine K": 901.350587668063
+      },
+      "verdicts": {
+        "compressor": "satisfied",
+        "he_pump": "satisfied",
+        "heat_removal": "satisfied",
+        "balances": "satisfied"
+      },
+      "all_checks": true
+    },
+    "alt-he-pump-capacity-3261": {
+      "state": "completed",
+      "candidate_id": "aries-alternative-interim-checks:c0003",
+      "inputs_changed": {
+        "he_pump__selected_flow_capacity": 3261.0
+      },
+      "channels": {
+        "compressor demand": 1667.033294519545,
+        "compressor rating": 1700.0,
+        "compressor margin": 32.96670548045495,
+        "compressor purchase": 83554468.75,
+        "compressor ratio": 1.0625,
+        "compressor extrapolated": 0.0,
+        "He pump margin": -98.0,
+        "He pump purchase": 19441900.0,
+        "direct": 2925101370.5147057,
+        "overnight": 4358401042.066911,
+        "financed": 5045394006.322708,
+        "annual operating": 4237004300.1940665,
+        "external T kg/yr": 138.7304019114013,
+        "curtailed feed": 0.0,
+        "supply LCOE": 0.0,
+        "tritium LCOE": 627.3232123360629,
+        "LCOE": 685.6859163463189,
+        "net MW": 891.0016527219543,
+        "unmet MW": 0.0,
+        "turbine K": 901.350587668063
+      },
+      "verdicts": {
+        "compressor": "satisfied",
+        "he_pump": "violated",
+        "heat_removal": "satisfied",
+        "balances": "satisfied"
+      },
+      "all_checks": false
+    },
+    "alt-estimate-mode-1": {
+      "state": "completed",
+      "candidate_id": "aries-alternative-interim-checks:c0004",
+      "inputs_changed": {
+        "cost_accounts__estimate_mode": 1.0
+      },
+      "channels": {
+        "compressor demand": 1667.033294519545,
+        "compressor rating": 1700.0,
+        "compressor margin": 32.96670548045495,
+        "compressor purchase": 78639500.0,
+        "compressor ratio": 1.0625,
+        "compressor extrapolated": 0.0,
+        "He pump margin": 0.0,
+        "He pump purchase": 19441900.0,
+        "direct": 2919603000.0,
+        "overnight": 4350208470.0,
+        "financed": 5035910080.083751,
+        "annual operating": 4237004300.1940665,
+        "external T kg/yr": 138.7304019114013,
+        "curtailed feed": 0.0,
+        "supply LCOE": 0.0,
+        "tritium LCOE": 627.3232123360629,
+        "LCOE": 685.6004332976115,
+        "net MW": 891.0016527219543,
+        "unmet MW": 0.0,
+        "turbine K": 901.350587668063
+      },
+      "verdicts": {
+        "compressor": "satisfied",
+        "he_pump": "satisfied",
+        "heat_removal": "satisfied",
+        "balances": "satisfied"
+      },
+      "all_checks": true
+    },
+    "alt-feed100-service30m": {
+      "state": "completed",
+      "candidate_id": "aries-alternative-interim-checks:c0005",
+      "inputs_changed": {
+        "finance__supply_service_annual": 30000000.0,
+        "fuel_inventory__annual_recovery_kg": 100.0
+      },
+      "channels": {
+        "compressor demand": 1667.033294519545,
+        "compressor rating": 1700.0,
+        "compressor margin": 32.96670548045495,
+        "compressor purchase": 83554468.75,
+        "compressor ratio": 1.0625,
+        "compressor extrapolated": 0.0,
+        "He pump margin": 0.0,
+        "He pump purchase": 20026170.530512113,
+        "direct": 2925685641.045218,
+        "overnight": 4359271605.157375,
+        "financed": 5046401791.920307,
+        "annual operating": 1237004300.1940665,
+        "external T kg/yr": 38.73040191140129,
+        "curtailed feed": 0.0,
+        "supply LCOE": 4.52188708237648,
+        "tritium LCOE": 175.13450409841482,
+        "LCOE": 238.02817883247977,
+        "net MW": 891.0016527219543,
+        "unmet MW": 0.0,
+        "turbine K": 901.350587668063
+      },
+      "verdicts": {
+        "compressor": "satisfied",
+        "he_pump": "satisfied",
+        "heat_removal": "satisfied",
+        "balances": "satisfied"
+      },
+      "all_checks": true
+    }
+  },
+  "identities": {
+    "alt-canonical": {
+      "overnight = direct + indirect + contingency + owner": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "financed = overnight + idc (financing once)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_operating = O&M + external T + deuterium + consumables + imports (no reserve)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "noncapital_annual = annual_operating + supply service + CRF x (pv_replacement + pv_overhaul + pv_terminal_net) (WI-091 design)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "pv_total = financed + pv_operating + pv_supply + pv_replacement + pv_overhaul + pv_terminal_gross - pv_salvage": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lcoe_sum = sum of the eleven contributions": {
+        "residual": 1.1368683772161603e-13,
+        "ok": true
+      },
+      "lcoe = pv_total / pv_energy": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lcoe = lcoe_sum": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lifetime replacements = event cost x event count": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_energy = net x 8760 x availability": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_makeup = burn + loss + decay": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external = max(gross_makeup - new_feed, 0)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external T cost = external kg x price": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_terminal = terminal_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "salvage = salvage_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "overhaul = overhaul_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      }
+    },
+    "alt-compressor-rating-1600": {
+      "overnight = direct + indirect + contingency + owner": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "financed = overnight + idc (financing once)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_operating = O&M + external T + deuterium + consumables + imports (no reserve)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "noncapital_annual = annual_operating + supply service + CRF x (pv_replacement + pv_overhaul + pv_terminal_net) (WI-091 design)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "pv_total = financed + pv_operating + pv_supply + pv_replacement + pv_overhaul + pv_terminal_gross - pv_salvage": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lcoe_sum = sum of the eleven contributions": {
+        "residual": 1.1368683772161603e-13,
+        "ok": true
+      },
+      "lcoe = pv_total / pv_energy": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lcoe = lcoe_sum": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lifetime replacements = event cost x event count": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_energy = net x 8760 x availability": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_makeup = burn + loss + decay": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external = max(gross_makeup - new_feed, 0)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external T cost = external kg x price": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_terminal = terminal_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "salvage = salvage_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "overhaul = overhaul_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      }
+    },
+    "alt-compressor-rating-1800": {
+      "overnight = direct + indirect + contingency + owner": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "financed = overnight + idc (financing once)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_operating = O&M + external T + deuterium + consumables + imports (no reserve)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "noncapital_annual = annual_operating + supply service + CRF x (pv_replacement + pv_overhaul + pv_terminal_net) (WI-091 design)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "pv_total = financed + pv_operating + pv_supply + pv_replacement + pv_overhaul + pv_terminal_gross - pv_salvage": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lcoe_sum = sum of the eleven contributions": {
+        "residual": 2.2737367544323206e-13,
+        "ok": true
+      },
+      "lcoe = pv_total / pv_energy": {
+        "residual": -2.2737367544323206e-13,
+        "ok": true
+      },
+      "lcoe = lcoe_sum": {
+        "residual": -2.2737367544323206e-13,
+        "ok": true
+      },
+      "lifetime replacements = event cost x event count": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_energy = net x 8760 x availability": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_makeup = burn + loss + decay": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external = max(gross_makeup - new_feed, 0)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external T cost = external kg x price": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_terminal = terminal_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "salvage = salvage_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "overhaul = overhaul_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      }
+    },
+    "alt-he-pump-capacity-3261": {
+      "overnight = direct + indirect + contingency + owner": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "financed = overnight + idc (financing once)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_operating = O&M + external T + deuterium + consumables + imports (no reserve)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "noncapital_annual = annual_operating + supply service + CRF x (pv_replacement + pv_overhaul + pv_terminal_net) (WI-091 design)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "pv_total = financed + pv_operating + pv_supply + pv_replacement + pv_overhaul + pv_terminal_gross - pv_salvage": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lcoe_sum = sum of the eleven contributions": {
+        "residual": 1.1368683772161603e-13,
+        "ok": true
+      },
+      "lcoe = pv_total / pv_energy": {
+        "residual": -1.1368683772161603e-13,
+        "ok": true
+      },
+      "lcoe = lcoe_sum": {
+        "residual": -1.1368683772161603e-13,
+        "ok": true
+      },
+      "lifetime replacements = event cost x event count": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_energy = net x 8760 x availability": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_makeup = burn + loss + decay": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external = max(gross_makeup - new_feed, 0)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external T cost = external kg x price": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_terminal = terminal_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "salvage = salvage_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "overhaul = overhaul_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      }
+    },
+    "alt-estimate-mode-1": {
+      "overnight = direct + indirect + contingency + owner": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "financed = overnight + idc (financing once)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_operating = O&M + external T + deuterium + consumables + imports (no reserve)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "noncapital_annual = annual_operating + supply service + CRF x (pv_replacement + pv_overhaul + pv_terminal_net) (WI-091 design)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "pv_total = financed + pv_operating + pv_supply + pv_replacement + pv_overhaul + pv_terminal_gross - pv_salvage": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lcoe_sum = sum of the eleven contributions": {
+        "residual": 2.2737367544323206e-13,
+        "ok": true
+      },
+      "lcoe = pv_total / pv_energy": {
+        "residual": -1.1368683772161603e-13,
+        "ok": true
+      },
+      "lcoe = lcoe_sum": {
+        "residual": -1.1368683772161603e-13,
+        "ok": true
+      },
+      "lifetime replacements = event cost x event count": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_energy = net x 8760 x availability": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_makeup = burn + loss + decay": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external = max(gross_makeup - new_feed, 0)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external T cost = external kg x price": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_terminal = terminal_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "salvage = salvage_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "overhaul = overhaul_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      }
+    },
+    "alt-feed100-service30m": {
+      "overnight = direct + indirect + contingency + owner": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "financed = overnight + idc (financing once)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_operating = O&M + external T + deuterium + consumables + imports (no reserve)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "noncapital_annual = annual_operating + supply service + CRF x (pv_replacement + pv_overhaul + pv_terminal_net) (WI-091 design)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "pv_total = financed + pv_operating + pv_supply + pv_replacement + pv_overhaul + pv_terminal_gross - pv_salvage": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "lcoe_sum = sum of the eleven contributions": {
+        "residual": 2.842170943040401e-14,
+        "ok": true
+      },
+      "lcoe = pv_total / pv_energy": {
+        "residual": -2.842170943040401e-14,
+        "ok": true
+      },
+      "lcoe = lcoe_sum": {
+        "residual": -2.842170943040401e-14,
+        "ok": true
+      },
+      "lifetime replacements = event cost x event count": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "annual_energy = net x 8760 x availability": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_makeup = burn + loss + decay": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external = max(gross_makeup - new_feed, 0)": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "external T cost = external kg x price": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "gross_terminal = terminal_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "salvage = salvage_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      },
+      "overhaul = overhaul_fraction x overnight": {
+        "residual": 0.0,
+        "ok": true
+      }
+    }
+  },
+  "oracle": {
+    "channels_compared": 364,
+    "worst_relative_channel": [
+      "plant_ledger__evaluate__residual_magnitude",
+      1.1259544407948852e-09,
+      6.821210263296962e-13
+    ],
+    "economic_channels_covered": [
+      "auxiliary_cooling__purchase__cost",
+      "blanket_inventory__purchase__capital",
+      "blanket_inventory__purchase__extrapolated",
+      "blanket_inventory__purchase__purchased_quantity",
+      "blanket_inventory__purchase__quantity_ratio",
+      "blanket_inventory__purchase__source_budget",
+      "compressor_equipment__purchase__capital",
+      "compressor_equipment__purchase__extrapolated",
+      "compressor_equipment__purchase__purchased_quantity",
+      "compressor_equipment__purchase__quantity_ratio",
+      "compressor_equipment__purchase__source_budget",
+      "conversion_services__purchase__cost",
+      "cost_ledger__evaluate__annual_export_mwh",
+      "cost_ledger__evaluate__annual_import_cost",
+      "cost_ledger__evaluate__annual_import_mwh",
+      "cost_ledger__evaluate__annual_operating",
+      "cost_ledger__evaluate__annual_replacement_reserve",
+      "cost_ledger__evaluate__currency_year",
+      "cost_ledger__evaluate__direct",
+      "cost_ledger__evaluate__direct_difference",
+      "cost_ledger__evaluate__lifetime_replacement",
+      "cost_ledger__evaluate__overnight",
+      "cost_ledger__evaluate__source_coil_excess",
+      "cost_ledger__evaluate__source_core_excess",
+      "cost_ledger__evaluate__source_direct",
+      "cost_ledger__evaluate__source_inclusive",
+      "cost_ledger__evaluate__source_reactor_gap",
+      "divertor_duty_equipment__purchase__capital",
+      "divertor_duty_equipment__purchase__extrapolated",
+      "divertor_duty_equipment__purchase__purchased_quantity",
+      "divertor_duty_equipment__purchase__quantity_ratio",
+      "divertor_duty_equipment__purchase__source_budget",
+      "divertor_hx__purchase__capital",
+      "divertor_hx__purchase__extrapolated",
+      "divertor_hx__purchase__purchased_quantity",
+      "divertor_hx__purchase__quantity_ratio",
+      "divertor_hx__purchase__source_budget",
+      "divertor_inventory__purchase__cost",
+      "divertor_pump__purchase__capital",
+      "divertor_pump__purchase__extrapolated",
+      "divertor_pump__purchase__purchased_quantity",
+      "divertor_pump__purchase__quantity_ratio",
+      "divertor_pump__purchase__source_budget",
+      "electrical_equipment__purchase__cost",
+      "facilities__purchase__cost",
+      "fuel__evaluate__burn_rate",
+      "fuel__evaluate__exhaust_rate",
+      "fuel__evaluate__loss_rate",
+      "fuel__evaluate__tbr_required",
+      "fuel_inventory__annual__annual_burn",
+      "fuel_inventory__annual__annual_cost",
+      "fuel_inventory__annual__annual_decay",
+      "fuel_inventory__annual__annual_external",
+      "fuel_inventory__annual__annual_loss",
+      "fuel_inventory__annual__annual_recovery",
+      "fuel_inventory__annual__breeding_supported",
+      "fuel_inventory__annual__required_stock",
+      "fuel_inventory__atoms__atoms",
+      "fuel_inventory__atoms__stock_kg",
+      "fuel_inventory__deuterium__annual_fuel",
+      "fuel_inventory__purchase__amount",
+      "fuel_inventory__screen__evaluation_defined",
+      "fuel_inventory__screen__margin",
+      "fuel_processing_equipment__purchase__capital",
+      "fuel_processing_equipment__purchase__extrapolated",
+      "fuel_processing_equipment__purchase__purchased_quantity",
+      "fuel_processing_equipment__purchase__quantity_ratio",
+      "fuel_processing_equipment__purchase__source_budget",
+      "fuel_services__purchase__cost",
+      "generator_equipment__purchase__capital",
+      "generator_equipment__purchase__extrapolated",
+      "generator_equipment__purchase__purchased_quantity",
+      "generator_equipment__purchase__quantity_ratio",
+      "generator_equipment__purchase__source_budget",
+      "he_duty_equipment__purchase__capital",
+      "he_duty_equipment__purchase__extrapolated",
+      "he_duty_equipment__purchase__purchased_quantity",
+      "he_duty_equipment__purchase__quantity_ratio",
+      "he_duty_equipment__purchase__source_budget",
+      "he_hx__purchase__capital",
+      "he_hx__purchase__extrapolated",
+      "he_hx__purchase__purchased_quantity",
+      "he_hx__purchase__quantity_ratio",
+      "he_hx__purchase__source_budget",
+      "he_pump__purchase__capital",
+      "he_pump__purchase__extrapolated",
+      "he_pump__purchase__purchased_quantity",
+      "he_pump__purchase__quantity_ratio",
+      "he_pump__purchase__source_budget",
+      "heat_rejection_equipment__purchase__capital",
+      "heat_rejection_equipment__purchase__extrapolated",
+      "heat_rejection_equipment__purchase__purchased_quantity",
+      "heat_rejection_equipment__purchase__quantity_ratio",
+      "heat_rejection_equipment__purchase__source_budget",
+      "heating_equipment__purchase__cost",
+      "impurity_control__purchase__cost",
+      "instrumentation_control__purchase__cost",
+      "lifecycle_accounts__evaluate__annual_capital",
+      "lifecycle_accounts__evaluate__annual_energy",
+      "lifecycle_accounts__evaluate__breeding_supported",
+      "lifecycle_accounts__evaluate__capital_lcoe",
+      "lifecycle_accounts__evaluate__consumables_lcoe",
+      "lifecycle_accounts__evaluate__currency_year",
+      "lifecycle_accounts__evaluate__curtailed_feed",
+      "lifecycle_accounts__evaluate__deuterium_lcoe",
+      "lifecycle_accounts__evaluate__external_shortfall",
+      "lifecycle_accounts__evaluate__financed_capital",
+      "lifecycle_accounts__evaluate__financial_defined",
+      "lifecycle_accounts__evaluate__gross_makeup",
+      "lifecycle_accounts__evaluate__gross_terminal",
+      "lifecycle_accounts__evaluate__idc",
+      "lifecycle_accounts__evaluate__imports_lcoe",
+      "lifecycle_accounts__evaluate__lcoe_sum",
+      "lifecycle_accounts__evaluate__lifetime_energy",
+      "lifecycle_accounts__evaluate__new_feed",
+      "lifecycle_accounts__evaluate__noncapital_annual",
+      "lifecycle_accounts__evaluate__om_lcoe",
+      "lifecycle_accounts__evaluate__other_overhaul_cost",
+      "lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "lifecycle_accounts__evaluate__pv_energy",
+      "lifecycle_accounts__evaluate__pv_operating",
+      "lifecycle_accounts__evaluate__pv_other_overhaul",
+      "lifecycle_accounts__evaluate__pv_replacement",
+      "lifecycle_accounts__evaluate__pv_salvage",
+      "lifecycle_accounts__evaluate__pv_supply",
+      "lifecycle_accounts__evaluate__pv_terminal_gross",
+      "lifecycle_accounts__evaluate__pv_terminal_net",
+      "lifecycle_accounts__evaluate__pv_total_cost",
+      "lifecycle_accounts__evaluate__real_convention",
+      "lifecycle_accounts__evaluate__replacement_lcoe",
+      "lifecycle_accounts__evaluate__salvage",
+      "lifecycle_accounts__evaluate__salvage_lcoe",
+      "lifecycle_accounts__evaluate__supply_lcoe",
+      "lifecycle_accounts__evaluate__supply_supported",
+      "lifecycle_accounts__evaluate__terminal_lcoe",
+      "lifecycle_accounts__evaluate__tritium_lcoe",
+      "lifecycle_price__evaluate__lcoe",
+      "lipb_inventory__purchase__capital",
+      "lipb_inventory__purchase__extrapolated",
+      "lipb_inventory__purchase__purchased_quantity",
+      "lipb_inventory__purchase__quantity_ratio",
+      "lipb_inventory__purchase__source_budget",
+      "magnet_inventory__purchase__capital",
+      "magnet_inventory__purchase__extrapolated",
+      "magnet_inventory__purchase__purchased_quantity",
+      "magnet_inventory__purchase__quantity_ratio",
+      "magnet_inventory__purchase__source_budget",
+      "magnet_power_supplies__purchase__cost",
+      "miscellaneous_equipment__purchase__cost",
+      "other_reactor_equipment__purchase__cost",
+      "pbli_duty_equipment__purchase__capital",
+      "pbli_duty_equipment__purchase__extrapolated",
+      "pbli_duty_equipment__purchase__purchased_quantity",
+      "pbli_duty_equipment__purchase__quantity_ratio",
+      "pbli_duty_equipment__purchase__source_budget",
+      "pbli_hx__purchase__capital",
+      "pbli_hx__purchase__extrapolated",
+      "pbli_hx__purchase__purchased_quantity",
+      "pbli_hx__purchase__quantity_ratio",
+      "pbli_hx__purchase__source_budget",
+      "pbli_pump__purchase__capital",
+      "pbli_pump__purchase__extrapolated",
+      "pbli_pump__purchase__purchased_quantity",
+      "pbli_pump__purchase__quantity_ratio",
+      "pbli_pump__purchase__source_budget",
+      "primary_piping__purchase__cost",
+      "primary_support__purchase__capital",
+      "primary_support__purchase__extrapolated",
+      "primary_support__purchase__purchased_quantity",
+      "primary_support__purchase__quantity_ratio",
+      "primary_support__purchase__source_budget",
+      "replacement__evaluate__annual_reserve",
+      "replacement__evaluate__event_cost",
+      "replacement__evaluate__event_count",
+      "replacement__evaluate__first_event_year",
+      "replacement__evaluate__interval_years",
+      "replacement__evaluate__last_event_year",
+      "replacement__evaluate__lifetime_total",
+      "replacement_lipb__evaluate__amount",
+      "replacement_price__evaluate__amount",
+      "replacement_scope__evaluate__total",
+      "secondary_transport__purchase__cost",
+      "shield_inventory__purchase__capital",
+      "shield_inventory__purchase__extrapolated",
+      "shield_inventory__purchase__purchased_quantity",
+      "shield_inventory__purchase__quantity_ratio",
+      "shield_inventory__purchase__source_budget",
+      "site_land__purchase__cost",
+      "source_lifecycle_accounts__evaluate__annual_capital",
+      "source_lifecycle_accounts__evaluate__annual_energy",
+      "source_lifecycle_accounts__evaluate__breeding_supported",
+      "source_lifecycle_accounts__evaluate__capital_lcoe",
+      "source_lifecycle_accounts__evaluate__consumables_lcoe",
+      "source_lifecycle_accounts__evaluate__currency_year",
+      "source_lifecycle_accounts__evaluate__curtailed_feed",
+      "source_lifecycle_accounts__evaluate__deuterium_lcoe",
+      "source_lifecycle_accounts__evaluate__external_shortfall",
+      "source_lifecycle_accounts__evaluate__financed_capital",
+      "source_lifecycle_accounts__evaluate__financial_defined",
+      "source_lifecycle_accounts__evaluate__gross_makeup",
+      "source_lifecycle_accounts__evaluate__gross_terminal",
+      "source_lifecycle_accounts__evaluate__idc",
+      "source_lifecycle_accounts__evaluate__imports_lcoe",
+      "source_lifecycle_accounts__evaluate__lcoe_sum",
+      "source_lifecycle_accounts__evaluate__lifetime_energy",
+      "source_lifecycle_accounts__evaluate__new_feed",
+      "source_lifecycle_accounts__evaluate__noncapital_annual",
+      "source_lifecycle_accounts__evaluate__om_lcoe",
+      "source_lifecycle_accounts__evaluate__other_overhaul_cost",
+      "source_lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "source_lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "source_lifecycle_accounts__evaluate__pv_energy",
+      "source_lifecycle_accounts__evaluate__pv_operating",
+      "source_lifecycle_accounts__evaluate__pv_other_overhaul",
+      "source_lifecycle_accounts__evaluate__pv_replacement",
+      "source_lifecycle_accounts__evaluate__pv_salvage",
+      "source_lifecycle_accounts__evaluate__pv_supply",
+      "source_lifecycle_accounts__evaluate__pv_terminal_gross",
+      "source_lifecycle_accounts__evaluate__pv_terminal_net",
+      "source_lifecycle_accounts__evaluate__pv_total_cost",
+      "source_lifecycle_accounts__evaluate__real_convention",
+      "source_lifecycle_accounts__evaluate__replacement_lcoe",
+      "source_lifecycle_accounts__evaluate__salvage",
+      "source_lifecycle_accounts__evaluate__salvage_lcoe",
+      "source_lifecycle_accounts__evaluate__supply_lcoe",
+      "source_lifecycle_accounts__evaluate__supply_supported",
+      "source_lifecycle_accounts__evaluate__terminal_lcoe",
+      "source_lifecycle_accounts__evaluate__tritium_lcoe",
+      "source_lifecycle_price__evaluate__lcoe",
+      "source_replacement_comparison__cost__amount",
+      "source_replacement_comparison__evaluate__difference",
+      "source_replacement_comparison__mass__amount",
+      "turbine_equipment__purchase__capital",
+      "turbine_equipment__purchase__extrapolated",
+      "turbine_equipment__purchase__purchased_quantity",
+      "turbine_equipment__purchase__quantity_ratio",
+      "turbine_equipment__purchase__source_budget",
+      "unallocated_source_scope__purchase__cost",
+      "vacuum_equipment__purchase__capital",
+      "vacuum_equipment__purchase__extrapolated",
+      "vacuum_equipment__purchase__purchased_quantity",
+      "vacuum_equipment__purchase__quantity_ratio",
+      "vacuum_equipment__purchase__source_budget",
+      "vf_coils__purchase__cost",
+      "waste_equipment__purchase__cost"
+    ],
+    "worst_relative": 0.999394184168013,
+    "failures": [],
+    "passed": true
+  },
+  "fuel_first_principles": {
+    "constants": {
+      "fuel__reaction_energy_mev": 17.58,
+      "fuel__mev_joules": 1.6021766339999998e-13,
+      "fuel__pass_burn_fraction": 0.05,
+      "fuel__exhaust_recovery": 0.99,
+      "fuel__tritium_atom_kg": 5.008267663228036e-27,
+      "fuel__decay_constant_s": 1.782785958230312e-09,
+      "fuel__seconds_per_year": 31536000.0,
+      "fuel_inventory__selected_tritium_kg": 10.0,
+      "cost_schedule__availability": 0.85
+    },
+    "first_principles": {
+      "burn_kg_yr": 116.10771641312081,
+      "loss_kg_yr": 22.060466118492972,
+      "decay_kg_yr": 0.5622193797875112,
+      "exhaust_rate_atoms_s": 1.6432423549621273e+22,
+      "recycled_kg_yr_already_credited": 2183.9861457308025,
+      "gross_makeup_kg_yr": 138.7304019114013
+    },
+    "stored": {
+      "burn_kg_yr": 116.10771641312081,
+      "loss_kg_yr": 22.060466118492972,
+      "decay_kg_yr": 0.5622193797875112,
+      "exhaust_rate_atoms_s": 1.6432423549621273e+22,
+      "gross_makeup_kg_yr": 138.7304019114013
+    },
+    "relative_differences": {
+      "burn_kg_yr": 0.0,
+      "loss_kg_yr": 0.0,
+      "decay_kg_yr": 0.0,
+      "exhaust_rate_atoms_s": 0.0,
+      "gross_makeup_kg_yr": 0.0
+    }
+  },
+  "passed": true
+}

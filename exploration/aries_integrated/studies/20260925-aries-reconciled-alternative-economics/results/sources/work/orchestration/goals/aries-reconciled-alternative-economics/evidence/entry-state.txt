@@ -1,0 +1,9 @@
+entry HEAD: b03fa18e8bd004c134b966044cf0afdf17eb01ec
+branch: fix/modeling-intent-after-reveal
+date: 2026-09-25
+--- git status --short at entry (preserved, not committed by this goal):
+M  docs/write-up/harness.md
+?? docs/write-up/harness-assets/
+?? work/analysis/20260920-184131_design-choice-assignment-audit.md
+?? work/narratives/20260925-221738Z-aries-reference-heat-electricity-reconciliation.md
+?? work/orchestration/goals/aries-reconciled-alternative-economics/
