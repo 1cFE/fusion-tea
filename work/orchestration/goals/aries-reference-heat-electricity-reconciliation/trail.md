@@ -536,3 +536,22 @@ T-001 · `evidence/source-screen-review.md` · read-only. Coordinator.
 ### T-002 start — 2026-09-25
 
 T-002 · `REQ-ARIES-CYCLE-HX-03.json` → run directory and return · fresh researcher; coordinator records.
+
+### T-002 return — 2026-09-25
+
+- **Outcome:** COMPLETE (class OPERATOR_QUEUE; the paper is unavailable through permitted access).
+- **Evidence:** `evidence/research-acquire-r5-return.md`; run `knowledge/research/requests/runs/REQ-ARIES-CYCLE-HX-03/20260925T212847849698/` (`return.json`, `run.jsonl`, `process_log.md`; committed). IEEE Xplore 4018989 (SOFE 2005) and Taylor and Francis FST07-6 (2007 successor, FS&T 52, 635) both closed access with no author manuscript or repository copy (IEEE record, OpenAlex, Semantic Scholar, Crossref); OSTI, NTIS, eScholarship and CORE searched with no record of either paper; twelve other results rejected as different papers, none opened (one of them a landing page for a sealed hold-out paper, not opened). Four of four searches; nothing registered or downloaded; no ARIES-library host, mirror or Wayback snapshot used; no purchase; Google Scholar all-versions not reached within the limit.
+- **Reading:** the round's question (does the coupling paper provide the missing information) cannot be answered: the paper is obtainable only through paywalled or institutional access, and its ARIES-CS title makes any registration a hold-out hit reserved to the owner. The limit is recorded; the investigation does not expand.
+- **Decision:** the round finishes on the bounded result without a further research dependency; the two acquisition routes (purchase or institutional access, with the § 6 exception) are the owner's decision D2; execution detail; coordinator.
+
+### Round 5 result — 2026-09-25
+
+- **Intent:** met for the strategy (source-screen question reviewed and its decisions surfaced before any dependent access; one bounded, capture-free, permitted-access attempt; the four precise conclusions and the "41 MW of 151 MW" correction applied; answer, ledger and contract updated). The round's question is not answered: the coupling paper is unavailable through permitted access, so no new information reached the model, and the reconciliation stays partially answered. Closure as partially answered is recommended.
+- **Task sequence:** T-001 COMPLETE (source-screen review; decisions D1, D2 surfaced); T-002 COMPLETE (OPERATOR_QUEUE; limit recorded).
+- **Last semantic outcome:** COMPLETE with a bounded negative on the round's question; no package promoted; no study committed.
+- **Stop reason:** last outcome `COMPLETE` + the owner's stop condition ("If unavailable, record that limit and finish the round") → round closes on trigger 1. Retries: none; checkpoint revisions: none; rounds: 5 of 6.
+- **Evidence refs:** `evidence/owner-supplement-r5.md`; `evidence/source-screen-review.md`; `knowledge/research/requests/REQ-ARIES-CYCLE-HX-03.json` and its run; `evidence/research-acquire-r5-return.md`; `answer.md` § 12–13; ledger v2.5; contract § 6a `[r5]`.
+- **Learning delta (proposed):** L-015 (process; replaces the rejected round-4 proposal) the registry's `aries.ucsd.edu` term marks ARIES-library provenance for owner adjudication and has no waiver; substituting a mirror host so that no match is presented avoids the adjudication step and is not permitted access, whatever the content scan says; a source whose identity or title carries a barred term is acquired only after the owner logs a § 6 exception. L-016 (process) a bounded acquisition attempt for a barred-title source is run capture-free (locate, log with `--failure`, close), so the owner's decision is made on a concrete candidate without any fetch of hold-out material.
+- **Finding dispositions:** no study in this round, so no discovery-log rows; the findings log's last entries remain the round-3 flow-scaling rows (`…flow-scaling-check#1`–`#4`), and the round's bounded negative is recorded in the run's `return.json` and this trail rather than as a study finding.
+- **Constraints carried forward:** the four precise conclusions; D1 and D2 are the owner's; no ARIES-library host, mirror or snapshot is used by this goal until D1 is ruled; costing the resized alternative belongs in a separate goal; formal closure is the owner's.
+- **Native-state check:** no model, package, manifest or study change in round 5; no registration; frozen records, Stellaris and shared files unchanged since round 2's delivery checks (package identity unchanged).
