@@ -172,7 +172,7 @@ All 27 stored cases were verified against the package-owned independent oracle (
 
 ## 16. Snapshot
 
-PENDING-FILL
+`snapshot.json` (sha256 `c6551b7172a567db1fac5c43f14f7cbdc8169283ffa6b47d73c4f0fe4025a738`) records the package identity (`exploration/aries_integrated/aries_integrated` at repo commit `4f5991a5`, git-clean), the three fingerprints (indicator inputs `06e0627ca37475e7…`, executable `f739dbce…`, semantic `78dd23bf…`), the amended manifest content used (six absolute tolerances), the single arm `arm-diagnostic` with its store compatibility tuple, the verification command and tool digest, 273 hashed record artifacts (attempt-1 results included), the TEAx revision `8d877460…` through the integration return, 27 cases with [551] numeric outputs each, 364 verified channels and 14 exact verdicts per case, and 7 cases with every scoped check satisfied. `sealed-package.tar.gz` holds the executed package bytes; `results/sources/` retains the tools, route, support and reporting modules, the WI-092 record and evidence, the goal evidence and the model files at freeze.
 
 ## 17. What this record does not contain
 
