@@ -8,11 +8,11 @@ Updated: '2026-09-25'
 
 Related Artifacts: spec.md; design.md. Owner: goal coordinator (author); fresh reviewers for design and implementation. Preserve concurrent edits; use `.codex-test/run` for all Python/modeling commands.
 
-- [ ] Write spec/design with the MR-7 role table, equations, migration and validation plan; obtain fresh independent design review (goal `evidence/design-review.md`).
-- [ ] Add `Network Heat Driven Closure` definition and completion; rebind the assembly's `heat_exchangers` part with `network_mode` (default 0) and `pbli_split_fraction`; leave the reviewed definition in place.
-- [ ] Build on the stock route (`exploration/aries_integrated/build.py`, evidence path updated to this item), verify fixed-point regeneration, run the development checks (a)–(f), write the migration report.
-- [ ] Re-pin the live study manifest; run scoped validation; check the goal preservation manifest and isolated Stellaris replay.
-- [ ] Obtain fresh independent implementation review of executed behaviour (mode-0 exactness, mode-1 network, split pair, MR-7 compliance).
+- [x] Write spec/design with the MR-7 role table, equations, migration and validation plan; obtain fresh independent design review (goal `evidence/design-review.md`).
+- [x] Add `Network Heat Driven Closure` definition and completion; rebind the assembly's `heat_exchangers` part with `network_mode` (default 0) and `pbli_split_fraction`; leave the reviewed definition in place.
+- [x] Build on the stock route (`exploration/aries_integrated/build.py`, evidence path updated to this item), verify fixed-point regeneration, run the development checks (a)–(f), write the migration report.
+- [x] Re-pin the live study manifest; run scoped validation; check the goal preservation manifest and isolated Stellaris replay.
+- [x] Obtain fresh independent implementation review of executed behaviour (mode-0 exactness, mode-1 network, split pair, MR-7 compliance).
 - [ ] Hand the coherent package to the goal for the integration seam and one committed study.
 
 | Acceptance | Verification | Evidence |

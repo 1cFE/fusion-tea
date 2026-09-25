@@ -163,3 +163,44 @@ T-001 · modeling PM (`pm add-item`) and `work/active/WI-092_*/` · spec/design/
 ### T-002 start — 2026-09-25
 
 T-002 · `models/library/analyses/integrated_heat_electricity.sysml`, `models/designs/aries_cs_integrated/plant.sysml`, `exploration/aries_integrated/native_completions/network_heat_driven_closure_impl.py`, `build.py`, regenerated `aries_integrated` package, study oracle/interface/manifest · WI-092 evidence receipts and `evidence/implementation-review.md`. Coordinator implements; fresh reviewer reviews.
+
+### T-003 scope
+
+- **Objective:** prove the rebuilt `aries_integrated` package is the integrated form of the WI-092 checkpoint through the native integration seam (`scripts/integrate.py`) and obtain a CANDIDATE with the re-pinned fingerprints.
+- **Why now:** the increment is committed and re-pinned (`6828df18`); the round's study may only run on a package the seam has accepted.
+- **Scope:** read-only against model, package, manifest and route; the seam's outputs under `evidence/integration-attempt<N>/` and log. No edits to the package or model.
+- **Inputs:** audited work `work/active/WI-092_aries-parallel-exchanger-network@6828df18`; semantic `78dd23bf…`, executable `f739dbce…`; TEAx revision `8d877460…`; `evidence/integrate.py` (adapted from the WI-089 seam replay).
+- **Done when:** the seam returns CANDIDATE with every gate passing and the lineage equal to the re-pinned fingerprints.
+- **Stop when:** a gate blocks outside this increment (surface as a seam), or the implementation review (T-002, open) requires a change to the package, in which case this run is void and repeated after the change.
+
+### T-003 start — 2026-09-25
+
+T-003 · `evidence/integrate.py` → `evidence/integration-attempt1/` and `.log` · read-only seam replay. Coordinator runs; started while the T-002 implementation review is outstanding, on the committed state `6828df18`.
+
+### T-002 return — 2026-09-25
+
+- **Outcome:** COMPLETE.
+- **Evidence:** commits `49668453` (implementation checkpoint) and `6828df18` (re-pin); WI-092 evidence `generation.log`, `completion-generation.log`, `fixed-point-generation.log`, `census-generation.log`, `build-hashes.json`, `development-cases.json` (40 native cases), `migration-report.json`, `validation-complete.log`, `validation-comparison.json`, `oracle-self-check.json`, `implementation-review-notes.md`; goal evidence `preservation-check-wi092.json` (18,725 files unchanged), `wi092-stellaris-regression-receipt.json` (exact 1,352 outputs and 68 responses on the original Stellaris package), `implementation-review.md` (fresh non-author reviewer at `6828df18`: PASS, four notes, MR-7 compliant on executed evidence; brief `implementation-review-brief.md`).
+- **Reading:** mode 0 reproduces the four canonical maps and the 27 sealed round-1 points bit-exactly (546 of 546 numeric channels per point at relative 0, every verdict equal); the interface gains two entry keys and five outputs (546 → 551) and loses none; the executable fingerprint is `f739dbce…`, semantic `78dd23bf…`. Mode 1 at the C3 inputs with the 0.85 default split removes 41 MW more heat than the series arrangement (unmet 151.0 → 109.9 MW: helium 53.5, PbLi 56.4) and raises net from 842.7 to 879.7 MW; split 0.9 gives 882.1; the helium stage binds in mode 1, so no split removes all heat at 0.95 recuperation and 1600 kg/s. On the original failing inputs the network alone moves the unmet heat from the PbLi stage (158.7) to the divertor stage (117.9) and gives net 825.4. At 1800 kg/s the unmet heat is 0 in both arrangements (net 803.6). Validation: L2 105 → 105; L6 493 → 498, the five additions being the pre-existing "unsupported operator" diagnostic on the five new pass-through attributes.
+- **Decision:** the reviewer's wording notes (1–3) are applied in the WI-092 design and recorded in `implementation-review-notes.md`; the completion docstring and calc-def doc comment keep their committed wording because they are part of the sealed package identity, and a wording-only rebuild would void the re-pin, replay receipts and integration candidate; the correction is scheduled for the next package edit; execution detail; coordinator; WI-092 design `[ir]`.
+- **Decision:** note 4 is an explanation, not a defect: fifteen of the twenty "new channels" in the replay comparison are constraint evaluation records and the constraint report, which the development receipt lists among outputs and the sealed exporter stores as verdicts; execution detail; coordinator; `implementation-review-notes.md`.
+
+### T-004 scope
+
+- **Objective:** after the T-003 candidate, prepare and execute one committed study on the WI-092 package that gives the revised source-conditioned reference cases with the published network represented: the split sensitivity at the 1600 kg/s convention, the order-interaction tests (network on the original inputs, on C1, on C2 and on C3), the steady all-checks revised candidate at 0.8 recuperation, the flow bracket on the inherited compressor rating, and the separately named resized-compressor alternative at 1700 and 1800 kg/s; with the original failing case, the literal Lyon variant, the calculated baseline and the round-1 series cases C1, C2, C3 and the series steady point retained verbatim as controls.
+- **Why now:** the increment passed implementation review; the goal requires the revised case executed under the native graph with the original case retained, and the attribution ledger needs the network step measured at more than one position in the change order.
+- **Scope:** record `exploration/aries_integrated/studies/20260925-aries-revised-reference-network/`, thin `revised_reference_support.py` (reuses the round-1 composer; canonical bases from the mode-0 replay receipt on this package), 21 declared axes (the round-1 18 plus `network_mode`, `pbli_split`, `compressor_rating`), 27 declared points, indicators, native baseline point, preflight, oracle scan, native execution, all-point verification, reporting, record and freeze. No model, package or live-manifest change; no filtering of adverse points; the resized-compressor cases are labelled as a declared hardware alternative and never as a reference reproduction.
+- **Inputs:** `goal.md`; `evidence/reference-case-contract.md`; `evidence/materiality-budget.md`; round-1 sealed record and `evidence/discrepancy-ledger.md` v1.1; WI-092 `evidence/development-cases.json` (canonical replay receipt) and `migration-report.json`; the T-003 candidate; stock study tooling.
+- **Done when:** all 27 points complete and verify, the record is frozen and committed, the executor reading attributes the revised difference by cause with the network step measured at each position in the order, and the ledger is updated to v2; or a bounded negative names what the package cannot express.
+- **Stop when:** T-003 does not return CANDIDATE (execution parked), a mechanical gate fails past the retry cap, or a reserved gate binds.
+
+### T-003 return — 2026-09-25
+
+- **Outcome:** COMPLETE (one mechanical retry consumed: attempt 1 refused at preflight because the coordinator's shell exported a PYTHONPATH with an empty `STOP_PARSER_TEAX_ROOT`, so the read-coverage gate saw an undeclared `/packages/teax-simkit` read; attempt 2 ran under the launcher's own environment and the package was untouched between attempts).
+- **Evidence:** `evidence/integrate.py`; `evidence/integration-attempt1/` and `.log` (BLOCKER, retained); `evidence/integration-attempt2/integration_return.json` and `.log` (CANDIDATE: pinned packages, TEAx `8d877460…`, regeneration rewrote no byte outside `handwritten/`, 60 handwritten files byte-identical, census recaptured with 424 entry points, model-family spine, manifest pin `06e0627c…`, all six preflight gates with baseline read coverage `7188f0ec…`, oracle parity with every verdict re-derived, lineage semantic `78dd23bf…` executable `f739dbce…`).
+- **Reading:** the committed package at `6828df18` is the integrated form of the WI-092 model change and carries the re-pinned identity; the round's study may run on it.
+- **Decision:** the seam is invoked only through `.codex-test/run` without an outer PYTHONPATH, and study commands through `.codex-test/run bash -c` so the TEAx root expands inside the launcher; execution detail; coordinator; recorded here to prevent the same refusal.
+
+### T-004 start — 2026-09-25
+
+T-004 · new study record `exploration/aries_integrated/studies/20260925-aries-revised-reference-network/`, `revised_reference_support.py`, `revised_reference_reporting.py` · proposals, indicators, oracle scan, native baseline point, preflight, execution on the T-003 candidate, verification, report, record, freeze, commit. Coordinator executes directly.
