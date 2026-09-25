@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-25. [OWNER] Issuance of the prompt retained at `evidence/owner-brief.md` authorizes grounding and execution under its contract; the slug it proposed is adopted as issued. Formal goal/item closure stays owner-held.
+`closed` — 2026-09-25, partially answered. [OWNER] Closure authorized ("close the goal") after the round-5 result and review at `c5bdd139` and the rulings D1/D2 applied at `7786bc29`; the completion condition is assessed as partially answered in `answer.md` § 1 and § 13. [OWNER] Issuance of the prompt retained at `evidence/owner-brief.md` authorized grounding and execution under its contract; the slug it proposed was adopted as issued. Grounded 2026-09-25.
 
 ## Question
 
