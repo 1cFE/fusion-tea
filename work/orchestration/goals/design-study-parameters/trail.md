@@ -215,3 +215,25 @@ T-006 · `exploration/costed_loop_brayton/studies/manifest.json` (class appended
 ### T-007 start — 2026-09-26
 
 T-007 · `evidence/return-condition-check.{py,json,md}` · trail. Coordinator executes directly.
+
+### T-007 return — 2026-09-26
+
+- **Outcome:** COMPLETE. A required return condition exists and is not checked in the assembly; the leading cases are checked against it from stored channels.
+- **Native artifacts:** `evidence/return-condition-check.{py,json,md}` (272 cases).
+- **Review:** coordinator check on definitions and stored channels (the identity residual = `he_hot_bound_margin` holds at all 163 all-heat-removed cases); the fresh review of the revised answer covers the reading.
+- **Reading:** the source boundary does not deliberately permit an arbitrary return. The 'Primary Coolant Loop' definition holds the blanket inlet at `loop_T_in` (573.15 K, Moscato's 300 → 500 °C helium window, `stellarator_plant.sysml:1257-1260` → `output.md:79`) and states that `T_comp_in` (561.94 K here) "is what the IHX must deliver, not evidence that it can"; the C-1 and costed assemblies bind the loop's `T_out`, `mdot` and `q_ihx` into the closure and never compare the closure's `he_return` with `T_comp_in`. The residual `T_comp_in − he_return` equals the stored `he_hot_bound_margin` wherever all heat is removed, so the check needs no new run: starting point +48.8 K (the exchanger has far more capability than the point uses; an uncontrolled loop would settle its blanket inlet that much below 300 °C, a controlled one would bypass 18.8 % of the primary flow around the exchanger); best band +0.70 K (2,250 / 1.5183, 0.3 %) and +8.63 K (2,750 / 1.375, 3.9 %); 3,000 / 1.325 +8.87; 2,500 / 1.45 +13.57 K (6.0 %); S6 2,500 / 1.40 +3.04 K; the electricity-only best −0.50 K (returns too warm because 7.8 MW is unremoved, the heat-removal failure seen from the loop side). Six passing I-R points lie within 15 K, two within 5 K; the median passing point is 40.8 K off. The condition tightens the claim rather than reordering it: the exactly consistent operating points are the boundary points themselves, and the best band is the most consistent of the leading cases while the starting point is the least.
+- **Decision:** the condition is reported as a missing check with its residuals; no tolerance is declared for it (the owner's to set) and no bypass model is added; execution detail; coordinator; `answer.md` § 4.
+- **Decision:** a return-condition screen (`T_comp_in − he_return` within a declared tolerance, or an explicit bypass fraction) is offered as a modeling item, not opened; execution detail; coordinator; `answer.md` § 7.
+
+### T-008 scope
+
+- **Objective:** revise the answer, candidate ledger and proposed passage on the owner's directions 2, 3 and 5 and the T-007 result; update `.project/CURRENT_WORK.md`; write the round-2 result; obtain a fresh review of the revised answer.
+- **Why now:** the seal and the return condition are in; the owner's corrections are explicit.
+- **Scope:** `answer.md`, `candidate-ledger.md`, `proposed-passage.md`, `.project/CURRENT_WORK.md`, `trail.md`, `evidence/round2-review-brief.md` and the review's return. No record, package or model change.
+- **Inputs:** `evidence/owner-ruling-g001.md`; `evidence/return-condition-check.md`; the sealed record.
+- **Done when:** every number in the answer is a stored channel or the check's arithmetic; the four directions are applied verbatim in substance; the fresh review returns PASS or FINDINGS applied.
+- **Stop when:** the reviewer finds a claim the record cannot support (correct before close).
+
+### T-008 start — 2026-09-26
+
+T-008 · `answer.md`, `candidate-ledger.md`, `proposed-passage.md`, `.project/CURRENT_WORK.md`, `evidence/round2-review-brief.md`. Coordinator executes directly; a fresh reviewer for the revised answer.

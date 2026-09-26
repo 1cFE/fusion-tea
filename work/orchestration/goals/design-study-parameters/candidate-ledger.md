@@ -19,3 +19,5 @@ Every operating point the study evaluated is a candidate; this ledger lists the 
 | S5 view | `s5-feed100-f2250-r1.5183` | 2,250 / 1.5183, feed 100 | 597.481 | 0 | 9 of 9 | 445.790 | the same point under the named-feed convention |
 
 Classes: 52 passing I-R grid points; 44 heat-removal failures; 4 compressor-rating failures; 56 refused; 100 I-A failed selections; 72 sensitivity cases (51 passing).
+
+Return condition (round 2, `evidence/return-condition-check.md`): residual `T_comp_in − he_return` at the named candidates: starting point +48.8 K (bypass-equivalent 18.8 %), `ir-f2250-r1.5183` +0.7 K (0.3 %), `ir-f2750-r1.3750` +8.6 K (3.9 %), `ir-f3000-r1.3250` +8.9 K, `ir-f2500-r1.4500` +13.6 K (6.0 %), `ir-f2500-r1.4250` −0.5 K (returns too warm; heat removal already fails), `s6-hx75000-f2500-r1.4000` +3.0 K (1.4 %), `s6-hx75000-f2250-r1.5000` +10.2 K. Across the 52 passing I-R points the residual runs 0.4–125 K (median 41 K); the condition is not a declared check.
