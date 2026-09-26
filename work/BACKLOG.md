@@ -504,6 +504,12 @@ standalone:
   priority: P1
   status: completed
   completed: '2026-09-26'
+- id: WI-094
+  name: Costed loop-Brayton assembly
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -628,3 +634,4 @@ standalone:
 | WI-091 | ARIES integrated lifecycle cost | standard | P0 | completed | Completed 2026-09-22 |
 | WI-092 | ARIES parallel exchanger network alternative | standard | P0 | completed | Completed 2026-09-25 |
 | WI-093 | Combination assemblies from existing definitions | standard | P1 | completed | Completed 2026-09-26 |
+| WI-094 | Costed loop-Brayton assembly | standard | P1 | backlog |  |

@@ -82,7 +82,7 @@ Unsupported by declaration, carried into every reading: (a) the compressors and 
 
 ## 9. Materiality and tolerances
 
-- Replay: the starting point and the four other C-1 cases replay bit-exactly on the costed package for every C-1 channel they share (the pre-change control); a difference is a changed-behavior finding, never absorbed.
+- Replay: the starting point and the four other C-1 cases replay bit-exactly on the costed package for every C-1 channel they share (the pre-change control); a difference is a changed-behavior finding, never absorbed. Note 2026-09-26 (design review, WI-094): the 4,000 kg/s C-1 case has negative net, so the costed package's lifecycle body refuses it and stores no channels; the bit-exact control covers the four positive-net cases and the fifth is an expected refusal with the body's message.
 - Verification (runbook step 10): every stored point against the package-owned oracle at relative deviation < 1e-9, or an absolute class declared in the new package's manifest before execution: the closure residual 1e-7 MW (the ARIES class, same body); the lifecycle `idc` 2 ULP of the capital magnitude (the ARIES class, same body); the four kg/year fuel classes at 1e-9 (the ARIES classes, same bodies). No class is added or relaxed after a result is seen; a refusal outside them is an owner gate.
 - Materiality for the reading: a net difference below 5 MW (1.2 % of the starting net) and a ΔLCOE below 1 % of the base are immaterial and are not used to rank; the heat-removal boundary is located to the refined grid's resolution (0.025 in ratio, 250 kg/s in flow) and reported as a band, not a line.
 - Every point's identity: `<study-id>:<candidate>`; every plotted point carries its case name and its verdict set.
