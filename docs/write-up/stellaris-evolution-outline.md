@@ -2,46 +2,42 @@
 
 Outline for discussion. Supports [the main post](fusion-tea-exploratory-modeling.md).
 
-[OWNER, 2026-09-25] The viewer is the page. This narrative is added to it as context, because most readers will step through the frames and not read a separate piece. So each beat below has to work as a short note beside the frames it covers, and the groups are also how the 28 frames get grouped on the slider.
+[OWNER, 2026-09-25] The viewer is the page. This narrative is added to it as context. [OWNER, 2026-09-26] The narrative is organized by what drove the model's evolution, not by chronology. Six themes; the viewer carries the sequence.
 
-1. **Where we started.** The starting model was our SysML version of the team's costing engine, 1costingFE, set up at the Stellaris design point. It reproduced 1costingFE's cost accounts to one part in a million. That proved the machinery could reproduce another tool's arithmetic, and we decided that was all it proved. 55 equations, 6 constraints, and most physical quantities typed in from the paper or from 1costingFE defaults.
-   - The ARIES papers were kept out of the repo for the test in support 2.
-   - We stopped caring about matching 1costingFE at this point. From here the model was free to disagree with it.
+Lead: We started with a model that could price the Stellaris design but mostly just repeated the paper's numbers back to us. Over about a month, we ran 28 goals against it to turn the model into something that actually computes the plant from its design. Looking back over those goals, they generally fall within six themes. 
 
-2. **What the viewer shows.** 28 goals changed the model between August 27 and September 20. Each frame is one goal: what it asked, what changed, and what the numbers did. The rest of these notes explain why each group of goals was run, because the order was not arbitrary. Each group came from a different reason to distrust the model.
-   - By the end: 199 equations, 67 constraints, 76 parts.
-   - LCOE at the design point jumps around, from 275 to 333 to 142 to 319 $/MWh. Each jump is one model change the frame names. Do not read the chart as a fit converging on an answer.
+1. **Replacing typed-in numbers with physics.** The starting model was mostly fixed numbers from the paper and from 1costingFE: key system attributes (like field strength) were not modeled as a function of design parameters (like coil current). A typical goal took one of those attributes and modeled it from its design parameters, then checked that the result still matched the paper at the design point.
+   - Magnetic field from coil current and geometry (frame 3).
+   - Heating required to sustain the plasma from a confinement scaling (frame 4).
+   - Pumping power, cycle efficiency and availability from the coolant loop, the power cycle and the maintenance calendar (frame 10).
+   - Tritium breeding from blanket thickness, via neutron-transport runs (frame 21). Net electricity from a steam cycle at the actual salt temperature (frame 27).
 
-3. **Frames 2 and 3: the first studies found numbers nothing checked.** The first parameter sweeps in August were meant to test the study tooling. Instead they turned up inputs that nothing in the model pushed back on. Pumping power was 1 MW, a 1costingFE default about 150 times too low. The magnetic field cost money but bought nothing, so every optimizer run drove to the lowest field allowed.
-   - Fixing pumping power to the sourced 195 MW raised LCOE 21 percent and moved the recirculating-power limit across most of the sweep window.
-   - Rule that came out of this: when you sweep something and nothing pushes back, the model is underdeveloped there. That rule picked the next goals.
+2. **Making the model push back.** Modeling an attribute is not enough. The model also has to say when a design choice is not feasible. So we run studies: sweep the design parameters, see what LCOE is sensitive to, and find where the engineering limits are. If a sweep shows that a parameter can change cost without ever hitting a limit, then the model is missing a physical constraint. Modeling that constraint becomes the next goal.
+   - The recirculating-power limit never fired, because pumping power was 150 times too low. Fixed (frame 2).
+   - Raising the magnetic field added cost but improved nothing, because field reached no plasma calculation. We added confinement scaling, so field now buys sustainment (frame 4).
+   - A higher-field conductor was free. Now coil size follows coil current, so higher field means a bigger, heavier, more stressed coil (frame 5).
+   - Most feasible points were ignited plasmas the heating system could not control. We added a burn-control constraint (frame 8).
+   - A fatter plasma cost nothing at the magnet. Now the coil bore sets the peak field and casing mass (frame 9).
+   - Nothing checked that the winding pack fits its casing or that the conductor has current margin. We added both. Stellaris fails both (frames 16, 17).
 
-4. **Frames 4 and 5: a yardstick for "good enough."** We were not going to spend the one blind comparison on a model nobody believed in. So we wrote a rubric, without reading ARIES: twelve subsystems, each scored on physics (is it held, calculated, or constrained) and on cost depth (a lump, a parametric cost, or sized parts). Graded the model, took the worst gaps first.
-   - Magnets were first. Field, stress limit and cost now come from coil current and geometry instead of cited constants.
-   - Plasma was second. The heating needed to sustain the plasma now comes from a confinement scaling. Result: with the paper's 50 MW installed, no point in the sweep works, and the design point itself needs about 90 MW.
+3. **Making cost follow the design.** Modeling the physics does not fix the costing: an account can still be a lump sum that ignores the design. We wanted each account to follow the equipment, sized by the calculated demand (like heat exchangers by heat load) and priced by quantity, with installation, spares and replacements. These goals cause the largest LCOE moves in the viewer.
+   - Cooling: a $205M allowance became sized circulators, pumps, piping and exchangers at $8.2B (frame 22).
+   - Buildings sized from the equipment they hold and the maintenance they support (frame 23). Fuel processing cost scales with throughput (frame 25).
+   - Winding pack priced by tape length instead of a multiplier (frames 13, 15).
+   - Then we graded the estimate's maturity and where the cost concentrates (frame 26).
 
-5. **Frames 6 to 10: chasing the 90 MW.** The plasma result was either a real finding or a modeling error, and the next five goals were about telling which. This is the stretch where the model pushed back hardest and each goal was picked by the last goal's result.
-   - First, price the two ways out. A higher-field conductor and more installed heating were both free in the model. Once they cost something, the wall load, not the magnet, was what blocked most designs. So fix the wall-load check, which was comparing an average to a peak limit.
-   - Then trace the 90 MW itself. The stored energy was 9 percent above the paper because the helium ash had the wrong profile. Fixing that from the paper's own rule brought the requirement to 49 MW against 50. Part 3 walks this goal.
-   - Then the re-run sweep showed most passing points were ignited plasmas, which the model had no constraint for. Added one. Then made a fatter plasma cost something at the magnet, since that was the other free lever.
+4. **Following the engineering design pattern.** Inputs are choices an engineer would make (like coil current or exchanger area), and the model calculates the consequences of those choices in causal order. The model must not size equipment to meet a demand, because then it has decided which parameters are free instead of the engineer. We broke this rule without noticing, and the ARIES reveal caught it.
+   - Restructured into nested physical parts with ports, so a subsystem can be swapped for a trade study (frame 12).
+   - Several calculations sized magnet inventory, facilities and cooling equipment from demand. Those became inputs, with 33 capacity checks that fail when the supplied equipment is too small (frame 28).
+   - Measured how wide a design range the model can evaluate within the ranges its fits are valid over (frame 29).
 
-6. **Frames 11 to 13: the rest of the plant was still typed in.** With the plasma and magnets computed, the headline cost was still set by three fixed multipliers: pumping power, cycle efficiency and availability. And a fresh audit of both models had found 20 defects. And the SysML was a flat list of 14 parts that did not read as a machine.
-   - Computing the three multipliers from the design dropped LCOE from 322 to 225 $/MWh. A new divertor heat check fails at the design point.
-   - The audit repairs and the restructure into 23 nested parts changed no numbers. Every output matched, on every sweep point checked. The restructure exists so a subsystem can be swapped for a trade study.
+5. **Reconciling against Stellaris.** Once an attribute is modeled, its value can differ from the paper. We trace each difference to its cause rather than tuning it away, since the cause might be our model, our reading of the paper, or the paper itself.
+   - Stored energy was 9 percent above the paper, because the helium ash had been given the fuel's flat profile. With the paper's profile rule, required heating dropped from 90.6 to 49.1 MW against 50 installed (frame 7). Part 3 walks this goal.
+   - The wall-load check compared a flat-wall average to the paper's peak limit. Now it computes the peak (frame 6).
+   - Checked that our reference is one coherent published design point and classified each remaining difference (comments only, so no frame).
 
-7. **Frames 14 to 21: can the magnet model leave the design point?** ARIES is a different machine. The question for the comparison was whether the magnet costs and limits respond sensibly away from the Stellaris point, or only reproduce it. Eight goals priced the winding pack by tape length, made winding length and cryo load follow the coil bore, and added two checks: does the pack fit its casing, and does the conductor carry its current with margin.
-   - The Stellaris magnet fails both. The pack needs 370 mm radially and the casing has 250. Operating current 50 kA against an estimated 29.65 kA critical current.
-   - Several goals ended with no: the evidence does not support a design range, no sampled point passes every constraint. Those are answers. The goal closed on them and the next one opened.
+6. **Fixing defects.** All of this adds code, and code has bugs, so some goals were repairs.
+   - An audit found 20 defects: heating demand confused with installed capacity, a duplicated major radius, finance formulas that failed at zero interest rate, missing range checks (frame 11).
+   - A conductor cost multiplier applied twice (frame 15).
 
-8. **Frames 22 to 27: finishing the rubric before the comparison.** Six rubric cells were still below target. Six goals in two days took breeding, cooling equipment, buildings, tritium inventory and fuel processing from cost allowances to sized equipment, then one goal graded the whole estimate. Then a readiness goal confirmed all 23 cells at target and adopted the comparison package.
-   - Cooling is the one to explain. A $205M allowance became $8.2B of sized pumps, piping and exchangers, and LCOE went from 150 to 311 $/MWh.
-   - The 0.80 m blanket breeds too little tritium. Thicker blankets pass breeding and break the field limit.
-   - The estimate graded itself a Class 5 conceptual estimate. Cooling, magnets and buildings are 73 percent of direct cost.
-
-9. **Frames 28 and 29: the reveal failed, and why.** On September 20 we opened ARIES and ran the comparison. It stopped on the first calculation: the field came out at 56.6 T, outside the conductor model's range. The investigation found the real problem: several calculations sized equipment to meet demand instead of evaluating the equipment the designer supplied. That is the opposite of what the method is for. We branched from the pre-reveal code and ran two repair goals.
-   - Magnet geometry, facility size, processor throughput and cooling purchases became inputs the model evaluates. 33 capacity checks added.
-   - The last goal's answer: the size range ARIES needs is outside what the breeding and conductor models support. Support 2 picks up from there.
-
-10. **What this shows.** The rubric worked as a yardstick for depth. Every cell reached target, nothing was tuned to the paper, and along the way the model found things we did not put in: the pumping power, the ash profile, the ignited plasmas, the magnet that does not fit, cooling dominating cost. What the rubric did not measure was whether the model respected the method's one rule, that the designer chooses and the model evaluates. Depth scores passed while that rule was being broken. That is the lesson support 2 starts from.
-
-Open: this is ten beats, one over the harness outline. Beats 4 and 5 could merge. The main post says nine goals and ten studies; that count is from mid-September and the viewer's 28 is current.
+Close: Frame 29 asks how far this model can go. Support 2 is what happened when we tried.

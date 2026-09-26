@@ -319,4 +319,38 @@ The regenerated program matched the design's prediction:
 
 **Review.** The round 2 reviewer checked the record against the spec. Only one input value changed, the removed electron-profile exponent, and none of the values the owner had reserved moved. The account of affected studies was committed 27 minutes before the regenerated program.
 
-Section 7 looks at the checks that ran on this goal and which of them are mechanical.
+Section 7 describes the checks that ran along the way and what they caught.
+
+## 7. Checks: code and fresh reviewers
+
+A major challenge in running an AI system over many sessions is catching its errors early, before later work builds on them. An agent can state a number it never computed (a hallucination), misread its own results, or claim more than its evidence supports. To catch these, we use two general classes of checks: checks written as code, which pass or refuse with no judgment involved, and reviews by an agent in a fresh session that did not do the work. Below we describe the mechanisms in each class, each with an example from the stored-energy goal.
+
+**Code checks: is the program the model, and do the numbers reproduce?**
+
+- **Validation levels.** The six levels from the [earlier post](https://1cf.energy/searching-the-fusion-design-space-systematically/) check the SysML itself after every edit, from whether it parses to whether every value cites a source.
+- **Integration check.** Before a new version of the program is pinned for studies, a script regenerates the program from the model and confirms that nothing changes. That shows the program the studies will use is exactly the one the current model describes. The script also runs the program at the design point and confirms it matches the reference calculation from section 6 (`docs/integration_seam_operator_guide.md`).
+- **Regression tests.** Test suites for the model and the study tools hold the model's expected results, so a change that moves a result fails a test until someone updates it and records why. **Example:** the plan for the ash-profile change listed every place the change had to update, but it missed three study tests. They failed, and that is how they were found.
+- **Study checks.** During a study, the program's results are compared with the reference calculation. **Example:** in round 2's study, the stored energy agreed at all 7,712 points.
+
+**Agent reviews: is the reading right?**
+
+- **Critique of the study plan.** Before a study runs, a fresh agent reviews its plan for choices that would make the results misleading. **Example:** when round 2 set out to re-run an earlier study, the critique noticed that the earlier study had dropped its 13 keV rows only because the old profile made them fail the heating check. Under the corrected profile the cheapest driven designs were in those rows, so the plan was changed to include them before any point ran.
+- **Recount of the study record.** After a study runs, an agent that did not run it recomputes every count in the written record from the raw results. **Example:** in round 2's study it found seven statements that did not match the data, such as an average cost increase reported as if it held at every point, and one omission. They were corrected in an addendum, and no result changed.
+- **Checkpoint on the conclusions.** Before any follow-up acts on a study, a fresh agent checks the study's conclusions and the proposed follow-up against the evidence. **Example:** round 2's reading said the design point was undecided because its heating margin fell inside the paper's 2.7 percent residual. The checkpoint found that this reason pointed the wrong way, because the model's stored energy is above both of the paper's values, and sent the reading back. The corrected reason is the one section 4 gives.
+- **Fresh review of the round.** After a round closes, a fresh agent checks it against its approach and scope, re-runs the tests and recounts the numbers with its own scripts. **Example:** round 2's reviewer found a learning that described a 39 percent drop in the amount of ash as "halves", and the learning was corrected before it was recorded.
+
+**What the checks establish.** The code checks show that the model is well formed and that the program computes it correctly. The agent reviews show that the study's design and its conclusions fit the evidence, and on this goal they produced the corrections that mattered.
+
+These checks show that the work is consistent with the model and its sources. They do not show that the model predicts a real plant correctly, which is what the hold-out test in Part 4 is designed to test.
+
+## 8. Where the harness stands
+
+We built the harness so that an AI could carry engineering work across many sessions and have that work build on itself. Our assessment has three parts: the harness is still being refined, it runs our demo's goals almost on its own, and its analysis has been credible but has leaned on a published design to check against. That last part leaves our biggest open question.
+
+**It is still being refined.** We continued to develop the harness as we used it and found issues. Many of those fixes were new rules written into the agents' instructions. As much as possible, moving these prompt-rules into deterministic scripts improves scalability.
+
+**It runs goals almost on its own.** We estimate that about 95 percent of the work on our demo's goals ran without us. The stored-energy goal was an early one, and the owner stepped in at four points: approving the goal, leaving the research decision to the agent, ruling on the fix, and closing the goal. Agents did everything else, including the research request, the work item, the regenerated program and its pin, the 7,712-point study, and six reviews by fresh agents. Later goals needed even less. The four goals that built the integrated ARIES model in Part 4 ran seven rounds between them, and the owner's only input was a written brief at the start and the decision to close at the end.
+
+**Its analysis has been credible, but it has leaned on ground truth.** Many of the issues we caught were found by comparing the model with a published design, such as the Stellaris paper.
+
+**The open question.** Our biggest open question is whether the harness's own checks are enough in a domain with no published design to compare against. The checks in section 7 test the work against the model and its sources, so they do not test whether the model's own assumptions are right. Part 4 describes the hold-out test we designed to probe this: the model was built without the ARIES-CS publications and then compared with them.

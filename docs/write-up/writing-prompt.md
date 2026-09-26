@@ -24,8 +24,11 @@ Texture that breaks this voice:
 - Commentary on the document or its readers, such as "Two readers need it."
 - Callbacks to the essay's own phrasing, such as "Section 1 called the records the memory of the whole effort."
 - Staccato rhetorical setups, such as "Two rules keep the map small enough to learn."
+- Narrative hooks and dramatized setups, such as "The stored-energy goal started from one number" or "The re-run found something the earlier study had not anticipated." State the subject and the finding directly.
+- Paragraphs that argue for the process instead of describing it. If the point is made elsewhere, cut the paragraph.
+- Statements that a mechanism works without saying what it is for, such as "the tests fail when an expectation no longer holds."
 
-*(Added 2026-09-26. The owner rejected the voice of a Part 3 draft; the characterization above is the agent's, accepted by the owner.)*
+*(Added 2026-09-26. The owner rejected the voice of a Part 3 draft; the characterization above is the agent's, accepted by the owner. The last three items were added later the same day from the owner's corrections to Part 3 sections 4–8.)*
 
 ## Work one section at a time
 
@@ -44,6 +47,17 @@ For example, the accepted opening to the component-modeling section is:
 The magnet example follows that scope sentence. Similarly, the component-selection section first explains why varying numerical inputs cannot explore behavior absent from the current component model, then introduces the blanket's more detailed breeding calculation.
 
 These are examples of the explanation pattern, not required wording. Titles should identify the engineering purpose or technical subject. “Exploring the design space: parameters, components, and architecture” gives useful context; “What do we want to change?” does not.
+
+## Structure a section so it reads in one pass
+
+Tell the reader what the section covers, cover it, then say what it covered. The frame leads and the examples support it. When the examples lead, the reader cannot tell what they are examples of.
+
+- When a paragraph carries a chain of facts, break it into bullets. Each bullet states its point first and gives the numbers after. When a point takes several steps to reach, state it in a main bullet and put the steps under it as sub-bullets.
+- Give a list of parallel items one simple, repeating pattern, such as a check followed by "**Example:** when X, it caught Y." Where an item has nothing to fill the pattern, explain it plainly instead of forcing it.
+- Reuse structures the piece has already introduced. Part 3 describes a round as a sequence of tasks, so its worked example walks each round task by task: what it was, what changed, what it found. A summary table that restates the prose adds nothing.
+- Do not re-explain what a published post already covers. Summarize it in a sentence, link it, and spend the space showing the example.
+
+*(Added 2026-09-26 from the owner's corrections to Part 3 sections 4–8; the wording is the agent's summary.)*
 
 ## Develop the causal explanation
 
@@ -72,6 +86,10 @@ Introduce figures with the question they help answer. Explain their main causal 
 Keep qualifications that change what the reader may conclude. Historical study costs remain historical. Passing modeled constraints does not establish unmodeled physical feasibility. Preserve distinctions between supported sweeps, external optimization, and capabilities not yet implemented. Move secondary implementation details or complete held-input lists into linked notes when agreed, preserving their content and sources.
 
 Do not simplify a claim into something technically different. In the magnet example, selected ampere-turns and geometry produce field. In the blanket example, selecting a richer component model demonstrates added model detail, not a demonstrated material substitution. Check the retained evidence when a proposed edit would change such a claim.
+
+Give an example only when the reader has its context. If the context is set up elsewhere in the piece, point to it. If an example needs more setup than it is worth, cut it. A wrap-up summarizes and does not retell examples already used, and no section should end on a claim it has not set up.
+
+Treat outline bullets and runbook phrases as prompts to check, not text to copy. Check each claim against the record before writing it, flag any that does not hold, and explain a runbook phrase in plain words before using it.
 
 ## Finish on what the reader can now do or understand
 

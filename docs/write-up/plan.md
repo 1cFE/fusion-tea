@@ -16,8 +16,8 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 |---|---|---|
 | 1. Why SysMLv2 | The existing blog post | Done. Main post only needs the short argument (strict semantics fight AI entropy; composability enables categorical trade studies). |
 | 2. Model execution and studies | [sysml-codegen-model-evaluation.md](sysml-codegen-model-evaluation.md), to become HTML | Prose revised through the writing prompt. Figures and evidence live in `sysml-codegen-assets/`. Needs HTML conversion. |
-| 3. The full harness | [harness-outline.md](harness-outline.md) | Outline at the right shape and level as of 2026-09-25. Next: settle open questions, then fill-in. |
-| 4. The demo, support 1: modeling Stellaris | Evolution viewer (`feat/model-viz-evolution`, page at `~/1cfe/stellarator_evolution.html`) | Viewer built, 29 frames (baseline plus 28 goals). Capture of the evolution as a narrative still TODO. |
+| 3. The full harness | [harness.md](harness.md) (outline: [harness-outline.md](harness-outline.md); figure: `harness-assets/`) | Drafted: sections 1–8 filled in and revised with the owner, 2026-09-26. Figure 1 (the goal loop) done. Open: whether section 4 gets a figure; HTML conversion. |
+| 4. The demo, support 1: modeling Stellaris | Evolution viewer (`feat/model-viz-evolution`, page at `~/1cfe/stellarator_evolution.html`) plus [stellaris-evolution-outline.md](stellaris-evolution-outline.md) | Viewer built, 29 frames (baseline plus 28 goals). Outline at the right shape as of 2026-09-26. Next: fill-in as notes beside the frames, then merge into the viewer page. |
 | 4. The demo, support 2: the ARIES test | [aries-model-transfer-outline.md](aries-model-transfer-outline.md) | Narrative draft awaiting owner discussion. |
 | 5. Takeaways and forward outlook | Probably none | Main post only. |
 
@@ -33,7 +33,7 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 
 Working order for step 2, by readiness and dependency:
 
-1. Part 3 outline (the gap; the main post's Part 3 and Part 4 both lean on the goal and round vocabulary it establishes).
+1. Part 3 (the gap; the main post's Part 3 and Part 4 both lean on the goal and round vocabulary it establishes). Drafted 2026-09-26.
 2. Part 4 support 1: capture the Stellaris evolution using the viewer.
 3. Part 4 support 2: discuss and settle the ARIES narrative, then fill.
 4. Part 2: convert the evaluation article to HTML.
@@ -58,20 +58,37 @@ Main post framing to preserve (from the outline): a harness is a large set of to
 - Modeling PM: `CLAUDE.md` § Project Management, `modeling_project/MODELING_PROCESS.md`, `work/EPIC_GUIDE.md`.
 - Traceability and checks: MR-4 and MR-7 in `modeling_project/REQUIREMENTS.md`, `docs/integration_seam_operator_guide.md` (ten gates), ADR-0008 through 0010, `.claude/skills/run-study/runbook.md`.
 - Existing visuals to consider reusing or redrawing: `docs/workflow.d2` and `docs/workflow.png`, `docs/demo/closed-loop.html`.
-- Harness size and shape data for the "repo size over time, actively used vs left behind" figure the main post sketches: `.project/active/harness-right-size/report.md` may already have counts.
 
-The outline is in [harness-outline.md](harness-outline.md). The source material above is for the fill-in stage.
+The outline is in [harness-outline.md](harness-outline.md); the drafted piece is [harness.md](harness.md).
+
+**Status, 2026-09-26.** All eight sections are drafted. Sections 1–3 and Figure 1 were settled in an earlier session; sections 4–8 were filled in and revised with the owner on 2026-09-26. Sections 4–7 follow one worked example, the `stored-energy-basis` goal: section 4 walks both rounds task by task, section 5 its research request, section 6 its work item (WI-042), and section 7 the checks it passed, each with an example of what it caught.
+
+Decisions taken during fill-in:
+
+- [OWNER] Beat 8 became a wrap-up, "Where the harness stands", and stays in Part 3. The outline's beat 8 bullets were dropped. The wrap-up answers whether the harness meets its targets, in the owner's terms: it is still being refined; it runs the demo's goals about 95 percent autonomously; its analysis has been credible but has relied on ground truth; the open question is whether its own checks suffice in a domain without ground truth.
+- [OWNER] The repo-size figure is dropped as a tangent.
+- [OWNER] Table 2 (the rounds against Figure 1) was cut as a forced synthesis.
+- [OWNER] Section 6 summarizes the modeling workflow and links the earlier post instead of re-explaining it, then shows the example: the spec, the ash-rule code excerpt, and the predicted-versus-actual table.
+- [AGENT] (ratified by owner, 2026-09-26) Section 7 ends by pointing to the Part 4 hold-out test as the test of whether the model predicts a real plant; section 8 cites the four integrated ARIES goals (Part 4) as the low-input example.
+- [AGENT] Corrections to the outline found against the record: round 1's research wrote no "found nothing" record (the run returned `REGISTERED` with two candidates queued); the quarantine is checked by the script only at registration, with the before-fetch screen an instruction in the research agent's prompt; WI-042 changed two calculations, not one.
+
+Open for Part 3:
+
+- Whether section 4 gets a figure. The outline proposed the evolution viewer's before-and-after frame for this goal; the viewer's frame texts are agent condensations and would need checking against the goal's trail.
+- HTML conversion, with the other supports.
 
 ## Part 4, support 1: capturing the Stellaris evolution
 
-[OWNER] TODO: capture the evolution using the viewer.
+[OWNER, 2026-09-25] The viewer is the page. The narrative is context added to it, since most readers will step through the frames rather than read a separate piece.
 
-[AGENT] Notes and questions:
+[OWNER, 2026-09-26] The narrative is organized by what drove the model's evolution, not by chronology: six themes (replacing typed-in numbers with physics; making the model push back; making cost follow the design; following the engineering design pattern; reconciling against Stellaris; fixing defects). Each theme names its example frames. The viewer carries the sequence. The outline is in [stellaris-evolution-outline.md](stellaris-evolution-outline.md), with a one-line close pointing at support 2.
 
-- The viewer's frame result texts are agent condensations and not owner-reviewed (per the commit on `feat/model-viz-evolution`). The captured narrative should be checked against `trail.md` of each goal it features, not against the frame text.
-- Existing narratives under `work/narratives/` (ten goal narratives from early September, plus a goal overview) are candidate raw material for the story, though they predate the later goals.
-- The main post's thread (heating gap traced to helium ash, then ignited-plasma feasibility, then a new constraint) is the natural spine. Question for the owner: does support 1 walk all 28 goals briefly, or pick three to five turning points and use the viewer for the rest?
-- Format question: does the evolution viewer itself become the HTML support, with a short narrative layer added, or is it embedded or linked from a separate HTML page?
+[AGENT] Notes for fill-in:
+
+- The viewer's frame result texts are agent condensations and not owner-reviewed (per the commit on `feat/model-viz-evolution`). Every number in the outline came from those texts and must be checked against each goal's `trail.md` at fill-in.
+- Existing narratives under `work/narratives/` (ten goal narratives from early September, plus a goal overview) are candidate raw material, though they predate the later goals.
+- The main post's count of nine goals and ten studies is from mid-September. The viewer's 28 goals is current.
+- Where the theme notes live on the page (beside the slider, grouped frames, or a panel) is a fill-in and HTML decision, not settled.
 
 ## Part 4, support 2: the ARIES test
 
@@ -89,6 +106,6 @@ Next step: owner discussion of the draft, then fill using the writing prompt, th
 ## Open questions for discussion
 
 1. Part 3 scope: one HTML piece covering all four topics, or two (the workflow and PM recap; the goal layer and checks)?
-2. How much of "moving forward" belongs in Part 3 versus Part 5 of the main post?
-3. Stellaris evolution: full walk or turning points? Viewer as the support, or a page around it?
-4. Figures for the main post: which come from the supports, and which are new (the repo-size figure, the nested-circles harness figure)?
+2. How much of "moving forward" belongs in Part 3 versus Part 5 of the main post? [OWNER, 2026-09-26] Part 3 ends with its own assessment and open question (section 8); the forward outlook stays in Part 5.
+3. Stellaris evolution: settled [OWNER, 2026-09-25 and 2026-09-26]. The viewer is the page; the narrative is six themes with example frames, not a walk or a chronology. See the Part 4 support 1 section.
+4. Figures for the main post: which come from the supports, and which are new (the nested-circles harness figure)? The repo-size figure is dropped [OWNER, 2026-09-26].

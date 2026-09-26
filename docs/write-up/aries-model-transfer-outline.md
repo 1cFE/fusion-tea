@@ -55,7 +55,7 @@ Adding new physics was expected once we allowed library extensions. We had only 
 
 The strongest reuse example is the plasma-to-fuel connection. The new plasma calculation produced fusion power; the existing fuel model used that power to calculate fuel demand. Raising the density by 50% increased calculated fusion power from about 1.84 to 4.13 GW and exceeded the selected exhaust-processing capacity. The existing check caught that failure without a new ARIES-specific fuel equation or automatic equipment enlargement.
 
-**The stronger structural claim remains only partly tested.** Independent component and material choices should multiply the configurations we can explore, subject to physical compatibility. This work demonstrated particular connections and reuse, not a systematic set of substitutions between the Stellaris and ARIES assemblies. We should not count definitions and call that proven coverage of the design space.
+To test whether these additions expanded the design space, we also assembled components from the two plants in new combinations and studied changes to parameters and connections. Section 6 describes what those tests established.
 
 The Stellaris baseline remained unchanged during these extensions. Evidence: [component additions, reuse and executed cases](../../work/orchestration/aries-transfer-experiment/report.md), [plant integration](../../work/orchestration/goals/aries-integrated-heat-electricity/answer.md), [equipment and cost integration](../../work/orchestration/goals/aries-integrated-equipment-costs/answer.md).
 
@@ -67,4 +67,55 @@ After the major component additions above, we evaluated the model against ARIES'
 
 - **Cost: the estimates use different fuel and financial assumptions.** ARIES reported **$77.6/MWh**. Using assumptions closer to theirs, we calculated about **$59/MWh at a 5% real discount rate**, also in 2004 dollars. We could not fully explain the remaining difference because their financing details were incomplete. Much of our equipment costing also used ARIES's own accounts, so this was an accounting comparison, not an independent validation of their estimate. [Cost assessment](../../work/orchestration/goals/aries-reconciled-alternative-economics/answer.md)
 
-The useful result was that we could trace a whole-plant disagreement to specific connections, physical assumptions and cost inputs. We demonstrated model extension and diagnosis, but did not reproduce the complete ARIES design. Whether the added components support a broader range of usable combinations is the subject of the next tests; the two assembled plants alone do not establish that.
+The comparison helped locate disagreements, but did not independently reproduce the complete ARIES design. A separate test addressed the other purpose of the model: using its components to explore design choices.
+
+## 6. What could we learn by changing the design?
+
+The expanded model supported three kinds of experiment: change operating parameters, select different components, or change their connections. By expanding our stellarator model space -- now capturing the Stellaris and ARIES design points, we should have in theory greatly expanded the total possible design space. 
+
+To test this, we used each of our classes of experiment to ask a concrete engineering question. The results show both what the model can teach us and where the comparisons remain incomplete.
+
+### Parameters: when does producing less electricity lower its cost?
+
+We varied plasma density while keeping the selected equipment fixed. Lower density reduced fusion power, electricity output and fuel demand. Whether that improved LCOE depended on how the plant obtained its tritium.
+
+| Operating point | Net electricity | LCOE: purchase all new tritium | LCOE: assume 100 kg/year of new supply |
+|---|---:|---:|---:|
+| Baseline density | 423 MW | $1,119/MWh | $176/MWh |
+| Lower density | 350 MW | $1,295/MWh | $160/MWh |
+
+Both rows use the same selected exchanger areas of 45,000 m² each and pass the evaluated checks. Prices are USD2004. Purchased tritium is assumed to cost $30 million/kg; the 100 kg/year supply carries an assumed $30 million/year service charge. These are operating scenarios from the earlier design study, separate from the 891 MW comparison above. [Cases and accounting](../../work/orchestration/goals/aries-integrated-design-studies/answer.md)
+
+When all new tritium is purchased, the lower-density plant is more expensive per MWh: its reduced fuel bill does not compensate for producing less electricity from the same equipment. With the assumed 100 kg/year supply, the ranking reverses. Lower density brings annual demand below that supply limit and eliminates the remaining external purchases.
+
+The lower-density case is cheaper only because it avoids expensive tritium purchases. It does not generate electricity more efficiently. Before recommending lower density, we would need to establish whether the plant can obtain the assumed 100 kg/year supply at the stated cost. The study tells us which missing information could change the design recommendation.
+
+### Components: can the same models work with different partners?
+
+We connected the Stellaris helium-loop model to the ARIES Brayton components, and separately connected the Stellaris plasma model to the ARIES thermal and fuel chain. Both assemblies used existing definitions without changing their equations. Several configurations passed every check their assembly included; others reported insufficient equipment or heat-removal capacity. [Assembly results](../../work/orchestration/goals/design-space-combinations/answer.md)
+
+These tests demonstrate component reuse directly: the definitions worked with partners outside the plant for which they were developed. They also identified specific limits. For example, the steam-cycle path expects a salt-loop heat interface, so it cannot accept every ARIES coolant stream without an appropriate exchanger model.
+
+We have not yet established whether steam or Brayton conversion gives lower LCOE for the same plant. That requires a matched heat source, complete auxiliary-power accounting and comparable equipment costs. The hybrid tests still contain gaps, including the connection between plasma heating demand and the electrical balance. Their numerical outputs establish execution and the reported checks, not a complete economic ranking. No material-substitution comparison was demonstrated in these tests.
+
+### Architecture: which exchanger arrangement can handle more fusion power?
+
+We compared two arrangements of the same exchanger stages: all in series, or a first stage followed by two parallel branches. We then increased plasma density and checked both electricity and heat removal.
+
+| Peak density, m⁻³ | Series: net electricity / unremoved heat | Split flow: net electricity / unremoved heat |
+|---|---:|---:|
+| 5.0 × 10²⁰ | 423 MW / 0 MW | 423 MW / 0 MW |
+| 5.5 × 10²⁰ | 736 MW / 0 MW | 703 MW / 45 MW |
+| 5.75 × 10²⁰ | 795 MW / 150 MW | 821 MW / 115 MW |
+
+These cases use the same density-profile shape and selected hardware. Electrical output and unremoved thermal power are separate quantities. A case with unremoved heat fails the modeled steady-operation requirement, regardless of its electricity output. [Verified architecture study](../../exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/results/interactions.md)
+
+At the lower load, the arrangements give the same result. At the middle load, only the series arrangement removes all the heat. At the highest load, the split-flow arrangement produces more electricity, but neither arrangement removes all the heat. The apparent ranking reversal therefore does not identify a better operating design.
+
+**Changing the connections changes the usable operating range.** In these cases, heat removal fails before the fuel-processing or compressor-capacity checks. A study that ranked only net electricity or LCOE would miss the reason the apparently attractive operating point cannot be sustained under the model's assumptions.
+
+### What these studies add to the assessment
+
+The parameter study exposed a fuel-supply threshold that reverses an economic preference. The component tests demonstrated new pairings without new equations. The architecture study showed where changing connections changes the heat-removal limit. These are concrete uses of the expanded design space beyond evaluating Stellaris and ARIES separately.
+
+The evidence is uneven: we have conditional LCOE comparisons for operating parameters, direct reuse tests for components, and operating-limit comparisons for architecture. A matched economic comparison between component alternatives remains unfinished. That distinction lets us show useful design studies without claiming that every represented combination is physically qualified or economically comparable.
