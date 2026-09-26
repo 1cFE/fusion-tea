@@ -367,3 +367,23 @@ T-012 · `answer.md`, `candidate-ledger.md`, `proposed-passage.md`, `.project/CU
 - **Finding dispositions:** six rows `20260926-design-study-parameters-b#1`–`#6` sighted by this round's study with dispositions in the record § 15 (#1–#3 to the answer; #4 to learnings; #5 recorded in § 11; #6 offered to the owner as an undeclared bypass limit). The round-1 rows' dispositions stand; row #3 (fixed-efficiency) and #4 (pump law) now read at the matched point. Joined disposition rows are appended after the round review accepts them.
 - **Constraints carried forward:** the acceptable bypass fraction is the owner's to declare (the best point needs none); the WI-094 receipts and the round-1 record are untouched; the two sealed records are read together (cycle channels bit-identical across the identities); no shared library file was edited (one new file added); closure and the two items' closes are the owner's.
 - **Native-state check:** one new library file, one new reviewed body, additive assembly edits, the package regenerated at a fixed point on a new identity, one new sealed study record, six discovery rows; the Stellaris, ARIES and combinations packages, the shared library files and the frozen studies unchanged (preservation 20,973 files exact at `-t010-build`, `-t010-seam`); the owner's uncommitted write-up files never staged.
+
+### Amendment 2026-09-26 — amends the T-010 scope, the T-011 and T-012 scopes, and the T-011 return
+
+[AGENT] On the round-3 reviewer's notes (`evidence/round3-review.md`): T-010's decision on the tolerance classes edited `studies/prepare_interface.py`, which its scope listed only by implication ("studies/{interface_data,manifest,oracle_entry} regenerated or extended"); T-011 and T-012 added `evidence/fill-record-b.py` and `evidence/fill-answer-r3.py`, unnamed in their scopes; this amendment records the three files. The T-011 return's and the record § 15 finding #2's "20–23 MW below" is 23–26 MW below the matched point at the design flow (the stored deltas −23.3 and −26.3; 2.7 and 23.4 MW below each flow's own matched point); the record is immutable and the joined disposition row for `-b#2` carries the correction. Verification: read from `results/readout.json` `vs_design_flow_boundary`; recorded here as an objectively verifiable fix.
+
+### T-012 return — 2026-09-26
+
+- **Outcome:** COMPLETE.
+- **Native artifacts:** `answer.md`, `candidate-ledger.md`, `proposed-passage.md`, `.project/CURRENT_WORK.md`, `evidence/{round3-learnings-proposed.md, round3-review-brief.md, round3-review.md, fill-answer-r3.py}`.
+- **Review:** fresh non-author reviewer (`evidence/round3-review.md`): FINDINGS, one `correct-before-close` (the "20–23 MW" figure, corrected above and in the answer and L-012) and eight notes, all applied: "+45 %" used consistently; the 0.85 availability behind the annual-energy figures stated; the scope drift recorded; L-014 graded as the agent's generalization from the owner's direction; L-011's citation corrected to `readout.json` and the record; the I-A ledger row names its three violated ratings; T-012's return written. The reviewer found the direction applied in substance, about forty numbers matching the sealed record, the seal sound and the scopes held.
+- **Reading:** the answer stands on the two sealed records with the loop's return requirement enforced.
+- **Decision:** none new.
+
+### Round 3 review — 2026-09-26
+
+- **Reviewer:** fresh non-author reviewer (`evidence/round3-review-brief.md`, `evidence/round3-review.md`). **Verdict: FINDINGS**, one `correct-before-close` applied, eight notes applied (the T-012 return above).
+- **Checks:** the owner's four steps applied in substance and the two withdrawn conclusions gone; the answer's § 2 and § 6 numbers against the sealed readout (about forty values); the bypass fractions and residuals; the seal (pass on 22 of 22 under twelve pre-declared classes; the snapshot digest; the licensing of round-1 cycle values by the bit-identical replay); the scopes; the learnings.
+- **Reused evidence:** the design and implementation reviews of WI-095, the seam CANDIDATE, the round-1 and round-2 reviews, the owner's ruling and direction.
+- **Remaining uncertainty:** the heater-inlet temperatures and the availability behind the annual-energy figures are stored channels outside the reviewed sections (`results/readout.json`); the "untouched" statements rest on the pathspec-limited commits and the preservation checks, not on a reviewer's git diff.
+- **Recommendation:** close the goal as answered on sealed evidence with the requirement enforced; close WI-094 and WI-095 on their evidence through `pm close-item`; the owner decides whether to declare a bypass limit. Rounds used 3 of 4. Closure is the owner's.

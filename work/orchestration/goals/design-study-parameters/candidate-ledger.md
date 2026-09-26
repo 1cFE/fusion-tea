@@ -47,6 +47,6 @@ Return condition (round 2, `evidence/return-condition-check.md`): residual `T_co
 | ladder | `ir-f2250-r1.5100` | 2250 / 1.5100 | 600.026 | 0.0000 | +1.2e+00 | heat_removal_ok violated, return_condition_ok violated | 94.62 / 1108.66 | infeasible |
 | ladder | `ir-f2250-r1.5150` | 2250 / 1.5150 | 600.147 | 0.0000 | +3.3e-01 | heat_removal_ok violated, return_condition_ok violated | 94.60 / 1108.43 | infeasible |
 | S6 alternative | `s6-hx75000-f2500-r1.4000` | 2500 / 1.4000 | 671.624 | 0.0388 | -5.0e-11 | 11 of 11 | 85.13 / 991.07 | 3.9 % bypass; separate inventory |
-| I-A starting point | `ia-f2500-r1.5183` | 2500 / 1.5183 | 426.579 | 0.3112 | -4.0e-11 | capacity_ok violated, capacity_ok violated, capacity_ok violated | 121.70 / 1548.04 | ratings violated; 31 % bypass |
+| I-A starting point | `ia-f2500-r1.5183` | 2500 / 1.5183 | 426.579 | 0.3112 | -4.0e-11 | compressor, helium-duty and rejection ratings violated | 121.70 / 1548.04 | ratings violated; 31 % bypass |
 
 The round-2 bypass-equivalent fractions quoted above (18.8 %, 0.3 %, 3.9 %, 6.0 %, 1.4 %) were a mixing estimate; the solved control settings are the round-3 column.
