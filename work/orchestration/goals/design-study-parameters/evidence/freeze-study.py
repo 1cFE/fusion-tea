@@ -52,9 +52,9 @@ source_paths.update([route.MANIFEST_PATH.relative_to(ROOT).as_posix()] + ([(reco
                      'exploration/costed_loop_brayton/build.py', 'exploration/costed_loop_brayton/run.py', 'exploration/costed_loop_brayton/verify.py',
                      'exploration/costed_loop_brayton/census.json', 'exploration/costed_loop_brayton/costed_loop_brayton.snapshot.json',
                      'models/designs/costed_loop_brayton/costed_loop_brayton.sysml', 'models/designs/combinations/combinations_loop_brayton.sysml',
-                     'work/active/WI-094_costed-loop-brayton/spec.md', 'work/active/WI-094_costed-loop-brayton/design.md', 'work/active/WI-094_costed-loop-brayton/report.md',
-                     'work/active/WI-094_costed-loop-brayton/evidence/build-hashes.json', 'work/active/WI-094_costed-loop-brayton/evidence/native_runs/summary.json',
-                     'work/active/WI-094_costed-loop-brayton/evidence/verification-summary.json',
+                     'work/completed/20260926_WI-094_costed-loop-brayton/spec.md', 'work/completed/20260926_WI-094_costed-loop-brayton/design.md', 'work/completed/20260926_WI-094_costed-loop-brayton/report.md',
+                     'work/completed/20260926_WI-094_costed-loop-brayton/evidence/build-hashes.json', 'work/completed/20260926_WI-094_costed-loop-brayton/evidence/native_runs/summary.json',
+                     'work/completed/20260926_WI-094_costed-loop-brayton/evidence/verification-summary.json',
                      'work/orchestration/goals/design-study-parameters/goal.md', 'work/orchestration/goals/design-study-parameters/trail.md',
                      'modeling_project/REQUIREMENTS.md', 'tests/model_families.py'])
 source_paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT / 'exploration/costed_loop_brayton/input_models').glob('*.sysml'))

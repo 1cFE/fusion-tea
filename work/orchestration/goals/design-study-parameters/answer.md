@@ -70,7 +70,7 @@ Fixed isentropic efficiencies at every flow and ratio (no off-design map; S1 bou
 ## 8. Evidence and replay
 
 - Records (sealed): `exploration/costed_loop_brayton/studies/20260926-design-study-parameters/` (round 1: `record.md` with the seal addendum, `snapshot.json` `d84c7dac…`, `results/readout.md`, `results/figures/`) and `…/20260926-design-study-parameters-b/` (round 3: `record.md`, `snapshot.json` `f0f72112…`, `results/readout.md`, `axis-plan.json` with the boundary solve).
-- The model increment: `work/active/WI-095_loop-return-control/` (`spec.md`, `design.md`, `report.md`); `models/library/analyses/loop_return_control.sysml`; the reviews `evidence/design-review-r3.md`, `evidence/implementation-review-r3.md`; the seam `evidence/integration-t010/`.
+- The model increment: `work/completed/20260926_WI-095_loop-return-control/` (`spec.md`, `design.md`, `report.md`); `models/library/analyses/loop_return_control.sysml`; the reviews `evidence/design-review-r3.md`, `evidence/implementation-review-r3.md`; the seam `evidence/integration-t010/`.
 - Contract, rulings and directions: `evidence/comparison-contract.md` (v2), `evidence/owner-ruling-g001.md`, `evidence/owner-direction-round3.md`; the earlier reviews under `evidence/` (contract, design, implementation, round 1, round 2).
 - Owner closure: `evidence/owner-direction-close.md` (the final reporting corrections, applied here, in `proposed-passage.md`, in `candidate-ledger.md` and as an addendum to the round-3 record).
 - Candidate ledger: `candidate-ledger.md`. Proposed write-up passage: `proposed-passage.md`.

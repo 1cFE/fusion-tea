@@ -1,7 +1,7 @@
 ---
-Status: active
+Status: complete
 Created: 2026-09-26
-Updated: 2026-09-26
+Updated: '2026-09-26'
 ---
 
 # Design: costed loop-Brayton assembly (WI-094)

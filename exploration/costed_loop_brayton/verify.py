@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'costed_loop_brayton_tea'
-EVIDENCE = ROOT / 'work/active/WI-095_loop-return-control/evidence'  # WI-094's receipts stay under its own evidence directory
+EVIDENCE = ROOT / 'work/completed/20260926_WI-095_loop-return-control/evidence'  # WI-094's receipts stay under its own evidence directory
 RUNS = EVIDENCE / 'native_runs'
 P = 'costed_loop_brayton__plant__'
 D = lambda x: Decimal(str(x))

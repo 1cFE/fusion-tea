@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'costed_loop_brayton_tea'
-EVIDENCE = ROOT / 'work/active/WI-095_loop-return-control/evidence'  # WI-094's receipts stay under its own evidence directory
+EVIDENCE = ROOT / 'work/completed/20260926_WI-095_loop-return-control/evidence'  # WI-094's receipts stay under its own evidence directory
 LIBRARY = [
     'models/library/analyses/mfe_primary_loop.sysml', 'models/library/analyses/mfe_viability.sysml',
     'models/library/analyses/integrated_heat_electricity.sysml', 'models/library/analyses/ideal_gas_brayton_components.sysml',

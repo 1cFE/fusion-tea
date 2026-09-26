@@ -19,7 +19,7 @@ START_RATIO = 1.5182944859378311
 FLOWS = [2000.0, 2250.0, 2500.0, 2750.0, 3000.0, 3250.0, 3500.0, 4000.0]
 RATIOS = [1.20, 1.25, 1.30, 1.325, 1.35, 1.375, 1.40, 1.425, 1.45, 1.475, 1.50, START_RATIO, 1.55, 1.60, 1.70, 1.80]
 # The fuel chain's stored exhaust rate at the starting point (atoms/s), from
-# work/active/WI-094_costed-loop-brayton/evidence/native_runs/c1-aries-ratios-reselected-ratings/result.json; a constant of the
+# work/completed/20260926_WI-094_costed-loop-brayton/evidence/native_runs/c1-aries-ratios-reselected-ratings/result.json; a constant of the
 # sweep because the fusion power is held equal. The balance converts it at 1e-22 MW per atom/s (about 1.79 MW).
 EXHAUST_RATE = 1.7893284736432182e+22
 QUESTION = ('On the costed C-1 assembly (Stellaris helium loop feeding the ARIES three-stage Brayton chain, priced inventory I-R): '

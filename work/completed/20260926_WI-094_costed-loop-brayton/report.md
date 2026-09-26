@@ -4,6 +4,8 @@
 
 **Offered follow-up (not opened):** the 'Primary Coolant Loop' definition states that the IHX must return the helium at `T_comp_in` so that the held blanket inlet holds; this assembly (as C-1) binds the loop into the closure and never compares the closure's `he_return` with `T_comp_in` (goal `evidence/return-condition-check.md`: residual equal to the helium hot-bound margin wherever all heat is removed; 48.8 K at the design point, 0.7–13.6 K at the study's leading passing points). A return-condition screen with an owner-declared tolerance, or an explicit bypass fraction, would be a small additive modeling item.
 
+**Closed:** 2026-09-26 by the owner's direction (`work/orchestration/goals/design-study-parameters/evidence/owner-direction-close.md`) through `pm close-item`; archived here from `work/active/`. Citations inside the sealed model files, the generated package and the frozen study records keep the `work/active/` path and resolve to this directory.
+
 ## What was built
 
 - `models/designs/costed_loop_brayton/costed_loop_brayton.sysml`: package `costed_loop_brayton`, root part `plant`, the WI-093 C-1 assembly with unchanged bindings and values plus the ARIES purchase, fuel, ledger and lifecycle definitions instantiated from existing definitions only (design § 1, § 3).

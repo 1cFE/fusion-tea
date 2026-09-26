@@ -2,6 +2,8 @@
 
 **Status:** implemented and reviewed (fresh design review FINDINGS applied, fresh implementation review PASS with five notes, 2026-09-26); integration seam CANDIDATE on the new identity (executable `f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989`, semantic `a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203`, manifest pin `7fb8341cf1206ebf3f83a458f33b3c469089bf08e68f8fcad9f84b2739016028`). The item stays `active` until the goal's round-3 study has run and sealed on the package; closure is the owner's.
 
+**Closed:** 2026-09-26 by the owner's direction (`work/orchestration/goals/design-study-parameters/evidence/owner-direction-close.md`) through `pm close-item`; archived here from `work/active/`. Citations inside the sealed model files, the generated package and the frozen study records keep the `work/active/` path and resolve to this directory.
+
 ## What was built
 
 - `models/library/analyses/loop_return_control.sysml` (new, additive): `calc def 'Primary Bypass Control'` (eleven inputs, eleven outputs; the equations, the monotonicity argument and the bisection in its doc) and `constraint def 'Return Condition Held'`, `constraint def 'Bypass Within Limit'`.

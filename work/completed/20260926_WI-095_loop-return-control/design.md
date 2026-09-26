@@ -1,10 +1,10 @@
 ---
-Status: active
+Status: complete
 Scale: standard
 Epic: null
 Owner: reid
 Created: 2026-09-26
-Updated: 2026-09-26
+Updated: '2026-09-26'
 ---
 
 # WI-095 design: loop return control

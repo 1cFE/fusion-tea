@@ -4,7 +4,7 @@
 
 ## Baseline pin
 
-The manifest's baseline point is the contract's starting point: the C-1 design values with the re-selected inventory I-R (compressor 3,200, turbine 7,000, generator 3,600, heat rejection 5,000, helium duty 3,500 MW; exchanger 50,000 m²), cycle flow 2,500 kg/s, stage ratio 1.5182944859378311, every other input at its design default. Its headline is `costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe` (no-breeding-credit convention), and every one of its nine checks is expected satisfied. The receipt behind it is `work/active/WI-094_costed-loop-brayton/evidence/native_runs/c1-aries-ratios-reselected-ratings/result.json`, whose C-1 channels equal the sealed WI-093 receipt exactly. Stock strict loader, `PreparedListStrategy` and `StudyRunner` through `study_route.py`; glue ledger none; no runtime adapter.
+The manifest's baseline point is the contract's starting point: the C-1 design values with the re-selected inventory I-R (compressor 3,200, turbine 7,000, generator 3,600, heat rejection 5,000, helium duty 3,500 MW; exchanger 50,000 m²), cycle flow 2,500 kg/s, stage ratio 1.5182944859378311, every other input at its design default. Its headline is `costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe` (no-breeding-credit convention), and every one of its nine checks is expected satisfied. The receipt behind it is `work/completed/20260926_WI-094_costed-loop-brayton/evidence/native_runs/c1-aries-ratios-reselected-ratings/result.json`, whose C-1 channels equal the sealed WI-093 receipt exactly. Stock strict loader, `PreparedListStrategy` and `StudyRunner` through `study_route.py`; glue ledger none; no runtime adapter.
 
 ## Declared ties
 

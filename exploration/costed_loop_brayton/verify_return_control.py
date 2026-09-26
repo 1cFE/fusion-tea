@@ -13,8 +13,8 @@ from pathlib import Path
 getcontext().prec = 40
 ROOT = Path(__file__).resolve().parents[2]
 P = 'costed_loop_brayton__plant__'
-RUNS = ROOT / 'work/active/WI-095_loop-return-control/evidence/native_runs'
-PREVIOUS = ROOT / 'work/active/WI-094_costed-loop-brayton/evidence/native_runs'
+RUNS = ROOT / 'work/completed/20260926_WI-095_loop-return-control/evidence/native_runs'
+PREVIOUS = ROOT / 'work/completed/20260926_WI-094_costed-loop-brayton/evidence/native_runs'
 
 
 def numeric(value):
