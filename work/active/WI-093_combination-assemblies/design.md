@@ -8,7 +8,7 @@ One new design directory `models/designs/combinations/` holding four SysML packa
 
 Staged library files: `mfe_interfaces` (the port types 'Plasma' declares), `mfe_plasma`, `mfe_plasma_sustainment`, `mfe_plasma_scaling`, `mfe_primary_loop`, `mfe_power_cycle`, `mfe_viability`, `integrated_heat_electricity`, `dual_circuit_heat_accounting`, `ideal_gas_brayton_components`, `integrated_equipment_costs`, `integrated_equipment_parts`, `costed_component`, `mfe_fuel_cycle`. The 'Plasma' ports are declarative (WI-057): the generic plant binds only `B` on its plasma part and connects the ports at plant level (`generic_mfe/mfe_plant.sysml:81-84`, `:270-272`), and the generated Stellaris package carries no port artefact, so C-2's unconnected `part plasma : 'Plasma'` is the same shape the generator already accepts.
 
-Every assembly is a flat package of parts (the ARIES pattern), so the same calc defs are instantiated in new pairings and every binding is a new case binding. The definitions instantiated, by assembly:
+Every assembly is one package wrapping one root part that holds its parts (§ 11; the Stellaris nesting shape, the ARIES flat pattern within it), so the same calc defs are instantiated in new pairings and every binding is a new case binding. The definitions instantiated, by assembly:
 
 | Assembly | Package | Definitions instantiated unchanged | From |
 |---|---|---|---|

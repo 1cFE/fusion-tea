@@ -65,3 +65,43 @@ Append-only, newest last. An entry is appended only after a round review accepts
 - **Implication:** scan, then fix the window; amend the task scope when the grids change (round-1 reviewer note 1).
 - **Supersedes:** none.
 - **Accepted by:** round 1 review, 2026-09-26.
+
+## L-009 — Four cross-plant assemblies execute on existing definitions with no definition or body change; three previously untested combinations satisfy every evaluated check
+
+- **Evidence:** `work/active/WI-093_combination-assemblies/report.md` § 2–3; `evidence/native_runs/summary.json`, `verification-summary.json` (11 of 11), `build-hashes.json` (21 bodies prefix-only, 0 adapters).
+- **Scope:** the definitions at `7cb0ae46`, each assembly one package wrapping one root part (design § 11).
+- **Implication:** the usable design space is larger than the two plants; the reuse limit is a short list of named missing relationships (answer § 4), not a per-combination custom calculation.
+- **Supersedes:** extends L-002 from an input mapping to an assembled loop with its own calculated flow.
+- **Accepted by:** round 2 review, 2026-09-26 (scope corrected).
+
+## L-010 — Lowering the Brayton stage pressure ratio at a 500 °C source raises net electricity while failing heat removal: the objective and the requirement move in opposite directions under one choice
+
+- **Evidence:** C-1 cases `c1-aries-ratios-reselected-ratings` (ratio 1.518: net 426.58, unmet 0) and `c1-ratio1.35-reselected-ratings` (ratio 1.35: net 575.23, unmet 278.15 MW, 8.4 % of the 3,301.21 MW delivered; heater inlet 423 → 497 K; compressor work 2,451.5 → 1,719.9).
+- **Scope:** the ARIES three-stage chain fed by one 773 K loop at 2,500 kg/s; two single evaluations, not a factorial study.
+- **Implication:** a ratio chosen on net alone would leave 8.4 % of the delivered heat unremoved; the heat-removal check is what makes that visible, so the two must be read together.
+- **Supersedes:** none.
+- **Accepted by:** round 2 review, 2026-09-26 (denominator named).
+
+## L-011 — Under the ARIES nominal hardware the Stellaris plasma's checks flip in the fuel and blanket ratings, not in the cycle
+
+- **Evidence:** C-2 cases `c2-ne0-4.2e20` and `c2-peaked-profile` (p_fus 1,941.5 and 2,013.1 MW, 13 of 13 satisfied) against `c2-flat-temperature` (p_fus 5,047.0 MW: fuel processing margin −4.05e21 atoms/s on 3e22, helium duty −718.6 on 1,500, PbLi duty −1,058.4 on 1,800, heat removal 3,052 MW unmet; net 810 → 831 only); the Stellaris point itself (2,652.6 MW) fails heat removal.
+- **Scope:** the Stellaris parabolic plasma on the ARIES nominal hardware (1,400 kg/s); single evaluations at four fusion powers.
+- **Implication:** reducing fusion power to about 2.0 GW clears every check; nearly doubling it to 5,047 MW fails fuel processing and both blanket duty ratings together (nothing orders them), the compressor never limiting because the fixed 1,400 kg/s stream caps what the cycle accepts. The cross-plant form of B3; complements L-005.
+- **Supersedes:** none.
+- **Accepted by:** round 2 review, 2026-09-26 (rewritten from "fuel processing first").
+
+## L-012 — (process) The stock generator renders output aliases by part path and expression-module class names by grandparent path, so several design packages in one tree must not share part names; one root part per assembly is the working shape
+
+- **Evidence:** design § 11 (`SI_RENDERING_COLLISION`, `REGISTRY_CLASS_NAME_COLLISION` and the changes made); `sysml_codegen/elaboration/project.py` `_build_output_aliases`.
+- **Scope:** multi-package staged trees for `sysml-codegen generate`.
+- **Implication:** wrap each assembly in a root part (the Stellaris nesting shape) and give expression attributes package-unique names; a tooling finding for the generator's owner.
+- **Supersedes:** none.
+- **Accepted by:** round 2 review, 2026-09-26 (evidence cite corrected).
+
+## L-013 — (process) Two unrelated cautions from T-005: the reuse rule's prefix rewrite has a second form, and a bare commit in a shared checkout commits whatever the owner had staged
+
+- **Evidence:** (a) `exploration/combinations/build.py` (`forms`, the reverse-rewrite assertion): shared helpers build the schema import path as a string literal for importlib; (b) trail T-005 commit note and the amendment of 2026-09-26 (`b74dcc5e`; `f720a0be` superseded by `5723dfa6`).
+- **Scope:** every goal that copies bodies between packages; every goal that commits in a checkout the owner also uses.
+- **Implication:** (a) rewrite both forms and assert the reverse rewrite reproduces the source byte for byte; (b) commit with `git commit -- <paths>`, never a bare commit after `git add`.
+- **Supersedes:** none.
+- **Accepted by:** round 2 review, 2026-09-26.

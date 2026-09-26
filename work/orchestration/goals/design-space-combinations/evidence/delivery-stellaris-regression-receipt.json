@@ -1,0 +1,31 @@
+{
+  "source_baseline": "work/analysis/model-evaluation-diagnostics/baseline.json",
+  "replay_reference": "work/analysis/model-evaluation-diagnostics/check_and_pin.py",
+  "proposal": {},
+  "preservation_before": {
+    "checked_files": 20391,
+    "changes": [],
+    "passed": true
+  },
+  "source_baseline_sha256": "0a8f77428500486f39ff9d593cb6d399467494e78502165ead869bb2b3bef574",
+  "model_contract_fingerprint": "6f51a9963348754694563855957d9bf9bfdfb90c61bd9228c9bd8868286fac90",
+  "package_contract_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+  "scratch": "/tmp/stellaris-regression-5jvpfzlc",
+  "copied_package_exact": true,
+  "behavior": {
+    "executed": true,
+    "exact_match": true,
+    "differences": {
+      "outputs": [],
+      "responses": []
+    },
+    "output_count": 1352,
+    "response_count": 68
+  },
+  "original_package_preserved": true,
+  "preservation_after": {
+    "checked_files": 20391,
+    "changes": [],
+    "passed": true
+  }
+}

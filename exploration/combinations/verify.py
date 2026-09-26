@@ -4,7 +4,7 @@ Every identity is a Decimal recomputation from the stored inputs and outputs; no
 definition. Also checks that each case's constraint report names exactly the assembly's checks with statuses
 consistent with the stored margins, and that the package tree is unchanged after the runs.
 
-Run: .codex-test/run python exploration/combinations/verify.py
+Run: .codex-test/run python exploration/combinations/verify.py [--runs DIR --out-dir DIR]
 """
 import hashlib
 import json
@@ -225,15 +225,22 @@ def verify_c5(case):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--runs', type=Path, default=RUNS, help='directory of <case>/result.json and summary.json (default: the sealed evidence)')
+    parser.add_argument('--out-dir', type=Path, default=EVIDENCE, help='where verification-summary.json and cases-summary.json are written (default: the sealed evidence)')
+    args = parser.parse_args()
+    runs, out_dir = args.runs, args.out_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
     sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
     built = json.loads((EVIDENCE / 'build-hashes.json').read_text())['package_tree']
     now = {str(p.relative_to(PACKAGE)): sha(p) for p in PACKAGE.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
     check(built == now, 'package tree changed since the build: ' + repr(sorted(k for k in set(built) | set(now) if built.get(k) != now.get(k))[:5]))
-    summary = json.loads((RUNS / 'summary.json').read_text())
+    summary = json.loads((runs / 'summary.json').read_text())
     cases = {}
     for entry in summary['cases']:
         name = entry['case']
-        row = json.load((RUNS / name / 'result.json').open())
+        row = json.load((runs / name / 'result.json').open())
         record = dict(status=row['status'], assemblies_changed=row['assemblies_changed'], fingerprint=row['fingerprint'])
         if row['status'] != 'evaluated':
             record.update(error=row['error'], refusing_module=row.get('refusing_module'))
@@ -252,8 +259,8 @@ def main():
         record['C-5'] = verify_c5(case)
         cases[name] = record
     result = dict(fingerprint=summary['fingerprint'], cases_verified=len(cases), failures=FAILURES, passed=not FAILURES)
-    (EVIDENCE / 'verification-summary.json').write_text(json.dumps(result, indent=2) + '\n')
-    (EVIDENCE / 'cases-summary.json').write_text(json.dumps(cases, indent=2) + '\n')
+    (out_dir / 'verification-summary.json').write_text(json.dumps(result, indent=2) + '\n')
+    (out_dir / 'cases-summary.json').write_text(json.dumps(cases, indent=2) + '\n')
     print(json.dumps({k: v for k, v in result.items() if k != 'failures'}))
     for f in FAILURES:
         print('FAIL', f)
