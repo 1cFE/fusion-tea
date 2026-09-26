@@ -357,3 +357,15 @@
 | 2026-09-26 | `process` | `20260926-aries-design-choice-interactions#5` | The helium, PbLi and divertor pump capacity screens sit at margin 0 at every base by the WI-090 demand-matched convention (capacities selected equal to the flows), so a smallest-normalized-margin reading of the limiting … | Disclosed here and in the reporting module's output. | exploration/aries_integrated/studies/interactions_reporting.py |
 | 2026-09-26 | `process` | `20260926-aries-design-choice-interactions#6` | The r1 oracle scan refused eight B3 points (nonpositive net at 4.0e20 for every hollowness and at hollowness 0.30 for every amplitude) and showed the temperature level inert on N; the windows were fixed by an oracle-only… | Recorded in § 11; no native point was spent on a refused window. | this record § 11 |
 | 2026-09-26 | `model` | `20260926-aries-design-choice-interactions#7` | The temperature-level scenario holds each branch's duty and primary flow fixed while shifting its outlet limit; no blanket thermal-hydraulic model links the three, so the level is a consistent scenario only as a question… | Declared seam under the brief's no-new-definitions rule; offered to the owner in the goal answer, not opened. | work/orchestration/goals/design-space-combinations/answer.md |
+
+## Design-choice interactions round-1 accepted dispositions — 2026-09-26
+
+| Date | Kind | Record | Finding | Disposition | Home |
+|---|---|---|---|---|---|
+| 2026-09-26 | `model` | `20260926-aries-design-choice-interactions#1` | round-1 review disposition | accepted; result to the goal answer (B1); learnings L-003 | work/orchestration/goals/design-space-combinations/learnings.md L-003 |
+| 2026-09-26 | `model` | `20260926-aries-design-choice-interactions#2` | round-1 review disposition | accepted with the B1 wording corrected (limiting-check interaction, no ranking reversal within ±60 K); learnings L-003 | work/orchestration/goals/design-space-combinations/learnings.md L-003 |
+| 2026-09-26 | `model` | `20260926-aries-design-choice-interactions#3` | round-1 review disposition | accepted as rewritten by the reviewer (sign change shown on the bound A case only); learnings L-004 | work/orchestration/goals/design-space-combinations/learnings.md L-004 |
+| 2026-09-26 | `model` | `20260926-aries-design-choice-interactions#4` | round-1 review disposition | accepted with the "in series" clause; learnings L-005 | work/orchestration/goals/design-space-combinations/learnings.md L-005 |
+| 2026-09-26 | `process` | `20260926-aries-design-choice-interactions#5` | round-1 review disposition | accepted disclosure | exploration/aries_integrated/studies/interactions_reporting.py |
+| 2026-09-26 | `process` | `20260926-aries-design-choice-interactions#6` | round-1 review disposition | accepted; learnings L-008 | work/orchestration/goals/design-space-combinations/learnings.md L-008 |
+| 2026-09-26 | `model` | `20260926-aries-design-choice-interactions#7` | round-1 review disposition | accepted declared seam; offered to the owner in the goal answer, not opened | work/orchestration/goals/design-space-combinations/answer.md (pending) |

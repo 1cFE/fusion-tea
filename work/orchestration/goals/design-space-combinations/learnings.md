@@ -1,3 +1,67 @@
 # Learnings: Design-space combinations and interactions
 
 Append-only, newest last. An entry is appended only after a round review accepts or corrects the delta the round result proposed (`work/orchestration/GOAL_RUNBOOK.md` § The fresh review). Each entry is one claim with its evidence, scope, implication, supersession and acceptance.
+
+## L-001 — The two conversion systems do not share a heat-supply interface: the Brayton reads primary streams through fluid-agnostic UA stages and tolerates idle branches; the steam cycle reads a salt loop whose 465 → 270 °C window and 195 K rise are constants inside the Stellaris IHX body, so a steam/Brayton substitution needs the intermediate loop and exchanger definitions between them, which exist for helium above 465 °C and not for the 456 °C blanket branch, for PbLi, or for merging several primary loops into one salt loop
+
+- **Evidence:** `evidence/compatibility-map.md@b74dcc5e` § 1, rows H1–H5 (line cites into `network_heat_driven_closure_impl.py`, `cooling_equipment_impl.py:72-106`, `matched_steam_cycle_impl.py:174-180`); `evidence/map-review.md@b74dcc5e` (every claim true); `evidence/scratch-screens.json@b74dcc5e` (the three predicted Stellaris refusals executed).
+- **Scope:** the definitions and bodies committed at `7cb0ae46`; a body change voids the row that cites it.
+- **Implication:** an assembly that puts ARIES heat into the steam path uses the divertor helium circuit through the existing IHX; the blanket branch, PbLi and multi-source salt are new-behavior findings for the owner, not assembly work.
+- **Supersedes:** none.
+- **Accepted by:** round 1 review, 2026-09-26.
+
+## L-002 — A Stellaris-like single helium loop (500 °C, 3,301 MW) drives the ARIES Brayton definitions with no new behavior by an input mapping (two idle stages at UA 0), with the helium duty rating, the compressor rating and heat removal reported as failed checks; it executes at 1,400 and 2,500 kg/s cycle flow; at 4,000 and 6,000 kg/s the lifecycle body refuses an LCOE for nonpositive net; at 8,000 kg/s the Brayton body refuses first (`cooler outlet must not exceed inlet`); the edge lies between 2,500 and 4,000 kg/s and is a thermodynamic limit of the combined operating choices at the ARIES pressure ratios, not a missing definition
+
+- **Evidence:** `evidence/scratch-screens.md@b74dcc5e` § 1 and `scratch-screens.json@b74dcc5e` (18 ARIES cases at executable `f739dbce…`).
+- **Scope:** the ARIES package at the WI-092 identity; scratch screens, not a study; ratings as selected for ARIES.
+- **Implication:** the assembly-level version of this combination must re-select the cycle pressure ratios and ratings as explicit choices before its net can be read as a design result.
+- **Supersedes:** none.
+- **Accepted by:** round 1 review, 2026-09-26 (corrected by the reviewer: the 8,000 kg/s refusal cause and the edge).
+
+## L-003 — The source temperature level (all three outlet limits ±60 K at unchanged duty and flow) is inert wherever every stage removes all its heat; the recuperation × temperature interaction is a limiting-check change at 0.95 / −60 K on the 891 MW base (162.118 MW unremoved; 145.701 MW difference of differences), not a ranking reversal within ±60 K; at the 423 MW point its presence depends on the turbine-efficiency assumption (absent at 0.93, present at 0.90 with 36.102 MW unremoved), and the mechanism, the heater inlet rising with recuperation toward the lowered helium limit, predicts both
+
+- **Evidence:** `exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/results/interactions.md@c745a6eb` (B1 tables), `record.md@c745a6eb` § 6 and § 15 #1–#2; extends the reconciliation goal's L-006 from arrangement to source temperature.
+- **Scope:** the two sealed bases on the WI-092 package; ±60 K; the level scenario holds duty and flow fixed (record finding #7).
+- **Implication:** a one-at-a-time temperature sweep at a recuperation where no stage binds predicts no sensitivity and is wrong at high recuperation; report B1 as a limiting-check interaction, never as a ranking reversal.
+- **Supersedes:** none.
+- **Accepted by:** round 1 review, 2026-09-26.
+
+## L-004 — The sign of the coolant-flow effect on net depends on the pump-power law: under the cubic proxy more flow costs net everywhere and, into a bound helium stage, adds recovered friction heat the stage cannot remove (+104.555 and +160.975 MW unmet per step, net −116.004 and −178.296 MW) until the helium duty rating fails; under the fixed law flow changes nothing but the pump capacity screen where every stage removes all its heat, and on the bound stage it recovers only 1.6 and 0.9 MW because that stage is limited by the cycle-side inlet temperature
+
+- **Evidence:** same record, B2 tables (N block and the bound A block), § 15 #3.
+- **Scope:** the two declared pump laws (E3); no hydraulic model; the strict sign change is shown on the bound A case only (on N it is nonzero against zero).
+- **Implication:** a coolant-flow recommendation on this package is a statement about the pump law; more primary flow never relieved a stage limited on the cycle side.
+- **Supersedes:** none.
+- **Accepted by:** round 1 review, 2026-09-26 (rewritten by the reviewer to remove a self-contradiction).
+
+## L-005 — Over density amplitudes 4.75–5.75 × 10²⁰ the first check to bind as core output rises is helium-stage heat removal, never the fuel-processing rating (margin ≥ 1.363e22 atoms/s) nor the compressor; the exchanger arrangement changes where it binds and the net ranking of the arrangements reverses between 5.5e20 (series better) and 5.75e20 (network better) at hollowness 0.66; hollowness 0.60 lowers fusion power ≈ 10.8 % and moves the binding out of the window in series, while the network still binds at 5.75e20 / 0.60 (26.086 MW)
+
+- **Evidence:** same record, B3 table, § 15 #4.
+- **Scope:** the N base with every rating unchanged; no assumption change was declared for B3.
+- **Implication:** which arrangement is preferred is a function of the core choice; a fixed-arrangement comparison at one density conceals it.
+- **Supersedes:** none.
+- **Accepted by:** round 1 review, 2026-09-26 (clause on the network at 0.60 added by the reviewer).
+
+## L-006 — (process) Lowering the Stellaris steam temperature alone executes (efficiency 0.3689 → 0.3625) but flips fifteen rated-condition screens because 'Steam Offered Conditions' declares the selected equipment at 445 °C: a conversion operating change invalidates the declared conditions of the selected equipment, an equipment-selection interaction the screens make visible
+
+- **Evidence:** `evidence/scratch-screens.md@b74dcc5e` § 2 (`steam-416`).
+- **Scope:** the Stellaris package at `83ea3b6c…`.
+- **Implication:** an operating change on a plant with declared equipment conditions is an equipment re-selection, and the screens say so.
+- **Supersedes:** none.
+- **Accepted by:** round 1 review, 2026-09-26.
+
+## L-007 — The ARIES hollow-profile plasma cannot feed the Stellaris plant because six consumed outputs (p_rad, p_aux_required, p_alpha_heat, n_T0, fuel_volume, alpha_n) are missing, while a Stellaris plasma can feed the ARIES chain because that chain reads only fusion power: the asymmetry sits in the consumer's interface, not the producer's physics
+
+- **Evidence:** `evidence/compatibility-map.md@b74dcc5e` rows P1–P3 with the reviewer's `alpha_n` addition (`map-review.md`).
+- **Scope:** the definitions at `7cb0ae46`.
+- **Implication:** substitutability is decided by what the consumer reads; count consumed outputs, not producer capability.
+- **Supersedes:** none.
+- **Accepted by:** round 1 review, 2026-09-26.
+
+## L-008 — (process) An oracle-only scan before execution removed eight refusing points and exposed an inert axis; revising the window with the first preparation retained cost no native point
+
+- **Evidence:** record § 11, `preparation-r1/`, `evidence/window-probe.txt@c745a6eb`.
+- **Scope:** studies on packages with a package-owned oracle.
+- **Implication:** scan, then fix the window; amend the task scope when the grids change (round-1 reviewer note 1).
+- **Supersedes:** none.
+- **Accepted by:** round 1 review, 2026-09-26.
