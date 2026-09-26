@@ -33,6 +33,8 @@ NET = P + 'electrical__evaluate__net_electric'
 UNMET = P + 'heat_exchangers__evaluate__unmet_heat'
 TOLERANCE = P + 'checks__energy_tolerance'
 LCOE = P + 'lifecycle_price__evaluate__lcoe'
+BYPASS = P + 'return_control__evaluate__bypass_fraction'
+FEASIBLE = P + 'return_control__evaluate__feasible'
 MARGINS = {name: P + key for name, key in (
     ('compressor', 'compressor_capacity__evaluate__margin'), ('turbine', 'turbine_capacity__evaluate__margin'),
     ('generator', 'generator_capacity__evaluate__margin'), ('rejection', 'rejection_capacity__evaluate__margin'),
@@ -96,6 +98,58 @@ def proposals(config, baseline, entry_keys):
     return {'study_id': config['study_id'], 'cases': rows}
 
 
+def boundary_designs(config, baseline, entry_keys):
+    """Arrangement A's consistent settings: for each declared flow, the ratio at which the bypass fraction just exceeds a
+    tiny target (the exchanger exactly matched, the heat-removal boundary), found by bisection on the oracle within a
+    declared bracket; the found ratio becomes the case's chosen input. A flow whose bracket's lower end is already
+    feasible (the boundary lies outside the window) is recorded as such and not solved."""
+    from exploration.costed_loop_brayton.studies import oracle_entry
+    b = config['boundary']
+    grid = config['grid_axes']
+    inventory = config['inventories'][b['inventory']]['values']
+    target = float(b['target_bypass_fraction'])
+    designs, log = [], []
+
+    def probe(flow, ratio):
+        design = {'name': 'probe', 'values': {grid['flow_axis']: flow, grid['ratio_axis']: ratio} | inventory}
+        point = proposals(config | {'designs': [design]}, baseline, entry_keys)['cases'][0]['point']
+        try:
+            v = oracle_entry.evaluate(point)
+        except Exception as error:
+            return None, str(error)
+        return (v[FEASIBLE] >= 1.0, v[BYPASS], v[NET]), None
+
+    for flow, (lo, hi) in ((float(f), tuple(map(float, b['brackets'][str(int(f))]))) for f in b['flows']):
+        plo, elo = probe(flow, lo)
+        phi, ehi = probe(flow, hi)
+        entry = {'flow': flow, 'bracket': [lo, hi], 'target_bypass_fraction': target}
+        if plo is None or phi is None:
+            entry['outcome'] = 'refused at a bracket end: ' + str(elo or ehi)
+        elif plo[0] and plo[1] > target:
+            entry['outcome'] = 'boundary below the bracket (window edge); lower end already feasible with f=%.3e' % plo[1]
+        elif not phi[0]:
+            entry['outcome'] = 'upper end infeasible; no boundary in the bracket'
+        else:
+            a, c = lo, hi
+            for _ in range(200):
+                m = 0.5 * (a + c)
+                pm, _ = probe(flow, m)
+                if pm is None:
+                    entry['outcome'] = 'refused inside the bracket'; break
+                if pm[0] and pm[1] > target:
+                    c = m
+                else:
+                    a = m
+                if c - a < 1e-10:
+                    break
+            pc, _ = probe(flow, c)
+            entry.update({'outcome': 'solved', 'ratio': c, 'bypass_fraction_by_oracle': pc[1], 'net_by_oracle': pc[2], 'iterations_interval': c - a})
+            designs.append({'name': f"ir-boundary-f{flow:g}", 'arm': 'boundary', 'classification': 'arrangement A: the exchanger exactly matched at this flow (bypass fraction at the target), ratio solved on the oracle',
+                            'values': {grid['flow_axis']: flow, grid['ratio_axis']: c} | inventory})
+        log.append(entry)
+    return designs, log
+
+
 def grid_designs(config):
     grid = config['grid']
     designs = []
@@ -123,7 +177,7 @@ def scan_rows(rows):
             scanned[row['case']] = {'status': 'refused', 'error': str(error)}
             continue
         scanned[row['case']] = {'status': 'evaluated', 'passing': passing(row['point'], values), 'net': values[NET],
-                                'unmet': values[UNMET], 'lcoe': values[LCOE],
+                                'unmet': values[UNMET], 'lcoe': values[LCOE], 'bypass_fraction': values.get(BYPASS), 'feasible': values.get(FEASIBLE),
                                 'margins': {name: values[key] for name, key in MARGINS.items()}}
     return scanned
 
@@ -190,11 +244,15 @@ def prepare(record, config_path):
     loaded = manifest.load(route.MANIFEST_PATH)
     manifest.assert_pin_matches(loaded, manifest.indicator_input_fingerprint(route.PACKAGE_DIR))
     baseline, entry_keys = loaded.data['baseline']['point'], route.interface()['entry_keys']
-    grid = grid_designs(config)
+    grid = (grid_designs(config) if 'grid' in config else []) + list(config.get('designs', []))
     grid_rows = proposals(config | {'designs': grid}, baseline, entry_keys)['cases']
     scanned = scan_rows(grid_rows)
-    anchors = choose_anchors(config, grid, scanned)
-    sens = sensitivity_designs(config, anchors, baseline)
+    anchors = choose_anchors(config, grid, scanned) if 'sensitivities' in config else {'rule': 'none', 'points': {}}
+    sens = sensitivity_designs(config, anchors, baseline) if 'sensitivities' in config else []
+    boundary_log = []
+    if 'boundary' in config:
+        boundary, boundary_log = boundary_designs(config, baseline, entry_keys)
+        sens = sens + boundary
     rows = proposals(config | {'designs': grid + sens}, baseline, entry_keys)['cases']
     scanned.update(scan_rows(rows[len(grid_rows):]))
     kept = [row for row in rows if scanned[row['case']]['status'] == 'evaluated']
@@ -208,7 +266,7 @@ def prepare(record, config_path):
     documents = [
         {'study_id': config['study_id'], 'cases': kept},
         groups,
-        config | {'expanded_designs': grid + sens, 'anchors': anchors, 'refused_by_oracle_scan': refused},
+        config | {'expanded_designs': grid + sens, 'anchors': anchors, 'boundary_solve': boundary_log, 'refused_by_oracle_scan': refused},
         {'kind': 'independent-oracle-only', 'fingerprints': loaded.data['fingerprints'], 'anchors': anchors,
          'cases': [{'case': row['case'], 'arm': row['arm'], 'axis_values': row['axis_values']} | scanned[row['case']] for row in rows]},
         {'manifest_sha256': hashlib.sha256(route.MANIFEST_PATH.read_bytes()).hexdigest(),

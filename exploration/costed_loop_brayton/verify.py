@@ -23,7 +23,8 @@ P = 'costed_loop_brayton__plant__'
 D = lambda x: Decimal(str(x))
 EXPECTED_GATES = {'compressor_capacity__capacity_ok', 'turbine_capacity__capacity_ok', 'generator_capacity__capacity_ok',
                   'rejection_capacity__capacity_ok', 'he_capacity__capacity_ok', 'fuel_inventory__capacity_ok',
-                  'checks__heat_removal_ok', 'checks__net_positive', 'checks__loop_capacity_ok'}
+                  'checks__heat_removal_ok', 'checks__net_positive', 'checks__loop_capacity_ok',
+                  'checks__return_condition_ok', 'checks__bypass_within_limit'}  # WI-095
 PURCHASES = {'compressor_equipment': 'compressor_capacity__selected_rating', 'turbine_equipment': 'turbine_capacity__selected_rating',
              'generator_equipment': 'generator_capacity__selected_rating', 'heat_rejection_equipment': 'rejection_capacity__selected_rating',
              'he_duty_equipment': 'he_capacity__selected_rating', 'he_hx': 'he_hx__selected_area'}
@@ -98,7 +99,9 @@ def verify_case(name, case):
     screen(c, 'fuel_inventory', c.o('fuel_inventory__annual__required_stock'), calc='screen', rating_key='selected_tritium_kg')
     for gate, ok in (('checks__heat_removal_ok', c.o('heat_exchangers__evaluate__unmet_heat') <= c.i('checks__energy_tolerance')),
                      ('checks__net_positive', c.o('electrical__evaluate__net_electric') > 0),
-                     ('checks__loop_capacity_ok', c.o('primary_loop__evaluate__mdot_loop') <= c.i('primary_loop__mdot_loop_rated'))):
+                     ('checks__loop_capacity_ok', c.o('primary_loop__evaluate__mdot_loop') <= c.i('primary_loop__mdot_loop_rated')),
+                     ('checks__return_condition_ok', c.o('return_control__evaluate__return_residual_magnitude') <= c.i('return_control__tolerance')),  # WI-095
+                     ('checks__bypass_within_limit', c.o('return_control__evaluate__bypass_fraction') <= c.i('return_control__max_bypass'))):
         check(c.gate(gate)['status'] == ('satisfied' if ok else 'violated'), f'{name}: {gate}')
     # purchases: capital = reference cost x factor x selected / reference; extrapolated outside [0.5, 1.5]
     total = D(0)

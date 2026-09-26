@@ -2,10 +2,11 @@
 
 Equation authority: the SysML definitions' doc comments ('Primary Coolant Loop', the ideal-gas
 Brayton components, 'Network Heat Driven Closure' in series mode, 'Plant Electrical Balance',
-'Offered Capacity Screen', 'Fuel Cycle Flows', the equipment, account and lifecycle
-definitions) and the reviewed WI-094 design (sections 3 and 7). The loop, the three compressor
-stages, the single-branch series closure (Brent root finding in place of the native iteration),
-the electrical balance, the screens and the capital chain are written here from those equations.
+'Offered Capacity Screen', 'Primary Bypass Control' (WI-095), 'Fuel Cycle Flows', the equipment,
+account and lifecycle definitions) and the reviewed WI-094 design (sections 3 and 7). The loop, the
+three compressor stages, the single-branch series closure (Brent root finding in place of the native
+iteration), the helium-stage bypass control (bisection on the calc def's own stop rule), the
+electrical balance, the screens and the capital chain are written here from those equations.
 Reused by import: the key-agnostic ARIES helpers `equipment_oracle` (linear purchase, exchanger
 conductance, annual fuel stock, replacement schedule) and `lifecycle_oracle` (dated Decimal
 cashflows). Nothing is imported from the generated package or its handwritten bodies.
@@ -183,6 +184,48 @@ def evaluate(point):
             b + "_hot_terminal_difference": hot - pb["secondary_out"] if defined else 0.,
             b + "_cold_terminal_difference": back - pb["secondary_in"] if defined else 0.,
             b + "_hot_bound_margin": s["limit"] - hot if defined else 0.})
+
+    # ---- 'Primary Bypass Control' on the helium stage (WI-095): the fraction f of loop flow bypassing
+    # the exchanger so that the exchanger, at (1 - f) * mdot and the loop's T_out, transfers the whole IHX
+    # duty and the mixed return meets the loop's T_comp_in. The rates C_h, C_s, the conductance and the
+    # helium stage's secondary inlet are the closure's own intermediates above, never the package's.
+    rc = lambda name: get("return_control", name)
+    max_bypass, return_tolerance = rc("max_bypass"), rc("tolerance")
+    if not 0 <= max_bypass <= 1 or return_tolerance <= 0:
+        raise ValueError("bypass limit outside [0, 1] or nonpositive return tolerance")
+    ch_he, drive = stages["he"]["ch"], max(T_out - passes["he"]["secondary_in"], 0)
+
+    def counterflow(f):
+        """capability(f), eps, NTU of the exchanger seeing (1 - f) * C_h against C_s (the calc def's form)."""
+        low, high = min((1 - f) * ch_he, c), max((1 - f) * ch_he, c)
+        ratio, ntu = low / high, ua_he / low
+        eps = ntu / (1 + ntu) if abs(1 - ratio) < 1e-10 else (1 - exp(-ntu * (1 - ratio))) / (1 - ratio * exp(-ntu * (1 - ratio)))
+        return eps * low * drive, eps, ntu
+
+    capability_open = counterflow(0.)[0]
+    feasible, f = capability_open >= q_ihx, 0.
+    if feasible:
+        # Bisection on [0, 1): capability(1) is the stated limit 0; stop at |capability - q| <= 1e-9 MW or
+        # a bracket below 1e-15, at most 200 halvings; a bracket that is not decreasing refuses.
+        lo, hi = 0., 1.
+        if capability_open - q_ihx < 0 or -q_ihx > 0:
+            raise ValueError("bypass bracket is not decreasing")
+        for _ in range(200):
+            f = (lo + hi) / 2
+            residual = counterflow(f)[0] - q_ihx
+            if abs(residual) <= 1e-9 or hi - lo < 1e-15:
+                break
+            lo, hi = (f, hi) if residual > 0 else (lo, f)
+        else:
+            raise ValueError("bypass bisection exhausted")
+    capability, eps, ntu = counterflow(f)
+    mixed_return = T_out - capability / ch_he
+    return_residual = mixed_return - T_comp_in
+    emit("return_control", "evaluate", bypass_fraction=f, feasible=float(feasible), capability_open=capability_open,
+         capability_at_solution=capability,
+         exchanger_primary_flow=(1 - f) * mdot, exchanger_return=T_out - capability / ((1 - f) * ch_he),
+         mixed_return=mixed_return, return_residual=return_residual, return_residual_magnitude=abs(return_residual),
+         effectiveness_at_solution=eps, ntu_at_solution=ntu)
 
     # ---- Expander, passive recuperator, precooler and the rejected heat.
     turbine_out = turbine_t * expansion
@@ -365,7 +408,7 @@ def evaluate(point):
 
 
 def operand_bindings():
-    """Every operand of the nine constraints, by the formal names in the constraint definitions."""
+    """Every operand of the eleven constraints, by the formal names in the constraint definitions."""
     bindings = {}
     for cid, local in INTERFACE["constraints"].items():
         if not cid.startswith(P):
@@ -384,6 +427,12 @@ def operand_bindings():
         elif local == "loop_capacity_ok" and owner == "checks":
             bindings[cid] = {"mdot_loop_in": channel("primary_loop", "evaluate", "mdot_loop"),
                              "mdot_loop_rated_in": {"kind": "input", "key": P + "primary_loop__mdot_loop_rated"}}
+        elif local == "return_condition_ok" and owner == "checks":
+            bindings[cid] = {"return_residual_magnitude_in": channel("return_control", "evaluate", "return_residual_magnitude"),
+                             "tolerance_in": {"kind": "input", "key": P + "return_control__tolerance"}}
+        elif local == "bypass_within_limit" and owner == "checks":
+            bindings[cid] = {"bypass_fraction_in": channel("return_control", "evaluate", "bypass_fraction"),
+                             "max_bypass_in": {"kind": "input", "key": P + "return_control__max_bypass"}}
         else:
             raise ValueError(f"independent oracle has no reviewed predicate mapping for {cid}")
     return bindings
@@ -406,6 +455,7 @@ def comparison_catalog():
     add("heat_exchangers", "evaluate", "turbine_temperature heater_inlet expansion_factor accepted_heat unmet_heat closure_residual pbli_stream_out divertor_stream_out mixed_outlet network_mode_used pbli_split_used")
     for b in BRANCHES:
         add("heat_exchangers", "evaluate", " ".join(b + "_" + f for f in "transferred unmet capability secondary_in secondary_out state_defined hot return hot_terminal_difference cold_terminal_difference hot_bound_margin".split()))
+    add("return_control", "evaluate", "bypass_fraction feasible capability_open capability_at_solution exchanger_primary_flow exchanger_return mixed_return return_residual return_residual_magnitude effectiveness_at_solution ntu_at_solution")
     add("turbine", "evaluate", "temperature_out pressure_out shaft_produced")
     add("recuperator", "evaluate", "cold_out hot_out recovered_heat bypass_active")
     add("precooler", "evaluate", "temperature_out pressure_out heat_into_fluid")

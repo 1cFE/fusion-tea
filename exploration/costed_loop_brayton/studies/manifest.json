@@ -7,7 +7,7 @@
   "fingerprints": {
     "indicator_inputs": {
       "recipe": "indicator-input-fingerprint/v1",
-      "digest": "53f48a7e563b7cacf81a0ca2fc14ab5c5a146aab2360482effb33031a0e0fd51",
+      "digest": "7fb8341cf1206ebf3f83a458f33b3c469089bf08e68f8fcad9f84b2739016028",
       "files": [
         "contracts/model_contract.json",
         "inputs/costed_loop_brayton_params.json",
@@ -18,8 +18,8 @@
       ]
     },
     "recorded_provenance": {
-      "executable_fingerprint": "a4c7a87136fe3ea373fb02a899ed8262a800a7443891db986411f00f26c8aeea",
-      "semantic_fingerprint": "76c68dde7a4de41987be07ecd3ac3bdf814c6ef1895f3ad8d2250275cf9bdee7"
+      "executable_fingerprint": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+      "semantic_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203"
     }
   },
   "objective_catalog": [
@@ -960,6 +960,50 @@
       "channel": "costed_loop_brayton__plant__rest_of_plant__purchase__cost"
     },
     {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__capability_at_solution",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__capability_at_solution"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__capability_open",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__capability_open"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__exchanger_return",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__exchanger_return"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__feasible",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__feasible"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__mixed_return",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__mixed_return"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__return_residual",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude"
+    },
+    {
       "name": "costed_loop_brayton__plant__turbine__evaluate__pressure_out",
       "channel": "costed_loop_brayton__plant__turbine__evaluate__pressure_out"
     },
@@ -1134,6 +1178,8 @@
       "costed_loop_brayton__plant__rest_of_plant__price_factor": 1.0,
       "costed_loop_brayton__plant__rest_of_plant__reference_cost": 2158230133.3333335,
       "costed_loop_brayton__plant__rest_of_plant__selected_quantity": 1.0,
+      "costed_loop_brayton__plant__return_control__max_bypass": 1.0,
+      "costed_loop_brayton__plant__return_control__tolerance": 1e-06,
       "costed_loop_brayton__plant__turbine_capacity__assumed_supported": 1.0,
       "costed_loop_brayton__plant__turbine_capacity__demand_available": 1.0,
       "costed_loop_brayton__plant__turbine_capacity__scenario_applicable": 1.0,
@@ -1177,11 +1223,19 @@
         "expected": "satisfied"
       },
       {
+        "source_local_identity": "return_condition_ok",
+        "expected": "satisfied"
+      },
+      {
         "source_local_identity": "net_positive",
         "expected": "satisfied"
       },
       {
         "source_local_identity": "loop_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "bypass_within_limit",
         "expected": "satisfied"
       },
       {
@@ -1237,19 +1291,37 @@
       "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin",
       "value": 1e-06,
       "units": "K",
-      "basis": "Two temperatures of order 700 K fixed by the closure's root solve (native termination 1e-8 MW on the duty; the oracle's Brent root differs by about 3e-10 K) are subtracted to a margin that can be arbitrarily small near the bound, so a relative rule cannot pass it; 1e-6 K is a verification tolerance on a calculated temperature margin only, never permission to accept a physical constraint violation (the verdict is re-derived exactly from the operands). Declared after execution of study 20260926-design-study-parameters on the owner's ruling G-001 of 2026-09-26 (work/orchestration/goals/design-study-parameters/evidence/owner-ruling-g001.md), the one refusal being 5.3e-10 K absolute on a 0.363 K margin."
+      "basis": "Two temperatures of order 700 K fixed by the closure root solve (1e-8 MW; the oracle root differs by about 3e-10 K) subtracted to a margin that can be arbitrarily small near the bound; owner ruling G-001; a verification tolerance only, the verdict is re-derived exactly from the operands."
     },
     {
       "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
       "value": 1e-06,
       "units": "K",
-      "basis": "Two temperatures of order 700 K fixed by the closure's root solve (native termination 1e-8 MW on the duty; the oracle's Brent root differs by about 3e-10 K) are subtracted to a margin that can be arbitrarily small near the bound, so a relative rule cannot pass it; 1e-6 K is a verification tolerance on a calculated temperature margin only, never permission to accept a physical constraint violation (the verdict is re-derived exactly from the operands). Declared after execution of study 20260926-design-study-parameters on the owner's ruling G-001 of 2026-09-26 (work/orchestration/goals/design-study-parameters/evidence/owner-ruling-g001.md), the one refusal being 5.3e-10 K absolute on a 0.363 K margin."
+      "basis": "As above (G-001)."
     },
     {
       "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
       "value": 1e-06,
       "units": "K",
-      "basis": "Two temperatures of order 700 K fixed by the closure's root solve (native termination 1e-8 MW on the duty; the oracle's Brent root differs by about 3e-10 K) are subtracted to a margin that can be arbitrarily small near the bound, so a relative rule cannot pass it; 1e-6 K is a verification tolerance on a calculated temperature margin only, never permission to accept a physical constraint violation (the verdict is re-derived exactly from the operands). Declared after execution of study 20260926-design-study-parameters on the owner's ruling G-001 of 2026-09-26 (work/orchestration/goals/design-study-parameters/evidence/owner-ruling-g001.md), the one refusal being 5.3e-10 K absolute on a 0.363 K margin."
+      "basis": "As above (G-001)."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "The bypass fraction is a bisection root to |capability - duty| <= 1e-9 MW; two independent solves (package and oracle) agree to about 1e-12 in f, but a relative rule cannot pass a root near zero (the f = 0 family targets 1e-6); an absolute class at the solve resolution, declared before execution."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual",
+      "value": 1e-08,
+      "units": "K",
+      "basis": "The root-solve closure (duty - capability(f)) / C_h, of order 1e-11 K when feasible (two solves within 1e-9 MW each give at most about 1e-10 K difference); a numerical class two orders below the check tolerance 1e-6 K, declared before execution; infeasible cases carry a physical deficit far above it and are compared relatively."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude",
+      "value": 1e-08,
+      "units": "K",
+      "basis": "As above."
     }
   ]
 }
