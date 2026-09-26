@@ -1,0 +1,1 @@
+channel off tolerance on case 20260926-design-study-parameters:c0211, channel costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin: store 0.3631786747627075, oracle 0.363178674230312, relative deviation 1.466e-09 (tolerance 1e-09); absolute error 5.324e-10 (declared tolerance 0)

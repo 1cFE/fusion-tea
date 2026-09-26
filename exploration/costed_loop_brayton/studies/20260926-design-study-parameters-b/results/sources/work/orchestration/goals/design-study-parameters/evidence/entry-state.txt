@@ -1,0 +1,11 @@
+entry HEAD: d59e932cf76d442d1acbb4d1ac586003544da181
+branch: fix/modeling-intent-after-reveal
+date: 2026-09-26
+--- git status --short at entry (preserved, not committed by this goal):
+ M docs/write-up/plan.md
+?? docs/write-up/html-prompt.md
+?? docs/write-up/stellaris-evolution-assets/
+?? docs/write-up/stellaris-evolution.md
+?? work/analysis/20260920-184131_design-choice-assignment-audit.md
+?? work/narratives/20260925-221738Z-aries-reference-heat-electricity-reconciliation.md
+?? work/orchestration/goals/design-study-parameters/

@@ -1,0 +1,2775 @@
+{
+  "snapshot_schema_version": "1",
+  "study_id": "20260926-design-study-parameters-b",
+  "package": {
+    "path": "exploration/costed_loop_brayton/costed_loop_brayton_tea",
+    "package_name": "costed_loop_brayton_tea",
+    "repo_commit": "09a3ec66f64804f7b64097e9c5a68ffd2103ac05",
+    "git_clean": true
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "7fb8341cf1206ebf3f83a458f33b3c469089bf08e68f8fcad9f84b2739016028",
+      "files": [
+        {
+          "path": "contracts/model_contract.json",
+          "sha256": "209ad4ca3b2a951312cbab3cf116006a7507a2c6fbf41352c8aed1deebe34b9e"
+        },
+        {
+          "path": "inputs/costed_loop_brayton_params.json",
+          "sha256": "3151c11df50d5363e5c14e2d81f84e8dc485a9490c0eb1d78badc6ee75c34a8f"
+        },
+        {
+          "path": "inputs/integrated_equipment_costs_params.json",
+          "sha256": "49be69f1ddedabc8eedee0cabc1a7457f0331d9c12c3208a0293aeab71048b75"
+        },
+        {
+          "path": "inputs/mfe_account_costs_params.json",
+          "sha256": "d109078b4c0df32f5ddbd03a540fbc994818f83a65da1c26f976b50f62f1c44b"
+        },
+        {
+          "path": "inputs/mfe_viability_params.json",
+          "sha256": "a56352715cb6495b998383899fbc47e91f681231cc6569f3a1ecf5e3dd608fa6"
+        },
+        {
+          "path": "pipelines/pipeline.yaml",
+          "sha256": "1ff4cfce313035bc6546847985283d21e8a60062979ea77d1684241b670464f2"
+        }
+      ]
+    },
+    "recorded_provenance.executable_fingerprint": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+    "recorded_provenance.semantic_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203"
+  },
+  "manifest": {
+    "path": "exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "f366acbbc0c9cdfaa3bc294beedb83b24e7dc1cc62cc27ce66981f7de5f0afcd",
+    "content_used": {
+      "schema_version": "study-package-manifest/v1",
+      "package": {
+        "name": "costed_loop_brayton_tea",
+        "path": "exploration/costed_loop_brayton/costed_loop_brayton_tea"
+      },
+      "fingerprints": {
+        "indicator_inputs": {
+          "recipe": "indicator-input-fingerprint/v1",
+          "digest": "7fb8341cf1206ebf3f83a458f33b3c469089bf08e68f8fcad9f84b2739016028",
+          "files": [
+            "contracts/model_contract.json",
+            "inputs/costed_loop_brayton_params.json",
+            "inputs/integrated_equipment_costs_params.json",
+            "inputs/mfe_account_costs_params.json",
+            "inputs/mfe_viability_params.json",
+            "pipelines/pipeline.yaml"
+          ]
+        },
+        "recorded_provenance": {
+          "executable_fingerprint": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+          "semantic_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203"
+        }
+      },
+      "objective_catalog": [
+        {
+          "name": "costed_loop_brayton__plant__annual_om__evaluate__annual_om",
+          "channel": "costed_loop_brayton__plant__annual_om__evaluate__annual_om"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_1__evaluate__pressure_out",
+          "channel": "costed_loop_brayton__plant__compressor_1__evaluate__pressure_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_1__evaluate__shaft_demand",
+          "channel": "costed_loop_brayton__plant__compressor_1__evaluate__shaft_demand"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_1__evaluate__temperature_out",
+          "channel": "costed_loop_brayton__plant__compressor_1__evaluate__temperature_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_2__evaluate__pressure_out",
+          "channel": "costed_loop_brayton__plant__compressor_2__evaluate__pressure_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_2__evaluate__shaft_demand",
+          "channel": "costed_loop_brayton__plant__compressor_2__evaluate__shaft_demand"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_2__evaluate__temperature_out",
+          "channel": "costed_loop_brayton__plant__compressor_2__evaluate__temperature_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_3__evaluate__pressure_out",
+          "channel": "costed_loop_brayton__plant__compressor_3__evaluate__pressure_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_3__evaluate__shaft_demand",
+          "channel": "costed_loop_brayton__plant__compressor_3__evaluate__shaft_demand"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_3__evaluate__temperature_out",
+          "channel": "costed_loop_brayton__plant__compressor_3__evaluate__temperature_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_capacity__evaluate__evaluation_defined",
+          "channel": "costed_loop_brayton__plant__compressor_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_capacity__evaluate__margin",
+          "channel": "costed_loop_brayton__plant__compressor_capacity__evaluate__margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_equipment__purchase__capital",
+          "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__capital"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_equipment__purchase__extrapolated",
+          "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_equipment__purchase__purchased_quantity",
+          "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_equipment__purchase__quantity_ratio",
+          "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "costed_loop_brayton__plant__compressor_equipment__purchase__source_budget",
+          "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__source_budget"
+        },
+        {
+          "name": "costed_loop_brayton__plant__contingency__evaluate__cost",
+          "channel": "costed_loop_brayton__plant__contingency__evaluate__cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__contingency_basis__evaluate__total",
+          "channel": "costed_loop_brayton__plant__contingency_basis__evaluate__total"
+        },
+        {
+          "name": "costed_loop_brayton__plant__conversion_services__estimate__amount",
+          "channel": "costed_loop_brayton__plant__conversion_services__estimate__amount"
+        },
+        {
+          "name": "costed_loop_brayton__plant__conversion_services__purchase__cost",
+          "channel": "costed_loop_brayton__plant__conversion_services__purchase__cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_export_mwh",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_export_mwh"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_cost",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_mwh",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_mwh"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_operating",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_operating"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_replacement_reserve",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_replacement_reserve"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__currency_year",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__currency_year"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__direct",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__direct"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__direct_difference",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__direct_difference"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__lifetime_replacement",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__lifetime_replacement"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__overnight",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__overnight"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_coil_excess",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_coil_excess"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_core_excess",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_core_excess"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_direct",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_direct"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_inclusive",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_inclusive"
+        },
+        {
+          "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_reactor_gap",
+          "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_reactor_gap"
+        },
+        {
+          "name": "costed_loop_brayton__plant__direct_cost__evaluate__total",
+          "channel": "costed_loop_brayton__plant__direct_cost__evaluate__total"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__auxiliary_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__auxiliary_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__compressor_demand",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__compressor_demand"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__control_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__control_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__cryo_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__cryo_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__dissipated_auxiliary",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__dissipated_auxiliary"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__fuel_base_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__fuel_base_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__fuel_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__fuel_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__fuel_variable_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__fuel_variable_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__generator_loss",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__generator_loss"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__gross_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__gross_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__heating_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__heating_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__heating_loss",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__heating_loss"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__motor_loss",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__motor_loss"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__net_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__net_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__net_shaft",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__net_shaft"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__other_electric_demand",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__other_electric_demand"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__primary_pump_electric",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__primary_pump_electric"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__pump_loss",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__pump_loss"
+        },
+        {
+          "name": "costed_loop_brayton__plant__electrical__evaluate__shaft_import",
+          "channel": "costed_loop_brayton__plant__electrical__evaluate__shaft_import"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel__evaluate__burn_kg_per_fpy",
+          "channel": "costed_loop_brayton__plant__fuel__evaluate__burn_kg_per_fpy"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel__evaluate__burn_rate",
+          "channel": "costed_loop_brayton__plant__fuel__evaluate__burn_rate"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel__evaluate__exhaust_rate",
+          "channel": "costed_loop_brayton__plant__fuel__evaluate__exhaust_rate"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel__evaluate__inject_rate",
+          "channel": "costed_loop_brayton__plant__fuel__evaluate__inject_rate"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel__evaluate__loss_rate",
+          "channel": "costed_loop_brayton__plant__fuel__evaluate__loss_rate"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel__evaluate__tbr_margin",
+          "channel": "costed_loop_brayton__plant__fuel__evaluate__tbr_margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel__evaluate__tbr_required",
+          "channel": "costed_loop_brayton__plant__fuel__evaluate__tbr_required"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_burn",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_burn"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_cost",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_decay",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_decay"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_external",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_external"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_loss",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_loss"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__annual__breeding_supported",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__breeding_supported"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__annual__required_stock",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__required_stock"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__atoms__atoms",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__atoms__atoms"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__atoms__stock_kg",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__atoms__stock_kg"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__deuterium__annual_fuel",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__deuterium__annual_fuel"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__deuterium_rate__amount",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__deuterium_rate__amount"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__purchase__amount",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__purchase__amount"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__screen__evaluation_defined",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__screen__evaluation_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__fuel_inventory__screen__margin",
+          "channel": "costed_loop_brayton__plant__fuel_inventory__screen__margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__generator_capacity__evaluate__evaluation_defined",
+          "channel": "costed_loop_brayton__plant__generator_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__generator_capacity__evaluate__margin",
+          "channel": "costed_loop_brayton__plant__generator_capacity__evaluate__margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__generator_equipment__purchase__capital",
+          "channel": "costed_loop_brayton__plant__generator_equipment__purchase__capital"
+        },
+        {
+          "name": "costed_loop_brayton__plant__generator_equipment__purchase__extrapolated",
+          "channel": "costed_loop_brayton__plant__generator_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "costed_loop_brayton__plant__generator_equipment__purchase__purchased_quantity",
+          "channel": "costed_loop_brayton__plant__generator_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "costed_loop_brayton__plant__generator_equipment__purchase__quantity_ratio",
+          "channel": "costed_loop_brayton__plant__generator_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "costed_loop_brayton__plant__generator_equipment__purchase__source_budget",
+          "channel": "costed_loop_brayton__plant__generator_equipment__purchase__source_budget"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_capacity__evaluate__evaluation_defined",
+          "channel": "costed_loop_brayton__plant__he_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_capacity__evaluate__margin",
+          "channel": "costed_loop_brayton__plant__he_capacity__evaluate__margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__capital",
+          "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__capital"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__extrapolated",
+          "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__purchased_quantity",
+          "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__quantity_ratio",
+          "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__source_budget",
+          "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__source_budget"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_hx__evaluate__area",
+          "channel": "costed_loop_brayton__plant__he_hx__evaluate__area"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_hx__evaluate__ua",
+          "channel": "costed_loop_brayton__plant__he_hx__evaluate__ua"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_hx__purchase__capital",
+          "channel": "costed_loop_brayton__plant__he_hx__purchase__capital"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_hx__purchase__extrapolated",
+          "channel": "costed_loop_brayton__plant__he_hx__purchase__extrapolated"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_hx__purchase__purchased_quantity",
+          "channel": "costed_loop_brayton__plant__he_hx__purchase__purchased_quantity"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_hx__purchase__quantity_ratio",
+          "channel": "costed_loop_brayton__plant__he_hx__purchase__quantity_ratio"
+        },
+        {
+          "name": "costed_loop_brayton__plant__he_hx__purchase__source_budget",
+          "channel": "costed_loop_brayton__plant__he_hx__purchase__source_budget"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__accepted_heat",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__accepted_heat"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_capability",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_capability"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_cold_terminal_difference"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_terminal_difference"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_return",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_return"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_in",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_in"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_out",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_state_defined",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_state_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_stream_out",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_stream_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_transferred",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_transferred"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_unmet",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_unmet"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__expansion_factor",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__expansion_factor"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_capability",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_capability"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_cold_terminal_difference"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_terminal_difference"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_return",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_return"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_in",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_in"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_out",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_state_defined",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_state_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_transferred",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_transferred"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_unmet",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_unmet"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__heater_inlet",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__heater_inlet"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__mixed_outlet",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__mixed_outlet"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__network_mode_used",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__network_mode_used"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_capability",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_capability"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_cold_terminal_difference"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_terminal_difference"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_return",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_return"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_in",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_in"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_out",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_split_used",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_split_used"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_state_defined",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_state_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_stream_out",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_stream_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_transferred",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_transferred"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_unmet",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_unmet"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__turbine_temperature",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__turbine_temperature"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__unmet_heat",
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__unmet_heat"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__capital",
+          "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__capital"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__extrapolated",
+          "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__purchased_quantity",
+          "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__quantity_ratio",
+          "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__source_budget",
+          "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__source_budget"
+        },
+        {
+          "name": "costed_loop_brayton__plant__indirect_cost__evaluate__cost",
+          "channel": "costed_loop_brayton__plant__indirect_cost__evaluate__cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__intercooler_1__evaluate__heat_into_fluid",
+          "channel": "costed_loop_brayton__plant__intercooler_1__evaluate__heat_into_fluid"
+        },
+        {
+          "name": "costed_loop_brayton__plant__intercooler_1__evaluate__pressure_out",
+          "channel": "costed_loop_brayton__plant__intercooler_1__evaluate__pressure_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__intercooler_1__evaluate__temperature_out",
+          "channel": "costed_loop_brayton__plant__intercooler_1__evaluate__temperature_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__intercooler_2__evaluate__heat_into_fluid",
+          "channel": "costed_loop_brayton__plant__intercooler_2__evaluate__heat_into_fluid"
+        },
+        {
+          "name": "costed_loop_brayton__plant__intercooler_2__evaluate__pressure_out",
+          "channel": "costed_loop_brayton__plant__intercooler_2__evaluate__pressure_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__intercooler_2__evaluate__temperature_out",
+          "channel": "costed_loop_brayton__plant__intercooler_2__evaluate__temperature_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_capital",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_capital"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_energy",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_energy"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__breeding_supported",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__breeding_supported"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__capital_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__capital_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__consumables_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__consumables_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__currency_year",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__currency_year"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__deuterium_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__deuterium_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__financed_capital",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__financed_capital"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__financial_defined",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__financial_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_makeup",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_makeup"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_terminal",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_terminal"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__imports_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__imports_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__lcoe_sum",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__lcoe_sum"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__lifetime_energy",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__lifetime_energy"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__new_feed",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__new_feed"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__noncapital_annual",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__noncapital_annual"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__om_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__om_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_cost",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_occurs",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_occurs"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_energy",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_energy"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_operating",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_operating"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_other_overhaul",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_other_overhaul"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_replacement",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_replacement"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_salvage",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_salvage"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_supply",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_supply"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_gross",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_gross"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_net",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_net"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_total_cost",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_total_cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__real_convention",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__real_convention"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__replacement_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__replacement_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_supported",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_supported"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__terminal_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__terminal_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__tritium_lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__tritium_lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe",
+          "channel": "costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe"
+        },
+        {
+          "name": "costed_loop_brayton__plant__operating_levelization__evaluate__crf",
+          "channel": "costed_loop_brayton__plant__operating_levelization__evaluate__crf"
+        },
+        {
+          "name": "costed_loop_brayton__plant__operating_levelization__evaluate__levelized",
+          "channel": "costed_loop_brayton__plant__operating_levelization__evaluate__levelized"
+        },
+        {
+          "name": "costed_loop_brayton__plant__owner_commissioning__evaluate__amount",
+          "channel": "costed_loop_brayton__plant__owner_commissioning__evaluate__amount"
+        },
+        {
+          "name": "costed_loop_brayton__plant__precooler__evaluate__heat_into_fluid",
+          "channel": "costed_loop_brayton__plant__precooler__evaluate__heat_into_fluid"
+        },
+        {
+          "name": "costed_loop_brayton__plant__precooler__evaluate__pressure_out",
+          "channel": "costed_loop_brayton__plant__precooler__evaluate__pressure_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__precooler__evaluate__temperature_out",
+          "channel": "costed_loop_brayton__plant__precooler__evaluate__temperature_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__pressure_loss__evaluate__pressure_out",
+          "channel": "costed_loop_brayton__plant__pressure_loss__evaluate__pressure_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__priced_equipment__evaluate__total",
+          "channel": "costed_loop_brayton__plant__priced_equipment__evaluate__total"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__T_comp_in",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__T_comp_in"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__T_out",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__T_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__capacity_margin",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__capacity_margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__dp_loop",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__dp_loop"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__mdot",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__mdot"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__mdot_loop",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__mdot_loop"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__p_elec",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__p_elec"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__p_loop_margin",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__p_loop_margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__p_pump_total",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__p_pump_total"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__q_ihx",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__q_ihx"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__q_recovered_total",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__q_recovered_total"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__r_comp",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__r_comp"
+        },
+        {
+          "name": "costed_loop_brayton__plant__primary_loop__evaluate__w_fluid",
+          "channel": "costed_loop_brayton__plant__primary_loop__evaluate__w_fluid"
+        },
+        {
+          "name": "costed_loop_brayton__plant__recuperator__evaluate__bypass_active",
+          "channel": "costed_loop_brayton__plant__recuperator__evaluate__bypass_active"
+        },
+        {
+          "name": "costed_loop_brayton__plant__recuperator__evaluate__cold_out",
+          "channel": "costed_loop_brayton__plant__recuperator__evaluate__cold_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__recuperator__evaluate__hot_out",
+          "channel": "costed_loop_brayton__plant__recuperator__evaluate__hot_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__recuperator__evaluate__recovered_heat",
+          "channel": "costed_loop_brayton__plant__recuperator__evaluate__recovered_heat"
+        },
+        {
+          "name": "costed_loop_brayton__plant__rejection_capacity__evaluate__evaluation_defined",
+          "channel": "costed_loop_brayton__plant__rejection_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__rejection_capacity__evaluate__margin",
+          "channel": "costed_loop_brayton__plant__rejection_capacity__evaluate__margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__rejection_capacity__rejected_heat__rejected_heat",
+          "channel": "costed_loop_brayton__plant__rejection_capacity__rejected_heat__rejected_heat"
+        },
+        {
+          "name": "costed_loop_brayton__plant__replacement__evaluate__annual_reserve",
+          "channel": "costed_loop_brayton__plant__replacement__evaluate__annual_reserve"
+        },
+        {
+          "name": "costed_loop_brayton__plant__replacement__evaluate__event_cost",
+          "channel": "costed_loop_brayton__plant__replacement__evaluate__event_cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__replacement__evaluate__event_count",
+          "channel": "costed_loop_brayton__plant__replacement__evaluate__event_count"
+        },
+        {
+          "name": "costed_loop_brayton__plant__replacement__evaluate__first_event_year",
+          "channel": "costed_loop_brayton__plant__replacement__evaluate__first_event_year"
+        },
+        {
+          "name": "costed_loop_brayton__plant__replacement__evaluate__interval_years",
+          "channel": "costed_loop_brayton__plant__replacement__evaluate__interval_years"
+        },
+        {
+          "name": "costed_loop_brayton__plant__replacement__evaluate__last_event_year",
+          "channel": "costed_loop_brayton__plant__replacement__evaluate__last_event_year"
+        },
+        {
+          "name": "costed_loop_brayton__plant__replacement__evaluate__lifetime_total",
+          "channel": "costed_loop_brayton__plant__replacement__evaluate__lifetime_total"
+        },
+        {
+          "name": "costed_loop_brayton__plant__replacement_scope__evaluate__amount",
+          "channel": "costed_loop_brayton__plant__replacement_scope__evaluate__amount"
+        },
+        {
+          "name": "costed_loop_brayton__plant__rest_of_plant__estimate__amount",
+          "channel": "costed_loop_brayton__plant__rest_of_plant__estimate__amount"
+        },
+        {
+          "name": "costed_loop_brayton__plant__rest_of_plant__purchase__cost",
+          "channel": "costed_loop_brayton__plant__rest_of_plant__purchase__cost"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__capability_at_solution",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__capability_at_solution"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__capability_open",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__capability_open"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__exchanger_return",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__exchanger_return"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__feasible",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__feasible"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__mixed_return",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__mixed_return"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__return_residual",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual"
+        },
+        {
+          "name": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude",
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine__evaluate__pressure_out",
+          "channel": "costed_loop_brayton__plant__turbine__evaluate__pressure_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine__evaluate__shaft_produced",
+          "channel": "costed_loop_brayton__plant__turbine__evaluate__shaft_produced"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine__evaluate__temperature_out",
+          "channel": "costed_loop_brayton__plant__turbine__evaluate__temperature_out"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine_capacity__evaluate__evaluation_defined",
+          "channel": "costed_loop_brayton__plant__turbine_capacity__evaluate__evaluation_defined"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine_capacity__evaluate__margin",
+          "channel": "costed_loop_brayton__plant__turbine_capacity__evaluate__margin"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine_equipment__purchase__capital",
+          "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__capital"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine_equipment__purchase__extrapolated",
+          "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__extrapolated"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine_equipment__purchase__purchased_quantity",
+          "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__purchased_quantity"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine_equipment__purchase__quantity_ratio",
+          "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__quantity_ratio"
+        },
+        {
+          "name": "costed_loop_brayton__plant__turbine_equipment__purchase__source_budget",
+          "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__source_budget"
+        }
+      ],
+      "ties": [],
+      "baseline": {
+        "point": {
+          "costed_loop_brayton__plant__annual_om__selected_amount": 70000000.0,
+          "costed_loop_brayton__plant__blanket_source__q_source": 3125.9322770825056,
+          "costed_loop_brayton__plant__checks__energy_tolerance": 1e-06,
+          "costed_loop_brayton__plant__compressor_1__efficiency": 0.89,
+          "costed_loop_brayton__plant__compressor_1__selected_ratio": 1.5182944859378311,
+          "costed_loop_brayton__plant__compressor_2__efficiency": 0.89,
+          "costed_loop_brayton__plant__compressor_2__selected_ratio": 1.5182944859378311,
+          "costed_loop_brayton__plant__compressor_3__efficiency": 0.89,
+          "costed_loop_brayton__plant__compressor_3__selected_ratio": 1.5182944859378311,
+          "costed_loop_brayton__plant__compressor_capacity__assumed_supported": 1.0,
+          "costed_loop_brayton__plant__compressor_capacity__demand_available": 1.0,
+          "costed_loop_brayton__plant__compressor_capacity__scenario_applicable": 1.0,
+          "costed_loop_brayton__plant__compressor_capacity__selected_rating": 3200.0,
+          "costed_loop_brayton__plant__compressor_equipment__price_factor": 1.0,
+          "costed_loop_brayton__plant__compressor_equipment__reference_cost": 78639500.0,
+          "costed_loop_brayton__plant__compressor_equipment__reference_quantity": 1600.0,
+          "costed_loop_brayton__plant__contingency__fraction": 0.2,
+          "costed_loop_brayton__plant__conversion_services__price_factor": 1.0,
+          "costed_loop_brayton__plant__conversion_services__reference_cost": 62911600.0,
+          "costed_loop_brayton__plant__conversion_services__selected_quantity": 1.0,
+          "costed_loop_brayton__plant__cost_accounts__estimate_mode": 0.0,
+          "costed_loop_brayton__plant__cost_accounts__one_module": 1.0,
+          "costed_loop_brayton__plant__cost_ledger__consumables": 5000000.0,
+          "costed_loop_brayton__plant__cost_ledger__import_price": 50.0,
+          "costed_loop_brayton__plant__cost_ledger__no_source_comparison": 0.0,
+          "costed_loop_brayton__plant__cost_schedule__availability": 0.85,
+          "costed_loop_brayton__plant__cost_schedule__plant_years": 40.0,
+          "costed_loop_brayton__plant__cost_schedule__replacement_factor": 1.0,
+          "costed_loop_brayton__plant__cost_schedule__replacement_life_fpy": 5.0,
+          "costed_loop_brayton__plant__cycle__cp": 5193.0,
+          "costed_loop_brayton__plant__cycle__gamma": 1.6666666666666667,
+          "costed_loop_brayton__plant__cycle__low_temperature": 308.15,
+          "costed_loop_brayton__plant__cycle__recuperator_effectiveness": 0.8,
+          "costed_loop_brayton__plant__cycle__return_pressure": 4.285714285714286,
+          "costed_loop_brayton__plant__cycle__selected_flow": 2500.0,
+          "costed_loop_brayton__plant__cycle__turbine_efficiency": 0.93,
+          "costed_loop_brayton__plant__electrical__auxiliary_heat": 20.0,
+          "costed_loop_brayton__plant__electrical__control": 5.0,
+          "costed_loop_brayton__plant__electrical__cryo": 10.0,
+          "costed_loop_brayton__plant__electrical__fuel_base": 5.0,
+          "costed_loop_brayton__plant__electrical__fuel_coefficient": 1e-22,
+          "costed_loop_brayton__plant__electrical__fuel_exhaust": 0.0,
+          "costed_loop_brayton__plant__electrical__generator_efficiency": 0.98,
+          "costed_loop_brayton__plant__electrical__heating_efficiency": 0.5,
+          "costed_loop_brayton__plant__electrical__motor_efficiency": 0.95,
+          "costed_loop_brayton__plant__electrical__other_electric": 5.0,
+          "costed_loop_brayton__plant__finance__construction_years": 6.0,
+          "costed_loop_brayton__plant__finance__discount_rate": 0.05,
+          "costed_loop_brayton__plant__finance__other_overhaul_fraction": 0.05,
+          "costed_loop_brayton__plant__finance__other_overhaul_year": 20.0,
+          "costed_loop_brayton__plant__finance__salvage_fraction": 0.02,
+          "costed_loop_brayton__plant__finance__supply_service_annual": 0.0,
+          "costed_loop_brayton__plant__finance__terminal_fraction": 0.1,
+          "costed_loop_brayton__plant__fuel__assumed_extraction": 1.0,
+          "costed_loop_brayton__plant__fuel__decay_constant_s": 1.782785958230312e-09,
+          "costed_loop_brayton__plant__fuel__dormant_stock_growth_atoms_s": 0.0,
+          "costed_loop_brayton__plant__fuel__exhaust_recovery": 0.99,
+          "costed_loop_brayton__plant__fuel__mev_joules": 1.6021766339999998e-13,
+          "costed_loop_brayton__plant__fuel__pass_burn_fraction": 0.05,
+          "costed_loop_brayton__plant__fuel__reaction_energy_mev": 17.58,
+          "costed_loop_brayton__plant__fuel__seconds_per_year": 31536000.0,
+          "costed_loop_brayton__plant__fuel__tritium_atom_kg": 5.008267663228036e-27,
+          "costed_loop_brayton__plant__fuel__unused_tbr_placeholder": 0.0,
+          "costed_loop_brayton__plant__fuel_inventory__annual_recovery_kg": 0.0,
+          "costed_loop_brayton__plant__fuel_inventory__deuterium_atom_kg": 3.3435837724e-27,
+          "costed_loop_brayton__plant__fuel_inventory__deuterium_price": 1000.0,
+          "costed_loop_brayton__plant__fuel_inventory__process_residence_s": 1000.0,
+          "costed_loop_brayton__plant__fuel_inventory__selected_tritium_kg": 10.0,
+          "costed_loop_brayton__plant__fuel_inventory__tritium_price": 30000000.0,
+          "costed_loop_brayton__plant__fusion_source__p_fus": 2652.5631770825057,
+          "costed_loop_brayton__plant__generator_capacity__assumed_supported": 1.0,
+          "costed_loop_brayton__plant__generator_capacity__demand_available": 1.0,
+          "costed_loop_brayton__plant__generator_capacity__scenario_applicable": 1.0,
+          "costed_loop_brayton__plant__generator_capacity__selected_rating": 3600.0,
+          "costed_loop_brayton__plant__generator_equipment__price_factor": 1.0,
+          "costed_loop_brayton__plant__generator_equipment__reference_cost": 47183699.99999999,
+          "costed_loop_brayton__plant__generator_equipment__reference_quantity": 1800.0,
+          "costed_loop_brayton__plant__he_capacity__assumed_supported": 1.0,
+          "costed_loop_brayton__plant__he_capacity__demand_available": 1.0,
+          "costed_loop_brayton__plant__he_capacity__scenario_applicable": 1.0,
+          "costed_loop_brayton__plant__he_capacity__selected_rating": 3500.0,
+          "costed_loop_brayton__plant__he_duty_equipment__price_factor": 1.0,
+          "costed_loop_brayton__plant__he_duty_equipment__reference_cost": 32403166.66666667,
+          "costed_loop_brayton__plant__he_duty_equipment__reference_quantity": 1500.0,
+          "costed_loop_brayton__plant__he_hx__assumed_u": 1000.0,
+          "costed_loop_brayton__plant__he_hx__price_factor": 1.0,
+          "costed_loop_brayton__plant__he_hx__reference_cost": 58325700.00000001,
+          "costed_loop_brayton__plant__he_hx__reference_quantity": 50000.0,
+          "costed_loop_brayton__plant__he_hx__selected_area": 50000.0,
+          "costed_loop_brayton__plant__heat_exchangers__he_cp": 5193.0,
+          "costed_loop_brayton__plant__heat_exchangers__network_mode": 0.0,
+          "costed_loop_brayton__plant__heat_exchangers__pbli_split_fraction": 0.85,
+          "costed_loop_brayton__plant__heat_rejection_equipment__price_factor": 1.0,
+          "costed_loop_brayton__plant__heat_rejection_equipment__reference_cost": 56086000.0,
+          "costed_loop_brayton__plant__heat_rejection_equipment__reference_quantity": 2500.0,
+          "costed_loop_brayton__plant__idle_branches__available": 0.0,
+          "costed_loop_brayton__plant__idle_branches__cp": 1.0,
+          "costed_loop_brayton__plant__idle_branches__dummy_flow": 1.0,
+          "costed_loop_brayton__plant__idle_branches__limit": 308.15,
+          "costed_loop_brayton__plant__idle_branches__ua": 0.0,
+          "costed_loop_brayton__plant__indirect_cost__fraction": 0.2,
+          "costed_loop_brayton__plant__intercooler_1__heating_role": 0.0,
+          "costed_loop_brayton__plant__intercooler_1__target_temperature": 308.15,
+          "costed_loop_brayton__plant__intercooler_2__heating_role": 0.0,
+          "costed_loop_brayton__plant__intercooler_2__target_temperature": 308.15,
+          "costed_loop_brayton__plant__owner_commissioning__fraction": 0.05,
+          "costed_loop_brayton__plant__precooler__heating_role": 0.0,
+          "costed_loop_brayton__plant__pressure_loss__loss_fraction": 0.045,
+          "costed_loop_brayton__plant__primary_loop__dp_loop_ref": 329187.1856931558,
+          "costed_loop_brayton__plant__primary_loop__eta_drive": 1.0,
+          "costed_loop_brayton__plant__primary_loop__eta_is": 0.772796639536644,
+          "costed_loop_brayton__plant__primary_loop__eta_p_direct": 0.0,
+          "costed_loop_brayton__plant__primary_loop__f_loss": 1.0,
+          "costed_loop_brayton__plant__primary_loop__loop_T_in": 573.15,
+          "costed_loop_brayton__plant__primary_loop__loop_cp": 5193.0,
+          "costed_loop_brayton__plant__primary_loop__loop_dT_blanket": 200.0,
+          "costed_loop_brayton__plant__primary_loop__loop_gamma": 1.6666666666666667,
+          "costed_loop_brayton__plant__primary_loop__loop_live": 1.0,
+          "costed_loop_brayton__plant__primary_loop__loop_p": 8000000.0,
+          "costed_loop_brayton__plant__primary_loop__mdot_loop_rated": 225.07777777777778,
+          "costed_loop_brayton__plant__primary_loop__mdot_loop_ref": 225.07777777777778,
+          "costed_loop_brayton__plant__primary_loop__n_loops": 14.0,
+          "costed_loop_brayton__plant__primary_loop__p_pump_direct": 0.0,
+          "costed_loop_brayton__plant__rejection_capacity__assumed_supported": 1.0,
+          "costed_loop_brayton__plant__rejection_capacity__demand_available": 1.0,
+          "costed_loop_brayton__plant__rejection_capacity__scenario_applicable": 1.0,
+          "costed_loop_brayton__plant__rejection_capacity__selected_rating": 5000.0,
+          "costed_loop_brayton__plant__replacement_scope__selected_event_scope": 72231350.0,
+          "costed_loop_brayton__plant__rest_of_plant__price_factor": 1.0,
+          "costed_loop_brayton__plant__rest_of_plant__reference_cost": 2158230133.3333335,
+          "costed_loop_brayton__plant__rest_of_plant__selected_quantity": 1.0,
+          "costed_loop_brayton__plant__return_control__max_bypass": 1.0,
+          "costed_loop_brayton__plant__return_control__tolerance": 1e-06,
+          "costed_loop_brayton__plant__turbine_capacity__assumed_supported": 1.0,
+          "costed_loop_brayton__plant__turbine_capacity__demand_available": 1.0,
+          "costed_loop_brayton__plant__turbine_capacity__scenario_applicable": 1.0,
+          "costed_loop_brayton__plant__turbine_capacity__selected_rating": 7000.0,
+          "costed_loop_brayton__plant__turbine_equipment__price_factor": 1.0,
+          "costed_loop_brayton__plant__turbine_equipment__reference_cost": 125823200.0,
+          "costed_loop_brayton__plant__turbine_equipment__reference_quantity": 3500.0,
+          "costed_loop_brayton__plant__contingency_basis__evaluate__amount3_in": 0.0,
+          "costed_loop_brayton__plant__contingency_basis__evaluate__amount4_in": 0.0,
+          "costed_loop_brayton__plant__contingency_basis__evaluate__amount5_in": 0.0,
+          "costed_loop_brayton__plant__contingency_basis__evaluate__amount6_in": 0.0,
+          "costed_loop_brayton__plant__contingency_basis__evaluate__amount7_in": 0.0,
+          "costed_loop_brayton__plant__contingency_basis__evaluate__amount8_in": 0.0,
+          "costed_loop_brayton__plant__cost_ledger__evaluate__currency_year_in": 2004.0,
+          "costed_loop_brayton__plant__direct_cost__evaluate__amount4_in": 0.0,
+          "costed_loop_brayton__plant__direct_cost__evaluate__amount5_in": 0.0,
+          "costed_loop_brayton__plant__direct_cost__evaluate__amount6_in": 0.0,
+          "costed_loop_brayton__plant__direct_cost__evaluate__amount7_in": 0.0,
+          "costed_loop_brayton__plant__direct_cost__evaluate__amount8_in": 0.0,
+          "costed_loop_brayton__plant__priced_equipment__evaluate__amount8_in": 0.0,
+          "costed_loop_brayton__plant__annual_om__evaluate__alpha": 0.5,
+          "costed_loop_brayton__plant__annual_om__evaluate__n_mod_in": 1.0,
+          "costed_loop_brayton__plant__annual_om__evaluate__om_ref": 0.0,
+          "costed_loop_brayton__plant__annual_om__evaluate__p_net": 1000.0,
+          "costed_loop_brayton__plant__annual_om__evaluate__ref_net_power": 1000.0,
+          "costed_loop_brayton__plant__indirect_cost__evaluate__construction_time": 6.0,
+          "costed_loop_brayton__plant__indirect_cost__evaluate__reference_construction_time": 6.0,
+          "costed_loop_brayton__plant__operating_levelization__evaluate__inflation_rate_in": 0.0,
+          "costed_loop_brayton__plant__operating_levelization__evaluate__project_time": 0.0,
+          "costed_loop_brayton__plant__fuel_inventory__screen__applicable_in": 1.0,
+          "costed_loop_brayton__plant__fuel_inventory__screen__conditions_supported_in": 1.0,
+          "costed_loop_brayton__plant__fuel_inventory__screen__demand_available_in": 1.0
+        },
+        "headline": {
+          "channel": "costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe",
+          "value": 1559.4383607658922
+        },
+        "verdicts": [
+          {
+            "source_local_identity": "capacity_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "return_condition_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "net_positive",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "loop_capacity_ok",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "bypass_within_limit",
+            "expected": "satisfied"
+          },
+          {
+            "source_local_identity": "heat_removal_ok",
+            "expected": "satisfied"
+          }
+        ]
+      },
+      "oracle": {
+        "kind": "python_callable",
+        "module": "exploration.costed_loop_brayton.studies.oracle_entry",
+        "callable": "evaluate",
+        "sys_path": ".",
+        "source_digest": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "3be40ace3d00c2e454a9d68826d72177bdb1aab8f97a14cad4dd356114739765",
+          "files": [
+            {
+              "path": "exploration/costed_loop_brayton/studies/execute_study.py",
+              "sha256": "a84c9a30a02b3fe1d019417a5dee97a8cdafe6b46357109c3b7d0f3002a66a96"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/flow_ratio_config.py",
+              "sha256": "e1621be42b50d0e80787fe3102d1ba2ccb7aa9a9df18929a3bef945d2a4e33f6"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/flow_ratio_figures.py",
+              "sha256": "8a0cd27d7f49daec045e898bdba36fd98d94f6bf97eaa2f88494aec6b8decad6"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/flow_ratio_reporting.py",
+              "sha256": "83b4ae676a2704cbe68dde8a353969d862d3249e70bc384a7d5c28c534cad10d"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/interface_data.py",
+              "sha256": "01bfda3fe7de02ebf18ef5a9113df2a313d4b7f7eff81b8c997647b4753929a2"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/oracle_entry.py",
+              "sha256": "de02f843ade2ff8cfab58da2943ad0b5b562a66e511bb7f56e17292b727f90ec"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/prepare_interface.py",
+              "sha256": "29362e9b22a8b4cba0f7a51b9e781e70bfe7ae8b7c605738eb10d7953f1e3990"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/return_control_config.py",
+              "sha256": "60dd8609e9ac9172da481fd6b4745fae5aa37f1c4b744965456717c36790d008"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/return_control_reporting.py",
+              "sha256": "e276e089301c4ad23a2a07b2cd420076307756eed19870071cdab0433535b22c"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/study_route.py",
+              "sha256": "0e09325918acf3a2d96c97eaf252bba4839a36785d1a1a9b806789afe7b4e2ef"
+            },
+            {
+              "path": "exploration/costed_loop_brayton/studies/study_support.py",
+              "sha256": "022a8d75ef92430b529e87a0b2d909d10701908bbcb546ab3a439e6b05ca05b1"
+            }
+          ]
+        }
+      },
+      "absolute_tolerances": [
+        {
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual",
+          "value": 1e-07,
+          "units": "MW",
+          "basis": "The ARIES manifest class for the same closure body (native root termination 1e-8 MW plus roundoff); declared before execution, comparison-contract.md section 9."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc",
+          "value": 1.9073486328125e-06,
+          "units": "USD2004",
+          "basis": "Two ULP of the capital magnitude for the subtractive IDC diagnostic; the ARIES class for the same lifecycle body; declared before execution."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed",
+          "value": 1e-09,
+          "units": "kg/year",
+          "basis": "The ARIES exact-zero difference class (economics goal L-004); declared before execution."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall",
+          "value": 1e-09,
+          "units": "kg/year",
+          "basis": "As above."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_external",
+          "value": 1e-09,
+          "units": "kg/year",
+          "basis": "As above."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery",
+          "value": 1e-09,
+          "units": "kg/year",
+          "basis": "As above."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+          "value": 1e-06,
+          "units": "K",
+          "basis": "Two temperatures of order 700 K fixed by the closure root solve (1e-8 MW; the oracle root differs by about 3e-10 K) subtracted to a margin that can be arbitrarily small near the bound; owner ruling G-001; a verification tolerance only, the verdict is re-derived exactly from the operands."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+          "value": 1e-06,
+          "units": "K",
+          "basis": "As above (G-001)."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+          "value": 1e-06,
+          "units": "K",
+          "basis": "As above (G-001)."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction",
+          "value": 1e-09,
+          "units": "1",
+          "basis": "The bypass fraction is a bisection root to |capability - duty| <= 1e-9 MW; two independent solves (package and oracle) agree to about 1e-12 in f, but a relative rule cannot pass a root near zero (the f = 0 family targets 1e-6); an absolute class at the solve resolution, declared before execution."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual",
+          "value": 1e-08,
+          "units": "K",
+          "basis": "The root-solve closure (duty - capability(f)) / C_h, of order 1e-11 K when feasible (two solves within 1e-9 MW each give at most about 1e-10 K difference); a numerical class two orders below the check tolerance 1e-6 K, declared before execution; infeasible cases carry a physical deficit far above it and are compared relatively."
+        },
+        {
+          "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude",
+          "value": 1e-08,
+          "units": "K",
+          "basis": "As above."
+        }
+      ],
+      "fingerprint_names": [
+        "indicator_inputs",
+        "recorded_provenance.executable_fingerprint",
+        "recorded_provenance.semantic_fingerprint"
+      ],
+      "verification_manifest": {
+        "path": "exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/manifest.json",
+        "sha256": "f366acbbc0c9cdfaa3bc294beedb83b24e7dc1cc62cc27ce66981f7de5f0afcd",
+        "appended_absolute_tolerances": [],
+        "ruling": null
+      }
+    }
+  },
+  "stores": [
+    {
+      "store_id": "20260926-design-study-parameters-b",
+      "path": "results/native/20260926-design-study-parameters-b.db",
+      "compatibility_tuple": {
+        "study_id": "20260926-design-study-parameters-b",
+        "executable_fingerprint": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+        "model_contract_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203",
+        "study_definition_fingerprint": "e981d85f7fb66ad4fb6f64e27a93876a90611fba4c42f355971fe35096948f16",
+        "input_schema_version": "input-v1",
+        "evidence_schema_version": "v3",
+        "strategy_identity": "prepared-list/v1",
+        "strategy_config": "43731e5c8d64684107a195eb8cd7b7acb34d85add9b88df0cc09b4788de65246"
+      }
+    }
+  ],
+  "arms": [
+    {
+      "arm_id": "arm-flow-ratio",
+      "store_id": "20260926-design-study-parameters-b",
+      "effective_executable_fingerprint": {
+        "value": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+        "inputs": null,
+        "no_adapter": true,
+        "note": "No runtime adapter; the sealed package is the execution identity."
+      },
+      "entry_models": {
+        "costed_loop_brayton_params": "costed_loop_brayton_tea.schemas.costed_loop_brayton_params.CostedLoopBraytonParams",
+        "integrated_equipment_costs_params": "costed_loop_brayton_tea.schemas.integrated_equipment_costs_params.IntegratedEquipmentCostsParams",
+        "mfe_account_costs_params": "costed_loop_brayton_tea.schemas.mfe_account_costs_params.MfeAccountCostsParams",
+        "mfe_viability_params": "costed_loop_brayton_tea.schemas.mfe_viability_params.MfeViabilityParams"
+      },
+      "strategy": "prepared-list/v1",
+      "window": {
+        "bounds": {
+          "inventories": {
+            "ir": {
+              "label": "I-R, the re-selected inventory (WI-093 case inputs; the manifest baseline)",
+              "values": {}
+            },
+            "ia": {
+              "label": "I-A, the ARIES-selected inventory (recorded alternative)",
+              "values": {
+                "compressor_rating": 1600.0,
+                "turbine_rating": 3500.0,
+                "generator_rating": 1800.0,
+                "rejection_rating": 2500.0,
+                "he_duty_rating": 1500.0
+              }
+            }
+          },
+          "anchors": {
+            "rule": "none",
+            "points": {}
+          },
+          "designs": [
+            {
+              "name": "ir-f2500-r1.5183",
+              "arm": "leading",
+              "classification": "the starting configuration (C-1 design point) on I-R",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.5182944859378311
+              }
+            },
+            {
+              "name": "ir-f2250-r1.5183",
+              "arm": "leading",
+              "classification": "best passing band (round 1)",
+              "values": {
+                "cycle_flow": 2250.0,
+                "stage_ratio": 1.5182944859378311
+              }
+            },
+            {
+              "name": "ir-f2750-r1.3750",
+              "arm": "leading",
+              "classification": "best passing band (round 1)",
+              "values": {
+                "cycle_flow": 2750.0,
+                "stage_ratio": 1.375
+              }
+            },
+            {
+              "name": "ir-f3000-r1.3250",
+              "arm": "leading",
+              "classification": "third passing point (round 1)",
+              "values": {
+                "cycle_flow": 3000.0,
+                "stage_ratio": 1.325
+              }
+            },
+            {
+              "name": "ir-f2500-r1.4500",
+              "arm": "leading",
+              "classification": "the screen's best passing point at the design flow (round 1)",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.45
+              }
+            },
+            {
+              "name": "ir-f2500-r1.4250",
+              "arm": "leading",
+              "classification": "the electricity-only best (round 1): heat removal fails; expected infeasible",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.425
+              }
+            },
+            {
+              "name": "s6-hx75000-f2500-r1.4000",
+              "arm": "leading",
+              "classification": "S6: the 75,000 m2 exchanger alternative at its round-1 best passing point",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.4,
+                "exchanger_area": 75000.0
+              }
+            },
+            {
+              "name": "ia-f2500-r1.5183",
+              "arm": "leading",
+              "classification": "the starting configuration on the ARIES-selected inventory I-A (failed selection, for the record)",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.5182944859378311,
+                "compressor_rating": 1600.0,
+                "turbine_rating": 3500.0,
+                "generator_rating": 1800.0,
+                "rejection_rating": 2500.0,
+                "he_duty_rating": 1500.0
+              }
+            },
+            {
+              "name": "ir-f2500-r1.4300",
+              "arm": "ladder",
+              "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.43
+              }
+            },
+            {
+              "name": "ir-f2500-r1.4350",
+              "arm": "ladder",
+              "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.435
+              }
+            },
+            {
+              "name": "ir-f2500-r1.4400",
+              "arm": "ladder",
+              "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.44
+              }
+            },
+            {
+              "name": "ir-f2500-r1.4450",
+              "arm": "ladder",
+              "classification": "fine ratio ladder at the design flow between the round-1 grid steps 1.425 and 1.45",
+              "values": {
+                "cycle_flow": 2500.0,
+                "stage_ratio": 1.445
+              }
+            },
+            {
+              "name": "ir-f2250-r1.5050",
+              "arm": "ladder",
+              "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+              "values": {
+                "cycle_flow": 2250.0,
+                "stage_ratio": 1.505
+              }
+            },
+            {
+              "name": "ir-f2250-r1.5100",
+              "arm": "ladder",
+              "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+              "values": {
+                "cycle_flow": 2250.0,
+                "stage_ratio": 1.51
+              }
+            },
+            {
+              "name": "ir-f2250-r1.5150",
+              "arm": "ladder",
+              "classification": "fine ratio ladder at the best band flow between 1.50 and 1.5183",
+              "values": {
+                "cycle_flow": 2250.0,
+                "stage_ratio": 1.515
+              }
+            }
+          ],
+          "boundary": {
+            "inventory": "ir",
+            "target_bypass_fraction": 1e-06,
+            "flows": [
+              2000.0,
+              2250.0,
+              2500.0,
+              2750.0,
+              3000.0,
+              3250.0,
+              3500.0,
+              4000.0
+            ],
+            "brackets": {
+              "2000": [
+                1.6,
+                1.7
+              ],
+              "2250": [
+                1.5,
+                1.5182944859378311
+              ],
+              "2500": [
+                1.425,
+                1.45
+              ],
+              "2750": [
+                1.35,
+                1.375
+              ],
+              "3000": [
+                1.3,
+                1.325
+              ],
+              "3250": [
+                1.25,
+                1.3
+              ],
+              "3500": [
+                1.2,
+                1.25
+              ],
+              "4000": [
+                1.2,
+                1.25
+              ]
+            },
+            "provenance": "brackets are the round-1 grid's last failing and first passing ratio at each flow (record 20260926-design-study-parameters, readout section 3); at 4,000 kg/s the first grid ratio 1.20 already passes, so the boundary lies below the declared window and is reported, not solved",
+            "note": "the target 1e-6 is a root-finding target just inside the feasible side (the bypass fraction is continuous and zero at the boundary), not a physical allowance"
+          },
+          "boundary_solve": [
+            {
+              "flow": 2000.0,
+              "bracket": [
+                1.6,
+                1.7
+              ],
+              "target_bypass_fraction": 1e-06,
+              "outcome": "solved",
+              "ratio": 1.6511421971954405,
+              "bypass_fraction_by_oracle": 1.0002586350310594e-06,
+              "net_by_oracle": 535.2205569180843,
+              "iterations_interval": 9.313239068831081e-11
+            },
+            {
+              "flow": 2250.0,
+              "bracket": [
+                1.5,
+                1.5182944859378311
+              ],
+              "target_bypass_fraction": 1e-06,
+              "outcome": "solved",
+              "ratio": 1.5169134372098814,
+              "bypass_fraction_by_oracle": 1.0001967893913388e-06,
+              "net_by_oracle": 600.1648590481848,
+              "iterations_interval": 6.815215058963986e-11
+            },
+            {
+              "flow": 2500.0,
+              "bracket": [
+                1.425,
+                1.45
+              ],
+              "target_bypass_fraction": 1e-06,
+              "outcome": "solved",
+              "ratio": 1.427314826752991,
+              "bypass_fraction_by_oracle": 1.0000730981118977e-06,
+              "net_by_oracle": 620.8190529643422,
+              "iterations_interval": 9.313216864370588e-11
+            },
+            {
+              "flow": 2750.0,
+              "bracket": [
+                1.35,
+                1.375
+              ],
+              "target_bypass_fraction": 1e-06,
+              "outcome": "solved",
+              "ratio": 1.3628644277341664,
+              "bypass_fraction_by_oracle": 1.0003459465224296e-06,
+              "net_by_oracle": 617.939807733591,
+              "iterations_interval": 9.313216864370588e-11
+            },
+            {
+              "flow": 3000.0,
+              "bracket": [
+                1.3,
+                1.325
+              ],
+              "target_bypass_fraction": 1e-06,
+              "outcome": "solved",
+              "ratio": 1.3140269530937074,
+              "bypass_fraction_by_oracle": 1.0005869626183994e-06,
+              "net_by_oracle": 601.5980396153443,
+              "iterations_interval": 9.313239068831081e-11
+            },
+            {
+              "flow": 3250.0,
+              "bracket": [
+                1.25,
+                1.3
+              ],
+              "target_bypass_fraction": 1e-06,
+              "outcome": "solved",
+              "ratio": 1.275580954551697,
+              "bypass_fraction_by_oracle": 1.000224074232392e-06,
+              "net_by_oracle": 577.1376193361235,
+              "iterations_interval": 9.313216864370588e-11
+            },
+            {
+              "flow": 3500.0,
+              "bracket": [
+                1.2,
+                1.25
+              ],
+              "target_bypass_fraction": 1e-06,
+              "outcome": "solved",
+              "ratio": 1.244424132909626,
+              "bypass_fraction_by_oracle": 1.0005223884945735e-06,
+              "net_by_oracle": 547.5819905118665,
+              "iterations_interval": 9.313239068831081e-11
+            },
+            {
+              "flow": 4000.0,
+              "bracket": [
+                1.2,
+                1.25
+              ],
+              "target_bypass_fraction": 1e-06,
+              "outcome": "boundary below the bracket (window edge); lower end already feasible with f=2.701e-02"
+            }
+          ],
+          "refused_by_oracle_scan": {}
+        },
+        "provenance": "engineered"
+      },
+      "verification": {
+        "command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/costed_loop_brayton/costed_loop_brayton_tea --manifest exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/verification-manifest.json --identity exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/preparation/package_identity.json --store exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/results/native/20260926-design-study-parameters-b.db --sample-size 22 --out exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/results/verification_summary.json'",
+        "tool_revision": {
+          "recipe": "tool-source-digest/v1",
+          "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+          "files": [
+            {
+              "path": "scripts/study/common.py",
+              "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+            },
+            {
+              "path": "scripts/study/identity.py",
+              "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+            },
+            {
+              "path": "scripts/study/manifest.py",
+              "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+            },
+            {
+              "path": "scripts/study/schemas/package_identity.v1.schema.json",
+              "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+            },
+            {
+              "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+              "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+            },
+            {
+              "path": "scripts/study/verify.py",
+              "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+            }
+          ]
+        },
+        "sampling_scheme": {
+          "scheme": "stratified-by-verdict-combination/v1",
+          "seed": "b30ad569b9ccf7e7",
+          "seed_source": "derived",
+          "sample_size_requested": 22,
+          "strata_observed": 3,
+          "sampled_rows": 22,
+          "sampled_case_ids": [
+            "20260926-design-study-parameters-b:c0002",
+            "20260926-design-study-parameters-b:c0014",
+            "20260926-design-study-parameters-b:c0007",
+            "20260926-design-study-parameters-b:c0020",
+            "20260926-design-study-parameters-b:c0001",
+            "20260926-design-study-parameters-b:c0011",
+            "20260926-design-study-parameters-b:c0012",
+            "20260926-design-study-parameters-b:c0003",
+            "20260926-design-study-parameters-b:c0008",
+            "20260926-design-study-parameters-b:c0019",
+            "20260926-design-study-parameters-b:c0004",
+            "20260926-design-study-parameters-b:c0010",
+            "20260926-design-study-parameters-b:c0018",
+            "20260926-design-study-parameters-b:c0013",
+            "20260926-design-study-parameters-b:c0016",
+            "20260926-design-study-parameters-b:c0009",
+            "20260926-design-study-parameters-b:c0005",
+            "20260926-design-study-parameters-b:c0021",
+            "20260926-design-study-parameters-b:c0006",
+            "20260926-design-study-parameters-b:c0017",
+            "20260926-design-study-parameters-b:c0015",
+            "20260926-design-study-parameters-b:c0000"
+          ]
+        },
+        "tolerance": {
+          "relative": 1e-09,
+          "absolute_tolerances": [
+            {
+              "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual",
+              "value": 1e-07,
+              "units": "MW",
+              "basis": "The ARIES manifest class for the same closure body (native root termination 1e-8 MW plus roundoff); declared before execution, comparison-contract.md section 9."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc",
+              "value": 1.9073486328125e-06,
+              "units": "USD2004",
+              "basis": "Two ULP of the capital magnitude for the subtractive IDC diagnostic; the ARIES class for the same lifecycle body; declared before execution."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed",
+              "value": 1e-09,
+              "units": "kg/year",
+              "basis": "The ARIES exact-zero difference class (economics goal L-004); declared before execution."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall",
+              "value": 1e-09,
+              "units": "kg/year",
+              "basis": "As above."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_external",
+              "value": 1e-09,
+              "units": "kg/year",
+              "basis": "As above."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery",
+              "value": 1e-09,
+              "units": "kg/year",
+              "basis": "As above."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+              "value": 1e-06,
+              "units": "K",
+              "basis": "Two temperatures of order 700 K fixed by the closure root solve (1e-8 MW; the oracle root differs by about 3e-10 K) subtracted to a margin that can be arbitrarily small near the bound; owner ruling G-001; a verification tolerance only, the verdict is re-derived exactly from the operands."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+              "value": 1e-06,
+              "units": "K",
+              "basis": "As above (G-001)."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+              "value": 1e-06,
+              "units": "K",
+              "basis": "As above (G-001)."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction",
+              "value": 1e-09,
+              "units": "1",
+              "basis": "The bypass fraction is a bisection root to |capability - duty| <= 1e-9 MW; two independent solves (package and oracle) agree to about 1e-12 in f, but a relative rule cannot pass a root near zero (the f = 0 family targets 1e-6); an absolute class at the solve resolution, declared before execution."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual",
+              "value": 1e-08,
+              "units": "K",
+              "basis": "The root-solve closure (duty - capability(f)) / C_h, of order 1e-11 K when feasible (two solves within 1e-9 MW each give at most about 1e-10 K difference); a numerical class two orders below the check tolerance 1e-6 K, declared before execution; infeasible cases carry a physical deficit far above it and are compared relatively."
+            },
+            {
+              "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude",
+              "value": 1e-08,
+              "units": "K",
+              "basis": "As above."
+            }
+          ],
+          "exact_verdicts": true,
+          "note": "All twelve classes were declared in the manifest before execution (six from round 1, three ruled under G-001, three for the WI-095 root-solve channels)."
+        },
+        "summary_sha256": "8c4b6e0597b9298c7da593daaee39c2f2712cd4f17321ba629b2e703481ac1fa"
+      },
+      "glue_ledger": [],
+      "glue_ledger_none": true,
+      "artifacts": [
+        {
+          "path": "axes.json",
+          "sha256": "59044a1e3f5a9e1dca55433b690112956600951fe2f9762c12d7580a4461c296"
+        },
+        {
+          "path": "axis-plan.json",
+          "sha256": "e353ea7b1c55af3a71e24f367cdcf45b6ae182f3be0bbc34cf6462f427754b8e"
+        },
+        {
+          "path": "config.json",
+          "sha256": "c4734471f003a7d2a7baefbdbb9846b6e3151f72ba1969473a8dc58ad4b565eb"
+        },
+        {
+          "path": "indicators.json",
+          "sha256": "dbf67479abf1234bd699e611e7c8520f3bfe151cd8174f86c8b8d31dae265b9a"
+        },
+        {
+          "path": "manifest.json",
+          "sha256": "f366acbbc0c9cdfaa3bc294beedb83b24e7dc1cc62cc27ce66981f7de5f0afcd"
+        },
+        {
+          "path": "oracle-window-scan.json",
+          "sha256": "26364c2555b8bbfbd500009f981326414fbff8868b042acc89278860dbdc8fdc"
+        },
+        {
+          "path": "preparation/_work/artifacts/42cd62c4e7ed6246bdd9a61c01a27aac3349ef55c2d82a90224ca9a3038fd914.json",
+          "sha256": "42cd62c4e7ed6246bdd9a61c01a27aac3349ef55c2d82a90224ca9a3038fd914"
+        },
+        {
+          "path": "preparation/_work/costed-loop-brayton-baseline-point-v1.db",
+          "sha256": "b7667b8d5d3d718daf3483506cc07843c96a2a4f38d863f4ba453d38d98c6ea3"
+        },
+        {
+          "path": "preparation/baseline_result.json",
+          "sha256": "091defdb2b6146be6b8c4f21d8b319fffafa68b17c384bfc3bc5a1fcc8a9599e"
+        },
+        {
+          "path": "preparation/package_identity.json",
+          "sha256": "480b23d57ac659fe8a5db53fa17a1ed3fbd26ae881d3365d5e7e5385150654b1"
+        },
+        {
+          "path": "preparation/preflight_results.json",
+          "sha256": "85fd624b81dbea5a5515c0485341b68a19d87de97733550ec94b983864ce1dc9"
+        },
+        {
+          "path": "preparation-provenance.json",
+          "sha256": "9b811aec2c7c0eee871c7ab714910ee90be367687d341d469a954b326172e98c"
+        },
+        {
+          "path": "proposed-points.json",
+          "sha256": "1b12575214d9f421e32583b939639334eb6baf111d292da618d7e295fccb6e35"
+        },
+        {
+          "path": "results/cases.csv",
+          "sha256": "be27cf6ee90a03d9e458d9e0e43444d1444372576d1309f35918610933f183f0"
+        },
+        {
+          "path": "results/cases.json",
+          "sha256": "62d942d18d81eadf7a58a8d6e5b8438c092a65074f26d233f1a51dc3463b1301"
+        },
+        {
+          "path": "results/constraint_catalog.json",
+          "sha256": "63a4e828bd5b1452c24e1c3513042c16f4decc8e0132bb8e31585dc39439070f"
+        },
+        {
+          "path": "results/execution-context.json",
+          "sha256": "eda33806c98e2c8dd5162c5d49d527fee520ecbbd25f13a41905c6c49a58fec8"
+        },
+        {
+          "path": "results/export-proof.json",
+          "sha256": "db54d6023c8514b3657f9efb92d950a235b149ddf1c886947e9e1f2e9d9fe1dc"
+        },
+        {
+          "path": "results/integration_return_used.json",
+          "sha256": "85d09b2d2e0002f59fa781131bb6a2fd2ec83ac1e86c8cfe2654d5c558a2986c"
+        },
+        {
+          "path": "results/manifest_used.json",
+          "sha256": "f366acbbc0c9cdfaa3bc294beedb83b24e7dc1cc62cc27ce66981f7de5f0afcd"
+        },
+        {
+          "path": "results/native/20260926-design-study-parameters-b.db",
+          "sha256": "9c1be261eabbe2bb9cb0f54af22917328c2e6a7c7e40c3cbdbc8c6adc9c198cb"
+        },
+        {
+          "path": "results/native/artifacts/0d3d69e8c7c8d19de8624209971bacb1a9009590ef0d99b7cc2978613f31090a.json",
+          "sha256": "0d3d69e8c7c8d19de8624209971bacb1a9009590ef0d99b7cc2978613f31090a"
+        },
+        {
+          "path": "results/native/artifacts/17fcdc9d06be783984e49ff4a7b29304525b55c98af97b91d3b370dc0e67b325.json",
+          "sha256": "17fcdc9d06be783984e49ff4a7b29304525b55c98af97b91d3b370dc0e67b325"
+        },
+        {
+          "path": "results/native/artifacts/2ac87868d7390292465099de898526943ac3b93e171b9d9427f3170dea917a31.json",
+          "sha256": "2ac87868d7390292465099de898526943ac3b93e171b9d9427f3170dea917a31"
+        },
+        {
+          "path": "results/native/artifacts/2dc9121d08f61ade7802f9add13edbb648466aa0f676dbcd6372fbdb9a78e3ce.json",
+          "sha256": "2dc9121d08f61ade7802f9add13edbb648466aa0f676dbcd6372fbdb9a78e3ce"
+        },
+        {
+          "path": "results/native/artifacts/2eea35aaec2b5600a1e7f6cd31b41d185dd164e7e2e6c6dbab45b640c8899766.json",
+          "sha256": "2eea35aaec2b5600a1e7f6cd31b41d185dd164e7e2e6c6dbab45b640c8899766"
+        },
+        {
+          "path": "results/native/artifacts/398cf84a92b630272c422044987219c3ffa45fda82c7e2e6f544cc55ba814043.json",
+          "sha256": "398cf84a92b630272c422044987219c3ffa45fda82c7e2e6f544cc55ba814043"
+        },
+        {
+          "path": "results/native/artifacts/3cc6f09ec2bdfe43ebbd9390cc15881585075120442271a9b4f12cd2c4152c03.json",
+          "sha256": "3cc6f09ec2bdfe43ebbd9390cc15881585075120442271a9b4f12cd2c4152c03"
+        },
+        {
+          "path": "results/native/artifacts/42cd62c4e7ed6246bdd9a61c01a27aac3349ef55c2d82a90224ca9a3038fd914.json",
+          "sha256": "42cd62c4e7ed6246bdd9a61c01a27aac3349ef55c2d82a90224ca9a3038fd914"
+        },
+        {
+          "path": "results/native/artifacts/4aa92a211de09280278889b1227c3e1d56ce2c5d9659f51659f9c2216081605e.json",
+          "sha256": "4aa92a211de09280278889b1227c3e1d56ce2c5d9659f51659f9c2216081605e"
+        },
+        {
+          "path": "results/native/artifacts/5b759346037c8b1d942ca3d42b09f67257d3476744e55ce603a817abb4f38d70.json",
+          "sha256": "5b759346037c8b1d942ca3d42b09f67257d3476744e55ce603a817abb4f38d70"
+        },
+        {
+          "path": "results/native/artifacts/61744bf160819f33480755354a9bed822c9eb4d4a6d895d41c7d6a72a5b75e60.json",
+          "sha256": "61744bf160819f33480755354a9bed822c9eb4d4a6d895d41c7d6a72a5b75e60"
+        },
+        {
+          "path": "results/native/artifacts/7d32ff3f8d303db72be4e39088722ed81bf1f45349c68626daac9d0250790155.json",
+          "sha256": "7d32ff3f8d303db72be4e39088722ed81bf1f45349c68626daac9d0250790155"
+        },
+        {
+          "path": "results/native/artifacts/9192cdf8a380feab37f840aa297691651dad98c926d74d92ec7ee782b8b1e426.json",
+          "sha256": "9192cdf8a380feab37f840aa297691651dad98c926d74d92ec7ee782b8b1e426"
+        },
+        {
+          "path": "results/native/artifacts/99e6724feac5f527b4275cc02689ce96ee81a4091d155a75456ee12d35ca6dd8.json",
+          "sha256": "99e6724feac5f527b4275cc02689ce96ee81a4091d155a75456ee12d35ca6dd8"
+        },
+        {
+          "path": "results/native/artifacts/9d5a71553e2f7917781ec4d68b1aaa6312ba8ed8d4fe92e7c0480939750d1e9d.json",
+          "sha256": "9d5a71553e2f7917781ec4d68b1aaa6312ba8ed8d4fe92e7c0480939750d1e9d"
+        },
+        {
+          "path": "results/native/artifacts/9f13819113beca33dcc4894bd72fb67febe6a4014261c988879a82c96ff1d67e.json",
+          "sha256": "9f13819113beca33dcc4894bd72fb67febe6a4014261c988879a82c96ff1d67e"
+        },
+        {
+          "path": "results/native/artifacts/a7c24e81bc1ef350811916a81fa624894e711fcfd5b1c3a46977c1651d20d299.json",
+          "sha256": "a7c24e81bc1ef350811916a81fa624894e711fcfd5b1c3a46977c1651d20d299"
+        },
+        {
+          "path": "results/native/artifacts/aaac644a745072e6cd214a334d420adf425318710af05939b13a2e384fcc1f4d.json",
+          "sha256": "aaac644a745072e6cd214a334d420adf425318710af05939b13a2e384fcc1f4d"
+        },
+        {
+          "path": "results/native/artifacts/be8e8322f11aec8714e9fb31fcadf2374dac1219ccdc8fbc06878c4c32b84222.json",
+          "sha256": "be8e8322f11aec8714e9fb31fcadf2374dac1219ccdc8fbc06878c4c32b84222"
+        },
+        {
+          "path": "results/native/artifacts/cc968ae9770df4caa83a74bc1d6e5c81a425307c3aad28fcb8d912dcb0932f88.json",
+          "sha256": "cc968ae9770df4caa83a74bc1d6e5c81a425307c3aad28fcb8d912dcb0932f88"
+        },
+        {
+          "path": "results/native/artifacts/d677030784a4b649c4f3601a4631142e2bd071172e51fa312698a7144b81b814.json",
+          "sha256": "d677030784a4b649c4f3601a4631142e2bd071172e51fa312698a7144b81b814"
+        },
+        {
+          "path": "results/native/artifacts/eb7e09b4f4216c1805ffc009a8d905c1817b652fb4c87e08f33b064f3bf7e5a9.json",
+          "sha256": "eb7e09b4f4216c1805ffc009a8d905c1817b652fb4c87e08f33b064f3bf7e5a9"
+        },
+        {
+          "path": "results/readout.json",
+          "sha256": "35dad72d6d8e923d9d954f8e3bbd933be5ba4763ac82fe9049486fe18c97c9ba"
+        },
+        {
+          "path": "results/readout.md",
+          "sha256": "020e9139c680bf81ac91dc06da02d1ad2b4512491f28681c6c71e8f83f0b0cc8"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/build.py",
+          "sha256": "a1ddc01bac8e995bed830f938fb2118935ec0164d37a04f627066558416972a2"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/census.json",
+          "sha256": "92564f6fc1c965b05639afa4453cf606693d8b3d738626792f2f07620d317ec5"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/costed_loop_brayton.snapshot.json",
+          "sha256": "971306b712c09ca059710887deb25a412f3ed199b9a70d33be8ee9364029ecc1"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/costed_component.sysml",
+          "sha256": "80865c4b554cc1e20009bf044c9c58bde8ed06c2bba99f5867fa927add30db72"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/costed_loop_brayton.sysml",
+          "sha256": "009b04e32569d93813967f81ec0526dab0a117c6b390d511f480b58cc5dc8a32"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/ideal_gas_brayton_components.sysml",
+          "sha256": "d246d147a37c7c44837a042c55b0d87e1bbf669bb263179c7efc9c883c907499"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/integrated_equipment_costs.sysml",
+          "sha256": "168622201450221ee40a9465434ed9801f06de8379b520ac01870377a0c4fc2f"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/integrated_equipment_parts.sysml",
+          "sha256": "0a9e0717612957c09db3a397d94eb4db28915946aac34eb5888af60e73c2bc47"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/integrated_heat_electricity.sysml",
+          "sha256": "795c5d313e3a80f2e3a508bc01df0acece8871cfde836b7edcb8b8adf117fd77"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/integrated_lifecycle_costs.sysml",
+          "sha256": "b0b282ffdf04e23342e0d74459737463c5039c84aaab677ae7dc0ecb66ea8fe6"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/loop_return_control.sysml",
+          "sha256": "7a980c0f5519ded9d21dbed40744ddcbcd0fd999d1cf11880e9c1a72d40d09d0"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/mfe_account_costs.sysml",
+          "sha256": "3f114bc1ec5d6f78ca98771b552948e3def6de07372e4b9abe834a4a54f0ba48"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/mfe_fuel_cycle.sysml",
+          "sha256": "82464d53fc49af7837c1918706df34f169782cb3cadad385e52d948d717b3397"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/mfe_lcoe_dcf.sysml",
+          "sha256": "4ca6c46646074f81671efbf02fe6229759e3fbcdfb136371ea3ffe8ad0e6f960"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/mfe_primary_loop.sysml",
+          "sha256": "288db9973333a0516d1080927783a58a6aa78d7ca50163e5ac6c8934f8b78dc5"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/input_models/mfe_viability.sysml",
+          "sha256": "f8eb2f260d3aed57df40db7714f46732d6971f7e3ad4b71a06f30e4954bbb1f9"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/run.py",
+          "sha256": "91dac4d58fb6f7ca87d6d821d145dcac2221694e0f119bbce7ade628eb2e6157"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/axes.json",
+          "sha256": "59044a1e3f5a9e1dca55433b690112956600951fe2f9762c12d7580a4461c296"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/manifest.json",
+          "sha256": "f366acbbc0c9cdfaa3bc294beedb83b24e7dc1cc62cc27ce66981f7de5f0afcd"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/ANNEX.md",
+          "sha256": "63ffa8d36a67084ad19d35bf63ae6070254317a705d1589c3f983e9c8be98b73"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/execute_study.py",
+          "sha256": "a84c9a30a02b3fe1d019417a5dee97a8cdafe6b46357109c3b7d0f3002a66a96"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/flow_ratio_config.py",
+          "sha256": "e1621be42b50d0e80787fe3102d1ba2ccb7aa9a9df18929a3bef945d2a4e33f6"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/flow_ratio_figures.py",
+          "sha256": "8a0cd27d7f49daec045e898bdba36fd98d94f6bf97eaa2f88494aec6b8decad6"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/flow_ratio_reporting.py",
+          "sha256": "83b4ae676a2704cbe68dde8a353969d862d3249e70bc384a7d5c28c534cad10d"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/interface_data.py",
+          "sha256": "01bfda3fe7de02ebf18ef5a9113df2a313d4b7f7eff81b8c997647b4753929a2"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/oracle_entry.py",
+          "sha256": "de02f843ade2ff8cfab58da2943ad0b5b562a66e511bb7f56e17292b727f90ec"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/prepare_interface.py",
+          "sha256": "29362e9b22a8b4cba0f7a51b9e781e70bfe7ae8b7c605738eb10d7953f1e3990"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/return_control_config.py",
+          "sha256": "60dd8609e9ac9172da481fd6b4745fae5aa37f1c4b744965456717c36790d008"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/return_control_reporting.py",
+          "sha256": "e276e089301c4ad23a2a07b2cd420076307756eed19870071cdab0433535b22c"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/study_route.py",
+          "sha256": "0e09325918acf3a2d96c97eaf252bba4839a36785d1a1a9b806789afe7b4e2ef"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/studies/study_support.py",
+          "sha256": "022a8d75ef92430b529e87a0b2d909d10701908bbcb546ab3a439e6b05ca05b1"
+        },
+        {
+          "path": "results/sources/exploration/costed_loop_brayton/verify.py",
+          "sha256": "89c92618a4251bc6cd2daf421288c20efc45304bcb06b16e74fe081da92566e7"
+        },
+        {
+          "path": "results/sources/modeling_project/REQUIREMENTS.md",
+          "sha256": "533382ee3517ddfb6394cb6bb76ad64a8400ad040f35acddbc3ca2dc23470d77"
+        },
+        {
+          "path": "results/sources/models/designs/combinations/combinations_loop_brayton.sysml",
+          "sha256": "2b841d315108522ea13df92e9644055c14e46fe3327e1b9cbdc0f9a35072ae0d"
+        },
+        {
+          "path": "results/sources/models/designs/costed_loop_brayton/costed_loop_brayton.sysml",
+          "sha256": "009b04e32569d93813967f81ec0526dab0a117c6b390d511f480b58cc5dc8a32"
+        },
+        {
+          "path": "results/sources/scripts/integrate.py",
+          "sha256": "6dd5ab46530f9dc1e259af2ca8aa62e95304ba97b29615b8963d6c04773cdc2f"
+        },
+        {
+          "path": "results/sources/scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "results/sources/scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "results/sources/scripts/study/indicators.py",
+          "sha256": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87"
+        },
+        {
+          "path": "results/sources/scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "results/sources/scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "results/sources/scripts/study/read_coverage.py",
+          "sha256": "3a63ba15c37d889c40420c66317ed8c685089ac1bb778b60fbe7e7c0e808412c"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/axis_declaration.v1.schema.json",
+          "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/indicators.v1.schema.json",
+          "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/study_package_manifest.v1.schema.json",
+          "sha256": "7e70dfa1db56e91e1e628174b7383a8ff96200c55ef7c8fd634afaef7556f1f8"
+        },
+        {
+          "path": "results/sources/scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+        },
+        {
+          "path": "results/sources/scripts/study/verify.py",
+          "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+        },
+        {
+          "path": "results/sources/tests/model_families.py",
+          "sha256": "d2cd3b1bae1c9bbbd9221077c98e10395439fcdeefdce63b6bc02542e88a24d3"
+        },
+        {
+          "path": "results/sources/work/active/WI-094_costed-loop-brayton/design.md",
+          "sha256": "1270d1b3fbd05ac75f742e7bf56da1d3e8e460137f56431301408b1a9415ed9f"
+        },
+        {
+          "path": "results/sources/work/active/WI-094_costed-loop-brayton/evidence/build-hashes.json",
+          "sha256": "0597c812a7d02e3ef9efefb5e364f59a56ec4af1c233b9b76d0fcefaf87d0c1e"
+        },
+        {
+          "path": "results/sources/work/active/WI-094_costed-loop-brayton/evidence/native_runs/summary.json",
+          "sha256": "fafbb0b538de44c8a0c233ccb196b8f40aa90674494b7d35a9dc5eb395c42e47"
+        },
+        {
+          "path": "results/sources/work/active/WI-094_costed-loop-brayton/evidence/verification-summary.json",
+          "sha256": "d4336572fea5206e6d4b757a49e73203cef72051f27d8b280e304aee73acb2b1"
+        },
+        {
+          "path": "results/sources/work/active/WI-094_costed-loop-brayton/report.md",
+          "sha256": "1dea218027f0a8faa09b75aa9b5d002be906323fd6538c045133e4a549dfa65a"
+        },
+        {
+          "path": "results/sources/work/active/WI-094_costed-loop-brayton/spec.md",
+          "sha256": "0de1d03ed673618cabfd16668a4b4ae1b7b314c70e760d95c523a4de2e307567"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/build-preservation-manifest.py",
+          "sha256": "24048e5b2bc377827a8864bfc3efacfa1f4d1513b7f3e97c3ba08e05145da54e"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/check-preservation.py",
+          "sha256": "cbbd45b9a3af572bda3b2e55760e1cade9ff8111f5ec7889ca3cf5a9b5200c94"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/comparison-contract.md",
+          "sha256": "015ca52310d95fcba6bbceb08cb014dd004b9fdad2a29076cfd2fea4d9d224d7"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/contract-review-brief.md",
+          "sha256": "25dbdc731a59218605c2e8aff975949691b98d8500d3bccb54318e00b39d7bd0"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/contract-review.md",
+          "sha256": "18a9e9c2a4c38b7552261a3b51f6012371860424b0eee37febc3421334027d01"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/contract-v1-v2.diff",
+          "sha256": "f8a14b2c6b19f29f73f31b4af3fe49f6ef88284f5f70fe960af6087eaf3454ec"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/design-review-brief.md",
+          "sha256": "cf0ea4df575b2123812fa0f702e77d2e3d7173d046fcf6ff4c1c782b4248b8c5"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/design-review-r3-brief.md",
+          "sha256": "ff44ba287270a527ce51e9dcba741a68ed55389d767a80a57372af69082e54e1"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/design-review-r3.md",
+          "sha256": "2d982620bb2fd0c7ec6ea61eaf4ca2303618a403436fce454438d9801412e72f"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/design-review.md",
+          "sha256": "55912950cb05db1809936168408cf9361976efe495ff7bca13a960d57e749ce3"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/entry-state.txt",
+          "sha256": "f4f443294a0a18772a0d3a18b42cd23318ffde792202b67796d34aae35c3f9d4"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/entry-stellaris-regression-actual.json",
+          "sha256": "a37e1c3d61b1d8a5f3883ff119c6aa28ba19172938458fcaee8479dc74919b65"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/entry-stellaris-regression-receipt.json",
+          "sha256": "df12d0e49c28bf04df008fd8fdbf6963f043469bab7af16457863ed862a99f04"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/freeze-study.py",
+          "sha256": "4000a357f5bd0e6a1b832917a12129ca47c3d41b1149bf42053585b02a5122a0"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/full-oracle-comparison.json",
+          "sha256": "b0c1959c1fd4244260026005d874da6b40983225dec07a1ad62c6d040b9017d7"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/full-oracle-comparison.py",
+          "sha256": "9b0afd4167763ecd44837baed925bb18d2168c3b36bfabed0d5608ee1c1beb34"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/implementation-review-brief.md",
+          "sha256": "be30bdc48965ef13a86a76b8e4abfb38942a266bb033ddc122a93cfc4bda861b"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/implementation-review-r3-brief.md",
+          "sha256": "7b7f0dacb7b703b1d276075976b8729685c5fa9b15130b46b5e1d075f893ce09"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/implementation-review-r3.md",
+          "sha256": "0a9196ab994f749328f33e792d886543fd68158af547821f3a09849ef6e27239"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/implementation-review.md",
+          "sha256": "65c330e7ec33c4632715411789f0bfe901e7ff9c94a46dd0060587821c5f7e12"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t004/baseline_result.json",
+          "sha256": "ad213b96d4e417a56f546811b55c9824b3a4369e33befa294be4b559b44262e9"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t004/clean.json",
+          "sha256": "57a617d844bb67648633e9ad56e3eb7c8fc117b23c1cc911603ae7ba29881771"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t004/integrate.log",
+          "sha256": "2c192944d3230833450888edfc19486d94de916d954abf6b7a55989b76efa7eb"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t004/integration_return.json",
+          "sha256": "5b269e3c806059fd69adc725fa8a4a0ec001542d508e7b3ac0d0dcf0eed56bd6"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t004/package_identity.json",
+          "sha256": "f04bdca893203df7cf1c53c9d5682f939983a5dc1041ba7d8a641ccd879bb650"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t004/preflight_results.json",
+          "sha256": "c5cab084b622946b9944f71a0cea1cdc892395ce9850d0891d2efc9bbbadc380"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t004/verification_summary.json",
+          "sha256": "5679127abebbede787dbdf507f513002b9341bebeeb82d6430fe33f8b54c0090"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t010/baseline_result.json",
+          "sha256": "877aad994177bf28e4ebbac85b3c96d52cdd006c3729e82a5c7e9599b449dd23"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t010/integrate.log",
+          "sha256": "911a4536001663c29b80192513f3fff43814de0ca4488de20b112f9236c12f47"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t010/integration_return.json",
+          "sha256": "85d09b2d2e0002f59fa781131bb6a2fd2ec83ac1e86c8cfe2654d5c558a2986c"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t010/package_identity.json",
+          "sha256": "480b23d57ac659fe8a5db53fa17a1ed3fbd26ae881d3365d5e7e5385150654b1"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t010/preflight_results.json",
+          "sha256": "62f45df9acf374f68dc2f30755ca3090a790016f51f2456d527d96cdf77cc2e5"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/integration-t010/verification_summary.json",
+          "sha256": "2ca30896aa9991ce100c7735891a1965c5d80dd017fbed930a29ebae00da3a38"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/oracle-extension-brief.md",
+          "sha256": "a1e101ef5826ada76a550966a4ba8b4410d5219dbe83f3ab7ee5934956d089cf"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/owner-brief.md",
+          "sha256": "37e75a447a1a56fcd19b7b14131f3f3ec2e2e944fa544953b48ba1c13fa9bb01"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/owner-direction-round3.md",
+          "sha256": "64bde45fd58bfa21bbe9d787c77defe9af12d839186e87bfb4ae2bfdf34abd02"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/owner-gate-verification-class.md",
+          "sha256": "eae5b5b583f8e320d62001550f272c52d2d75ce4efa891054f2daf14e4433d9c"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/owner-ruling-g001.md",
+          "sha256": "377cfb6c596a26cc688bfbbc72d354b64d87628845e61af09ab4afc1eda3568a"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/preservation-check-round2.json",
+          "sha256": "5ef4d61a6f066d268b7597271daeafd4be9fe718cee5e5eedcbdd94f59046307"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/preservation-check-t004-build.json",
+          "sha256": "5ef4d61a6f066d268b7597271daeafd4be9fe718cee5e5eedcbdd94f59046307"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/preservation-check-t004-run.json",
+          "sha256": "5ef4d61a6f066d268b7597271daeafd4be9fe718cee5e5eedcbdd94f59046307"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/preservation-check-t004-seam.json",
+          "sha256": "5ef4d61a6f066d268b7597271daeafd4be9fe718cee5e5eedcbdd94f59046307"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/preservation-check-t005.json",
+          "sha256": "5ef4d61a6f066d268b7597271daeafd4be9fe718cee5e5eedcbdd94f59046307"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/preservation-check-t010-build.json",
+          "sha256": "5ef4d61a6f066d268b7597271daeafd4be9fe718cee5e5eedcbdd94f59046307"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/preservation-check-t010-seam.json",
+          "sha256": "5ef4d61a6f066d268b7597271daeafd4be9fe718cee5e5eedcbdd94f59046307"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/return-condition-check.json",
+          "sha256": "fa61aa6e9dd4f3e3accb832323e9b5fe64fae7a03db69491bb4f1dd8552f0def"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/return-condition-check.md",
+          "sha256": "add03ec47142fb2b32314c8375483e290ba480af61c9a55fea11b4fb7f638645"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/return-condition-check.py",
+          "sha256": "cc696c6c343c114205f76ba8a8cee2235192ffe07b48e4b3b18038ec1b7808be"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/round1-learnings-proposed.md",
+          "sha256": "ed92e1c0cf67bc9cb6998cc66a8c920e5fca3e04435d9845a50081e3cd6650b0"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/round1-review-brief.md",
+          "sha256": "19b7dd3b4d2cee83f39019962d8aee86a2fdfe818c12032ab3fa4058d7fe958b"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/round1-review.md",
+          "sha256": "b732741584dfc7616bb624ad7db80c24022485e25b6776c3007ab6a5cd783dba"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/round2-review-brief.md",
+          "sha256": "45ad44db10fe624055bcebd001752da048133d6f827b542ef1fb0c1a4ffb8385"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/round2-review.md",
+          "sha256": "1c068ae432792a2e5326506dce848646df283c8c49bfe88a4b3c1ebc1cb9b2ec"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/screen-flow-ratio.json",
+          "sha256": "46ea209bc88d002c6e7b4cad37d6838f97ee1fac23516ec0ae64ef3772ad4f06"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/screen-flow-ratio.md",
+          "sha256": "1515d4a2ab7e63dfd00a2728dd61301954d6f0148fc405c411aa50c71a9c10de"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/screen-flow-ratio.py",
+          "sha256": "c91c071c22238b5c7e60b6f1fede58dcd7e14c491fcb7994600f9123a84b6171"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/starting-configuration.md",
+          "sha256": "3c996fd2cee4be961781abebfbd7b273437a7e1fc6fc6f7df102fc3f265c347f"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/stellaris-regression-entry.py",
+          "sha256": "c8386de371e956a33c99c72a1c319bc12ea8152c6c4af8a785fe254f612e19f0"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/t005-execute.log",
+          "sha256": "a93f7a41fa089695a5a5000e67ffdb223a1fbedbf57fa8ec58f9548c91b7cecc"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/t005-verify.log",
+          "sha256": "d8b72c09c0f6ba5378dd961f1693cd702435608860364aaf238af517f40bcd91"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/t006-verify.log",
+          "sha256": "a545df4d7f527eae4a6c65d67e97d88d9dbb978fb9d3190286e08b4f9f4dd1c4"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/t011-execute.log",
+          "sha256": "c9a8b15b857d8f45fe67e2a1fe89072a188c68486a1fecea470250ff36030a92"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/t011-verify.log",
+          "sha256": "dd0352220d322c5bfc78e21a82275194ec07ea5db34dca33f463a94e4ed55c77"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/write-execution-context-b.py",
+          "sha256": "a59331d6b0cfd45295a274259d970b325ba6672d0a5688a4def923b799a5eb3c"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/evidence/write-execution-context.py",
+          "sha256": "9d4cc90bb4d7d59663d475512c23c819f0aede8894bf5d8838e37885b46540dd"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/goal.md",
+          "sha256": "a9cff08c43d50675c3a5fd726bac87c719e48aa6fb9089b434d0f0d279d9a495"
+        },
+        {
+          "path": "results/sources/work/orchestration/goals/design-study-parameters/trail.md",
+          "sha256": "85692c737aeb6a22bb44d45978935919f0cf6eb4d841333dc7b2d20ffe1044f5"
+        },
+        {
+          "path": "results/verification_summary.json",
+          "sha256": "8c4b6e0597b9298c7da593daaee39c2f2712cd4f17321ba629b2e703481ac1fa"
+        },
+        {
+          "path": "sealed-package.tar.gz",
+          "sha256": "d3ab6432aa5be69ba1a61628dfff6b7b16d21fb1a20049a072fdce5f32f48fd4"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "path": "scripts/study/indicators.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "3460e3d7b98b8f8c7da0b3ecc708017ff30e2c3a6b628ea3a46ed0b9b80a0554",
+        "files": [
+          {
+            "path": "scripts/study/indicators.py",
+            "sha256": "10fca70d72cb71d573ebf8782b69acc7e9e6157a7cd7300a667ca1ce693f5c87"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+          },
+          {
+            "path": "scripts/study/schemas/axis_declaration.v1.schema.json",
+            "sha256": "cffa3d8adc0eae833245091b529ecfb5ad784ad6fea2c3714c460c6d3061eb2b"
+          },
+          {
+            "path": "scripts/study/schemas/indicators.v1.schema.json",
+            "sha256": "96390664ce8eb5938bfe19eb435603e107892bd5082edf8a03514d588a081996"
+          },
+          {
+            "path": "scripts/study/schemas/study_package_manifest.v1.schema.json",
+            "sha256": "7e70dfa1db56e91e1e628174b7383a8ff96200c55ef7c8fd634afaef7556f1f8"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/verify.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+            "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+          },
+          {
+            "path": "scripts/study/verify.py",
+            "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+          }
+        ]
+      }
+    },
+    {
+      "path": "scripts/study/preflight.py",
+      "source_digest": {
+        "recipe": "tool-source-digest/v1",
+        "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+        "files": [
+          {
+            "path": "scripts/study/common.py",
+            "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+          },
+          {
+            "path": "scripts/study/identity.py",
+            "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+          },
+          {
+            "path": "scripts/study/manifest.py",
+            "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+          },
+          {
+            "path": "scripts/study/preflight.py",
+            "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+          },
+          {
+            "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+            "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+          },
+          {
+            "path": "scripts/study/schemas/package_identity.v1.schema.json",
+            "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+          },
+          {
+            "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+            "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+          }
+        ]
+      }
+    }
+  ],
+  "teax": {
+    "revision": "8d877460ac4f6f264561d916e40c1708adb13397",
+    "era_pin": null,
+    "identity_evidence": "results/integration_return_used.json"
+  },
+  "indicators": {
+    "path": "indicators.json",
+    "sha256": "dbf67479abf1234bd699e611e7c8520f3bfe151cd8174f86c8b8d31dae265b9a",
+    "output_schema_version": "study-indicators/v1",
+    "axis_declaration": {
+      "path": "exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/axes.json",
+      "schema_version": "study-axis-declaration/v1",
+      "digest": "59044a1e3f5a9e1dca55433b690112956600951fe2f9762c12d7580a4461c296",
+      "groups_declared": [
+        "aux_control",
+        "aux_cryo",
+        "aux_fuel_base",
+        "aux_heat",
+        "aux_other",
+        "compressor_efficiency",
+        "compressor_rating",
+        "cycle_flow",
+        "equipment_price_factor",
+        "exchanger_area",
+        "fuel_exhaust_term",
+        "generator_rating",
+        "he_duty_rating",
+        "pump_law_dp_ref",
+        "rejection_rating",
+        "rest_of_plant_price_factor",
+        "stage_ratio",
+        "supply_service",
+        "tritium_feed",
+        "turbine_efficiency",
+        "turbine_rating"
+      ],
+      "subset": false
+    }
+  },
+  "execution_context": "results/execution-context.json",
+  "case_count": 22,
+  "numeric_outputs_per_case": [
+    274
+  ],
+  "verified_numeric_channels_per_case": 255,
+  "exact_verdicts_per_case": 11,
+  "all_scoped_checks_satisfied_count": 17,
+  "science_qualification": "Round 3: the round-1 leading points re-evaluated with the loop return requirement enforced by an explicit primary-side bypass control, plus the matched-exchanger boundary family; the bypass loss, valve hardware and cost are unmodeled; A flow x stage-ratio sweep at fixed machine efficiencies on a costed assembly of reviewed definitions; the passing region is bounded by engineering checks, not qualified as a design; the auxiliary register, pump law, rest-of-plant constant and fuel convention are declared assumptions tested at anchors; no off-design map, hydraulic model, blanket-inlet requirement or cost-side check exists; no optimum is interpolated."
+}

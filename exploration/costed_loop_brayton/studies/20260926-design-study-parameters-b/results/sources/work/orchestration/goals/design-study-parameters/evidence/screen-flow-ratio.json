@@ -1,0 +1,4673 @@
+{
+ "package_fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+ "controls": {
+  "baseline": {
+   "reproduces_sealed_c1_outputs": true,
+   "reading": {
+    "status": "evaluated",
+    "values": {
+     "net": 426.57863661707336,
+     "gross": 666.8595710215615,
+     "net_shaft": 680.4689500220015,
+     "shaft_import": 0.0,
+     "compressor_demand": 2451.519550764037,
+     "auxiliary": 240.28093440448808,
+     "turbine_work": 3131.9885007860385,
+     "turbine_inlet_K": 677.5153177659547,
+     "heater_inlet_K": 423.23353756256324,
+     "accepted": 3301.2132114869937,
+     "unmet": 0.0,
+     "he_capability": 3836.4666047632377,
+     "he_return_K": 513.1159720698904,
+     "he_hot_bound_margin_K": 48.81939377507399,
+     "rejected": 2620.7442614685283,
+     "q_ihx": 3301.2132114869937,
+     "pump_electric": 175.28093440448808,
+     "turbine_outlet_K": 436.2683698910432,
+     "recuperator_bypass": 0.0,
+     "recovered_heat": 676.8988428179653,
+     "compressor_outlet_K": 371.0942082486433,
+     "turbine_pressure": 14.324999999999992
+    },
+    "native_verdicts": {
+     "turbine_capacity__capacity_ok": "satisfied",
+     "checks__heat_removal_ok": "satisfied",
+     "checks__net_positive": "satisfied",
+     "checks__loop_capacity_ok": "satisfied",
+     "rejection_capacity__capacity_ok": "violated",
+     "he_capacity__capacity_ok": "violated",
+     "compressor_capacity__capacity_ok": "violated",
+     "generator_capacity__capacity_ok": "satisfied"
+    },
+    "margins": {
+     "reselected": {
+      "compressor_capacity": 748.4804492359631,
+      "turbine_capacity": 3868.0114992139615,
+      "generator_capacity": 2933.1404289784386,
+      "rejection_capacity": 2379.2557385314717,
+      "he_capacity": 198.7867885130063
+     },
+     "aries": {
+      "compressor_capacity": -851.5195507640369,
+      "turbine_capacity": 368.01149921396154,
+      "generator_capacity": 1133.1404289784386,
+      "rejection_capacity": -120.7442614685283,
+      "he_capacity": -1801.2132114869937
+     }
+    },
+    "verdicts": {
+     "reselected": {
+      "compressor_capacity_ok": true,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": true,
+      "he_capacity_ok": true,
+      "heat_removal_ok": true,
+      "net_positive": true
+     },
+     "aries": {
+      "compressor_capacity_ok": false,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": false,
+      "he_capacity_ok": false,
+      "heat_removal_ok": true,
+      "net_positive": true
+     }
+    },
+    "all_checks": {
+     "reselected": true,
+     "aries": false
+    }
+   }
+  },
+  "c1-aries-ratios-reselected-ratings": {
+   "reproduces_sealed_c1_outputs": true,
+   "reading": {
+    "status": "evaluated",
+    "values": {
+     "net": 426.57863661707336,
+     "gross": 666.8595710215615,
+     "net_shaft": 680.4689500220015,
+     "shaft_import": 0.0,
+     "compressor_demand": 2451.519550764037,
+     "auxiliary": 240.28093440448808,
+     "turbine_work": 3131.9885007860385,
+     "turbine_inlet_K": 677.5153177659547,
+     "heater_inlet_K": 423.23353756256324,
+     "accepted": 3301.2132114869937,
+     "unmet": 0.0,
+     "he_capability": 3836.4666047632377,
+     "he_return_K": 513.1159720698904,
+     "he_hot_bound_margin_K": 48.81939377507399,
+     "rejected": 2620.7442614685283,
+     "q_ihx": 3301.2132114869937,
+     "pump_electric": 175.28093440448808,
+     "turbine_outlet_K": 436.2683698910432,
+     "recuperator_bypass": 0.0,
+     "recovered_heat": 676.8988428179653,
+     "compressor_outlet_K": 371.0942082486433,
+     "turbine_pressure": 14.324999999999992
+    },
+    "native_verdicts": {
+     "turbine_capacity__capacity_ok": "satisfied",
+     "checks__heat_removal_ok": "satisfied",
+     "checks__net_positive": "satisfied",
+     "checks__loop_capacity_ok": "satisfied",
+     "rejection_capacity__capacity_ok": "satisfied",
+     "he_capacity__capacity_ok": "satisfied",
+     "compressor_capacity__capacity_ok": "satisfied",
+     "generator_capacity__capacity_ok": "satisfied"
+    },
+    "margins": {
+     "reselected": {
+      "compressor_capacity": 748.4804492359631,
+      "turbine_capacity": 3868.0114992139615,
+      "generator_capacity": 2933.1404289784386,
+      "rejection_capacity": 2379.2557385314717,
+      "he_capacity": 198.7867885130063
+     },
+     "aries": {
+      "compressor_capacity": -851.5195507640369,
+      "turbine_capacity": 368.01149921396154,
+      "generator_capacity": 1133.1404289784386,
+      "rejection_capacity": -120.7442614685283,
+      "he_capacity": -1801.2132114869937
+     }
+    },
+    "verdicts": {
+     "reselected": {
+      "compressor_capacity_ok": true,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": true,
+      "he_capacity_ok": true,
+      "heat_removal_ok": true,
+      "net_positive": true
+     },
+     "aries": {
+      "compressor_capacity_ok": false,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": false,
+      "he_capacity_ok": false,
+      "heat_removal_ok": true,
+      "net_positive": true
+     }
+    },
+    "all_checks": {
+     "reselected": true,
+     "aries": false
+    }
+   }
+  },
+  "c1-ratio1.35-reselected-ratings": {
+   "reproduces_sealed_c1_outputs": true,
+   "reading": {
+    "status": "evaluated",
+    "values": {
+     "net": 575.2271606643203,
+     "gross": 815.5080950688084,
+     "net_shaft": 832.1511174171515,
+     "shaft_import": 0.0,
+     "compressor_demand": 1719.9343293311676,
+     "auxiliary": 240.28093440448808,
+     "turbine_work": 2552.085446748319,
+     "turbine_inlet_K": 730.2792038084425,
+     "heater_inlet_K": 497.42231596209564,
+     "accepted": 3023.064546468037,
+     "unmet": 278.14866501895676,
+     "he_capability": 3023.064546468037,
+     "he_return_K": 579.7315712879408,
+     "he_hot_bound_margin_K": 0.0,
+     "rejected": 2190.913429048047,
+     "q_ihx": 3301.2132114869937,
+     "pump_electric": 175.28093440448808,
+     "turbine_outlet_K": 533.7003132443509,
+     "recuperator_bypass": 0.0,
+     "recovered_heat": 1883.9163988675177,
+     "compressor_outlet_K": 352.31032683307444,
+     "turbine_pressure": 10.069963392857144
+    },
+    "native_verdicts": {
+     "turbine_capacity__capacity_ok": "satisfied",
+     "checks__heat_removal_ok": "violated",
+     "checks__net_positive": "satisfied",
+     "checks__loop_capacity_ok": "satisfied",
+     "rejection_capacity__capacity_ok": "satisfied",
+     "he_capacity__capacity_ok": "satisfied",
+     "compressor_capacity__capacity_ok": "satisfied",
+     "generator_capacity__capacity_ok": "satisfied"
+    },
+    "margins": {
+     "reselected": {
+      "compressor_capacity": 1480.0656706688324,
+      "turbine_capacity": 4447.914553251681,
+      "generator_capacity": 2784.4919049311916,
+      "rejection_capacity": 2809.086570951953,
+      "he_capacity": 198.7867885130063
+     },
+     "aries": {
+      "compressor_capacity": -119.93432933116765,
+      "turbine_capacity": 947.9145532516809,
+      "generator_capacity": 984.4919049311916,
+      "rejection_capacity": 309.08657095195304,
+      "he_capacity": -1801.2132114869937
+     }
+    },
+    "verdicts": {
+     "reselected": {
+      "compressor_capacity_ok": true,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": true,
+      "he_capacity_ok": true,
+      "heat_removal_ok": false,
+      "net_positive": true
+     },
+     "aries": {
+      "compressor_capacity_ok": false,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": true,
+      "he_capacity_ok": false,
+      "heat_removal_ok": false,
+      "net_positive": true
+     }
+    },
+    "all_checks": {
+     "reselected": false,
+     "aries": false
+    }
+   }
+  },
+  "c1-flow1400-aries-ratings": {
+   "reproduces_sealed_c1_outputs": true,
+   "reading": {
+    "status": "evaluated",
+    "values": {
+     "net": 365.2793278375982,
+     "gross": 605.5602622420863,
+     "net_shaft": 617.9186349409044,
+     "shaft_import": 0.0,
+     "compressor_demand": 1372.8509484278607,
+     "auxiliary": 240.28093440448808,
+     "turbine_work": 1990.769583368765,
+     "turbine_inlet_K": 769.0098972359744,
+     "heater_inlet_K": 470.3659816476617,
+     "accepted": 2171.2009951158807,
+     "unmet": 1130.012216371113,
+     "he_capability": 2171.2009951158807,
+     "he_return_K": 634.2345787649433,
+     "he_hot_bound_margin_K": 0.0,
+     "rejected": 1553.2823601692467,
+     "q_ihx": 3301.2132114869937,
+     "pump_electric": 175.28093440448808,
+     "turbine_outlet_K": 495.18392499741634,
+     "recuperator_bypass": 0.0,
+     "recovered_heat": 721.7256469655437,
+     "compressor_outlet_K": 371.0942082486433,
+     "turbine_pressure": 14.324999999999992
+    },
+    "native_verdicts": {
+     "turbine_capacity__capacity_ok": "satisfied",
+     "checks__heat_removal_ok": "violated",
+     "checks__net_positive": "satisfied",
+     "checks__loop_capacity_ok": "satisfied",
+     "rejection_capacity__capacity_ok": "satisfied",
+     "he_capacity__capacity_ok": "violated",
+     "compressor_capacity__capacity_ok": "satisfied",
+     "generator_capacity__capacity_ok": "satisfied"
+    },
+    "margins": {
+     "reselected": {
+      "compressor_capacity": 1827.1490515721393,
+      "turbine_capacity": 5009.230416631235,
+      "generator_capacity": 2994.4397377579135,
+      "rejection_capacity": 3446.7176398307533,
+      "he_capacity": 198.7867885130063
+     },
+     "aries": {
+      "compressor_capacity": 227.14905157213934,
+      "turbine_capacity": 1509.230416631235,
+      "generator_capacity": 1194.4397377579137,
+      "rejection_capacity": 946.7176398307533,
+      "he_capacity": -1801.2132114869937
+     }
+    },
+    "verdicts": {
+     "reselected": {
+      "compressor_capacity_ok": true,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": true,
+      "he_capacity_ok": true,
+      "heat_removal_ok": false,
+      "net_positive": true
+     },
+     "aries": {
+      "compressor_capacity_ok": true,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": true,
+      "he_capacity_ok": false,
+      "heat_removal_ok": false,
+      "net_positive": true
+     }
+    },
+    "all_checks": {
+     "reselected": false,
+     "aries": false
+    }
+   }
+  },
+  "c1-flow4000-reselected-ratings": {
+   "reproduces_sealed_c1_outputs": true,
+   "reading": {
+    "status": "evaluated",
+    "values": {
+     "net": -242.5791083469847,
+     "gross": 0.0,
+     "net_shaft": -2.1832652453717856,
+     "shaft_import": 2.2981739424966166,
+     "compressor_demand": 3922.4312812224593,
+     "auxiliary": 240.28093440448808,
+     "turbine_work": 3920.2480159770876,
+     "turbine_inlet_K": 530.0203208759156,
+     "heater_inlet_K": 371.0942082486433,
+     "accepted": 3301.2132114869937,
+     "unmet": 0.0,
+     "he_capability": 5215.009636754932,
+     "he_return_K": 414.38953360162964,
+     "he_hot_bound_margin_K": 147.54583224333476,
+     "rejected": 3303.3964767390707,
+     "q_ihx": 3301.2132114869937,
+     "pump_electric": 175.28093440448808,
+     "turbine_outlet_K": 341.2928022943111,
+     "recuperator_bypass": 1.0,
+     "recovered_heat": 0.0,
+     "compressor_outlet_K": 371.0942082486433,
+     "turbine_pressure": 14.324999999999992
+    },
+    "native_verdicts": {
+     "turbine_capacity__capacity_ok": "satisfied",
+     "checks__heat_removal_ok": "satisfied",
+     "checks__net_positive": "violated",
+     "checks__loop_capacity_ok": "satisfied",
+     "rejection_capacity__capacity_ok": "satisfied",
+     "he_capacity__capacity_ok": "satisfied",
+     "compressor_capacity__capacity_ok": "violated",
+     "generator_capacity__capacity_ok": "satisfied"
+    },
+    "margins": {
+     "reselected": {
+      "compressor_capacity": -722.4312812224593,
+      "turbine_capacity": 3079.7519840229124,
+      "generator_capacity": 3600.0,
+      "rejection_capacity": 1696.6035232609293,
+      "he_capacity": 198.7867885130063
+     },
+     "aries": {
+      "compressor_capacity": -2322.4312812224593,
+      "turbine_capacity": -420.24801597708756,
+      "generator_capacity": 1800.0,
+      "rejection_capacity": -803.3964767390707,
+      "he_capacity": -1801.2132114869937
+     }
+    },
+    "verdicts": {
+     "reselected": {
+      "compressor_capacity_ok": false,
+      "turbine_capacity_ok": true,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": true,
+      "he_capacity_ok": true,
+      "heat_removal_ok": true,
+      "net_positive": false
+     },
+     "aries": {
+      "compressor_capacity_ok": false,
+      "turbine_capacity_ok": false,
+      "generator_capacity_ok": true,
+      "rejection_capacity_ok": false,
+      "he_capacity_ok": false,
+      "heat_removal_ok": true,
+      "net_positive": false
+     }
+    },
+    "all_checks": {
+     "reselected": false,
+     "aries": false
+    }
+   }
+  }
+ },
+ "grid": [
+  {
+   "case": "flow1500-ratio1.2000",
+   "flow": 1500.0,
+   "ratio": 1.2,
+   "status": "evaluated",
+   "values": {
+    "net": 151.3253064436628,
+    "gross": 391.6062408481509,
+    "net_shaft": 399.59820494709277,
+    "shaft_import": 0.0,
+    "compressor_demand": 612.1156757724632,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1011.713880719556,
+    "turbine_inlet_K": 769.1647150652288,
+    "heater_inlet_K": 578.2951833292252,
+    "accepted": 1486.7782174628537,
+    "unmet": 1814.43499402414,
+    "he_capability": 1486.7782174628537,
+    "he_return_K": 678.0245727242374,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1087.180012510508,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 639.2829664652473,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1900.2573469521788,
+    "compressor_outlet_K": 334.3440507851365,
+    "turbine_pressure": 7.072457142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 2587.884324227537,
+     "turbine_capacity": 5988.286119280444,
+     "generator_capacity": 3208.3937591518493,
+     "rejection_capacity": 3912.8199874894917,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 987.8843242275368,
+     "turbine_capacity": 2488.286119280444,
+     "generator_capacity": 1408.393759151849,
+     "rejection_capacity": 1412.819987489492,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow1500-ratio1.3000",
+   "flow": 1500.0,
+   "ratio": 1.3,
+   "status": "evaluated",
+   "values": {
+    "net": 281.59508005653436,
+    "gross": 521.8760144610225,
+    "net_shaft": 532.5265453683903,
+    "shaft_import": 0.0,
+    "compressor_demand": 895.2732830266377,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1427.799828395028,
+    "turbine_inlet_K": 768.3265657584286,
+    "heater_inlet_K": 537.3150696449464,
+    "accepted": 1799.464048975457,
+    "unmet": 1501.7491625115367,
+    "he_capability": 1799.464048975457,
+    "he_return_K": 658.0186478483192,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1266.937503607579,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 585.0285583901729,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1486.6568823237646,
+    "compressor_outlet_K": 346.4611146640408,
+    "turbine_pressure": 8.992007142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 2304.7267169733623,
+     "turbine_capacity": 5572.200171604972,
+     "generator_capacity": 3078.1239855389776,
+     "rejection_capacity": 3733.062496392421,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 704.7267169733623,
+     "turbine_capacity": 2072.2001716049717,
+     "generator_capacity": 1278.1239855389776,
+     "rejection_capacity": 1233.062496392421,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow1500-ratio1.3500",
+   "flow": 1500.0,
+   "ratio": 1.35,
+   "status": "evaluated",
+   "values": {
+    "net": 326.45548601979124,
+    "gross": 566.7364204242793,
+    "net_shaft": 578.3024698206932,
+    "shaft_import": 0.0,
+    "compressor_demand": 1031.9605975987006,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1610.2630674193938,
+    "turbine_inlet_K": 767.9612453777581,
+    "heater_inlet_K": 519.4532512913241,
+    "accepted": 1935.753019944615,
+    "unmet": 1365.4601915423787,
+    "he_capability": 1935.753019944615,
+    "he_return_K": 649.2987551002677,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1357.4505501155845,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 561.2389824058865,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1301.9598100675362,
+    "compressor_outlet_K": 352.31032683307444,
+    "turbine_pressure": 10.069963392857144
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 2168.0394024012994,
+     "turbine_capacity": 5389.736932580607,
+     "generator_capacity": 3033.2635795757205,
+     "rejection_capacity": 3642.5494498844155,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 568.0394024012994,
+     "turbine_capacity": 1889.7369325806062,
+     "generator_capacity": 1233.2635795757205,
+     "rejection_capacity": 1142.5494498844155,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow1500-ratio1.4000",
+   "flow": 1500.0,
+   "ratio": 1.4,
+   "status": "evaluated",
+   "values": {
+    "net": 360.1145962617377,
+    "gross": 600.3955306662258,
+    "net_shaft": 612.6485006798223,
+    "shaft_import": 0.0,
+    "compressor_demand": 1165.6430341078412,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1778.2915347876635,
+    "turbine_inlet_K": 767.6262152790548,
+    "heater_inlet_K": 503.0724328788775,
+    "accepted": 2060.7416879999164,
+    "unmet": 1240.4715234870773,
+    "he_capability": 2060.7416879999164,
+    "he_return_K": 641.3018660459754,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1448.0931873263585,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 539.3328030205448,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1129.8006128740694,
+    "compressor_outlet_K": 358.03095231220834,
+    "turbine_pressure": 11.230799999999997
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 2034.3569658921588,
+     "turbine_capacity": 5221.708465212337,
+     "generator_capacity": 2999.6044693337744,
+     "rejection_capacity": 3551.9068126736415,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 434.35696589215877,
+     "turbine_capacity": 1721.7084652123365,
+     "generator_capacity": 1199.6044693337742,
+     "rejection_capacity": 1051.9068126736415,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow1500-ratio1.4500",
+   "flow": 1500.0,
+   "ratio": 1.45,
+   "status": "evaluated",
+   "values": {
+    "net": 383.9791091143901,
+    "gross": 624.2600435188782,
+    "net_shaft": 637.0000444070185,
+    "shaft_import": 0.0,
+    "compressor_demand": 1296.4905459493796,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1933.4905903563981,
+    "turbine_inlet_K": 767.3180775034739,
+    "heater_inlet_K": 488.0064763526313,
+    "accepted": 2175.697717166553,
+    "unmet": 1125.5154943204407,
+    "he_capability": 2175.697717166553,
+    "he_return_K": 633.9468743841645,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1538.6976727574697,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 519.1005294764634,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 968.8285072323616,
+    "compressor_outlet_K": 363.63026385730274,
+    "turbine_pressure": 12.477586607142854
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1903.5094540506204,
+     "turbine_capacity": 5066.509409643602,
+     "generator_capacity": 2975.7399564811217,
+     "rejection_capacity": 3461.3023272425303,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 303.50945405062043,
+     "turbine_capacity": 1566.5094096436019,
+     "generator_capacity": 1175.7399564811217,
+     "rejection_capacity": 961.3023272425303,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow1500-ratio1.5183",
+   "flow": 1500.0,
+   "ratio": 1.5182944859378311,
+   "status": "evaluated",
+   "values": {
+    "net": 402.8948475901526,
+    "gross": 643.1757819946407,
+    "net_shaft": 656.3018183618783,
+    "shaft_import": 0.0,
+    "compressor_demand": 1470.911730458422,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2127.2135488203003,
+    "turbine_inlet_K": 766.9354272976659,
+    "heater_inlet_K": 469.29734087200154,
+    "accepted": 2318.4518742124114,
+    "unmet": 982.7613372745823,
+    "he_capability": 2318.4518742124114,
+    "he_return_K": 624.8133331304114,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1662.1500558508342,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 493.8481240278411,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 764.9533015696488,
+    "compressor_outlet_K": 371.0942082486433,
+    "turbine_pressure": 14.324999999999992
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1729.088269541578,
+     "turbine_capacity": 4872.7864511797,
+     "generator_capacity": 2956.8242180053594,
+     "rejection_capacity": 3337.849944149166,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 129.08826954157803,
+     "turbine_capacity": 1372.7864511796997,
+     "generator_capacity": 1156.8242180053594,
+     "rejection_capacity": 837.8499441491658,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow1500-ratio1.6000",
+   "flow": 1500.0,
+   "ratio": 1.6,
+   "status": "evaluated",
+   "values": {
+    "net": 407.97064153637314,
+    "gross": 648.2515759408612,
+    "net_shaft": 661.4811999396543,
+    "shaft_import": 0.0,
+    "compressor_demand": 1673.5072328964534,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2334.9884328361077,
+    "turbine_inlet_K": 766.5277834152778,
+    "heater_inlet_K": 449.36617532852205,
+    "accepted": 2470.530346199889,
+    "unmet": 830.6828652871045,
+    "he_capability": 2470.530346199889,
+    "he_return_K": 615.0832136967673,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1809.0491462521295,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 466.7667675816418,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 542.1676534227047,
+    "compressor_outlet_K": 379.7638063160431,
+    "turbine_pressure": 16.76434285714286
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1526.4927671035466,
+     "turbine_capacity": 4665.011567163892,
+     "generator_capacity": 2951.748424059139,
+     "rejection_capacity": 3190.9508537478705,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -73.50723289645339,
+     "turbine_capacity": 1165.0115671638923,
+     "generator_capacity": 1151.7484240591389,
+     "rejection_capacity": 690.9508537478705,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow1500-ratio1.7000",
+   "flow": 1500.0,
+   "ratio": 1.7,
+   "status": "evaluated",
+   "values": {
+    "net": 392.92671073197346,
+    "gross": 633.2076451364616,
+    "net_shaft": 646.1302501392465,
+    "shaft_import": 0.0,
+    "compressor_demand": 1913.1898055194374,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2559.320055658684,
+    "turbine_inlet_K": 766.0913829841415,
+    "heater_inlet_K": 428.0289992569046,
+    "accepted": 2633.3369380382137,
+    "unmet": 667.87627344878,
+    "he_capability": 2633.3369380382137,
+    "he_return_K": 604.666699363944,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1987.2066879040658,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 437.53113448825815,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 296.067529538513,
+    "compressor_outlet_K": 390.02045833149054,
+    "turbine_pressure": 20.10820714285714
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1286.8101944805626,
+     "turbine_capacity": 4440.6799443413165,
+     "generator_capacity": 2966.7923548635385,
+     "rejection_capacity": 3012.793312095934,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -313.1898055194374,
+     "turbine_capacity": 940.6799443413161,
+     "generator_capacity": 1166.7923548635385,
+     "rejection_capacity": 512.7933120959342,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow1500-ratio1.8000",
+   "flow": 1500.0,
+   "ratio": 1.8,
+   "status": "evaluated",
+   "values": {
+    "net": 359.124206085315,
+    "gross": 599.4051404898031,
+    "net_shaft": 611.6378984589828,
+    "shaft_import": 0.0,
+    "compressor_demand": 2144.5544032288594,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2756.1923016878422,
+    "turbine_inlet_K": 765.7121409790443,
+    "heater_inlet_K": 409.48650297494436,
+    "accepted": 2774.8196072399924,
+    "unmet": 526.3936042470013,
+    "he_capability": 2774.8196072399924,
+    "he_return_K": 595.6145090628906,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2163.1817087739532,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 411.87783817554697,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 74.50922218037617,
+    "compressor_outlet_K": 399.9211621725339,
+    "turbine_pressure": 23.869542857142857
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1055.4455967711406,
+     "turbine_capacity": 4243.807698312157,
+     "generator_capacity": 3000.594859510197,
+     "rejection_capacity": 2836.8182912260468,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -544.5544032288594,
+     "turbine_capacity": 743.8076983121578,
+     "generator_capacity": 1200.5948595101968,
+     "rejection_capacity": 336.81829122604677,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.2000",
+   "flow": 2000.0,
+   "ratio": 1.2,
+   "status": "evaluated",
+   "values": {
+    "net": 261.94615533906426,
+    "gross": 502.2270897435523,
+    "net_shaft": 512.4766221872983,
+    "shaft_import": 0.0,
+    "compressor_demand": 816.1542343632843,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1328.6308565505826,
+    "turbine_inlet_K": 757.5778046151554,
+    "heater_inlet_K": 570.5909146964011,
+    "accepted": 1942.04583870249,
+    "unmet": 1359.1673727845036,
+    "he_capability": 1942.04583870249,
+    "he_return_K": 648.8961348129371,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1429.569216508883,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 629.6526306742173,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 2453.6599285823945,
+    "compressor_outlet_K": 334.3440507851365,
+    "turbine_pressure": 7.072457142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 2383.8457656367154,
+     "turbine_capacity": 5671.369143449418,
+     "generator_capacity": 3097.7729102564476,
+     "rejection_capacity": 3570.430783491117,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 783.8457656367157,
+     "turbine_capacity": 2171.3691434494176,
+     "generator_capacity": 1297.7729102564476,
+     "rejection_capacity": 1070.430783491117,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.3000",
+   "flow": 2000.0,
+   "ratio": 1.3,
+   "status": "evaluated",
+   "values": {
+    "net": 421.65426081376097,
+    "gross": 661.9351952182491,
+    "net_shaft": 675.4440767533154,
+    "shaft_import": 0.0,
+    "compressor_demand": 1193.697710702184,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1869.1417874554993,
+    "turbine_inlet_K": 754.3658756873344,
+    "heater_inlet_K": 528.8109749014703,
+    "accepted": 2342.6131995709206,
+    "unmet": 958.6000119160731,
+    "he_capability": 2342.6131995709206,
+    "he_return_K": 623.2674694829071,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1667.169122808669,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 574.3984399608277,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1893.885648425943,
+    "compressor_outlet_K": 346.4611146640408,
+    "turbine_pressure": 8.992007142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 2006.302289297816,
+     "turbine_capacity": 5130.858212544501,
+     "generator_capacity": 2938.064804781751,
+     "rejection_capacity": 3332.8308771913307,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 406.30228929781606,
+     "turbine_capacity": 1630.8582125445007,
+     "generator_capacity": 1138.0648047817508,
+     "rejection_capacity": 832.830877191331,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.3500",
+   "flow": 2000.0,
+   "ratio": 1.35,
+   "status": "evaluated",
+   "values": {
+    "net": 474.3019541250726,
+    "gross": 714.5828885295607,
+    "net_shaft": 729.166212785266,
+    "shaft_import": 0.0,
+    "compressor_demand": 1375.9474634649341,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2105.1136762502,
+    "turbine_inlet_K": 752.9727998414987,
+    "heater_inlet_K": 510.6902050087182,
+    "accepted": 2516.3470299323644,
+    "unmet": 784.8661815546293,
+    "he_capability": 2516.3470299323644,
+    "he_return_K": 612.151820456525,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1787.180817147993,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 550.2851745526291,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1644.9334147322359,
+    "compressor_outlet_K": 352.31032683307444,
+    "turbine_pressure": 10.069963392857144
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1824.0525365350659,
+     "turbine_capacity": 4894.8863237498,
+     "generator_capacity": 2885.4171114704395,
+     "rejection_capacity": 3212.819182852007,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 224.05253653506588,
+     "turbine_capacity": 1394.8863237497999,
+     "generator_capacity": 1085.4171114704393,
+     "rejection_capacity": 712.8191828520071,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.4000",
+   "flow": 2000.0,
+   "ratio": 1.4,
+   "status": "evaluated",
+   "values": {
+    "net": 512.0339333918631,
+    "gross": 752.3148677963512,
+    "net_shaft": 767.6682324452563,
+    "shaft_import": 0.0,
+    "compressor_demand": 1554.190712143788,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2321.8589445890443,
+    "turbine_inlet_K": 751.6989309037249,
+    "heater_inlet_K": 494.1200477146691,
+    "accepted": 2675.2142807955966,
+    "unmet": 625.9989306913972,
+    "he_capability": 2675.2142807955966,
+    "he_return_K": 601.9873487545656,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1907.5460483562777,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 528.1423215652843,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1413.4213448499574,
+    "compressor_outlet_K": 358.03095231220834,
+    "turbine_pressure": 11.230799999999997
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1645.809287856212,
+     "turbine_capacity": 4678.141055410955,
+     "generator_capacity": 2847.6851322036487,
+     "rejection_capacity": 3092.4539516437226,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 45.809287856211995,
+     "turbine_capacity": 1178.1410554109557,
+     "generator_capacity": 1047.6851322036487,
+     "rejection_capacity": 592.4539516437223,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.4500",
+   "flow": 2000.0,
+   "ratio": 1.45,
+   "status": "evaluated",
+   "values": {
+    "net": 536.7918297549666,
+    "gross": 777.0727641594547,
+    "net_shaft": 792.9313919994436,
+    "shaft_import": 0.0,
+    "compressor_demand": 1728.6540612658393,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2521.585453265283,
+    "turbine_inlet_K": 750.5304571602258,
+    "heater_inlet_K": 478.92084382101353,
+    "accepted": 2820.93744413346,
+    "unmet": 480.27576735353387,
+    "he_capability": 2820.93744413346,
+    "he_return_K": 592.6638477685577,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2028.0060521416144,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 507.74348881194123,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1197.4079635031003,
+    "compressor_outlet_K": 363.63026385730274,
+    "turbine_pressure": 12.477586607142854
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1471.3459387341607,
+     "turbine_capacity": 4478.414546734717,
+     "generator_capacity": 2822.927235840545,
+     "rejection_capacity": 2971.9939478583856,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -128.65406126583935,
+     "turbine_capacity": 978.4145467347171,
+     "generator_capacity": 1022.9272358405453,
+     "rejection_capacity": 471.9939478583856,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.5183",
+   "flow": 2000.0,
+   "ratio": 1.5182944859378311,
+   "status": "evaluated",
+   "values": {
+    "net": 552.5876381927277,
+    "gross": 792.8685725972158,
+    "net_shaft": 809.04956387471,
+    "shaft_import": 0.0,
+    "compressor_demand": 1961.2156406112297,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2770.2652044859396,
+    "turbine_inlet_K": 749.0836531816017,
+    "heater_inlet_K": 460.1011923108629,
+    "accepted": 3001.3718386032974,
+    "unmet": 299.8413728836963,
+    "he_capability": 3001.3718386032974,
+    "he_return_K": 581.1194905351861,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2192.3222747287828,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 482.3529383264178,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 924.4265364702128,
+    "compressor_outlet_K": 371.0942082486433,
+    "turbine_pressure": 14.324999999999992
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1238.7843593887703,
+     "turbine_capacity": 4229.73479551406,
+     "generator_capacity": 2807.131427402784,
+     "rejection_capacity": 2807.6777252712172,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -361.2156406112297,
+     "turbine_capacity": 729.7347955140604,
+     "generator_capacity": 1007.1314274027842,
+     "rejection_capacity": 307.67772527121724,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.6000",
+   "flow": 2000.0,
+   "ratio": 1.6,
+   "status": "evaluated",
+   "values": {
+    "net": 548.5064645275787,
+    "gross": 788.7873989320668,
+    "net_shaft": 804.8851009510886,
+    "shaft_import": 0.0,
+    "compressor_demand": 2231.3429771952715,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3036.22807814636,
+    "turbine_inlet_K": 747.5475507574326,
+    "heater_inlet_K": 440.1199697377194,
+    "accepted": 3192.942856472977,
+    "unmet": 108.27035501401679,
+    "he_capability": 3192.942856472977,
+    "he_return_K": 568.8626019727456,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2388.0577555196537,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 455.20901059313843,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 626.8591132975298,
+    "compressor_outlet_K": 379.7638063160431,
+    "turbine_pressure": 16.76434285714286
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 968.6570228047285,
+     "turbine_capacity": 3963.77192185364,
+     "generator_capacity": 2811.212601067933,
+     "rejection_capacity": 2611.9422444803463,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -631.3429771952715,
+     "turbine_capacity": 463.7719218536399,
+     "generator_capacity": 1011.2126010679332,
+     "rejection_capacity": 111.94224448034629,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.7000",
+   "flow": 2000.0,
+   "ratio": 1.7,
+   "status": "evaluated",
+   "values": {
+    "net": 441.5546441464744,
+    "gross": 681.8355785509625,
+    "net_shaft": 695.750590358125,
+    "shaft_import": 0.0,
+    "compressor_demand": 2550.919740692583,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3246.6703310507082,
+    "turbine_inlet_K": 728.8789922470492,
+    "heater_inlet_K": 411.0267669928642,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 3471.87546144841,
+    "he_return_K": 544.1349676467762,
+    "he_hot_bound_margin_K": 17.80039819818819,
+    "rejected": 2605.46262113184,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 416.27834415820763,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 218.17152175702694,
+    "compressor_outlet_K": 390.02045833149054,
+    "turbine_pressure": 20.10820714285714
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 649.0802593074168,
+     "turbine_capacity": 3753.3296689492918,
+     "generator_capacity": 2918.1644214490375,
+     "rejection_capacity": 2394.53737886816,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -950.9197406925832,
+     "turbine_capacity": 253.32966894929177,
+     "generator_capacity": 1118.1644214490375,
+     "rejection_capacity": -105.46262113184002,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2000-ratio1.8000",
+   "flow": 2000.0,
+   "ratio": 1.8,
+   "status": "evaluated",
+   "values": {
+    "net": 333.4524061529328,
+    "gross": 573.7333405574209,
+    "net_shaft": 585.4421842422662,
+    "shaft_import": 0.0,
+    "compressor_demand": 2859.405870971812,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3444.848055214078,
+    "turbine_inlet_K": 717.7733874256934,
+    "heater_inlet_K": 399.9211621725339,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 3578.3510292822148,
+    "he_return_K": 533.0293628264459,
+    "he_hot_bound_margin_K": 28.906003018518504,
+    "rejected": 2715.7710272370487,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 386.09150265638107,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 399.9211621725339,
+    "turbine_pressure": 23.869542857142857
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 340.59412902818804,
+     "turbine_capacity": 3555.151944785922,
+     "generator_capacity": 3026.266659442579,
+     "rejection_capacity": 2284.2289727629513,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1259.405870971812,
+     "turbine_capacity": 55.15194478592184,
+     "generator_capacity": 1226.266659442579,
+     "rejection_capacity": -215.77102723704866,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.2000",
+   "flow": 2500.0,
+   "ratio": 1.2,
+   "status": "evaluated",
+   "values": {
+    "net": 349.35173958877454,
+    "gross": 589.6326739932626,
+    "net_shaft": 601.6659938706762,
+    "shaft_import": 0.0,
+    "compressor_demand": 1020.1927929541052,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1621.8587868247814,
+    "turbine_inlet_K": 739.8197704415509,
+    "heater_inlet_K": 558.7833956641425,
+    "accepted": 2350.30473554257,
+    "unmet": 950.9084759444236,
+    "he_capability": 2350.30473554257,
+    "he_return_K": 622.7753579916864,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 1748.6387416770285,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 614.8932318838939,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 2913.7837948916945,
+    "compressor_outlet_K": 334.3440507851365,
+    "turbine_pressure": 7.072457142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 2179.8072070458948,
+     "turbine_capacity": 5378.141213175219,
+     "generator_capacity": 3010.367326006737,
+     "rejection_capacity": 3251.3612583229715,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 579.8072070458948,
+     "turbine_capacity": 1878.1412131752186,
+     "generator_capacity": 1210.3673260067374,
+     "rejection_capacity": 751.3612583229715,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.3000",
+   "flow": 2500.0,
+   "ratio": 1.3,
+   "status": "evaluated",
+   "values": {
+    "net": 522.7429760331993,
+    "gross": 763.0239104376874,
+    "net_shaft": 778.595826977232,
+    "shaft_import": 0.0,
+    "compressor_demand": 1492.1221383777295,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2270.7179653549615,
+    "turbine_inlet_K": 733.1502223620323,
+    "heater_inlet_K": 515.8875502710018,
+    "accepted": 2820.6126404279976,
+    "unmet": 480.60057105899614,
+    "he_capability": 2820.6126404279976,
+    "he_return_K": 592.6846290060685,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2042.016813444572,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 558.244159172742,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 2199.5787002673706,
+    "compressor_outlet_K": 346.4611146640408,
+    "turbine_pressure": 8.992007142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1707.8778616222705,
+     "turbine_capacity": 4729.282034645039,
+     "generator_capacity": 2836.9760895623126,
+     "rejection_capacity": 2957.983186555428,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 107.87786162227053,
+     "turbine_capacity": 1229.2820346450385,
+     "generator_capacity": 1036.9760895623126,
+     "rejection_capacity": 457.9831865554279,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.3500",
+   "flow": 2500.0,
+   "ratio": 1.35,
+   "status": "evaluated",
+   "values": {
+    "net": 575.2271606643203,
+    "gross": 815.5080950688084,
+    "net_shaft": 832.1511174171515,
+    "shaft_import": 0.0,
+    "compressor_demand": 1719.9343293311676,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2552.085446748319,
+    "turbine_inlet_K": 730.2792038084425,
+    "heater_inlet_K": 497.42231596209564,
+    "accepted": 3023.064546468037,
+    "unmet": 278.14866501895676,
+    "he_capability": 3023.064546468037,
+    "he_return_K": 579.7315712879408,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2190.913429048047,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 533.7003132443509,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1883.9163988675177,
+    "compressor_outlet_K": 352.31032683307444,
+    "turbine_pressure": 10.069963392857144
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1480.0656706688324,
+     "turbine_capacity": 4447.914553251681,
+     "generator_capacity": 2784.4919049311916,
+     "rejection_capacity": 2809.086570951953,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -119.93432933116765,
+     "turbine_capacity": 947.9145532516809,
+     "generator_capacity": 984.4919049311916,
+     "rejection_capacity": 309.08657095195304,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.4000",
+   "flow": 2500.0,
+   "ratio": 1.4,
+   "status": "evaluated",
+   "values": {
+    "net": 609.1745708116341,
+    "gross": 849.4555052161222,
+    "net_shaft": 866.791331853186,
+    "shaft_import": 0.0,
+    "compressor_demand": 1942.7383901797352,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2809.529722032921,
+    "turbine_inlet_K": 727.6653883961707,
+    "heater_inlet_K": 480.6113086027299,
+    "accepted": 3207.3795909143014,
+    "unmet": 93.83362057269233,
+    "he_capability": 3207.3795909143014,
+    "he_return_K": 567.9389265273646,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2340.588259065159,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 511.25639767536023,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1591.3994755416957,
+    "compressor_outlet_K": 358.03095231220834,
+    "turbine_pressure": 11.230799999999997
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1257.2616098202648,
+     "turbine_capacity": 4190.470277967079,
+     "generator_capacity": 2750.544494783878,
+     "rejection_capacity": 2659.411740934841,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -342.73839017973523,
+     "turbine_capacity": 690.4702779670788,
+     "generator_capacity": 950.5444947838778,
+     "rejection_capacity": 159.41174093484096,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.4500",
+   "flow": 2500.0,
+   "ratio": 1.45,
+   "status": "evaluated",
+   "values": {
+    "net": 575.6167137718417,
+    "gross": 815.8976481763298,
+    "net_shaft": 832.5486205880916,
+    "shaft_import": 0.0,
+    "compressor_demand": 2160.817576582299,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2993.3661971703905,
+    "turbine_inlet_K": 712.7618847899199,
+    "heater_inlet_K": 458.4801045867346,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 3450.025005591665,
+    "he_return_K": 548.3625390940618,
+    "he_hot_bound_margin_K": 13.57282675090255,
+    "rejected": 2468.6645908997616,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 482.1925647690926,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1231.3880572698495,
+    "compressor_outlet_K": 363.63026385730274,
+    "turbine_pressure": 12.477586607142854
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1039.182423417701,
+     "turbine_capacity": 4006.6338028296095,
+     "generator_capacity": 2784.1023518236702,
+     "rejection_capacity": 2531.3354091002384,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -560.8175765822989,
+     "turbine_capacity": 506.6338028296095,
+     "generator_capacity": 984.1023518236702,
+     "rejection_capacity": 31.335409100238394,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.5183",
+   "flow": 2500.0,
+   "ratio": 1.5182944859378311,
+   "status": "evaluated",
+   "values": {
+    "net": 426.57863661707336,
+    "gross": 666.8595710215615,
+    "net_shaft": 680.4689500220015,
+    "shaft_import": 0.0,
+    "compressor_demand": 2451.519550764037,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3131.9885007860385,
+    "turbine_inlet_K": 677.5153177659547,
+    "heater_inlet_K": 423.23353756256324,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 3836.4666047632377,
+    "he_return_K": 513.1159720698904,
+    "he_hot_bound_margin_K": 48.81939377507399,
+    "rejected": 2620.7442614685283,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 436.2683698910432,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 676.8988428179653,
+    "compressor_outlet_K": 371.0942082486433,
+    "turbine_pressure": 14.324999999999992
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 748.4804492359631,
+     "turbine_capacity": 3868.0114992139615,
+     "generator_capacity": 2933.1404289784386,
+     "rejection_capacity": 2379.2557385314717,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -851.5195507640369,
+     "turbine_capacity": 368.01149921396154,
+     "generator_capacity": 1133.1404289784386,
+     "rejection_capacity": -120.7442614685283,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.6000",
+   "flow": 2500.0,
+   "ratio": 1.6,
+   "status": "evaluated",
+   "values": {
+    "net": 230.10724757057497,
+    "gross": 470.38818197506305,
+    "net_shaft": 479.98794079088066,
+    "shaft_import": 0.0,
+    "compressor_demand": 2789.178721494089,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3269.16666228497,
+    "turbine_inlet_K": 643.9193548070931,
+    "heater_inlet_K": 389.63757460412853,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4204.8110634579825,
+    "he_return_K": 479.5200091114557,
+    "he_hot_bound_margin_K": 82.4153567335087,
+    "rejected": 2821.2252706941067,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 392.1060166761499,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 128.18619680006958,
+    "compressor_outlet_K": 379.7638063160431,
+    "turbine_pressure": 16.76434285714286
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 410.82127850591087,
+     "turbine_capacity": 3730.83333771503,
+     "generator_capacity": 3129.611818024937,
+     "rejection_capacity": 2178.7747293058933,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1189.1787214940891,
+     "turbine_capacity": 230.8333377150302,
+     "generator_capacity": 1329.6118180249368,
+     "rejection_capacity": -321.2252706941067,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.7000",
+   "flow": 2500.0,
+   "ratio": 1.7,
+   "status": "evaluated",
+   "values": {
+    "net": 150.51550019093216,
+    "gross": 390.79643459542024,
+    "net_shaft": 398.7718720361431,
+    "shaft_import": 0.0,
+    "compressor_demand": 3188.649675865729,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3587.421547901872,
+    "turbine_inlet_K": 644.3022385346649,
+    "heater_inlet_K": 390.02045833149054,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4200.613145408344,
+    "he_return_K": 479.9028928388177,
+    "he_hot_bound_margin_K": 82.03247300614669,
+    "rejected": 2902.4413394515673,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 367.9747555458821,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 390.02045833149054,
+    "turbine_pressure": 20.10820714285714
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 11.350324134270977,
+     "turbine_capacity": 3412.578452098128,
+     "generator_capacity": 3209.20356540458,
+     "rejection_capacity": 2097.5586605484327,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1588.649675865729,
+     "turbine_capacity": -87.42154790187215,
+     "generator_capacity": 1409.2035654045799,
+     "rejection_capacity": -402.4413394515673,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow2500-ratio1.8000",
+   "flow": 2500.0,
+   "ratio": 1.8,
+   "status": "evaluated",
+   "values": {
+    "net": 103.14188759536032,
+    "gross": 343.4228219998484,
+    "net_shaft": 350.43145102025346,
+    "shaft_import": 0.0,
+    "compressor_demand": 3574.2573387147654,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3924.688789735019,
+    "turbine_inlet_K": 654.2029423761477,
+    "heater_inlet_K": 399.9211621725339,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4092.062323348621,
+    "he_return_K": 489.80359667986113,
+    "he_hot_bound_margin_K": 72.13176916510326,
+    "rejected": 2950.7817604731626,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 351.89685420091035,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 399.9211621725339,
+    "turbine_pressure": 23.869542857142857
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -374.2573387147654,
+     "turbine_capacity": 3075.311210264981,
+     "generator_capacity": 3256.5771780001514,
+     "rejection_capacity": 2049.2182395268374,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1974.2573387147654,
+     "turbine_capacity": -424.6887897350189,
+     "generator_capacity": 1456.5771780001517,
+     "rejection_capacity": -450.78176047316265,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.2000",
+   "flow": 3000.0,
+   "ratio": 1.2,
+   "status": "evaluated",
+   "values": {
+    "net": 414.0659592164668,
+    "gross": 654.3468936209549,
+    "net_shaft": 667.7009118581173,
+    "shaft_import": 0.0,
+    "compressor_demand": 1224.2313515449264,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 1891.9322634030436,
+    "turbine_inlet_K": 719.1793885777945,
+    "heater_inlet_K": 545.059370847722,
+    "accepted": 2712.6157562181716,
+    "unmet": 588.5974552688222,
+    "he_capability": 2712.6157562181716,
+    "he_return_K": 599.5943682222118,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2044.9148443586814,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 597.7382008633684,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 3282.73397125502,
+    "compressor_outlet_K": 334.3440507851365,
+    "turbine_pressure": 7.072457142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1975.7686484550736,
+     "turbine_capacity": 5108.067736596957,
+     "generator_capacity": 2945.6531063790453,
+     "rejection_capacity": 2955.0851556413186,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 375.7686484550736,
+     "turbine_capacity": 1608.0677365969564,
+     "generator_capacity": 1145.653106379045,
+     "rejection_capacity": 455.0851556413186,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.3000",
+   "flow": 3000.0,
+   "ratio": 1.3,
+   "status": "evaluated",
+   "values": {
+    "net": 586.5163196032271,
+    "gross": 826.7972540077152,
+    "net_shaft": 843.6706673548115,
+    "shaft_import": 0.0,
+    "compressor_demand": 1790.5465660532755,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2634.217233408087,
+    "turbine_inlet_K": 708.7614944880572,
+    "heater_inlet_K": 501.03126082850656,
+    "accepted": 3236.229310174814,
+    "unmet": 64.98390131217957,
+    "he_capability": 3236.229310174814,
+    "he_return_K": 566.0930951591023,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2392.5586428273286,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 539.673797369623,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 2408.0483070962123,
+    "compressor_outlet_K": 346.4611146640408,
+    "turbine_pressure": 8.992007142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1409.4534339467245,
+     "turbine_capacity": 4365.782766591913,
+     "generator_capacity": 2773.2027459922847,
+     "rejection_capacity": 2607.4413571726714,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -190.54656605327546,
+     "turbine_capacity": 865.7827665919131,
+     "generator_capacity": 973.2027459922848,
+     "rejection_capacity": 107.44135717267136,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.3500",
+   "flow": 3000.0,
+   "ratio": 1.35,
+   "status": "evaluated",
+   "values": {
+    "net": 530.9811718081553,
+    "gross": 771.2621062126434,
+    "net_shaft": 787.0021491965749,
+    "shaft_import": 0.0,
+    "compressor_demand": 2063.921195197401,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2850.923344393976,
+    "turbine_inlet_K": 679.8263856184848,
+    "heater_inlet_K": 467.9249021164139,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 3629.9536407499113,
+    "he_return_K": 534.2931864590764,
+    "he_hot_bound_margin_K": 27.64217938588797,
+    "rejected": 2514.2110622821874,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 496.82854593724875,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1801.1594683391452,
+    "compressor_outlet_K": 352.31032683307444,
+    "turbine_pressure": 10.069963392857144
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1136.0788048025988,
+     "turbine_capacity": 4149.076655606024,
+     "generator_capacity": 2828.7378937873564,
+     "rejection_capacity": 2485.7889377178126,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -463.9211951974012,
+     "turbine_capacity": 649.0766556060239,
+     "generator_capacity": 1028.7378937873566,
+     "rejection_capacity": -14.211062282187413,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.4000",
+   "flow": 3000.0,
+   "ratio": 1.4,
+   "status": "evaluated",
+   "values": {
+    "net": 414.58841063385887,
+    "gross": 654.869345038347,
+    "net_shaft": 668.2340255493336,
+    "shaft_import": 0.0,
+    "compressor_demand": 2331.2860682156825,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2999.520093765016,
+    "turbine_inlet_K": 647.3939205657989,
+    "heater_inlet_K": 435.49243706258625,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4015.66354932872,
+    "he_return_K": 501.8607214052488,
+    "he_hot_bound_margin_K": 60.0746444397156,
+    "rejected": 2632.979185947216,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 454.8578082501807,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1206.7724709261374,
+    "compressor_outlet_K": 358.03095231220834,
+    "turbine_pressure": 11.230799999999997
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 868.7139317843175,
+     "turbine_capacity": 4000.479906234984,
+     "generator_capacity": 2945.130654961653,
+     "rejection_capacity": 2367.020814052784,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -731.2860682156825,
+     "turbine_capacity": 500.4799062349839,
+     "generator_capacity": 1145.130654961653,
+     "rejection_capacity": -132.97918594721614,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.4500",
+   "flow": 3000.0,
+   "ratio": 1.45,
+   "status": "evaluated",
+   "values": {
+    "net": 282.5776207933619,
+    "gross": 522.85855519785,
+    "net_shaft": 533.5291379569899,
+    "shaft_import": 0.0,
+    "compressor_demand": 2592.981091898759,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3126.510229855749,
+    "turbine_inlet_K": 620.3877667761619,
+    "heater_inlet_K": 408.4862832740642,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4336.839910470185,
+    "he_return_K": 474.85456761672674,
+    "he_hot_bound_margin_K": 87.08079822823765,
+    "rejected": 2767.6840735221904,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 419.70028812825456,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 698.8119264937268,
+    "compressor_outlet_K": 363.63026385730274,
+    "turbine_pressure": 12.477586607142854
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 607.0189081012409,
+     "turbine_capacity": 3873.489770144251,
+     "generator_capacity": 3077.14144480215,
+     "rejection_capacity": 2232.3159264778096,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -992.9810918987591,
+     "turbine_capacity": 373.489770144251,
+     "generator_capacity": 1277.14144480215,
+     "rejection_capacity": -267.6840735221904,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.5183",
+   "flow": 3000.0,
+   "ratio": 1.5182944859378311,
+   "status": "evaluated",
+   "values": {
+    "net": 84.77369731160368,
+    "gross": 325.05463171609176,
+    "net_shaft": 331.68839971029774,
+    "shaft_import": 0.0,
+    "compressor_demand": 2941.823460916844,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3273.5118606271417,
+    "turbine_inlet_K": 590.1081767240423,
+    "heater_inlet_K": 378.20669322206135,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4696.946300514177,
+    "he_return_K": 444.5749775647239,
+    "he_hot_bound_margin_K": 117.3603882802405,
+    "rejected": 2969.5248117670644,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 379.98481446541587,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 110.80540340087951,
+    "compressor_outlet_K": 371.0942082486433,
+    "turbine_pressure": 14.324999999999992
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 258.17653908315606,
+     "turbine_capacity": 3726.4881393728583,
+     "generator_capacity": 3274.9453682839085,
+     "rejection_capacity": 2030.4751882329356,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1341.823460916844,
+     "turbine_capacity": 226.4881393728583,
+     "generator_capacity": 1474.9453682839082,
+     "rejection_capacity": -469.5248117670644,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.6000",
+   "flow": 3000.0,
+   "ratio": 1.6,
+   "status": "evaluated",
+   "values": {
+    "net": 12.200407586057338,
+    "gross": 252.48134199054542,
+    "net_shaft": 257.63402243933206,
+    "shaft_import": 0.0,
+    "compressor_demand": 3347.014465792907,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3604.648488232239,
+    "turbine_inlet_K": 591.6652898189814,
+    "heater_inlet_K": 379.7638063160431,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4678.428005708964,
+    "he_return_K": 446.1320906587057,
+    "he_hot_bound_margin_K": 115.8032751862587,
+    "rejected": 3043.579189052943,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 360.28660773205416,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 379.7638063160431,
+    "turbine_pressure": 16.76434285714286
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -147.01446579290678,
+     "turbine_capacity": 3395.351511767761,
+     "generator_capacity": 3347.5186580094546,
+     "rejection_capacity": 1956.420810947057,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1747.0144657929068,
+     "turbine_capacity": -104.64848823223883,
+     "generator_capacity": 1547.5186580094546,
+     "rejection_capacity": -543.5791890529431,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.7000",
+   "flow": 3000.0,
+   "ratio": 1.7,
+   "status": "evaluated",
+   "values": {
+    "net": -48.825915297067866,
+    "gross": 191.4550191074202,
+    "net_shaft": 195.36226439532675,
+    "shaft_import": 0.0,
+    "compressor_demand": 3826.379611038875,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 4021.7418754342016,
+    "turbine_inlet_K": 601.9219418345999,
+    "heater_inlet_K": 390.02045833149054,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4556.448615470294,
+    "he_return_K": 456.38874267415304,
+    "he_hot_bound_margin_K": 105.54662317081136,
+    "rejected": 3105.850947099614,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 343.77046385564097,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 390.02045833149054,
+    "turbine_pressure": 20.10820714285714
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -626.3796110388748,
+     "turbine_capacity": 2978.2581245657984,
+     "generator_capacity": 3408.5449808925796,
+     "rejection_capacity": 1894.1490529003859,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -2226.379611038875,
+     "turbine_capacity": -521.7418754342016,
+     "generator_capacity": 1608.5449808925798,
+     "rejection_capacity": -605.8509470996141,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3000-ratio1.8000",
+   "flow": 3000.0,
+   "ratio": 1.8,
+   "status": "evaluated",
+   "values": {
+    "net": -127.16863096859926,
+    "gross": 113.11230343588882,
+    "net_shaft": 115.42071779172329,
+    "shaft_import": 0.0,
+    "compressor_demand": 4289.108806457719,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 4404.529524249442,
+    "turbine_inlet_K": 611.8226456755451,
+    "heater_inlet_K": 399.9211621725339,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4438.702413722856,
+    "he_return_K": 466.28944651519646,
+    "he_hot_bound_margin_K": 95.64591932976793,
+    "rejected": 3185.7924937016883,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 329.10042189677614,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 399.9211621725339,
+    "turbine_pressure": 23.869542857142857
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -1089.1088064577189,
+     "turbine_capacity": 2595.470475750558,
+     "generator_capacity": 3486.887696564111,
+     "rejection_capacity": 1814.2075062983117,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -2689.108806457719,
+     "turbine_capacity": -904.5295242494421,
+     "generator_capacity": 1686.8876965641111,
+     "rejection_capacity": -685.7924937016883,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.2000",
+   "flow": 3500.0,
+   "ratio": 1.2,
+   "status": "evaluated",
+   "values": {
+    "net": 458.9516931259766,
+    "gross": 699.2326275304647,
+    "net_shaft": 713.5026811535354,
+    "shaft_import": 0.0,
+    "compressor_demand": 1428.2699101357475,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2141.772591289283,
+    "turbine_inlet_K": 697.8437860917827,
+    "heater_inlet_K": 530.8730859270215,
+    "accepted": 3034.7759608377296,
+    "unmet": 266.4372506492641,
+    "he_capability": 3034.7759608377296,
+    "he_return_K": 578.9822643080325,
+    "he_hot_bound_margin_K": 0.0,
+    "rejected": 2321.2732796910805,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 580.0053447124928,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 3572.013478221332,
+    "compressor_outlet_K": 334.3440507851365,
+    "turbine_pressure": 7.072457142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "violated",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1771.7300898642525,
+     "turbine_capacity": 4858.227408710717,
+     "generator_capacity": 2900.767372469535,
+     "rejection_capacity": 2678.7267203089195,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": 171.73008986425248,
+     "turbine_capacity": 1358.227408710717,
+     "generator_capacity": 1100.7673724695353,
+     "rejection_capacity": 178.72672030891954,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": false,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": false,
+     "heat_removal_ok": false,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.3000",
+   "flow": 3500.0,
+   "ratio": 1.3,
+   "status": "evaluated",
+   "values": {
+    "net": 440.5523937838948,
+    "gross": 680.8333281883829,
+    "net_shaft": 694.7278859065132,
+    "shaft_import": 0.0,
+    "compressor_demand": 2088.9709937288217,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2783.698879635335,
+    "turbine_inlet_K": 641.9836883977905,
+    "heater_inlet_K": 460.35384539551706,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 3918.1044313212174,
+    "he_return_K": 512.6867547485149,
+    "he_hot_bound_margin_K": 49.24861109644951,
+    "rejected": 2606.4853255813077,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 488.8270280783861,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 2070.0573274099465,
+    "compressor_outlet_K": 346.4611146640408,
+    "turbine_pressure": 8.992007142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1111.0290062711783,
+     "turbine_capacity": 4216.301120364666,
+     "generator_capacity": 2919.166671811617,
+     "rejection_capacity": 2393.5146744186923,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -488.97099372882167,
+     "turbine_capacity": 716.3011203646652,
+     "generator_capacity": 1119.166671811617,
+     "rejection_capacity": -106.48532558130773,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.3500",
+   "flow": 3500.0,
+   "ratio": 1.35,
+   "status": "evaluated",
+   "values": {
+    "net": 310.07430406114383,
+    "gross": 550.3552384656319,
+    "net_shaft": 561.5869780261551,
+    "shaft_import": 0.0,
+    "compressor_demand": 2407.9080610636347,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2969.4950390897898,
+    "turbine_inlet_K": 606.9435364328732,
+    "heater_inlet_K": 425.31369343058657,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4357.0195927354025,
+    "he_return_K": 477.6466027835845,
+    "he_hot_bound_margin_K": 84.28876306137988,
+    "rejected": 2739.626233461904,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 443.5645350799646,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1326.8726895930822,
+    "compressor_outlet_K": 352.31032683307444,
+    "turbine_pressure": 10.069963392857144
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 792.0919389363653,
+     "turbine_capacity": 4030.5049609102102,
+     "generator_capacity": 3049.644761534368,
+     "rejection_capacity": 2260.373766538096,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -807.9080610636347,
+     "turbine_capacity": 530.5049609102102,
+     "generator_capacity": 1249.6447615343682,
+     "rejection_capacity": -239.62623346190412,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.4000",
+   "flow": 3500.0,
+   "ratio": 1.4,
+   "status": "evaluated",
+   "values": {
+    "net": 157.55232430031774,
+    "gross": 397.8332587048058,
+    "net_shaft": 405.9523048008223,
+    "shaft_import": 0.0,
+    "compressor_demand": 2719.8337462516292,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3125.7860510524515,
+    "turbine_inlet_K": 578.2681866763023,
+    "heater_inlet_K": 396.63834367452085,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4716.208838814825,
+    "he_return_K": 448.97125302751874,
+    "he_hot_bound_margin_K": 112.96411281744565,
+    "rejected": 2895.260906678057,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 406.29019151509897,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 701.7086417057109,
+    "compressor_outlet_K": 358.03095231220834,
+    "turbine_pressure": 11.230799999999997
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 480.16625374837076,
+     "turbine_capacity": 3874.2139489475485,
+     "generator_capacity": 3202.1667412951942,
+     "rejection_capacity": 2104.739093321943,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1119.8337462516292,
+     "turbine_capacity": 374.2139489475485,
+     "generator_capacity": 1402.1667412951942,
+     "rejection_capacity": -395.2609066780569,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.4500",
+   "flow": 3500.0,
+   "ratio": 1.45,
+   "status": "evaluated",
+   "values": {
+    "net": -10.461472180210166,
+    "gross": 229.8194622242779,
+    "net_shaft": 234.50965533089584,
+    "shaft_import": 0.0,
+    "compressor_demand": 3025.144607215219,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3259.6542625461148,
+    "turbine_inlet_K": 554.4062539100437,
+    "heater_inlet_K": 372.776410908332,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 5015.104919009008,
+    "he_return_K": 425.1093202613299,
+    "he_hot_bound_margin_K": 136.82604558363448,
+    "rejected": 3066.703556146714,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 375.0629476710893,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 166.2357957259824,
+    "compressor_outlet_K": 363.63026385730274,
+    "turbine_pressure": 12.477586607142854
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 174.8553927847811,
+     "turbine_capacity": 3740.3457374538852,
+     "generator_capacity": 3370.180537775722,
+     "rejection_capacity": 1933.2964438532858,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1425.144607215219,
+     "turbine_capacity": 240.34573745388525,
+     "generator_capacity": 1570.180537775722,
+     "rejection_capacity": -566.7035561467142,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.5183",
+   "flow": 3500.0,
+   "ratio": 1.5182944859378311,
+   "status": "evaluated",
+   "values": {
+    "net": -98.15643976897888,
+    "gross": 142.1244946355092,
+    "net_shaft": 145.0249945260298,
+    "shaft_import": 0.0,
+    "compressor_demand": 3432.1273710696514,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3577.152365595681,
+    "turbine_inlet_K": 552.7240512504042,
+    "heater_inlet_K": 371.0942082486433,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 5036.176296000968,
+    "he_return_K": 423.42711760164116,
+    "he_hot_bound_margin_K": 138.50824824332324,
+    "rejected": 3156.1882169524742,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 355.91227905180267,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 371.0942082486433,
+    "turbine_pressure": 14.324999999999992
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -232.12737106965142,
+     "turbine_capacity": 3422.847634404319,
+     "generator_capacity": 3457.875505364491,
+     "rejection_capacity": 1843.8117830475258,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1832.1273710696514,
+     "turbine_capacity": -77.1523655956812,
+     "generator_capacity": 1657.875505364491,
+     "rejection_capacity": -656.1882169524742,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.6000",
+   "flow": 3500.0,
+   "ratio": 1.6,
+   "status": "evaluated",
+   "values": {
+    "net": -156.58007209204055,
+    "gross": 83.70086231244753,
+    "net_shaft": 85.40904317596687,
+    "shaft_import": 0.0,
+    "compressor_demand": 3904.850210091725,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3990.2592532676917,
+    "turbine_inlet_K": 561.3936493181525,
+    "heater_inlet_K": 379.7638063160431,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4927.5803618578375,
+    "he_return_K": 432.09671566904103,
+    "he_hot_bound_margin_K": 129.83865017592336,
+    "rejected": 3215.8041683088722,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 341.8531000475579,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 379.7638063160431,
+    "turbine_pressure": 16.76434285714286
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -704.8502100917249,
+     "turbine_capacity": 3009.7407467323083,
+     "generator_capacity": 3516.2991376875525,
+     "rejection_capacity": 1784.1958316911278,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -2304.850210091725,
+     "turbine_capacity": -490.25925326769175,
+     "generator_capacity": 1716.2991376875525,
+     "rejection_capacity": -715.8041683088722,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.7000",
+   "flow": 3500.0,
+   "ratio": 1.7,
+   "status": "evaluated",
+   "values": {
+    "net": -248.75182203703042,
+    "gross": 0.0,
+    "net_shaft": -8.047343250915219,
+    "shaft_import": 8.470887632542336,
+    "compressor_demand": 4464.10954621202,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 4456.062202961105,
+    "turbine_inlet_K": 571.6503013338574,
+    "heater_inlet_K": 390.02045833149054,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4799.1048895072945,
+    "he_return_K": 442.3533676844884,
+    "he_hot_bound_margin_K": 119.58199816047602,
+    "rejected": 3309.2605547404346,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 326.48168407649973,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 390.02045833149054,
+    "turbine_pressure": 20.10820714285714
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -1264.1095462120202,
+     "turbine_capacity": 2543.937797038895,
+     "generator_capacity": 3600.0,
+     "rejection_capacity": 1690.7394452595654,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -2864.10954621202,
+     "turbine_capacity": -956.062202961105,
+     "generator_capacity": 1800.0,
+     "rejection_capacity": -809.2605547404346,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow3500-ratio1.8000",
+   "flow": 3500.0,
+   "ratio": 1.8,
+   "status": "evaluated",
+   "values": {
+    "net": -366.1651611834992,
+    "gross": 0.0,
+    "net_shaft": -119.5900154400606,
+    "shaft_import": 125.88422677901116,
+    "compressor_demand": 5003.960274200671,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 4884.37025876061,
+    "turbine_inlet_K": 581.5510051747272,
+    "heater_inlet_K": 399.9211621725339,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4675.088046519433,
+    "he_return_K": 452.2540715255318,
+    "he_hot_bound_margin_K": 109.6812943194326,
+    "rejected": 3420.803226926424,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 312.8172559650432,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 399.9211621725339,
+    "turbine_pressure": 23.869542857142857
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -1803.960274200671,
+     "turbine_capacity": 2115.6297412393897,
+     "generator_capacity": 3600.0,
+     "rejection_capacity": 1579.196773073576,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -3403.960274200671,
+     "turbine_capacity": -1384.3702587606103,
+     "generator_capacity": 1800.0,
+     "rejection_capacity": -920.803226926424,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.2000",
+   "flow": 4000.0,
+   "ratio": 1.2,
+   "status": "evaluated",
+   "values": {
+    "net": 476.31863896665004,
+    "gross": 716.5995733711381,
+    "net_shaft": 731.2240544603451,
+    "shaft_import": 0.0,
+    "compressor_demand": 1632.3084687265687,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2363.5325231869137,
+    "turbine_inlet_K": 673.8364426900134,
+    "heater_inlet_K": 514.9103300634415,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 3349.5907656129943,
+    "he_return_K": 558.2056554164278,
+    "he_hot_bound_margin_K": 3.7297104285365776,
+    "rejected": 2569.9891570188056,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 560.0518998830178,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 3750.722753168952,
+    "compressor_outlet_K": 334.3440507851365,
+    "turbine_pressure": 7.072457142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 1567.6915312734313,
+     "turbine_capacity": 4636.467476813086,
+     "generator_capacity": 2883.400426628862,
+     "rejection_capacity": 2430.0108429811944,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -32.30846872656866,
+     "turbine_capacity": 1136.4674768130863,
+     "generator_capacity": 1083.4004266288619,
+     "rejection_capacity": -69.9891570188056,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.3000",
+   "flow": 4000.0,
+   "ratio": 1.3,
+   "status": "evaluated",
+   "values": {
+    "net": 255.71718370481042,
+    "gross": 495.9981181092985,
+    "net_shaft": 506.1205286829577,
+    "shaft_import": 0.0,
+    "compressor_demand": 2387.395421404368,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 2893.5159500873256,
+    "turbine_inlet_K": 583.8962319906032,
+    "heater_inlet_K": 424.9701193634449,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4516.192702844431,
+    "he_return_K": 468.26544471643126,
+    "he_hot_bound_margin_K": 93.66992112853313,
+    "rejected": 2795.092682808373,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 444.59737053829593,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 1630.7890456160223,
+    "compressor_outlet_K": 346.4611146640408,
+    "turbine_pressure": 8.992007142857142
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 812.6045785956321,
+     "turbine_capacity": 4106.484049912675,
+     "generator_capacity": 3104.0018818907015,
+     "rejection_capacity": 2204.907317191627,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -787.3954214043679,
+     "turbine_capacity": 606.4840499126744,
+     "generator_capacity": 1304.0018818907015,
+     "rejection_capacity": -295.09268280837296,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.3500",
+   "flow": 4000.0,
+   "ratio": 1.35,
+   "status": "evaluated",
+   "values": {
+    "net": 89.16743630364758,
+    "gross": 329.44837070813566,
+    "net_shaft": 336.1718068450364,
+    "shaft_import": 0.0,
+    "compressor_demand": 2751.8949269298682,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3088.0667337749046,
+    "turbine_inlet_K": 552.281399541751,
+    "heater_inlet_K": 393.3552869150973,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4926.264288094686,
+    "he_return_K": 436.6506122680837,
+    "he_hot_bound_margin_K": 125.28475357688069,
+    "rejected": 2965.0414046358137,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 403.616526935603,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 852.5859108237789,
+    "compressor_outlet_K": 352.31032683307444,
+    "turbine_pressure": 10.069963392857144
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "satisfied",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 448.10507307013177,
+     "turbine_capacity": 3911.9332662250954,
+     "generator_capacity": 3270.551629291864,
+     "rejection_capacity": 2034.9585953641863,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1151.8949269298682,
+     "turbine_capacity": 411.9332662250954,
+     "generator_capacity": 1470.5516292918644,
+     "rejection_capacity": -465.0414046358137,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": true
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": true
+    }
+   },
+   "all_checks": {
+    "reselected": true,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.4000",
+   "flow": 4000.0,
+   "ratio": 1.4,
+   "status": "evaluated",
+   "values": {
+    "net": -99.48376201494094,
+    "gross": 140.79717238954714,
+    "net_shaft": 143.67058407096647,
+    "shaft_import": 0.0,
+    "compressor_demand": 3108.381424287576,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3252.0520083585425,
+    "turbine_inlet_K": 526.4238862621999,
+    "heater_inlet_K": 367.4977736351693,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 5261.65848885958,
+    "he_return_K": 410.79309898815563,
+    "he_hot_bound_margin_K": 151.14226685680876,
+    "rejected": 3157.542627417712,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 369.86447896590954,
+    "recuperator_bypass": 0.0,
+    "recovered_heat": 196.64481252054503,
+    "compressor_outlet_K": 358.03095231220834,
+    "turbine_pressure": 11.230799999999997
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "satisfied",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": 91.61857571242399,
+     "turbine_capacity": 3747.9479916414575,
+     "generator_capacity": 3459.202827610453,
+     "rejection_capacity": 1842.457372582288,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1508.381424287576,
+     "turbine_capacity": 247.94799164145752,
+     "generator_capacity": 1659.202827610453,
+     "rejection_capacity": -657.5426274177121,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": true,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.4500",
+   "flow": 4000.0,
+   "ratio": 1.45,
+   "status": "evaluated",
+   "values": {
+    "net": -187.36429738373602,
+    "gross": 52.91663702075207,
+    "net_shaft": 53.99656838852252,
+    "shaft_import": 0.0,
+    "compressor_demand": 3457.3081225316787,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3511.304690920201,
+    "turbine_inlet_K": 522.5563764838099,
+    "heater_inlet_K": 363.63026385730274,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 5311.823419139433,
+    "he_return_K": 406.9255892102891,
+    "he_hot_bound_margin_K": 155.0097766346753,
+    "rejected": 3247.2166430892844,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 353.5160967360629,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 363.63026385730274,
+    "turbine_pressure": 12.477586607142854
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -257.3081225316787,
+     "turbine_capacity": 3488.695309079799,
+     "generator_capacity": 3547.083362979248,
+     "rejection_capacity": 1752.7833569107156,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -1857.3081225316787,
+     "turbine_capacity": -11.30469092020121,
+     "generator_capacity": 1747.083362979248,
+     "rejection_capacity": -747.2166430892844,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.5183",
+   "flow": 4000.0,
+   "ratio": 1.5182944859378311,
+   "status": "evaluated",
+   "values": {
+    "net": -242.5791083469847,
+    "gross": 0.0,
+    "net_shaft": -2.1832652453717856,
+    "shaft_import": 2.2981739424966166,
+    "compressor_demand": 3922.4312812224593,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 3920.2480159770876,
+    "turbine_inlet_K": 530.0203208759156,
+    "heater_inlet_K": 371.0942082486433,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 5215.009636754932,
+    "he_return_K": 414.38953360162964,
+    "he_hot_bound_margin_K": 147.54583224333476,
+    "rejected": 3303.3964767390707,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 341.2928022943111,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 371.0942082486433,
+    "turbine_pressure": 14.324999999999992
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -722.4312812224593,
+     "turbine_capacity": 3079.7519840229124,
+     "generator_capacity": 3600.0,
+     "rejection_capacity": 1696.6035232609293,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -2322.4312812224593,
+     "turbine_capacity": -420.24801597708756,
+     "generator_capacity": 1800.0,
+     "rejection_capacity": -803.3964767390707,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.6000",
+   "flow": 4000.0,
+   "ratio": 1.6,
+   "status": "evaluated",
+   "values": {
+    "net": -331.6661302798391,
+    "gross": 0.0,
+    "net_shaft": -86.81593608158346,
+    "shaft_import": 91.38519587535102,
+    "compressor_demand": 4462.685954390543,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 4375.8700183089595,
+    "turbine_inlet_K": 538.6899189432468,
+    "heater_inlet_K": 379.7638063160431,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 5102.557488580825,
+    "he_return_K": 423.0591316690295,
+    "he_hot_bound_margin_K": 138.87623417593488,
+    "rejected": 3388.0291475738572,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 328.0279692846217,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 379.7638063160431,
+    "turbine_pressure": 16.76434285714286
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -1262.685954390543,
+     "turbine_capacity": 2624.1299816910405,
+     "generator_capacity": 3600.0,
+     "rejection_capacity": 1611.9708524261428,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -2862.685954390543,
+     "turbine_capacity": -875.8700183089595,
+     "generator_capacity": 1800.0,
+     "rejection_capacity": -888.0291475738572,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.7000",
+   "flow": 4000.0,
+   "ratio": 1.7,
+   "status": "evaluated",
+   "values": {
+    "net": -462.8671985083978,
+    "gross": 0.0,
+    "net_shaft": -211.45695089871424,
+    "shaft_import": 222.58626410390974,
+    "compressor_demand": 5101.839481385166,
+    "auxiliary": 240.28093440448808,
+    "turbine_work": 4890.382530486452,
+    "turbine_inlet_K": 548.9465709581259,
+    "heater_inlet_K": 390.02045833149054,
+    "accepted": 3301.2132114869937,
+    "unmet": 0.0,
+    "he_capability": 4969.519884848258,
+    "he_return_K": 433.31578368447686,
+    "he_hot_bound_margin_K": 128.61958216048754,
+    "rejected": 3512.670162379184,
+    "q_ihx": 3301.2132114869937,
+    "pump_electric": 175.28093440448808,
+    "turbine_outlet_K": 313.5150992420441,
+    "recuperator_bypass": 1.0,
+    "recovered_heat": 0.0,
+    "compressor_outlet_K": 390.02045833149054,
+    "turbine_pressure": 20.10820714285714
+   },
+   "native_verdicts": {
+    "turbine_capacity__capacity_ok": "satisfied",
+    "checks__heat_removal_ok": "satisfied",
+    "checks__net_positive": "violated",
+    "checks__loop_capacity_ok": "satisfied",
+    "rejection_capacity__capacity_ok": "satisfied",
+    "he_capacity__capacity_ok": "satisfied",
+    "compressor_capacity__capacity_ok": "violated",
+    "generator_capacity__capacity_ok": "satisfied"
+   },
+   "margins": {
+    "reselected": {
+     "compressor_capacity": -1901.8394813851664,
+     "turbine_capacity": 2109.617469513548,
+     "generator_capacity": 3600.0,
+     "rejection_capacity": 1487.3298376208159,
+     "he_capacity": 198.7867885130063
+    },
+    "aries": {
+     "compressor_capacity": -3501.8394813851664,
+     "turbine_capacity": -1390.3825304864522,
+     "generator_capacity": 1800.0,
+     "rejection_capacity": -1012.6701623791841,
+     "he_capacity": -1801.2132114869937
+    }
+   },
+   "verdicts": {
+    "reselected": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": true,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": true,
+     "he_capacity_ok": true,
+     "heat_removal_ok": true,
+     "net_positive": false
+    },
+    "aries": {
+     "compressor_capacity_ok": false,
+     "turbine_capacity_ok": false,
+     "generator_capacity_ok": true,
+     "rejection_capacity_ok": false,
+     "he_capacity_ok": false,
+     "heat_removal_ok": true,
+     "net_positive": false
+    }
+   },
+   "all_checks": {
+    "reselected": false,
+    "aries": false
+   }
+  },
+  {
+   "case": "flow4000-ratio1.8000",
+   "flow": 4000.0,
+   "ratio": 1.8,
+   "status": "refused",
+   "error": "cooler outlet must not exceed inlet",
+   "refusing_module": null
+  }
+ ],
+ "ratings": {
+  "reselected": {
+   "compressor_capacity": 3200.0,
+   "turbine_capacity": 7000.0,
+   "generator_capacity": 3600.0,
+   "rejection_capacity": 5000.0,
+   "he_capacity": 3500.0
+  },
+  "aries": {
+   "compressor_capacity": 1600.0,
+   "turbine_capacity": 3500.0,
+   "generator_capacity": 1800.0,
+   "rejection_capacity": 2500.0,
+   "he_capacity": 1500.0
+  }
+ },
+ "note": "Native verdicts are for the re-selected ratings run as case inputs; the ARIES-inventory verdicts are computed here from the stored demands against the ARIES ratings and are not native verdicts.",
+ "package_tree_clean": true
+}

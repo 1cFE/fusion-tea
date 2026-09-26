@@ -1,0 +1,1327 @@
+{
+  "schema_version": "study-package-manifest/v1",
+  "package": {
+    "name": "costed_loop_brayton_tea",
+    "path": "exploration/costed_loop_brayton/costed_loop_brayton_tea"
+  },
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "7fb8341cf1206ebf3f83a458f33b3c469089bf08e68f8fcad9f84b2739016028",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/costed_loop_brayton_params.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_viability_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+      "semantic_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203"
+    }
+  },
+  "objective_catalog": [
+    {
+      "name": "costed_loop_brayton__plant__annual_om__evaluate__annual_om",
+      "channel": "costed_loop_brayton__plant__annual_om__evaluate__annual_om"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_1__evaluate__pressure_out",
+      "channel": "costed_loop_brayton__plant__compressor_1__evaluate__pressure_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_1__evaluate__shaft_demand",
+      "channel": "costed_loop_brayton__plant__compressor_1__evaluate__shaft_demand"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_1__evaluate__temperature_out",
+      "channel": "costed_loop_brayton__plant__compressor_1__evaluate__temperature_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_2__evaluate__pressure_out",
+      "channel": "costed_loop_brayton__plant__compressor_2__evaluate__pressure_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_2__evaluate__shaft_demand",
+      "channel": "costed_loop_brayton__plant__compressor_2__evaluate__shaft_demand"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_2__evaluate__temperature_out",
+      "channel": "costed_loop_brayton__plant__compressor_2__evaluate__temperature_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_3__evaluate__pressure_out",
+      "channel": "costed_loop_brayton__plant__compressor_3__evaluate__pressure_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_3__evaluate__shaft_demand",
+      "channel": "costed_loop_brayton__plant__compressor_3__evaluate__shaft_demand"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_3__evaluate__temperature_out",
+      "channel": "costed_loop_brayton__plant__compressor_3__evaluate__temperature_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_capacity__evaluate__evaluation_defined",
+      "channel": "costed_loop_brayton__plant__compressor_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_capacity__evaluate__margin",
+      "channel": "costed_loop_brayton__plant__compressor_capacity__evaluate__margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_equipment__purchase__capital",
+      "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__capital"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_equipment__purchase__extrapolated",
+      "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__extrapolated"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_equipment__purchase__purchased_quantity",
+      "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__purchased_quantity"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_equipment__purchase__quantity_ratio",
+      "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__quantity_ratio"
+    },
+    {
+      "name": "costed_loop_brayton__plant__compressor_equipment__purchase__source_budget",
+      "channel": "costed_loop_brayton__plant__compressor_equipment__purchase__source_budget"
+    },
+    {
+      "name": "costed_loop_brayton__plant__contingency__evaluate__cost",
+      "channel": "costed_loop_brayton__plant__contingency__evaluate__cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__contingency_basis__evaluate__total",
+      "channel": "costed_loop_brayton__plant__contingency_basis__evaluate__total"
+    },
+    {
+      "name": "costed_loop_brayton__plant__conversion_services__estimate__amount",
+      "channel": "costed_loop_brayton__plant__conversion_services__estimate__amount"
+    },
+    {
+      "name": "costed_loop_brayton__plant__conversion_services__purchase__cost",
+      "channel": "costed_loop_brayton__plant__conversion_services__purchase__cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_export_mwh",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_export_mwh"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_cost",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_mwh",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_import_mwh"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_operating",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_operating"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_replacement_reserve",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__annual_replacement_reserve"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__currency_year",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__currency_year"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__direct",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__direct"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__direct_difference",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__direct_difference"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__lifetime_replacement",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__lifetime_replacement"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__overnight",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__overnight"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_coil_excess",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_coil_excess"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_core_excess",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_core_excess"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_direct",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_direct"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_inclusive",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_inclusive"
+    },
+    {
+      "name": "costed_loop_brayton__plant__cost_ledger__evaluate__source_reactor_gap",
+      "channel": "costed_loop_brayton__plant__cost_ledger__evaluate__source_reactor_gap"
+    },
+    {
+      "name": "costed_loop_brayton__plant__direct_cost__evaluate__total",
+      "channel": "costed_loop_brayton__plant__direct_cost__evaluate__total"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__auxiliary_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__auxiliary_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__compressor_demand",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__compressor_demand"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__control_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__control_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__cryo_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__cryo_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__dissipated_auxiliary",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__dissipated_auxiliary"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__fuel_base_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__fuel_base_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__fuel_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__fuel_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__fuel_variable_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__fuel_variable_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__generator_loss",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__generator_loss"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__gross_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__gross_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__heating_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__heating_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__heating_loss",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__heating_loss"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__motor_loss",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__motor_loss"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__net_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__net_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__net_shaft",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__net_shaft"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__other_electric_demand",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__other_electric_demand"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__primary_pump_electric",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__primary_pump_electric"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__pump_loss",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__pump_loss"
+    },
+    {
+      "name": "costed_loop_brayton__plant__electrical__evaluate__shaft_import",
+      "channel": "costed_loop_brayton__plant__electrical__evaluate__shaft_import"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel__evaluate__burn_kg_per_fpy",
+      "channel": "costed_loop_brayton__plant__fuel__evaluate__burn_kg_per_fpy"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel__evaluate__burn_rate",
+      "channel": "costed_loop_brayton__plant__fuel__evaluate__burn_rate"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel__evaluate__exhaust_rate",
+      "channel": "costed_loop_brayton__plant__fuel__evaluate__exhaust_rate"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel__evaluate__inject_rate",
+      "channel": "costed_loop_brayton__plant__fuel__evaluate__inject_rate"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel__evaluate__loss_rate",
+      "channel": "costed_loop_brayton__plant__fuel__evaluate__loss_rate"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel__evaluate__tbr_margin",
+      "channel": "costed_loop_brayton__plant__fuel__evaluate__tbr_margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel__evaluate__tbr_required",
+      "channel": "costed_loop_brayton__plant__fuel__evaluate__tbr_required"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_burn",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_burn"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_cost",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_decay",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_decay"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_external",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_external"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_loss",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_loss"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__annual__breeding_supported",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__breeding_supported"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__annual__required_stock",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__required_stock"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__atoms__atoms",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__atoms__atoms"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__atoms__stock_kg",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__atoms__stock_kg"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__deuterium__annual_fuel",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__deuterium__annual_fuel"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__deuterium_rate__amount",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__deuterium_rate__amount"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__purchase__amount",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__purchase__amount"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__screen__evaluation_defined",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__screen__evaluation_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__fuel_inventory__screen__margin",
+      "channel": "costed_loop_brayton__plant__fuel_inventory__screen__margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__generator_capacity__evaluate__evaluation_defined",
+      "channel": "costed_loop_brayton__plant__generator_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__generator_capacity__evaluate__margin",
+      "channel": "costed_loop_brayton__plant__generator_capacity__evaluate__margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__generator_equipment__purchase__capital",
+      "channel": "costed_loop_brayton__plant__generator_equipment__purchase__capital"
+    },
+    {
+      "name": "costed_loop_brayton__plant__generator_equipment__purchase__extrapolated",
+      "channel": "costed_loop_brayton__plant__generator_equipment__purchase__extrapolated"
+    },
+    {
+      "name": "costed_loop_brayton__plant__generator_equipment__purchase__purchased_quantity",
+      "channel": "costed_loop_brayton__plant__generator_equipment__purchase__purchased_quantity"
+    },
+    {
+      "name": "costed_loop_brayton__plant__generator_equipment__purchase__quantity_ratio",
+      "channel": "costed_loop_brayton__plant__generator_equipment__purchase__quantity_ratio"
+    },
+    {
+      "name": "costed_loop_brayton__plant__generator_equipment__purchase__source_budget",
+      "channel": "costed_loop_brayton__plant__generator_equipment__purchase__source_budget"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_capacity__evaluate__evaluation_defined",
+      "channel": "costed_loop_brayton__plant__he_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_capacity__evaluate__margin",
+      "channel": "costed_loop_brayton__plant__he_capacity__evaluate__margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__capital",
+      "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__capital"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__extrapolated",
+      "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__extrapolated"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__purchased_quantity",
+      "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__purchased_quantity"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__quantity_ratio",
+      "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__quantity_ratio"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_duty_equipment__purchase__source_budget",
+      "channel": "costed_loop_brayton__plant__he_duty_equipment__purchase__source_budget"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_hx__evaluate__area",
+      "channel": "costed_loop_brayton__plant__he_hx__evaluate__area"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_hx__evaluate__ua",
+      "channel": "costed_loop_brayton__plant__he_hx__evaluate__ua"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_hx__purchase__capital",
+      "channel": "costed_loop_brayton__plant__he_hx__purchase__capital"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_hx__purchase__extrapolated",
+      "channel": "costed_loop_brayton__plant__he_hx__purchase__extrapolated"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_hx__purchase__purchased_quantity",
+      "channel": "costed_loop_brayton__plant__he_hx__purchase__purchased_quantity"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_hx__purchase__quantity_ratio",
+      "channel": "costed_loop_brayton__plant__he_hx__purchase__quantity_ratio"
+    },
+    {
+      "name": "costed_loop_brayton__plant__he_hx__purchase__source_budget",
+      "channel": "costed_loop_brayton__plant__he_hx__purchase__source_budget"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__accepted_heat",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__accepted_heat"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_capability",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_capability"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_cold_terminal_difference"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_terminal_difference"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_return",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_return"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_in",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_in"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_out",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_secondary_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_state_defined",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_state_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_stream_out",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_stream_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_transferred",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_transferred"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_unmet",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_unmet"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__expansion_factor",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__expansion_factor"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_capability",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_capability"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_cold_terminal_difference"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_terminal_difference"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_return",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_return"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_in",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_in"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_out",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_secondary_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_state_defined",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_state_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_transferred",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_transferred"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_unmet",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_unmet"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__heater_inlet",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__heater_inlet"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__mixed_outlet",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__mixed_outlet"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__network_mode_used",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__network_mode_used"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_capability",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_capability"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_cold_terminal_difference"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_terminal_difference"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_return",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_return"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_in",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_in"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_out",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_secondary_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_split_used",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_split_used"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_state_defined",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_state_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_stream_out",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_stream_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_transferred",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_transferred"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_unmet",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_unmet"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__turbine_temperature",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__turbine_temperature"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_exchangers__evaluate__unmet_heat",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__unmet_heat"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__capital",
+      "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__capital"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__extrapolated",
+      "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__extrapolated"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__purchased_quantity",
+      "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__purchased_quantity"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__quantity_ratio",
+      "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__quantity_ratio"
+    },
+    {
+      "name": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__source_budget",
+      "channel": "costed_loop_brayton__plant__heat_rejection_equipment__purchase__source_budget"
+    },
+    {
+      "name": "costed_loop_brayton__plant__indirect_cost__evaluate__cost",
+      "channel": "costed_loop_brayton__plant__indirect_cost__evaluate__cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__intercooler_1__evaluate__heat_into_fluid",
+      "channel": "costed_loop_brayton__plant__intercooler_1__evaluate__heat_into_fluid"
+    },
+    {
+      "name": "costed_loop_brayton__plant__intercooler_1__evaluate__pressure_out",
+      "channel": "costed_loop_brayton__plant__intercooler_1__evaluate__pressure_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__intercooler_1__evaluate__temperature_out",
+      "channel": "costed_loop_brayton__plant__intercooler_1__evaluate__temperature_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__intercooler_2__evaluate__heat_into_fluid",
+      "channel": "costed_loop_brayton__plant__intercooler_2__evaluate__heat_into_fluid"
+    },
+    {
+      "name": "costed_loop_brayton__plant__intercooler_2__evaluate__pressure_out",
+      "channel": "costed_loop_brayton__plant__intercooler_2__evaluate__pressure_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__intercooler_2__evaluate__temperature_out",
+      "channel": "costed_loop_brayton__plant__intercooler_2__evaluate__temperature_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_capital",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_capital"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_energy",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__annual_energy"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__breeding_supported",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__breeding_supported"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__capital_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__capital_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__consumables_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__consumables_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__currency_year",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__currency_year"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__deuterium_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__deuterium_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__financed_capital",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__financed_capital"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__financial_defined",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__financial_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_makeup",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_makeup"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_terminal",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__gross_terminal"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__imports_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__imports_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__lcoe_sum",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__lcoe_sum"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__lifetime_energy",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__lifetime_energy"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__new_feed",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__new_feed"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__noncapital_annual",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__noncapital_annual"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__om_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__om_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_cost",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__other_overhaul_occurs"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_energy",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_energy"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_operating",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_operating"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_other_overhaul",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_other_overhaul"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_replacement",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_replacement"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_salvage",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_salvage"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_supply",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_supply"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_gross",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_gross"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_net",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_terminal_net"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_total_cost",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__pv_total_cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__real_convention",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__real_convention"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__replacement_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__replacement_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__salvage_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_supported",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__supply_supported"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__terminal_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__terminal_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__tritium_lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__tritium_lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe",
+      "channel": "costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe"
+    },
+    {
+      "name": "costed_loop_brayton__plant__operating_levelization__evaluate__crf",
+      "channel": "costed_loop_brayton__plant__operating_levelization__evaluate__crf"
+    },
+    {
+      "name": "costed_loop_brayton__plant__operating_levelization__evaluate__levelized",
+      "channel": "costed_loop_brayton__plant__operating_levelization__evaluate__levelized"
+    },
+    {
+      "name": "costed_loop_brayton__plant__owner_commissioning__evaluate__amount",
+      "channel": "costed_loop_brayton__plant__owner_commissioning__evaluate__amount"
+    },
+    {
+      "name": "costed_loop_brayton__plant__precooler__evaluate__heat_into_fluid",
+      "channel": "costed_loop_brayton__plant__precooler__evaluate__heat_into_fluid"
+    },
+    {
+      "name": "costed_loop_brayton__plant__precooler__evaluate__pressure_out",
+      "channel": "costed_loop_brayton__plant__precooler__evaluate__pressure_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__precooler__evaluate__temperature_out",
+      "channel": "costed_loop_brayton__plant__precooler__evaluate__temperature_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__pressure_loss__evaluate__pressure_out",
+      "channel": "costed_loop_brayton__plant__pressure_loss__evaluate__pressure_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__priced_equipment__evaluate__total",
+      "channel": "costed_loop_brayton__plant__priced_equipment__evaluate__total"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__T_comp_in",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__T_comp_in"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__T_out",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__T_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__capacity_margin",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__capacity_margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__dp_loop",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__dp_loop"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__mdot",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__mdot"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__mdot_loop",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__mdot_loop"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__p_elec",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__p_elec"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__p_loop_margin",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__p_loop_margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__p_pump_total",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__p_pump_total"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__q_ihx",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__q_ihx"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__q_recovered_total",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__q_recovered_total"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__r_comp",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__r_comp"
+    },
+    {
+      "name": "costed_loop_brayton__plant__primary_loop__evaluate__w_fluid",
+      "channel": "costed_loop_brayton__plant__primary_loop__evaluate__w_fluid"
+    },
+    {
+      "name": "costed_loop_brayton__plant__recuperator__evaluate__bypass_active",
+      "channel": "costed_loop_brayton__plant__recuperator__evaluate__bypass_active"
+    },
+    {
+      "name": "costed_loop_brayton__plant__recuperator__evaluate__cold_out",
+      "channel": "costed_loop_brayton__plant__recuperator__evaluate__cold_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__recuperator__evaluate__hot_out",
+      "channel": "costed_loop_brayton__plant__recuperator__evaluate__hot_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__recuperator__evaluate__recovered_heat",
+      "channel": "costed_loop_brayton__plant__recuperator__evaluate__recovered_heat"
+    },
+    {
+      "name": "costed_loop_brayton__plant__rejection_capacity__evaluate__evaluation_defined",
+      "channel": "costed_loop_brayton__plant__rejection_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__rejection_capacity__evaluate__margin",
+      "channel": "costed_loop_brayton__plant__rejection_capacity__evaluate__margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__rejection_capacity__rejected_heat__rejected_heat",
+      "channel": "costed_loop_brayton__plant__rejection_capacity__rejected_heat__rejected_heat"
+    },
+    {
+      "name": "costed_loop_brayton__plant__replacement__evaluate__annual_reserve",
+      "channel": "costed_loop_brayton__plant__replacement__evaluate__annual_reserve"
+    },
+    {
+      "name": "costed_loop_brayton__plant__replacement__evaluate__event_cost",
+      "channel": "costed_loop_brayton__plant__replacement__evaluate__event_cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__replacement__evaluate__event_count",
+      "channel": "costed_loop_brayton__plant__replacement__evaluate__event_count"
+    },
+    {
+      "name": "costed_loop_brayton__plant__replacement__evaluate__first_event_year",
+      "channel": "costed_loop_brayton__plant__replacement__evaluate__first_event_year"
+    },
+    {
+      "name": "costed_loop_brayton__plant__replacement__evaluate__interval_years",
+      "channel": "costed_loop_brayton__plant__replacement__evaluate__interval_years"
+    },
+    {
+      "name": "costed_loop_brayton__plant__replacement__evaluate__last_event_year",
+      "channel": "costed_loop_brayton__plant__replacement__evaluate__last_event_year"
+    },
+    {
+      "name": "costed_loop_brayton__plant__replacement__evaluate__lifetime_total",
+      "channel": "costed_loop_brayton__plant__replacement__evaluate__lifetime_total"
+    },
+    {
+      "name": "costed_loop_brayton__plant__replacement_scope__evaluate__amount",
+      "channel": "costed_loop_brayton__plant__replacement_scope__evaluate__amount"
+    },
+    {
+      "name": "costed_loop_brayton__plant__rest_of_plant__estimate__amount",
+      "channel": "costed_loop_brayton__plant__rest_of_plant__estimate__amount"
+    },
+    {
+      "name": "costed_loop_brayton__plant__rest_of_plant__purchase__cost",
+      "channel": "costed_loop_brayton__plant__rest_of_plant__purchase__cost"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__capability_at_solution",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__capability_at_solution"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__capability_open",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__capability_open"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__exchanger_return",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__exchanger_return"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__feasible",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__feasible"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__mixed_return",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__mixed_return"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__return_residual",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual"
+    },
+    {
+      "name": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude",
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine__evaluate__pressure_out",
+      "channel": "costed_loop_brayton__plant__turbine__evaluate__pressure_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine__evaluate__shaft_produced",
+      "channel": "costed_loop_brayton__plant__turbine__evaluate__shaft_produced"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine__evaluate__temperature_out",
+      "channel": "costed_loop_brayton__plant__turbine__evaluate__temperature_out"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine_capacity__evaluate__evaluation_defined",
+      "channel": "costed_loop_brayton__plant__turbine_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine_capacity__evaluate__margin",
+      "channel": "costed_loop_brayton__plant__turbine_capacity__evaluate__margin"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine_equipment__purchase__capital",
+      "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__capital"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine_equipment__purchase__extrapolated",
+      "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__extrapolated"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine_equipment__purchase__purchased_quantity",
+      "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__purchased_quantity"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine_equipment__purchase__quantity_ratio",
+      "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__quantity_ratio"
+    },
+    {
+      "name": "costed_loop_brayton__plant__turbine_equipment__purchase__source_budget",
+      "channel": "costed_loop_brayton__plant__turbine_equipment__purchase__source_budget"
+    }
+  ],
+  "ties": [],
+  "baseline": {
+    "point": {
+      "costed_loop_brayton__plant__annual_om__selected_amount": 70000000.0,
+      "costed_loop_brayton__plant__blanket_source__q_source": 3125.9322770825056,
+      "costed_loop_brayton__plant__checks__energy_tolerance": 1e-06,
+      "costed_loop_brayton__plant__compressor_1__efficiency": 0.89,
+      "costed_loop_brayton__plant__compressor_1__selected_ratio": 1.5182944859378311,
+      "costed_loop_brayton__plant__compressor_2__efficiency": 0.89,
+      "costed_loop_brayton__plant__compressor_2__selected_ratio": 1.5182944859378311,
+      "costed_loop_brayton__plant__compressor_3__efficiency": 0.89,
+      "costed_loop_brayton__plant__compressor_3__selected_ratio": 1.5182944859378311,
+      "costed_loop_brayton__plant__compressor_capacity__assumed_supported": 1.0,
+      "costed_loop_brayton__plant__compressor_capacity__demand_available": 1.0,
+      "costed_loop_brayton__plant__compressor_capacity__scenario_applicable": 1.0,
+      "costed_loop_brayton__plant__compressor_capacity__selected_rating": 3200.0,
+      "costed_loop_brayton__plant__compressor_equipment__price_factor": 1.0,
+      "costed_loop_brayton__plant__compressor_equipment__reference_cost": 78639500.0,
+      "costed_loop_brayton__plant__compressor_equipment__reference_quantity": 1600.0,
+      "costed_loop_brayton__plant__contingency__fraction": 0.2,
+      "costed_loop_brayton__plant__conversion_services__price_factor": 1.0,
+      "costed_loop_brayton__plant__conversion_services__reference_cost": 62911600.0,
+      "costed_loop_brayton__plant__conversion_services__selected_quantity": 1.0,
+      "costed_loop_brayton__plant__cost_accounts__estimate_mode": 0.0,
+      "costed_loop_brayton__plant__cost_accounts__one_module": 1.0,
+      "costed_loop_brayton__plant__cost_ledger__consumables": 5000000.0,
+      "costed_loop_brayton__plant__cost_ledger__import_price": 50.0,
+      "costed_loop_brayton__plant__cost_ledger__no_source_comparison": 0.0,
+      "costed_loop_brayton__plant__cost_schedule__availability": 0.85,
+      "costed_loop_brayton__plant__cost_schedule__plant_years": 40.0,
+      "costed_loop_brayton__plant__cost_schedule__replacement_factor": 1.0,
+      "costed_loop_brayton__plant__cost_schedule__replacement_life_fpy": 5.0,
+      "costed_loop_brayton__plant__cycle__cp": 5193.0,
+      "costed_loop_brayton__plant__cycle__gamma": 1.6666666666666667,
+      "costed_loop_brayton__plant__cycle__low_temperature": 308.15,
+      "costed_loop_brayton__plant__cycle__recuperator_effectiveness": 0.8,
+      "costed_loop_brayton__plant__cycle__return_pressure": 4.285714285714286,
+      "costed_loop_brayton__plant__cycle__selected_flow": 2500.0,
+      "costed_loop_brayton__plant__cycle__turbine_efficiency": 0.93,
+      "costed_loop_brayton__plant__electrical__auxiliary_heat": 20.0,
+      "costed_loop_brayton__plant__electrical__control": 5.0,
+      "costed_loop_brayton__plant__electrical__cryo": 10.0,
+      "costed_loop_brayton__plant__electrical__fuel_base": 5.0,
+      "costed_loop_brayton__plant__electrical__fuel_coefficient": 1e-22,
+      "costed_loop_brayton__plant__electrical__fuel_exhaust": 0.0,
+      "costed_loop_brayton__plant__electrical__generator_efficiency": 0.98,
+      "costed_loop_brayton__plant__electrical__heating_efficiency": 0.5,
+      "costed_loop_brayton__plant__electrical__motor_efficiency": 0.95,
+      "costed_loop_brayton__plant__electrical__other_electric": 5.0,
+      "costed_loop_brayton__plant__finance__construction_years": 6.0,
+      "costed_loop_brayton__plant__finance__discount_rate": 0.05,
+      "costed_loop_brayton__plant__finance__other_overhaul_fraction": 0.05,
+      "costed_loop_brayton__plant__finance__other_overhaul_year": 20.0,
+      "costed_loop_brayton__plant__finance__salvage_fraction": 0.02,
+      "costed_loop_brayton__plant__finance__supply_service_annual": 0.0,
+      "costed_loop_brayton__plant__finance__terminal_fraction": 0.1,
+      "costed_loop_brayton__plant__fuel__assumed_extraction": 1.0,
+      "costed_loop_brayton__plant__fuel__decay_constant_s": 1.782785958230312e-09,
+      "costed_loop_brayton__plant__fuel__dormant_stock_growth_atoms_s": 0.0,
+      "costed_loop_brayton__plant__fuel__exhaust_recovery": 0.99,
+      "costed_loop_brayton__plant__fuel__mev_joules": 1.6021766339999998e-13,
+      "costed_loop_brayton__plant__fuel__pass_burn_fraction": 0.05,
+      "costed_loop_brayton__plant__fuel__reaction_energy_mev": 17.58,
+      "costed_loop_brayton__plant__fuel__seconds_per_year": 31536000.0,
+      "costed_loop_brayton__plant__fuel__tritium_atom_kg": 5.008267663228036e-27,
+      "costed_loop_brayton__plant__fuel__unused_tbr_placeholder": 0.0,
+      "costed_loop_brayton__plant__fuel_inventory__annual_recovery_kg": 0.0,
+      "costed_loop_brayton__plant__fuel_inventory__deuterium_atom_kg": 3.3435837724e-27,
+      "costed_loop_brayton__plant__fuel_inventory__deuterium_price": 1000.0,
+      "costed_loop_brayton__plant__fuel_inventory__process_residence_s": 1000.0,
+      "costed_loop_brayton__plant__fuel_inventory__selected_tritium_kg": 10.0,
+      "costed_loop_brayton__plant__fuel_inventory__tritium_price": 30000000.0,
+      "costed_loop_brayton__plant__fusion_source__p_fus": 2652.5631770825057,
+      "costed_loop_brayton__plant__generator_capacity__assumed_supported": 1.0,
+      "costed_loop_brayton__plant__generator_capacity__demand_available": 1.0,
+      "costed_loop_brayton__plant__generator_capacity__scenario_applicable": 1.0,
+      "costed_loop_brayton__plant__generator_capacity__selected_rating": 3600.0,
+      "costed_loop_brayton__plant__generator_equipment__price_factor": 1.0,
+      "costed_loop_brayton__plant__generator_equipment__reference_cost": 47183699.99999999,
+      "costed_loop_brayton__plant__generator_equipment__reference_quantity": 1800.0,
+      "costed_loop_brayton__plant__he_capacity__assumed_supported": 1.0,
+      "costed_loop_brayton__plant__he_capacity__demand_available": 1.0,
+      "costed_loop_brayton__plant__he_capacity__scenario_applicable": 1.0,
+      "costed_loop_brayton__plant__he_capacity__selected_rating": 3500.0,
+      "costed_loop_brayton__plant__he_duty_equipment__price_factor": 1.0,
+      "costed_loop_brayton__plant__he_duty_equipment__reference_cost": 32403166.66666667,
+      "costed_loop_brayton__plant__he_duty_equipment__reference_quantity": 1500.0,
+      "costed_loop_brayton__plant__he_hx__assumed_u": 1000.0,
+      "costed_loop_brayton__plant__he_hx__price_factor": 1.0,
+      "costed_loop_brayton__plant__he_hx__reference_cost": 58325700.00000001,
+      "costed_loop_brayton__plant__he_hx__reference_quantity": 50000.0,
+      "costed_loop_brayton__plant__he_hx__selected_area": 50000.0,
+      "costed_loop_brayton__plant__heat_exchangers__he_cp": 5193.0,
+      "costed_loop_brayton__plant__heat_exchangers__network_mode": 0.0,
+      "costed_loop_brayton__plant__heat_exchangers__pbli_split_fraction": 0.85,
+      "costed_loop_brayton__plant__heat_rejection_equipment__price_factor": 1.0,
+      "costed_loop_brayton__plant__heat_rejection_equipment__reference_cost": 56086000.0,
+      "costed_loop_brayton__plant__heat_rejection_equipment__reference_quantity": 2500.0,
+      "costed_loop_brayton__plant__idle_branches__available": 0.0,
+      "costed_loop_brayton__plant__idle_branches__cp": 1.0,
+      "costed_loop_brayton__plant__idle_branches__dummy_flow": 1.0,
+      "costed_loop_brayton__plant__idle_branches__limit": 308.15,
+      "costed_loop_brayton__plant__idle_branches__ua": 0.0,
+      "costed_loop_brayton__plant__indirect_cost__fraction": 0.2,
+      "costed_loop_brayton__plant__intercooler_1__heating_role": 0.0,
+      "costed_loop_brayton__plant__intercooler_1__target_temperature": 308.15,
+      "costed_loop_brayton__plant__intercooler_2__heating_role": 0.0,
+      "costed_loop_brayton__plant__intercooler_2__target_temperature": 308.15,
+      "costed_loop_brayton__plant__owner_commissioning__fraction": 0.05,
+      "costed_loop_brayton__plant__precooler__heating_role": 0.0,
+      "costed_loop_brayton__plant__pressure_loss__loss_fraction": 0.045,
+      "costed_loop_brayton__plant__primary_loop__dp_loop_ref": 329187.1856931558,
+      "costed_loop_brayton__plant__primary_loop__eta_drive": 1.0,
+      "costed_loop_brayton__plant__primary_loop__eta_is": 0.772796639536644,
+      "costed_loop_brayton__plant__primary_loop__eta_p_direct": 0.0,
+      "costed_loop_brayton__plant__primary_loop__f_loss": 1.0,
+      "costed_loop_brayton__plant__primary_loop__loop_T_in": 573.15,
+      "costed_loop_brayton__plant__primary_loop__loop_cp": 5193.0,
+      "costed_loop_brayton__plant__primary_loop__loop_dT_blanket": 200.0,
+      "costed_loop_brayton__plant__primary_loop__loop_gamma": 1.6666666666666667,
+      "costed_loop_brayton__plant__primary_loop__loop_live": 1.0,
+      "costed_loop_brayton__plant__primary_loop__loop_p": 8000000.0,
+      "costed_loop_brayton__plant__primary_loop__mdot_loop_rated": 225.07777777777778,
+      "costed_loop_brayton__plant__primary_loop__mdot_loop_ref": 225.07777777777778,
+      "costed_loop_brayton__plant__primary_loop__n_loops": 14.0,
+      "costed_loop_brayton__plant__primary_loop__p_pump_direct": 0.0,
+      "costed_loop_brayton__plant__rejection_capacity__assumed_supported": 1.0,
+      "costed_loop_brayton__plant__rejection_capacity__demand_available": 1.0,
+      "costed_loop_brayton__plant__rejection_capacity__scenario_applicable": 1.0,
+      "costed_loop_brayton__plant__rejection_capacity__selected_rating": 5000.0,
+      "costed_loop_brayton__plant__replacement_scope__selected_event_scope": 72231350.0,
+      "costed_loop_brayton__plant__rest_of_plant__price_factor": 1.0,
+      "costed_loop_brayton__plant__rest_of_plant__reference_cost": 2158230133.3333335,
+      "costed_loop_brayton__plant__rest_of_plant__selected_quantity": 1.0,
+      "costed_loop_brayton__plant__return_control__max_bypass": 1.0,
+      "costed_loop_brayton__plant__return_control__tolerance": 1e-06,
+      "costed_loop_brayton__plant__turbine_capacity__assumed_supported": 1.0,
+      "costed_loop_brayton__plant__turbine_capacity__demand_available": 1.0,
+      "costed_loop_brayton__plant__turbine_capacity__scenario_applicable": 1.0,
+      "costed_loop_brayton__plant__turbine_capacity__selected_rating": 7000.0,
+      "costed_loop_brayton__plant__turbine_equipment__price_factor": 1.0,
+      "costed_loop_brayton__plant__turbine_equipment__reference_cost": 125823200.0,
+      "costed_loop_brayton__plant__turbine_equipment__reference_quantity": 3500.0,
+      "costed_loop_brayton__plant__contingency_basis__evaluate__amount3_in": 0.0,
+      "costed_loop_brayton__plant__contingency_basis__evaluate__amount4_in": 0.0,
+      "costed_loop_brayton__plant__contingency_basis__evaluate__amount5_in": 0.0,
+      "costed_loop_brayton__plant__contingency_basis__evaluate__amount6_in": 0.0,
+      "costed_loop_brayton__plant__contingency_basis__evaluate__amount7_in": 0.0,
+      "costed_loop_brayton__plant__contingency_basis__evaluate__amount8_in": 0.0,
+      "costed_loop_brayton__plant__cost_ledger__evaluate__currency_year_in": 2004.0,
+      "costed_loop_brayton__plant__direct_cost__evaluate__amount4_in": 0.0,
+      "costed_loop_brayton__plant__direct_cost__evaluate__amount5_in": 0.0,
+      "costed_loop_brayton__plant__direct_cost__evaluate__amount6_in": 0.0,
+      "costed_loop_brayton__plant__direct_cost__evaluate__amount7_in": 0.0,
+      "costed_loop_brayton__plant__direct_cost__evaluate__amount8_in": 0.0,
+      "costed_loop_brayton__plant__priced_equipment__evaluate__amount8_in": 0.0,
+      "costed_loop_brayton__plant__annual_om__evaluate__alpha": 0.5,
+      "costed_loop_brayton__plant__annual_om__evaluate__n_mod_in": 1.0,
+      "costed_loop_brayton__plant__annual_om__evaluate__om_ref": 0.0,
+      "costed_loop_brayton__plant__annual_om__evaluate__p_net": 1000.0,
+      "costed_loop_brayton__plant__annual_om__evaluate__ref_net_power": 1000.0,
+      "costed_loop_brayton__plant__indirect_cost__evaluate__construction_time": 6.0,
+      "costed_loop_brayton__plant__indirect_cost__evaluate__reference_construction_time": 6.0,
+      "costed_loop_brayton__plant__operating_levelization__evaluate__inflation_rate_in": 0.0,
+      "costed_loop_brayton__plant__operating_levelization__evaluate__project_time": 0.0,
+      "costed_loop_brayton__plant__fuel_inventory__screen__applicable_in": 1.0,
+      "costed_loop_brayton__plant__fuel_inventory__screen__conditions_supported_in": 1.0,
+      "costed_loop_brayton__plant__fuel_inventory__screen__demand_available_in": 1.0
+    },
+    "headline": {
+      "channel": "costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe",
+      "value": 1559.4383607658922
+    },
+    "verdicts": [
+      {
+        "source_local_identity": "capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "return_condition_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "net_positive",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "loop_capacity_ok",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "bypass_within_limit",
+        "expected": "satisfied"
+      },
+      {
+        "source_local_identity": "heat_removal_ok",
+        "expected": "satisfied"
+      }
+    ]
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "module": "exploration.costed_loop_brayton.studies.oracle_entry",
+    "callable": "evaluate",
+    "sys_path": "."
+  },
+  "absolute_tolerances": [
+    {
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "The ARIES manifest class for the same closure body (native root termination 1e-8 MW plus roundoff); declared before execution, comparison-contract.md section 9."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc",
+      "value": 1.9073486328125e-06,
+      "units": "USD2004",
+      "basis": "Two ULP of the capital magnitude for the subtractive IDC diagnostic; the ARIES class for the same lifecycle body; declared before execution."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "The ARIES exact-zero difference class (economics goal L-004); declared before execution."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "As above."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_external",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "As above."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "As above."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "value": 1e-06,
+      "units": "K",
+      "basis": "Two temperatures of order 700 K fixed by the closure root solve (1e-8 MW; the oracle root differs by about 3e-10 K) subtracted to a margin that can be arbitrarily small near the bound; owner ruling G-001; a verification tolerance only, the verdict is re-derived exactly from the operands."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "value": 1e-06,
+      "units": "K",
+      "basis": "As above (G-001)."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "value": 1e-06,
+      "units": "K",
+      "basis": "As above (G-001)."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "The bypass fraction is a bisection root to |capability - duty| <= 1e-9 MW; two independent solves (package and oracle) agree to about 1e-12 in f, but a relative rule cannot pass a root near zero (the f = 0 family targets 1e-6); an absolute class at the solve resolution, declared before execution."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual",
+      "value": 1e-08,
+      "units": "K",
+      "basis": "The root-solve closure (duty - capability(f)) / C_h, of order 1e-11 K when feasible (two solves within 1e-9 MW each give at most about 1e-10 K difference); a numerical class two orders below the check tolerance 1e-6 K, declared before execution; infeasible cases carry a physical deficit far above it and are compared relatively."
+    },
+    {
+      "channel": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude",
+      "value": 1e-08,
+      "units": "K",
+      "basis": "As above."
+    }
+  ]
+}
