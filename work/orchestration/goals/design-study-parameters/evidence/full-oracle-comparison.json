@@ -1,0 +1,30 @@
+{
+  "cases": 272,
+  "channels_per_case": 244,
+  "rule": "relative <= 1e-9 or declared absolute class",
+  "classes": {
+    "costed_loop_brayton__plant__heat_exchangers__evaluate__closure_residual": 1e-07,
+    "costed_loop_brayton__plant__lifecycle_accounts__evaluate__idc": 1.9073486328125e-06,
+    "costed_loop_brayton__plant__lifecycle_accounts__evaluate__curtailed_feed": 1e-09,
+    "costed_loop_brayton__plant__lifecycle_accounts__evaluate__external_shortfall": 1e-09,
+    "costed_loop_brayton__plant__fuel_inventory__annual__annual_external": 1e-09,
+    "costed_loop_brayton__plant__fuel_inventory__annual__annual_recovery": 1e-09
+  },
+  "outside_rule": [
+    {
+      "case": "s1-turb0.90-f2500-r1.4500",
+      "candidate": "20260926-design-study-parameters:c0211",
+      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "store": 0.3631786747627075,
+      "oracle": 0.363178674230312,
+      "absolute": 5.323954610503279e-10,
+      "relative": 1.4659326057571598e-09
+    }
+  ],
+  "worst_within_rule_undeclared": {
+    "relative": 9.616193458511551e-10,
+    "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_unmet",
+    "case": "s1-comp0.85-f2250-r1.5183"
+  },
+  "verdict_rederivation_mismatches": []
+}
