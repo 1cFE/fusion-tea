@@ -8,6 +8,25 @@ Read the article and any relevant handoff. State the intended story in plain lan
 
 For the model-evaluation article, the purpose is rapid engineering iteration and trade studies. Numerical parameters, categorical component or material choices, and plant architecture require different mechanisms for representing and evaluating alternatives. Codegen and TEAx turn those choices into performance, cost, and engineering-check results that inform the next design decision. Reuse supports that purpose; it is not the whole story.
 
+## Write as the team doing the work
+
+`sysml-codegen-model-evaluation.md` is the reference for voice. It reads as an engineer explaining the work to a colleague, and new sections should match it.
+
+- Speak as "we", the people doing the work, and start from what we want or need. "We want to iterate on engineering designs quickly enough to learn from them" brings the reader into the engineering problem.
+- Describe the system, not the document. Refer to another section only to use what it established ("The radius connection from section 2.1 shows how this works"), or to say where a topic continues.
+- Join sentences by cause. Words such as "so", "therefore", "because" and "that means" carry the reader from one fact to the next.
+- Keep the tone calm and plain. Explain the thing directly.
+
+Texture that breaks this voice:
+
+- Aphoristic openers that personify the system, such as "A session knows only what it can find on disk."
+- Metaphors doing the explaining, such as "this section is the map of that memory."
+- Commentary on the document or its readers, such as "Two readers need it."
+- Callbacks to the essay's own phrasing, such as "Section 1 called the records the memory of the whole effort."
+- Staccato rhetorical setups, such as "Two rules keep the map small enough to learn."
+
+*(Added 2026-09-26. The owner rejected the voice of a Part 3 draft; the characterization above is the agent's, accepted by the owner.)*
+
 ## Work one section at a time
 
 When asked to review a section, read its current text and assess how it advances the intended story. Identify what already works, where the explanation loses the reader, and what should change. Explain the reason for each substantive recommendation. Offer short sample passages when they make the proposed direction concrete.
