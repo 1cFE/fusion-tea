@@ -1,4 +1,4 @@
-# Candidate ledger: design-study-parameters, round 1
+# Candidate ledger: design-study-parameters, rounds 1–2
 
 Every operating point the study evaluated is a candidate; this ledger lists the ones the answer names and the classes the rest fall into. Identity `20260926-design-study-parameters:<candidate>`; every plotted point carries its case name and verdict set (`results/cases.json`). USD2004; no-credit convention unless stated. Inventory I-R unless stated.
 
@@ -20,4 +20,4 @@ Every operating point the study evaluated is a candidate; this ledger lists the 
 
 Classes: 52 passing I-R grid points; 44 heat-removal failures; 4 compressor-rating failures; 56 refused; 100 I-A failed selections; 72 sensitivity cases (51 passing).
 
-Return condition (round 2, `evidence/return-condition-check.md`): residual `T_comp_in − he_return` at the named candidates: starting point +48.8 K (bypass-equivalent 18.8 %), `ir-f2250-r1.5183` +0.7 K (0.3 %), `ir-f2750-r1.3750` +8.6 K (3.9 %), `ir-f3000-r1.3250` +8.9 K, `ir-f2500-r1.4500` +13.6 K (6.0 %), `ir-f2500-r1.4250` −0.5 K (returns too warm; heat removal already fails), `s6-hx75000-f2500-r1.4000` +3.0 K (1.4 %), `s6-hx75000-f2250-r1.5000` +10.2 K. Across the 52 passing I-R points the residual runs 0.4–125 K (median 41 K); the condition is not a declared check.
+Return condition (round 2, `evidence/return-condition-check.md`): residual `T_comp_in − he_return` at the named candidates: starting point +48.8 K (bypass-equivalent 18.8 %), `ir-f2250-r1.5183` +0.7 K (0.3 %), `ir-f2750-r1.3750` +8.6 K (3.9 %), `ir-f3000-r1.3250` +8.9 K, `ir-f2500-r1.4500` +13.6 K (6.0 %), `ir-f2500-r1.4250` −0.5 K (returns too warm; heat removal already fails), `s6-hx75000-f2500-r1.4000` +3.0 K (1.4 %), `s6-hx75000-f2250-r1.5000` +10.2 K. Across the 52 passing I-R grid points the residual runs 0.70–125.4 K (median 67.0 K); the condition is not a declared check.
