@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "source": "exploration/costed_loop_brayton/studies/study_route.py",
+      "target": "exploration/component_alternatives/studies/study_route.py",
+      "source_sha256": "0e09325918acf3a2d96c97eaf252bba4839a36785d1a1a9b806789afe7b4e2ef",
+      "target_sha256": "0a95f34031c2092edb6081db7c6790f02447bf1183d73198a6fb8947e9ed5e35",
+      "change": "Only package/route identifier and descriptive-name replacement; stock lifecycle behavior retained."
+    },
+    {
+      "source": "exploration/costed_loop_brayton/studies/execute_study.py",
+      "target": "exploration/component_alternatives/studies/execute_study.py",
+      "source_sha256": "a84c9a30a02b3fe1d019417a5dee97a8cdafe6b46357109c3b7d0f3002a66a96",
+      "target_sha256": "ee4f53cd669e520e9f67ec6dfeabdef061f1d638af9cd78d3aad930ae73b837f",
+      "change": "Only package/route identifier and descriptive-name replacement; stock lifecycle behavior retained."
+    }
+  ],
+  "verification": "Syntax compilation only; native package not built yet. No points executed.",
+  "metadata_control": {
+    "reference_package": "exploration/costed_loop_brayton/costed_loop_brayton_tea",
+    "entries": 165,
+    "constraints": 11,
+    "executable_identity": "exact against retained interface_data.py",
+    "semantic_identity": "exact against retained interface_data.py",
+    "entry_and_constraint_maps": "exact",
+    "method": "Read-only discover() compared with retained native metadata; no new package execution."
+  }
+}
