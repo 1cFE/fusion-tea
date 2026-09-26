@@ -1232,24 +1232,6 @@
       "value": 1e-09,
       "units": "kg/year",
       "basis": "As above."
-    },
-    {
-      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__he_hot_bound_margin",
-      "value": 1e-06,
-      "units": "K",
-      "basis": "Two temperatures of order 700 K fixed by the closure's root solve (native termination 1e-8 MW on the duty; the oracle's Brent root differs by about 3e-10 K) are subtracted to a margin that can be arbitrarily small near the bound, so a relative rule cannot pass it; 1e-6 K is a verification tolerance on a calculated temperature margin only, never permission to accept a physical constraint violation (the verdict is re-derived exactly from the operands). Declared after execution of study 20260926-design-study-parameters on the owner's ruling G-001 of 2026-09-26 (work/orchestration/goals/design-study-parameters/evidence/owner-ruling-g001.md), the one refusal being 5.3e-10 K absolute on a 0.363 K margin."
-    },
-    {
-      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
-      "value": 1e-06,
-      "units": "K",
-      "basis": "Two temperatures of order 700 K fixed by the closure's root solve (native termination 1e-8 MW on the duty; the oracle's Brent root differs by about 3e-10 K) are subtracted to a margin that can be arbitrarily small near the bound, so a relative rule cannot pass it; 1e-6 K is a verification tolerance on a calculated temperature margin only, never permission to accept a physical constraint violation (the verdict is re-derived exactly from the operands). Declared after execution of study 20260926-design-study-parameters on the owner's ruling G-001 of 2026-09-26 (work/orchestration/goals/design-study-parameters/evidence/owner-ruling-g001.md), the one refusal being 5.3e-10 K absolute on a 0.363 K margin."
-    },
-    {
-      "channel": "costed_loop_brayton__plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
-      "value": 1e-06,
-      "units": "K",
-      "basis": "Two temperatures of order 700 K fixed by the closure's root solve (native termination 1e-8 MW on the duty; the oracle's Brent root differs by about 3e-10 K) are subtracted to a margin that can be arbitrarily small near the bound, so a relative rule cannot pass it; 1e-6 K is a verification tolerance on a calculated temperature margin only, never permission to accept a physical constraint violation (the verdict is re-derived exactly from the operands). Declared after execution of study 20260926-design-study-parameters on the owner's ruling G-001 of 2026-09-26 (work/orchestration/goals/design-study-parameters/evidence/owner-ruling-g001.md), the one refusal being 5.3e-10 K absolute on a 0.363 K margin."
     }
   ]
 }

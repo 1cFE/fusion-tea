@@ -1,0 +1,17 @@
+{
+  "schema_version": "study-package-identity/v1",
+  "package": {
+    "name": "costed_loop_brayton_tea",
+    "path": "exploration/costed_loop_brayton/costed_loop_brayton_tea"
+  },
+  "identity": {
+    "kind": "sealed",
+    "recipe": "effective-executable-fingerprint/v1",
+    "sealed_executable_fingerprint": "a4c7a87136fe3ea373fb02a899ed8262a800a7443891db986411f00f26c8aeea",
+    "allowed_modified_files": [],
+    "adapter_sources": [],
+    "adapter_source_digest": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "digest": "a4c7a87136fe3ea373fb02a899ed8262a800a7443891db986411f00f26c8aeea"
+  },
+  "glue_ledger": []
+}

@@ -194,24 +194,3 @@ T-005 · `exploration/costed_loop_brayton/studies/20260926-design-study-paramete
 ### T-006 start — 2026-09-26
 
 T-006 · `exploration/costed_loop_brayton/studies/manifest.json` (class appended) · `…/20260926-design-study-parameters/{verification-manifest.json, snapshot.json, sealed-package.tar.gz, results/verification_summary.json, results/export-proof.json, results/sources/, record.md (addendum)}` · `evidence/{freeze-study.py, t006-verify.log}`. Coordinator executes directly.
-
-### T-006 return — 2026-09-26
-
-- **Outcome:** COMPLETE. The study is sealed.
-- **Native artifacts:** `exploration/costed_loop_brayton/studies/manifest.json` (three classes appended, pin unchanged); the record's `verification-manifest.json`, `results/verification_summary.json` (pass: 272 cases, 244 channels, 9 verdicts re-derived; sha256 `60f7c58b81a63ff7…`), `snapshot.json` (sha256 `d84c7dac…`, 409 hashed artifacts), `sealed-package.tar.gz`, `results/export-proof.json`, `results/sources/` (99 files), `record.md` addendum; goal `evidence/{freeze-study.py, t006-verify.log}`.
-- **Review:** none required beyond the ruling (a mechanical seal on a ruled class; the round-1 review covered the reading); coordinator check: the freeze script asserts the record manifest equals the executed one, the verification manifest equals it plus the appended classes only, the archive bytes are the committed package, every store row is completed.
-- **Reading:** the ruled class covered the one refusal and nothing else appeared, as the deposited comparison predicted; the worst remaining channel is the closure residual inside its class.
-- **Decision:** the class is declared as a verification tolerance with the owner's wording carried into the manifest basis; reserved gate (ruled); owner; `studies/manifest.json`, record addendum.
-
-### T-007 scope
-
-- **Objective:** answer the owner's direction 4: determine from the definitions and sources whether the assembly's source boundary deliberately permits the calculated helium return temperature or whether a required return condition is missing; if missing, check the leading cases against it from stored channels.
-- **Why now:** the owner requires it before closure; the study's return channel is stored for every case.
-- **Scope:** reads of `models/library/analyses/mfe_primary_loop.sysml`, the closure body, `models/designs/stellarator_09/stellarator_plant.sysml` (loop bindings and their sources), the Moscato source lines cited there, and the record's stored channels; one evidence artifact `evidence/return-condition-check.{py,json,md}`; no model, package or record change; no native run.
-- **Inputs:** `evidence/owner-ruling-g001.md` item 4; contract § 8 (d); the record's `results/cases.json`.
-- **Done when:** the boundary's status (deliberate or missing) is stated with its source, and every leading case carries its residual against the condition.
-- **Stop when:** the condition cannot be evaluated from stored channels (then a scoped native case set, as a further task).
-
-### T-007 start — 2026-09-26
-
-T-007 · `evidence/return-condition-check.{py,json,md}` · trail. Coordinator executes directly.
