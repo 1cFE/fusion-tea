@@ -1,5 +1,5 @@
 {
-  "entry_points": 163,
+  "entry_points": 165,
   "by_entry_type": {
     "design_attribute": [
       "costed_loop_brayton__plant__annual_om__selected_amount",
@@ -133,6 +133,8 @@
       "costed_loop_brayton__plant__rest_of_plant__price_factor",
       "costed_loop_brayton__plant__rest_of_plant__reference_cost",
       "costed_loop_brayton__plant__rest_of_plant__selected_quantity",
+      "costed_loop_brayton__plant__return_control__max_bypass",
+      "costed_loop_brayton__plant__return_control__tolerance",
       "costed_loop_brayton__plant__turbine_capacity__assumed_supported",
       "costed_loop_brayton__plant__turbine_capacity__demand_available",
       "costed_loop_brayton__plant__turbine_capacity__scenario_applicable",
@@ -169,5 +171,5 @@
       "costed_loop_brayton__plant__priced_equipment__evaluate__amount8_in"
     ]
   },
-  "derived_against_semantic_fingerprint": "76c68dde7a4de41987be07ecd3ac3bdf814c6ef1895f3ad8d2250275cf9bdee7"
+  "derived_against_semantic_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203"
 }

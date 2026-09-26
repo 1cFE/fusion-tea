@@ -203,6 +203,7 @@ SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
         "analyses/mfe_account_costs.sysml",
         "analyses/mfe_lcoe_dcf.sysml",
         "analyses/integrated_lifecycle_costs.sysml",
+        "analyses/loop_return_control.sysml",  # WI-095
         "designs/costed_loop_brayton/costed_loop_brayton.sysml",
     ),
 }

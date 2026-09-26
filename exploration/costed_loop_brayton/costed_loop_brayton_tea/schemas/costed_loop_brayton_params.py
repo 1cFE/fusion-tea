@@ -137,6 +137,8 @@ class CostedLoopBraytonParams(BaseModel):
     costed_loop_brayton__plant__rest_of_plant__price_factor: float = Field(default=1.0, description="Entry point: price_factor")
     costed_loop_brayton__plant__rest_of_plant__reference_cost: float = Field(default=2158230133.3333335, description="Entry point: reference_cost")
     costed_loop_brayton__plant__rest_of_plant__selected_quantity: float = Field(default=1.0, description="Entry point: selected_quantity")
+    costed_loop_brayton__plant__return_control__max_bypass: float = Field(default=1.0, description="Entry point: max_bypass")
+    costed_loop_brayton__plant__return_control__tolerance: float = Field(default=1e-06, description="Entry point: tolerance")
     costed_loop_brayton__plant__turbine_capacity__assumed_supported: bool = Field(default=1.0, description="Entry point: assumed_supported")
     costed_loop_brayton__plant__turbine_capacity__demand_available: bool = Field(default=1.0, description="Entry point: demand_available")
     costed_loop_brayton__plant__turbine_capacity__scenario_applicable: bool = Field(default=1.0, description="Entry point: scenario_applicable")

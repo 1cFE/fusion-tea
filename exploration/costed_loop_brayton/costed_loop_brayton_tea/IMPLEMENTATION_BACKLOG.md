@@ -9,7 +9,7 @@ Complete all stages in order for a production-ready system.
 
 **Objective**: Implement each calculation definition in its handwritten file.
 
-**Total**: 43 functions to implement
+**Total**: 44 functions to implement
 
 **Instructions for each function**:
 1. Open the SysML source file at the line number shown below
@@ -45,6 +45,7 @@ Complete all stages in order for a production-ready system.
 | [ ] | Fractional_Pressure_Loss | `run_fractional_pressure_loss` | `root-0/ideal_gas_brayton_components.sysml:52` | High |
 | [ ] | Network_Heat_Driven_Closure | `run_network_heat_driven_closure` | `root-0/integrated_heat_electricity.sysml:112` | High |
 | [ ] | Ideal_Gas_Expander | `run_ideal_gas_expander` | `root-0/ideal_gas_brayton_components.sysml:16` | High |
+| [ ] | Primary_Bypass_Control | `run_primary_bypass_control` | `root-0/loop_return_control.sysml:3` | High |
 | [ ] | Plant_Electrical_Balance | `run_plant_electrical_balance` | `root-0/integrated_heat_electricity.sysml:197` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
 | [ ] | Offered_Capacity_Screen | `run_offered_capacity_screen` | `root-0/mfe_viability.sysml:106` | High |
@@ -95,7 +96,7 @@ pytest tests/test_implementations_runnable.py -v
 All tests should pass (or pytest.skip for NotImplementedError stubs)
 
 **Test Coverage**:
-- 43 implementation functions
+- 44 implementation functions
 - Each function tested for: imports, signature, return type
 - Tests tolerate NotImplementedError (pass before implementation)
 - Tests verify return types (pass after implementation)
@@ -130,7 +131,7 @@ All tests should pass (or pytest.skip for NotImplementedError stubs)
 ## Completion Criteria
 
 The implementation is complete when:
-- Stage 1: All 43 functions implemented
+- Stage 1: All 44 functions implemented
 - Stage 2: All validations pass
 - Stage 3: Integration tests pass
 

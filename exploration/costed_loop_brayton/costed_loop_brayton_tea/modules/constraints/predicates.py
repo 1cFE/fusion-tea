@@ -75,6 +75,11 @@ def constraint_pred_definition_mfe_viability__offered_equipment_capacity(defined
     value = _and(_cmp('>=', defined_in, 1.0), _cmp('>=', margin_in, 0.0))
     return _PredicateBodyResult(actual_value=value, source_margin=None)
 
+# definition:loop_return_control::'Return Condition Held'
+def constraint_pred_definition_loop_return_control__return_condition_held(return_residual_magnitude_in, tolerance_in):
+    value = _cmp('<=', return_residual_magnitude_in, tolerance_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((tolerance_in - return_residual_magnitude_in)) if (_fin(return_residual_magnitude_in) and _fin(tolerance_in)) else None))
+
 # definition:mfe_viability::'Net Power Positive'
 def constraint_pred_definition_mfe_viability__net_power_positive(net_electric):
     value = _cmp('>', net_electric, 0.0)
@@ -84,6 +89,11 @@ def constraint_pred_definition_mfe_viability__net_power_positive(net_electric):
 def constraint_pred_definition_mfe_viability__loop_capacity(mdot_loop_in, mdot_loop_rated_in):
     value = _cmp('<=', mdot_loop_in, mdot_loop_rated_in)
     return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((mdot_loop_rated_in - mdot_loop_in)) if (_fin(mdot_loop_in) and _fin(mdot_loop_rated_in)) else None))
+
+# definition:loop_return_control::'Bypass Within Limit'
+def constraint_pred_definition_loop_return_control__bypass_within_limit(bypass_fraction_in, max_bypass_in):
+    value = _cmp('<=', bypass_fraction_in, max_bypass_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((max_bypass_in - bypass_fraction_in)) if (_fin(bypass_fraction_in) and _fin(max_bypass_in)) else None))
 
 # definition:integrated_heat_electricity::'Heat Removal Adequate'
 def constraint_pred_definition_integrated_heat_electricity__heat_removal_adequate(unmet_in, tolerance_in):

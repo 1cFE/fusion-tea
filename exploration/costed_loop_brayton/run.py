@@ -17,7 +17,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'costed_loop_brayton_tea'
-EVIDENCE = ROOT / 'work/active/WI-094_costed-loop-brayton/evidence'
+EVIDENCE = ROOT / 'work/active/WI-095_loop-return-control/evidence'  # WI-094's receipts stay under its own evidence directory
 P = 'costed_loop_brayton__plant__'
 RESELECTED = {P + 'compressor_capacity__selected_rating': 3200., P + 'turbine_capacity__selected_rating': 7000.,
               P + 'generator_capacity__selected_rating': 3600., P + 'rejection_capacity__selected_rating': 5000.,

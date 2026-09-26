@@ -19,6 +19,22 @@
         "usage_qualified_name": "costed_loop_brayton::plant::generator_capacity::capacity_ok"
       },
       {
+        "constraint_id": "costed_loop_brayton__plant__checks__return_condition_ok__53e3282ac7398a73",
+        "declaration_id": "1aebb0e5-9b4e-5514-9962-ae1b398a0f5c",
+        "definition_qualified_name": "loop_return_control::'Return Condition Held'",
+        "evaluation_channel": "costed_loop_brayton__plant__checks__return_condition_ok__53e3282ac7398a73__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "costed_loop_brayton__plant__checks",
+        "owner_qualified_name": "costed_loop_brayton::plant::checks",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"return_residual_magnitude_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"return_residual_magnitude_in\",\"qualified_name\":\"loop_return_control::'Return Condition Held'::return_residual_magnitude_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"loop_return_control::'Return Condition Held'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:loop_return_control::'Return Condition Held'",
+        "source_form": "definition_typed",
+        "source_local_identity": "return_condition_ok",
+        "usage_qualified_name": "costed_loop_brayton::plant::checks::return_condition_ok"
+      },
+      {
         "constraint_id": "costed_loop_brayton__plant__checks__net_positive__987a4d032b5440a8",
         "declaration_id": "4af45149-1cb4-52f8-a061-0ecf223795a7",
         "definition_qualified_name": "mfe_viability::'Net Power Positive'",
@@ -49,6 +65,22 @@
         "source_form": "definition_typed",
         "source_local_identity": "loop_capacity_ok",
         "usage_qualified_name": "costed_loop_brayton::plant::checks::loop_capacity_ok"
+      },
+      {
+        "constraint_id": "costed_loop_brayton__plant__checks__bypass_within_limit__b98df08f1f21c757",
+        "declaration_id": "692288a5-d879-5a73-a7db-282240b7967a",
+        "definition_qualified_name": "loop_return_control::'Bypass Within Limit'",
+        "evaluation_channel": "costed_loop_brayton__plant__checks__bypass_within_limit__b98df08f1f21c757__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "costed_loop_brayton__plant__checks",
+        "owner_qualified_name": "costed_loop_brayton::plant::checks",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"bypass_fraction_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"bypass_fraction_in\",\"qualified_name\":\"loop_return_control::'Bypass Within Limit'::bypass_fraction_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"max_bypass_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"max_bypass_in\",\"qualified_name\":\"loop_return_control::'Bypass Within Limit'::max_bypass_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:loop_return_control::'Bypass Within Limit'",
+        "source_form": "definition_typed",
+        "source_local_identity": "bypass_within_limit",
+        "usage_qualified_name": "costed_loop_brayton::plant::checks::bypass_within_limit"
       },
       {
         "constraint_id": "costed_loop_brayton__plant__checks__heat_removal_ok__177997e14a28cae1",
@@ -148,13 +180,27 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "c909808a62e399a8bba73a66712e2e314f8673023f26632729a6478313488d4d",
+    "fingerprint": "72eba41f0a5bee110a12ccc7e0514f521cf86f834297932eb17da3f07db9a2a1",
     "source_records": [
       {
         "definition_qualified_name": "integrated_heat_electricity::'Heat Removal Adequate'",
         "formal_names": [
           "tolerance_in",
           "unmet_in"
+        ]
+      },
+      {
+        "definition_qualified_name": "loop_return_control::'Bypass Within Limit'",
+        "formal_names": [
+          "bypass_fraction_in",
+          "max_bypass_in"
+        ]
+      },
+      {
+        "definition_qualified_name": "loop_return_control::'Return Condition Held'",
+        "formal_names": [
+          "return_residual_magnitude_in",
+          "tolerance_in"
         ]
       },
       {
@@ -179,6 +225,24 @@
       }
     ],
     "usage_records": [
+      {
+        "declaration_id": "1aebb0e5-9b4e-5514-9962-ae1b398a0f5c",
+        "definition_qualified_name": "loop_return_control::'Return Condition Held'",
+        "disposition_detail": "costed_loop_brayton::plant::checks::return_condition_ok profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "costed_loop_brayton::plant::checks",
+        "source_form": "definition_typed",
+        "source_local_identity": "return_condition_ok",
+        "usage_qualified_name": "costed_loop_brayton::plant::checks::return_condition_ok"
+      },
       {
         "declaration_id": "4af45149-1cb4-52f8-a061-0ecf223795a7",
         "definition_qualified_name": "mfe_viability::'Net Power Positive'",
@@ -214,6 +278,24 @@
         "source_form": "definition_typed",
         "source_local_identity": "loop_capacity_ok",
         "usage_qualified_name": "costed_loop_brayton::plant::checks::loop_capacity_ok"
+      },
+      {
+        "declaration_id": "692288a5-d879-5a73-a7db-282240b7967a",
+        "definition_qualified_name": "loop_return_control::'Bypass Within Limit'",
+        "disposition_detail": "costed_loop_brayton::plant::checks::bypass_within_limit profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "costed_loop_brayton::plant::checks",
+        "source_form": "definition_typed",
+        "source_local_identity": "bypass_within_limit",
+        "usage_qualified_name": "costed_loop_brayton::plant::checks::bypass_within_limit"
       },
       {
         "declaration_id": "6df1f297-c4ed-5d21-8a68-dfd88a5d9da6",
@@ -888,6 +970,61 @@
     {
       "channel_name": "costed_loop_brayton__plant__turbine__evaluate__temperature_out",
       "field_name": "temperature_out",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__capability_at_solution",
+      "field_name": "capability_at_solution",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__return_residual",
+      "field_name": "return_residual",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__exchanger_primary_flow",
+      "field_name": "exchanger_primary_flow",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__ntu_at_solution",
+      "field_name": "ntu_at_solution",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__exchanger_return",
+      "field_name": "exchanger_return",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__feasible",
+      "field_name": "feasible",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__effectiveness_at_solution",
+      "field_name": "effectiveness_at_solution",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__return_residual_magnitude",
+      "field_name": "return_residual_magnitude",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__bypass_fraction",
+      "field_name": "bypass_fraction",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__mixed_return",
+      "field_name": "mixed_return",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__return_control__evaluate__capability_open",
+      "field_name": "capability_open",
       "python_type": "float"
     },
     {
@@ -1666,12 +1803,22 @@
       "python_type": "ConstraintEvaluation"
     },
     {
+      "channel_name": "costed_loop_brayton__plant__checks__return_condition_ok__53e3282ac7398a73__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
       "channel_name": "costed_loop_brayton__plant__checks__net_positive__987a4d032b5440a8__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
     {
       "channel_name": "costed_loop_brayton__plant__checks__loop_capacity_ok__9c561de0cd1f50b3__evaluation",
+      "field_name": "evaluation",
+      "python_type": "ConstraintEvaluation"
+    },
+    {
+      "channel_name": "costed_loop_brayton__plant__checks__bypass_within_limit__b98df08f1f21c757__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -2633,6 +2780,20 @@
       "default_value": 1.0,
       "entry_type": "design_attribute",
       "param_group": "costed_loop_brayton_params",
+      "python_type": "float",
+      "qualified_name": "costed_loop_brayton__plant__return_control__max_bypass"
+    },
+    {
+      "default_value": 1e-06,
+      "entry_type": "design_attribute",
+      "param_group": "costed_loop_brayton_params",
+      "python_type": "float",
+      "qualified_name": "costed_loop_brayton__plant__return_control__tolerance"
+    },
+    {
+      "default_value": 1.0,
+      "entry_type": "design_attribute",
+      "param_group": "costed_loop_brayton_params",
       "python_type": "bool",
       "qualified_name": "costed_loop_brayton__plant__turbine_capacity__assumed_supported"
     },
@@ -2854,5 +3015,5 @@
       "qualified_name": "costed_loop_brayton__plant__fuel_inventory__screen__demand_available_in"
     }
   ],
-  "semantic_fingerprint": "76c68dde7a4de41987be07ecd3ac3bdf814c6ef1895f3ad8d2250275cf9bdee7"
+  "semantic_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203"
 }

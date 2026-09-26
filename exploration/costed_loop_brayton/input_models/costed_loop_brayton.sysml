@@ -12,6 +12,7 @@ package costed_loop_brayton {
     */
     private import ScalarValues::*;
     private import mfe_primary_loop::*;
+    private import loop_return_control::*;
     private import integrated_heat_electricity::*;
     private import integrated_equipment_costs::*;
     private import ideal_gas_brayton_components::*;
@@ -67,6 +68,7 @@ package costed_loop_brayton {
             attribute mdot : Real = evaluate.mdot;
             attribute T_out : Real = evaluate.T_out;
             attribute mdot_loop : Real = evaluate.mdot_loop;
+            attribute T_comp_in : Real = evaluate.T_comp_in;
             attribute dp_loop : Real = evaluate.dp_loop;
             attribute p_elec : Real = evaluate.p_elec;
             attribute q_ihx : Real = evaluate.q_ihx;
@@ -257,6 +259,7 @@ package costed_loop_brayton {
             attribute he_return : Real = evaluate.he_return;
             attribute he_state_defined : Real = evaluate.he_state_defined;
             attribute he_hot_bound_margin : Real = evaluate.he_hot_bound_margin;
+            attribute he_secondary_in : Real = evaluate.he_secondary_in;
             attribute pbli_transferred : Real = evaluate.pbli_transferred;
             attribute divertor_transferred : Real = evaluate.divertor_transferred;
             attribute pbli_state_defined : Real = evaluate.pbli_state_defined;
@@ -460,6 +463,41 @@ package costed_loop_brayton {
                 in mdot_loop_in = primary_loop.mdot_loop;
                 in mdot_loop_rated_in = primary_loop.mdot_loop_rated;
             }
+            assert constraint return_condition_ok : 'Return Condition Held' {
+                in return_residual_magnitude_in = return_control.return_residual_magnitude;
+                in tolerance_in = return_control.tolerance;
+            }
+            assert constraint bypass_within_limit : 'Bypass Within Limit' {
+                in bypass_fraction_in = return_control.bypass_fraction;
+                in max_bypass_in = return_control.max_bypass;
+            }
+        }
+        part return_control {
+            doc /* 'Primary Bypass Control' on the helium stage: the fraction of loop flow bypassing the exchanger so that the exchanger, at the loop's delivery temperature and reduced flow, transfers the whole delivered duty and the mixed return equals the loop's T_comp_in (WI-095). max_bypass [ASSUMED: 1.0, no design limit declared; the owner's to set]; tolerance [ASSUMED: 1e-6 K, the root-solve closure, not a physical allowance]. **Basis**: work/active/WI-095_loop-return-control/design.md section 4. */
+            attribute max_bypass : Real = 1.0;
+            attribute tolerance : Real = 1e-6;
+            calc evaluate : 'Primary Bypass Control' {
+                in ua_in = he_hx.ua;
+                in primary_flow_in = primary_loop.mdot;
+                in primary_cp_in = heat_exchangers.he_cp;
+                in secondary_flow_in = cycle.selected_flow;
+                in secondary_cp_in = cycle.cp;
+                in primary_limit_in = primary_loop.T_out;
+                in secondary_inlet_in = heat_exchangers.he_secondary_in;
+                in duty_in = primary_loop.q_ihx;
+                in required_return_in = primary_loop.T_comp_in;
+                in max_bypass_in = max_bypass;
+                in tolerance_in = tolerance;
+            }
+            attribute bypass_fraction : Real = evaluate.bypass_fraction;
+            attribute feasible : Real = evaluate.feasible;
+            attribute capability_open : Real = evaluate.capability_open;
+            attribute capability_at_solution : Real = evaluate.capability_at_solution;
+            attribute exchanger_primary_flow : Real = evaluate.exchanger_primary_flow;
+            attribute exchanger_return : Real = evaluate.exchanger_return;
+            attribute mixed_return : Real = evaluate.mixed_return;
+            attribute return_residual : Real = evaluate.return_residual;
+            attribute return_residual_magnitude : Real = evaluate.return_residual_magnitude;
         }
         part fusion_source {
             doc /* The fusion power whose blanket heat is supplied above; held equal across every point; it feeds only the fuel chain. **Basis**: [INHERITED: Stellaris baseline plasma p_fus 2652.563 MW, the power behind blanket__source_heat__q_source]. */

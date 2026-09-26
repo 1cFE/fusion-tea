@@ -2,7 +2,7 @@
 
 AUTO_IMPLEMENTED = True
 
-SysML Source: root-0/costed_loop_brayton.sysml:434
+SysML Source: root-0/costed_loop_brayton.sysml:437
 
 SysML Expressions:
 """
@@ -15,7 +15,7 @@ from costed_loop_brayton_tea.modules.costed_loop_brayton.plant.rejection_capacit
 def run_rejected_heat(inputs: rejected_heatInput) -> float:
     """Execute rejected_heat calculation.
 
-SysML Source: root-0/costed_loop_brayton.sysml:434
+SysML Source: root-0/costed_loop_brayton.sysml:437
 
 Args:
     inputs: Input parameters validated against rejected_heatInput schema

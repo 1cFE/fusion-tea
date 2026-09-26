@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'costed_loop_brayton_tea'
-EVIDENCE = ROOT / 'work/active/WI-094_costed-loop-brayton/evidence'
+EVIDENCE = ROOT / 'work/active/WI-095_loop-return-control/evidence'  # WI-094's receipts stay under its own evidence directory
 LIBRARY = [
     'models/library/analyses/mfe_primary_loop.sysml', 'models/library/analyses/mfe_viability.sysml',
     'models/library/analyses/integrated_heat_electricity.sysml', 'models/library/analyses/ideal_gas_brayton_components.sysml',
@@ -26,6 +26,7 @@ LIBRARY = [
     'models/library/foundation/costed_component.sysml', 'models/library/analyses/mfe_fuel_cycle.sysml',
     'models/library/analyses/mfe_account_costs.sysml', 'models/library/analyses/mfe_lcoe_dcf.sysml',
     'models/library/analyses/integrated_lifecycle_costs.sysml',
+    'models/library/analyses/loop_return_control.sysml',  # WI-095
 ]
 DESIGNS = ['models/designs/costed_loop_brayton/costed_loop_brayton.sysml']
 SOURCES = [ROOT / p for p in LIBRARY + DESIGNS]
@@ -60,6 +61,7 @@ BODIES = [
     (ARIES, 'integrated_equipment_costs/replacement_events_impl.py', 'aries_integrated'),
     (ARIES, 'integrated_equipment_costs/scaled_amount_impl.py', 'aries_integrated'),
     (ARIES, 'integrated_lifecycle_costs/lifecycle_cashflow_accounts_impl.py', 'aries_integrated'),
+    (HERE / 'bodies', 'loop_return_control/primary_bypass_control_impl.py', 'costed_loop_brayton_tea'),  # WI-095, this package's own reviewed body
 ]
 NAME = 'costed_loop_brayton_tea'
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()

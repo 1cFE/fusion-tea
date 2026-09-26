@@ -15,22 +15,24 @@ from costed_loop_brayton_tea.schemas.constraint_types import (
     CoverageAccount,
 )
 
-EXPECTED_IDS = ('costed_loop_brayton_plant_generator_capacity_capacity_ok_866bb648afde20fc', 'costed_loop_brayton_plant_checks_net_positive_987a4d032b5440a8', 'costed_loop_brayton_plant_checks_loop_capacity_ok_9c561de0cd1f50b3', 'costed_loop_brayton_plant_checks_heat_removal_ok_177997e14a28cae1', 'costed_loop_brayton_plant_turbine_capacity_capacity_ok_583bf29eadcd21ed', 'costed_loop_brayton_plant_rejection_capacity_capacity_ok_839b61a7b3fe128c', 'costed_loop_brayton_plant_he_capacity_capacity_ok_5bc3ff690032908b', 'costed_loop_brayton_plant_compressor_capacity_capacity_ok_6e46ae5b5c0061be', 'costed_loop_brayton_plant_fuel_inventory_capacity_ok_9d250853407ea035')
+EXPECTED_IDS = ('costed_loop_brayton_plant_generator_capacity_capacity_ok_866bb648afde20fc', 'costed_loop_brayton_plant_checks_return_condition_ok_53e3282ac7398a73', 'costed_loop_brayton_plant_checks_net_positive_987a4d032b5440a8', 'costed_loop_brayton_plant_checks_loop_capacity_ok_9c561de0cd1f50b3', 'costed_loop_brayton_plant_checks_bypass_within_limit_b98df08f1f21c757', 'costed_loop_brayton_plant_checks_heat_removal_ok_177997e14a28cae1', 'costed_loop_brayton_plant_turbine_capacity_capacity_ok_583bf29eadcd21ed', 'costed_loop_brayton_plant_rejection_capacity_capacity_ok_839b61a7b3fe128c', 'costed_loop_brayton_plant_he_capacity_capacity_ok_5bc3ff690032908b', 'costed_loop_brayton_plant_compressor_capacity_capacity_ok_6e46ae5b5c0061be', 'costed_loop_brayton_plant_fuel_inventory_capacity_ok_9d250853407ea035')
 
 #: The coverage account, derived at generation from the sealed catalog by
 #: `generation/coverage.py::coverage_account` and baked here exactly the way
 #: CATALOG_FINGERPRINT and EXPECTED_IDS are. Which gates are applicable and which were
 #: assessed depends on the model, never on this candidate's input values, so recomputing it
 #: per evaluation would recompute a constant.
-COVERAGE = {'authored_usage_total': 9, 'applicable_gate_total': 9, 'assessed_gate_count': 9, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
+COVERAGE = {'authored_usage_total': 11, 'applicable_gate_total': 11, 'assessed_gate_count': 11, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
 
 
 class ConstraintReportAggregatorInput(BaseModel):
     model_config = {"extra": "forbid"}
 
     costed_loop_brayton_plant_generator_capacity_capacity_ok_866bb648afde20fc: ConstraintEvaluation
+    costed_loop_brayton_plant_checks_return_condition_ok_53e3282ac7398a73: ConstraintEvaluation
     costed_loop_brayton_plant_checks_net_positive_987a4d032b5440a8: ConstraintEvaluation
     costed_loop_brayton_plant_checks_loop_capacity_ok_9c561de0cd1f50b3: ConstraintEvaluation
+    costed_loop_brayton_plant_checks_bypass_within_limit_b98df08f1f21c757: ConstraintEvaluation
     costed_loop_brayton_plant_checks_heat_removal_ok_177997e14a28cae1: ConstraintEvaluation
     costed_loop_brayton_plant_turbine_capacity_capacity_ok_583bf29eadcd21ed: ConstraintEvaluation
     costed_loop_brayton_plant_rejection_capacity_capacity_ok_839b61a7b3fe128c: ConstraintEvaluation
@@ -49,7 +51,7 @@ class ConstraintReportAggregatorModule(
     name: str = "constraint_report_aggregator"
     version: str = "v0.1"
 
-    CATALOG_FINGERPRINT = "c909808a62e399a8bba73a66712e2e314f8673023f26632729a6478313488d4d"
+    CATALOG_FINGERPRINT = "72eba41f0a5bee110a12ccc7e0514f521cf86f834297932eb17da3f07db9a2a1"
 
     def run(self, **evaluations) -> ModuleResult[ConstraintReportAggregatorOutput]:
         validated = ConstraintReportAggregatorInput(**evaluations)

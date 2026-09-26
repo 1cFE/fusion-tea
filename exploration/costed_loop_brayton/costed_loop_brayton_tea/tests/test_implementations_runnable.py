@@ -8,7 +8,7 @@ Tests verify that handwritten implementation functions:
 4. Tolerate NotImplementedError (before agent implements)
 5. Validate return types (after agent implements)
 
-Generated from 48 calculation definitions.
+Generated from 49 calculation definitions.
 """
 
 import importlib
@@ -869,6 +869,48 @@ class TestIdeal_Gas_ExpanderRunnable:
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
             assert len(result) == 3, f"Expected 3 outputs"
+            assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
+
+        except NotImplementedError:
+            # Expected for stencils - test passes
+            pass
+
+class TestPrimary_Bypass_ControlRunnable:
+    """Verify primary_bypass_control implementation runs without error.
+
+    SysML Source: root-0/loop_return_control.sysml:3
+    """
+
+    def test_import_and_run(self):
+        """Test that run_primary_bypass_control can be imported and called."""
+        # Import implementation module (ADR-003: namespaced path)
+        impl = importlib.import_module("costed_loop_brayton_tea.handwritten.loop_return_control.primary_bypass_control_impl")
+        func = getattr(impl, "run_primary_bypass_control")
+
+        # Import module wrapper for Input schema (ADR-003: namespaced path)
+        module = importlib.import_module("costed_loop_brayton_tea.modules.loop_return_control.primary_bypass_control")
+
+        # Find Input class
+        input_class = None
+        for attr_name in dir(module):
+            if attr_name.endswith("Input") and not attr_name.startswith("_"):
+                candidate = getattr(module, attr_name)
+                if isinstance(candidate, type) and issubclass(candidate, BaseModel):
+                    input_class = candidate
+                    break
+
+        assert input_class is not None, "No Input class found in module"
+
+        # Create dummy input
+        dummy_input = create_dummy_input(input_class)
+
+        # Call function - expect NotImplementedError or valid return
+        try:
+            result = func(dummy_input)
+
+            # If implemented, verify return type
+            assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
+            assert len(result) == 11, f"Expected 11 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:

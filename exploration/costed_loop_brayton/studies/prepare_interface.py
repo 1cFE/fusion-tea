@@ -39,6 +39,18 @@ ABSOLUTE_TOLERANCES = [
     {'channel': P + 'lifecycle_accounts__evaluate__external_shortfall', 'value': 1e-09, 'units': 'kg/year', 'basis': 'As above.'},
     {'channel': P + 'fuel_inventory__annual__annual_external', 'value': 1e-09, 'units': 'kg/year', 'basis': 'As above.'},
     {'channel': P + 'fuel_inventory__annual__annual_recovery', 'value': 1e-09, 'units': 'kg/year', 'basis': 'As above.'},
+    # Owner ruling G-001 (2026-09-26): a verification tolerance on calculated temperature margins, never permission to accept a
+    # physical constraint violation (work/orchestration/goals/design-study-parameters/evidence/owner-ruling-g001.md).
+    {'channel': P + 'heat_exchangers__evaluate__he_hot_bound_margin', 'value': 1e-06, 'units': 'K',
+     'basis': 'Two temperatures of order 700 K fixed by the closure root solve (1e-8 MW; the oracle root differs by about 3e-10 K) subtracted to a margin that can be arbitrarily small near the bound; owner ruling G-001; a verification tolerance only, the verdict is re-derived exactly from the operands.'},
+    {'channel': P + 'heat_exchangers__evaluate__pbli_hot_bound_margin', 'value': 1e-06, 'units': 'K', 'basis': 'As above (G-001).'},
+    {'channel': P + 'heat_exchangers__evaluate__divertor_hot_bound_margin', 'value': 1e-06, 'units': 'K', 'basis': 'As above (G-001).'},
+    # WI-095 'Primary Bypass Control': declared before any study on the new identity executes.
+    {'channel': P + 'return_control__evaluate__bypass_fraction', 'value': 1e-09, 'units': '1',
+     'basis': 'The bypass fraction is a bisection root to |capability - duty| <= 1e-9 MW; two independent solves (package and oracle) agree to about 1e-12 in f, but a relative rule cannot pass a root near zero (the f = 0 family targets 1e-6); an absolute class at the solve resolution, declared before execution.'},
+    {'channel': P + 'return_control__evaluate__return_residual', 'value': 1e-08, 'units': 'K',
+     'basis': 'The root-solve closure (duty - capability(f)) / C_h, of order 1e-11 K when feasible (two solves within 1e-9 MW each give at most about 1e-10 K difference); a numerical class two orders below the check tolerance 1e-6 K, declared before execution; infeasible cases carry a physical deficit far above it and are compared relatively.'},
+    {'channel': P + 'return_control__evaluate__return_residual_magnitude', 'value': 1e-08, 'units': 'K', 'basis': 'As above.'},
 ]
 
 

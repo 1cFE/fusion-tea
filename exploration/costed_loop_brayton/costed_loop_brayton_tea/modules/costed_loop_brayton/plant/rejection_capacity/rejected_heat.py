@@ -10,9 +10,9 @@ Inputs:
 Outputs:
     - rejected_heat: rejected_heat result
 
-SysML Source: root-0/costed_loop_brayton.sysml:434
+SysML Source: root-0/costed_loop_brayton.sysml:437
 
-SysML Source: root-0/costed_loop_brayton.sysml:434
+SysML Source: root-0/costed_loop_brayton.sysml:437
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/costed_loop_brayton/plant/rejection_capacity/rejected_heat_impl.py
@@ -48,9 +48,9 @@ Inputs:
 Outputs:
     - rejected_heat: rejected_heat result
 
-SysML Source: root-0/costed_loop_brayton.sysml:434
+SysML Source: root-0/costed_loop_brayton.sysml:437
 
-    SysML Source: root-0/costed_loop_brayton.sysml:434
+    SysML Source: root-0/costed_loop_brayton.sysml:437
 
     Calculation Specification:
 
