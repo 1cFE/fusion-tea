@@ -154,3 +154,16 @@ T-004 · modeling PM `pm add-item` → `work/active/WI-093_combination-assemblie
 - **Not done:** no model file, package or generation (by scope). C-3 stays deferred with its reason in design § 1.
 - **Evidence:** `evidence/design-review.md`; design `Updated: 2026-09-26` header names the review.
 - **Next:** T-005, implementation of WI-093 per the design: the four design files, `exploration/combinations/{build,run,verify}.py`, registration, build to a fixed point and snapshot, the named cases, verification, preservation check, fresh implementation review.
+
+### T-005 scope
+
+- **Objective:** implement WI-093 as designed: the four design files under `models/designs/combinations/`, the build, run and verify scripts under `exploration/combinations/`, the generated `combinations_tea` package at a fixed point with its snapshot, the named cases executed with receipts, the identities verified, the preservation manifest checked, a fresh implementation review, and the work item's report.
+- **Why now:** the design is reviewed (T-004, FINDINGS applied, no owner gate); the goal's answer contract (3) and (4) need executed evidence per assembly.
+- **Scope:** new files only under `models/designs/combinations/`, `exploration/combinations/`, `work/active/WI-093_combination-assemblies/`, and one collection entry in `tests/model_families.py`; the review brief and return under this goal's `evidence/`. No library file, completion body, live package or live assembly changes; the build copies bodies with the import prefix rewritten and asserts the prefix-only difference.
+- **Inputs:** `work/active/WI-093_combination-assemblies/{spec,design}.md`; `evidence/design-review.md`; `models/designs/aries_cs_integrated/plant.sysml` (binding blocks reproduced in C-2); `models/designs/stellarator_09/stellarator_plant.sysml:895-1030, 1226-1321` and `work/analysis/model-evaluation-diagnostics/baseline.json` (inherited Stellaris values); `exploration/aries_transfer/nominal_brayton/build.py`, `exploration/aries_integrated/{run,verify}.py` (patterns); `tests/model_families.py`; `evidence/build-preservation-manifest.py`, `check-preservation.py`.
+- **Done when:** the package builds to a fixed point from the staged sources with every copied body prefix-only; every named case has a receipt (evaluated with its constraint report, or refused with the body's message); the identities in design § 8 pass on every evaluated case; the preservation check passes; the fresh implementation review returns PASS or FINDINGS applied; `report.md` records per assembly executes / checks satisfied / new behavior needed.
+- **Stop when:** an assembly needs a definition or body change to execute (record it as new behavior, shrink the increment, continue with the rest); the generator refuses the multi-package tree after two mechanical retries (prerequisite naming the seam); the review finds an MR-7 violation re-selection cannot remove (owner gate).
+
+### T-005 start — 2026-09-26
+
+T-005 · `models/designs/combinations/*.sysml` · `exploration/combinations/{build,run,verify}.py` + `combinations_tea/` · `tests/model_families.py` (one entry) · `work/active/WI-093_combination-assemblies/{evidence/,report.md}` · `evidence/implementation-review-brief.md`, `evidence/implementation-review.md`. Coordinator executes directly; fresh reviewer for the implementation.

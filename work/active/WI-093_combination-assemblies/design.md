@@ -84,3 +84,14 @@ C-1: loop mdot = q_source / (cp × dT); q_ihx = q_source + w_fluid with q_recove
 2. Is any quantity assigned a role that hides a sizing rule (MR-7), including the idle-stage dummies and the re-selected ratings?
 3. Is every inherited value traceable to the cited line or baseline channel, with the grade right?
 4. Does C-1's reading of "the same definitions with different partners" hold, i.e. is anything here a new relationship in disguise?
+
+## 11. Implementation deviations (recorded at T-005, 2026-09-26)
+
+Each is a mechanical change forced by the generator or the parser, none changes a binding, value, role or definition:
+
+- **One root part per assembly.** The generator renders output aliases by part path without the package qualifier (`sysml_codegen/elaboration/project.py`, `_build_output_aliases`), so two packages sharing part names (C-1 and C-2 both have `cycle`, `compressor_capacity`, …) collided (`SI_RENDERING_COLLISION`). Each package now wraps its parts in one root part (`loop_brayton`, `plasma_chain`, `lumped_fit`, `circulator_purchase`), the Stellaris nesting shape; entry keys read `<package>__<root>__<part>__<attribute>`.
+- **Three names.** `loop` and `flow` are SysML keywords: the C-1 part is `primary_loop` and the idle-stage dummy flow is `dummy_flow`. The expression-module class name is derived from the grandparent path, so identical expression attributes in two packages collided (`REGISTRY_CLASS_NAME_COLLISION`): C-1's rejection expression is `rejected_heat`; C-2 keeps `cycle_rejection`.
+- **Prefix rewrite, second form.** The two shared helpers (`integrated_heat_electricity/common.py`, `integrated_equipment_costs/common.py`) build the schema module path as a string literal for `importlib`; the build rewrites `'aries_integrated.` as well as `from aries_integrated.`, and asserts the reverse rewrite reproduces the source byte for byte. No typed adapter was needed (0 of 21).
+- **Eleven screens in C-2, not eight.** The ARIES pump parts reproduced "as ARIES" carry their own flow screens (`he_pump`, `pbli_pump`, `divertor_pump`, rating = selected flow capacity, demand = the chosen stage flow), so C-2 asserts 13 constraints (11 capacity screens, heat removal, net power); C-1 asserts 8 (5 screens, heat removal, net power, loop capacity); C-4 three; C-5 one; 25 per case.
+- **Receipts.** Each case's `result.json` carries the effective inputs, every output and the constraint report; the pipeline's per-channel output tree is regenerable and pruned after each case.
+- **Scoped validation.** `agentic-mbse validate --complete` on the staged sources passes four checks and fails the same two static level-6 checks the ARIES package fails, with the same issue class ("derived expression references design attributes" on cross-part bindings); both logs are in `evidence/`. This is the documented static limitation, not a defect of the assemblies.

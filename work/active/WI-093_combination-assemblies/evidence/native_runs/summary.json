@@ -1,0 +1,414 @@
+{
+  "fingerprint": "7801685969252013bd343400dc5a63a593d3da612a295e210b92a46ca9363268",
+  "cases": [
+    {
+      "case": "baseline",
+      "assemblies_changed": [],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "checks__heat_removal_ok__e3aa56b0160f3e08"
+          ],
+          "n_satisfied": 12,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "rejection_capacity__capacity_ok__f641e3674fbef65a",
+            "he_capacity__capacity_ok__5a310602c6faa347",
+            "compressor_capacity__capacity_ok__cb22fc3ae07b48e1"
+          ],
+          "n_satisfied": 5,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c1-aries-ratios-reselected-ratings",
+      "assemblies_changed": [
+        "C-1"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "checks__heat_removal_ok__e3aa56b0160f3e08"
+          ],
+          "n_satisfied": 12,
+          "other": []
+        },
+        "C-1": {
+          "violated": [],
+          "n_satisfied": 8,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c1-ratio1.35-reselected-ratings",
+      "assemblies_changed": [
+        "C-1"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "checks__heat_removal_ok__e3aa56b0160f3e08"
+          ],
+          "n_satisfied": 12,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "checks__heat_removal_ok__c7a2f9638fd1e56b"
+          ],
+          "n_satisfied": 7,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c1-flow1400-aries-ratings",
+      "assemblies_changed": [
+        "C-1"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "checks__heat_removal_ok__e3aa56b0160f3e08"
+          ],
+          "n_satisfied": 12,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "checks__heat_removal_ok__c7a2f9638fd1e56b",
+            "he_capacity__capacity_ok__5a310602c6faa347"
+          ],
+          "n_satisfied": 6,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c1-flow4000-reselected-ratings",
+      "assemblies_changed": [
+        "C-1"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "checks__heat_removal_ok__e3aa56b0160f3e08"
+          ],
+          "n_satisfied": 12,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "checks__net_positive__d22e3a3d83be3d66",
+            "compressor_capacity__capacity_ok__cb22fc3ae07b48e1"
+          ],
+          "n_satisfied": 6,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c2-stellaris-plasma-alternative-hardware",
+      "assemblies_changed": [
+        "C-2"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "checks__heat_removal_ok__e3aa56b0160f3e08"
+          ],
+          "n_satisfied": 12,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "rejection_capacity__capacity_ok__f641e3674fbef65a",
+            "he_capacity__capacity_ok__5a310602c6faa347",
+            "compressor_capacity__capacity_ok__cb22fc3ae07b48e1"
+          ],
+          "n_satisfied": 5,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c2-ne0-4.2e20",
+      "assemblies_changed": [
+        "C-2"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [],
+          "n_satisfied": 13,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "rejection_capacity__capacity_ok__f641e3674fbef65a",
+            "he_capacity__capacity_ok__5a310602c6faa347",
+            "compressor_capacity__capacity_ok__cb22fc3ae07b48e1"
+          ],
+          "n_satisfied": 5,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c2-peaked-profile",
+      "assemblies_changed": [
+        "C-2"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [],
+          "n_satisfied": 13,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "rejection_capacity__capacity_ok__f641e3674fbef65a",
+            "he_capacity__capacity_ok__5a310602c6faa347",
+            "compressor_capacity__capacity_ok__cb22fc3ae07b48e1"
+          ],
+          "n_satisfied": 5,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c2-flat-temperature",
+      "assemblies_changed": [
+        "C-2"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "he_capacity__capacity_ok__d2b59d407f4559fd",
+            "checks__heat_removal_ok__e3aa56b0160f3e08",
+            "pbli_capacity__capacity_ok__16d446380d5ebc09",
+            "fuel_capacity__capacity_ok__5c625963d8a8bf70"
+          ],
+          "n_satisfied": 9,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "rejection_capacity__capacity_ok__f641e3674fbef65a",
+            "he_capacity__capacity_ok__5a310602c6faa347",
+            "compressor_capacity__capacity_ok__cb22fc3ae07b48e1"
+          ],
+          "n_satisfied": 5,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c5-rating-5",
+      "assemblies_changed": [
+        "C-5"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [
+            "circulator_capacity__capacity_ok__4ffbb5ea99182b98"
+          ],
+          "n_satisfied": 0,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "checks__heat_removal_ok__e3aa56b0160f3e08"
+          ],
+          "n_satisfied": 12,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "rejection_capacity__capacity_ok__f641e3674fbef65a",
+            "he_capacity__capacity_ok__5a310602c6faa347",
+            "compressor_capacity__capacity_ok__cb22fc3ae07b48e1"
+          ],
+          "n_satisfied": 5,
+          "other": []
+        }
+      }
+    },
+    {
+      "case": "c5-rating-12",
+      "assemblies_changed": [
+        "C-5"
+      ],
+      "status": "evaluated",
+      "constraints": {
+        "C-4": {
+          "violated": [
+            "pbli_fit__domain_ok__f30925cbe487ee4d",
+            "divertor_fit__domain_ok__72e8945d8d697cd1"
+          ],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-5": {
+          "violated": [],
+          "n_satisfied": 1,
+          "other": []
+        },
+        "C-2": {
+          "violated": [
+            "checks__heat_removal_ok__e3aa56b0160f3e08"
+          ],
+          "n_satisfied": 12,
+          "other": []
+        },
+        "C-1": {
+          "violated": [
+            "rejection_capacity__capacity_ok__f641e3674fbef65a",
+            "he_capacity__capacity_ok__5a310602c6faa347",
+            "compressor_capacity__capacity_ok__cb22fc3ae07b48e1"
+          ],
+          "n_satisfied": 5,
+          "other": []
+        }
+      }
+    }
+  ]
+}

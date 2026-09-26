@@ -1,0 +1,2066 @@
+metadata:
+  run_description: Generated pipeline for combinations_tea
+  output_folder: combinations_tea_results
+modules:
+  entry_fusion:
+    module_type: EntryPoint
+    inputs:
+      combinations_circulator_purchase_params: CombinationsCirculatorPurchaseParams
+        /home/reid/1cfe/fusion-tea/work/active/WI-093_combination-assemblies/evidence/native_runs/c2-peaked-profile/combinations_circulator_purchase_params.json
+      combinations_loop_brayton_params: CombinationsLoopBraytonParams /home/reid/1cfe/fusion-tea/work/active/WI-093_combination-assemblies/evidence/native_runs/c2-peaked-profile/combinations_loop_brayton_params.json
+      combinations_lumped_fit_params: CombinationsLumpedFitParams /home/reid/1cfe/fusion-tea/work/active/WI-093_combination-assemblies/evidence/native_runs/c2-peaked-profile/combinations_lumped_fit_params.json
+      combinations_plasma_chain_params: CombinationsPlasmaChainParams /home/reid/1cfe/fusion-tea/work/active/WI-093_combination-assemblies/evidence/native_runs/c2-peaked-profile/combinations_plasma_chain_params.json
+      mfe_plasma_scaling_params: MfePlasmaScalingParams /home/reid/1cfe/fusion-tea/work/active/WI-093_combination-assemblies/evidence/native_runs/c2-peaked-profile/mfe_plasma_scaling_params.json
+      mfe_plasma_sustainment_params: MfePlasmaSustainmentParams /home/reid/1cfe/fusion-tea/work/active/WI-093_combination-assemblies/evidence/native_runs/c2-peaked-profile/mfe_plasma_sustainment_params.json
+      mfe_viability_params: MfeViabilityParams /home/reid/1cfe/fusion-tea/work/active/WI-093_combination-assemblies/evidence/native_runs/c2-peaked-profile/mfe_viability_params.json
+  combinations_lumped_fit__lumped_fit__he_fit__cycle:
+    module_type: mfe_power_cycle.Power_Cycle_EfficiencyModule
+    inputs:
+      b_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__b_fit
+      T_hot_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__T_hot
+      a_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__a_fit
+      delta_eta_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__delta_eta
+      T2_min_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__T2_min
+      cycle_live_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__cycle_live
+      T_offset_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__T_offset_fit
+      dT_approach_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__dT_approach
+      eta_th_direct_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__eta_th_direct
+      T2_max_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__he_fit__T2_max
+    outputs:
+      margin_low: float combinations_lumped_fit__lumped_fit__he_fit__cycle__margin_low
+      T2_C: float combinations_lumped_fit__lumped_fit__he_fit__cycle__T2_C
+      margin_high: float combinations_lumped_fit__lumped_fit__he_fit__cycle__margin_high
+      eta_th: float combinations_lumped_fit__lumped_fit__he_fit__cycle__eta_th
+      eta_fit: float combinations_lumped_fit__lumped_fit__he_fit__cycle__eta_fit
+      domain_product: float combinations_lumped_fit__lumped_fit__he_fit__cycle__domain_product
+  combinations_lumped_fit__lumped_fit__pbli_fit__cycle:
+    module_type: mfe_power_cycle.Power_Cycle_EfficiencyModule
+    inputs:
+      T2_min_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__T2_min
+      eta_th_direct_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__eta_th_direct
+      T_hot_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__T_hot
+      cycle_live_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__cycle_live
+      T_offset_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__T_offset_fit
+      T2_max_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__T2_max
+      a_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__a_fit
+      delta_eta_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__delta_eta
+      b_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__b_fit
+      dT_approach_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__pbli_fit__dT_approach
+    outputs:
+      margin_low: float combinations_lumped_fit__lumped_fit__pbli_fit__cycle__margin_low
+      T2_C: float combinations_lumped_fit__lumped_fit__pbli_fit__cycle__T2_C
+      margin_high: float combinations_lumped_fit__lumped_fit__pbli_fit__cycle__margin_high
+      eta_th: float combinations_lumped_fit__lumped_fit__pbli_fit__cycle__eta_th
+      eta_fit: float combinations_lumped_fit__lumped_fit__pbli_fit__cycle__eta_fit
+      domain_product: float combinations_lumped_fit__lumped_fit__pbli_fit__cycle__domain_product
+  combinations_lumped_fit__lumped_fit__divertor_fit__cycle:
+    module_type: mfe_power_cycle.Power_Cycle_EfficiencyModule
+    inputs:
+      a_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__a_fit
+      eta_th_direct_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__eta_th_direct
+      T2_max_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__T2_max
+      T_hot_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__T_hot
+      delta_eta_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__delta_eta
+      dT_approach_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__dT_approach
+      b_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__b_fit
+      T_offset_fit_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__T_offset_fit
+      cycle_live_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__cycle_live
+      T2_min_in: float combinations_lumped_fit_params.combinations_lumped_fit__lumped_fit__divertor_fit__T2_min
+    outputs:
+      margin_low: float combinations_lumped_fit__lumped_fit__divertor_fit__cycle__margin_low
+      T2_C: float combinations_lumped_fit__lumped_fit__divertor_fit__cycle__T2_C
+      margin_high: float combinations_lumped_fit__lumped_fit__divertor_fit__cycle__margin_high
+      eta_th: float combinations_lumped_fit__lumped_fit__divertor_fit__cycle__eta_th
+      eta_fit: float combinations_lumped_fit__lumped_fit__divertor_fit__cycle__eta_fit
+      domain_product: float combinations_lumped_fit__lumped_fit__divertor_fit__cycle__domain_product
+  combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_in: float combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_capacity__demand
+      demand_available_in: bool combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_capacity__demand_available
+      applicable_in: bool combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_capacity__scenario_applicable
+      rating_in: float combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_equipment__selected_rating
+      conditions_supported_in: bool combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_capacity__assumed_supported
+    outputs:
+      evaluation_defined: float combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__evaluation_defined
+      margin: float combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__margin
+      applicable: bool combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__applicable
+      supported: bool combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__supported
+      capacity_ok: bool combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__capacity_ok
+  combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase:
+    module_type: integrated_equipment_costs.Selected_Inventory_PurchaseModule
+    inputs:
+      reference_quantity_in: float combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_equipment__reference_quantity
+      quantity_in: float combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_equipment__selected_rating
+      reference_cost_in: float combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_equipment__reference_cost
+      price_factor_in: float combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_equipment__price_factor
+      mode_in: float combinations_circulator_purchase_params.combinations_circulator_purchase__circulator_purchase__circulator_equipment__estimate_mode
+    outputs:
+      purchased_quantity: float combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__purchased_quantity
+      source_budget: float combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__source_budget
+      quantity_ratio: float combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__quantity_ratio
+      capital: float combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__capital
+      extrapolated: float combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__extrapolated
+  combinations_plasma_chain__plasma_chain__fuel_inventory__atoms:
+    module_type: integrated_equipment_costs.Selected_Stock_AtomsModule
+    inputs:
+      stock_kg_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel_inventory__selected_tritium_kg
+      atom_mass_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__tritium_atom_kg
+    outputs:
+      stock_kg: float combinations_plasma_chain__plasma_chain__fuel_inventory__atoms__stock_kg
+      atoms: float combinations_plasma_chain__plasma_chain__fuel_inventory__atoms__atoms
+  combinations_plasma_chain__plasma_chain__divertor_hx__evaluate:
+    module_type: integrated_equipment_costs.Exchanger_Area_ConductanceModule
+    inputs:
+      u_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_hx__assumed_u
+      area_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_hx__selected_area
+    outputs:
+      area: float combinations_plasma_chain__plasma_chain__divertor_hx__evaluate__area
+      ua: float combinations_plasma_chain__plasma_chain__divertor_hx__evaluate__ua
+  combinations_plasma_chain__plasma_chain__divertor_pump__evaluate:
+    module_type: integrated_equipment_costs.Selected_Flow_PumpModule
+    inputs:
+      reference_flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_pump__reference_flow
+      efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_pump__efficiency
+      reference_efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_pump__reference_efficiency
+      fixed_power_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_pump__fixed_power
+      mode_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_pump__pump_mode
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__divertor_flow
+      reference_power_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_pump__reference_power
+    outputs:
+      electric: float combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__electric
+      operating_flow: float combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__operating_flow
+      mode: float combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__mode
+      hydraulic_supported: float combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__hydraulic_supported
+  combinations_plasma_chain__plasma_chain__divertor_pump__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__divertor_pump__screen__demand_available_in
+      applicable_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__divertor_pump__screen__applicable_in
+      conditions_supported_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__divertor_pump__screen__conditions_supported_in
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_pump__selected_flow_capacity
+      demand_in: float combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__operating_flow
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__divertor_pump__screen__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__divertor_pump__screen__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__divertor_pump__screen__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__divertor_pump__screen__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__divertor_pump__screen__capacity_ok
+  combinations_plasma_chain__plasma_chain__pbli_pump__evaluate:
+    module_type: integrated_equipment_costs.Selected_Flow_PumpModule
+    inputs:
+      reference_power_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_pump__reference_power
+      efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_pump__efficiency
+      reference_efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_pump__reference_efficiency
+      fixed_power_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_pump__fixed_power
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__pbli_flow
+      reference_flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_pump__reference_flow
+      mode_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_pump__pump_mode
+    outputs:
+      electric: float combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__electric
+      operating_flow: float combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__operating_flow
+      mode: float combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__mode
+      hydraulic_supported: float combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__hydraulic_supported
+  combinations_plasma_chain__plasma_chain__pbli_pump__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__pbli_pump__screen__demand_available_in
+      demand_in: float combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__operating_flow
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_pump__selected_flow_capacity
+      applicable_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__pbli_pump__screen__applicable_in
+      conditions_supported_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__pbli_pump__screen__conditions_supported_in
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__pbli_pump__screen__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__pbli_pump__screen__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__pbli_pump__screen__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__pbli_pump__screen__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__pbli_pump__screen__capacity_ok
+  combinations_plasma_chain__plasma_chain__pbli_hx__evaluate:
+    module_type: integrated_equipment_costs.Exchanger_Area_ConductanceModule
+    inputs:
+      area_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_hx__selected_area
+      u_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_hx__assumed_u
+    outputs:
+      area: float combinations_plasma_chain__plasma_chain__pbli_hx__evaluate__area
+      ua: float combinations_plasma_chain__plasma_chain__pbli_hx__evaluate__ua
+  combinations_plasma_chain__plasma_chain__compressor_1__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_1__efficiency
+      gamma_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__gamma
+      ratio_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_1__selected_ratio
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      pressure_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__return_pressure
+      temperature_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__low_temperature
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+    outputs:
+      pressure_out: float combinations_plasma_chain__plasma_chain__compressor_1__evaluate__pressure_out
+      shaft_demand: float combinations_plasma_chain__plasma_chain__compressor_1__evaluate__shaft_demand
+      temperature_out: float combinations_plasma_chain__plasma_chain__compressor_1__evaluate__temperature_out
+  combinations_plasma_chain__plasma_chain__intercooler_1__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+      temperature_in: float combinations_plasma_chain__plasma_chain__compressor_1__evaluate__temperature_out
+      pressure_in: float combinations_plasma_chain__plasma_chain__compressor_1__evaluate__pressure_out
+      heating_role_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__intercooler_1__heating_role
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      target_temperature_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__intercooler_1__target_temperature
+    outputs:
+      heat_into_fluid: float combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__heat_into_fluid
+      temperature_out: float combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__temperature_out
+      pressure_out: float combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__pressure_out
+  combinations_plasma_chain__plasma_chain__compressor_2__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_2__efficiency
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      pressure_in: float combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__pressure_out
+      ratio_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_2__selected_ratio
+      gamma_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__gamma
+      temperature_in: float combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__temperature_out
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+    outputs:
+      pressure_out: float combinations_plasma_chain__plasma_chain__compressor_2__evaluate__pressure_out
+      shaft_demand: float combinations_plasma_chain__plasma_chain__compressor_2__evaluate__shaft_demand
+      temperature_out: float combinations_plasma_chain__plasma_chain__compressor_2__evaluate__temperature_out
+  combinations_plasma_chain__plasma_chain__intercooler_2__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+      heating_role_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__intercooler_2__heating_role
+      pressure_in: float combinations_plasma_chain__plasma_chain__compressor_2__evaluate__pressure_out
+      temperature_in: float combinations_plasma_chain__plasma_chain__compressor_2__evaluate__temperature_out
+      target_temperature_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__intercooler_2__target_temperature
+    outputs:
+      heat_into_fluid: float combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__heat_into_fluid
+      temperature_out: float combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__temperature_out
+      pressure_out: float combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__pressure_out
+  combinations_plasma_chain__plasma_chain__plasma__geom:
+    module_type: mfe_plasma_scaling.Plasma_GeometryModule
+    inputs:
+      pi: float mfe_plasma_scaling_params.combinations_plasma_chain__plasma_chain__plasma__geom__pi
+      R_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__R
+      a_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__a
+      kappa_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__kappa
+      f_shape_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__f_shape
+    outputs:
+      A: float combinations_plasma_chain__plasma_chain__plasma__geom__A
+      V: float combinations_plasma_chain__plasma_chain__plasma__geom__V
+  combinations_plasma_chain__plasma_chain__plasma__sustain:
+    module_type: mfe_plasma_sustainment.Plasma_SustainmentModule
+    inputs:
+      ash_frac_in: float mfe_plasma_sustainment_params.combinations_plasma_chain__plasma_chain__plasma__sustain__ash_frac_in
+      alpha_n_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__alpha_n
+      T_i0_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__T_i0
+      kappa_sync_in: float mfe_plasma_sustainment_params.combinations_plasma_chain__plasma_chain__plasma__sustain__kappa_sync_in
+      f_suppr_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__f_suppr_ash
+      f_W_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__f_W_core
+      f_alpha_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__f_alpha_fast
+      alpha_T_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__alpha_T
+      iota_23_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__iota_23
+      B_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__B
+      r_TiTe_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__Ti_over_Te
+      tau_ratio_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__tau_ratio_ash
+      n_e0_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__n_e0
+      R_w_sync_in: float mfe_plasma_sustainment_params.combinations_plasma_chain__plasma_chain__plasma__sustain__R_w_sync_in
+      E_fus_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__E_fus
+      Z_eff_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__Z_eff_core
+      f_ren_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__f_ren
+      R_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__R
+      a_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__a
+      V: float combinations_plasma_chain__plasma_chain__plasma__geom__V
+    outputs:
+      n_bar19: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_bar19
+      n_T0: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_T0
+      W_th: float combinations_plasma_chain__plasma_chain__plasma__sustain__W_th
+      p_avg: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_avg
+      p_brems: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_brems
+      n_He0: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_He0
+      n_D0: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_D0
+      alpha_n_e_eff: float combinations_plasma_chain__plasma_chain__plasma__sustain__alpha_n_e_eff
+      p_aux_required: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_aux_required
+      p_rad: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_rad
+      p_alpha_heat: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_alpha_heat
+      tau_E: float combinations_plasma_chain__plasma_chain__plasma__sustain__tau_E
+      p_sync: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_sync
+      p_line: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_line
+      n_e_volav: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_e_volav
+      alpha_He_eff: float combinations_plasma_chain__plasma_chain__plasma__sustain__alpha_He_eff
+      T_e0: float combinations_plasma_chain__plasma_chain__plasma__sustain__T_e0
+  combinations_plasma_chain__plasma_chain__plasma__beta_calc:
+    module_type: mfe_plasma_scaling.Volume_Averaged_BetaModule
+    inputs:
+      mu0: float mfe_plasma_scaling_params.combinations_plasma_chain__plasma_chain__plasma__beta_calc__mu0
+      p_avg_in: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_avg
+      B_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__B
+    outputs:
+      root: RootModel[float] combinations_plasma_chain__plasma_chain__plasma__beta_calc__beta
+  combinations_plasma_chain__plasma_chain__plasma__fusion:
+    module_type: mfe_plasma_scaling.DT_Fusion_PowerModule
+    inputs:
+      sigma_v_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__sigma_v
+      alpha_n_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__alpha_n
+      n_T0_in: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_T0
+      V: float combinations_plasma_chain__plasma_chain__plasma__geom__V
+      E_fus_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__E_fus
+      alpha_T_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__alpha_T
+      n_e_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__n_e
+      T_i0_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__plasma__T_i0
+      n_D0_in: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_D0
+    outputs:
+      root: RootModel[float] combinations_plasma_chain__plasma_chain__plasma__fusion__p_fus
+  combinations_plasma_chain__plasma_chain__source__evaluate:
+    module_type: integrated_heat_electricity.Fusion_Source_SelectorModule
+    inputs:
+      calculated_power_in: float combinations_plasma_chain__plasma_chain__plasma__fusion__p_fus.root
+      reference_power_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__source__reference_fusion_mw
+      mode_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__source__producer_mode
+    outputs:
+      selected_power: float combinations_plasma_chain__plasma_chain__source__evaluate__selected_power
+      selected_mode: float combinations_plasma_chain__plasma_chain__source__evaluate__selected_mode
+  combinations_plasma_chain__plasma_chain__fuel__evaluate:
+    module_type: mfe_fuel_cycle.Fuel_Cycle_FlowsModule
+    inputs:
+      q_eff_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__reaction_energy_mev
+      t_recycle_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__exhaust_recovery
+      m_T_kg_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__tritium_atom_kg
+      eta_extract_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__assumed_extraction
+      lambda_T_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__decay_constant_s
+      p_fus_in: float combinations_plasma_chain__plasma_chain__source__evaluate__selected_power
+      G_stock_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__dormant_stock_growth_atoms_s
+      tbr_available_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__unused_tbr_placeholder
+      burn_fraction_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__pass_burn_fraction
+      s_per_fpy_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__seconds_per_year
+      mev_to_joules_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel__mev_joules
+      I_total_in: float combinations_plasma_chain__plasma_chain__fuel_inventory__atoms__atoms
+    outputs:
+      burn_kg_per_fpy: float combinations_plasma_chain__plasma_chain__fuel__evaluate__burn_kg_per_fpy
+      inject_rate: float combinations_plasma_chain__plasma_chain__fuel__evaluate__inject_rate
+      burn_rate: float combinations_plasma_chain__plasma_chain__fuel__evaluate__burn_rate
+      tbr_margin: float combinations_plasma_chain__plasma_chain__fuel__evaluate__tbr_margin
+      tbr_required: float combinations_plasma_chain__plasma_chain__fuel__evaluate__tbr_required
+      loss_rate: float combinations_plasma_chain__plasma_chain__fuel__evaluate__loss_rate
+      exhaust_rate: float combinations_plasma_chain__plasma_chain__fuel__evaluate__exhaust_rate
+  combinations_plasma_chain__plasma_chain__compressor_3__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      pressure_in: float combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__pressure_out
+      efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_3__efficiency
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+      temperature_in: float combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__temperature_out
+      gamma_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__gamma
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      ratio_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_3__selected_ratio
+    outputs:
+      pressure_out: float combinations_plasma_chain__plasma_chain__compressor_3__evaluate__pressure_out
+      shaft_demand: float combinations_plasma_chain__plasma_chain__compressor_3__evaluate__shaft_demand
+      temperature_out: float combinations_plasma_chain__plasma_chain__compressor_3__evaluate__temperature_out
+  combinations_plasma_chain__plasma_chain__pressure_loss__evaluate:
+    module_type: ideal_gas_brayton_components.Fractional_Pressure_LossModule
+    inputs:
+      loss_fraction_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pressure_loss__loss_fraction
+      pressure_in: float combinations_plasma_chain__plasma_chain__compressor_3__evaluate__pressure_out
+    outputs:
+      root: RootModel[float] combinations_plasma_chain__plasma_chain__pressure_loss__evaluate__pressure_out
+  combinations_plasma_chain__plasma_chain__he_hx__evaluate:
+    module_type: integrated_equipment_costs.Exchanger_Area_ConductanceModule
+    inputs:
+      area_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_hx__selected_area
+      u_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_hx__assumed_u
+    outputs:
+      area: float combinations_plasma_chain__plasma_chain__he_hx__evaluate__area
+      ua: float combinations_plasma_chain__plasma_chain__he_hx__evaluate__ua
+  combinations_plasma_chain__plasma_chain__he_pump__evaluate:
+    module_type: integrated_equipment_costs.Selected_Flow_PumpModule
+    inputs:
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__he_flow
+      reference_power_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_pump__reference_power
+      reference_flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_pump__reference_flow
+      mode_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_pump__pump_mode
+      efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_pump__efficiency
+      reference_efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_pump__reference_efficiency
+      fixed_power_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_pump__fixed_power
+    outputs:
+      electric: float combinations_plasma_chain__plasma_chain__he_pump__evaluate__electric
+      operating_flow: float combinations_plasma_chain__plasma_chain__he_pump__evaluate__operating_flow
+      mode: float combinations_plasma_chain__plasma_chain__he_pump__evaluate__mode
+      hydraulic_supported: float combinations_plasma_chain__plasma_chain__he_pump__evaluate__hydraulic_supported
+  combinations_plasma_chain__plasma_chain__he_pump__screen:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__he_pump__screen__conditions_supported_in
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_pump__selected_flow_capacity
+      demand_available_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__he_pump__screen__demand_available_in
+      applicable_in: bool mfe_viability_params.combinations_plasma_chain__plasma_chain__he_pump__screen__applicable_in
+      demand_in: float combinations_plasma_chain__plasma_chain__he_pump__evaluate__operating_flow
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__he_pump__screen__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__he_pump__screen__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__he_pump__screen__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__he_pump__screen__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__he_pump__screen__capacity_ok
+  combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_in: float combinations_plasma_chain__plasma_chain__fuel__evaluate__exhaust_rate
+      conditions_supported_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel_capacity__assumed_supported
+      applicable_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel_capacity__scenario_applicable
+      demand_available_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel_capacity__demand_available
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__fuel_capacity__selected_rating
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__capacity_ok
+  combinations_plasma_chain__plasma_chain__deposition__evaluate:
+    module_type: integrated_heat_electricity.Integrated_Heat_SourceModule
+    inputs:
+      radiation_fraction_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__radiation_fraction
+      divertor_pump_in: float combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__electric
+      literal_exchange_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__literal_exchange
+      he_recovery_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__he_recovery
+      fusion_power_in: float combinations_plasma_chain__plasma_chain__source__evaluate__selected_power
+      literal_he_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__literal_he
+      helium_fraction_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__helium_fraction
+      pbli_recovery_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__pbli_recovery
+      heat_mode_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__heat_mode
+      exchange_fraction_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__exchange_fraction
+      divertor_recovery_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__divertor_recovery
+      he_pump_in: float combinations_plasma_chain__plasma_chain__he_pump__evaluate__electric
+      literal_divertor_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__literal_divertor
+      neutron_multiplier_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__neutron_multiplier
+      literal_pbli_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__literal_pbli
+      pbli_pump_in: float combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__electric
+      auxiliary_heat_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__auxiliary_heat
+    outputs:
+      divertor_deposition: float combinations_plasma_chain__plasma_chain__deposition__evaluate__divertor_deposition
+      topology_zero: float combinations_plasma_chain__plasma_chain__deposition__evaluate__topology_zero
+      pump_electric: float combinations_plasma_chain__plasma_chain__deposition__evaluate__pump_electric
+      neutron_power: float combinations_plasma_chain__plasma_chain__deposition__evaluate__neutron_power
+      charged_power: float combinations_plasma_chain__plasma_chain__deposition__evaluate__charged_power
+      pbli_friction: float combinations_plasma_chain__plasma_chain__deposition__evaluate__pbli_friction
+      other_heat: float combinations_plasma_chain__plasma_chain__deposition__evaluate__other_heat
+      nuclear_gain: float combinations_plasma_chain__plasma_chain__deposition__evaluate__nuclear_gain
+      he_deposition: float combinations_plasma_chain__plasma_chain__deposition__evaluate__he_deposition
+      source_residual: float combinations_plasma_chain__plasma_chain__deposition__evaluate__source_residual
+      he_friction: float combinations_plasma_chain__plasma_chain__deposition__evaluate__he_friction
+      exchange: float combinations_plasma_chain__plasma_chain__deposition__evaluate__exchange
+      pump_recovered: float combinations_plasma_chain__plasma_chain__deposition__evaluate__pump_recovered
+      pbli_deposition: float combinations_plasma_chain__plasma_chain__deposition__evaluate__pbli_deposition
+      divertor_friction: float combinations_plasma_chain__plasma_chain__deposition__evaluate__divertor_friction
+  combinations_plasma_chain__plasma_chain__pbli_coolant__evaluate:
+    module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+    inputs:
+      recovered_friction_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__pbli_friction
+      received_exchange_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__topology_zero
+      deposited_heat_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__pbli_deposition
+      exported_exchange_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__exchange
+    outputs:
+      root: RootModel[float] combinations_plasma_chain__plasma_chain__pbli_coolant__evaluate__delivered_heat
+  combinations_plasma_chain__plasma_chain__divertor_coolant__evaluate:
+    module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+    inputs:
+      received_exchange_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__topology_zero
+      deposited_heat_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__divertor_deposition
+      exported_exchange_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__topology_zero
+      recovered_friction_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__divertor_friction
+    outputs:
+      root: RootModel[float] combinations_plasma_chain__plasma_chain__divertor_coolant__evaluate__delivered_heat
+  combinations_plasma_chain__plasma_chain__he_coolant__evaluate:
+    module_type: dual_circuit_heat_accounting.Coolant_Branch_HeatModule
+    inputs:
+      received_exchange_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__exchange
+      exported_exchange_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__topology_zero
+      deposited_heat_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__he_deposition
+      recovered_friction_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__he_friction
+    outputs:
+      root: RootModel[float] combinations_plasma_chain__plasma_chain__he_coolant__evaluate__delivered_heat
+  combinations_plasma_chain__plasma_chain__he_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_capacity__selected_rating
+      demand_in: float combinations_plasma_chain__plasma_chain__he_coolant__evaluate__delivered_heat.root
+      demand_available_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_capacity__demand_available
+      conditions_supported_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_capacity__assumed_supported
+      applicable_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__he_capacity__scenario_applicable
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__he_capacity__evaluate__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__he_capacity__evaluate__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__he_capacity__evaluate__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__he_capacity__evaluate__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__he_capacity__evaluate__capacity_ok
+  combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate:
+    module_type: integrated_heat_electricity.Network_Heat_Driven_ClosureModule
+    inputs:
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      divertor_cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__divertor_cp
+      network_mode_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__network_mode
+      turbine_efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__turbine_efficiency
+      recuperator_effectiveness_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__recuperator_effectiveness
+      pbli_split_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__pbli_split_fraction
+      he_cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__he_cp
+      pbli_flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__pbli_flow
+      pbli_ua_in: float combinations_plasma_chain__plasma_chain__pbli_hx__evaluate__ua
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+      divertor_limit_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__divertor_limit
+      divertor_ua_in: float combinations_plasma_chain__plasma_chain__divertor_hx__evaluate__ua
+      pbli_limit_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__pbli_limit
+      he_available_in: float combinations_plasma_chain__plasma_chain__he_coolant__evaluate__delivered_heat.root
+      he_ua_in: float combinations_plasma_chain__plasma_chain__he_hx__evaluate__ua
+      he_limit_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__he_limit
+      he_flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__he_flow
+      pbli_available_in: float combinations_plasma_chain__plasma_chain__pbli_coolant__evaluate__delivered_heat.root
+      divertor_flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__divertor_flow
+      gamma_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__gamma
+      cold_temperature_in: float combinations_plasma_chain__plasma_chain__compressor_3__evaluate__temperature_out
+      divertor_available_in: float combinations_plasma_chain__plasma_chain__divertor_coolant__evaluate__delivered_heat.root
+      return_pressure_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__return_pressure
+      turbine_pressure_in: float combinations_plasma_chain__plasma_chain__pressure_loss__evaluate__pressure_out.root
+      pbli_cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__heat_exchangers__pbli_cp
+    outputs:
+      pbli_state_defined: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_state_defined
+      he_hot: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_hot
+      network_mode_used: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__network_mode_used
+      pbli_cold_terminal_difference: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_cold_terminal_difference
+      divertor_hot: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_hot
+      divertor_hot_bound_margin: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_hot_bound_margin
+      pbli_stream_out: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_stream_out
+      he_hot_bound_margin: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_hot_bound_margin
+      he_cold_terminal_difference: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_cold_terminal_difference
+      divertor_unmet: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_unmet
+      pbli_secondary_out: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_secondary_out
+      accepted_heat: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__accepted_heat
+      divertor_transferred: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_transferred
+      divertor_state_defined: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_state_defined
+      he_state_defined: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_state_defined
+      expansion_factor: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__expansion_factor
+      pbli_hot: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_hot
+      pbli_transferred: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_transferred
+      pbli_split_used: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_split_used
+      divertor_hot_terminal_difference: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_hot_terminal_difference
+      he_transferred: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_transferred
+      divertor_stream_out: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_stream_out
+      pbli_return: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_return
+      he_secondary_in: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_secondary_in
+      pbli_secondary_in: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_secondary_in
+      divertor_secondary_in: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_secondary_in
+      closure_residual: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__closure_residual
+      unmet_heat: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__unmet_heat
+      heater_inlet: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__heater_inlet
+      he_return: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_return
+      he_capability: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_capability
+      pbli_hot_bound_margin: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_hot_bound_margin
+      turbine_temperature: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__turbine_temperature
+      pbli_capability: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_capability
+      he_secondary_out: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_secondary_out
+      he_unmet: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_unmet
+      divertor_cold_terminal_difference: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_cold_terminal_difference
+      pbli_hot_terminal_difference: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_hot_terminal_difference
+      divertor_capability: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_capability
+      mixed_outlet: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__mixed_outlet
+      divertor_return: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_return
+      he_hot_terminal_difference: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_hot_terminal_difference
+      divertor_secondary_out: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_secondary_out
+      iterations: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__iterations
+      pbli_unmet: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_unmet
+  combinations_plasma_chain__plasma_chain__turbine__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_ExpanderModule
+    inputs:
+      pressure_in: float combinations_plasma_chain__plasma_chain__pressure_loss__evaluate__pressure_out.root
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      gamma_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__gamma
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+      exit_pressure_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__return_pressure
+      temperature_in: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__turbine_temperature
+      efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__turbine_efficiency
+    outputs:
+      pressure_out: float combinations_plasma_chain__plasma_chain__turbine__evaluate__pressure_out
+      shaft_produced: float combinations_plasma_chain__plasma_chain__turbine__evaluate__shaft_produced
+      temperature_out: float combinations_plasma_chain__plasma_chain__turbine__evaluate__temperature_out
+  combinations_plasma_chain__plasma_chain__electrical__evaluate:
+    module_type: integrated_heat_electricity.Plant_Electrical_BalanceModule
+    inputs:
+      compressor_2_in: float combinations_plasma_chain__plasma_chain__compressor_2__evaluate__shaft_demand
+      fuel_coefficient_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__electrical__fuel_coefficient
+      compressor_1_in: float combinations_plasma_chain__plasma_chain__compressor_1__evaluate__shaft_demand
+      pump_recovered_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__pump_recovered
+      control_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__electrical__control
+      cryo_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__electrical__cryo
+      heating_efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__electrical__heating_efficiency
+      motor_efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__electrical__motor_efficiency
+      pump_electric_in: float combinations_plasma_chain__plasma_chain__deposition__evaluate__pump_electric
+      turbine_work_in: float combinations_plasma_chain__plasma_chain__turbine__evaluate__shaft_produced
+      fuel_exhaust_in: float combinations_plasma_chain__plasma_chain__fuel__evaluate__exhaust_rate
+      fuel_base_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__electrical__fuel_base
+      compressor_3_in: float combinations_plasma_chain__plasma_chain__compressor_3__evaluate__shaft_demand
+      generator_efficiency_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__electrical__generator_efficiency
+      other_electric_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__electrical__other_electric
+      auxiliary_heat_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__deposition__auxiliary_heat
+    outputs:
+      fuel_base_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__fuel_base_electric
+      other_electric_demand: float combinations_plasma_chain__plasma_chain__electrical__evaluate__other_electric_demand
+      dissipated_auxiliary: float combinations_plasma_chain__plasma_chain__electrical__evaluate__dissipated_auxiliary
+      net_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__net_electric
+      generator_loss: float combinations_plasma_chain__plasma_chain__electrical__evaluate__generator_loss
+      net_shaft: float combinations_plasma_chain__plasma_chain__electrical__evaluate__net_shaft
+      heating_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__heating_electric
+      cryo_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__cryo_electric
+      fuel_variable_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__fuel_variable_electric
+      compressor_demand: float combinations_plasma_chain__plasma_chain__electrical__evaluate__compressor_demand
+      auxiliary_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__auxiliary_electric
+      gross_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__gross_electric
+      fuel_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__fuel_electric
+      primary_pump_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__primary_pump_electric
+      motor_loss: float combinations_plasma_chain__plasma_chain__electrical__evaluate__motor_loss
+      shaft_import: float combinations_plasma_chain__plasma_chain__electrical__evaluate__shaft_import
+      heating_loss: float combinations_plasma_chain__plasma_chain__electrical__evaluate__heating_loss
+      pump_loss: float combinations_plasma_chain__plasma_chain__electrical__evaluate__pump_loss
+      control_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__control_electric
+  combinations_plasma_chain__plasma_chain__recuperator__evaluate:
+    module_type: integrated_heat_electricity.Passive_RecuperatorModule
+    inputs:
+      cold_temperature_in: float combinations_plasma_chain__plasma_chain__compressor_3__evaluate__temperature_out
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      effectiveness_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__recuperator_effectiveness
+      hot_temperature_in: float combinations_plasma_chain__plasma_chain__turbine__evaluate__temperature_out
+    outputs:
+      bypass_active: float combinations_plasma_chain__plasma_chain__recuperator__evaluate__bypass_active
+      cold_out: float combinations_plasma_chain__plasma_chain__recuperator__evaluate__cold_out
+      hot_out: float combinations_plasma_chain__plasma_chain__recuperator__evaluate__hot_out
+      recovered_heat: float combinations_plasma_chain__plasma_chain__recuperator__evaluate__recovered_heat
+  combinations_plasma_chain__plasma_chain__generator_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_in: float combinations_plasma_chain__plasma_chain__electrical__evaluate__gross_electric
+      demand_available_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__generator_capacity__demand_available
+      conditions_supported_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__generator_capacity__assumed_supported
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__generator_capacity__selected_rating
+      applicable_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__generator_capacity__scenario_applicable
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__capacity_ok
+  combinations_plasma_chain__plasma_chain__precooler__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      temperature_in: float combinations_plasma_chain__plasma_chain__recuperator__evaluate__hot_out
+      cp_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__cp
+      pressure_in: float combinations_plasma_chain__plasma_chain__turbine__evaluate__pressure_out
+      flow_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__selected_flow
+      target_temperature_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__cycle__low_temperature
+      heating_role_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__precooler__heating_role
+    outputs:
+      heat_into_fluid: float combinations_plasma_chain__plasma_chain__precooler__evaluate__heat_into_fluid
+      temperature_out: float combinations_plasma_chain__plasma_chain__precooler__evaluate__temperature_out
+      pressure_out: float combinations_plasma_chain__plasma_chain__precooler__evaluate__pressure_out
+  combinations_plasma_chain__plasma_chain__rejection_capacity__cycle_rejection:
+    module_type: combinations_plasma_chain.plasma_chain.rejection_capacity.cycle_rejectionModule
+    inputs:
+      intercooler_1_heat_into_fluid: float combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__heat_into_fluid
+      intercooler_2_heat_into_fluid: float combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__heat_into_fluid
+      precooler_heat_into_fluid: float combinations_plasma_chain__plasma_chain__precooler__evaluate__heat_into_fluid
+    outputs:
+      root: RootModel[float] combinations_plasma_chain__plasma_chain__rejection_capacity__cycle_rejection__cycle_rejection
+  combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__rejection_capacity__demand_available
+      conditions_supported_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__rejection_capacity__assumed_supported
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__rejection_capacity__selected_rating
+      applicable_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__rejection_capacity__scenario_applicable
+      demand_in: float combinations_plasma_chain__plasma_chain__rejection_capacity__cycle_rejection__cycle_rejection.root
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__capacity_ok
+  combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__turbine_capacity__demand_available
+      demand_in: float combinations_plasma_chain__plasma_chain__turbine__evaluate__shaft_produced
+      applicable_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__turbine_capacity__scenario_applicable
+      conditions_supported_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__turbine_capacity__assumed_supported
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__turbine_capacity__selected_rating
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__capacity_ok
+  combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_capacity__selected_rating
+      applicable_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_capacity__scenario_applicable
+      demand_available_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_capacity__demand_available
+      demand_in: float combinations_plasma_chain__plasma_chain__divertor_coolant__evaluate__delivered_heat.root
+      conditions_supported_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__divertor_capacity__assumed_supported
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__capacity_ok
+  combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_in: float combinations_plasma_chain__plasma_chain__electrical__evaluate__compressor_demand
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_capacity__selected_rating
+      applicable_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_capacity__scenario_applicable
+      demand_available_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_capacity__demand_available
+      conditions_supported_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__compressor_capacity__assumed_supported
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__capacity_ok
+  combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_capacity__assumed_supported
+      demand_available_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_capacity__demand_available
+      demand_in: float combinations_plasma_chain__plasma_chain__pbli_coolant__evaluate__delivered_heat.root
+      rating_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_capacity__selected_rating
+      applicable_in: bool combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__pbli_capacity__scenario_applicable
+    outputs:
+      evaluation_defined: float combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__evaluation_defined
+      margin: float combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__margin
+      applicable: bool combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__applicable
+      supported: bool combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__supported
+      capacity_ok: bool combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__capacity_ok
+  combinations_loop_brayton__loop_brayton__he_hx__evaluate:
+    module_type: integrated_equipment_costs.Exchanger_Area_ConductanceModule
+    inputs:
+      area_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__he_hx__selected_area
+      u_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__he_hx__assumed_u
+    outputs:
+      area: float combinations_loop_brayton__loop_brayton__he_hx__evaluate__area
+      ua: float combinations_loop_brayton__loop_brayton__he_hx__evaluate__ua
+  combinations_loop_brayton__loop_brayton__primary_loop__evaluate:
+    module_type: mfe_primary_loop.Primary_Coolant_LoopModule
+    inputs:
+      mdot_loop_ref_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__mdot_loop_ref
+      f_loss_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__f_loss
+      eta_is_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__eta_is
+      eta_p_direct_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__eta_p_direct
+      T_in_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__loop_T_in
+      dp_loop_ref_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__dp_loop_ref
+      gamma_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__loop_gamma
+      eta_drive_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__eta_drive
+      dT_blanket_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__loop_dT_blanket
+      mdot_loop_rated_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__mdot_loop_rated
+      p_pump_direct_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__p_pump_direct
+      p_loop_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__loop_p
+      q_source_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__blanket_source__q_source
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__loop_cp
+      n_loops_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__n_loops
+      loop_live_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__loop_live
+    outputs:
+      p_loop_margin: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__p_loop_margin
+      q_recovered_total: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__q_recovered_total
+      p_elec: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__p_elec
+      p_pump_total: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__p_pump_total
+      T_out: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__T_out
+      T_comp_in: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__T_comp_in
+      dp_loop: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__dp_loop
+      mdot_loop: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__mdot_loop
+      w_fluid: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__w_fluid
+      capacity_margin: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__capacity_margin
+      q_ihx: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__q_ihx
+      mdot: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__mdot
+      r_comp: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__r_comp
+  combinations_loop_brayton__loop_brayton__compressor_1__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      ratio_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_1__selected_ratio
+      efficiency_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_1__efficiency
+      pressure_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__return_pressure
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+      temperature_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__low_temperature
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+      gamma_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__gamma
+    outputs:
+      pressure_out: float combinations_loop_brayton__loop_brayton__compressor_1__evaluate__pressure_out
+      shaft_demand: float combinations_loop_brayton__loop_brayton__compressor_1__evaluate__shaft_demand
+      temperature_out: float combinations_loop_brayton__loop_brayton__compressor_1__evaluate__temperature_out
+  combinations_loop_brayton__loop_brayton__he_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      conditions_supported_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__he_capacity__assumed_supported
+      demand_available_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__he_capacity__demand_available
+      rating_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__he_capacity__selected_rating
+      applicable_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__he_capacity__scenario_applicable
+      demand_in: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__q_ihx
+    outputs:
+      evaluation_defined: float combinations_loop_brayton__loop_brayton__he_capacity__evaluate__evaluation_defined
+      margin: float combinations_loop_brayton__loop_brayton__he_capacity__evaluate__margin
+      applicable: bool combinations_loop_brayton__loop_brayton__he_capacity__evaluate__applicable
+      supported: bool combinations_loop_brayton__loop_brayton__he_capacity__evaluate__supported
+      capacity_ok: bool combinations_loop_brayton__loop_brayton__he_capacity__evaluate__capacity_ok
+  combinations_loop_brayton__loop_brayton__intercooler_1__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      target_temperature_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__intercooler_1__target_temperature
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+      heating_role_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__intercooler_1__heating_role
+      temperature_in: float combinations_loop_brayton__loop_brayton__compressor_1__evaluate__temperature_out
+      pressure_in: float combinations_loop_brayton__loop_brayton__compressor_1__evaluate__pressure_out
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+    outputs:
+      heat_into_fluid: float combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__heat_into_fluid
+      temperature_out: float combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__temperature_out
+      pressure_out: float combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__pressure_out
+  combinations_loop_brayton__loop_brayton__compressor_2__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+      gamma_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__gamma
+      efficiency_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_2__efficiency
+      pressure_in: float combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__pressure_out
+      ratio_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_2__selected_ratio
+      temperature_in: float combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__temperature_out
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+    outputs:
+      pressure_out: float combinations_loop_brayton__loop_brayton__compressor_2__evaluate__pressure_out
+      shaft_demand: float combinations_loop_brayton__loop_brayton__compressor_2__evaluate__shaft_demand
+      temperature_out: float combinations_loop_brayton__loop_brayton__compressor_2__evaluate__temperature_out
+  combinations_loop_brayton__loop_brayton__intercooler_2__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+      pressure_in: float combinations_loop_brayton__loop_brayton__compressor_2__evaluate__pressure_out
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+      temperature_in: float combinations_loop_brayton__loop_brayton__compressor_2__evaluate__temperature_out
+      target_temperature_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__intercooler_2__target_temperature
+      heating_role_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__intercooler_2__heating_role
+    outputs:
+      heat_into_fluid: float combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__heat_into_fluid
+      temperature_out: float combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__temperature_out
+      pressure_out: float combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__pressure_out
+  combinations_loop_brayton__loop_brayton__compressor_3__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_CompressorModule
+    inputs:
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+      efficiency_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_3__efficiency
+      pressure_in: float combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__pressure_out
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+      temperature_in: float combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__temperature_out
+      gamma_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__gamma
+      ratio_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_3__selected_ratio
+    outputs:
+      pressure_out: float combinations_loop_brayton__loop_brayton__compressor_3__evaluate__pressure_out
+      shaft_demand: float combinations_loop_brayton__loop_brayton__compressor_3__evaluate__shaft_demand
+      temperature_out: float combinations_loop_brayton__loop_brayton__compressor_3__evaluate__temperature_out
+  combinations_loop_brayton__loop_brayton__pressure_loss__evaluate:
+    module_type: ideal_gas_brayton_components.Fractional_Pressure_LossModule
+    inputs:
+      loss_fraction_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__pressure_loss__loss_fraction
+      pressure_in: float combinations_loop_brayton__loop_brayton__compressor_3__evaluate__pressure_out
+    outputs:
+      root: RootModel[float] combinations_loop_brayton__loop_brayton__pressure_loss__evaluate__pressure_out
+  combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate:
+    module_type: integrated_heat_electricity.Network_Heat_Driven_ClosureModule
+    inputs:
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+      he_flow_in: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__mdot
+      pbli_cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__cp
+      turbine_efficiency_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__turbine_efficiency
+      he_available_in: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__q_ihx
+      network_mode_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__heat_exchangers__network_mode
+      pbli_ua_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__ua
+      pbli_limit_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__limit
+      recuperator_effectiveness_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__recuperator_effectiveness
+      divertor_flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__dummy_flow
+      he_cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__heat_exchangers__he_cp
+      gamma_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__gamma
+      return_pressure_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__return_pressure
+      he_limit_in: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__T_out
+      pbli_flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__dummy_flow
+      turbine_pressure_in: float combinations_loop_brayton__loop_brayton__pressure_loss__evaluate__pressure_out.root
+      divertor_ua_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__ua
+      pbli_split_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__heat_exchangers__pbli_split_fraction
+      he_ua_in: float combinations_loop_brayton__loop_brayton__he_hx__evaluate__ua
+      pbli_available_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__available
+      cold_temperature_in: float combinations_loop_brayton__loop_brayton__compressor_3__evaluate__temperature_out
+      divertor_cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__cp
+      divertor_available_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__available
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+      divertor_limit_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__idle_branches__limit
+    outputs:
+      pbli_state_defined: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_state_defined
+      he_hot: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_hot
+      network_mode_used: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__network_mode_used
+      pbli_cold_terminal_difference: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_cold_terminal_difference
+      divertor_hot: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot
+      divertor_hot_bound_margin: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot_bound_margin
+      pbli_stream_out: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_stream_out
+      he_hot_bound_margin: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_hot_bound_margin
+      he_cold_terminal_difference: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_cold_terminal_difference
+      divertor_unmet: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_unmet
+      pbli_secondary_out: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_secondary_out
+      accepted_heat: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__accepted_heat
+      divertor_transferred: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_transferred
+      divertor_state_defined: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_state_defined
+      he_state_defined: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_state_defined
+      expansion_factor: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__expansion_factor
+      pbli_hot: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot
+      pbli_transferred: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_transferred
+      pbli_split_used: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_split_used
+      divertor_hot_terminal_difference: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot_terminal_difference
+      he_transferred: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_transferred
+      divertor_stream_out: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_stream_out
+      pbli_return: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_return
+      he_secondary_in: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_secondary_in
+      pbli_secondary_in: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_secondary_in
+      divertor_secondary_in: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_secondary_in
+      closure_residual: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__closure_residual
+      unmet_heat: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__unmet_heat
+      heater_inlet: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__heater_inlet
+      he_return: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_return
+      he_capability: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_capability
+      pbli_hot_bound_margin: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot_bound_margin
+      turbine_temperature: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__turbine_temperature
+      pbli_capability: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_capability
+      he_secondary_out: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_secondary_out
+      he_unmet: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_unmet
+      divertor_cold_terminal_difference: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_cold_terminal_difference
+      pbli_hot_terminal_difference: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot_terminal_difference
+      divertor_capability: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_capability
+      mixed_outlet: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__mixed_outlet
+      divertor_return: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_return
+      he_hot_terminal_difference: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_hot_terminal_difference
+      divertor_secondary_out: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_secondary_out
+      iterations: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__iterations
+      pbli_unmet: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_unmet
+  combinations_loop_brayton__loop_brayton__turbine__evaluate:
+    module_type: ideal_gas_brayton_components.Ideal_Gas_ExpanderModule
+    inputs:
+      efficiency_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__turbine_efficiency
+      exit_pressure_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__return_pressure
+      gamma_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__gamma
+      pressure_in: float combinations_loop_brayton__loop_brayton__pressure_loss__evaluate__pressure_out.root
+      temperature_in: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__turbine_temperature
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+    outputs:
+      pressure_out: float combinations_loop_brayton__loop_brayton__turbine__evaluate__pressure_out
+      shaft_produced: float combinations_loop_brayton__loop_brayton__turbine__evaluate__shaft_produced
+      temperature_out: float combinations_loop_brayton__loop_brayton__turbine__evaluate__temperature_out
+  combinations_loop_brayton__loop_brayton__recuperator__evaluate:
+    module_type: integrated_heat_electricity.Passive_RecuperatorModule
+    inputs:
+      effectiveness_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__recuperator_effectiveness
+      cold_temperature_in: float combinations_loop_brayton__loop_brayton__compressor_3__evaluate__temperature_out
+      hot_temperature_in: float combinations_loop_brayton__loop_brayton__turbine__evaluate__temperature_out
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+    outputs:
+      bypass_active: float combinations_loop_brayton__loop_brayton__recuperator__evaluate__bypass_active
+      cold_out: float combinations_loop_brayton__loop_brayton__recuperator__evaluate__cold_out
+      hot_out: float combinations_loop_brayton__loop_brayton__recuperator__evaluate__hot_out
+      recovered_heat: float combinations_loop_brayton__loop_brayton__recuperator__evaluate__recovered_heat
+  combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      rating_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__turbine_capacity__selected_rating
+      demand_available_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__turbine_capacity__demand_available
+      conditions_supported_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__turbine_capacity__assumed_supported
+      applicable_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__turbine_capacity__scenario_applicable
+      demand_in: float combinations_loop_brayton__loop_brayton__turbine__evaluate__shaft_produced
+    outputs:
+      evaluation_defined: float combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__evaluation_defined
+      margin: float combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__margin
+      applicable: bool combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__applicable
+      supported: bool combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__supported
+      capacity_ok: bool combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__capacity_ok
+  combinations_loop_brayton__loop_brayton__precooler__evaluate:
+    module_type: ideal_gas_brayton_components.Fixed_Outlet_ConditioningModule
+    inputs:
+      target_temperature_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__low_temperature
+      flow_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__selected_flow
+      temperature_in: float combinations_loop_brayton__loop_brayton__recuperator__evaluate__hot_out
+      cp_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__cycle__cp
+      pressure_in: float combinations_loop_brayton__loop_brayton__turbine__evaluate__pressure_out
+      heating_role_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__precooler__heating_role
+    outputs:
+      heat_into_fluid: float combinations_loop_brayton__loop_brayton__precooler__evaluate__heat_into_fluid
+      temperature_out: float combinations_loop_brayton__loop_brayton__precooler__evaluate__temperature_out
+      pressure_out: float combinations_loop_brayton__loop_brayton__precooler__evaluate__pressure_out
+  combinations_loop_brayton__loop_brayton__rejection_capacity__rejected_heat:
+    module_type: combinations_loop_brayton.loop_brayton.rejection_capacity.rejected_heatModule
+    inputs:
+      intercooler_1_heat_into_fluid: float combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__heat_into_fluid
+      intercooler_2_heat_into_fluid: float combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__heat_into_fluid
+      precooler_heat_into_fluid: float combinations_loop_brayton__loop_brayton__precooler__evaluate__heat_into_fluid
+    outputs:
+      root: RootModel[float] combinations_loop_brayton__loop_brayton__rejection_capacity__rejected_heat__rejected_heat
+  combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_in: float combinations_loop_brayton__loop_brayton__rejection_capacity__rejected_heat__rejected_heat.root
+      rating_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__rejection_capacity__selected_rating
+      applicable_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__rejection_capacity__scenario_applicable
+      demand_available_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__rejection_capacity__demand_available
+      conditions_supported_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__rejection_capacity__assumed_supported
+    outputs:
+      evaluation_defined: float combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__evaluation_defined
+      margin: float combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__margin
+      applicable: bool combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__applicable
+      supported: bool combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__supported
+      capacity_ok: bool combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__capacity_ok
+  combinations_loop_brayton__loop_brayton__electrical__evaluate:
+    module_type: integrated_heat_electricity.Plant_Electrical_BalanceModule
+    inputs:
+      motor_efficiency_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__motor_efficiency
+      compressor_1_in: float combinations_loop_brayton__loop_brayton__compressor_1__evaluate__shaft_demand
+      pump_electric_in: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__p_elec
+      generator_efficiency_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__generator_efficiency
+      cryo_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__cryo
+      other_electric_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__other_electric
+      control_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__control
+      turbine_work_in: float combinations_loop_brayton__loop_brayton__turbine__evaluate__shaft_produced
+      pump_recovered_in: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__q_recovered_total
+      fuel_exhaust_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__fuel_exhaust
+      compressor_2_in: float combinations_loop_brayton__loop_brayton__compressor_2__evaluate__shaft_demand
+      fuel_coefficient_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__fuel_coefficient
+      heating_efficiency_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__heating_efficiency
+      auxiliary_heat_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__auxiliary_heat
+      compressor_3_in: float combinations_loop_brayton__loop_brayton__compressor_3__evaluate__shaft_demand
+      fuel_base_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__electrical__fuel_base
+    outputs:
+      fuel_base_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_base_electric
+      other_electric_demand: float combinations_loop_brayton__loop_brayton__electrical__evaluate__other_electric_demand
+      dissipated_auxiliary: float combinations_loop_brayton__loop_brayton__electrical__evaluate__dissipated_auxiliary
+      net_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__net_electric
+      generator_loss: float combinations_loop_brayton__loop_brayton__electrical__evaluate__generator_loss
+      net_shaft: float combinations_loop_brayton__loop_brayton__electrical__evaluate__net_shaft
+      heating_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__heating_electric
+      cryo_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__cryo_electric
+      fuel_variable_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_variable_electric
+      compressor_demand: float combinations_loop_brayton__loop_brayton__electrical__evaluate__compressor_demand
+      auxiliary_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__auxiliary_electric
+      gross_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__gross_electric
+      fuel_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_electric
+      primary_pump_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__primary_pump_electric
+      motor_loss: float combinations_loop_brayton__loop_brayton__electrical__evaluate__motor_loss
+      shaft_import: float combinations_loop_brayton__loop_brayton__electrical__evaluate__shaft_import
+      heating_loss: float combinations_loop_brayton__loop_brayton__electrical__evaluate__heating_loss
+      pump_loss: float combinations_loop_brayton__loop_brayton__electrical__evaluate__pump_loss
+      control_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__control_electric
+  combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      applicable_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_capacity__scenario_applicable
+      rating_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_capacity__selected_rating
+      demand_in: float combinations_loop_brayton__loop_brayton__electrical__evaluate__compressor_demand
+      conditions_supported_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_capacity__assumed_supported
+      demand_available_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__compressor_capacity__demand_available
+    outputs:
+      evaluation_defined: float combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__evaluation_defined
+      margin: float combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__margin
+      applicable: bool combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__applicable
+      supported: bool combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__supported
+      capacity_ok: bool combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__capacity_ok
+  combinations_loop_brayton__loop_brayton__generator_capacity__evaluate:
+    module_type: mfe_viability.Offered_Capacity_ScreenModule
+    inputs:
+      demand_available_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__generator_capacity__demand_available
+      conditions_supported_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__generator_capacity__assumed_supported
+      rating_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__generator_capacity__selected_rating
+      demand_in: float combinations_loop_brayton__loop_brayton__electrical__evaluate__gross_electric
+      applicable_in: bool combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__generator_capacity__scenario_applicable
+    outputs:
+      evaluation_defined: float combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__evaluation_defined
+      margin: float combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__margin
+      applicable: bool combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__applicable
+      supported: bool combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__supported
+      capacity_ok: bool combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__capacity_ok
+  combinations_lumped_fit__lumped_fit__he_fit__domain_ok__b88eae8078e8995f:
+    module_type: combinations_lumped_fit.LumpedFitHeFitDomainOkConstraintModule
+    inputs:
+      domain_product_in: float combinations_lumped_fit__lumped_fit__he_fit__cycle__domain_product
+    outputs:
+      evaluation: ConstraintEvaluation combinations_lumped_fit__lumped_fit__he_fit__domain_ok__b88eae8078e8995f__evaluation
+  combinations_lumped_fit__lumped_fit__pbli_fit__domain_ok__f30925cbe487ee4d:
+    module_type: combinations_lumped_fit.LumpedFitPbliFitDomainOkConstraintModule
+    inputs:
+      domain_product_in: float combinations_lumped_fit__lumped_fit__pbli_fit__cycle__domain_product
+    outputs:
+      evaluation: ConstraintEvaluation combinations_lumped_fit__lumped_fit__pbli_fit__domain_ok__f30925cbe487ee4d__evaluation
+  combinations_lumped_fit__lumped_fit__divertor_fit__domain_ok__72e8945d8d697cd1:
+    module_type: combinations_lumped_fit.LumpedFitDivertorFitDomainOkConstraintModule
+    inputs:
+      domain_product_in: float combinations_lumped_fit__lumped_fit__divertor_fit__cycle__domain_product
+    outputs:
+      evaluation: ConstraintEvaluation combinations_lumped_fit__lumped_fit__divertor_fit__domain_ok__72e8945d8d697cd1__evaluation
+  combinations_circulator_purchase__circulator_purchase__circulator_capacity__capacity_ok__4ffbb5ea99182b98:
+    module_type: combinations_circulator_purchase.CirculatorPurchaseCirculatorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__margin
+      defined_in: float combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_circulator_purchase__circulator_purchase__circulator_capacity__capacity_ok__4ffbb5ea99182b98__evaluation
+  combinations_plasma_chain__plasma_chain__he_capacity__capacity_ok__d2b59d407f4559fd:
+    module_type: combinations_plasma_chain.PlasmaChainHeCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__he_capacity__evaluate__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__he_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__he_capacity__capacity_ok__d2b59d407f4559fd__evaluation
+  combinations_plasma_chain__plasma_chain__divertor_pump__capacity_ok__b0d2ef5eececd260:
+    module_type: combinations_plasma_chain.PlasmaChainDivertorPumpCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__divertor_pump__screen__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__divertor_pump__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__divertor_pump__capacity_ok__b0d2ef5eececd260__evaluation
+  combinations_plasma_chain__plasma_chain__pbli_pump__capacity_ok__2740088b7321b64f:
+    module_type: combinations_plasma_chain.PlasmaChainPbliPumpCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__pbli_pump__screen__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__pbli_pump__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__pbli_pump__capacity_ok__2740088b7321b64f__evaluation
+  combinations_plasma_chain__plasma_chain__rejection_capacity__capacity_ok__77de6a398fb88ba8:
+    module_type: combinations_plasma_chain.PlasmaChainRejectionCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__rejection_capacity__capacity_ok__77de6a398fb88ba8__evaluation
+  combinations_plasma_chain__plasma_chain__generator_capacity__capacity_ok__c425e327953b0497:
+    module_type: combinations_plasma_chain.PlasmaChainGeneratorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__generator_capacity__capacity_ok__c425e327953b0497__evaluation
+  combinations_plasma_chain__plasma_chain__checks__heat_removal_ok__e3aa56b0160f3e08:
+    module_type: combinations_plasma_chain.PlasmaChainChecksHeatRemovalOkConstraintModule
+    inputs:
+      tolerance_in: float combinations_plasma_chain_params.combinations_plasma_chain__plasma_chain__checks__energy_tolerance
+      unmet_in: float combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__unmet_heat
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__checks__heat_removal_ok__e3aa56b0160f3e08__evaluation
+  combinations_plasma_chain__plasma_chain__checks__net_positive__1ca673e570772897:
+    module_type: combinations_plasma_chain.PlasmaChainChecksNetPositiveConstraintModule
+    inputs:
+      net_electric: float combinations_plasma_chain__plasma_chain__electrical__evaluate__net_electric
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__checks__net_positive__1ca673e570772897__evaluation
+  combinations_plasma_chain__plasma_chain__turbine_capacity__capacity_ok__a7b56c68f9f9a298:
+    module_type: combinations_plasma_chain.PlasmaChainTurbineCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__turbine_capacity__capacity_ok__a7b56c68f9f9a298__evaluation
+  combinations_plasma_chain__plasma_chain__divertor_capacity__capacity_ok__f4df61f2684e5d3c:
+    module_type: combinations_plasma_chain.PlasmaChainDivertorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__divertor_capacity__capacity_ok__f4df61f2684e5d3c__evaluation
+  combinations_plasma_chain__plasma_chain__he_pump__capacity_ok__933c88ced63feb63:
+    module_type: combinations_plasma_chain.PlasmaChainHePumpCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__he_pump__screen__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__he_pump__screen__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__he_pump__capacity_ok__933c88ced63feb63__evaluation
+  combinations_plasma_chain__plasma_chain__compressor_capacity__capacity_ok__0bc93f698ed19a5d:
+    module_type: combinations_plasma_chain.PlasmaChainCompressorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__compressor_capacity__capacity_ok__0bc93f698ed19a5d__evaluation
+  combinations_plasma_chain__plasma_chain__pbli_capacity__capacity_ok__16d446380d5ebc09:
+    module_type: combinations_plasma_chain.PlasmaChainPbliCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__pbli_capacity__capacity_ok__16d446380d5ebc09__evaluation
+  combinations_plasma_chain__plasma_chain__fuel_capacity__capacity_ok__5c625963d8a8bf70:
+    module_type: combinations_plasma_chain.PlasmaChainFuelCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__margin
+      defined_in: float combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_plasma_chain__plasma_chain__fuel_capacity__capacity_ok__5c625963d8a8bf70__evaluation
+  combinations_loop_brayton__loop_brayton__turbine_capacity__capacity_ok__a4f0ad4edcd0de39:
+    module_type: combinations_loop_brayton.LoopBraytonTurbineCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__margin
+      defined_in: float combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_loop_brayton__loop_brayton__turbine_capacity__capacity_ok__a4f0ad4edcd0de39__evaluation
+  combinations_loop_brayton__loop_brayton__checks__heat_removal_ok__c7a2f9638fd1e56b:
+    module_type: combinations_loop_brayton.LoopBraytonChecksHeatRemovalOkConstraintModule
+    inputs:
+      tolerance_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__checks__energy_tolerance
+      unmet_in: float combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__unmet_heat
+    outputs:
+      evaluation: ConstraintEvaluation combinations_loop_brayton__loop_brayton__checks__heat_removal_ok__c7a2f9638fd1e56b__evaluation
+  combinations_loop_brayton__loop_brayton__checks__net_positive__d22e3a3d83be3d66:
+    module_type: combinations_loop_brayton.LoopBraytonChecksNetPositiveConstraintModule
+    inputs:
+      net_electric: float combinations_loop_brayton__loop_brayton__electrical__evaluate__net_electric
+    outputs:
+      evaluation: ConstraintEvaluation combinations_loop_brayton__loop_brayton__checks__net_positive__d22e3a3d83be3d66__evaluation
+  combinations_loop_brayton__loop_brayton__checks__loop_capacity_ok__42cc45f771fa6628:
+    module_type: combinations_loop_brayton.LoopBraytonChecksLoopCapacityOkConstraintModule
+    inputs:
+      mdot_loop_rated_in: float combinations_loop_brayton_params.combinations_loop_brayton__loop_brayton__primary_loop__mdot_loop_rated
+      mdot_loop_in: float combinations_loop_brayton__loop_brayton__primary_loop__evaluate__mdot_loop
+    outputs:
+      evaluation: ConstraintEvaluation combinations_loop_brayton__loop_brayton__checks__loop_capacity_ok__42cc45f771fa6628__evaluation
+  combinations_loop_brayton__loop_brayton__rejection_capacity__capacity_ok__f641e3674fbef65a:
+    module_type: combinations_loop_brayton.LoopBraytonRejectionCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__margin
+      defined_in: float combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_loop_brayton__loop_brayton__rejection_capacity__capacity_ok__f641e3674fbef65a__evaluation
+  combinations_loop_brayton__loop_brayton__he_capacity__capacity_ok__5a310602c6faa347:
+    module_type: combinations_loop_brayton.LoopBraytonHeCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_loop_brayton__loop_brayton__he_capacity__evaluate__margin
+      defined_in: float combinations_loop_brayton__loop_brayton__he_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_loop_brayton__loop_brayton__he_capacity__capacity_ok__5a310602c6faa347__evaluation
+  combinations_loop_brayton__loop_brayton__compressor_capacity__capacity_ok__cb22fc3ae07b48e1:
+    module_type: combinations_loop_brayton.LoopBraytonCompressorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__margin
+      defined_in: float combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_loop_brayton__loop_brayton__compressor_capacity__capacity_ok__cb22fc3ae07b48e1__evaluation
+  combinations_loop_brayton__loop_brayton__generator_capacity__capacity_ok__d2956d9503aa885e:
+    module_type: combinations_loop_brayton.LoopBraytonGeneratorCapacityCapacityOkConstraintModule
+    inputs:
+      margin_in: float combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__margin
+      defined_in: float combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__evaluation_defined
+    outputs:
+      evaluation: ConstraintEvaluation combinations_loop_brayton__loop_brayton__generator_capacity__capacity_ok__d2956d9503aa885e__evaluation
+  constraint_report_aggregator:
+    module_type: constraints.ConstraintReportAggregatorModule
+    inputs:
+      combinations_lumped_fit_lumped_fit_he_fit_domain_ok_b88eae8078e8995f: ConstraintEvaluation
+        combinations_lumped_fit__lumped_fit__he_fit__domain_ok__b88eae8078e8995f__evaluation
+      combinations_lumped_fit_lumped_fit_pbli_fit_domain_ok_f30925cbe487ee4d: ConstraintEvaluation
+        combinations_lumped_fit__lumped_fit__pbli_fit__domain_ok__f30925cbe487ee4d__evaluation
+      combinations_lumped_fit_lumped_fit_divertor_fit_domain_ok_72e8945d8d697cd1: ConstraintEvaluation
+        combinations_lumped_fit__lumped_fit__divertor_fit__domain_ok__72e8945d8d697cd1__evaluation
+      combinations_circulator_purchase_circulator_purchase_circulator_capacity_capacity_ok_4ffbb5ea99182b98: ConstraintEvaluation
+        combinations_circulator_purchase__circulator_purchase__circulator_capacity__capacity_ok__4ffbb5ea99182b98__evaluation
+      combinations_plasma_chain_plasma_chain_he_capacity_capacity_ok_d2b59d407f4559fd: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__he_capacity__capacity_ok__d2b59d407f4559fd__evaluation
+      combinations_plasma_chain_plasma_chain_divertor_pump_capacity_ok_b0d2ef5eececd260: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__divertor_pump__capacity_ok__b0d2ef5eececd260__evaluation
+      combinations_plasma_chain_plasma_chain_pbli_pump_capacity_ok_2740088b7321b64f: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__pbli_pump__capacity_ok__2740088b7321b64f__evaluation
+      combinations_plasma_chain_plasma_chain_rejection_capacity_capacity_ok_77de6a398fb88ba8: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__rejection_capacity__capacity_ok__77de6a398fb88ba8__evaluation
+      combinations_plasma_chain_plasma_chain_generator_capacity_capacity_ok_c425e327953b0497: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__generator_capacity__capacity_ok__c425e327953b0497__evaluation
+      combinations_plasma_chain_plasma_chain_checks_heat_removal_ok_e3aa56b0160f3e08: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__checks__heat_removal_ok__e3aa56b0160f3e08__evaluation
+      combinations_plasma_chain_plasma_chain_checks_net_positive_1ca673e570772897: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__checks__net_positive__1ca673e570772897__evaluation
+      combinations_plasma_chain_plasma_chain_turbine_capacity_capacity_ok_a7b56c68f9f9a298: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__turbine_capacity__capacity_ok__a7b56c68f9f9a298__evaluation
+      combinations_plasma_chain_plasma_chain_divertor_capacity_capacity_ok_f4df61f2684e5d3c: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__divertor_capacity__capacity_ok__f4df61f2684e5d3c__evaluation
+      combinations_plasma_chain_plasma_chain_he_pump_capacity_ok_933c88ced63feb63: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__he_pump__capacity_ok__933c88ced63feb63__evaluation
+      combinations_plasma_chain_plasma_chain_compressor_capacity_capacity_ok_0bc93f698ed19a5d: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__compressor_capacity__capacity_ok__0bc93f698ed19a5d__evaluation
+      combinations_plasma_chain_plasma_chain_pbli_capacity_capacity_ok_16d446380d5ebc09: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__pbli_capacity__capacity_ok__16d446380d5ebc09__evaluation
+      combinations_plasma_chain_plasma_chain_fuel_capacity_capacity_ok_5c625963d8a8bf70: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__fuel_capacity__capacity_ok__5c625963d8a8bf70__evaluation
+      combinations_loop_brayton_loop_brayton_turbine_capacity_capacity_ok_a4f0ad4edcd0de39: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__turbine_capacity__capacity_ok__a4f0ad4edcd0de39__evaluation
+      combinations_loop_brayton_loop_brayton_checks_heat_removal_ok_c7a2f9638fd1e56b: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__checks__heat_removal_ok__c7a2f9638fd1e56b__evaluation
+      combinations_loop_brayton_loop_brayton_checks_net_positive_d22e3a3d83be3d66: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__checks__net_positive__d22e3a3d83be3d66__evaluation
+      combinations_loop_brayton_loop_brayton_checks_loop_capacity_ok_42cc45f771fa6628: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__checks__loop_capacity_ok__42cc45f771fa6628__evaluation
+      combinations_loop_brayton_loop_brayton_rejection_capacity_capacity_ok_f641e3674fbef65a: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__rejection_capacity__capacity_ok__f641e3674fbef65a__evaluation
+      combinations_loop_brayton_loop_brayton_he_capacity_capacity_ok_5a310602c6faa347: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__he_capacity__capacity_ok__5a310602c6faa347__evaluation
+      combinations_loop_brayton_loop_brayton_compressor_capacity_capacity_ok_cb22fc3ae07b48e1: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__compressor_capacity__capacity_ok__cb22fc3ae07b48e1__evaluation
+      combinations_loop_brayton_loop_brayton_generator_capacity_capacity_ok_d2956d9503aa885e: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__generator_capacity__capacity_ok__d2956d9503aa885e__evaluation
+    outputs:
+      constraint_report: ConstraintReport constraint_report
+  exit_point:
+    module_type: ExitPoint
+    outputs:
+      combinations_lumped_fit__lumped_fit__he_fit__cycle__margin_low: float lumped_fit__he_fit__margin_low.json
+      combinations_lumped_fit__lumped_fit__he_fit__cycle__T2_C: float lumped_fit__he_fit__T2_C.json
+      combinations_lumped_fit__lumped_fit__he_fit__cycle__margin_high: float lumped_fit__he_fit__margin_high.json
+      combinations_lumped_fit__lumped_fit__he_fit__cycle__eta_th: float lumped_fit__he_fit__eta_th.json
+      combinations_lumped_fit__lumped_fit__he_fit__cycle__eta_fit: float lumped_fit__he_fit__eta_fit.json
+      combinations_lumped_fit__lumped_fit__he_fit__cycle__domain_product: float lumped_fit__he_fit__domain_product.json
+      combinations_lumped_fit__lumped_fit__pbli_fit__cycle__margin_low: float lumped_fit__pbli_fit__margin_low.json
+      combinations_lumped_fit__lumped_fit__pbli_fit__cycle__T2_C: float lumped_fit__pbli_fit__T2_C.json
+      combinations_lumped_fit__lumped_fit__pbli_fit__cycle__margin_high: float lumped_fit__pbli_fit__margin_high.json
+      combinations_lumped_fit__lumped_fit__pbli_fit__cycle__eta_th: float lumped_fit__pbli_fit__eta_th.json
+      combinations_lumped_fit__lumped_fit__pbli_fit__cycle__eta_fit: float lumped_fit__pbli_fit__eta_fit.json
+      combinations_lumped_fit__lumped_fit__pbli_fit__cycle__domain_product: float
+        lumped_fit__pbli_fit__domain_product.json
+      combinations_lumped_fit__lumped_fit__divertor_fit__cycle__margin_low: float
+        lumped_fit__divertor_fit__margin_low.json
+      combinations_lumped_fit__lumped_fit__divertor_fit__cycle__T2_C: float lumped_fit__divertor_fit__T2_C.json
+      combinations_lumped_fit__lumped_fit__divertor_fit__cycle__margin_high: float
+        lumped_fit__divertor_fit__margin_high.json
+      combinations_lumped_fit__lumped_fit__divertor_fit__cycle__eta_th: float lumped_fit__divertor_fit__eta_th.json
+      combinations_lumped_fit__lumped_fit__divertor_fit__cycle__eta_fit: float lumped_fit__divertor_fit__eta_fit.json
+      combinations_lumped_fit__lumped_fit__divertor_fit__cycle__domain_product: float
+        lumped_fit__divertor_fit__domain_product.json
+      combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__evaluation_defined: float
+        circulator_purchase__circulator_capacity__evaluation_defined.json
+      combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__margin: float
+        circulator_purchase__circulator_capacity__margin.json
+      combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__applicable: bool
+        combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__applicable.json
+      combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__supported: bool
+        combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__supported.json
+      combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__capacity_ok: bool
+        combinations_circulator_purchase__circulator_purchase__circulator_capacity__evaluate__capacity_ok.json
+      combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__purchased_quantity: float
+        circulator_purchase__circulator_equipment__inventory_quantity.json
+      combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__source_budget: float
+        combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__source_budget.json
+      combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__quantity_ratio: float
+        circulator_purchase__circulator_equipment__quantity_ratio.json
+      combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__capital: float
+        circulator_purchase__circulator_equipment__capital_cost.json
+      combinations_circulator_purchase__circulator_purchase__circulator_equipment__purchase__extrapolated: float
+        circulator_purchase__circulator_equipment__cost_extrapolated.json
+      combinations_plasma_chain__plasma_chain__fuel_inventory__atoms__stock_kg: float
+        combinations_plasma_chain__plasma_chain__fuel_inventory__atoms__stock_kg.json
+      combinations_plasma_chain__plasma_chain__fuel_inventory__atoms__atoms: float
+        plasma_chain__fuel_inventory__selected_tritium_atoms.json
+      combinations_plasma_chain__plasma_chain__divertor_hx__evaluate__area: float
+        plasma_chain__divertor_hx__area.json
+      combinations_plasma_chain__plasma_chain__divertor_hx__evaluate__ua: float plasma_chain__divertor_hx__ua.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__electric: float
+        plasma_chain__deposition__divertor_pump.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__operating_flow: float
+        plasma_chain__divertor_pump__operating_flow.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__mode: float
+        combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__mode.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__evaluate__hydraulic_supported: float
+        plasma_chain__divertor_pump__hydraulic_supported.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__screen__evaluation_defined: float
+        plasma_chain__divertor_pump__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__screen__margin: float
+        plasma_chain__divertor_pump__margin.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__screen__applicable: bool
+        combinations_plasma_chain__plasma_chain__divertor_pump__screen__applicable.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__screen__supported: bool
+        combinations_plasma_chain__plasma_chain__divertor_pump__screen__supported.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__screen__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__divertor_pump__screen__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__electric: float
+        plasma_chain__deposition__pbli_pump.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__operating_flow: float
+        plasma_chain__pbli_pump__operating_flow.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__mode: float combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__mode.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__evaluate__hydraulic_supported: float
+        plasma_chain__pbli_pump__hydraulic_supported.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__screen__evaluation_defined: float
+        plasma_chain__pbli_pump__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__screen__margin: float plasma_chain__pbli_pump__margin.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__screen__applicable: bool
+        combinations_plasma_chain__plasma_chain__pbli_pump__screen__applicable.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__screen__supported: bool
+        combinations_plasma_chain__plasma_chain__pbli_pump__screen__supported.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__screen__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__pbli_pump__screen__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__pbli_hx__evaluate__area: float plasma_chain__pbli_hx__area.json
+      combinations_plasma_chain__plasma_chain__pbli_hx__evaluate__ua: float plasma_chain__heat_exchangers__pbli_ua.json
+      combinations_plasma_chain__plasma_chain__compressor_1__evaluate__pressure_out: float
+        plasma_chain__compressor_1__pressure_out.json
+      combinations_plasma_chain__plasma_chain__compressor_1__evaluate__shaft_demand: float
+        plasma_chain__compressor_1__shaft_demand.json
+      combinations_plasma_chain__plasma_chain__compressor_1__evaluate__temperature_out: float
+        plasma_chain__compressor_1__temperature_out.json
+      combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__heat_into_fluid: float
+        plasma_chain__intercooler_1__heat_into_fluid.json
+      combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__temperature_out: float
+        plasma_chain__intercooler_1__temperature_out.json
+      combinations_plasma_chain__plasma_chain__intercooler_1__evaluate__pressure_out: float
+        plasma_chain__intercooler_1__pressure_out.json
+      combinations_plasma_chain__plasma_chain__compressor_2__evaluate__pressure_out: float
+        plasma_chain__compressor_2__pressure_out.json
+      combinations_plasma_chain__plasma_chain__compressor_2__evaluate__shaft_demand: float
+        plasma_chain__compressor_2__shaft_demand.json
+      combinations_plasma_chain__plasma_chain__compressor_2__evaluate__temperature_out: float
+        plasma_chain__compressor_2__temperature_out.json
+      combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__heat_into_fluid: float
+        plasma_chain__intercooler_2__heat_into_fluid.json
+      combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__temperature_out: float
+        plasma_chain__intercooler_2__temperature_out.json
+      combinations_plasma_chain__plasma_chain__intercooler_2__evaluate__pressure_out: float
+        plasma_chain__intercooler_2__pressure_out.json
+      combinations_plasma_chain__plasma_chain__plasma__geom__A: float combinations_plasma_chain__plasma_chain__plasma__geom__A.json
+      combinations_plasma_chain__plasma_chain__plasma__geom__V: float plasma_chain__plasma__fuel_volume.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__n_bar19: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_bar19.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__n_T0: float plasma_chain__plasma__n_T0.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__W_th: float combinations_plasma_chain__plasma_chain__plasma__sustain__W_th.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__p_avg: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_avg.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__p_brems: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_brems.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__n_He0: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_He0.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__n_D0: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_D0.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__alpha_n_e_eff: float
+        combinations_plasma_chain__plasma_chain__plasma__sustain__alpha_n_e_eff.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__p_aux_required: float
+        plasma_chain__electrical__plasma_aux_required_published.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__p_rad: float plasma_chain__plasma__p_rad.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__p_alpha_heat: float
+        plasma_chain__plasma__p_alpha_heat.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__tau_E: float combinations_plasma_chain__plasma_chain__plasma__sustain__tau_E.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__p_sync: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_sync.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__p_line: float combinations_plasma_chain__plasma_chain__plasma__sustain__p_line.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__n_e_volav: float combinations_plasma_chain__plasma_chain__plasma__sustain__n_e_volav.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__alpha_He_eff: float
+        combinations_plasma_chain__plasma_chain__plasma__sustain__alpha_He_eff.json
+      combinations_plasma_chain__plasma_chain__plasma__sustain__T_e0: float combinations_plasma_chain__plasma_chain__plasma__sustain__T_e0.json
+      combinations_plasma_chain__plasma_chain__plasma__beta_calc__beta: RootModel[float]
+        plasma_chain__plasma__beta.json
+      combinations_plasma_chain__plasma_chain__plasma__fusion__p_fus: RootModel[float]
+        plasma_chain__plasma__p_fus.json
+      combinations_plasma_chain__plasma_chain__source__evaluate__selected_power: float
+        plasma_chain__source__selected_power.json
+      combinations_plasma_chain__plasma_chain__source__evaluate__selected_mode: float
+        plasma_chain__source__selected_mode.json
+      combinations_plasma_chain__plasma_chain__fuel__evaluate__burn_kg_per_fpy: float
+        combinations_plasma_chain__plasma_chain__fuel__evaluate__burn_kg_per_fpy.json
+      combinations_plasma_chain__plasma_chain__fuel__evaluate__inject_rate: float
+        plasma_chain__fuel__inject_rate.json
+      combinations_plasma_chain__plasma_chain__fuel__evaluate__burn_rate: float plasma_chain__fuel__burn_rate.json
+      combinations_plasma_chain__plasma_chain__fuel__evaluate__tbr_margin: float combinations_plasma_chain__plasma_chain__fuel__evaluate__tbr_margin.json
+      combinations_plasma_chain__plasma_chain__fuel__evaluate__tbr_required: float
+        plasma_chain__fuel__tbr_required.json
+      combinations_plasma_chain__plasma_chain__fuel__evaluate__loss_rate: float plasma_chain__fuel__loss_rate.json
+      combinations_plasma_chain__plasma_chain__fuel__evaluate__exhaust_rate: float
+        plasma_chain__fuel__exhaust_rate.json
+      combinations_plasma_chain__plasma_chain__compressor_3__evaluate__pressure_out: float
+        plasma_chain__compressor_3__pressure_out.json
+      combinations_plasma_chain__plasma_chain__compressor_3__evaluate__shaft_demand: float
+        plasma_chain__compressor_3__shaft_demand.json
+      combinations_plasma_chain__plasma_chain__compressor_3__evaluate__temperature_out: float
+        plasma_chain__compressor_3__temperature_out.json
+      combinations_plasma_chain__plasma_chain__pressure_loss__evaluate__pressure_out: RootModel[float]
+        plasma_chain__pressure_loss__pressure_out.json
+      combinations_plasma_chain__plasma_chain__he_hx__evaluate__area: float plasma_chain__he_hx__area.json
+      combinations_plasma_chain__plasma_chain__he_hx__evaluate__ua: float plasma_chain__he_hx__ua.json
+      combinations_plasma_chain__plasma_chain__he_pump__evaluate__electric: float
+        plasma_chain__deposition__he_pump.json
+      combinations_plasma_chain__plasma_chain__he_pump__evaluate__operating_flow: float
+        plasma_chain__he_pump__operating_flow.json
+      combinations_plasma_chain__plasma_chain__he_pump__evaluate__mode: float combinations_plasma_chain__plasma_chain__he_pump__evaluate__mode.json
+      combinations_plasma_chain__plasma_chain__he_pump__evaluate__hydraulic_supported: float
+        plasma_chain__he_pump__hydraulic_supported.json
+      combinations_plasma_chain__plasma_chain__he_pump__screen__evaluation_defined: float
+        plasma_chain__he_pump__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__he_pump__screen__margin: float plasma_chain__he_pump__margin.json
+      combinations_plasma_chain__plasma_chain__he_pump__screen__applicable: bool combinations_plasma_chain__plasma_chain__he_pump__screen__applicable.json
+      combinations_plasma_chain__plasma_chain__he_pump__screen__supported: bool combinations_plasma_chain__plasma_chain__he_pump__screen__supported.json
+      combinations_plasma_chain__plasma_chain__he_pump__screen__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__he_pump__screen__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__evaluation_defined: float
+        plasma_chain__fuel_capacity__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__margin: float
+        plasma_chain__fuel_capacity__margin.json
+      combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__applicable: bool
+        combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__applicable.json
+      combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__supported: bool
+        combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__supported.json
+      combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__fuel_capacity__evaluate__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__divertor_deposition: float
+        plasma_chain__deposition__divertor_deposition.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__topology_zero: float
+        plasma_chain__deposition__topology_zero.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__pump_electric: float
+        plasma_chain__deposition__pump_electric.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__neutron_power: float
+        plasma_chain__deposition__neutron_power.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__charged_power: float
+        plasma_chain__deposition__charged_power.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__pbli_friction: float
+        plasma_chain__deposition__pbli_friction.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__other_heat: float
+        plasma_chain__deposition__other_heat.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__nuclear_gain: float
+        plasma_chain__deposition__nuclear_gain.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__he_deposition: float
+        plasma_chain__deposition__he_deposition.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__source_residual: float
+        plasma_chain__deposition__source_residual.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__he_friction: float
+        plasma_chain__deposition__he_friction.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__exchange: float
+        plasma_chain__deposition__exchange.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__pump_recovered: float
+        plasma_chain__deposition__pump_recovered.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__pbli_deposition: float
+        plasma_chain__deposition__pbli_deposition.json
+      combinations_plasma_chain__plasma_chain__deposition__evaluate__divertor_friction: float
+        plasma_chain__deposition__divertor_friction.json
+      combinations_plasma_chain__plasma_chain__pbli_coolant__evaluate__delivered_heat: RootModel[float]
+        plasma_chain__pbli_coolant__delivered_heat.json
+      combinations_plasma_chain__plasma_chain__divertor_coolant__evaluate__delivered_heat: RootModel[float]
+        plasma_chain__divertor_coolant__delivered_heat.json
+      combinations_plasma_chain__plasma_chain__he_coolant__evaluate__delivered_heat: RootModel[float]
+        plasma_chain__he_coolant__delivered_heat.json
+      combinations_plasma_chain__plasma_chain__he_capacity__evaluate__evaluation_defined: float
+        plasma_chain__he_capacity__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__he_capacity__evaluate__margin: float
+        plasma_chain__he_capacity__margin.json
+      combinations_plasma_chain__plasma_chain__he_capacity__evaluate__applicable: bool
+        combinations_plasma_chain__plasma_chain__he_capacity__evaluate__applicable.json
+      combinations_plasma_chain__plasma_chain__he_capacity__evaluate__supported: bool
+        combinations_plasma_chain__plasma_chain__he_capacity__evaluate__supported.json
+      combinations_plasma_chain__plasma_chain__he_capacity__evaluate__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__he_capacity__evaluate__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_state_defined: float
+        plasma_chain__heat_exchangers__pbli_state_defined.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_hot: float
+        plasma_chain__heat_exchangers__he_hot.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__network_mode_used: float
+        plasma_chain__heat_exchangers__network_mode_used.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_cold_terminal_difference: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_cold_terminal_difference.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_hot: float
+        plasma_chain__heat_exchangers__divertor_hot.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_hot_bound_margin: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_hot_bound_margin.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_stream_out: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_stream_out.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_hot_bound_margin: float
+        plasma_chain__heat_exchangers__he_hot_bound_margin.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_cold_terminal_difference: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_cold_terminal_difference.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_unmet: float
+        plasma_chain__heat_exchangers__divertor_unmet.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_secondary_out: float
+        plasma_chain__heat_exchangers__pbli_secondary_out.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__accepted_heat: float
+        plasma_chain__heat_exchangers__accepted_heat.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_transferred: float
+        plasma_chain__heat_exchangers__divertor_transferred.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_state_defined: float
+        plasma_chain__heat_exchangers__divertor_state_defined.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_state_defined: float
+        plasma_chain__heat_exchangers__he_state_defined.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__expansion_factor: float
+        plasma_chain__heat_exchangers__expansion_factor.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_hot: float
+        plasma_chain__heat_exchangers__pbli_hot.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_transferred: float
+        plasma_chain__heat_exchangers__pbli_transferred.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_split_used: float
+        plasma_chain__heat_exchangers__pbli_split_used.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_hot_terminal_difference: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_hot_terminal_difference.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_transferred: float
+        plasma_chain__heat_exchangers__he_transferred.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_stream_out: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_stream_out.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_return: float
+        plasma_chain__heat_exchangers__pbli_return.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_secondary_in: float
+        plasma_chain__heat_exchangers__he_secondary_in.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_secondary_in: float
+        plasma_chain__heat_exchangers__pbli_secondary_in.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_secondary_in: float
+        plasma_chain__heat_exchangers__divertor_secondary_in.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__closure_residual: float
+        plasma_chain__heat_exchangers__closure_residual.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__unmet_heat: float
+        plasma_chain__heat_exchangers__unmet_heat.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__heater_inlet: float
+        plasma_chain__heat_exchangers__heater_inlet.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_return: float
+        plasma_chain__heat_exchangers__he_return.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_capability: float
+        plasma_chain__heat_exchangers__he_capability.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_hot_bound_margin: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_hot_bound_margin.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__turbine_temperature: float
+        plasma_chain__heat_exchangers__turbine_temperature.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_capability: float
+        plasma_chain__heat_exchangers__pbli_capability.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_secondary_out: float
+        plasma_chain__heat_exchangers__he_secondary_out.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_unmet: float
+        plasma_chain__heat_exchangers__he_unmet.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_cold_terminal_difference: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_cold_terminal_difference.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_hot_terminal_difference: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_hot_terminal_difference.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_capability: float
+        plasma_chain__heat_exchangers__divertor_capability.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__mixed_outlet: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__mixed_outlet.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_return: float
+        plasma_chain__heat_exchangers__divertor_return.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_hot_terminal_difference: float
+        combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__he_hot_terminal_difference.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__divertor_secondary_out: float
+        plasma_chain__heat_exchangers__divertor_secondary_out.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__iterations: float
+        plasma_chain__heat_exchangers__iterations.json
+      combinations_plasma_chain__plasma_chain__heat_exchangers__evaluate__pbli_unmet: float
+        plasma_chain__heat_exchangers__pbli_unmet.json
+      combinations_plasma_chain__plasma_chain__turbine__evaluate__pressure_out: float
+        plasma_chain__turbine__pressure_out.json
+      combinations_plasma_chain__plasma_chain__turbine__evaluate__shaft_produced: float
+        plasma_chain__turbine__shaft_produced.json
+      combinations_plasma_chain__plasma_chain__turbine__evaluate__temperature_out: float
+        plasma_chain__turbine__temperature_out.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__fuel_base_electric: float
+        combinations_plasma_chain__plasma_chain__electrical__evaluate__fuel_base_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__other_electric_demand: float
+        plasma_chain__electrical__other_electric_demand.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__dissipated_auxiliary: float
+        combinations_plasma_chain__plasma_chain__electrical__evaluate__dissipated_auxiliary.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__net_electric: float
+        plasma_chain__electrical__net_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__generator_loss: float
+        combinations_plasma_chain__plasma_chain__electrical__evaluate__generator_loss.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__net_shaft: float
+        plasma_chain__electrical__net_shaft.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__heating_electric: float
+        plasma_chain__electrical__heating_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__cryo_electric: float
+        plasma_chain__electrical__cryo_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__fuel_variable_electric: float
+        plasma_chain__electrical__fuel_variable_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__compressor_demand: float
+        plasma_chain__electrical__compressor_demand.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__auxiliary_electric: float
+        plasma_chain__electrical__auxiliary_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__gross_electric: float
+        plasma_chain__electrical__gross_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__fuel_electric: float
+        plasma_chain__electrical__fuel_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__primary_pump_electric: float
+        plasma_chain__electrical__primary_pump_electric.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__motor_loss: float
+        combinations_plasma_chain__plasma_chain__electrical__evaluate__motor_loss.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__shaft_import: float
+        plasma_chain__electrical__shaft_import.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__heating_loss: float
+        combinations_plasma_chain__plasma_chain__electrical__evaluate__heating_loss.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__pump_loss: float
+        plasma_chain__electrical__pump_loss.json
+      combinations_plasma_chain__plasma_chain__electrical__evaluate__control_electric: float
+        plasma_chain__electrical__control_electric.json
+      combinations_plasma_chain__plasma_chain__recuperator__evaluate__bypass_active: float
+        plasma_chain__recuperator__bypass_active.json
+      combinations_plasma_chain__plasma_chain__recuperator__evaluate__cold_out: float
+        plasma_chain__recuperator__cold_out.json
+      combinations_plasma_chain__plasma_chain__recuperator__evaluate__hot_out: float
+        plasma_chain__recuperator__hot_out.json
+      combinations_plasma_chain__plasma_chain__recuperator__evaluate__recovered_heat: float
+        plasma_chain__recuperator__recovered_heat.json
+      combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__evaluation_defined: float
+        plasma_chain__generator_capacity__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__margin: float
+        plasma_chain__generator_capacity__margin.json
+      combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__applicable: bool
+        combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__applicable.json
+      combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__supported: bool
+        combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__supported.json
+      combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__generator_capacity__evaluate__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__precooler__evaluate__heat_into_fluid: float
+        plasma_chain__precooler__heat_into_fluid.json
+      combinations_plasma_chain__plasma_chain__precooler__evaluate__temperature_out: float
+        plasma_chain__precooler__temperature_out.json
+      combinations_plasma_chain__plasma_chain__precooler__evaluate__pressure_out: float
+        plasma_chain__precooler__pressure_out.json
+      combinations_plasma_chain__plasma_chain__rejection_capacity__cycle_rejection__cycle_rejection: RootModel[float]
+        combinations_plasma_chain__plasma_chain__rejection_capacity__cycle_rejection__cycle_rejection.json
+      combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__evaluation_defined: float
+        plasma_chain__rejection_capacity__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__margin: float
+        plasma_chain__rejection_capacity__margin.json
+      combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__applicable: bool
+        combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__applicable.json
+      combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__supported: bool
+        combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__supported.json
+      combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__rejection_capacity__evaluate__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__evaluation_defined: float
+        plasma_chain__turbine_capacity__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__margin: float
+        plasma_chain__turbine_capacity__margin.json
+      combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__applicable: bool
+        combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__applicable.json
+      combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__supported: bool
+        combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__supported.json
+      combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__turbine_capacity__evaluate__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__evaluation_defined: float
+        plasma_chain__divertor_capacity__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__margin: float
+        plasma_chain__divertor_capacity__margin.json
+      combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__applicable: bool
+        combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__applicable.json
+      combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__supported: bool
+        combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__supported.json
+      combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__divertor_capacity__evaluate__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__evaluation_defined: float
+        plasma_chain__compressor_capacity__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__margin: float
+        plasma_chain__compressor_capacity__margin.json
+      combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__applicable: bool
+        combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__applicable.json
+      combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__supported: bool
+        combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__supported.json
+      combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__compressor_capacity__evaluate__capacity_ok.json
+      combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__evaluation_defined: float
+        plasma_chain__pbli_capacity__evaluation_defined.json
+      combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__margin: float
+        plasma_chain__pbli_capacity__margin.json
+      combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__applicable: bool
+        combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__applicable.json
+      combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__supported: bool
+        combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__supported.json
+      combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__capacity_ok: bool
+        combinations_plasma_chain__plasma_chain__pbli_capacity__evaluate__capacity_ok.json
+      combinations_loop_brayton__loop_brayton__he_hx__evaluate__area: float loop_brayton__he_hx__area.json
+      combinations_loop_brayton__loop_brayton__he_hx__evaluate__ua: float loop_brayton__he_hx__ua.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__p_loop_margin: float
+        combinations_loop_brayton__loop_brayton__primary_loop__evaluate__p_loop_margin.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__q_recovered_total: float
+        loop_brayton__primary_loop__q_recovered_total.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__p_elec: float
+        loop_brayton__primary_loop__p_elec.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__p_pump_total: float
+        loop_brayton__primary_loop__p_pump_total.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__T_out: float
+        loop_brayton__primary_loop__T_out.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__T_comp_in: float
+        combinations_loop_brayton__loop_brayton__primary_loop__evaluate__T_comp_in.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__dp_loop: float
+        loop_brayton__primary_loop__dp_loop.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__mdot_loop: float
+        loop_brayton__primary_loop__mdot_loop.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__w_fluid: float
+        combinations_loop_brayton__loop_brayton__primary_loop__evaluate__w_fluid.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__capacity_margin: float
+        loop_brayton__primary_loop__capacity_margin.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__q_ihx: float
+        loop_brayton__primary_loop__q_ihx.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__mdot: float
+        loop_brayton__primary_loop__mdot.json
+      combinations_loop_brayton__loop_brayton__primary_loop__evaluate__r_comp: float
+        combinations_loop_brayton__loop_brayton__primary_loop__evaluate__r_comp.json
+      combinations_loop_brayton__loop_brayton__compressor_1__evaluate__pressure_out: float
+        loop_brayton__compressor_1__pressure_out.json
+      combinations_loop_brayton__loop_brayton__compressor_1__evaluate__shaft_demand: float
+        loop_brayton__compressor_1__shaft_demand.json
+      combinations_loop_brayton__loop_brayton__compressor_1__evaluate__temperature_out: float
+        loop_brayton__compressor_1__temperature_out.json
+      combinations_loop_brayton__loop_brayton__he_capacity__evaluate__evaluation_defined: float
+        loop_brayton__he_capacity__evaluation_defined.json
+      combinations_loop_brayton__loop_brayton__he_capacity__evaluate__margin: float
+        loop_brayton__he_capacity__margin.json
+      combinations_loop_brayton__loop_brayton__he_capacity__evaluate__applicable: bool
+        combinations_loop_brayton__loop_brayton__he_capacity__evaluate__applicable.json
+      combinations_loop_brayton__loop_brayton__he_capacity__evaluate__supported: bool
+        combinations_loop_brayton__loop_brayton__he_capacity__evaluate__supported.json
+      combinations_loop_brayton__loop_brayton__he_capacity__evaluate__capacity_ok: bool
+        combinations_loop_brayton__loop_brayton__he_capacity__evaluate__capacity_ok.json
+      combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__heat_into_fluid: float
+        loop_brayton__intercooler_1__heat_into_fluid.json
+      combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__temperature_out: float
+        loop_brayton__intercooler_1__temperature_out.json
+      combinations_loop_brayton__loop_brayton__intercooler_1__evaluate__pressure_out: float
+        loop_brayton__intercooler_1__pressure_out.json
+      combinations_loop_brayton__loop_brayton__compressor_2__evaluate__pressure_out: float
+        loop_brayton__compressor_2__pressure_out.json
+      combinations_loop_brayton__loop_brayton__compressor_2__evaluate__shaft_demand: float
+        loop_brayton__compressor_2__shaft_demand.json
+      combinations_loop_brayton__loop_brayton__compressor_2__evaluate__temperature_out: float
+        loop_brayton__compressor_2__temperature_out.json
+      combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__heat_into_fluid: float
+        loop_brayton__intercooler_2__heat_into_fluid.json
+      combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__temperature_out: float
+        loop_brayton__intercooler_2__temperature_out.json
+      combinations_loop_brayton__loop_brayton__intercooler_2__evaluate__pressure_out: float
+        loop_brayton__intercooler_2__pressure_out.json
+      combinations_loop_brayton__loop_brayton__compressor_3__evaluate__pressure_out: float
+        loop_brayton__compressor_3__pressure_out.json
+      combinations_loop_brayton__loop_brayton__compressor_3__evaluate__shaft_demand: float
+        loop_brayton__compressor_3__shaft_demand.json
+      combinations_loop_brayton__loop_brayton__compressor_3__evaluate__temperature_out: float
+        loop_brayton__compressor_3__temperature_out.json
+      combinations_loop_brayton__loop_brayton__pressure_loss__evaluate__pressure_out: RootModel[float]
+        loop_brayton__pressure_loss__pressure_out.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_state_defined: float
+        loop_brayton__heat_exchangers__pbli_state_defined.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_hot: float
+        loop_brayton__heat_exchangers__he_hot.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__network_mode_used: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__network_mode_used.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_cold_terminal_difference: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_cold_terminal_difference.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot_bound_margin: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot_bound_margin.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_stream_out: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_stream_out.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_hot_bound_margin: float
+        loop_brayton__heat_exchangers__he_hot_bound_margin.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_cold_terminal_difference: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_cold_terminal_difference.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_unmet: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_unmet.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_secondary_out: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_secondary_out.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__accepted_heat: float
+        loop_brayton__heat_exchangers__accepted_heat.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_transferred: float
+        loop_brayton__heat_exchangers__divertor_transferred.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_state_defined: float
+        loop_brayton__heat_exchangers__divertor_state_defined.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_state_defined: float
+        loop_brayton__heat_exchangers__he_state_defined.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__expansion_factor: float
+        loop_brayton__heat_exchangers__expansion_factor.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_transferred: float
+        loop_brayton__heat_exchangers__pbli_transferred.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_split_used: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_split_used.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot_terminal_difference: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_hot_terminal_difference.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_transferred: float
+        loop_brayton__heat_exchangers__he_transferred.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_stream_out: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_stream_out.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_return: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_return.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_secondary_in: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_secondary_in.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_secondary_in: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_secondary_in.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_secondary_in: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_secondary_in.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__closure_residual: float
+        loop_brayton__heat_exchangers__closure_residual.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__unmet_heat: float
+        loop_brayton__heat_exchangers__unmet_heat.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__heater_inlet: float
+        loop_brayton__heat_exchangers__heater_inlet.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_return: float
+        loop_brayton__heat_exchangers__he_return.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_capability: float
+        loop_brayton__heat_exchangers__he_capability.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot_bound_margin: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot_bound_margin.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__turbine_temperature: float
+        loop_brayton__heat_exchangers__turbine_temperature.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_capability: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_capability.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_secondary_out: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_secondary_out.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_unmet: float
+        loop_brayton__heat_exchangers__he_unmet.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_cold_terminal_difference: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_cold_terminal_difference.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot_terminal_difference: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_hot_terminal_difference.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_capability: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_capability.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__mixed_outlet: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__mixed_outlet.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_return: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_return.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_hot_terminal_difference: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__he_hot_terminal_difference.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_secondary_out: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__divertor_secondary_out.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__iterations: float
+        loop_brayton__heat_exchangers__iterations.json
+      combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_unmet: float
+        combinations_loop_brayton__loop_brayton__heat_exchangers__evaluate__pbli_unmet.json
+      combinations_loop_brayton__loop_brayton__turbine__evaluate__pressure_out: float
+        loop_brayton__turbine__pressure_out.json
+      combinations_loop_brayton__loop_brayton__turbine__evaluate__shaft_produced: float
+        loop_brayton__turbine__shaft_produced.json
+      combinations_loop_brayton__loop_brayton__turbine__evaluate__temperature_out: float
+        loop_brayton__turbine__temperature_out.json
+      combinations_loop_brayton__loop_brayton__recuperator__evaluate__bypass_active: float
+        loop_brayton__recuperator__bypass_active.json
+      combinations_loop_brayton__loop_brayton__recuperator__evaluate__cold_out: float
+        loop_brayton__recuperator__cold_out.json
+      combinations_loop_brayton__loop_brayton__recuperator__evaluate__hot_out: float
+        loop_brayton__recuperator__hot_out.json
+      combinations_loop_brayton__loop_brayton__recuperator__evaluate__recovered_heat: float
+        loop_brayton__recuperator__recovered_heat.json
+      combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__evaluation_defined: float
+        loop_brayton__turbine_capacity__evaluation_defined.json
+      combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__margin: float
+        loop_brayton__turbine_capacity__margin.json
+      combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__applicable: bool
+        combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__applicable.json
+      combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__supported: bool
+        combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__supported.json
+      combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__capacity_ok: bool
+        combinations_loop_brayton__loop_brayton__turbine_capacity__evaluate__capacity_ok.json
+      combinations_loop_brayton__loop_brayton__precooler__evaluate__heat_into_fluid: float
+        loop_brayton__precooler__heat_into_fluid.json
+      combinations_loop_brayton__loop_brayton__precooler__evaluate__temperature_out: float
+        loop_brayton__precooler__temperature_out.json
+      combinations_loop_brayton__loop_brayton__precooler__evaluate__pressure_out: float
+        loop_brayton__precooler__pressure_out.json
+      combinations_loop_brayton__loop_brayton__rejection_capacity__rejected_heat__rejected_heat: RootModel[float]
+        combinations_loop_brayton__loop_brayton__rejection_capacity__rejected_heat__rejected_heat.json
+      combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__evaluation_defined: float
+        loop_brayton__rejection_capacity__evaluation_defined.json
+      combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__margin: float
+        loop_brayton__rejection_capacity__margin.json
+      combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__applicable: bool
+        combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__applicable.json
+      combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__supported: bool
+        combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__supported.json
+      combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__capacity_ok: bool
+        combinations_loop_brayton__loop_brayton__rejection_capacity__evaluate__capacity_ok.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_base_electric: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_base_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__other_electric_demand: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__other_electric_demand.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__dissipated_auxiliary: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__dissipated_auxiliary.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__net_electric: float
+        loop_brayton__electrical__net_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__generator_loss: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__generator_loss.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__net_shaft: float
+        loop_brayton__electrical__net_shaft.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__heating_electric: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__heating_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__cryo_electric: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__cryo_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_variable_electric: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_variable_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__compressor_demand: float
+        loop_brayton__electrical__compressor_demand.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__auxiliary_electric: float
+        loop_brayton__electrical__auxiliary_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__gross_electric: float
+        loop_brayton__electrical__gross_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_electric: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__fuel_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__primary_pump_electric: float
+        loop_brayton__electrical__primary_pump_electric.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__motor_loss: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__motor_loss.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__shaft_import: float
+        loop_brayton__electrical__shaft_import.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__heating_loss: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__heating_loss.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__pump_loss: float
+        loop_brayton__electrical__pump_loss.json
+      combinations_loop_brayton__loop_brayton__electrical__evaluate__control_electric: float
+        combinations_loop_brayton__loop_brayton__electrical__evaluate__control_electric.json
+      combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__evaluation_defined: float
+        loop_brayton__compressor_capacity__evaluation_defined.json
+      combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__margin: float
+        loop_brayton__compressor_capacity__margin.json
+      combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__applicable: bool
+        combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__applicable.json
+      combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__supported: bool
+        combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__supported.json
+      combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__capacity_ok: bool
+        combinations_loop_brayton__loop_brayton__compressor_capacity__evaluate__capacity_ok.json
+      combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__evaluation_defined: float
+        loop_brayton__generator_capacity__evaluation_defined.json
+      combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__margin: float
+        loop_brayton__generator_capacity__margin.json
+      combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__applicable: bool
+        combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__applicable.json
+      combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__supported: bool
+        combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__supported.json
+      combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__capacity_ok: bool
+        combinations_loop_brayton__loop_brayton__generator_capacity__evaluate__capacity_ok.json
+      combinations_lumped_fit__lumped_fit__he_fit__domain_ok__b88eae8078e8995f__evaluation: ConstraintEvaluation
+        combinations_lumped_fit__lumped_fit__he_fit__domain_ok__b88eae8078e8995f__evaluation.json
+      combinations_lumped_fit__lumped_fit__pbli_fit__domain_ok__f30925cbe487ee4d__evaluation: ConstraintEvaluation
+        combinations_lumped_fit__lumped_fit__pbli_fit__domain_ok__f30925cbe487ee4d__evaluation.json
+      combinations_lumped_fit__lumped_fit__divertor_fit__domain_ok__72e8945d8d697cd1__evaluation: ConstraintEvaluation
+        combinations_lumped_fit__lumped_fit__divertor_fit__domain_ok__72e8945d8d697cd1__evaluation.json
+      combinations_circulator_purchase__circulator_purchase__circulator_capacity__capacity_ok__4ffbb5ea99182b98__evaluation: ConstraintEvaluation
+        combinations_circulator_purchase__circulator_purchase__circulator_capacity__capacity_ok__4ffbb5ea99182b98__evaluation.json
+      combinations_plasma_chain__plasma_chain__he_capacity__capacity_ok__d2b59d407f4559fd__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__he_capacity__capacity_ok__d2b59d407f4559fd__evaluation.json
+      combinations_plasma_chain__plasma_chain__divertor_pump__capacity_ok__b0d2ef5eececd260__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__divertor_pump__capacity_ok__b0d2ef5eececd260__evaluation.json
+      combinations_plasma_chain__plasma_chain__pbli_pump__capacity_ok__2740088b7321b64f__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__pbli_pump__capacity_ok__2740088b7321b64f__evaluation.json
+      combinations_plasma_chain__plasma_chain__rejection_capacity__capacity_ok__77de6a398fb88ba8__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__rejection_capacity__capacity_ok__77de6a398fb88ba8__evaluation.json
+      combinations_plasma_chain__plasma_chain__generator_capacity__capacity_ok__c425e327953b0497__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__generator_capacity__capacity_ok__c425e327953b0497__evaluation.json
+      combinations_plasma_chain__plasma_chain__checks__heat_removal_ok__e3aa56b0160f3e08__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__checks__heat_removal_ok__e3aa56b0160f3e08__evaluation.json
+      combinations_plasma_chain__plasma_chain__checks__net_positive__1ca673e570772897__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__checks__net_positive__1ca673e570772897__evaluation.json
+      combinations_plasma_chain__plasma_chain__turbine_capacity__capacity_ok__a7b56c68f9f9a298__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__turbine_capacity__capacity_ok__a7b56c68f9f9a298__evaluation.json
+      combinations_plasma_chain__plasma_chain__divertor_capacity__capacity_ok__f4df61f2684e5d3c__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__divertor_capacity__capacity_ok__f4df61f2684e5d3c__evaluation.json
+      combinations_plasma_chain__plasma_chain__he_pump__capacity_ok__933c88ced63feb63__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__he_pump__capacity_ok__933c88ced63feb63__evaluation.json
+      combinations_plasma_chain__plasma_chain__compressor_capacity__capacity_ok__0bc93f698ed19a5d__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__compressor_capacity__capacity_ok__0bc93f698ed19a5d__evaluation.json
+      combinations_plasma_chain__plasma_chain__pbli_capacity__capacity_ok__16d446380d5ebc09__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__pbli_capacity__capacity_ok__16d446380d5ebc09__evaluation.json
+      combinations_plasma_chain__plasma_chain__fuel_capacity__capacity_ok__5c625963d8a8bf70__evaluation: ConstraintEvaluation
+        combinations_plasma_chain__plasma_chain__fuel_capacity__capacity_ok__5c625963d8a8bf70__evaluation.json
+      combinations_loop_brayton__loop_brayton__turbine_capacity__capacity_ok__a4f0ad4edcd0de39__evaluation: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__turbine_capacity__capacity_ok__a4f0ad4edcd0de39__evaluation.json
+      combinations_loop_brayton__loop_brayton__checks__heat_removal_ok__c7a2f9638fd1e56b__evaluation: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__checks__heat_removal_ok__c7a2f9638fd1e56b__evaluation.json
+      combinations_loop_brayton__loop_brayton__checks__net_positive__d22e3a3d83be3d66__evaluation: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__checks__net_positive__d22e3a3d83be3d66__evaluation.json
+      combinations_loop_brayton__loop_brayton__checks__loop_capacity_ok__42cc45f771fa6628__evaluation: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__checks__loop_capacity_ok__42cc45f771fa6628__evaluation.json
+      combinations_loop_brayton__loop_brayton__rejection_capacity__capacity_ok__f641e3674fbef65a__evaluation: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__rejection_capacity__capacity_ok__f641e3674fbef65a__evaluation.json
+      combinations_loop_brayton__loop_brayton__he_capacity__capacity_ok__5a310602c6faa347__evaluation: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__he_capacity__capacity_ok__5a310602c6faa347__evaluation.json
+      combinations_loop_brayton__loop_brayton__compressor_capacity__capacity_ok__cb22fc3ae07b48e1__evaluation: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__compressor_capacity__capacity_ok__cb22fc3ae07b48e1__evaluation.json
+      combinations_loop_brayton__loop_brayton__generator_capacity__capacity_ok__d2956d9503aa885e__evaluation: ConstraintEvaluation
+        combinations_loop_brayton__loop_brayton__generator_capacity__capacity_ok__d2956d9503aa885e__evaluation.json
+      constraint_report: ConstraintReport constraint_report.json

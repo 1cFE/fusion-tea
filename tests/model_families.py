@@ -169,6 +169,27 @@ SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
         "analyses/mfe_account_costs.sysml",
         "designs/aries_cs_transfer/source_budget.sysml",
     ),
+    # WI-093: cross-plant assemblies from existing definitions; source: exploration/combinations/build.py staging list.
+    "combinations": (
+        "structure/mfe_interfaces.sysml",
+        "structure/mfe_plasma.sysml",
+        "analyses/mfe_plasma_sustainment.sysml",
+        "analyses/mfe_plasma_scaling.sysml",
+        "analyses/mfe_primary_loop.sysml",
+        "analyses/mfe_power_cycle.sysml",
+        "analyses/mfe_viability.sysml",
+        "analyses/integrated_heat_electricity.sysml",
+        "analyses/dual_circuit_heat_accounting.sysml",
+        "analyses/ideal_gas_brayton_components.sysml",
+        "analyses/integrated_equipment_costs.sysml",
+        "structure/integrated_equipment_parts.sysml",
+        "foundation/costed_component.sysml",
+        "analyses/mfe_fuel_cycle.sysml",
+        "designs/combinations/combinations_circulator_purchase.sysml",
+        "designs/combinations/combinations_loop_brayton.sysml",
+        "designs/combinations/combinations_lumped_fit.sysml",
+        "designs/combinations/combinations_plasma_chain.sysml",
+    ),
 }
 
 SHARED_PATHS: tuple[str, ...] = tuple(sorted(set(IFE.owned) & set(MFE.owned)))
