@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 438" width="980" height="438" role="img" aria-label="What the fit calculation compares" class="fig-fit" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif" font-size="14">
+<title>What the fit calculation compares</title><desc>Cross-section of a magnet coil: the casing wall encloses a cavity; inside it, centred, the winding pack is wrapped in ground insulation and an assembly clearance on every face. The required envelope is the pack plus those allowances. The radial margin is the cavity's radial width minus the required radial width; the transverse margin is the same in the transverse direction. The check reads the smaller of the two.</desc>
+<defs><marker id="dim" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#5f5f5f" stroke-width="1.5"/></marker></defs>
+<rect x="292.00" y="104.00" width="273.60" height="311.60" fill="#eae6e0" stroke="#8a847b" stroke-width="1.2" rx="3"/>
+<rect x="311.00" y="123.00" width="235.60" height="273.60" fill="#fbfaf8" stroke="#d3cdc4" stroke-width="1"/>
+<path d="M311.0,123.0h235.6v273.6h-235.6z M326.2,142.0v235.6h205.2v-235.6z" fill="#f6e9d8" fill-rule="evenodd" opacity="0.8"/>
+<rect x="326.20" y="142.00" width="205.20" height="235.60" fill="none" stroke="#95520f" stroke-width="1.6" stroke-dasharray="6 4"/>
+<rect x="335.70" y="151.50" width="186.20" height="216.60" fill="#f1ede6" stroke="#8a847b" stroke-width="0.8"/>
+<rect x="349.00" y="164.80" width="159.60" height="190.00" fill="#d5e6f3" stroke="#1b5f99" stroke-width="1.4"/>
+<text x="428.80" y="255.80" font-size="15" fill="#191919" text-anchor="middle" font-weight="600">winding pack</text>
+<text x="428.80" y="275.80" font-size="14" fill="#5f5f5f" text-anchor="middle">nominal + internal build</text>
+<text x="428.80" y="134.00" font-size="14" fill="#95520f" text-anchor="middle">margin, split over both sides</text>
+<line x1="311.00" y1="64.00" x2="546.60" y2="64.00" stroke="#5f5f5f" stroke-width="1" marker-start="url(#dim)" marker-end="url(#dim)"/>
+<text x="428.80" y="59.00" font-size="14" fill="#5f5f5f" text-anchor="middle">cavity_x  =  radial_allocation − 2 × wall_thickness</text>
+<line x1="326.20" y1="90.00" x2="531.40" y2="90.00" stroke="#95520f" stroke-width="1" marker-start="url(#dim)" marker-end="url(#dim)"/>
+<text x="428.80" y="85.00" font-size="14" fill="#95520f" text-anchor="middle">required_x</text>
+<line x1="583.60" y1="123.00" x2="583.60" y2="396.60" stroke="#5f5f5f" stroke-width="1" marker-start="url(#dim)" marker-end="url(#dim)"/>
+<text x="598.60" y="259.80" font-size="14" fill="#5f5f5f" text-anchor="middle" transform="rotate(-90 598.6 259.8)">cavity_y  =  interior_y</text>
+<line x1="623.60" y1="142.00" x2="623.60" y2="377.60" stroke="#95520f" stroke-width="1" marker-start="url(#dim)" marker-end="url(#dim)"/>
+<text x="638.60" y="259.80" font-size="14" fill="#95520f" text-anchor="middle" transform="rotate(-90 638.6 259.8)">required_y</text>
+<text x="276.00" y="163.00" font-size="14" fill="#191919" text-anchor="end" font-weight="600">casing wall</text>
+<text x="276.00" y="181.00" font-size="14" fill="#5f5f5f" text-anchor="end">wall_thickness, each radial side</text>
+<line x1="282.00" y1="159.00" x2="301.50" y2="159.00" stroke="#8a847b" stroke-width="0.8"/>
+<circle cx="301.5" cy="159.0" r="2.2" fill="#8a847b"/>
+<text x="276.00" y="233.00" font-size="14" fill="#191919" text-anchor="end" font-weight="600">assembly clearance</text>
+<text x="276.00" y="251.00" font-size="14" fill="#5f5f5f" text-anchor="end">assembly_clearance, each face</text>
+<line x1="282.00" y1="229.00" x2="330.95" y2="229.00" stroke="#8a847b" stroke-width="0.8"/>
+<circle cx="330.9" cy="229.0" r="2.2" fill="#8a847b"/>
+<text x="276.00" y="303.00" font-size="14" fill="#191919" text-anchor="end" font-weight="600">ground insulation</text>
+<text x="276.00" y="321.00" font-size="14" fill="#5f5f5f" text-anchor="end">ground_insulation, each face</text>
+<line x1="282.00" y1="299.00" x2="342.35" y2="299.00" stroke="#8a847b" stroke-width="0.8"/>
+<circle cx="342.3" cy="299.0" r="2.2" fill="#8a847b"/>
+<rect x="659.60" y="125.00" width="308.40" height="134.00" fill="#fbfaf8" stroke="#d3cdc4" stroke-width="1" rx="4"/>
+<text x="669.60" y="147.00" font-size="14" fill="#6e6961" text-anchor="start" font-weight="600">What the check reads</text>
+<text x="669.60" y="175.00" font-size="14" fill="#191919" text-anchor="start" font-family="'Fira Code', ui-monospace, Menlo, Consolas, monospace">margin_x = cavity_x − required_x</text>
+<text x="669.60" y="199.00" font-size="14" fill="#191919" text-anchor="start" font-family="'Fira Code', ui-monospace, Menlo, Consolas, monospace">margin_y = cavity_y − required_y</text>
+<text x="669.60" y="223.00" font-size="14" fill="#191919" text-anchor="start" font-family="'Fira Code', ui-monospace, Menlo, Consolas, monospace">minimum_margin =</text>
+<text x="687.60" y="245.00" font-size="14" fill="#191919" text-anchor="start" font-family="'Fira Code', ui-monospace, Menlo, Consolas, monospace">min(margin_x, margin_y)</text>
+<text x="669.60" y="356.60" font-size="14" fill="#5f5f5f" text-anchor="start">x is radial, toward the plasma</text>
+<text x="669.60" y="376.60" font-size="14" fill="#5f5f5f" text-anchor="start">face; y is transverse. Both are</text>
+<text x="669.60" y="396.60" font-size="14" fill="#5f5f5f" text-anchor="start">normal to the conductor.</text>
+</svg>

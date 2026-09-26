@@ -66,11 +66,11 @@ A plan cannot carry that, because a plan lists the actions in advance. What can 
 - the evidence already in the repository, so a round is not spent on a question already answered;
 - the limits on rounds and retries, and the decisions the owner keeps.
 
-The goal is not changed as it executes. 
+The question is not changed as it executes; any other change is a dated amendment.
 
 **A round is one bounded attempt at the question.** It opens with an approach: the agent's bet on how to answer the question, what that bet assumes, what would make the agent abandon it, and what model change and study it expects to need. The approach carries no task list, because a list written before the evidence arrives is authority granted in advance (`.project/adr/0001-strategy-and-task.md`).
 
-**The round then works through tasks one at a time.** Each task is a piece of research, a model change or a study, carried out through that class's own workflow. It gets a written scope before it starts and a written return when it finishes, and that return feeds the decision on what to do next. This is how the agent follows the evidence without a plan.
+**The round then works through tasks one at a time (or multiple independent tasks run in parallel).** Each task is a piece of research, a model change or a study, carried out through that class's own workflow. It gets a written scope before it starts and a written return when it finishes, and that return feeds the decision on what to do next. This is how the agent follows the evidence without a plan.
 
 **A round pins the model at most once.** That limit keeps rounds bounded. When the round's model changes have landed, codegen regenerates the program and the round pins that exact version. Any and all studies then belong to one known version of the model and can be compared with earlier ones. Learnings from the studies inform the next round.
 
@@ -167,6 +167,8 @@ The next section follows one goal through these areas, from a discrepancy in a s
 
 To show how the loop in Figure 1 works in practice, we follow one goal from its question to its close. The goal investigated why the model's stored plasma energy was 9 percent above the value printed in the Stellaris design paper. It ran two rounds between 4 and 6 September 2026 (`work/orchestration/goals/stored-energy-basis/`).
 
+### Goal
+
 **The discrepancy.** Our model reproduced the paper's power balance to within 4 percent on every term except the energy stored in the plasma.
 
 - The model's stored energy was 9 percent above the paper's. The model integrates assumed density and temperature profiles over the plasma volume and found 551 MJ, where the paper prints 504.65 MJ.
@@ -192,7 +194,9 @@ The agent then wrote the goal around what was still open, and the owner approved
 - **Invariant:** the model's stored energy is never tuned toward the printed value.
 - **Owner keeps:** any change to how the model shapes its profiles.
 
-**Round 1: find the paper's definition.** The round's approach was to explain the excess without changing the model. It ran two tasks.
+### Round 1: find the paper's definition
+
+The round's approach was to explain the excess without changing the model. It ran two tasks.
 
 *Task 1, research: how does the paper define stored energy?*
 
@@ -213,7 +217,9 @@ The agent then wrote the goal around what was still open, and the owner approved
 
 **The owner's ruling.** The round offered two options: keep the model and footnote the gap, or change the ash profile to follow the paper's rule. The owner ruled: "we should fix the ash profile (and make sure this scales up for larger stellarators). and I don't want to add the footnote." The printed value was still not a target. The change implements the paper's rule, and the stored energy is whatever that rule gives.
 
-**Round 2: fix the profile and study again.** The round's approach was to make the owner's fix as one model change, pin the regenerated program, and re-run an earlier study against it. It ran three tasks.
+### Round 2: fix the profile and study again
+
+The round's approach was to make the owner's fix as one model change, pin the regenerated program, and re-run an earlier study against it. It ran three tasks.
 
 *Task 1, model change: compute the ash profile from the paper's rule.*
 

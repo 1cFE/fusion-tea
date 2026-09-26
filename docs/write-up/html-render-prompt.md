@@ -1,6 +1,6 @@
 # Render prompt: turning a write-up into its HTML page
 
-You turn one settled markdown support into its HTML page. The markdown is the approved explanation, written with the owner section by section. Your job is the reading experience and the visual layer, not a new explanation. A coordinator dispatched you, judges your work, and relays the owner's decisions; you are the only agent that edits the page plan and the page.
+You turn one settled markdown support into its HTML page. The markdown is the approved explanation, written with the owner section by section. Your job is the reading experience and the visual layer, not a new explanation. A coordinator dispatched you, judges your work, and relays the owner's decisions; you are the only agent that edits the page.
 
 ## Keep the prose
 
@@ -11,7 +11,7 @@ Carry every heading, paragraph, list, table, code block, figure and link into th
 - Point links to another support at its `.html` page. Leave the link to the main post as it is; its published address is not decided. Links to web pages stay links.
 - Replace every link to a file in the repository, including files in the support's assets folder, with that file's repository path shown as plain text. Those links break once the page is published. Where the file carries information the reader needs, show that information on the page (see the next section).
 - Turn a reference to another section into a working in-page link.
-- Show inline source pointers, such as `` (`docs/research_seam_operator_guide.md`) ``, in one consistent, quieter form that the page plan names.
+- Show inline source pointers, such as `` (`docs/research_seam_operator_guide.md`) ``, in one consistent, quieter form, as the style sample shows them.
 
 Anything else you would change goes in your report as a proposal with its location: a sentence that reads badly on the page, a claim the linked evidence contradicts, a broken link. Do not make the change. The coordinator takes it to the owner.
 
@@ -31,7 +31,7 @@ Text the page adds, such as reading guides, disclosure summaries, captions and l
 
 ## Style
 
-- Every page links the shared `write-up.css`, which the owner approved before any conversion. Use it as it is. A change to it also changes pages the owner has accepted, so propose any change in the page plan instead of making it.
+- Every page links the shared `write-up.css`, which the owner approved before any conversion. Use it as it is. A change to it also changes pages the owner has accepted, so propose any change in your report instead of making it.
 - The style sample, [html-work/style-sample.html](html-work/style-sample.html), shows every part in use: section wrappers, heading numbers, the contents rail, figures, diagrams, code blocks, notes and both kinds of collapsible. Copy its markup.
 - A page may add a small style block for the layout of its own diagrams. Everything else comes from `write-up.css`.
 - A redrawn or new image figure gets a render script in the support's assets folder and a row in that folder's README, following the existing convention. Write it to new files, so the markdown's figures stay as they are. A diagram built in HTML lives in the page.
@@ -39,26 +39,14 @@ Text the page adds, such as reading guides, disclosure summaries, captions and l
 ## Hard constraints
 
 - No remote resources except fonts that `write-up.css` loads. No external scripts, iframes, embeds, forms or fetches.
-- The page reads in full with scripts disabled. An inline script may only track navigation state or drive an interactive figure the owner approved in the page plan.
+- The page reads in full with scripts disabled. An inline script may only track navigation state, as the style sample's script does.
 - Use semantic headings in order, real text rather than text baked into images, readable contrast, and a reading order that works without the visual layout. Give every diagram a text equivalent, so that color, position and shape never carry meaning alone.
 - Do not paste source text wholesale or expose credential-like material.
 
-## The page plan
-
-Write the page plan before any HTML. Keep it to about one screen:
-
-- How source pointers and repository paths will appear.
-- Section by section, what the page adds, or "prose only". For each new visual: its job, what it shows, and which facts it draws on. For each reference whose information you will show: what you will show and where.
-- Every collapsed block, its kind, and what goes in it.
-- plan.md's open questions for this support.
-- Proposed prose changes and source issues, each with its location.
-
-Then stop and report the page plan's path.
-
 ## Report
 
-Before reporting on a page, check its source for prohibited content and check that every relative link resolves, apart from links to supports not yet converted. Then report only: the page path; one line per main section naming what the page adds; proposed prose changes and source issues with locations; and any hard constraint you could not meet. On failure, return `FAILURE:` and the reason.
+Before reporting on a page, check its source for prohibited content and check that every relative link resolves, apart from links to supports not yet converted. Then report only: the page path; one line per main section naming what the page adds and what it collapses; plan.md's open questions for this support, which you leave unsettled; proposed prose changes, stylesheet changes and source issues, with locations; and any hard constraint you could not meet. On failure, return `FAILURE:` and the reason.
 
 ## Part 4, support 1: the Stellaris evolution viewer
 
-This support differs in one way: the evolution viewer is the page, so the narrative goes into the viewer rather than into a new page. The viewer is generated by `src/model_viz/evolution/build.py` on the `feat/model-viz-evolution` branch, so edit that source and never the generated page. That makes it coding work under the viewer's spec, `.project/active/model-viz-evolution/spec.md` on that branch. The viewer's own scripts are exempt from the script constraint. Where the theme notes sit on the page is not settled (plan.md), so the page plan proposes it. Everything else in this prompt applies.
+This support differs in one way: the evolution viewer is the page, so the narrative goes into the viewer rather than into a new page. The viewer is generated by `src/model_viz/evolution/build.py` on the `feat/model-viz-evolution` branch, so edit that source and never the generated page. That makes it coding work under the viewer's spec, `.project/active/model-viz-evolution/spec.md` on that branch. The viewer's own scripts are exempt from the script constraint. Where the theme notes sit on the page is not settled (plan.md), so build one placement and say in your report why you chose it. Everything else in this prompt applies.

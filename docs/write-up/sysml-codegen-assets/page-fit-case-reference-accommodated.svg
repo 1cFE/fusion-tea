@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 236" width="260" height="236" role="img" aria-label="Required envelope against clear cavity, reference-accommodated" class="fig-case" font-family="Manrope, 'Helvetica Neue', Arial, sans-serif" font-size="14">
+<title>Required envelope against clear cavity, reference-accommodated</title><desc>Clear cavity 0.550 by 0.600 m; required envelope 0.538 by 0.551 m; radial margin +0.012 m, transverse margin +0.049 m; the pack fits.</desc>
+<defs><marker id="dim-reference-accommodated" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#5f5f5f" stroke-width="1.5"/></marker></defs>
+<rect x="40.00" y="34.50" width="180.00" height="195.00" fill="#eae6e0" stroke="#8a847b" stroke-width="1" rx="2"/>
+<rect x="47.50" y="42.00" width="165.00" height="180.00" fill="#fbfaf8" stroke="#d3cdc4" stroke-width="1.0"/>
+<rect x="49.33" y="49.35" width="161.34" height="165.30" fill="#d5e6f3" stroke="#0b6f6a" stroke-width="1.8" fill-opacity="0.55"/>
+<text x="130.00" y="139.00" font-size="20" fill="#0b6f6a" text-anchor="middle" font-weight="600">required</text>
+<text x="10.00" y="24.00" font-size="20" fill="#5f5f5f" text-anchor="start">clear cavity</text>
+<text x="250.00" y="24.00" font-size="20" fill="#0b6f6a" text-anchor="end" font-weight="700">fits</text>
+</svg>

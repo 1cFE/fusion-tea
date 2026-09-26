@@ -1,0 +1,37 @@
+digraph G {
+graph [rankdir=TB, bgcolor="transparent", pad="0.15", nodesep="0.5", ranksep="0.48", splines=polyline, fontname="Manrope", fontsize=14, fontcolor="#191919", labelloc=t, label="How magnet calculations depend on one another\n "];
+node [shape=box, style="rounded,filled", fillcolor="#ffffff", color="#1b5f99", fontcolor="#191919", fontname="Manrope", fontsize=11.5, margin="0.18,0.1", penwidth=1.1];
+edge [color="#8a847b", arrowsize=0.7, penwidth=1.1];
+radial_build [label="Radial build\nCoil position",color="#1b5f99",fillcolor="#ffffff"];
+field_calc [label="Axis field",color="#1b5f99",fillcolor="#ffffff"];
+coil_length [label="Coil length",color="#1b5f99",fillcolor="#ffffff"];
+peak_field_calc [label="Peak conductor\nfield",color="#1b5f99",fillcolor="#ffffff"];
+current_sizing [label="Current-driven\npack sizing",color="#1b5f99",fillcolor="#ffffff"];
+wp_sizing [label="Winding-pack\nside length",color="#1b5f99",fillcolor="#ffffff"];
+wp_fit [label="Pack / casing\nfit margins",color="#1b5f99",fillcolor="#ffffff"];
+wp_volume [label="Winding-pack\nvolume",color="#1b5f99",fillcolor="#ffffff"];
+material_inventory [label="Material\ninventory",color="#1b5f99",fillcolor="#ffffff"];
+winding_procurement [label="Winding quantities\nand cost",color="#0b6f6a",fillcolor="#dcefed"];
+conductor_current [label="Conductor\ncurrent margin",color="#1b5f99",fillcolor="#ffffff"];
+peak_field_ok [label="CHECK\nField limit",color="#95520f",fillcolor="#f6e9d8"];
+reference_conductor_current_ok [label="CHECK\nCurrent margin",color="#95520f",fillcolor="#f6e9d8"];
+wp_fit_ok [label="CHECK\nPack fits casing",color="#95520f",fillcolor="#f6e9d8"];
+radial_build -> coil_length;
+field_calc -> peak_field_calc;
+radial_build -> peak_field_calc;
+peak_field_calc -> current_sizing;
+current_sizing -> wp_sizing;
+wp_sizing -> wp_fit;
+coil_length -> wp_volume;
+wp_sizing -> wp_volume;
+wp_volume -> material_inventory;
+material_inventory -> winding_procurement;
+coil_length -> winding_procurement;
+winding_procurement -> conductor_current [label="Tape + conductor lengths", fontname="Manrope", fontsize=10.5, fontcolor="#5f5f5f"];
+peak_field_calc -> conductor_current;
+peak_field_calc -> peak_field_ok;
+conductor_current -> reference_conductor_current_ok;
+wp_fit -> wp_fit_ok;
+{rank=same; radial_build; field_calc;}
+{rank=same; wp_fit; wp_volume;}
+}

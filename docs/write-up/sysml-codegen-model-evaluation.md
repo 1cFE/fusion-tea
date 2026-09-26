@@ -44,7 +44,7 @@ The worked example follows our stellarator demo through seven steps:
 - **2.6 Assemble the executable program:** connect the Python calculations with TEAx and expose the inputs a study can vary.
 - **2.7 Run a study:** evaluate many design points and compare their feasibility and cost.
 
-All code examples come from the stellarator demo. Excerpts omit surrounding imports and documentation where indicated.
+All code examples come from the stellarator demo as read on 19 September 2026. Excerpts omit surrounding imports and documentation where indicated.
 
 ## 2. Process: a worked example
 
@@ -229,7 +229,7 @@ stellarator_09__stellaris__magnet__wp_sizing:
     root: RootModel[float] stellarator_09__stellaris__magnet__wp_sizing__wp_side
 ```
 
-The `module_type` selects the winding-pack sizing calculation. Its `j_wp` input receives the density calculated by current sizing, while `I_coil` receives the supplied coil ampere-turns. The output entry names the calculated pack side so other calculations can read it. The long names identify each value's location in the plant. [Generated pipeline](../../exploration/stellarator_e2e/generated/pipelines/pipeline.yaml).
+The `module_type` selects the winding-pack sizing calculation. Its `j_wp` input receives the density calculated by current sizing, while `I_coil` receives the supplied coil ampere-turns. The output entry names the calculated pack side so other calculations can read it. The long names identify each value's location in the plant. [Generated pipeline](../../exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/preparation/package-pipelines/pipeline.yaml).
 
 TEAx uses these connections to run each calculation after the results it needs are available. It gathers the inputs, calls the Python function, and makes the outputs available to the next calculations. It computes field before current-based sizing, sizing before pack dimensions, and dimensions before the fit check.
 
@@ -250,7 +250,7 @@ Here is an exact subset of the stellarator's generated plant-input JSON:
 }
 ```
 
-These settings supply the plasma radius, coil ampere-turns, coil count, and linkage factor. Changing the radius changes the value received by every calculation connected to that plant attribute. The magnetic field remains a calculated result. [Full generated input file](../../exploration/stellarator_e2e/generated/inputs/stellarator_plant_params.json).
+These settings supply the plasma radius, coil ampere-turns, coil count, and linkage factor. Changing the radius changes the value received by every calculation connected to that plant attribute. The magnetic field remains a calculated result. [Full generated input file](../../exploration/stellarator_e2e/studies/20260917-pre-reveal-feasible-neighborhood/preparation/package-inputs/stellarator_plant_params.json).
 
 The long JSON keys identify each input's location in the plant. File-based runs load these settings from JSON; studies can supply the values directly in memory. The [input-generation note](sysml-codegen-assets/model-evidence.md#input-generation-details) covers file grouping, defaults, and inputs that need values before evaluation.
 

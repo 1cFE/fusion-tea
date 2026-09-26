@@ -1,0 +1,171 @@
+<svg role="img" aria-label="Actual magnet calculation dependencies: field feeds sizing; pack dimensions feed fit and material costs; separate checks assess field, current, and fit." width="404pt" height="727pt"
+ viewBox="0.00 0.00 403.60 726.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(10.8 715.8)">
+<title>G</title>
+<text text-anchor="middle" x="191" y="-689.8" font-family="Manrope" font-size="14.00" fill="#191919">How magnet calculations depend on one another</text>
+<text text-anchor="middle" x="191" y="-674.8" font-family="Manrope" font-size="14.00" fill="#191919"> </text>
+<g id="node1" class="node">
+<title>radial_build</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M141.5,-667C141.5,-667 72.5,-667 72.5,-667 66.5,-667 60.5,-661 60.5,-655 60.5,-655 60.5,-639 60.5,-639 60.5,-633 66.5,-627 72.5,-627 72.5,-627 141.5,-627 141.5,-627 147.5,-627 153.5,-633 153.5,-639 153.5,-639 153.5,-655 153.5,-655 153.5,-661 147.5,-667 141.5,-667"/>
+<text text-anchor="middle" x="107" y="-650.8" font-family="Manrope" font-size="11.50" fill="#191919">Radial build</text>
+<text text-anchor="middle" x="107" y="-637.8" font-family="Manrope" font-size="11.50" fill="#191919">Coil position</text>
+</g>
+<g id="node3" class="node">
+<title>coil_length</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M72,-434C72,-434 12,-434 12,-434 6,-434 0,-428 0,-422 0,-422 0,-410 0,-410 0,-404 6,-398 12,-398 12,-398 72,-398 72,-398 78,-398 84,-404 84,-410 84,-410 84,-422 84,-422 84,-428 78,-434 72,-434"/>
+<text text-anchor="middle" x="42" y="-413.3" font-family="Manrope" font-size="11.50" fill="#191919">Coil length</text>
+</g>
+<g id="edge1" class="edge">
+<title>radial_build&#45;&gt;coil_length</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M101.57,-626.87C89.75,-585.24 61.73,-486.51 48.78,-440.88"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="51.1,-440.1 46.83,-434.03 46.39,-441.43 51.1,-440.1"/>
+</g>
+<g id="node4" class="node">
+<title>peak_field_calc</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M299,-590C299,-590 213,-590 213,-590 207,-590 201,-584 201,-578 201,-578 201,-562 201,-562 201,-556 207,-550 213,-550 213,-550 299,-550 299,-550 305,-550 311,-556 311,-562 311,-562 311,-578 311,-578 311,-584 305,-590 299,-590"/>
+<text text-anchor="middle" x="256" y="-573.8" font-family="Manrope" font-size="11.50" fill="#191919">Peak conductor</text>
+<text text-anchor="middle" x="256" y="-560.8" font-family="Manrope" font-size="11.50" fill="#191919">field</text>
+</g>
+<g id="edge3" class="edge">
+<title>radial_build&#45;&gt;peak_field_calc</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M144.98,-626.88C165.3,-616.65 190.43,-604.01 211.64,-593.33"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="212.93,-595.42 218.08,-590.08 210.73,-591.04 212.93,-595.42"/>
+</g>
+<g id="node2" class="node">
+<title>field_calc</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M281.5,-665C281.5,-665 230.5,-665 230.5,-665 224.5,-665 218.5,-659 218.5,-653 218.5,-653 218.5,-641 218.5,-641 218.5,-635 224.5,-629 230.5,-629 230.5,-629 281.5,-629 281.5,-629 287.5,-629 293.5,-635 293.5,-641 293.5,-641 293.5,-653 293.5,-653 293.5,-659 287.5,-665 281.5,-665"/>
+<text text-anchor="middle" x="256" y="-644.3" font-family="Manrope" font-size="11.50" fill="#191919">Axis field</text>
+</g>
+<g id="edge2" class="edge">
+<title>field_calc&#45;&gt;peak_field_calc</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M256,-628.98C256,-619.57 256,-607.68 256,-597.11"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="258.45,-597.06 256,-590.06 253.55,-597.06 258.45,-597.06"/>
+</g>
+<g id="node8" class="node">
+<title>wp_volume</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M179,-359C179,-359 103,-359 103,-359 97,-359 91,-353 91,-347 91,-347 91,-331 91,-331 91,-325 97,-319 103,-319 103,-319 179,-319 179,-319 185,-319 191,-325 191,-331 191,-331 191,-347 191,-347 191,-353 185,-359 179,-359"/>
+<text text-anchor="middle" x="141" y="-342.8" font-family="Manrope" font-size="11.50" fill="#191919">Winding&#45;pack</text>
+<text text-anchor="middle" x="141" y="-329.8" font-family="Manrope" font-size="11.50" fill="#191919">volume</text>
+</g>
+<g id="edge7" class="edge">
+<title>coil_length&#45;&gt;wp_volume</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M64.46,-397.98C77.96,-387.76 95.33,-374.6 110.11,-363.41"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="111.74,-365.24 115.84,-359.06 108.78,-361.34 111.74,-365.24"/>
+</g>
+<g id="node10" class="node">
+<title>winding_procurement</title>
+<path fill="#dcefed" stroke="#0b6f6a" stroke-width="1.1" d="M192.5,-205C192.5,-205 89.5,-205 89.5,-205 83.5,-205 77.5,-199 77.5,-193 77.5,-193 77.5,-177 77.5,-177 77.5,-171 83.5,-165 89.5,-165 89.5,-165 192.5,-165 192.5,-165 198.5,-165 204.5,-171 204.5,-177 204.5,-177 204.5,-193 204.5,-193 204.5,-199 198.5,-205 192.5,-205"/>
+<text text-anchor="middle" x="141" y="-188.8" font-family="Manrope" font-size="11.50" fill="#191919">Winding quantities</text>
+<text text-anchor="middle" x="141" y="-175.8" font-family="Manrope" font-size="11.50" fill="#191919">and cost</text>
+</g>
+<g id="edge11" class="edge">
+<title>coil_length&#45;&gt;winding_procurement</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M46.28,-397.78C57.16,-354.02 85,-242 85,-242 85,-242 101.57,-225.43 116.68,-210.32"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="118.51,-211.95 121.73,-205.27 115.05,-208.49 118.51,-211.95"/>
+</g>
+<g id="node5" class="node">
+<title>current_sizing</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M200.5,-513C200.5,-513 119.5,-513 119.5,-513 113.5,-513 107.5,-507 107.5,-501 107.5,-501 107.5,-485 107.5,-485 107.5,-479 113.5,-473 119.5,-473 119.5,-473 200.5,-473 200.5,-473 206.5,-473 212.5,-479 212.5,-485 212.5,-485 212.5,-501 212.5,-501 212.5,-507 206.5,-513 200.5,-513"/>
+<text text-anchor="middle" x="160" y="-496.8" font-family="Manrope" font-size="11.50" fill="#191919">Current&#45;driven</text>
+<text text-anchor="middle" x="160" y="-483.8" font-family="Manrope" font-size="11.50" fill="#191919">pack sizing</text>
+</g>
+<g id="edge4" class="edge">
+<title>peak_field_calc&#45;&gt;current_sizing</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M231.53,-549.88C218.89,-540.01 203.36,-527.87 190,-517.44"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="191.45,-515.46 184.43,-513.08 188.44,-519.33 191.45,-515.46"/>
+</g>
+<g id="node11" class="node">
+<title>conductor_current</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M303.5,-117C303.5,-117 222.5,-117 222.5,-117 216.5,-117 210.5,-111 210.5,-105 210.5,-105 210.5,-89 210.5,-89 210.5,-83 216.5,-77 222.5,-77 222.5,-77 303.5,-77 303.5,-77 309.5,-77 315.5,-83 315.5,-89 315.5,-89 315.5,-105 315.5,-105 315.5,-111 309.5,-117 303.5,-117"/>
+<text text-anchor="middle" x="263" y="-100.8" font-family="Manrope" font-size="11.50" fill="#191919">Conductor</text>
+<text text-anchor="middle" x="263" y="-87.8" font-family="Manrope" font-size="11.50" fill="#191919">current margin</text>
+</g>
+<g id="edge13" class="edge">
+<title>peak_field_calc&#45;&gt;conductor_current</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M288.12,-549.88C325.45,-527.66 382,-494 382,-494 382,-494 382,-494 382,-184 382,-184 340,-135 340,-135 340,-135 325.69,-128.12 309.41,-120.3"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="310.22,-117.97 302.85,-117.15 308.1,-122.39 310.22,-117.97"/>
+</g>
+<g id="node12" class="node">
+<title>peak_field_ok</title>
+<path fill="#f6e9d8" stroke="#95520f" stroke-width="1.1" d="M315,-513C315,-513 261,-513 261,-513 255,-513 249,-507 249,-501 249,-501 249,-485 249,-485 249,-479 255,-473 261,-473 261,-473 315,-473 315,-473 321,-473 327,-479 327,-485 327,-485 327,-501 327,-501 327,-507 321,-513 315,-513"/>
+<text text-anchor="middle" x="288" y="-496.8" font-family="Manrope" font-size="11.50" fill="#191919">CHECK</text>
+<text text-anchor="middle" x="288" y="-483.8" font-family="Manrope" font-size="11.50" fill="#191919">Field limit</text>
+</g>
+<g id="edge14" class="edge">
+<title>peak_field_calc&#45;&gt;peak_field_ok</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M264.24,-549.69C268.12,-540.59 272.81,-529.6 276.99,-519.81"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="279.29,-520.65 279.79,-513.25 274.79,-518.73 279.29,-520.65"/>
+</g>
+<g id="node6" class="node">
+<title>wp_sizing</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M208,-436C208,-436 132,-436 132,-436 126,-436 120,-430 120,-424 120,-424 120,-408 120,-408 120,-402 126,-396 132,-396 132,-396 208,-396 208,-396 214,-396 220,-402 220,-408 220,-408 220,-424 220,-424 220,-430 214,-436 208,-436"/>
+<text text-anchor="middle" x="170" y="-419.8" font-family="Manrope" font-size="11.50" fill="#191919">Winding&#45;pack</text>
+<text text-anchor="middle" x="170" y="-406.8" font-family="Manrope" font-size="11.50" fill="#191919">side length</text>
+</g>
+<g id="edge5" class="edge">
+<title>current_sizing&#45;&gt;wp_sizing</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M162.58,-472.69C163.77,-463.76 165.2,-453.03 166.48,-443.37"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="168.94,-443.51 167.43,-436.25 164.08,-442.86 168.94,-443.51"/>
+</g>
+<g id="node7" class="node">
+<title>wp_fit</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M311,-359C311,-359 239,-359 239,-359 233,-359 227,-353 227,-347 227,-347 227,-331 227,-331 227,-325 233,-319 239,-319 239,-319 311,-319 311,-319 317,-319 323,-325 323,-331 323,-331 323,-347 323,-347 323,-353 317,-359 311,-359"/>
+<text text-anchor="middle" x="275" y="-342.8" font-family="Manrope" font-size="11.50" fill="#191919">Pack / casing</text>
+<text text-anchor="middle" x="275" y="-329.8" font-family="Manrope" font-size="11.50" fill="#191919">fit margins</text>
+</g>
+<g id="edge6" class="edge">
+<title>wp_sizing&#45;&gt;wp_fit</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M196.77,-395.88C210.71,-385.92 227.88,-373.66 242.57,-363.16"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="244.01,-365.15 248.28,-359.08 241.16,-361.16 244.01,-365.15"/>
+</g>
+<g id="edge8" class="edge">
+<title>wp_sizing&#45;&gt;wp_volume</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M162.53,-395.69C159.01,-386.59 154.77,-375.6 150.98,-365.81"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="153.25,-364.89 148.44,-359.25 148.68,-366.66 153.25,-364.89"/>
+</g>
+<g id="node14" class="node">
+<title>wp_fit_ok</title>
+<path fill="#f6e9d8" stroke="#95520f" stroke-width="1.1" d="M314.5,-282C314.5,-282 229.5,-282 229.5,-282 223.5,-282 217.5,-276 217.5,-270 217.5,-270 217.5,-254 217.5,-254 217.5,-248 223.5,-242 229.5,-242 229.5,-242 314.5,-242 314.5,-242 320.5,-242 326.5,-248 326.5,-254 326.5,-254 326.5,-270 326.5,-270 326.5,-276 320.5,-282 314.5,-282"/>
+<text text-anchor="middle" x="272" y="-265.8" font-family="Manrope" font-size="11.50" fill="#191919">CHECK</text>
+<text text-anchor="middle" x="272" y="-252.8" font-family="Manrope" font-size="11.50" fill="#191919">Pack fits casing</text>
+</g>
+<g id="edge16" class="edge">
+<title>wp_fit&#45;&gt;wp_fit_ok</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M274.23,-318.69C273.87,-309.76 273.44,-299.03 273.05,-289.37"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="275.5,-289.15 272.77,-282.25 270.6,-289.34 275.5,-289.15"/>
+</g>
+<g id="node9" class="node">
+<title>material_inventory</title>
+<path fill="#ffffff" stroke="#1b5f99" stroke-width="1.1" d="M167,-282C167,-282 115,-282 115,-282 109,-282 103,-276 103,-270 103,-270 103,-254 103,-254 103,-248 109,-242 115,-242 115,-242 167,-242 167,-242 173,-242 179,-248 179,-254 179,-254 179,-270 179,-270 179,-276 173,-282 167,-282"/>
+<text text-anchor="middle" x="141" y="-265.8" font-family="Manrope" font-size="11.50" fill="#191919">Material</text>
+<text text-anchor="middle" x="141" y="-252.8" font-family="Manrope" font-size="11.50" fill="#191919">inventory</text>
+</g>
+<g id="edge9" class="edge">
+<title>wp_volume&#45;&gt;material_inventory</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M141,-318.69C141,-309.76 141,-299.03 141,-289.37"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="143.45,-289.25 141,-282.25 138.55,-289.25 143.45,-289.25"/>
+</g>
+<g id="edge10" class="edge">
+<title>material_inventory&#45;&gt;winding_procurement</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M141,-241.69C141,-232.76 141,-222.03 141,-212.37"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="143.45,-212.25 141,-205.25 138.55,-212.25 143.45,-212.25"/>
+</g>
+<g id="edge12" class="edge">
+<title>winding_procurement&#45;&gt;conductor_current</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M168.08,-164.91C186.4,-152 210.71,-134.86 230.14,-121.16"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="231.69,-123.07 236,-117.03 228.87,-119.06 231.69,-123.07"/>
+<text text-anchor="middle" x="270" y="-138.6" font-family="Manrope" font-size="10.50" fill="#5f5f5f">Tape + conductor lengths</text>
+</g>
+<g id="node13" class="node">
+<title>reference_conductor_current_ok</title>
+<path fill="#f6e9d8" stroke="#95520f" stroke-width="1.1" d="M304.5,-40C304.5,-40 221.5,-40 221.5,-40 215.5,-40 209.5,-34 209.5,-28 209.5,-28 209.5,-12 209.5,-12 209.5,-6 215.5,0 221.5,0 221.5,0 304.5,0 304.5,0 310.5,0 316.5,-6 316.5,-12 316.5,-12 316.5,-28 316.5,-28 316.5,-34 310.5,-40 304.5,-40"/>
+<text text-anchor="middle" x="263" y="-23.8" font-family="Manrope" font-size="11.50" fill="#191919">CHECK</text>
+<text text-anchor="middle" x="263" y="-10.8" font-family="Manrope" font-size="11.50" fill="#191919">Current margin</text>
+</g>
+<g id="edge15" class="edge">
+<title>conductor_current&#45;&gt;reference_conductor_current_ok</title>
+<path fill="none" stroke="#8a847b" stroke-width="1.1" d="M263,-76.69C263,-67.76 263,-57.03 263,-47.37"/>
+<polygon fill="#8a847b" stroke="#8a847b" stroke-width="1.1" points="265.45,-47.25 263,-40.25 260.55,-47.25 265.45,-47.25"/>
+</g>
+</g>
+</svg>
