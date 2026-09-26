@@ -9,3 +9,9 @@ Context: given after the coordinator's delivery message reporting the answer as 
 2026-09-26. [OWNER-VERBATIM] "close WI-093 too"
 
 Applied as: `pm close-item WI-093` through the modeling PM (the item archived under `work/completed/`, status `completed`, `work/BACKLOG.md` updated by the tool); recorded in `trail.md` § Owner item closure with the R1–R7 evidence map, and in `goal.md` § Amendments.
+
+## Slug
+
+2026-09-26. [OWNER-VERBATIM] "slug is fine. please commit."
+
+Applied as: the agent-chosen slug `design-space-combinations` is confirmed final (`goal.md` § Status and § Amendments); the confirmation committed as goal files only.

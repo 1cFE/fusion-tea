@@ -2,7 +2,7 @@
 
 ## Status
 
-`closed` — 2026-09-26, met. [OWNER] Closure authorized ("close the goal please"; `evidence/owner-ruling-closure.md`) after the round-2 result, the fresh implementation review, the fresh round-2 and answer review and their applied findings at `aee9f325`; the completion condition is assessed as met in `answer.md` § 1 and § 11. [OWNER] Issuance of the brief retained verbatim at `evidence/owner-brief.md` through `/run-goal` authorizes grounding and execution under its contract. [AGENT] The slug `design-space-combinations` is agent-chosen (the brief proposes none) and is adopted pending the owner's confirmation; a rename is a directory move with no other consequence. Grounded by the round agent from the records in § Grounding evidence; nothing below predicts the answer.
+`closed` — 2026-09-26, met. [OWNER] Closure authorized ("close the goal please"; `evidence/owner-ruling-closure.md`) after the round-2 result, the fresh implementation review, the fresh round-2 and answer review and their applied findings at `aee9f325`; the completion condition is assessed as met in `answer.md` § 1 and § 11. [OWNER] Issuance of the brief retained verbatim at `evidence/owner-brief.md` through `/run-goal` authorizes grounding and execution under its contract. [AGENT] The slug `design-space-combinations` is agent-chosen (the brief proposes none); [OWNER] confirmed 2026-09-26 ("slug is fine"). Grounded by the round agent from the records in § Grounding evidence; nothing below predicts the answer.
 
 ## Question
 
@@ -62,3 +62,4 @@ Tracked artifacts are cited at entry HEAD `7cb0ae46df48c0ed397b30283c6f5890e560b
 
 - 2026-09-26 — [OWNER] Formal closure authorized ("close the goal please"). Status `grounded` → `closed`, met. The slug `design-space-combinations` stays as adopted; no confirmation or rename was given, and a later rename is a directory move with no other consequence. The item WI-093 is not closed by this act (item closure is a separate owner act under § Reserved gates).
 - 2026-09-26 — [OWNER] Item closure authorized ("close WI-093 too"). WI-093 closed through `pm close-item` and archived to `work/completed/20260926_WI-093_combination-assemblies/`; its evidence paths cited in this goal now resolve there (trail § Owner item closure).
+- 2026-09-26 — [OWNER] Slug confirmed ("slug is fine"); the agent-chosen `design-space-combinations` is final.
