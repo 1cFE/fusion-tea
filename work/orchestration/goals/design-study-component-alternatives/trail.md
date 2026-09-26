@@ -52,3 +52,28 @@ T-002 · native WI-096 Matched Conversion Subsystems · expected native spec/des
 - **Dispositions reviewed:** run native readiness diagnostics and design a supplied-source conversion assembly; do not infer a major-physics blocker from missing current checks.
 - **Verdict:** FINDINGS, release bounded diagnostics and design only; main study remains unreleased. `evidence/feasibility-review.md` identifies source-return, cooler terminal/capacity, generator-loss rejection and monetary-basis conditions.
 - **Revision:** first submission. The coordinator applies the conditions in the WI-096 author brief. Native diagnostic results are in `evidence/readiness-screen.md` and `.json`; 822 retained Brayton outputs replay exactly, two steam refusals are preserved, and temperature/rating failures reproduce. The proposed new assembly remains MR-7 unverified until design and behavior checks.
+
+### Checkpoint C-002.r3 — 2026-09-26
+
+- **Reviewer:** same fresh non-author `/root/feasibility_review`; native design review evidence reused, no duplicate critic.
+- **Reading reviewed:** final WI-096 spec SHA256 `8995a896c3c6469ff8dc7e501f71ab32bdfcb8b2a3c68bf60215dd5cb8e08eff`, design SHA256 `a3af34cb5b56e76d7f472d4e3ed414b12eab36c5bb3b5edabca630101775d154`, original loop/exchanger/pump/property/cost sources and STUDY_POLICY §§3–5.
+- **Dispositions reviewed:** implement the matched conversion design with external source-heat and Brayton-ratio matching policies.
+- **Verdict:** FINDINGS, no implementation release. `evidence/design-review.md` records all three native submissions: initial findings; conditional pass after the first revision; final source-coupling revision with newly identified policy conflict. This goal checkpoint records that native review sequence at return, not three invented prior trail events.
+- **Changes:** pump count/ratings, variable-property cooler integration, disjoint cost assumptions and source-loop consistency were corrected. The coordinator's final policy check exposed that the external equality solves conflict with STUDY_POLICY §5.3; the reviewer confirmed the conflict. Public-input replay preserves MR-7 roles but does not discharge the physical-closure rule. Prior agent-reviewed ratio-search practice is not an owner waiver.
+- **Remaining uncertainty:** separate model-owned source, ratio and water solves would trigger the policy's third-handwritten-rung tripwire. That is a design-scope decision, not proof of major new physical modeling. No implementation, integration seam or main study has run. MR-7 proposed hardware roles are compliant; executed behavior is unverified.
+
+### T-002 return — 2026-09-26
+
+- **Outcome:** OWNER_GATE.
+- **Evidence:** WI-096 `spec.md` and `design.md`; `evidence/design-review.md`, `source-coupling-probe.json`, `monetary-basis.md`, `currency-conversion.md`, and retained native readiness controls. The spec/design hashes above identify the reviewed state; earlier controls are committed in `55eb24b8058057b218f6519565b78165a83dddf9`.
+- **Reading:** Source/exchanger consistency has a bounded numerical demonstration and the component/accounting design is explicit. A compliant main-study closure remains unresolved. The task has not delivered an implementation-ready design, and the economic comparison remains unmet.
+- **Decision:** Trigger: final permitted design submission has an unresolved study-policy conflict. Decision/reason: stop dependent implementation at the declared review cap; recommend an additional model-owned-closure design revision only if the owner permits continuation. Tier: reserved gate. Decided by: coordinator applying the runbook cap and independent verdict. Changed: `answer.md`, `candidate-ledger.md`, `evidence/findings-log.md`, and the stop record below; no model/package/study changed.
+
+### Stop — 2026-09-26
+
+- **Kind:** cap.
+- **Unresolved disposition:** implementation and study release for the external source-heat and Brayton-ratio equality solves.
+- **Limit reached:** two corrective design revisions, three submissions. The final submission returned FINDINGS. No mechanical retry was consumed, and no new round is opened to evade the cap.
+- **Owner decision needed:** whether to allow another design revision addressing model-owned closure and the handwritten-solve tripwire, or retain this partial result. The proposed remedy is not permission to waive the physical-closure policy or begin implementation before review.
+- **Parked work:** WI-096 implementation, generated package, integration, main comparison study, sensitivity cases, economic ranking and result plots. Reporting and reproducibility of already executed diagnostics are completed in the partial-result artifacts.
+- **Handoff:** `answer.md` states established evidence and unmet criteria; `evidence/replay.md` names diagnostic commands; `evidence/partial-result-review.md` checks reporting only. Formal goal and item closure remain owner-held.

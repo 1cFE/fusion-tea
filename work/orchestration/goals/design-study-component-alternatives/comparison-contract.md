@@ -1,20 +1,20 @@
 # Comparison contract — feasibility screen before the main study
 
-[AGENT] Proposed 2026-09-26. This contract defines the desired matched comparison and its admission conditions. The main study is not released by writing it. The fresh review at `evidence/feasibility-review.md` determines which follow-up is justified. Owner authority: `evidence/owner-brief.md`.
+[AGENT] Revised during design on 2026-09-26. This contract defines the desired matched comparison and its admission conditions. Final design review returned FINDINGS on external physical-closure solves; the review cap stops implementation and main-study release. Current disposition: `evidence/design-review.md` and `trail.md`. Owner authority: `evidence/owner-brief.md`.
 
 ## Independent choices and equal quantities
 
 | Quantity | Role and proposed treatment | Authority/support |
 |---|---|---|
 | Conversion technology | Chosen: helium/salt/steam or helium Brayton | [OWNER] categorical component question |
-| Source at nominal | Supplied helium at 773.15 K, with the existing Stellaris loop's nominal exchanger duty and required return read from native outputs | [AGENT] isolate conversion; [INHERITED] C-1 and WI-095 |
-| Source operating points | Proposed 80/90/100% duty at equal hot/return temperatures within each pair; source flow supplied consistently with duty and cp | [AGENT] candidates for interface review, not a qualified reactor operating range |
+| Source | Unchanged Primary Coolant Loop with fixed original hardware, inlet/rise and pressure-loss law; its outputs feed both branches | [AGENT] isolated conversion; [INHERITED] C-1 and WI-095; changed exchanger topology retains an imposed resistance assumption |
+| Source operating points | Independently chosen 10/11/12 steam IHX circuits; locate the public source-heat input that matches each fixed exchanger to the unchanged loop; share every resulting source quantity within each pair | [AGENT] revised design, source-coupling-probe.json independently replayed; source-model consistency, not validated reactor turndown or substituted-system hydraulics |
 | Common upstream source | Reactor, fuel, magnets and upstream plant accounts excluded from subsystem metric; any shared pumping electricity and installed hardware must have identical, explicit treatment | [OWNER] isolated boundary permitted; no whole-plant LCOE claim |
 | Equipment | Supplied quantities, ratings, geometry, prices and applicable conditions enumerated before execution; retain insufficient offers | [OWNER], MR-7 |
 | Operating controls | Steam settings within admitted equipment conditions; Brayton flow and pressure ratio on matched heat/return points, with equal opportunity to investigate supported choices | [OWNER]; no automatic equipment purchase |
 | Finance | One currency year, availability, real discount rate, calendar life and replacement convention; specify values only with the accepted cost boundary | [OWNER]; unresolved during readiness audit |
 
-The source-flow identity is an operating balance, not an installed-pump selection. This would change how the source is supplied relative to the whole Stellaris loop; it needs an explicit design-role record and review before assembly. No such model edit has been made.
+The diagnostic source-heat search replayed through the unchanged loop and an independent exchanger check without selecting installed equipment. Final review requires a compliant model-owned treatment of the coupled source-heat and Brayton-ratio closures before a main study. Source flow and return follow the loop; they are shared within each pair and may differ between source points. No new assembly has executed yet. The candidate ledger and design review retain the earlier proposals and their dispositions.
 
 ## Consequences and equipment scope
 

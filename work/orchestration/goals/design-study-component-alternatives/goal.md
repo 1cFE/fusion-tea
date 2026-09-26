@@ -4,6 +4,8 @@
 
 `grounded` — 2026-09-26, under the owner's retained [brief](evidence/owner-brief.md), which supplies the slug and authorizes autonomous technical execution. Formal closure remains owner-held.
 
+Execution stopped in round 1 at the design-review revision cap. The final design has unresolved physical-closure policy findings. [Partial answer](answer.md); [stop and required owner decision](trail.md). This is not goal closure or completed economic-comparison evidence.
+
 ## Question
 
 [OWNER] For the same supported reactor heat source, how do the modeled steam and helium Brayton conversion options differ in net electricity, required equipment and conditional LCOE?
