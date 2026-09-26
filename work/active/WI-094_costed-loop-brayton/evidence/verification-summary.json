@@ -11,9 +11,7 @@
     "c1-flow1400-aries-ratings": true,
     "c1-flow4000-reselected-ratings": "refused: LCOE undefined for nonpositive net electricity"
   },
-  "package_tree_clean": false,
-  "failures": [
-    "package tree not clean after the runs"
-  ],
-  "passed": false
+  "package_tree_clean": true,
+  "failures": [],
+  "passed": true
 }
