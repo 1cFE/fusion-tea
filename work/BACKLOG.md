@@ -498,6 +498,12 @@ standalone:
   priority: P0
   status: completed
   completed: '2026-09-25'
+- id: WI-093
+  name: Combination assemblies from existing definitions
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -621,3 +627,4 @@ standalone:
 | WI-090 | ARIES integrated equipment and costs | standard | P0 | completed | Completed 2026-09-22 |
 | WI-091 | ARIES integrated lifecycle cost | standard | P0 | completed | Completed 2026-09-22 |
 | WI-092 | ARIES parallel exchanger network alternative | standard | P0 | completed | Completed 2026-09-25 |
+| WI-093 | Combination assemblies from existing definitions | standard | P1 | backlog |  |
