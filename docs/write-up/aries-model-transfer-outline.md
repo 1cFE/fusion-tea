@@ -1,6 +1,6 @@
 # Testing whether a stellarator model could support another design
 
-Working narrative for discussion, supporting [the main post](fusion-tea-exploratory-modeling.md). [OWNER, clarified 2026-09-25] The organizing sequence is the generalization hypothesis, a brief false-start disclosure, a design-instance-only test, the required model enhancements and the resulting studies. Explanations and takeaways are proposed editorial synthesis; the linked records supply the evidence.
+Draft supporting [the main post](fusion-tea-exploratory-modeling.md). The interpretation below is editorial synthesis; linked assessment and study records provide the evidence.
 
 ## 1. The hypothesis and the test
 
@@ -10,9 +10,11 @@ Our larger goal was to assess whether an AI-assisted modeling process could help
 
 The challenge is assessing whether those abstractions are realistic and coherent. A program can execute correctly and produce plausible numbers while describing the wrong physical system. Reproducing the design used to build the model is useful, but it does not tell us how well the model applies elsewhere.
 
-Our strategy for addressing this challenge was using a hold-out set: is there a thorough publication that we could intentionally not use during an initial modeling phase; and then during a "reveal" see how well our system models generalize to the design points in the publication?
+We used a hold-out test: develop the model using one design, then assess it against a documented design we had deliberately withheld.
 
 We chose to use Stellaris as the design point for a stellarator and intentionally withhold ARIES publications. ARIES would provide a documented alternative against which to assess generalization: could our system models represent its components and architecture, and did their physical assumptions apply? Where the quantities and definitions matched, numerical comparisons would be a stretch goal.
+
+If the existing library was insufficient, a second part would examine what had to change to evaluate the new design. The endpoint was an explained assessment of performance and cost: what the model could calculate, how its results compared with the publication, and which differences or missing capabilities remained unresolved.
 
 ## 2. One false start before the main assessment
 
@@ -40,58 +42,29 @@ That failure told us where to investigate. It did not, by itself, prove that no 
 
 Evidence: [attempt and supplied inputs](../../.project/active/aries-comparison-preparation/post-reveal-results/post-reveal-v1/report.md), [field investigation](../../.project/active/aries-comparison-preparation/post-reveal-investigation/findings.md), [structural and numerical assessment](../../.project/active/aries-comparison-preparation/final-assessment/report.md).
 
-## 4. Part 2: what did we have to add, connect or assume?
+## 4. What changed, and what became reusable?
 
-We then allowed changes to the library. The question became: what work was necessary to reach an integrated ARIES-based model, and what could we reuse?
+Adding new physics was expected once we allowed library extensions. We had only modeled a steam cycle; we did not have a model for a helium Brayton cycle. The test in Part 2 was whether we could add the missing options while retaining useful relationships and connections elsewhere in the plant.
 
-### Add missing component behavior
+| Design choice | Extension for ARIES | Structural result |
+|---|---|---|
+| Plasma density distribution | Added a hollow-profile representation and profile integration | New plasma calculations used existing reaction mathematics and passed calculated fusion power into existing fuel balances. |
+| Blanket construction and coolants | Added region/material inventories and separate helium/PbLi heat accounting | Different blanket regions and heat paths could be represented explicitly, with existing capacity checks applied to their demands. |
+| Power-conversion system | Added helium Brayton components: compressors, intercoolers, turbine and recuperator | Another way to convert heat into power could be assembled. This required new behavior and connections; it was not demonstrated as a drop-in replacement for the steam cycle. |
+| Equipment and operating conditions | Connected selected capacities, operating demands and purchases | Existing adequacy checks and lifecycle calculations could consume the extended plant's results. |
 
-- Add plasma-profile calculations that could represent the hollow density distribution described for ARIES and calculate fusion power from supplied profiles.
-- Add material inventories for blanket regions with different thicknesses and compositions.
-- Add separate coolant heat accounting and helium Brayton components: compressors, intercoolers, a turbine and a recuperator that reuses turbine exhaust heat.
-- Reuse existing fuel balances, capacity checks and applicable accounting relationships. For example, the fuel component could consume the new plasma calculation's fusion power without needing a new fuel-flow equation.
+The strongest reuse example is the plasma-to-fuel connection. The new plasma calculation produced fusion power; the existing fuel model used that power to calculate fuel demand. Raising the density by 50% increased calculated fusion power from about 1.84 to 4.13 GW and exceeded the selected exhaust-processing capacity. The existing check caught that failure without a new ARIES-specific fuel equation or automatic equipment enlargement.
 
-### Assemble and connect the plant
+**The stronger structural claim remains only partly tested.** Independent component and material choices should multiply the configurations we can explore, subject to physical compatibility. This work demonstrated particular connections and reuse, not a systematic set of substitutions between the Stellaris and ARIES assemblies. We should not count definitions and call that proven coverage of the design space.
 
-- Connect the calculations into one chain: **plasma → heat removal → power conversion → net electricity**.
-- Make an upstream change propagate. Increasing plasma density should change calculated fusion power, fuel demand, heat and electricity through the actual component connections.
-- Keep selected equipment fixed while calculating operating states. An exchanger that cannot remove enough heat should report a shortfall; the model should not silently enlarge it.
+The Stellaris baseline remained unchanged during these extensions. Evidence: [component additions, reuse and executed cases](../../work/orchestration/aries-transfer-experiment/report.md), [plant integration](../../work/orchestration/goals/aries-integrated-heat-electricity/answer.md), [equipment and cost integration](../../work/orchestration/goals/aries-integrated-equipment-costs/answer.md).
 
-### Supply explicit assumptions where evidence was missing
+## 5. What the comparison with ARIES established
 
-- Use documented assumptions for quantities such as heat deposition, equipment performance and auxiliary electricity demand so the rest of the plant can execute.
-- Keep unavailable magnetic and breeding checks unverified. Supplying an assumed value to a downstream calculation does not establish that the missing subsystem works.
-- This distinction allowed an integrated calculation before every scientific model was complete. We did not finish replacing every missing physical relationship.
+After the major component additions above, we evaluated the model against ARIES's published power balance and costs. We used explicit assumptions for unfinished physics, including magnet qualification and breeding. The purpose was to identify what explained agreement or disagreement, rather than keep adding detail until the totals matched.
 
-### Connect equipment and operation to cost
+- **Power balance: the disagreement was not just in the core.** We entered ARIES's reported fusion power in place of our plasma calculation to test the balance of plant separately. This exposed incorrect exchanger connections and input mappings, which we corrected. With explicit flow and equipment choices, the model then removed all the reactor heat and produced **891 MW net, versus ARIES's 1,000 MW**. The remaining difference involved heat delivery to the power cycle: we could not reconcile the published exchanger conditions with its stated turbine inlet temperature. We isolated a downstream disagreement; we did not finish quantifying core error or prove the published design wrong. [Power-balance assessment](../../work/orchestration/goals/aries-reference-heat-electricity-reconciliation/answer.md)
 
-- Connect selected exchanger area to both heat-transfer capability and purchase cost. Connect pump capacity to purchase cost and its adequacy check.
-- Calculate operating expenses from the represented demands and declared assumptions.
-- Reuse financial machinery to combine capital, financing, fuel, operation, replacement and terminal costs with calculated electricity production.
+- **Cost: tritium-supply assumptions dominated the difference.** For that configuration, purchasing all required new tritium at the assumed price gave **$686/MWh**; assuming 100 kg/year of new supply reduced it to **$238/MWh**, against the published **$77.6/MWh**. Substituting fuel and accounting conventions closer to ARIES gave **$59/MWh at 5% real financing**. These figures are all in 2004 dollars. The comparison showed why the estimates differed, but did not independently validate cost: much of the capital came from ARIES accounts, breeding supply remained assumed, and the published financing details were incomplete. [Cost assessment](../../work/orchestration/goals/aries-reconciled-alternative-economics/answer.md)
 
-The result was one connected model producing **423.1 MW net under explicit assumptions**. It was an ARIES-based scenario, not a reproduction of the published 1,000 MW plant. Cases using published source inputs still retained heat-removal failures. During this extension, the Stellaris baseline established after the earlier repairs remained unchanged, with its numerical outputs checked separately.
-
-Evidence: [reused and added components](../../work/orchestration/aries-transfer-experiment/report.md), [thermal/electrical integration](../../work/orchestration/goals/aries-integrated-heat-electricity/answer.md), [equipment and cost integration](../../work/orchestration/goals/aries-integrated-equipment-costs/answer.md), [lifecycle calculation](../../work/orchestration/goals/aries-integrated-lcoe/answer.md).
-
-## 5. What we learned once studies were possible
-
-We could now study alternatives through the same integrated model. The final three studies evaluated 266 cases without changing its equations. Two examples show the difference between an equipment improvement and a result driven by an uncertain assumption. All prices below are expressed in constant 2004 US dollars.
-
-**The equipment example was small but easy to trace.** Reducing two selected exchanger areas from 50,000 to 45,000 square metres each reduced modeled capital cost by about $17.4 million. The smaller exchangers still transferred all the required heat in the tested cases, so electricity and fuel demand were unchanged. LCOE fell by about $0.38/MWh. The saving survived the tested individual assumption changes, although missing hydraulic and detailed geometry effects prevent treating it as a purchase recommendation.
-
-**The tritium example had a much larger effect.** The assumed baseline needed about 104.7 kg of new tritium per year after accounting for internal fuel recycling. Buying all of it at the assumed external price produced an LCOE of about $1,119/MWh. Assuming 100 kg/year of usable breeder output, with a separate $30 million/year service allowance, reduced that to about $177/MWh. The model did not establish that breeding capability or its cost; these were explicitly different supply scenarios.
-
-That supply assumption changed which operating point looked attractive. Lowering plasma density reduced electricity from 423.1 to 349.6 MW, but also brought annual tritium demand just below 100 kg. In the assumed breeder-supply scenario, eliminating the remaining external purchases more than compensated for producing less electricity. Without breeding credit, the same lower-density case became more expensive per MWh.
-
-The useful result was the explanation. We could identify whether a lower LCOE came from buying less equipment, producing electricity more effectively, or crossing an assumed fuel-supply threshold. Testing other assumptions showed when the ranking reversed. A lower numerical result alone would have hidden those distinctions.
-
-Evidence: [candidate comparisons, contribution breakdowns and assumption studies](../../work/orchestration/goals/aries-integrated-design-studies/answer.md).
-
-## 6. What this says about the modeling strategy
-
-- **The existing library was insufficient.** We could not represent ARIES just by assembling and configuring the components we already had. Inspection identified missing or inapplicable definitions; the failed run alone was not an exhaustive test of possible assemblies.
-- **The machinery supported extension.** We reused applicable relationships, added component behavior, changed the assembly and connected the resulting plant to costs. That produced an integrated model on which studies could run.
-- **The studies provided useful feedback.** We could follow a design change through performance, adequacy and cost, and distinguish a small equipment saving from a much larger effect driven by an uncertain fuel-supply assumption.
-- **Realism remains a separate question.** An executable integrated model and verified arithmetic do not establish actual ARIES performance. Important magnetic, breeding, equipment and economic assumptions remain unverified.
-
-The result supports exploratory modeling as a way to develop and examine engineering models. It also identifies the work still needed before their numerical results can support a real plant recommendation.
+The useful result was that we could trace a whole-plant disagreement to specific connections, physical assumptions and cost inputs. We demonstrated model extension and diagnosis, but did not reproduce the complete ARIES design. Whether the added components support a broader range of usable combinations is the subject of the next tests; the two assembled plants alone do not establish that.

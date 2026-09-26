@@ -54,9 +54,9 @@ What makes a goal different from a task is the shape of the uncertainty:
 
 A plan cannot carry that, because a plan lists the actions in advance. What can carry it is a fixed question, a bounded attempt at a time, and a record of each attempt that the next one builds on. Figure 1 shows that structure, and the rest of this section walks it from top to bottom.
 
-![A goal: a fixed question at the top; below it, rounds, each opening with an approach, working through tasks one at a time, pinning the model at most once and ending with a study; below that, a check and the owner's decision to close the goal or open the next round.](harness-assets/goal-loop.png)
+![A goal at the top: a question and what would count as answering it, fixed while it runs. Below it, a round run by the AI: an approach, then tasks one at a time, with research and model changes before the model is pinned and studies after, ending in a record. Below that, a review by someone who did not do the work, then the owner: if the goal is answered it closes; if not, the next round opens with a revised approach.](harness-assets/goal-loop.png)
 
-*Figure 1. One goal, pursued in rounds. The only path from one round to the next runs through the check and the owner. Rendered by `harness-assets/render_goal_loop.py`.*
+*Figure 1. One goal, pursued in rounds. Inside a round, the pin divides the tasks: before it the model can change; after it the model is fixed and studies run against it. The only path from one round to the next runs through the review and the owner. Rendered by `harness-assets/render_goal_loop.py`.*
 
 **The goal is written first** Before any work starts, the owner and an agent write the goal (`work/orchestration/GOAL_RUNBOOK.md` § Grounding a goal). It carries:
 
@@ -83,3 +83,82 @@ A round can also stop early, for example when the premise of its approach proves
 That gives three roles. The owner sets the question and holds the gates: merges, closures, and the scientific calls reserved in the goal. The round agent pursues one approach and writes the result. The fresh reviewer checks it (`.claude/skills/run-goal/SKILL.md`). A human or an agent can take any of the three, and the runbook is the same document for both.
 
 The reader can now place any piece of the harness: it is a tool, a prompt, or a record belonging to one of the three classes, or it is part of the loop that decides which class to call next. The next section shows where each of those lives on disk.
+
+## 3. Where everything lives
+
+Agent sessions keep no memory between them, so the work carries forward only through the repository. A new session has to find what earlier sessions wrote and be able to trust it. We divide the repository into a few areas, one for each part of the harness described in section 2, and organize every area the same way so that a session knows how to find and add to any of them.
+
+Each class of work from section 2 writes to its own areas, the goal loop has one, and the harness itself has one:
+
+- **Sources** (`knowledge/`) hold what research finds. Every number in the model cites a file here. One directory, `knowledge/holdout/`, is quarantined for the test in Part 4: agents are told never to read it, and the registration script refuses anything from it.
+- **The model** (`models/`) is the SysML v2 description of the plant. Model updates are the only work that changes it.
+- **The program and studies** (`exploration/<pkg>/`, one directory per generated package) hold what is generated from the model and what runs against it: the program codegen writes (Part 2), the pin that fixes which version of it a study uses, and the study records.
+- **Work items and modeling rules** (`work/`, `modeling_project/`) record each model update from its spec to its evidence, along with the requirements every update must meet.
+- **Goals** (`work/orchestration/`) hold the outer loop's records: the goal, the trail of rounds and the accepted learnings. A trail cites records in the other areas instead of holding results of its own.
+- **The harness** (`.claude/`, `.project/`) holds the agent prompts and the engineering of the harness itself, including the decision records behind the goal loop.
+
+We reuse similar patterns across these components: an index file where a session starts, a tool that adds entries so they keep their structure, and a record that keeps the history of changes. `CLAUDE.md` at the root points to each area's index.
+
+**Indexes.** Each area has one file where a session starts, and that file points to the rest. A session looking for the source behind a number reads `SOURCE_INDEX.md`, which says what each source is for, how to check its numbers and what limits its authority. A session resuming a goal reads `goal.md` and then the trail. A session can therefore find what it needs by following references from `CLAUDE.md` instead of searching the repository.
+
+**Write tools.** Where a record needs a strict structure, agents add to it through a tool instead of editing the file. In round 1 of the goal in section 4, a research request found two papers, and `source_registry.py` registered each one by writing its extraction, its manifest row with the hash and its index entry in one step. If any part had failed, it would have written nothing. The model and the goal records have no write tool, for different reasons. The model's structure comes from SysML itself: the language fixes what a model can say, and the validator checks each change. We built the goal records as plain files with written rules and add a tool only when a real run shows a written rule failing (`.project/adr/0003-lean-first-persistence.md`). So far their templates and fixed headings have been enough.
+
+**History.** Each area keeps a record that later work can rely on, and entries are added to it rather than edited. The trail is only appended to, and a correction is a dated amendment that names what it corrects. A committed study record is not changed. A finding's first sighting in the discovery log stays as written, and later rows record what was done about it. A new session can therefore read an old record and know it describes what happened at the time.
+
+Three further rules apply across all the areas.
+
+- Records refer to each other by path instead of copying. A number in the model cites a file in `knowledge/sources/`, and a goal's trail cites a study's directory instead of restating its results. Each fact has one home, so a correction cannot leave two versions that disagree.
+- The status of a piece of work is read from its files, not stored separately. We avoided separate status fields because they drift out of step with the records they describe (`work/orchestration/GOAL_RUNBOOK.md` § Opening and closing a round).
+- Searches that found nothing are recorded with the queries that were tried, and a round that ends without a result still writes one. A new session can see that the ground was already covered.
+
+Table 1 shows how each area implements the pattern.
+
+*Table 1. The areas of the repository and the pattern each one follows.*
+
+| Area | Index | Write tool | History | Key rule |
+|---|---|---|---|---|
+| **Sources** `knowledge/` | `SOURCE_INDEX.md` | `scripts/source_registry.py` registers a source; `scripts/research_seam.py` tracks a research request | `MANIFEST.jsonl`; `research/requests/`, including searches that found nothing | A fetched source is identified by the hash of its raw bytes, and a changed source is refused |
+| **Model** `models/` | `README.md` | None. Agents edit the SysML; the language and the six-level validator hold its structure | The work item behind each change | Reusable definitions and design values are kept apart, and every number cites a source (MR-3, MR-4) |
+| **Program and studies** `exploration/<pkg>/` | `studies/ANNEX.md` | Codegen writes the program; `scripts/integrate.py` accepts a pin; each study fills a record template that `tests/study/` checks | Each committed study record; `studies/DISCOVERY_LOG.md` | A pin is accepted only if regenerating the program from the model changes nothing, and a committed record is never edited |
+| **Work items and modeling rules** `work/`, `modeling_project/` | `work/BACKLOG.md`, `modeling_project/REQUIREMENTS.md` | `agentic-mbse pm` operations add and close items, promote requirements and register decisions | `work/completed/` | A work item's stage is read from which of its files exist |
+| **Goals** `work/orchestration/` | `GOAL_RUNBOOK.md`, then each goal's `goal.md` | None. Templates with fixed headings | `trail.md`, append-only; `learnings.md` | Whether a round is open is read from the trail's headings |
+| **Harness** `.project/`, `.claude/` | `.project/CURRENT_WORK.md` | None | `.project/completed/CHANGELOG.md`; decision records in `.project/adr/` | Changes to the harness are tracked apart from changes to the model |
+
+<details>
+<summary>Directory tree of the areas above, with the goal from section 4 as the example</summary>
+
+```text
+fusion-tea/
+├── CLAUDE.md                        the first file every session reads; it points to everything below
+├── models/                          the SysML v2 model
+│   ├── library/                     reusable definitions: components, calculations, cost accounts
+│   └── designs/stellarator_09/      the Stellaris design: its values and its design choices
+├── exploration/stellarator_e2e/     what is generated from the model, and what runs against it
+│   ├── models/                      a copy of models/ that codegen reads; a test fails on any difference
+│   ├── generated/                   the generated program (Part 2)
+│   └── studies/
+│       ├── manifest.json            the pin: fingerprints of the program version studies run against
+│       ├── DISCOVERY_LOG.md         every finding a study sighted, and what was decided about it
+│       └── 20260905-stored-energy-basis/    one study record: plan, results, synthesis
+├── knowledge/                       what the model's numbers cite
+│   ├── sources/                     one directory per registered source: extracted text, page images
+│   ├── MANIFEST.jsonl               one row per source, with the hash that identifies it
+│   ├── SOURCE_INDEX.md              what each source is for, how to check it, what limits it
+│   ├── research/requests/           research requests (REQ-W-01.json); negatives/ records searches that found nothing usable
+│   └── holdout/                     quarantined: never read
+├── modeling_project/                the modeling rules: requirements, modeling process, study policy
+├── work/                            the modeling records
+│   ├── BACKLOG.md                   the work item list, changed only through the modeling PM's commands
+│   ├── active/                      work items in progress
+│   ├── completed/20260906_WI-042_sourced-helium-ash-profile/    one closed work item: spec, design, plan, evidence
+│   └── orchestration/
+│       ├── GOAL_RUNBOOK.md          how to run a goal, for a person or an agent
+│       └── goals/stored-energy-basis/    goal.md, trail.md, learnings.md, evidence/
+├── .claude/                         agent prompts: commands (/spec-model, /research-acquire), skills (run-goal, run-study)
+├── scripts/                         deterministic tools: source_registry.py, research_seam.py, integrate.py
+└── .project/                        the engineering of the harness itself, with its decision records in adr/
+```
+
+</details>
+
+The next section follows one goal through these areas, from a discrepancy in a single number, through a research request and a work item, to a re-run study.
