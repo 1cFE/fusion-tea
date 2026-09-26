@@ -1,0 +1,561 @@
+{
+  "kind": "independent-oracle-only",
+  "fingerprints": {
+    "indicator_inputs": {
+      "recipe": "indicator-input-fingerprint/v1",
+      "digest": "7fb8341cf1206ebf3f83a458f33b3c469089bf08e68f8fcad9f84b2739016028",
+      "files": [
+        "contracts/model_contract.json",
+        "inputs/costed_loop_brayton_params.json",
+        "inputs/integrated_equipment_costs_params.json",
+        "inputs/mfe_account_costs_params.json",
+        "inputs/mfe_viability_params.json",
+        "pipelines/pipeline.yaml"
+      ]
+    },
+    "recorded_provenance": {
+      "executable_fingerprint": "f3cfaa1e9b49daf6612bb6d7aed91128d7f3f7963ce3aab487a37d7b78208989",
+      "semantic_fingerprint": "a72fe5c4c825e47504e5941d1819344c3895b697d2674a61c853799218929203"
+    }
+  },
+  "anchors": {
+    "rule": "none",
+    "points": {}
+  },
+  "cases": [
+    {
+      "case": "ir-f2500-r1.5183",
+      "arm": "leading",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.5182944859378311
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 426.57863661452825,
+      "unmet": 0.0,
+      "lcoe": 1559.4383607751963,
+      "bypass_fraction": 0.31122159957612894,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 748.4804492359631,
+        "turbine": 3868.0114992165586,
+        "generator": 2933.1404289809834,
+        "rejection": 2379.255738532411,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2250-r1.5183",
+      "arm": "leading",
+      "axis_values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.5182944859378311
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 597.4811062625256,
+      "unmet": 0.0,
+      "lcoe": 1113.3792899077673,
+      "bypass_fraction": 0.009979651667890721,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 993.6324043123668,
+        "turbine": 3938.7731791419446,
+        "generator": 2762.237959332986,
+        "rejection": 2553.6460136834276,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2750-r1.3750",
+      "arm": "leading",
+      "axis_values": {
+        "cycle_flow": 2750.0,
+        "stage_ratio": 1.375
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 594.5668610796857,
+      "unmet": 0.0,
+      "lcoe": 1118.836473018167,
+      "bypass_fraction": 0.07957863521187392,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1184.861550833757,
+        "turbine": 4132.976045237661,
+        "generator": 2765.1522045158263,
+        "rejection": 2550.6722941091016,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f3000-r1.3250",
+      "arm": "leading",
+      "axis_values": {
+        "cycle_flow": 3000.0,
+        "stage_ratio": 1.325
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 581.4355163149477,
+      "unmet": 0.0,
+      "lcoe": 1144.1046705229903,
+      "bypass_fraction": 0.07477221118188027,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1271.992366170714,
+        "turbine": 4233.506191967208,
+        "generator": 2778.2835492805643,
+        "rejection": 2537.272962716512,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2500-r1.4500",
+      "arm": "leading",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.45
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 575.6167137712475,
+      "unmet": 0.0,
+      "lcoe": 1155.670212328547,
+      "bypass_fraction": 0.12961929065386357,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1039.1824234177006,
+        "turbine": 4006.6338028302152,
+        "generator": 2784.1023518242646,
+        "rejection": 2531.3354091004912,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2500-r1.4250",
+      "arm": "leading",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.425
+      },
+      "status": "evaluated",
+      "passing": false,
+      "net": 620.0081976465754,
+      "unmet": 7.775396506375728,
+      "lcoe": 1072.9262812151987,
+      "bypass_fraction": 0.0,
+      "feasible": 0.0,
+      "margins": {
+        "compressor": 1147.6480910462933,
+        "turbine": 4069.8020379329632,
+        "generator": 2739.7108679489365,
+        "rejection": 2584.408238132712,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "s6-hx75000-f2500-r1.4000",
+      "arm": "leading",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.4,
+        "exchanger_area": 75000.0
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 671.6244969492789,
+      "unmet": 0.0,
+      "lcoe": 991.0702599936934,
+      "bypass_fraction": 0.03878248129331041,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1257.2616098202648,
+        "turbine": 4126.745863540911,
+        "generator": 2688.094568646233,
+        "rejection": 2629.302534792361,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ia-f2500-r1.5183",
+      "arm": "leading",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.5182944859378311,
+        "compressor_rating": 1600.0,
+        "turbine_rating": 3500.0,
+        "generator_rating": 1800.0,
+        "rejection_rating": 2500.0,
+        "he_duty_rating": 1500.0
+      },
+      "status": "evaluated",
+      "passing": false,
+      "net": 426.57863661452825,
+      "unmet": 0.0,
+      "lcoe": 1548.0423172287785,
+      "bypass_fraction": 0.31122159957612894,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": -851.5195507640369,
+        "turbine": 368.0114992165586,
+        "generator": 1133.1404289809836,
+        "rejection": -120.74426146758879,
+        "he_duty": -1801.2132114869937,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2500-r1.4300",
+      "arm": "ladder",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.43
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 615.6020973396912,
+      "unmet": 0.0,
+      "lcoe": 1080.605626099428,
+      "bypass_fraction": 0.01939796079750522,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1125.864158173969,
+        "turbine": 4052.514125781949,
+        "generator": 2744.1169682558207,
+        "rejection": 2572.136820905025,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2500-r1.4350",
+      "arm": "ladder",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.435
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 605.7892012550343,
+      "unmet": 0.0,
+      "lcoe": 1098.1098514891196,
+      "bypass_fraction": 0.05202446875591704,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1104.125878076769,
+        "turbine": 4040.7890049548073,
+        "generator": 2753.9298643404777,
+        "rejection": 2562.123661634967,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2500-r1.4400",
+      "arm": "ladder",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.44
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 595.8514623226432,
+      "unmet": 0.0,
+      "lcoe": 1116.4243639359759,
+      "bypass_fraction": 0.08084308157413034,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1082.4329965092816,
+        "turbine": 4029.236673318331,
+        "generator": 2763.8676032728686,
+        "rejection": 2551.983111703958,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2500-r1.4450",
+      "arm": "ladder",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.445
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 585.7927275182922,
+      "unmet": 0.0,
+      "lcoe": 1135.594654174169,
+      "bypass_fraction": 0.10653386630838213,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1060.7852615189804,
+        "turbine": 4017.8529534345107,
+        "generator": 2773.92633807722,
+        "rejection": 2541.719096597476,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2250-r1.5050",
+      "arm": "ladder",
+      "axis_values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.505
+      },
+      "status": "evaluated",
+      "passing": false,
+      "net": 599.7974514408728,
+      "unmet": 32.56339689847027,
+      "lcoe": 1109.0795538157681,
+      "bypass_fraction": 0.0,
+      "feasible": 0.0,
+      "margins": {
+        "compressor": 1044.0006553672774,
+        "turbine": 3986.7778126679295,
+        "generator": 2759.921614154639,
+        "rejection": 2588.5730281108245,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2250-r1.5100",
+      "arm": "ladder",
+      "axis_values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.51
+      },
+      "status": "evaluated",
+      "passing": false,
+      "net": 600.025696459068,
+      "unmet": 18.819148940272044,
+      "lcoe": 1108.6576687457882,
+      "bypass_fraction": 0.0,
+      "feasible": 0.0,
+      "margins": {
+        "compressor": 1025.0261678377433,
+        "turbine": 3967.5704220586044,
+        "generator": 2759.693369136444,
+        "rejection": 2575.0616832324176,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-f2250-r1.5150",
+      "arm": "ladder",
+      "axis_values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.515
+      },
+      "status": "evaluated",
+      "passing": false,
+      "net": 600.1468160641678,
+      "unmet": 5.1870571281124285,
+      "lcoe": 1108.4339231964739,
+      "bypass_fraction": 0.0,
+      "feasible": 0.0,
+      "margins": {
+        "compressor": 1006.0893406317173,
+        "turbine": 3948.510003418803,
+        "generator": 2759.572249531344,
+        "rejection": 2561.553182854033,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-boundary-f2000",
+      "arm": "boundary",
+      "axis_values": {
+        "cycle_flow": 2000.0,
+        "stage_ratio": 1.6511421971954405
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 535.2205569180843,
+      "unmet": 0.0,
+      "lcoe": 1242.8952536023214,
+      "bypass_fraction": 1.0002586350310594e-06,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 803.766867578117,
+        "turbine": 3812.438815208145,
+        "generator": 2824.4985086774277,
+        "rejection": 2490.114840882978,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-boundary-f2250",
+      "arm": "boundary",
+      "axis_values": {
+        "cycle_flow": 2250.0,
+        "stage_ratio": 1.5169134372098814
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 600.1648590481848,
+      "unmet": 0.0,
+      "lcoe": 1108.4005999266114,
+      "bypass_fraction": 1.0001967893913388e-06,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 998.8523766051853,
+        "turbine": 3941.2546281840905,
+        "generator": 2759.5542065473273,
+        "rejection": 2556.3845369341,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-boundary-f2500",
+      "arm": "boundary",
+      "axis_values": {
+        "cycle_flow": 2500.0,
+        "stage_ratio": 1.427314826752991
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 620.8190529643422,
+      "unmet": 0.0,
+      "lcoe": 1071.5249260593914,
+      "bypass_fraction": 1.0000730981118977e-06,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1137.5571933508509,
+        "turbine": 4058.8837368520444,
+        "generator": 2738.90001263117,
+        "rejection": 2577.4602450118127,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-boundary-f2750",
+      "arm": "boundary",
+      "axis_values": {
+        "cycle_flow": 2750.0,
+        "stage_ratio": 1.3628644277341664
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 617.939807733591,
+      "unmet": 0.0,
+      "lcoe": 1076.5176178950296,
+      "bypass_fraction": 1.0003459465224296e-06,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1244.5014482540596,
+        "turbine": 4168.765997092754,
+        "generator": 2741.779257861921,
+        "rejection": 2574.5222396743125,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-boundary-f3000",
+      "arm": "boundary",
+      "axis_values": {
+        "cycle_flow": 3000.0,
+        "stage_ratio": 1.3140269530937074
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 601.5980396153443,
+      "unmet": 0.0,
+      "lcoe": 1105.7600690474571,
+      "bypass_fraction": 1.0005869626183994e-06,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1332.1337099668544,
+        "turbine": 4273.073532395597,
+        "generator": 2758.1210259801674,
+        "rejection": 2557.846966084264,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-boundary-f3250",
+      "arm": "boundary",
+      "axis_values": {
+        "cycle_flow": 3250.0,
+        "stage_ratio": 1.275580954551697
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 577.1376193361235,
+      "unmet": 0.0,
+      "lcoe": 1152.6247250856363,
+      "bypass_fraction": 1.000224074232392e-06,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1407.365008381525,
+        "turbine": 4373.264443340085,
+        "generator": 2782.5814462593885,
+        "rejection": 2532.8873535544462,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    },
+    {
+      "case": "ir-boundary-f3500",
+      "arm": "boundary",
+      "axis_values": {
+        "cycle_flow": 3500.0,
+        "stage_ratio": 1.244424132909626
+      },
+      "status": "evaluated",
+      "passing": true,
+      "net": 547.5819905118665,
+      "unmet": 0.0,
+      "lcoe": 1214.8374149450085,
+      "bypass_fraction": 1.0005223884945735e-06,
+      "feasible": 1.0,
+      "margins": {
+        "compressor": 1474.293939658849,
+        "turbine": 4470.352179540119,
+        "generator": 2812.1370750836454,
+        "rejection": 2502.728548631735,
+        "he_duty": 198.7867885130063,
+        "loop": 10.095227292061736,
+        "fuel_stock": 9.910385640665595
+      }
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "C-1 design flow 2,500 kg/s (WI-093); window 2,000-4,000 kg/s (-20 % / +60 %) fixed by the 54-point screen (contract \u00a7 8 a, \u00a7 11)."
+    },
+    {
+      "axis": "stage_ratio",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__compressor_1__selected_ratio",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__compressor_2__selected_ratio",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__compressor_3__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "C-1 equal-stage ratio 1.5183 (the ARIES designer's choice); window 1.20-1.80 refined to 0.025 between 1.30 and 1.50 where the screen located the heat-removal boundary (contract \u00a7 11)."
+    },
+    {
+      "axis": "compressor_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__compressor_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "I-R baseline 3,200 MW (WI-093 re-selection); I-A 1,600 MW, the ARIES-selected rating (WI-090 E4 reference)."
+    },
+    {
+      "axis": "turbine_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__turbine_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "I-R 7,000 MW; I-A 3,500 MW (ARIES-selected)."
+    },
+    {
+      "axis": "generator_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__generator_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "I-R 3,600 MW; I-A 1,800 MW (ARIES-selected)."
+    },
+    {
+      "axis": "rejection_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__rejection_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "I-R 5,000 MW; I-A 2,500 MW (ARIES-selected)."
+    },
+    {
+      "axis": "he_duty_rating",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__he_capacity__selected_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "I-R 3,500 MW; I-A 1,500 MW (ARIES-selected)."
+    },
+    {
+      "axis": "compressor_efficiency",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__compressor_1__efficiency",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__compressor_2__efficiency",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__compressor_3__efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES 0.89; 0.85 / 0.92 span the WI-090 range (contract S1). One value applied to the three stages."
+    },
+    {
+      "axis": "turbine_efficiency",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__cycle__turbine_efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES 0.93; 0.90 / 0.95 (contract S1)."
+    },
+    {
+      "axis": "aux_heat",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__auxiliary_heat",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES register 20 MW coupled at 0.5 wall-plug efficiency (40 MW electric); x0.5 / x1.5 with the rest of the register; the labelled Stellaris-equivalent register uses 50 MW coupled (100 MW wall-plug, baseline.json)."
+    },
+    {
+      "axis": "aux_cryo",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__cryo",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES 10 MW; x0.5 / x1.5; Stellaris-equivalent 2.14 MW (cryogenic and shield, baseline.json)."
+    },
+    {
+      "axis": "aux_fuel_base",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__fuel_base",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES 5 MW; x0.5 / x1.5; 0 in the labelled Stellaris-equivalent register (no counterpart named in the contract)."
+    },
+    {
+      "axis": "aux_control",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__control",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES 5 MW; x0.5 / x1.5; 0 in the labelled Stellaris-equivalent register."
+    },
+    {
+      "axis": "aux_other",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__other_electric",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES 5 MW; x0.5 / x1.5; the Stellaris-equivalent register puts its cooling-water pumping 13.02 MW here (baseline.json), the bound on the omitted heat-rejection pumping."
+    },
+    {
+      "axis": "fuel_exhaust_term",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__electrical__fuel_exhaust",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "0 as in C-1 (so the controls replay bit-exactly); the wired case sets it to the fuel chain's stored exhaust rate 1.7893e22 atoms/s, about 1.79 MW at the balance's 1e-22 MW per atom/s (contract \u00a7 3, S2)."
+    },
+    {
+      "axis": "pump_law_dp_ref",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__primary_loop__dp_loop_ref",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Stellaris 329,187.19 Pa reference loop pressure drop; x0.5 / x2 (contract S3). It moves the loop pump electricity and the friction heat delivered together."
+    },
+    {
+      "axis": "equipment_price_factor",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__compressor_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__turbine_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__generator_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__heat_rejection_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__he_duty_equipment__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__he_hx__price_factor",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "costed_loop_brayton__plant__conversion_services__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES E4 reference prices at x1; x0.5 / x1.5 on the seven priced items of the inventory (contract S4)."
+    },
+    {
+      "axis": "rest_of_plant_price_factor",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__rest_of_plant__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "The rest-of-plant constant 2,158,230,133.33 USD2004 at x1 ([ASSUMED], contract \u00a7 6); x0.5 / x2 (S4)."
+    },
+    {
+      "axis": "tritium_feed",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__fuel_inventory__annual_recovery_kg",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "0 under the no-credit convention; 100 kg/year is the ARIES E6 named-feed scenario (contract S5)."
+    },
+    {
+      "axis": "supply_service",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__finance__supply_service_annual",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "0; 30 MUSD/year with the named feed (ARIES E6 convention, contract S5)."
+    },
+    {
+      "axis": "exchanger_area",
+      "keys": [
+        {
+          "key": "costed_loop_brayton__plant__he_hx__selected_area",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "ARIES 50,000 m2 (UA 50 MW/K at the assumed 1,000 W/m2K); 75,000 m2 is the one declared priced hardware alternative (ratio 1.5, 87,488,550 USD2004 through the same purchase law; contract \u00a7 5, S6)."
+    }
+  ]
+}

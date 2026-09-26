@@ -105,7 +105,7 @@ summary = {
     'arms': [{'arm_id': 'arm-flow-ratio', 'store_id': record.name,
               'effective_executable_fingerprint': {'value': expected, 'inputs': None, 'no_adapter': True, 'note': 'No runtime adapter; the sealed package is the execution identity.'},
               'entry_models': entry_models, 'strategy': compatibility.get('strategy_identity'),
-              'window': {'bounds': {'grid': axis_plan['grid'], 'inventories': axis_plan['inventories'], 'sensitivities': axis_plan['sensitivities'], 'anchors': axis_plan['anchors'], 'refused_by_oracle_scan': axis_plan['refused_by_oracle_scan']}, 'provenance': 'engineered'},
+              'window': {'bounds': {k: axis_plan[k] for k in ('grid', 'inventories', 'sensitivities', 'anchors', 'designs', 'boundary', 'boundary_solve', 'refused_by_oracle_scan') if k in axis_plan}, 'provenance': 'engineered'},
               'verification': {'command': context['verification_command'].replace(record.name + '/manifest.json', record.name + '/verification-manifest.json'),
                                'tool_revision': verification['tool']['source_digest'], 'sampling_scheme': verification['stores'][0]['sampling'],
                                'tolerance': {'relative': 1e-9, 'absolute_tolerances': verification_manifest.get('absolute_tolerances', []), 'exact_verdicts': True,
@@ -119,6 +119,6 @@ summary = {
     'verified_numeric_channels_per_case': len(verification['channels_checked']),
     'exact_verdicts_per_case': len(verification['constraints_rederived']),
     'all_scoped_checks_satisfied_count': sum(all(v == 'satisfied' for v in r['verdicts'].values()) for r in cases),
-    'science_qualification': 'A flow x stage-ratio sweep at fixed machine efficiencies on a costed assembly of reviewed definitions; the passing region is bounded by engineering checks, not qualified as a design; the auxiliary register, pump law, rest-of-plant constant and fuel convention are declared assumptions tested at anchors; no off-design map, hydraulic model, blanket-inlet requirement or cost-side check exists; no optimum is interpolated.'}
+    'science_qualification': ('Round 3: the round-1 leading points re-evaluated with the loop return requirement enforced by an explicit primary-side bypass control, plus the matched-exchanger boundary family; the bypass loss, valve hardware and cost are unmodeled; ' if record.name.endswith('-b') else '') + 'A flow x stage-ratio sweep at fixed machine efficiencies on a costed assembly of reviewed definitions; the passing region is bounded by engineering checks, not qualified as a design; the auxiliary register, pump law, rest-of-plant constant and fuel convention are declared assumptions tested at anchors; no off-design map, hydraulic model, blanket-inlet requirement or cost-side check exists; no optimum is interpolated.'}
 write(record / 'snapshot.json', summary)
 print(json.dumps({'snapshot': str(record / 'snapshot.json'), 'sha256': sha(record / 'snapshot.json'), 'cases': len(cases), 'hashed_artifacts': len(artifacts), 'sources': len(source_paths)}))
