@@ -1,6 +1,6 @@
 # WI-096 independent design review
 
-[AGENT] **Current verdict: FINDINGS — no implementation release.** Submission 3 below identifies a ratified study-policy conflict not covered by the earlier conditional pass. This is the second and final permitted corrective revision; dependent implementation stops at the checkpoint cap. The prior physical, source and monetary findings remain evidence, not release authority.
+[AGENT] **Current verdict: PASS for the conditional fourth-submission design and bounded implementation scope.** The owner explicitly authorized one additional submission without a policy waiver. Its independent [submission-4 review](design-review-fourth-submission.md) records the exact final hashes, original-body checks, complete five-body/six-root census and policy interpretation. The source/ratio outer solves are removed. Coordinator-authorized implementation may proceed; main-study release still requires native integration review. Submissions 1–3 below remain historical findings. No fifth design submission is authorized.
 
 [AGENT] Fresh non-author review, 2026-09-26. Author: `/root/brayton_audit`; reviewer: `/root/feasibility_review`. Scope: [review brief](design-review-brief.md), WI-096 [spec](../../../../active/WI-096_matched-conversion-subsystems/spec.md) and [design](../../../../active/WI-096_matched-conversion-subsystems/design.md). This continues the earlier feasibility review; no implementation was reviewed or authorized by that earlier verdict. Only this review file is owned by the reviewer.
 

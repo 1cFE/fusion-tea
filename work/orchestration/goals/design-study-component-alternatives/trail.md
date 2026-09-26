@@ -94,3 +94,31 @@ T-002 · native WI-096 Matched Conversion Subsystems · expected native spec/des
 ### T-003 start — 2026-09-26
 
 T-003 · WI-096 final design revision and independent review · expected revised spec/design with equality/role table, full addition/solver census, review verdict and exact evidence. The continuing author owns native spec/design; the independent reviewer owns its review. Coordinator owns trail and contract. These stages are sequential because the review depends on the finished design.
+
+### Checkpoint C-002.r4 — 2026-09-26
+
+- **Reviewer:** continuing independent `/root/feasibility_review`; owner-authorized fourth submission, brief `evidence/fourth-submission-brief.md`.
+- **Reading reviewed:** spec SHA256 `b7e021efe1c9bca12431879c5eddc541966469ef0a824283ee3629a65c78068c`, design SHA256 `ec7d08e01ec0702e33ac6589dfaaa1a4eec5edad565c5be7bf9dc22c92c03f91`, comparison contract, original component bodies and separate retained fourth-submission probes.
+- **Dispositions reviewed:** keep chosen source power, flow, pressure ratios and installed offers; reuse model-owned primary bypass controls; add the reviewed finite-water-cooler calculation and bounded algebra/accounting.
+- **Verdict:** PASS for conditional design and bounded implementation scope; `evidence/design-review-fourth-submission.md`. No policy exception is required. No fifth design submission is authorized.
+- **Evidence and limits:** independent checks reproduced 12 source-control cases, a failed steam source retaining its 25.5988938 MW deficit, gas source/controller joins and three cooler profile integrals. Five substantive new/modified bodies are counted; only one is a newly written R3 closure, used three times. Existing network and bypass algorithms remain unchanged. MR-7 design roles are compliant; implementation is unverified. Imposed controller pressure service, actual hydraulics, prices and low-grade loss cooling remain conditional.
+
+### T-003 return — 2026-09-26
+
+- **Outcome:** COMPLETE.
+- **Evidence:** C-002.r4 and its exact reviewed identities; owner direction; `evidence/fourth-submission-control-probe.{py,json}`, `fourth-submission-thermal-probe.{py,json}` and `fourth-submission-thermal-revised-offer-probe.json`.
+- **Reading:** Physical equalities now have model owners while chosen source heat/pressure ratio/equipment remain visible. The existing control action admits sufficient hardware and retains failures. The complete extension fits the reviewed bounded scope without a solver-policy waiver.
+- **Decision:** Trigger: fourth-submission independent PASS within authorized scope. Decision/reason: release native implementation because the owner explicitly authorized autonomous downstream execution after this gate. Tier: execution detail. Decided by: coordinator under owner direction and independent review. Changed: revised WI-096 spec/design, comparison contract and implementation brief; no new model/package exists yet.
+
+### T-004 scope
+
+- **Objective:** Implement and validate the reviewed matched conversion package, preserving chosen equipment and failed physical cases.
+- **Why now:** C-002.r4 passes the design and scope gate under the owner's continuation.
+- **Scope:** WI-096 plan/implementation and acceptance evidence; isolated additive models/package and study support; model-family source registration. No broad study, original-package mutation or unreviewed additional physics/solver.
+- **Inputs:** `goal.md`, owner continuation, exact submission-4 spec/design, independent review, comparison contract and `evidence/implementation-brief.md`.
+- **Done when:** Native package, design-role behavior checks, independent numerical checks, six-level validation and preservation evidence are ready for independent integration review, or an exact scope/model dependency is established.
+- **Stop when:** Another coupled solve, major physical model, changed scientific premise or policy exception is needed; an owner gate is reached.
+
+### T-004 start — 2026-09-26
+
+T-004 · WI-096 implementation through native model workflow · expected checklist, additive SysML definitions/assembly, isolated generated package, body/census/fixed-point evidence, complete input/output/check interface and verification report. Continuing author owns implementation paths in the updated brief; coordinator owns trail, commits and dated studies. Original 13,215-file preservation baseline applies.

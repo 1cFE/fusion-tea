@@ -10,7 +10,8 @@
 | ARIES divertor source C-3 | Assemblable in principle; hot limit is not a complete source state, retained model and source duty/flow differ, fixed return absent | Deferred in favor of the better-defined Stellaris boundary |
 | Original C-1 versus original whole-plant steam outputs | Diagnostic controls execute; C-1 needs 31% modeled bypass and has different auxiliary/cost boundaries | Retained controls; not a matched economic comparison |
 | Fixed supplied source at 80/90/100% duty | Steam temperature checks remain applicable at fixed temperatures, but a fixed active IHX may not achieve all duties and required returns without a modeled control | Replaced as primary design proposal by offered exchanger circuit counts; no main points executed |
-| Offered steam IHX circuit counts with matched source duty | WI-096 design selects 10/11/12 circuits. The diagnostic matches the unchanged primary loop and selected IHX at delivered heat 2819.514/3024.031/3214.740 MW. Original total resistance is imposed across changed topology. Final review rejects external closure solves as the main-study route. | Primary candidate parked at review cap; no new native assembly executed |
+| Offered steam IHX circuit counts with externally matched source duty | Original diagnostic matches the unchanged primary loop and selected 10/11/12 IHXs at delivered heat 2819.514/3024.031/3214.740 MW. Submission 3 rejected external physical-closure solves as the main-study route. | Historical diagnostic retained; superseded production design |
+| Chosen source heat/ratio with model-owned primary bypass control | Source offers2500/2800/3000 MW and independent10/11/12/14 IHXs; unchanged controllers calculate bypass fractions or retain deficient transfer. Five substantive bodies are added/modified, including one new finite-water-cooler closure family. Submission4 passes independent design review without a policy waiver. | Primary candidate; native implementation released, main study pending integration review |
 | Two circulator cost correlations (C-5) | Changes price equation for the same equipment | Declined; does not answer the categorical component question |
 | Recuperator present/absent | Genuine physical alternative but shares omitted equipment/cooling issues and does not improve the present scope | Deferred; no unrelated study opened |
 
@@ -24,10 +25,10 @@ No model equation, shared library, original assembly, generated package, manifes
 
 ## Offered choices retained for the next stage
 
-Implementation of these choices is parked. They are a draft catalog, not an executed comparison or approved study window.
+The fourth-submission design is released for bounded implementation. It is not an executed comparison or a final study window. Its exact offer catalog and controller scope are in WI-096's reviewed design.
 
-- Steam IHX circuits 10/11/12 are independent hardware offers. Source heat is a public operating input selected separately; source return is calculated, not fixed across points.
+- Steam IHX circuits10/11/12/14 and source heat2500/2800/3000 MW are independent selections. Source return is calculated and shared within pairs. Existing model-owned bypass control replaces source-power matching; deficient offers stay failed.
 - Salt pumps: two/three/four per circuit; independently chosen 225 and 250 kg/s machine offers. Diagnostic demand exceeds the 225 kg/s offer at the first two source points. The selected four-pump, 250 kg/s offer still requires native rating checks.
 - Steam/reheat/condenser temperatures and salt head are screened directions. The inherited steam offer supports only its captured temperatures; broader operating freedom needs additional evidence.
-- Brayton cycle flow 1500/1750/2000/2250/2500 kg/s and independently offered recuperator/cooler equipment remain proposed choices. No-root cooling and source-matching cases must be retained.
+- Brayton cycle flow1500/1750/2000/2250/2500 kg/s and stage ratios1.2/1.35/1.5/1.65/1.8 remain selected. The original cooler catalog's no-root failures remain; revised25/25/25 MW/K offer passes one full thermal diagnostic tuple. Native assembled behavior remains unverified.
 - Price and machine-efficiency scenarios are assumptions for sensitivity, not empirical confidence bounds. Missing installed scope and recurring prices remain explicit economic limitations.

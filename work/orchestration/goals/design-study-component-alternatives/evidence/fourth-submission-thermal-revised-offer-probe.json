@@ -1,0 +1,417 @@
+{
+  "purpose": "One selected gas tuple and predeclared cooler offers; development evidence only.\n\nAdditional hypothetical offer (25,25,20) MW/K is selected before this diagnostic,\nwith recuperator UA60 and quote62.9116 MUSD2004; no UA sizing is performed.\nExisting offers (25,25,40), (30,30,50), (40,40,60) remain diagnostic alternatives.\nRun from repository root with --out naming a new file.\n",
+  "selected_source_MW": 2500,
+  "selected_ratio": 1.5,
+  "selected_flow": 2000.0,
+  "recuperator_UA": 60.0,
+  "source": {
+    "p_loop_margin": 7788700.884861591,
+    "q_recovered_total": 98.4236983110705,
+    "p_elec": 98.4236983110705,
+    "p_pump_total": 98.4236983110705,
+    "T_out": 773.15,
+    "T_comp_in": 565.2761041351143,
+    "dp_loop": 211299.1151384091,
+    "mdot_loop": 171.93474732469534,
+    "w_fluid": 98.4236983110705,
+    "capacity_margin": 53.143030453082446,
+    "q_ihx": 2598.4236983110704,
+    "mdot": 2407.086462545735,
+    "r_comp": 1.0271289292350536
+  },
+  "network_inputs": {
+    "network_mode_in": 0,
+    "pbli_split_in": 0.5,
+    "cold_temperature_in": 369.11488852918893,
+    "flow_in": 2000.0,
+    "cp_in": 5193.0,
+    "gamma_in": 1.6666666666666667,
+    "turbine_pressure_in": 13.813392857142857,
+    "return_pressure_in": 4.285714285714286,
+    "turbine_efficiency_in": 0.93,
+    "recuperator_effectiveness_in": 0.8524422470377633,
+    "he_flow_in": 2407.086462545735,
+    "he_cp_in": 5193.0,
+    "he_limit_in": 773.15,
+    "he_available_in": 2598.4236983110704,
+    "he_ua_in": 50.0,
+    "pbli_flow_in": 2407.086462545735,
+    "pbli_cp_in": 5193.0,
+    "pbli_limit_in": 773.15,
+    "pbli_available_in": 0.0,
+    "pbli_ua_in": 0.0,
+    "divertor_flow_in": 2407.086462545735,
+    "divertor_cp_in": 5193.0,
+    "divertor_limit_in": 773.15,
+    "divertor_available_in": 0.0,
+    "divertor_ua_in": 0.0
+  },
+  "network": {
+    "he_transferred": 2598.4236983110704,
+    "he_unmet": 0.0,
+    "he_capability": 3085.7038954749664,
+    "he_hot": 719.9221869507778,
+    "he_return": 512.0482910858922,
+    "he_hot_bound_margin": 53.22781304922216,
+    "he_hot_terminal_difference": 33.65231635436862,
+    "he_cold_terminal_difference": 75.96364081598693,
+    "he_state_defined": 1.0,
+    "he_secondary_in": 436.08465026990524,
+    "he_secondary_out": 686.2698705964092,
+    "divertor_transferred": 0.0,
+    "divertor_unmet": 0.0,
+    "divertor_capability": 0.0,
+    "divertor_hot": 0.0,
+    "divertor_return": 0.0,
+    "divertor_hot_bound_margin": 0.0,
+    "divertor_hot_terminal_difference": 0.0,
+    "divertor_cold_terminal_difference": 0.0,
+    "divertor_state_defined": 0.0,
+    "divertor_secondary_in": 686.2698705964092,
+    "divertor_secondary_out": 686.2698705964092,
+    "pbli_transferred": 0.0,
+    "pbli_unmet": 0.0,
+    "pbli_capability": 0.0,
+    "pbli_hot": 0.0,
+    "pbli_return": 0.0,
+    "pbli_hot_bound_margin": 0.0,
+    "pbli_hot_terminal_difference": 0.0,
+    "pbli_cold_terminal_difference": 0.0,
+    "pbli_state_defined": 0.0,
+    "pbli_secondary_in": 686.2698705964092,
+    "pbli_secondary_out": 686.2698705964092,
+    "pbli_stream_out": 686.2698705964092,
+    "divertor_stream_out": 686.2698705964092,
+    "mixed_outlet": 686.2698705964092,
+    "turbine_temperature": 686.269870595962,
+    "heater_inlet": 436.08465026990524,
+    "expansion_factor": 0.6523339216953485,
+    "accepted_heat": 2598.4236983110704,
+    "unmet_heat": 0.0,
+    "closure_residual": -4.6456989366561174e-09,
+    "iterations": 32.0,
+    "network_mode_used": 0.0,
+    "pbli_split_used": 0.5
+  },
+  "primary_bypass": {
+    "bypass_fraction": 0.3274998529695132,
+    "feasible": 1.0,
+    "capability_open": 3085.7038954749664,
+    "capability_at_solution": 2598.4236983113915,
+    "exchanger_primary_flow": 1618.7659999771008,
+    "exchanger_return": 464.0439027258121,
+    "mixed_return": 565.2761041350886,
+    "return_residual": -2.5693225325085223e-11,
+    "return_residual_magnitude": 2.5693225325085223e-11,
+    "effectiveness_at_solution": 0.9170509443397394,
+    "ntu_at_solution": 5.947954089917346
+  },
+  "compressor_out_K": 369.11488852918893,
+  "precooler_in_K": 380.7073542865069,
+  "offers": [
+    {
+      "offer": [
+        25,
+        25,
+        20
+      ],
+      "coolers": [
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 25,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 24.999999999941313,
+            "flow": 7890.631169528223,
+            "pump_MW": 2.0363331094382615,
+            "min_gap": 9.93828563236735,
+            "out_C": 44.25783131191764
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        },
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 25,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 24.999999999941313,
+            "flow": 7890.631169528223,
+            "pump_MW": 2.0363331094382615,
+            "min_gap": 9.93828563236735,
+            "out_C": 44.25783131191764
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        },
+        {
+          "hot_C": 107.55735428650695,
+          "cold_C": 35.0,
+          "duty_MW": 753.5806816196612,
+          "installed_UA": 20,
+          "bracket_UA": [
+            21.98042055104968,
+            31.363648493268972
+          ],
+          "state": "no_root"
+        }
+      ]
+    },
+    {
+      "offer": [
+        25,
+        25,
+        40
+      ],
+      "coolers": [
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 25,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 24.999999999941313,
+            "flow": 7890.631169528223,
+            "pump_MW": 2.0363331094382615,
+            "min_gap": 9.93828563236735,
+            "out_C": 44.25783131191764
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        },
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 25,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 24.999999999941313,
+            "flow": 7890.631169528223,
+            "pump_MW": 2.0363331094382615,
+            "min_gap": 9.93828563236735,
+            "out_C": 44.25783131191764
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        },
+        {
+          "hot_C": 107.55735428650695,
+          "cold_C": 35.0,
+          "duty_MW": 753.5806816196612,
+          "installed_UA": 40,
+          "bracket_UA": [
+            21.98042055104968,
+            31.363648493268972
+          ],
+          "state": "no_root"
+        }
+      ]
+    },
+    {
+      "offer": [
+        30,
+        30,
+        50
+      ],
+      "coolers": [
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 30,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 29.99999999999501,
+            "flow": 4681.031205238649,
+            "pump_MW": 1.2080324912856206,
+            "min_gap": 9.93828563236735,
+            "out_C": 57.41293514204027
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        },
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 30,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 29.99999999999501,
+            "flow": 4681.031205238649,
+            "pump_MW": 1.2080324912856206,
+            "min_gap": 9.93828563236735,
+            "out_C": 57.41293514204027
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        },
+        {
+          "hot_C": 107.55735428650695,
+          "cold_C": 35.0,
+          "duty_MW": 753.5806816196612,
+          "installed_UA": 50,
+          "bracket_UA": [
+            21.98042055104968,
+            31.363648493268972
+          ],
+          "state": "no_root"
+        }
+      ]
+    },
+    {
+      "offer": [
+        40,
+        40,
+        60
+      ],
+      "coolers": [
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 40,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "no_root"
+        },
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 40,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "no_root"
+        },
+        {
+          "hot_C": 107.55735428650695,
+          "cold_C": 35.0,
+          "duty_MW": 753.5806816196612,
+          "installed_UA": 60,
+          "bracket_UA": [
+            21.98042055104968,
+            31.363648493268972
+          ],
+          "state": "no_root"
+        }
+      ]
+    },
+    {
+      "offer": [
+        25,
+        25,
+        25
+      ],
+      "coolers": [
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 25,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 24.999999999941313,
+            "flow": 7890.631169528223,
+            "pump_MW": 2.0363331094382615,
+            "min_gap": 9.93828563236735,
+            "out_C": 44.25783131191764
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        },
+        {
+          "hot_C": 95.96488852918895,
+          "cold_C": 35.0,
+          "duty_MW": 633.1813322641565,
+          "installed_UA": 25,
+          "bracket_UA": [
+            20.407666075549887,
+            31.293466825512976
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 24.999999999941313,
+            "flow": 7890.631169528223,
+            "pump_MW": 2.0363331094382615,
+            "min_gap": 9.93828563236735,
+            "out_C": 44.25783131191764
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        },
+        {
+          "hot_C": 107.55735428650695,
+          "cold_C": 35.0,
+          "duty_MW": 753.5806816196612,
+          "installed_UA": 25,
+          "bracket_UA": [
+            21.98042055104968,
+            31.363648493268972
+          ],
+          "state": "completed",
+          "solution": {
+            "ua": 25.000000000095383,
+            "flow": 12292.914906350192,
+            "pump_MW": 3.1724293149041864,
+            "min_gap": 9.93828563236735,
+            "out_C": 39.726382244549114
+          },
+          "flow_ok": true,
+          "power_ok": true,
+          "duty_ok": true
+        }
+      ]
+    }
+  ],
+  "property_body_sha256": "ac94dacb5e7c60b46a437fd8e3bf87dd8ec08600e383e6644be37c9ec88a3c06",
+  "revised_offer_included": true,
+  "network_body_sha256": "e194f3cc9034e541923a54c6d56f88e67c737650479d4c180eb36c3bc96d32ff",
+  "execution_limit": "Existing function AST with schema-only adapters; initial native import refused: simkit absent. Native package/schema execution unverified."
+}

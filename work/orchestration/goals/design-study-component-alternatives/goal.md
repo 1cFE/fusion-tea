@@ -4,7 +4,7 @@
 
 `grounded` — 2026-09-26, under the owner's retained [brief](evidence/owner-brief.md), which supplies the slug and authorizes autonomous technical execution. Formal closure remains owner-held.
 
-Execution resumed in round 1 under the [owner's one-submission extension](evidence/owner-direction-fourth-submission.md). The fourth design submission must resolve physical-closure roles, scope and handwritten-solver limits before implementation. The [partial answer](answer.md) records the earlier stop; no economic comparison has run. Formal closure remains owner-held.
+Execution resumed in round 1 under the [owner's one-submission extension](evidence/owner-direction-fourth-submission.md). The [fourth design submission passed independent review](evidence/design-review-fourth-submission.md) within bounded scope and without a policy waiver. T-004 implementation is authorized; native validation and independent integration review remain prerequisites to the main study. The [partial answer](answer.md) records the earlier stop; no economic comparison has run. Formal closure remains owner-held.
 
 ## Question
 
