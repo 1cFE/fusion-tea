@@ -333,3 +333,25 @@ T-011 · `exploration/costed_loop_brayton/studies/20260926-design-study-paramete
 - **Dispositions:** (1) execute all 22 points against the T-010 CANDIDATE; (2) the boundary family's ratios are chosen inputs of the executed cases, located by the declared study-level root solve (window provenance engineered, brackets from the round-1 grid); (3) no window change; the 4,000 kg/s boundary is reported as outside the window; (4) the reading is provisional until the native run and the all-point verification.
 - **Verdict:** coordinator check PASS to execute; no owner gate.
 - **Changes:** none.
+
+### T-011 return — 2026-09-26
+
+- **Outcome:** COMPLETE. The round-3 study is executed, verified on every point, recorded and sealed.
+- **Native artifacts:** `exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/` at commit `2e9a5287` (`config.json`, `proposed-points.json` (22), `axes.json`, `axis-plan.json` with the boundary solve, `oracle-window-scan.json`, `manifest.json` (twelve classes, pin `7fb8341c…`), `indicators.json`, `preparation/` (six gates pass), `results/` (22 completed cases, `readout.{json,md}`, `verification_summary.json` pass on 22 of 22, 255 channels, 11 verdicts, `export-proof.json`, `sources/`), `record.md` (17 sections), `snapshot.json` (sha256 `f0f72112…`), `sealed-package.tar.gz`); `studies/DISCOVERY_LOG.md` rows `-b#1`–`#6`; `studies/return_control_reporting.py`; goal `evidence/{freeze-study.py (generalized), fill-record-b.py, write-execution-context-b.py, t011-execute.log, t011-verify.log}`. Commit `cf75c502` carried the results before the seal and its message overstated the seal; `2e9a5287` is the seal.
+- **Review:** coordinator checkpoint C-002.r1; the all-point verification pass; the fresh review of the reading comes with the round result.
+- **Reading:** under the completed model every round-1 leading point satisfies the loop's return requirement with a bypass (arrangement B): the starting configuration 0.311, 2,250 / 1.5183 0.010, 2,750 / 1.375 0.080, 2,500 / 1.45 0.130, the S6 point 0.039; the electricity-only best (2,500 / 1.425) is infeasible (unmet 7.8 MW). The matched-exchanger boundary (arrangement A, bypass at the 1e-6 target) solved at seven flows peaks at the design flow: 2,500 kg/s / 1.4273 at 620.8 MW (2,750 / 1.3629 at 617.9; 2,250 / 1.5169 at 600.2; 3,000 / 1.3140 at 601.6; 2,000 / 1.6511 at 535.2; 3,500 / 1.2444 at 547.6); at 4,000 kg/s the boundary lies below the window. The best point that satisfies the completed model on the existing inventory is therefore the design flow's matched-exchanger point under either arrangement: +194.2 MW (+45 %), nonfuel LCOE 133.1 → 91.5 USD/MWh (−41.6), tritium term −446.3, total 1,559.4 → 1,071.5; the round-1 best band was a grid-resolution artifact 20–23 MW below it. The starting configuration is consistent only with 31 % bypass (its exchanger has 16 % more capability than its duty) and is not an operating point under arrangement A.
+- **Decision:** the round-1 answer's best band and its "+171 MW" comparison are superseded by the completed model's comparison; execution detail; coordinator; `answer.md` (round 3).
+- **Decision:** the acceptable bypass fraction is an undeclared design limit ('Bypass Within Limit' vacuous at 1.0); offered to the owner; reserved gate (not raised as blocking: the best point needs no bypass); owner; `answer.md` § 5.
+
+### T-012 scope
+
+- **Objective:** revise the answer, candidate ledger and proposed passage on the completed model's comparison; update `.project/CURRENT_WORK.md`; write the round-3 result; obtain a fresh review of the revised answer against the two sealed records.
+- **Why now:** the owner's directions 3–4 are answered by T-010 and T-011.
+- **Scope:** `answer.md`, `candidate-ledger.md`, `proposed-passage.md`, `.project/CURRENT_WORK.md`, `trail.md`, `evidence/round3-learnings-proposed.md`, `evidence/round3-review-brief.md` and the review's return. No record, package or model change.
+- **Inputs:** the two sealed records' readouts; `evidence/owner-direction-round3.md`; `evidence/owner-ruling-g001.md` (directions 2–3 and the factual correction stay applied).
+- **Done when:** every number in the answer is a stored channel of a sealed record or presentation arithmetic on stored channels; the owner's four directions and the earlier five are applied; the fresh review returns PASS or FINDINGS applied.
+- **Stop when:** the reviewer finds a claim the records cannot support (correct before close).
+
+### T-012 start — 2026-09-26
+
+T-012 · `answer.md`, `candidate-ledger.md`, `proposed-passage.md`, `.project/CURRENT_WORK.md`, `evidence/round3-review-brief.md`. Coordinator executes directly; a fresh reviewer for the revised answer.
