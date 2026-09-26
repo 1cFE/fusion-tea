@@ -8,6 +8,7 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 
 - Primary post outline: [fusion-tea-exploratory-modeling.md](fusion-tea-exploratory-modeling.md)
 - Writing guidance for agents filling in supporting content: [writing-prompt.md](writing-prompt.md)
+- HTML conversion of a settled support, with its review loop: [html-prompt.md](html-prompt.md) (draft, 2026-09-26, not yet owner-reviewed)
 - Existing published context: [the earlier post on agentic modeling and SysML v2](https://1cf.energy/searching-the-fusion-design-space-systematically/)
 
 ## The five parts and their support
@@ -17,7 +18,7 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 | 1. Why SysMLv2 | The existing blog post | Done. Main post only needs the short argument (strict semantics fight AI entropy; composability enables categorical trade studies). |
 | 2. Model execution and studies | [sysml-codegen-model-evaluation.md](sysml-codegen-model-evaluation.md), to become HTML | Prose revised through the writing prompt. Figures and evidence live in `sysml-codegen-assets/`. Needs HTML conversion. |
 | 3. The full harness | [harness.md](harness.md) (outline: [harness-outline.md](harness-outline.md); figure: `harness-assets/`) | Drafted: sections 1–8 filled in and revised with the owner, 2026-09-26. Figure 1 (the goal loop) done. Open: whether section 4 gets a figure; HTML conversion. |
-| 4. The demo, support 1: modeling Stellaris | Evolution viewer (`feat/model-viz-evolution`, page at `~/1cfe/stellarator_evolution.html`) plus [stellaris-evolution-outline.md](stellaris-evolution-outline.md) | Viewer built, 29 frames (baseline plus 28 goals). Outline at the right shape as of 2026-09-26. Next: fill-in as notes beside the frames, then merge into the viewer page. |
+| 4. The demo, support 1: modeling Stellaris | Evolution viewer (`feat/model-viz-evolution`, page at `~/1cfe/stellarator_evolution.html`) plus [stellaris-evolution.md](stellaris-evolution.md) (outline: [stellaris-evolution-outline.md](stellaris-evolution-outline.md); evidence: `stellaris-evolution-assets/`) | Viewer built, 29 frames (baseline plus 28 goals). Drafted 2026-09-26: six theme notes with evidence links, every outline number checked against the goal records. Open: owner review; where the notes sit on the viewer page; HTML merge. |
 | 4. The demo, support 2: the ARIES test | [aries-model-transfer-outline.md](aries-model-transfer-outline.md) | Narrative draft awaiting owner discussion. |
 | 5. Takeaways and forward outlook | Probably none | Main post only. |
 
@@ -34,7 +35,7 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 Working order for step 2, by readiness and dependency:
 
 1. Part 3 (the gap; the main post's Part 3 and Part 4 both lean on the goal and round vocabulary it establishes). Drafted 2026-09-26.
-2. Part 4 support 1: capture the Stellaris evolution using the viewer.
+2. Part 4 support 1: capture the Stellaris evolution using the viewer. Drafted 2026-09-26.
 3. Part 4 support 2: discuss and settle the ARIES narrative, then fill.
 4. Part 2: convert the evaluation article to HTML.
 5. Return to the main post.
@@ -90,6 +91,28 @@ Open for Part 3:
 - The main post's count of nine goals and ten studies is from mid-September. The viewer's 28 goals is current.
 - Where the theme notes live on the page (beside the slider, grouped frames, or a panel) is a fill-in and HTML decision, not settled.
 
+**Status, 2026-09-26.** Drafted in [stellaris-evolution.md](stellaris-evolution.md) as the outline's lead and six beats with corrected numbers and one evidence link per example, about 1,000 words. A first fill-in expanded it to 3,200 words and the owner rejected it as far too wordy; the outline was already most of the piece. Every number came from the goal's trail or answer, not the viewer's frame texts; the per-frame design-point cost, with sources, is in [stellaris-evolution-assets/design-point-cost.md](stellaris-evolution-assets/design-point-cost.md). The viewer's tile counts in the lead were reproduced by rebuilding the page from the branch's build script (byte-identical to the owner's page).
+
+[AGENT] Corrections to the outline found against the record, applied in the draft:
+
+- Frame 2: the recirculating-power limit fired at 32 of 948 points before the fix, not never; the factor is 130 to 195, not 150.
+- Frame 4: the "field bought nothing" finding is from a 2026-08-23 grid study, not optimizer runs.
+- Frame 5: the lever priced was coil current; the conductor grade stayed free until frame 13. The goal's two unpriced levers were conductor grade and heating.
+- Frame 13: the winding-pack multiplier was replaced, not split, and the cost before it was 224 $/MWh, not 146 (146 is frame 14's result).
+- Theme 3's "installation, spares and replacements" holds for cooling only; buildings size for spares without pricing them, and fuel processing carries installation only. The largest cost move of the run is cooling; plant closure (theme 1) and the winding-pack replacement are next.
+- Frame 28: the reveal run stopped at the magnet's conductor check, not the first calculation; 111 upstream calculations had run. The 56.6 T value is recorded only for the rerun on the repaired model. The second post-reveal goal (frame 29) is a readiness assessment, not a repair.
+- Frame 29: the range measured was the model's own exploratory window (R 4 to 20 m, a 0.8 to 2.2 m), not an ARIES-sized range.
+- Frame 11: the audit produced 20 findings, several of them known limitations rather than defects; the finance failures were at equal interest and inflation rates and at zero discount rate.
+- The reconciliation goal found the reference is not one coherent published design point, and classified differences by cause without per-class counts.
+- Frame 1: the cost side of the starting model was already parametric; the physics side was held constants.
+- "Checked that the result still matched the paper at the design point" holds for frames 3 and 4; breeding and the steam cycle reproduce no paper value, so the draft says the anchoring applied where the paper gave a value.
+- Frame 6's fatter-plasma reading (a = 1.5 to 2.2 m) was superseded by frame 7 the next day; the draft does not present it.
+
+Open for support 1:
+
+- The cost evidence note is an addition beyond the outline and is not linked from the piece.
+- The design-choice audit under `work/analysis/` is untracked, so the draft links the tracked post-reveal results note under `.project/active/aries-comparison-preparation/` instead.
+
 ## Part 4, support 2: the ARIES test
 
 [OWNER, 2026-09-25] Organizing sequence settled: generalization hypothesis, brief false-start disclosure, design-instance-only test, required model enhancements, resulting studies. Explanations and takeaways are proposed editorial synthesis; linked records supply the evidence.
@@ -99,8 +122,8 @@ Next step: owner discussion of the draft, then fill using the writing prompt, th
 ## Cross-cutting
 
 - [OWNER] All supporting pieces end up as HTML. Markdown stays the drafting format until the story is settled.
-- [AGENT] Decide one HTML style and layout for all supports before converting any of them, so Part 2 does not get converted twice. The `html-explainer` skill and `docs/demo/` pages are the existing house style.
-- [AGENT] Keep the evidence links in each support pointing at repo paths, and decide before publishing whether the published HTML links into the public repo or inlines the evidence.
+- [AGENT] Decide one HTML style and layout for all supports before converting any of them, so Part 2 does not get converted twice. [OWNER, 2026-09-26] This is a prerequisite for the HTML prompt. The owner's only reference, https://scoring.1cf.energy/demo/index.html, is one they do not care for. They want a nav bar on the left, and they use collapsible sections a lot to hide detail not every reader wants. [OWNER, 2026-09-26] Style settled: `write-up.css` follows the blog (Manrope, its warm grey-beige, navy and bright-blue accents), tuned to be easier to read, with a wide text column. [html-work/style-sample.html](html-work/style-sample.html) shows it in use; figures match it through `fonts/` and `figure_style.py`.
+- [OWNER, 2026-09-26] The markdown keeps its repo links. The HTML replaces each with the file's path as plain text and, for important references, shows the referenced information on the page.
 - [AGENT] Update this plan as pieces move. It is a working note, not a record.
 
 ## Open questions for discussion
