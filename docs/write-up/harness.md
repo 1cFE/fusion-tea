@@ -162,3 +162,161 @@ fusion-tea/
 </details>
 
 The next section follows one goal through these areas, from a discrepancy in a single number, through a research request and a work item, to a re-run study.
+
+## 4. A worked example: the stored-energy goal
+
+To show how the loop in Figure 1 works in practice, we follow one goal from its question to its close. The goal investigated why the model's stored plasma energy was 9 percent above the value printed in the Stellaris design paper. It ran two rounds between 4 and 6 September 2026 (`work/orchestration/goals/stored-energy-basis/`).
+
+**The discrepancy.** Our model reproduced the paper's power balance to within 4 percent on every term except the energy stored in the plasma.
+
+- The model's stored energy was 9 percent above the paper's. The model integrates assumed density and temperature profiles over the plasma volume and found 551 MJ, where the paper prints 504.65 MJ.
+- A small change in stored energy has a big impact on losses. In the model's confinement scaling, the loss by conduction grows roughly as the 2.5th power of stored energy, so a 9 percent excess adds about 25 percent to the loss.
+- With higher losses, the design point needed more heating input power. The heating has to make up the loss, and the model said the plasma needed 90.6 MW against the 50 MW the design installs.
+- Downstream, the wall load is also impacted, which drives cost.
+  - Stored energy sets the confinement time. When the model overstates stored energy, its confinement scaling gives a shorter energy confinement time.
+  - Confinement time sets how much helium ash stays in the plasma. Following the paper, the model holds ash for eight times the energy confinement time, so a shorter confinement time leaves less ash.
+  - Less ash means more fusion. With less ash diluting the fuel, fusion power comes out higher.
+  - More fusion means a higher wall load. The peak wall load scales with fusion power and sets how often the first wall is replaced, which is part of the plant's cost. At the design point it was 4.09 MW/m², just over its 4.05 limit.
+
+Two earlier goals had treated the gap as outside their scope, under an agent-written rule that stored energy is never tuned to match the paper, and no work item owned it.
+
+**The goal.** Before writing the goal, the agent ran a quick check on a copy of the calculation, leaving the model unchanged. It found two things:
+
+- The heating failure depends on the stored energy. With the stored energy scaled down to the printed value, the required heating fell from 90.6 to 37.5 MW, and both the heating and wall-load checks passed.
+- The printed value may not be the right number to match. Every reading of the paper's plotted profiles and printed peak values that the agent tried gave 527 to 575 MJ, not 504.65. The paper's printed beta implies 567 MJ.
+
+The agent then wrote the goal around what was still open, and the owner approved it the next day:
+
+- **Question:** what in the model's calculation causes the 9 percent excess, and is the paper's printed value the right number to match?
+- **Answered when:** the excess is explained, or bounded where it cannot be explained, and the owner has decided how the model should calculate stored energy.
+- **Invariant:** the model's stored energy is never tuned toward the printed value.
+- **Owner keeps:** any change to how the model shapes its profiles.
+
+**Round 1: find the paper's definition.** The round's approach was to explain the excess without changing the model. It ran two tasks.
+
+*Task 1, research: how does the paper define stored energy?*
+
+- **What it was:** one research request asking what the paper's "total plasma energy" integrates (`knowledge/research/requests/REQ-W-01.json`).
+- **Changes:** two sources registered in the knowledge base, a 2021 journal paper and a 2023 doctoral thesis by the Stellaris paper's first author. Both describe the systems code the paper used. Nothing in the model changed.
+- **Findings:** the paper's own rules give 518.3 MJ, not the printed 504.65. The sources define stored energy as the thermal energy of the assumed profiles over the plasma volume. With that definition, the paper's rules at its printed peak values also reproduce its fusion power (2711 against 2700 MW) and densities. The model's 9.2 percent excess over the printed value splits into three parts:
+  - 5.3 points come from the helium ash, the helium the fusion reactions leave in the plasma. The model gave the ash the fuel's broad profile, while the paper's own rule peaks it in the core, where the fusion happens.
+  - 1.2 points come from the profile exponents. The model's were read from the paper's plotted curves, which differ slightly from the values the paper states.
+  - 2.7 points lie between the paper's own rules and its printed value, and no source we found explains them.
+
+*Task 2, evaluation: what would the paper's rules mean for the design point?*
+
+- **What it was:** re-run the quick check at 518.3 MJ, and write the round's proposed learnings and its dispositions for the earlier findings this evidence touched.
+- **Changes:** nothing in the model. The dispositions were checked before they were recorded and passed on the third submission.
+- **Findings:** at 518.3 MJ, a simple scaling estimate put the design point at 51.4 MW of required heating against 50. It still failed the heating check, but by 1.4 MW rather than 40.6, and the wall load passed. That was the number the owner needed to decide whether to change the model.
+
+**How the round ended.** The round then stopped to wait for the owner, because the one thing left was the owner's decision on how the model should calculate stored energy. A fresh reviewer checked the round, raised six precision-level findings, and accepted three learnings with corrections.
+
+**The owner's ruling.** The round offered two options: keep the model and footnote the gap, or change the ash profile to follow the paper's rule. The owner ruled: "we should fix the ash profile (and make sure this scales up for larger stellarators). and I don't want to add the footnote." The printed value was still not a target. The change implements the paper's rule, and the stored energy is whatever that rule gives.
+
+**Round 2: fix the profile and study again.** The round's approach was to make the owner's fix as one model change, pin the regenerated program, and re-run an earlier study against it. It ran three tasks.
+
+*Task 1, model change: compute the ash profile from the paper's rule.*
+
+- **What it was:** one work item, carried through spec, design, plan and implementation (`work/completed/20260906_WI-042_sourced-helium-ash-profile/`).
+- **Changes:** the ash profile is now computed from the paper's rule at every design point, and the electron density follows from charge balance. Because the shape comes from the rule rather than from an exponent fitted at the paper's design point, it stays valid when a study moves to other machine sizes, as the owner asked. The program was regenerated from the changed model, and nothing was tuned.
+- **Findings:** the design point now passes the heating check, by a small margin.
+  - Stored energy fell from 551 to 519.9 MJ, and the required heating fell from 90.6 to 49.08 MW against 50.
+  - Round 1's estimate had predicted a narrow failure at 51.4 MW. The estimate scaled stored energy alone, while the real change also reshaped the electron density, which moved the density and radiation loss the estimate had held fixed. The net result was a pass by 0.92 MW instead of a failure by 1.4.
+  - Fusion power fell 2.7 percent, because the core now holds more ash and less fuel. That brought the wall load under its limit (3.98 against 4.05 MW/m²), and with less electricity produced, levelized cost rose from 313.5 to 322.3 $/MWh.
+
+*Task 2, pin.* The integration check regenerated the program from the model, confirmed that nothing changed, and accepted the pin on its first run.
+
+*Task 3, study: re-run the earlier window at the new pin.*
+
+- **What it was:** a re-run of an earlier study's 6,311-point window against the new pin (`exploration/stellarator_e2e/studies/20260905-stored-energy-basis/`).
+- **Changes:** a critique of the study plan changed it before any point ran. The earlier study had dropped its 13 keV rows only because the old profile made them fail the heating check, so the round restored them, for 7,712 points in all.
+- **Findings:**
+  - Most of the earlier driven points now ignite. The earlier study had classed 681 points as driven, meaning they need some external heating within what the design supplies. At the new pin 510 of them ignite, meaning fusion heating alone exceeds the losses. The model checks only that the plasma needs no more heating than the design supplies, so an ignited point passes the check, but the model does not represent how that burn would be controlled.
+  - The cheapest driven point moved to a machine larger and cooler than the paper's design. It sits at major radius 15.7 m, minor radius 2.2 m and 13 keV, at 202.19 $/MWh, on the edge of the minor-radius range the window allowed.
+  - The paper's design point sits on the boundary of feasibility. It passes every limit, but the heating check passes by only 0.92 MW, which corresponds to about 1 MJ of stored energy. The paper's own figures for that stored energy range from 504.65 MJ, printed, to 567 MJ, implied by its beta. The earlier result that it needs 90 MW no longer holds, and whether it is feasible cannot be decided from the paper.
+
+**How the round ended.** The study's reading and its dispositions passed their check on the second submission, and the round stopped on that reading. A fresh reviewer recounted the study's numbers with their own script, raised eight precision-level findings that reopened no task, and recommended closing the goal.
+
+**The close.** The owner closed the goal on 6 September and declined to ask the paper's author about the remaining 2.7 points. An answer would not change what the model says, because its 519.9 MJ is already above both the printed value and what the paper's rules give, and the verdict is the same across that range. The ignited points became the next goal, `burn-control`, and the minor-radius edge became the goal after that, `minor-radius`.
+
+Sections 5 to 7 look at three parts of this goal in more detail: the research request that registered the two sources, the work item that changed the model, and the checks that ran before each result was used.
+
+## 5. Research: from a question to a citable source
+
+We want every number in the model to cite a page in a source that anyone can open in the repository. An agent that cannot find a value will often supply a plausible one from memory, and the next session reads that value as a fact. The research workflow therefore separates judgment from writing: agents search for sources and decide which are useful, and one script does all the writing into the knowledge base. We follow round 1's research request from section 4 through each step and the record it leaves.
+
+**The request.** A research request is a small JSON file with the question, who is waiting for the answer, where to look, and how much effort is allowed (`knowledge/research/requests/REQ-W-01.json`).
+
+- The question asked how the Stellaris paper defines its printed total plasma energy and volume averages, and which magnetic field its beta refers to.
+- The consumer was the stored-energy calculation in the model.
+- The places to look started with the paper's own pages, then its supplementary material, Proxima Fusion's publications, the systems-code papers it cites, and the papers behind its confinement scaling.
+- The limits were six searches and three registrations.
+
+**The search.** A research agent ran the search from a written prompt that the round saved first (`work/orchestration/goals/stored-energy-basis/evidence/T-001_REQ-W-01_prompt.md`). The prompt carried the quarantine rules, because the registration script checks for quarantined material only when a source is registered, after the agent would already have read it. A second script, `scripts/research_seam.py`, kept the run's record, and every search and every candidate went into its log with a decision (`knowledge/research/requests/runs/REQ-W-01/`):
+
+- Kept: a 2021 journal paper and a 2023 doctoral thesis by the Stellaris paper's first author, which define stored energy in the systems code the paper uses.
+- Rejected: the publisher's page, because the paper has no supplementary data; two Proxima Fusion pages that state no definitions; and a paper on the Helios design, which the quarantine bars, so the agent did not open it.
+- Queued for a person: a query to the paper's author, whose paper offers data on request, and the paywalled paper that defines the confinement scaling.
+
+**The registration.** Each kept source goes in through `scripts/source_registry.py`, which refuses to register a source without three sentences: what it is for, how to check its numbers, and what limits its authority. It also records a hash of the file as fetched, so a later copy can be checked against it. For the 2021 paper the three sentences say:
+
+- Use for: its equations (8) to (11) define stored energy as the thermal energy of the assumed profiles over the plasma volume, with no fast-particle term.
+- Validation: check the equations on the PDF page, because they exist only as images in the extracted text.
+- Caveat: this is the definition in the authors' systems code, not a statement by the Stellaris paper, and it does not settle whether the printed 504.65 MJ is this quantity.
+
+The caveat carried into the goal's learnings, which describe the definition as the authors' systems code's rather than the paper's own.
+
+**The return.** When the run closes, the bookkeeping script computes the result from what landed on disk, not from what the agent reports (`return.json` in the run directory). This run returned `REGISTERED`: two sources registered and citable, and two candidates queued. Because candidates were queued, no negative result was written. A search that still has a named source someone could obtain is not a dead end, so the request stays open to search again. When a search does find nothing, the script writes a negative result listing the queries and candidates, and the same request cannot run again without a stated reason.
+
+**What the model cites.** The model's stored-energy calculation now cites both sources by their repository paths (`models/library/analyses/mfe_plasma_sustainment.sysml:130`). A reviewer can open the page behind the definition, and the index entry tells them what to check and what the source does not settle. The queued author query was the owner's to send, and the owner declined it at the goal's close.
+
+Section 6 follows the work item that used this definition to change the model.
+
+## 6. Model updates: the ash-profile work item
+
+Model changes go through work items, each with four stages: a spec, a design, a plan and the implementation, checked by the six-level validation stack. The [earlier post](https://1cf.energy/searching-the-fusion-design-space-systematically/) describes these stages. Here we show one work item, WI-042, which made round 2's change (`work/completed/20260906_WI-042_sourced-helium-ash-profile/`).
+
+**Spec.** The spec turned the owner's ruling into 15 requirements, each with its source and a way to check it. The ones that define the change:
+
+- The ash profile follows the paper's rule at every design point, never a fixed exponent.
+- The electron density follows from charge balance.
+- Stored energy and beta use the same plasma pressure. Before the change, beta had its own copy of the pressure calculation.
+- Nothing else is tuned. The fuel and temperature exponents, the peak values and the stored-energy formula stay as they are.
+
+**Design.** The design predicted every affected result with a prototype calculation before the program was regenerated. It also checked that the fix holds for larger machines, as the owner asked. Across the machine sizes the earlier studies covered, the correction to stored energy ranged from 1 to 23 percent, larger where the machine holds more ash.
+
+**Plan.** Before regenerating the program, the item committed the model edits together with a written account of the eight earlier studies the change affects. None of their stored-energy results can be rescaled, because the change moves each one by a different amount, so the account names a re-run of the most recent study as the update. Writing it first meant it could not be fitted to the new results.
+
+**Implementation.** The rule itself is a few lines of the stored-energy calculation's Python (`exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py`):
+
+```python
+# The ash shape: the fusion-rate profile normalised to its peak, S(0) = 1
+# (Eq. A.5 pointwise, tau* uniform in rho; WI-042 D1).
+def S(u: float) -> float:
+    return (u ** (2.0 * alpha_n)) * _sigv_dt(T_i0 * (u ** alpha_T)) / sigv_peak
+
+# ...
+
+# The derived electron profile and its diagnostics (D1).
+def n_e(u: float) -> float:
+    return 2.0 * n_D0 * (u ** alpha_n) + 2.0 * n_He0 * S(u)
+```
+
+Here `u` is 1 − ρ², which falls from 1 at the plasma's center to 0 at its edge, and the fuel density follows `u ** alpha_n`. The fusion rate at each radius is the fuel density squared times the reaction rate at the local temperature, so `S` gives the ash that rate's shape. Before the change, the ash followed the fuel's shape, `u ** alpha_n`. The electron density is then the ions' charge: one electron for each deuterium or tritium ion and two for each helium ion.
+
+The regenerated program matched the design's prediction:
+
+| At the paper's design point | Before | Predicted by the design | Regenerated program |
+|---|---|---|---|
+| Stored energy (MJ) | 551.4 | 519.9 | 519.9 |
+| Required heating (MW; 50 installed) | 90.6 | 49.08 | 49.08 |
+| Peak wall load (MW/m²; limit 4.05) | 4.09 | 3.98 | 3.98 |
+| Levelized cost ($/MWh) | 313.5 | 322.3 | 322.3 |
+
+- A second implementation of the calculation (`exploration/stellarator_e2e/verify_stellaris.py`), written from the design's equations, agreed exactly. This shows the program implements those equations.
+- At the paper's printed peak values, the new calculation reproduces round 1's results exactly, 524.5 and 518.3 MJ. This ties the equations to round 1's research.
+- The new program got its own pin, and the earlier study keeps its old one, so each result stays tied to the version of the model that produced it.
+
+**Review.** The round 2 reviewer checked the record against the spec. Only one input value changed, the removed electron-profile exponent, and none of the values the owner had reserved moved. The account of affected studies was committed 27 minutes before the regenerated program.
+
+Section 7 looks at the checks that ran on this goal and which of them are mechanical.
