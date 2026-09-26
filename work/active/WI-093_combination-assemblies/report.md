@@ -21,7 +21,7 @@ Four assemblies from existing definitions only, generated into one native packag
 
 Replay: `.codex-test/run python exploration/combinations/build.py`; `.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" python exploration/combinations/run.py'`; `.codex-test/run python exploration/combinations/verify.py`.
 
-Definitions instantiated unchanged: 23 distinct calc, part and constraint definitions (design § 1). New definitions: none. Mathematical changes: none. New case bindings: every part in the four packages. The `baseline` case is every assembly at its design values (it is `c1-aries-ratios-aries-ratings`, `c2-stellaris-plasma-aries-nominal`, the C-4 case and `c5-rating-8` at once).
+Definitions instantiated unchanged: 25 distinct calc, part and constraint definitions instantiated directly, 29 counting the four calc defs 'Plasma' owns (design § 1; corrected from 23 at the implementation review). New definitions: none. Mathematical changes: none. New case bindings: every part in the four packages. The `baseline` case is every assembly at its design values (it is `c1-aries-ratios-aries-ratings`, `c2-stellaris-plasma-aries-nominal`, the C-4 case and `c5-rating-8` at once).
 
 ## 2. Results by assembly
 
@@ -29,7 +29,7 @@ Values are read from `evidence/cases-summary.json` (itself from each case's `res
 
 ### C-1 — Stellaris helium loop into the ARIES Brayton chain
 
-Executes. The loop delivers 3,301.21 MW (3,125.93 supplied plus 175.28 recovered friction) at 3,009.8 kg/s and 773.15 K to the helium stage; per-loop flow 214.98 kg/s against the 225.08 kg/s rated ceiling (margin 10.10, `loop_capacity_ok` satisfied in every case).
+Executes. The loop delivers 3,301.21 MW (3,125.93 supplied plus 175.28 recovered friction) at 3,009.8 kg/s and 773.15 K to the helium stage; per-loop flow 214.98 kg/s against the 225.08 kg/s rated ceiling (margin 10.10, `loop_capacity_ok` satisfied in every case). One role changes against ARIES (MR-7, design § 2 and § 6): the helium stage flow, chosen in the ARIES assembly as 3,261 kg/s (`plant.sysml:246`), is here the loop's calculated mdot, not a selection; the loop's rated per-loop flow stays chosen and its ceiling is screened by `loop_capacity_ok`.
 
 | Case | cycle flow kg/s | ratio | ratings | turbine inlet K | heater inlet K | accepted | unmet | compressor | gross | net | rejected | violated |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|

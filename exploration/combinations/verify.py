@@ -35,8 +35,9 @@ FAILURES = []
 
 
 def close(a, b, tol=1e-6, what=''):
-    if abs(float(a) - float(b)) > tol:
-        FAILURES.append(f'{what}: {a} vs {b} (diff {float(a) - float(b)}, tol {tol})')
+    fa, fb = float(a), float(b)
+    if not (math.isfinite(fa) and math.isfinite(fb)) or abs(fa - fb) > tol:
+        FAILURES.append(f'{what}: {a} vs {b} (diff {fa - fb}, tol {tol})')
 
 
 def check(condition, what):
@@ -84,7 +85,8 @@ def brayton(case, P, he_available, extra_aux=()):
     o, i = case.o, case.i
     c = D(i(P + 'cycle__selected_flow')) * D(i(P + 'cycle__cp')) / D('1e6')
     T_turbine = D(o(P + 'heat_exchangers__evaluate__turbine_temperature'))
-    close(o(P + 'heat_exchangers__evaluate__accepted_heat'), c * (T_turbine - D(o(P + 'recuperator__evaluate__cold_out'))), what=P + 'accepted heat')
+    close(o(P + 'heat_exchangers__evaluate__accepted_heat'), c * (T_turbine - D(o(P + 'heat_exchangers__evaluate__heater_inlet'))), what=P + 'accepted heat')
+    close(o(P + 'heat_exchangers__evaluate__heater_inlet'), o(P + 'recuperator__evaluate__cold_out'), tol=1e-10, what=P + 'recuperator state: heater inlet = recuperator cold out')
     # Cycle stream through each stage: the whole flow in series (mode 0); in the published network (mode 1) the PbLi and
     # divertor stages split the stream by the supplied fraction (network_heat_driven_closure_impl.py:31).
     split = D(o(P + 'heat_exchangers__evaluate__pbli_split_used'))
@@ -239,6 +241,9 @@ def main():
             cases[name] = record
             continue
         case = Case(row)
+        # "executes" means every numeric output is finite (goal invariant), not only that the pipeline returned.
+        nonfinite = [k for k, v in case.out.items() if isinstance(v, (int, float)) and not isinstance(v, bool) and not math.isfinite(v)]
+        check(not nonfinite, f'{name}: non-finite outputs {nonfinite[:5]}')
         n = len(case.out['constraint_report']['results'])
         check(n == 25, f'{name}: {n} constraint results, expected 25')
         record['C-1'] = verify_c1(case)
