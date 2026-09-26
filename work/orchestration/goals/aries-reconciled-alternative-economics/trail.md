@@ -174,3 +174,15 @@ T-005 · `answer.md` and two delivery receipts under `evidence/` · assembled fr
 - **Accepted learning delta:** L-001–L-006 appended to `learnings.md` as corrected. Joined disposition rows for `…economics#1`–`#11` appended to the discovery log.
 - **Remaining uncertainty:** the reviewer did not execute the package, oracle or verifier, did not view the Lyon page images (the pre-execution reviewer did), did not re-derive the branch's +0.267, and did not read the prior goal beyond the cited paths; whether other absolute-tolerance channels also exceed the relative rule is not reported by the summary (it names one `worst_at`).
 - **Next:** do not open round 2; the answer stands as met under its four stated conditions; formal closure, the tolerance ratification and any follow-up items (recuperator hardware representation, cycle-side applicability statement, PbLi pumping model) are the owner's.
+
+### Owner rulings after round 1 — 2026-09-25
+
+- **Received:** `evidence/owner-ruling-closure.md` (verbatim). Item 1: the four-channel 1e-9 kg/year absolute comparison tolerance declared during T-004 and added to the live study manifest is ratified ("ratified", "approved change to the verification rule"). Item 2: formal closure ("close the goal please").
+- **Applied:** `goal.md` § Status and § Amendments (ratification recorded against the reserved gate on declared tolerances); `answer.md` § 13; L-004 evidence line; `.project/CURRENT_WORK.md`. No manifest edit: the ratified declaration is already the live list at `c0120c93`.
+- **Native-state check:** no model, package, manifest, study or registration change; sealed studies and Stellaris untouched; the entry preservation check passed at `ff5eeb38` (`evidence/preservation-check-review.json`, 19,552 files unchanged).
+
+### Owner closure — 2026-09-25
+
+[OWNER-VERBATIM] "close the goal please". The owner authorizes formal goal closure following the round-1 result, the fresh review and its applied findings (`ff5eeb38`) and the ratification above.
+
+[AGENT coordinator] The goal is closed as met under the four stated conditions of `answer.md` § 13: three costs are bounded rather than supported (recuperator, cycle-side allowances, PbLi pumping); the residual against the published 77.6 stays open to the source's unprinted financing rate; the fuel-supply assumptions are unsupported by declaration; the 891 MW output rests on the prior goal's unresolved Q1. Rounds used 1 of 6; T-004 used 1 of 2 retries; C-001 used 1 of 2 checkpoint revisions. No modeling work item was opened, because no model change was needed. Possible follow-ups (recuperator hardware representation, cycle-side applicability statement, PbLi pumping model, the thermal-source dependency) stay with the owner. No push, merge or external message.

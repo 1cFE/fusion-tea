@@ -28,7 +28,7 @@ Append-only, newest last. An entry is appended only after a round review accepts
 
 ## L-004 — (process) The verifier's relative-only rule refuses an exact-zero difference channel when the package computes it in float64 and the oracle in Decimal (curtailed feed at feed = makeup: 0.0 against 6.8e-15 kg/year); the four-channel 1e-9 kg/year class is now in the live manifest, and a study with a feed-equals-makeup point must carry it
 
-- **Evidence:** `evidence/curtailed-tolerance-declaration.md@c0120c93`, `curtailed-tolerance-review.md@c0120c93`; the record's `results-attempt1/verify-refused.log` and `results/attempt-comparison.json` (bit-identical re-execution).
+- **Evidence:** `evidence/curtailed-tolerance-declaration.md@c0120c93`, `curtailed-tolerance-review.md@c0120c93`, ratified by the owner on 2026-09-25 (`evidence/owner-ruling-closure.md`); the record's `results-attempt1/verify-refused.log` and `results/attempt-comparison.json` (bit-identical re-execution).
 - **Scope:** `scripts/study/verify.py` on the ARIES packages; the lifecycle comparison catalog.
 - **Implication:** extends L-008 of the prior goal to a second class (float64 against Decimal at exact equality); declare before execution when a design sets feed equal to makeup.
 - **Supersedes:** none; extends `aries-reference-heat-electricity-reconciliation` L-008.

@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-25. [OWNER] Issuance of the prompt retained verbatim at `evidence/owner-brief.md` authorized grounding and execution under its contract ("Use the run-goal workflow to evaluate the equipment costs and LCOE of the 891 MW modeled alternative"); the slug it proposed was adopted as issued. Grounded by the round agent from the records named in § Grounding evidence; nothing below is a prediction of the answer.
+`closed` — 2026-09-25, met under four stated conditions. [OWNER] Closure authorized ("close the goal please") after the round-1 result and fresh review applied at `ff5eeb38`, with the T-004 tolerance declaration ratified ("ratified", "approved change to the verification rule"; `evidence/owner-ruling-closure.md`); the completion condition is assessed as met under four stated conditions in `answer.md` § 13. [OWNER] Issuance of the prompt retained verbatim at `evidence/owner-brief.md` authorized grounding and execution under its contract ("Use the run-goal workflow to evaluate the equipment costs and LCOE of the 891 MW modeled alternative"); the slug it proposed was adopted as issued. Grounded by the round agent from the records named in § Grounding evidence; nothing below is a prediction of the answer.
 
 ## Question
 
@@ -60,4 +60,4 @@ Tracked artifacts are cited at entry HEAD `b03fa18e8bd004c134b966044cf0afdf17eb0
 
 ## Amendments
 
-None.
+- 2026-09-25 — [OWNER] The four-channel 1e-9 kg/year absolute comparison tolerance declared during T-004 and added to the live study manifest at `c0120c93` is ratified ("ratified", "approved change to the verification rule"; `evidence/owner-ruling-closure.md`). The reserved-gate clause on declared tolerances stands; this declaration is an owner-approved addition of a tolerance class, not a relaxation, and the study's results were bit-identical before and after it.
