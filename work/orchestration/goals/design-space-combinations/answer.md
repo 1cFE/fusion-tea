@@ -1,6 +1,6 @@
 # Answer — design-space combinations on existing definitions
 
-[AGENT] Written 2026-09-26 at the end of round 2 and corrected under the fresh implementation review of WI-093 and the fresh round-2 and answer review (§ 8). Formal closure is the owner's (§ 11).
+[AGENT] Written 2026-09-26 at the end of round 2 and corrected under the fresh implementation review of WI-093 and the fresh round-2 and answer review (§ 8). [OWNER] Goal closed 2026-09-26 ("close the goal please"; `evidence/owner-ruling-closure.md`); the owner decisions in § 11 other than closure remain open.
 
 ## 1. The question and the short answer
 
