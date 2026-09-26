@@ -1,0 +1,93 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/costed_loop_brayton/costed_loop_brayton_tea",
+    "manifest": "exploration/costed_loop_brayton/studies/20260926-design-study-parameters/manifest.json",
+    "axis_declaration": "exploration/costed_loop_brayton/studies/20260926-design-study-parameters/axes.json",
+    "identity_document": "exploration/costed_loop_brayton/studies/20260926-design-study-parameters/preparation/package_identity.json",
+    "baseline_result": "exploration/costed_loop_brayton/studies/20260926-design-study-parameters/preparation/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "59044a1e3f5a9e1dca55433b690112956600951fe2f9762c12d7580a4461c296",
+    "baseline_result": "10703314dd18f85758c1c1c7e424a35f6dfd3e36599e77eac616742a97579d63",
+    "identity_document": "f04bdca893203df7cf1c53c9d5682f939983a5dc1041ba7d8a641ccd879bb650",
+    "manifest": "a6d84577cba97eeb511167e745d2a6b95feb35d3c6f0fd1119a84e7fe5b8ab95"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "31 declared keys across 21 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "pass"
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest a4c7a87136fe3ea373fb02a899ed8262a800a7443891db986411f00f26c8aeea recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "costed_loop_brayton__plant__lifecycle_price__evaluate__lcoe reproduces at relative deviation 0.000e+00; 4/4 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

@@ -121,10 +121,16 @@ LEVELS = [
 COLUMNS = [{'level': 's6-hx75000', 'flow': START_FLOW, 'ratios': [r for r in RATIOS if 1.30 <= r <= START_RATIO],
             'why': 'whether the larger exchanger moves the heat-removal boundary to a lower ratio along the design-flow column'}]
 
-ANCHOR_RULE = ('Sensitivities run at four anchors on the I-R grid: the starting point; the best passing point (the highest oracle-scanned '
+ANCHOR_RULE = ('Sensitivities run at the anchors on the I-R grid: the starting point; the best passing point (the highest oracle-scanned '
                'net among I-R grid points with every check satisfied); that point\'s ratio-step-lower neighbour and flow-step-higher '
-               'neighbour on the grid (contract § 10). The anchors are chosen from the oracle scan before any native point runs and '
-               'recorded in axis-plan.json; the native run then confirms or corrects the reading.')
+               'neighbour on the grid (contract § 10); plus the declared extra anchors below. Coinciding anchors collapse to one case. '
+               'The anchors are chosen from the oracle scan before any native point runs and recorded in axis-plan.json; the native '
+               'run then confirms or corrects the reading.')
+EXTRA_ANCHORS = [{'label': 'screen-best-passing', 'cycle_flow': START_FLOW, 'stage_ratio': 1.45,
+                  'why': "the contract's named best passing point from the 54-point screen at the design flow (contract § 5, § 8 a): kept as "
+                         "an anchor so the sensitivities cover the operating claim's neighbourhood near 2,500 kg/s; the r1 scan found the "
+                         "refined grid's best passing point at 2,250 kg/s / 1.5183, whose flow-step-higher neighbour is the starting point "
+                         "itself, which left three distinct anchors (preparation-r1/)."}]
 
 
 def config():
@@ -133,7 +139,7 @@ def config():
                      'provenance': 'engineered from the 54-point screen (evidence/screen-flow-ratio.md); contract § 11'},
             'inventories': INVENTORIES,
             'sensitivities': {'anchor_rule': ANCHOR_RULE, 'starting_point': {'cycle_flow': START_FLOW, 'stage_ratio': START_RATIO},
-                              'levels': LEVELS, 'columns': COLUMNS}}
+                              'extra_anchors': EXTRA_ANCHORS, 'levels': LEVELS, 'columns': COLUMNS}}
 
 
 def main():

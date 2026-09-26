@@ -1,0 +1,1126 @@
+{
+ "map": [
+  {
+   "flow": 2000.0,
+   "ratio": 1.2,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 261.94615533906426,
+   "unmet": 1359.1673727845036
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.25,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 351.78652892540106,
+   "unmet": 1149.2306856223931
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.3,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 421.65426081376097,
+   "unmet": 958.6000119160731
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.325,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 449.9771928430987,
+   "unmet": 869.755843940919
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.35,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 474.3019541250726,
+   "unmet": 784.8661815546293
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.375,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 494.90341801836166,
+   "unmet": 703.688384717982
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.4,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 512.0339333918631,
+   "unmet": 625.9989306913972
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.425,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 525.9255225065397,
+   "unmet": 551.5915832371693
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.45,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 536.7918297549666,
+   "unmet": 480.27576735353387
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.475,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 544.8298531949689,
+   "unmet": 411.87512289519964
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.5,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 550.221486639104,
+   "unmet": 346.2262149890671
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.5182944859378311,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 552.5876381927277,
+   "unmet": 299.8413728836963
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.55,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 553.7257479077953,
+   "unmet": 222.58770084037087
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.6,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 548.5064645275787,
+   "unmet": 108.27035501401679
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.7,
+   "status": "pass",
+   "net": 441.5546441464744
+  },
+  {
+   "flow": 2000.0,
+   "ratio": 1.8,
+   "status": "pass",
+   "net": 333.4524061529328
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.2,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 308.61887483986857,
+   "unmet": 1149.0241011592607
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.25,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 404.1808059444361,
+   "unmet": 919.3684357161919
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.3,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 477.13768251577653,
+   "unmet": 711.3433054013944
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.325,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 506.16061594557755,
+   "unmet": 614.5593216424672
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.35,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 530.6869128800669,
+   "unmet": 522.182804946825
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.375,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 551.0338953901849,
+   "unmet": 433.93682208803784
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.4,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 567.4922338028763,
+   "unmet": 349.56679563092894
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.425,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 580.3286118818721,
+   "unmet": 268.8383097347896
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.45,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 589.788082344109,
+   "unmet": 191.53516836248082
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.475,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 596.0961535296307,
+   "unmet": 117.45767259496506
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.5,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 599.4606422483196,
+   "unmet": 46.421089025912806
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.5182944859378311,
+   "status": "pass",
+   "net": 597.4811062618589
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.55,
+   "status": "pass",
+   "net": 534.3535309101889
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.6,
+   "status": "pass",
+   "net": 429.76089367470433
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.7,
+   "status": "pass",
+   "net": 250.18620793492929
+  },
+  {
+   "flow": 2250.0,
+   "ratio": 1.8,
+   "status": "fail",
+   "failed_checks": [
+    "compressor_capacity__capacity_ok"
+   ],
+   "net": 218.29714687494314,
+   "unmet": 0.0
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.2,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 349.35173958877454,
+   "unmet": 950.9084759444236
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.25,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 448.67641161359074,
+   "unmet": 703.8078765148462
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.3,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 522.7429760331993,
+   "unmet": 480.60057105899614
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.325,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 551.4793926452953,
+   "unmet": 376.954691300768
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.35,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 575.2271606643203,
+   "unmet": 278.14866501895676
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.375,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 594.3485485537299,
+   "unmet": 183.87038632521853
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.4,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 609.1745708116341,
+   "unmet": 93.83362057269233
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.425,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 620.0081976440739,
+   "unmet": 7.775396502550393
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.45,
+   "status": "pass",
+   "net": 575.6167137718417
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.475,
+   "status": "pass",
+   "net": 523.0990949266387
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.5,
+   "status": "pass",
+   "net": 468.14083510096043
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.5182944859378311,
+   "status": "pass",
+   "net": 426.57863661707336
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.55,
+   "status": "pass",
+   "net": 352.23505493778475
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.6,
+   "status": "pass",
+   "net": 230.10724757057497
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.7,
+   "status": "pass",
+   "net": 150.51550019093216
+  },
+  {
+   "flow": 2500.0,
+   "ratio": 1.8,
+   "status": "fail",
+   "failed_checks": [
+    "compressor_capacity__capacity_ok"
+   ],
+   "net": 103.14188759536032,
+   "unmet": 0.0
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.2,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 384.3825190310921,
+   "unmet": 764.3390364178404
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.25,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 485.6344202627763,
+   "unmet": 501.89523055354175
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.3,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 558.9726620751102,
+   "unmet": 265.5317091571519
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.325,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 586.5123521126643,
+   "unmet": 156.00472033343567
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.35,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 608.5809575333012,
+   "unmet": 51.72734581773739
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.375,
+   "status": "pass",
+   "net": 594.5668610797628
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.4,
+   "status": "pass",
+   "net": 543.1064537857745
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.425,
+   "status": "pass",
+   "net": 487.75520041249774
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.45,
+   "status": "pass",
+   "net": 429.09716728750755
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.475,
+   "status": "pass",
+   "net": 367.62179635209145
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.5,
+   "status": "pass",
+   "net": 303.7418182930908
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.5182944859378311,
+   "status": "pass",
+   "net": 255.67616696566373
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.55,
+   "status": "pass",
+   "net": 170.11657896811292
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.6,
+   "status": "pass",
+   "net": 96.59064742367909
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.7,
+   "status": "fail",
+   "failed_checks": [
+    "compressor_capacity__capacity_ok"
+   ],
+   "net": 50.84479244160994,
+   "unmet": 0.0
+  },
+  {
+   "flow": 2750.0,
+   "ratio": 1.8,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.2,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 414.0659592164668,
+   "unmet": 588.5974552688222
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.25,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 515.5685962710091,
+   "unmet": 312.7002528741268
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.3,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 586.5163196032271,
+   "unmet": 64.98390131217957
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.325,
+   "status": "pass",
+   "net": 581.4355163170815
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.35,
+   "status": "pass",
+   "net": 530.9811718081553
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.375,
+   "status": "pass",
+   "net": 475.0780178533662
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.4,
+   "status": "pass",
+   "net": 414.58841063385887
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.425,
+   "status": "pass",
+   "net": 350.22423283313617
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.45,
+   "status": "pass",
+   "net": 282.5776207933619
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.475,
+   "status": "pass",
+   "net": 212.14449778007813
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.5,
+   "status": "pass",
+   "net": 139.3428014748209
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.5182944859378311,
+   "status": "pass",
+   "net": 84.77369731160368
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.55,
+   "status": "pass",
+   "net": 34.86089805587622
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.6,
+   "status": "fail",
+   "failed_checks": [
+    "compressor_capacity__capacity_ok"
+   ],
+   "net": 12.200407586057338,
+   "unmet": 0.0
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.7,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3000.0,
+   "ratio": 1.8,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.2,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 438.7933418421071,
+   "unmet": 422.8914238805305
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.25,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 539.0354226793363,
+   "unmet": 135.2153501535663
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.3,
+   "status": "pass",
+   "net": 532.969998826265
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.325,
+   "status": "pass",
+   "net": 480.0111057291979
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.35,
+   "status": "pass",
+   "net": 420.52773793674635
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.375,
+   "status": "pass",
+   "net": 355.58917461380463
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.4,
+   "status": "pass",
+   "net": 286.0703674665165
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.425,
+   "status": "pass",
+   "net": 212.69326524784432
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.45,
+   "status": "pass",
+   "net": 136.05807431270628
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.475,
+   "status": "pass",
+   "net": 56.66719920806125
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.5,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.5182944859378311,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.55,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.6,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.7,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3250.0,
+   "ratio": 1.8,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.2,
+   "status": "fail",
+   "failed_checks": [
+    "checks__heat_removal_ok"
+   ],
+   "net": 458.9516931259766,
+   "unmet": 266.4372506492641
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.25,
+   "status": "pass",
+   "net": 539.1572257168549
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.3,
+   "status": "pass",
+   "net": 440.5523937838948
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.325,
+   "status": "pass",
+   "net": 378.58669515128713
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.35,
+   "status": "pass",
+   "net": 310.07430406114383
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.375,
+   "status": "pass",
+   "net": 236.10033138521456
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.4,
+   "status": "pass",
+   "net": 157.55232430031774
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.425,
+   "status": "pass",
+   "net": 75.16229766136698
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.45,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.475,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.5,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.5182944859378311,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.55,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.6,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.7,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 3500.0,
+   "ratio": 1.8,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.2,
+   "status": "pass",
+   "net": 476.31863896665004
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.25,
+   "status": "pass",
+   "net": 390.04483828387856
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.3,
+   "status": "pass",
+   "net": 255.71718370481042
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.325,
+   "status": "pass",
+   "net": 175.73787399347256
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.35,
+   "status": "pass",
+   "net": 89.16743630364758
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.375,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.4,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.425,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.45,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.475,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.5,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.5182944859378311,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.55,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.6,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.7,
+   "status": "refused",
+   "error": "nonpositive net electricity: LCOE undefined"
+  },
+  {
+   "flow": 4000.0,
+   "ratio": 1.8,
+   "status": "refused",
+   "error": "precooler: signed heat disagrees with its conditioning role"
+  }
+ ],
+ "contributions": {
+  "ir-f2500-r1.5183": {
+   "net_mw": 426.57863661707336,
+   "lcoe": 1559.4383607658922,
+   "plant_side_lcoe": 133.09157045362247,
+   "contributions": {
+    "capital": 103.50403650179135,
+    "om": 22.038189152647394,
+    "tritium": 1426.3151676054927,
+    "deuterium": 0.03162270677705994,
+    "consumables": 1.5741563680462425,
+    "imports": 0.0,
+    "supply": 0.0,
+    "replacement": 3.2742591505157193,
+    "other_overhaul": 1.684897215956304,
+    "terminal": 1.27004008083186,
+    "salvage": -0.25400801616637203
+   },
+   "overnight": 4873104037.111111,
+   "passing": true
+  },
+  "ir-f2250-r1.5183": {
+   "net_mw": 597.4811062618589,
+   "lcoe": 1113.3792899090097,
+   "plant_side_lcoe": 95.02228618497763,
+   "contributions": {
+    "capital": 73.89791963722301,
+    "om": 15.734423371247662,
+    "tritium": 1018.3344263219992,
+    "deuterium": 0.022577402032839547,
+    "consumables": 1.1238873836605472,
+    "imports": 0.0,
+    "supply": 0.0,
+    "replacement": 2.3376956856370046,
+    "other_overhaul": 1.2029521095978206,
+    "terminal": 0.9067599970146157,
+    "salvage": -0.18135199940292318
+   },
+   "overnight": 4873104037.111111,
+   "passing": true
+  },
+  "ir-f2750-r1.3750": {
+   "net_mw": 594.5668610797628,
+   "lcoe": 1118.836473018022,
+   "plant_side_lcoe": 95.48803403914403,
+   "contributions": {
+    "capital": 74.26012727166567,
+    "om": 15.811545004665719,
+    "tritium": 1023.3257509146313,
+    "deuterium": 0.022688064246638277,
+    "consumables": 1.129396071761837,
+    "imports": 0.0,
+    "supply": 0.0,
+    "replacement": 2.3491538055475263,
+    "other_overhaul": 1.2088483302235737,
+    "terminal": 0.9112044440997061,
+    "salvage": -0.18224088881994124
+   },
+   "overnight": 4873104037.111111,
+   "passing": true
+  },
+  "ir-f2500-r1.4500": {
+   "net_mw": 575.6167137718417,
+   "lcoe": 1155.6702123273542,
+   "plant_side_lcoe": 98.63164031028289,
+   "contributions": {
+    "capital": 76.7048796863095,
+    "om": 16.33208427990818,
+    "tritium": 1057.0151370284402,
+    "deuterium": 0.02343498863107475,
+    "consumables": 1.1665774485648701,
+    "imports": 0.0,
+    "supply": 0.0,
+    "replacement": 2.426491397731715,
+    "other_overhaul": 1.248645392022845,
+    "terminal": 0.9412026321824906,
+    "salvage": -0.18824052643649813
+   },
+   "overnight": 4873104037.111111,
+   "passing": true
+  },
+  "ia-f2500-r1.5183": {
+   "net_mw": 426.57863661707336,
+   "lcoe": 1548.0423172195424,
+   "plant_side_lcoe": 121.69552690727267,
+   "contributions": {
+    "capital": 92.39780904333186,
+    "om": 22.038189152647394,
+    "tritium": 1426.3151676054927,
+    "deuterium": 0.03162270677705994,
+    "consumables": 1.5741563680462425,
+    "imports": 0.0,
+    "supply": 0.0,
+    "replacement": 3.2742591505157193,
+    "other_overhaul": 1.5041037671499666,
+    "terminal": 1.1337617819769665,
+    "salvage": -0.22675235639539332
+   },
+   "overnight": 4350208470.0,
+   "passing": false
+  },
+  "ia-f2250-r1.5183": {
+   "net_mw": 597.4811062618589,
+   "lcoe": 1105.242951089452,
+   "plant_side_lcoe": 86.88594736541988,
+   "contributions": {
+    "capital": 65.96849840944553,
+    "om": 15.734423371247662,
+    "tritium": 1018.3344263219992,
+    "deuterium": 0.022577402032839547,
+    "consumables": 1.1238873836605472,
+    "imports": 0.0,
+    "supply": 0.0,
+    "replacement": 2.3376956856370046,
+    "other_overhaul": 1.0738725084308083,
+    "terminal": 0.809462508748039,
+    "salvage": -0.16189250174960781
+   },
+   "overnight": 4350208470.0,
+   "passing": false
+  },
+  "s5-feed100-f2500-r1.5183": {
+   "net_mw": 426.57863661707336,
+   "lcoe": 624.389478146424,
+   "plant_side_lcoe": 133.09157045362247,
+   "contributions": {
+    "capital": 103.50403650179135,
+    "om": 22.038189152647394,
+    "tritium": 481.82134677774707,
+    "deuterium": 0.03162270677705994,
+    "consumables": 1.5741563680462425,
+    "imports": 0.0,
+    "supply": 9.444938208277454,
+    "replacement": 3.2742591505157193,
+    "other_overhaul": 1.684897215956304,
+    "terminal": 1.27004008083186,
+    "salvage": -0.25400801616637203
+   },
+   "overnight": 4873104037.111111,
+   "passing": true
+  },
+  "s6-hx75000-f2500-r1.4000": {
+   "net_mw": 671.6244969491171,
+   "lcoe": 991.0702599939323,
+   "plant_side_lcoe": 85.13387453084601,
+   "contributions": {
+    "capital": 66.32621704304493,
+    "om": 13.997435657796936,
+    "tritium": 905.9163004733273,
+    "deuterium": 0.020084989758974943,
+    "consumables": 0.9998168326997812,
+    "imports": 0.0,
+    "supply": 0.0,
+    "replacement": 2.079627843687468,
+    "other_overhaul": 1.0796956545632486,
+    "terminal": 0.8138518738171374,
+    "salvage": -0.16277037476342748
+   },
+   "overnight": 4916556683.611111,
+   "passing": true
+  }
+ }
+}

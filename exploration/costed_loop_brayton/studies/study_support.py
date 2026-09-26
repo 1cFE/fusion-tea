@@ -148,6 +148,8 @@ def choose_anchors(config, grid, scanned):
         points['ratio-step-lower'] = (flow, ratios[ratios.index(ratio) - 1])
     if flows.index(flow) + 1 < len(flows):
         points['flow-step-higher'] = (flows[flows.index(flow) + 1], ratio)
+    for extra in sens.get('extra_anchors', []):
+        points[extra['label']] = (float(extra['cycle_flow']), float(extra['stage_ratio']))
     return {'rule': sens['anchor_rule'], 'best_passing_net_by_oracle': net, 'points': {k: list(v) for k, v in points.items()}}
 
 
