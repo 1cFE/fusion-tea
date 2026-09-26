@@ -1,0 +1,59 @@
+---
+Status: active
+Scale: standard
+Epic: null
+Owner: reid
+Created: 2026-09-26
+Updated: 2026-09-26
+---
+
+# WI-095 design: loop return control
+
+## 1. The relationship being enforced
+
+The loop (`mfe_primary_loop.sysml`, 'Primary Coolant Loop') is heat-driven at a held blanket inlet: `mdot = q_source / (cp · dT_blanket)`, `T_out = T_in + dT_blanket`, and the circulator compresses the returning helium from `T_comp_in` to `T_in` with fluid work `w_fluid = mdot · cp · (T_in − T_comp_in)`; the delivered duty is `q_ihx = q_source + w_fluid`. Its documentation states the requirement on the exchanger: "T_comp_in is what the IHX must deliver, not evidence that it can". By the loop's own definitions, `q_ihx = mdot · cp · (T_out − T_comp_in)`, so the exchanger satisfies the requirement exactly when it takes the whole duty from the primary stream entering at `T_out`.
+
+The ARIES closure ('Network Heat Driven Closure') binds `T_out` as the helium stage's hot limit, `mdot` as its flow and `q_ihx` as its available heat, and computes the stage as a counterflow exchanger of conductance `UA` between the primary stream (`C_h = mdot · cp_h`) and the cycle stream (`C_c = m_cycle · cp_c`) entering at the heater inlet `T_s`: `capability = ε · C_min · (T_out − T_s)` with `NTU = UA / C_min`, `C_r = C_min / C_max`, `ε = (1 − e^{−NTU(1−C_r)}) / (1 − C_r e^{−NTU(1−C_r)})` (or `NTU / (1 + NTU)` at `C_r = 1`); it transfers `q = min(q_ihx, capability)` and, when the capability exceeds the duty, reports a floating hot-side temperature `hot = T_s + q / (ε C_min) < T_out` and a return `hot − q / C_h` that is colder than `T_comp_in` by exactly the hot-bound margin `T_out − hot`. That floating solution is the steady state of a loop whose inlet is not controlled; it contradicts the loop's held inlet.
+
+## 2. The control arrangement modeled (arrangement B)
+
+A primary-side bypass routes the fraction `f` of the loop flow around the exchanger at `T_out` and mixes it back with the exchanger's outlet. The exchanger then sees `C_h(f) = (1 − f) · C_h` at the delivery temperature `T_out` and must transfer the whole duty: `capability(f) = ε(f) · C_min(f) · (T_out − T_s) = q_ihx`. The exchanger's outlet is `T_x(f) = T_out − q_ihx / C_h(f)` and the mixed return is `f · T_out + (1 − f) · T_x(f) = T_out − q_ihx / C_h = T_comp_in`: the requirement holds identically whenever the duty is transferred, and the content of the control is the existence and value of `f`. `capability(f)` decreases monotonically in `f` (with `C_h(f) > C_c`, `C_min = C_c` is fixed and `ε` falls as `C_r` rises; with `C_h(f) < C_c`, `C_min` itself falls), so the solution is unique: `f = 0` when the exchanger is exactly matched (the heat-removal boundary), `f > 0` inside the passing region, and no solution when `capability(0) < q_ihx` (the heat-removal failure), in which case the return would be too warm by the deficit `(q_ihx − capability(0)) / C_h`.
+
+Why the cycle side is unchanged: the cycle stream receives `q = q_ihx` in either arrangement; its outlet `T_s + q / C_c`, the turbine inlet, the compressor work, the net electricity and every downstream cost channel depend on `q` and on the cycle's own inputs, not on the primary-side temperatures. The bypass changes the exchanger's terminal temperatures and the primary flow through it, which `f` accounts for, and nothing the cycle reads. Hence the WI-094 development receipts replay bit-exactly on every existing channel, and the goal's stored results keep their cycle values with `f` added.
+
+Arrangement A (consistent operating settings on the cycle side, no bypass) is the `f = 0` locus of the same model: at each flow, the ratio at which `capability(0) = q_ihx`. The goal's study locates it by a root solve on the ratio in the package-owned oracle (targeting `f` just inside the feasible side, `f = 1e-6`, a root-finding target, not a physical allowance) and executes and verifies those points natively (R4).
+
+## 3. Definitions (new library file `models/library/analyses/loop_return_control.sysml`, package `loop_return_control`)
+
+`calc def 'Primary Bypass Control'`. Inputs: `ua_in` [MW/K], `primary_flow_in` [kg/s], `primary_cp_in` [J/kgK], `secondary_flow_in` [kg/s], `secondary_cp_in` [J/kgK], `primary_limit_in` [K], `secondary_inlet_in` [K], `duty_in` [MW], `required_return_in` [K], `max_bypass_in` [1], `tolerance_in` [K]. Outputs: `bypass_fraction` [1] (the solution, 0 when infeasible), `feasible` [1] (1 if `capability(0) ≥ duty`), `capability_open` [MW], `exchanger_primary_flow` [kg/s] (`(1 − f) · primary_flow`), `exchanger_return` [K] (`T_out − duty / C_h(f)` when feasible; `T_out − capability(0) / C_h` otherwise), `mixed_return` [K] (`f · T_out + (1 − f) · exchanger_return`), `return_residual` [K] (`mixed_return − required_return`), `return_residual_magnitude` [K], `effectiveness_at_solution` [1], `ntu_at_solution` [1]. Domain: positive flows, cps and UA ≥ 0; `primary_limit > secondary_inlet` for a defined stage (else capability 0, infeasible); `duty ≥ 0`; `0 ≤ max_bypass ≤ 1`; `tolerance > 0`. Root solve: bisection on `f ∈ [0, 1 − 1e-9]` of `g(f) = capability(f) − duty` to `|g| ≤ 1e-9 MW` or an interval below 1e-15, at most 200 iterations; a guard refuses if `g` is not decreasing at the bracket ends (the monotonicity the design relies on).
+
+`constraint def 'Return Condition Held'`: `return_residual_magnitude_in <= tolerance_in` (tolerance 1e-6 K: the root-solve closure, not a physical allowance; an infeasible case carries the physical deficit, tens of K, and fails). `constraint def 'Bypass Within Limit'`: `bypass_fraction_in <= max_bypass_in`.
+
+## 4. Bindings in the costed assembly (`costed_loop_brayton.sysml`, additive)
+
+- `primary_loop`: add `attribute T_comp_in : Real = evaluate.T_comp_in;` (already an output of the loop calc).
+- `heat_exchangers`: add `attribute he_secondary_in : Real = evaluate.he_secondary_in;` (the cycle stream's inlet to the helium stage, the heater inlet in series mode with the idle stages transferring nothing).
+- new `part return_control` with `attribute max_bypass : Real = 1.0;` ([ASSUMED: no design limit declared; the owner's to set]), `attribute tolerance : Real = 1e-6;` ([ASSUMED: root-solve closure in K]) and `calc evaluate : 'Primary Bypass Control'` bound: `ua_in = he_hx.ua`, `primary_flow_in = primary_loop.mdot`, `primary_cp_in = heat_exchangers.he_cp`, `secondary_flow_in = cycle.selected_flow`, `secondary_cp_in = cycle.cp`, `primary_limit_in = primary_loop.T_out`, `secondary_inlet_in = heat_exchangers.he_secondary_in`, `duty_in = primary_loop.q_ihx`, `required_return_in = primary_loop.T_comp_in`, `max_bypass_in = max_bypass`, `tolerance_in = tolerance`; the outputs exposed as attributes.
+- `checks`: add `assert constraint return_condition_ok : 'Return Condition Held' { in return_residual_magnitude_in = return_control.return_residual_magnitude; in tolerance_in = return_control.tolerance; }` and `assert constraint bypass_within_limit : 'Bypass Within Limit' { in bypass_fraction_in = return_control.bypass_fraction; in max_bypass_in = return_control.max_bypass; }`.
+
+Roles (MR-7): chosen: flow, ratio, ratings, area, `max_bypass` (a design limit), `tolerance` (numerical); calculated: `f` and the exchanger and return temperatures; requirement: the return equals `T_comp_in`; installed capacity: the exchanger's UA (unchanged). No sizing rule.
+
+## 5. Reuse and what is new
+
+New: the library file (one calc def, two constraint defs) and one handwritten body `handwritten/loop_return_control/primary_bypass_control_impl.py` (mine, reviewed by the fresh implementation review), whose effectiveness-NTU arithmetic is written in the closure body's form so that `capability(0)` equals the closure's `he_capability` bit for bit. Unchanged: every existing definition, body and binding; the build stages the new library file as a twelfth source and copies the 24 reviewed bodies prefix-only as before; the package identity changes (new executable and semantic fingerprints, a new manifest pin, a new seam CANDIDATE); the WI-094 package is not edited in place: the build regenerates `costed_loop_brayton_tea` from the extended sources (the prior identity stays sealed in the round-1 record's archive).
+
+## 6. Cases and controls
+
+The eight WI-094 development cases re-executed on the new package: every existing channel equal to the WI-094 receipt bit for bit (the pre-change control; the 4,000 kg/s case still refused by the lifecycle body), plus the new channels read: `f`, feasible, exchanger flow and return, mixed return, residual. Expected: `c1-aries-ratios-reselected-ratings` (the starting point) `f ≈ 0.188`, residual ≈ 0, both new checks satisfied; `best-screen-point-reselected` (2,500 / 1.45) `f ≈ 0.060`; `c1-ratio1.35-reselected-ratings` infeasible (unmet 278 MW), residual = deficit ≈ 17.8 K, 'Return Condition Held' violated. Identities: `mixed_return = T_out − duty / C_h` when feasible; `exchanger_return ≤ mixed_return ≤ T_out`; `capability_open = he_capability` of the closure; `f = 0` if and only if `he_hot_bound_margin = 0`.
+
+## 7. Study tooling on the new identity
+
+`prepare_interface.py --phase interface` and `--phase manifest` regenerate the interface record and the manifest (objective catalog from the extended oracle, absolute classes carried: the six executed classes plus the three ruled margin classes, with their bases); the oracle gains `primary_bypass_control` (a fresh worker from the definition's doc, as WI-094's oracle); the integration seam runs on the new fingerprints. The goal's round-3 study composes on the new baseline.
+
+## 8. Review questions (fresh design review)
+
+1. Is the requirement stated in § 1 the loop definition's, and is arrangement B a faithful model of a primary-side bypass control that holds it (the mixed-return identity; the monotonicity and uniqueness argument)?
+2. Is the statement "the cycle side is unchanged" correct given the closure's arithmetic (the cycle stream sees only `q`), so that the pre-change replay is a valid control?
+3. Are the two checks enforcing the relationship without a physical tolerance (the 1e-6 K root-solve closure; the deficit reported when infeasible)?
+4. MR-7: are the roles right, and is the `f = 0` family a legitimate representation of arrangement A on the same package without making the ratio a calculated quantity inside the model?
+5. Is anything double-counted or omitted that the answer must disclose (bypass pressure loss, hardware, the loop's density assumption)?

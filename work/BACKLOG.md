@@ -510,6 +510,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-095
+  name: Loop return control
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -635,3 +641,4 @@ standalone:
 | WI-092 | ARIES parallel exchanger network alternative | standard | P0 | completed | Completed 2026-09-25 |
 | WI-093 | Combination assemblies from existing definitions | standard | P1 | completed | Completed 2026-09-26 |
 | WI-094 | Costed loop-Brayton assembly | standard | P1 | backlog |  |
+| WI-095 | Loop return control | standard | P1 | backlog |  |
