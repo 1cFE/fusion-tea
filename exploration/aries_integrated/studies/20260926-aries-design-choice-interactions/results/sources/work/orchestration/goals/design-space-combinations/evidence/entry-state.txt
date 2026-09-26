@@ -1,0 +1,13 @@
+entry HEAD: 7cb0ae46df48c0ed397b30283c6f5890e560bc5b
+branch: fix/modeling-intent-after-reveal
+date: 2026-09-26
+--- git status --short at entry (preserved, not committed by this goal):
+ M docs/write-up/aries-model-transfer-outline.md
+ M docs/write-up/harness-assets/goal-loop.png
+ M docs/write-up/harness-assets/goal-loop.svg
+ M docs/write-up/harness-assets/render_goal_loop.py
+ M docs/write-up/harness.md
+ M docs/write-up/writing-prompt.md
+?? work/analysis/20260920-184131_design-choice-assignment-audit.md
+?? work/narratives/20260925-221738Z-aries-reference-heat-electricity-reconciliation.md
+?? work/orchestration/goals/design-space-combinations/

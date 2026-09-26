@@ -1,0 +1,32 @@
+{
+  "repo_commit_at_execution": "b98cab9550ae61f494706426d39b1f827858302d",
+  "uncommitted_at_execution": [
+    "M docs/write-up/harness.md",
+    " M work/orchestration/goals/design-space-combinations/trail.md",
+    "?? exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/",
+    "?? exploration/aries_integrated/studies/interactions_reporting.py",
+    "?? exploration/aries_integrated/studies/interactions_support.py",
+    "?? work/analysis/20260920-184131_design-choice-assignment-audit.md",
+    "?? work/narratives/20260925-221738Z-aries-reference-heat-electricity-reconciliation.md",
+    "?? work/orchestration/goals/design-space-combinations/evidence/make-interactions-config.py",
+    "?? work/orchestration/goals/design-space-combinations/evidence/t003-execute.log",
+    "?? work/orchestration/goals/design-space-combinations/evidence/t003-verify.log",
+    "?? work/orchestration/goals/design-space-combinations/evidence/window-probe.py",
+    "?? work/orchestration/goals/design-space-combinations/evidence/window-probe.txt",
+    "?? work/orchestration/goals/design-space-combinations/evidence/write-execution-context.py"
+  ],
+  "preparation_commands": [
+    "python work/orchestration/goals/design-space-combinations/evidence/make-interactions-config.py",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.interactions_support prepare --record exploration/aries_integrated/studies/20260926-aries-design-choice-interactions --config exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/config.json'",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python scripts/study/indicators.py --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/manifest.json --groups exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/axes.json --out exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/indicators.json'",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.interactions_support baseline --record exploration/aries_integrated/studies/20260926-aries-design-choice-interactions'",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python scripts/study/preflight.py gates --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/manifest.json --groups exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/axes.json --identity exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/preparation/package_identity.json --baseline-result exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/preparation/baseline_result.json --out exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/preparation/preflight_results.json'",
+    ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.interactions_support scan --record exploration/aries_integrated/studies/20260926-aries-design-choice-interactions'"
+  ],
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m exploration.aries_integrated.studies.interactions_support execute --record exploration/aries_integrated/studies/20260926-aries-design-choice-interactions --integration-return work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/integration-attempt2/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" STUDY_REQUIRE_TEAX=1 python -m scripts.study.verify --package exploration/aries_integrated/aries_integrated --manifest exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/manifest.json --identity exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/preparation/package_identity.json --store exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/results/native/20260926-aries-design-choice-interactions.db --sample-size 52 --out exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/results/verification_summary.json'",
+  "reporting_command": ".codex-test/run python -m exploration.aries_integrated.studies.interactions_reporting exploration/aries_integrated/studies/20260926-aries-design-choice-interactions",
+  "preparation_baseline": "Two preparations: r1 (43 points) retained under preparation-r1/ after its oracle scan refused eight B3 points and showed the temperature level inert on the N base; r2 (52 points, six aliases) prepared on the same live manifest with the windows fixed by the oracle-only probe work/orchestration/goals/design-space-combinations/evidence/window-probe.txt. Native baseline point executed once into preparation/ for each preparation; six preflight gates pass on both.",
+  "pre_execution_review": "Coordinator checkpoint C-001.r1 in work/orchestration/goals/design-space-combinations/trail.md (no review trigger met; reused coverage cited); not an independent verdict.",
+  "attempts": "52 started, 52 completed in one invocation; no retries. Integration candidate reused from round 2 of the reconciliation goal (same package identity, same manifest pin)."
+}

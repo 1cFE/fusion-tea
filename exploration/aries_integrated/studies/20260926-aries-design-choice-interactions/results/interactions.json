@@ -1,0 +1,3537 @@
+{
+ "study_id": "20260926-aries-design-choice-interactions",
+ "cases": 52,
+ "B1": {
+  "N": {
+   "ranking_by_net": {
+    "-60": [
+     "0.95",
+     "0.8",
+     "0.5"
+    ],
+    "0": [
+     "0.95",
+     "0.8",
+     "0.5"
+    ],
+    "60": [
+     "0.95",
+     "0.8",
+     "0.5"
+    ]
+   },
+   "preferred_recuperation_by_level": {
+    "-60": "0.95",
+    "0": "0.95",
+    "60": "0.95"
+   },
+   "net_difference_of_differences_MW": -5.065089681011159e-09,
+   "main_effect_recuperation_net": {
+    "0.5": 269.6305597541014,
+    "0.8": 423.10679410569037,
+    "0.95": 557.1142224577246
+   },
+   "main_effect_level_net": {
+    "-60": 416.61719210723027,
+    "0": 416.6171921076753,
+    "60": 416.6171921026109
+   },
+   "max_unmet_by_recuperation": {
+    "0.5": 0.0,
+    "0.8": 0.0,
+    "0.95": 0.0
+   },
+   "rows": [
+    {
+     "net": 269.63055975838756,
+     "gross": 501.87869247132653,
+     "eff": 0.22401408054081678,
+     "tt": 728.1416115254095,
+     "inlet": 419.9810317272426,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 1756.5856254863058,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1615.0279368054796,
+     "m_gen": 1298.1213075286735,
+     "m_rej": 771.7320675180267,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.5-lvl-60",
+     "stored_as": "b1-N-rec0.5-lvl-60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 269.630559753556,
+     "gross": 501.878692466495,
+     "eff": 0.22401408053866023,
+     "tt": 728.1416115235052,
+     "inlet": 419.9810317266295,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 1756.5856255177823,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1615.0279368104098,
+     "m_gen": 1298.121307533505,
+     "m_rej": 771.7320675224842,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.5-lvl+0",
+     "stored_as": "b1-N-rec0.5-lvl+0",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 269.6305597503607,
+     "gross": 501.87869246329967,
+     "eff": 0.224014080537234,
+     "tt": 728.1416115222455,
+     "inlet": 419.98103172622393,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 1756.585625538599,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1615.0279368136703,
+     "m_gen": 1298.1213075367004,
+     "m_rej": 771.7320675254327,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.5-lvl+60",
+     "stored_as": "b1-N-rec0.5-lvl+60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 423.10679410024693,
+     "gross": 655.3549268131859,
+     "eff": 0.2925183586396979,
+     "tt": 788.6375184520969,
+     "inlet": 480.47693865572705,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 1119.408083414498,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1458.4195344158272,
+     "m_gen": 1144.645073186814,
+     "m_rej": 928.3404699207445,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.8-lvl-60",
+     "stored_as": "b1-N-rec0.8-lvl-60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 423.10679410931664,
+     "gross": 655.3549268222556,
+     "eff": 0.29251835864374615,
+     "tt": 788.6375184556719,
+     "inlet": 480.47693865756867,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 1119.4080833905023,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1458.4195344065724,
+     "m_gen": 1144.6450731777445,
+     "m_rej": 928.3404699173973,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.8-lvl+0",
+     "stored_as": "N-control",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 423.1067941075074,
+     "gross": 655.3549268204464,
+     "eff": 0.29251835864293857,
+     "tt": 788.6375184549588,
+     "inlet": 480.47693865720134,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 1119.4080833952887,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1458.4195344084185,
+     "m_gen": 1144.6450731795535,
+     "m_rej": 928.3404699180646,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.8-lvl+60",
+     "stored_as": "b1-N-rec0.8-lvl+60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 557.1142224630563,
+     "gross": 789.3623551759953,
+     "eff": 0.3523327147792528,
+     "tt": 841.459383338771,
+     "inlet": 533.2988035404713,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 850.1473241330103,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1321.6772605762258,
+     "m_gen": 1010.6376448240047,
+     "m_rej": 1065.0827437463156,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.95-lvl-60",
+     "stored_as": "b1-N-rec0.95-lvl-60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 557.1142224601533,
+     "gross": 789.3623551730923,
+     "eff": 0.3523327147779571,
+     "tt": 841.4593833376267,
+     "inlet": 533.2988035397714,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 850.1473241374405,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1321.677260579188,
+     "m_gen": 1010.6376448269077,
+     "m_rej": 1065.0827437465834,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.95-lvl+0",
+     "stored_as": "b1-N-rec0.95-lvl+0",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 557.1142224499644,
+     "gross": 789.3623551629033,
+     "eff": 0.3523327147734092,
+     "tt": 841.4593833336105,
+     "inlet": 533.2988035373146,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 850.1473241529885,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1321.6772605895849,
+     "m_gen": 1010.6376448370967,
+     "m_rej": 1065.082743747524,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.95-lvl+60",
+     "stored_as": "b1-N-rec0.95-lvl+60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "A": {
+   "ranking_by_net": {
+    "-60": [
+     "0.95",
+     "0.8",
+     "0.5"
+    ],
+    "0": [
+     "0.95",
+     "0.8",
+     "0.5"
+    ],
+    "60": [
+     "0.95",
+     "0.8",
+     "0.5"
+    ]
+   },
+   "preferred_recuperation_by_level": {
+    "-60": "0.95",
+    "0": "0.95",
+    "60": "0.95"
+   },
+   "net_difference_of_differences_MW": 145.70107240624827,
+   "main_effect_recuperation_net": {
+    "0.5": 463.0660793626667,
+    "0.8": 691.5240714690799,
+    "0.95": 842.4346285841931
+   },
+   "main_effect_level_net": {
+    "-60": 633.2969103815142,
+    "0": 681.8639345194733,
+    "60": 681.8639345149522
+   },
+   "max_unmet_by_recuperation": {
+    "0.5": 0.0,
+    "0.8": 0.0,
+    "0.95": 162.1176372848363
+   },
+   "rows": [
+    {
+     "net": 463.06607936435705,
+     "gross": 715.0770068713431,
+     "eff": 0.24440711324859554,
+     "tt": 762.4377569867804,
+     "inlet": 431.02308722151196,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2925.7618461538464,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 1319.3697519172965,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 1103.296290305615,
+     "m_gen": 1084.9229931286568,
+     "m_rej": 303.9085690200732,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.5-lvl-60",
+     "stored_as": "b1-A-rec0.5-lvl-60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 463.0660793637127,
+     "gross": 715.0770068706987,
+     "eff": 0.2444071132483753,
+     "tt": 762.4377569865712,
+     "inlet": 431.0230872214446,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2925.7618461538464,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 1319.3697519191326,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 1103.2962903062726,
+     "m_gen": 1084.9229931293012,
+     "m_rej": 303.90856902066844,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.5-lvl+0",
+     "stored_as": "b1-A-rec0.5-lvl+0",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 463.0660793599304,
+     "gross": 715.0770068669165,
+     "eff": 0.24440711324708256,
+     "tt": 762.4377569853435,
+     "inlet": 431.0230872210493,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2925.7618461538464,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 1319.3697519299092,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 1103.296290310132,
+     "m_gen": 1084.9229931330835,
+     "m_rej": 303.9085690241577,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.5-lvl+60",
+     "stored_as": "b1-A-rec0.5-lvl+60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 691.5240714657838,
+     "gross": 943.5349989727698,
+     "eff": 0.32249207166780297,
+     "tt": 836.5978604004124,
+     "inlet": 505.1831906356259,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2925.7618461538464,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 883.4911226694684,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 870.1758902021184,
+     "m_gen": 856.4650010272302,
+     "m_rej": 537.0289691278249,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.8-lvl-60",
+     "stored_as": "b1-A-rec0.8-lvl-60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 691.5240714727529,
+     "gross": 943.5349989797389,
+     "eff": 0.32249207167018495,
+     "tt": 836.5978604026747,
+     "inlet": 505.1831906367912,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2925.7618461538464,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 883.4911226605647,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 870.175890195007,
+     "m_gen": 856.4650010202611,
+     "m_rej": 537.0289691252526,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.8-lvl+0",
+     "stored_as": "b1-A-rec0.8-lvl+0",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 691.5240714687028,
+     "gross": 943.5349989756888,
+     "eff": 0.3224920716688007,
+     "tt": 836.5978604013599,
+     "inlet": 505.183190636114,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2925.7618461538464,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 883.4911226657391,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 870.1758901991398,
+     "m_gen": 856.4650010243112,
+     "m_rej": 537.028969126748,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.8-lvl+60",
+     "stored_as": "b1-A-rec0.8-lvl+60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 745.3005803144017,
+     "gross": 997.3115078213877,
+     "eff": 0.36086827118369413,
+     "tt": 854.0543364061502,
+     "inlet": 541.0034864081508,
+     "unmet": 162.1176372848363,
+     "he_unmet": 152.4311290446974,
+     "pbli_unmet": 9.686508240138892,
+     "div_unmet": 0.0,
+     "accepted": 2763.64420886901,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 819.7435965963399,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 815.3019015810796,
+     "m_gen": 802.6884921786123,
+     "m_rej": 754.0205950320365,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.95-lvl-60",
+     "stored_as": "b1-A-rec0.95-lvl-60",
+     "violated": [
+      "plant_ledger__heat_removal_ok"
+     ],
+     "limiting": {
+      "violated": [
+       "plant_ledger__heat_removal_ok"
+      ],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 891.0016527219543,
+     "gross": 1143.0125802289404,
+     "eff": 0.3906717772437712,
+     "tt": 901.350587668063,
+     "inlet": 569.9359179030263,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2925.7618461538464,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 685.6949999877514,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 666.6273378999035,
+     "m_gen": 656.9874197710596,
+     "m_rej": 740.577521427831,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.95-lvl+0",
+     "stored_as": "A-control",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 891.0016527162234,
+     "gross": 1143.0125802232094,
+     "eff": 0.39067177724181246,
+     "tt": 901.3505876662025,
+     "inlet": 569.9359179018882,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2925.7618461538464,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 685.6949999921619,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 666.6273379057516,
+     "m_gen": 656.9874197767906,
+     "m_rej": 740.5775214283599,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b1-A-rec0.95-lvl+60",
+     "stored_as": "b1-A-rec0.95-lvl+60",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    }
+   ]
+  },
+  "eta0.90": {
+   "net_difference_of_differences_MW": 32.30795538148777,
+   "preferred_at_-60": "0.95",
+   "preferred_at_+60": "0.95",
+   "rows": [
+    {
+     "net": 225.3126238157304,
+     "gross": 457.5607565286694,
+     "eff": 0.20423272337106935,
+     "tt": 734.3618508044269,
+     "inlet": 426.20127100685454,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 2102.0977761581735,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1660.2503204204359,
+     "m_gen": 1342.4392434713307,
+     "m_rej": 726.5096839073922,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.5-lvl-60-eta0.90",
+     "stored_as": "b1-N-rec0.5-lvl-60-eta0.90",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 225.31262381400327,
+     "gross": 457.56075652694227,
+     "eff": 0.20423272337029844,
+     "tt": 734.3618508037235,
+     "inlet": 426.201271006624,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 2102.097776174287,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1660.2503204221982,
+     "m_gen": 1342.4392434730578,
+     "m_rej": 726.5096839090684,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.5-lvl+60-eta0.90",
+     "stored_as": "b1-N-rec0.5-lvl+60-eta0.90",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 515.6819468285257,
+     "gross": 747.9300795414647,
+     "eff": 0.33930710092572186,
+     "tt": 852.6322405827796,
+     "inlet": 549.4374795142751,
+     "unmet": 36.10249532082605,
+     "he_unmet": 36.10249532082605,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2204.286551919805,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 918.4520970265825,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1363.955092856359,
+     "m_gen": 1052.0699204585353,
+     "m_rej": 1058.9074067955394,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.95-lvl-60-eta0.90",
+     "stored_as": "b1-N-rec0.95-lvl-60-eta0.90",
+     "violated": [
+      "plant_ledger__heat_removal_ok"
+     ],
+     "limiting": {
+      "violated": [
+       "plant_ledger__heat_removal_ok"
+      ],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    },
+    {
+     "net": 547.9899022082864,
+     "gross": 780.2380349212253,
+     "eff": 0.34826006486784217,
+     "tt": 865.7916006558736,
+     "inlet": 557.6310208591783,
+     "unmet": 0.0,
+     "he_unmet": 0.0,
+     "pbli_unmet": 0.0,
+     "div_unmet": 0.0,
+     "accepted": 2240.389047240631,
+     "comp": 1372.8509484278607,
+     "aux": 232.248132712939,
+     "pump_e": 156.0,
+     "fus": 1835.4512830147435,
+     "lcoe": 864.3027244749985,
+     "ext_t": 104.66770702324638,
+     "m_comp": 227.14905157213934,
+     "m_he": 603.454833859811,
+     "m_pbli": 760.4738113517697,
+     "m_div": 495.68230754778847,
+     "m_turb": 1330.98779144844,
+     "m_gen": 1019.7619650787747,
+     "m_rej": 1055.772212885765,
+     "m_fuel": 1.7618672870609994e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 0.0,
+     "m_stock": 9.937990999710028,
+     "case": "b1-N-rec0.95-lvl+60-eta0.90",
+     "stored_as": "b1-N-rec0.95-lvl+60-eta0.90",
+     "violated": [],
+     "limiting": {
+      "violated": [],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_divpump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    }
+   ]
+  }
+ },
+ "B2": {
+  "net_gain_per_flow_step": {
+   "rec0.8-pump0": {
+    "2600\u21923261": -26.88839971443474,
+    "3261\u21923900": -38.7419999240974
+   },
+   "rec0.8-pump1": {
+    "2600\u21923261": 0.0,
+    "3261\u21923900": 0.0
+   },
+   "rec0.95-pump0": {
+    "2600\u21923261": -14.438909909480572,
+    "3261\u21923900": -20.80422236251411
+   },
+   "rec0.95-pump1": {
+    "2600\u21923261": 0.0,
+    "3261\u21923900": 0.0
+   }
+  },
+  "lcoe_change_per_flow_step": {
+   "rec0.8-pump0": {
+    "2600\u21923261": 66.88758547399516,
+    "3261\u21923900": 112.83059358670198
+   },
+   "rec0.8-pump1": {
+    "2600\u21923261": 0.0,
+    "3261\u21923900": 0.0
+   },
+   "rec0.95-pump0": {
+    "2600\u21923261": 21.476919515975965,
+    "3261\u21923900": 32.97841541092191
+   },
+   "rec0.95-pump1": {
+    "2600\u21923261": 0.0,
+    "3261\u21923900": 0.0
+   }
+  },
+  "rows": [
+   {
+    "net": 449.9951938237514,
+    "gross": 605.3097776248136,
+    "eff": 0.27883499720384797,
+    "tt": 768.9111634212045,
+    "inlet": 470.31511998972627,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2170.852954954896,
+    "comp": 1372.8509484278607,
+    "aux": 155.31458380106218,
+    "pump_e": 79.06645108812316,
+    "fus": 1835.4512830147435,
+    "lcoe": 1052.520497916507,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 672.9909261455458,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1509.4860131794724,
+    "m_gen": 1194.6902223751863,
+    "m_rej": 946.8100834371339,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 661.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow2600-pump0-rec0.8",
+    "stored_as": "b2-N-flow2600-pump0-rec0.8",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_comp",
+       "margin": 227.14905157213934,
+       "normalized": 0.1419681572325871
+      }
+     ]
+    }
+   },
+   {
+    "net": 423.10679410931664,
+    "gross": 655.3549268222556,
+    "eff": 0.29251835864374615,
+    "tt": 788.6375184556719,
+    "inlet": 480.47693865756867,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 1119.4080833905023,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1458.4195344065724,
+    "m_gen": 1144.6450731777445,
+    "m_rej": 928.3404699173973,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow3261-pump0-rec0.8",
+    "stored_as": "N-control",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 384.36479418521924,
+    "gross": 727.4621993205739,
+    "eff": 0.3108042798974776,
+    "tt": 817.0601264542431,
+    "inlet": 495.11853808351384,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2340.579735776276,
+    "comp": 1372.8509484278607,
+    "aux": 343.0974051353546,
+    "pump_e": 266.84927242241565,
+    "fus": 1835.4512830147435,
+    "lcoe": 1232.2386769772042,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 503.26414532416607,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1384.8406849184926,
+    "m_gen": 1072.5378006794263,
+    "m_rej": 901.7286308807707,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": -639.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow3900-pump0-rec0.8",
+    "stored_as": "b2-N-flow3900-pump0-rec0.8",
+    "violated": [
+     "he_pump__capacity_ok"
+    ],
+    "limiting": {
+     "violated": [
+      "he_pump__capacity_ok"
+     ],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_hepump",
+       "margin": -639.0,
+       "normalized": -0.19595216191352346
+      },
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 423.10679410931664,
+    "gross": 655.3549268222556,
+    "eff": 0.29251835864374615,
+    "tt": 788.6375184556719,
+    "inlet": 480.47693865756867,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 1119.4080833905023,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1458.4195344065724,
+    "m_gen": 1144.6450731777445,
+    "m_rej": 928.3404699173973,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 661.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow2600-pump1-rec0.8",
+    "stored_as": "b2-N-flow2600-pump1-rec0.8",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_comp",
+       "margin": 227.14905157213934,
+       "normalized": 0.1419681572325871
+      }
+     ]
+    }
+   },
+   {
+    "net": 423.10679410931664,
+    "gross": 655.3549268222556,
+    "eff": 0.29251835864374615,
+    "tt": 788.6375184556719,
+    "inlet": 480.47693865756867,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 1119.4080833905023,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1458.4195344065724,
+    "m_gen": 1144.6450731777445,
+    "m_rej": 928.3404699173973,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow3261-pump1-rec0.8",
+    "stored_as": "b2-N-flow3261-pump1-rec0.8",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 423.10679410931664,
+    "gross": 655.3549268222556,
+    "eff": 0.29251835864374615,
+    "tt": 788.6375184556719,
+    "inlet": 480.47693865756867,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 1119.4080833905023,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1458.4195344065724,
+    "m_gen": 1144.6450731777445,
+    "m_rej": 928.3404699173973,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": -639.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow3900-pump1-rec0.8",
+    "stored_as": "b2-N-flow3900-pump1-rec0.8",
+    "violated": [
+     "he_pump__capacity_ok"
+    ],
+    "limiting": {
+     "violated": [
+      "he_pump__capacity_ok"
+     ],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_hepump",
+       "margin": -639.0,
+       "normalized": -0.19595216191352346
+      },
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 571.5531323696339,
+    "gross": 726.8677161706961,
+    "eff": 0.33483047044326325,
+    "tt": 816.8257983352435,
+    "inlet": 518.2297549040165,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2170.852954954896,
+    "comp": 1372.8509484278607,
+    "aux": 155.31458380106218,
+    "pump_e": 79.06645108812316,
+    "fus": 1835.4512830147435,
+    "lcoe": 828.6704046214645,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 672.9909261455458,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1385.4473003775515,
+    "m_gen": 1073.132283829304,
+    "m_rej": 1070.8487962408822,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 661.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow2600-pump0-rec0.95",
+    "stored_as": "b2-N-flow2600-pump0-rec0.95",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_comp",
+       "margin": 227.14905157213934,
+       "normalized": 0.1419681572325871
+      }
+     ]
+    }
+   },
+   {
+    "net": 557.1142224601533,
+    "gross": 789.3623551730923,
+    "eff": 0.3523327147779571,
+    "tt": 841.4593833376267,
+    "inlet": 533.2988035397714,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 850.1473241374405,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1321.677260579188,
+    "m_gen": 1010.6376448269077,
+    "m_rej": 1065.0827437465834,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow3261-pump0-rec0.95",
+    "stored_as": "b1-N-rec0.95-lvl+0",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 536.3100000976392,
+    "gross": 879.4074052329938,
+    "eff": 0.37572204518011426,
+    "tt": 876.9525461129072,
+    "inlet": 555.0109577408639,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2340.579735776276,
+    "comp": 1372.8509484278607,
+    "aux": 343.0974051353546,
+    "pump_e": 266.84927242241565,
+    "fus": 1835.4512830147435,
+    "lcoe": 883.1257395483624,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 503.26414532416607,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1229.7945564364313,
+    "m_gen": 920.5925947670062,
+    "m_rej": 1056.774759353279,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": -639.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow3900-pump0-rec0.95",
+    "stored_as": "b2-N-flow3900-pump0-rec0.95",
+    "violated": [
+     "he_pump__capacity_ok"
+    ],
+    "limiting": {
+     "violated": [
+      "he_pump__capacity_ok"
+     ],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_hepump",
+       "margin": -639.0,
+       "normalized": -0.19595216191352346
+      },
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 557.1142224601533,
+    "gross": 789.3623551730923,
+    "eff": 0.3523327147779571,
+    "tt": 841.4593833376267,
+    "inlet": 533.2988035397714,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 850.1473241374405,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1321.677260579188,
+    "m_gen": 1010.6376448269077,
+    "m_rej": 1065.0827437465834,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 661.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow2600-pump1-rec0.95",
+    "stored_as": "b2-N-flow2600-pump1-rec0.95",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_comp",
+       "margin": 227.14905157213934,
+       "normalized": 0.1419681572325871
+      }
+     ]
+    }
+   },
+   {
+    "net": 557.1142224601533,
+    "gross": 789.3623551730923,
+    "eff": 0.3523327147779571,
+    "tt": 841.4593833376267,
+    "inlet": 533.2988035397714,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 850.1473241374405,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1321.677260579188,
+    "m_gen": 1010.6376448269077,
+    "m_rej": 1065.0827437465834,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow3261-pump1-rec0.95",
+    "stored_as": "b2-N-flow3261-pump1-rec0.95",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 557.1142224601533,
+    "gross": 789.3623551730923,
+    "eff": 0.3523327147779571,
+    "tt": 841.4593833376267,
+    "inlet": 533.2988035397714,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 850.1473241374405,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1321.677260579188,
+    "m_gen": 1010.6376448269077,
+    "m_rej": 1065.0827437465834,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": -639.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b2-N-flow3900-pump1-rec0.95",
+    "stored_as": "b2-N-flow3900-pump1-rec0.95",
+    "violated": [
+     "he_pump__capacity_ok"
+    ],
+    "limiting": {
+     "violated": [
+      "he_pump__capacity_ok"
+     ],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_hepump",
+       "margin": -639.0,
+       "normalized": -0.19595216191352346
+      },
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   }
+  ],
+  "A_binding": {
+   "rows": [
+    {
+     "net": 745.3005803144017,
+     "gross": 997.3115078213877,
+     "eff": 0.36086827118369413,
+     "tt": 854.0543364061502,
+     "inlet": 541.0034864081508,
+     "unmet": 162.1176372848363,
+     "he_unmet": 152.4311290446974,
+     "pbli_unmet": 9.686508240138892,
+     "div_unmet": 0.0,
+     "accepted": 2763.64420886901,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 819.7435965963399,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 815.3019015810796,
+     "m_gen": 802.6884921786123,
+     "m_rej": 754.0205950320365,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b2-A-flow3359-pump1-rec0.95-lvl-60",
+     "stored_as": "b1-A-rec0.95-lvl-60",
+     "violated": [
+      "plant_ledger__heat_removal_ok"
+     ],
+     "limiting": {
+      "violated": [
+       "plant_ledger__heat_removal_ok"
+      ],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 746.7118162930029,
+     "gross": 998.722743799989,
+     "eff": 0.3611737030914208,
+     "tt": 854.5124399075922,
+     "inlet": 541.2837210529567,
+     "unmet": 160.54739324227626,
+     "he_unmet": 145.16784052747062,
+     "pbli_unmet": 15.37955271480564,
+     "div_unmet": 0.0,
+     "accepted": 2765.2144529115703,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 818.194335380028,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 813.8618648682213,
+     "m_gen": 801.277256200011,
+     "m_rej": 753.8903876916256,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": -641.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b2-A-flow4000-pump1-rec0.95-lvl-60",
+     "stored_as": "b2-A-flow4000-pump1-rec0.95-lvl-60",
+     "violated": [
+      "he_pump__capacity_ok",
+      "plant_ledger__heat_removal_ok"
+     ],
+     "limiting": {
+      "violated": [
+       "he_pump__capacity_ok",
+       "plant_ledger__heat_removal_ok"
+      ],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": -641.0,
+        "normalized": -0.1908306043465317
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 747.5611729805001,
+     "gross": 999.5721004874862,
+     "eff": 0.3613573610631397,
+     "tt": 854.7881509002368,
+     "inlet": 541.4523811305367,
+     "unmet": 159.60233705550627,
+     "he_unmet": 140.7964081075031,
+     "pbli_unmet": 18.805928948003157,
+     "div_unmet": 0.0,
+     "accepted": 2766.15950909834,
+     "comp": 1667.033294519545,
+     "aux": 252.01092750698606,
+     "pump_e": 170.0,
+     "fus": 2436.0,
+     "lcoe": 817.2647274020524,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 251.43236184615375,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 812.9951743707752,
+     "m_gen": 800.4278995125138,
+     "m_rej": 753.8120220057897,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": -1341.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b2-A-flow4700-pump1-rec0.95-lvl-60",
+     "stored_as": "b2-A-flow4700-pump1-rec0.95-lvl-60",
+     "violated": [
+      "he_pump__capacity_ok",
+      "plant_ledger__heat_removal_ok"
+     ],
+     "limiting": {
+      "violated": [
+       "he_pump__capacity_ok",
+       "plant_ledger__heat_removal_ok"
+      ],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": -1341.0,
+        "normalized": -0.39922596010717476
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 744.8092837771244,
+     "gross": 997.3115078213877,
+     "eff": 0.36086827118369413,
+     "tt": 854.0543364061502,
+     "inlet": 541.0034864081508,
+     "unmet": 162.56169377045217,
+     "he_unmet": 152.87518553031327,
+     "pbli_unmet": 9.686508240138892,
+     "div_unmet": 0.0,
+     "accepted": 2763.64420886901,
+     "comp": 1667.033294519545,
+     "aux": 252.50222404426333,
+     "pump_e": 170.49129653727726,
+     "fus": 2436.0,
+     "lcoe": 820.2843218521004,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 250.98830536053788,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 815.3019015810796,
+     "m_gen": 802.6884921786123,
+     "m_rej": 754.0205950320365,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": 0.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b2-A-flow3359-pump0-rec0.95-lvl-60",
+     "stored_as": "b2-A-flow3359-pump0-rec0.95-lvl-60",
+     "violated": [
+      "plant_ledger__heat_removal_ok"
+     ],
+     "limiting": {
+      "violated": [
+       "plant_ledger__heat_removal_ok"
+      ],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 628.804848288913,
+     "gross": 998.722743799989,
+     "eff": 0.3611737030914208,
+     "tt": 854.5124399075922,
+     "inlet": 541.2837210529567,
+     "unmet": 267.11715278443444,
+     "he_unmet": 251.7376000696288,
+     "pbli_unmet": 15.37955271480564,
+     "div_unmet": 0.0,
+     "accepted": 2765.2144529115703,
+     "comp": 1667.033294519545,
+     "aux": 369.9178955110759,
+     "pump_e": 287.90696800408983,
+     "fus": 2436.0,
+     "lcoe": 971.6136571064656,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": 144.86260230399557,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 813.8618648682213,
+     "m_gen": 801.277256200011,
+     "m_rej": 753.8903876916256,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": -641.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b2-A-flow4000-pump0-rec0.95-lvl-60",
+     "stored_as": "b2-A-flow4000-pump0-rec0.95-lvl-60",
+     "violated": [
+      "he_pump__capacity_ok",
+      "plant_ledger__heat_removal_ok"
+     ],
+     "limiting": {
+      "violated": [
+       "he_pump__capacity_ok",
+       "plant_ledger__heat_removal_ok"
+      ],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": -641.0,
+        "normalized": -0.1908306043465317
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       },
+       {
+        "check": "m_comp",
+        "margin": 32.96670548045495,
+        "normalized": 0.019392179694385264
+       }
+      ]
+     }
+    },
+    {
+     "net": 450.5085926822404,
+     "gross": 999.5721004874862,
+     "eff": 0.3613573610631397,
+     "tt": 854.7881509002368,
+     "inlet": 541.4523811305367,
+     "unmet": 428.09216924816405,
+     "he_unmet": 409.2862403001609,
+     "pbli_unmet": 18.805928948003157,
+     "div_unmet": 0.0,
+     "accepted": 2766.15950909834,
+     "comp": 1667.033294519545,
+     "aux": 549.0635078052458,
+     "pump_e": 467.05258029825967,
+     "fus": 2436.0,
+     "lcoe": 1356.1458941654314,
+     "ext_t": 138.7304019114013,
+     "m_comp": 32.96670548045495,
+     "m_he": -17.057470346504033,
+     "m_pbli": 314.21539199999984,
+     "m_div": 608.5904,
+     "m_turb": 812.9951743707752,
+     "m_gen": 800.4278995125138,
+     "m_rej": 753.8120220057897,
+     "m_fuel": 1.3567576450378727e+22,
+     "m_hepump": -1341.0,
+     "m_pblipump": 0.0,
+     "m_divpump": 208.5,
+     "m_stock": 9.917702024507966,
+     "case": "b2-A-flow4700-pump0-rec0.95-lvl-60",
+     "stored_as": "b2-A-flow4700-pump0-rec0.95-lvl-60",
+     "violated": [
+      "he_capacity__capacity_ok",
+      "he_pump__capacity_ok",
+      "plant_ledger__heat_removal_ok"
+     ],
+     "limiting": {
+      "violated": [
+       "he_capacity__capacity_ok",
+       "he_pump__capacity_ok",
+       "plant_ledger__heat_removal_ok"
+      ],
+      "smallest_normalized_margin": [
+       {
+        "check": "m_hepump",
+        "margin": -1341.0,
+        "normalized": -0.39922596010717476
+       },
+       {
+        "check": "m_he",
+        "margin": -17.057470346504033,
+        "normalized": -0.011371646897669355
+       },
+       {
+        "check": "m_pblipump",
+        "margin": 0.0,
+        "normalized": 0.0
+       }
+      ]
+     }
+    }
+   ],
+   "net_gain_per_flow_step": {
+    "pump1": {
+     "3359\u21924000": 1.411235978601212,
+     "4000\u21924700": 0.8493566874972203
+    },
+    "pump0": {
+     "3359\u21924000": -116.00443548821136,
+     "4000\u21924700": -178.29625560667262
+    }
+   },
+   "unmet_change_per_flow_step": {
+    "pump1": {
+     "3359\u21924000": -1.5702440425600344,
+     "4000\u21924700": -0.9450561867699889
+    },
+    "pump0": {
+     "3359\u21924000": 104.55545901398227,
+     "4000\u21924700": 160.97501646372962
+    }
+   }
+  }
+ },
+ "B3": {
+  "limiting_by_case": {
+   "b3-N-amp4.75e20-hol0.66-net0": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.00e20-hol0.66-net0": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.50e20-hol0.66-net0": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.75e20-hol0.66-net0": {
+    "violated": [
+     "plant_ledger__heat_removal_ok"
+    ],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp4.75e20-hol0.60-net0": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.00e20-hol0.60-net0": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.50e20-hol0.60-net0": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.75e20-hol0.60-net0": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp4.75e20-hol0.66-net1": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.00e20-hol0.66-net1": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.50e20-hol0.66-net1": {
+    "violated": [
+     "plant_ledger__heat_removal_ok"
+    ],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.75e20-hol0.66-net1": {
+    "violated": [
+     "plant_ledger__heat_removal_ok"
+    ],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp4.75e20-hol0.60-net1": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.00e20-hol0.60-net1": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.50e20-hol0.60-net1": {
+    "violated": [],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   },
+   "b3-N-amp5.75e20-hol0.60-net1": {
+    "violated": [
+     "plant_ledger__heat_removal_ok"
+    ],
+    "smallest_normalized_margin": [
+     {
+      "check": "m_divpump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_hepump",
+      "margin": 0.0,
+      "normalized": 0.0
+     },
+     {
+      "check": "m_pblipump",
+      "margin": 0.0,
+      "normalized": 0.0
+     }
+    ]
+   }
+  },
+  "rows": [
+   {
+    "net": 277.9466913723154,
+    "gross": 510.0741061457428,
+    "eff": 0.25021710654516,
+    "tt": 731.3720073257707,
+    "inlet": 450.9772293090049,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2038.5261151346701,
+    "comp": 1372.8509484278607,
+    "aux": 232.12741477342743,
+    "pump_e": 156.0,
+    "fus": 1656.4947829208068,
+    "lcoe": 1556.8908729535588,
+    "ext_t": 94.51742197800917,
+    "m_comp": 227.14905157213934,
+    "m_he": 677.120487558479,
+    "m_pbli": 861.8276147449719,
+    "m_div": 522.5257825618789,
+    "m_turb": 1606.6652697907691,
+    "m_gen": 1289.925893854257,
+    "m_rej": 981.9576666438795,
+    "m_fuel": 1.8825852265725516e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.9440368772383,
+    "case": "b3-N-amp4.75e20-hol0.66-net0",
+    "stored_as": "b3-N-amp4.75e20-hol0.66-net0",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 423.10679410931664,
+    "gross": 655.3549268222556,
+    "eff": 0.29251835864374615,
+    "tt": 788.6375184556719,
+    "inlet": 480.47693865756867,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 1119.4080833905023,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1458.4195344065724,
+    "m_gen": 1144.6450731777445,
+    "m_rej": 928.3404699173973,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b3-N-amp5.00e20-hol0.66-net0",
+    "stored_as": "N-control",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 735.7593230685975,
+    "gross": 968.2674636512537,
+    "eff": 0.36194604201573294,
+    "tt": 911.9786193458287,
+    "inlet": 544.0147741749688,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2675.170747161162,
+    "comp": 1372.8509484278607,
+    "aux": 232.50814058265618,
+    "pump_e": 156.0,
+    "fus": 2220.8960524478384,
+    "lcoe": 763.4479290277227,
+    "ext_t": 126.52985942837266,
+    "m_comp": 227.14905157213934,
+    "m_he": 444.7903489703717,
+    "m_pbli": 542.1733117356421,
+    "m_div": 437.8655921328242,
+    "m_turb": 1139.121027438207,
+    "m_gen": 831.7325363487463,
+    "m_rej": 812.8572769727466,
+    "m_fuel": 1.5018594173438103e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.924969109649133,
+    "case": "b3-N-amp5.50e20-hol0.66-net0",
+    "stored_as": "b3-N-amp5.50e20-hol0.66-net0",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 795.3887277509912,
+    "gross": 1028.036158263853,
+    "eff": 0.37271759768816176,
+    "tt": 935.5377156575062,
+    "inlet": 556.1509881019309,
+    "unmet": 149.87212829905343,
+    "he_unmet": 0.0,
+    "pbli_unmet": 149.87212829905343,
+    "div_unmet": 0.0,
+    "accepted": 2758.2173866766834,
+    "comp": 1372.8509484278607,
+    "aux": 232.64743051286183,
+    "pump_e": 156.0,
+    "fus": 2427.384321787001,
+    "lcoe": 765.540392657067,
+    "ext_t": 138.24172678826204,
+    "m_comp": 227.14905157213934,
+    "m_he": 359.79151777959896,
+    "m_pbli": 425.22661551271426,
+    "m_div": 406.8923517319498,
+    "m_turb": 1078.1325635477997,
+    "m_gen": 771.9638417361471,
+    "m_rej": 790.7991013497967,
+    "m_fuel": 1.3625694871381699e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.917993097116511,
+    "case": "b3-N-amp5.75e20-hol0.66-net0",
+    "stored_as": "b3-N-amp5.75e20-hol0.66-net0",
+    "violated": [
+     "plant_ledger__heat_removal_ok"
+    ],
+    "limiting": {
+     "violated": [
+      "plant_ledger__heat_removal_ok"
+     ],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 132.27538613421623,
+    "gross": 364.28165784227843,
+    "eff": 0.19841564466839648,
+    "tt": 673.9048273353199,
+    "inlet": 421.37363242580653,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 1835.9522932331606,
+    "comp": 1372.8509484278607,
+    "aux": 232.0062717080622,
+    "pump_e": 156.0,
+    "fus": 1476.9080613769156,
+    "lcoe": 2961.186936755903,
+    "ext_t": 84.3313912216338,
+    "m_comp": 227.14905157213934,
+    "m_he": 751.0455656148065,
+    "m_pbli": 963.5383503585701,
+    "m_div": 549.4637907934626,
+    "m_turb": 1755.4330741820593,
+    "m_gen": 1435.7183421577215,
+    "m_rej": 1035.7636841589363,
+    "m_fuel": 2.0037282919377862e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.95010404620723,
+    "case": "b3-N-amp4.75e20-hol0.60-net0",
+    "stored_as": "b3-N-amp4.75e20-hol0.60-net0",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 261.69814564686806,
+    "gross": 493.8120478164661,
+    "eff": 0.2449548946290201,
+    "tt": 724.9619727602044,
+    "inlet": 447.67516925806933,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2015.9305188179064,
+    "comp": 1372.8509484278607,
+    "aux": 232.11390216959802,
+    "pump_e": 156.0,
+    "fus": 1636.4632259023992,
+    "lcoe": 1636.0639559217152,
+    "ext_t": 93.38124635136232,
+    "m_comp": 227.14905157213934,
+    "m_he": 685.3662776895364,
+    "m_pbli": 873.1726873779171,
+    "m_div": 525.53051611464,
+    "m_turb": 1623.2592068614597,
+    "m_gen": 1306.187952183534,
+    "m_rej": 987.9593258894574,
+    "m_fuel": 1.8960978304019796e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.944713624606349,
+    "case": "b3-N-amp5.00e20-hol0.60-net0",
+    "stored_as": "b3-N-amp5.00e20-hol0.60-net0",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 540.4548584260799,
+    "gross": 772.8005800512935,
+    "eff": 0.3215211847991816,
+    "tt": 834.9312090531487,
+    "inlet": 504.32463320097486,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2403.5759277696607,
+    "comp": 1372.8509484278607,
+    "aux": 232.3457216252136,
+    "pump_e": 156.0,
+    "fus": 1980.1205033418978,
+    "lcoe": 937.5252465449882,
+    "ext_t": 112.8732420153927,
+    "m_comp": 227.14905157213934,
+    "m_he": 543.9031960043413,
+    "m_pbli": 678.5389517272829,
+    "m_div": 473.98192449871533,
+    "m_turb": 1338.5770311116357,
+    "m_gen": 1027.1994199487065,
+    "m_rej": 884.9960927000297,
+    "m_fuel": 1.6642783747863988e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.933103485773684,
+    "case": "b3-N-amp5.50e20-hol0.60-net0",
+    "stored_as": "b3-N-amp5.50e20-hol0.60-net0",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 689.7888117162701,
+    "gross": 922.2587223355634,
+    "eff": 0.35318761336400656,
+    "tt": 893.8432999305226,
+    "inlet": 534.6725603164156,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2611.243111136669,
+    "comp": 1372.8509484278607,
+    "aux": 232.46991061929336,
+    "pump_e": 156.0,
+    "fus": 2164.222616255912,
+    "lcoe": 795.551447182092,
+    "ext_t": 123.31538254969456,
+    "m_comp": 227.14905157213934,
+    "m_he": 468.1194022444163,
+    "m_pbli": 574.2708790573015,
+    "m_div": 446.3666075616132,
+    "m_turb": 1186.068722658299,
+    "m_gen": 877.7412776644366,
+    "m_rej": 829.8372177713597,
+    "m_fuel": 1.5400893807066253e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.926883768541897,
+    "case": "b3-N-amp5.75e20-hol0.60-net0",
+    "stored_as": "b3-N-amp5.75e20-hol0.60-net0",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 277.9466913723154,
+    "gross": 510.0741061457428,
+    "eff": 0.25021710654516,
+    "tt": 731.3720073257707,
+    "inlet": 450.9772293090049,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2038.5261151346701,
+    "comp": 1372.8509484278607,
+    "aux": 232.12741477342743,
+    "pump_e": 156.0,
+    "fus": 1656.4947829208068,
+    "lcoe": 1556.8908729535588,
+    "ext_t": 94.51742197800917,
+    "m_comp": 227.14905157213934,
+    "m_he": 677.120487558479,
+    "m_pbli": 861.8276147449719,
+    "m_div": 522.5257825618789,
+    "m_turb": 1606.6652697907691,
+    "m_gen": 1289.925893854257,
+    "m_rej": 981.9576666438795,
+    "m_fuel": 1.8825852265725516e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.9440368772383,
+    "case": "b3-N-amp4.75e20-hol0.66-net1",
+    "stored_as": "b3-N-amp4.75e20-hol0.66-net1",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 423.10679410931664,
+    "gross": 655.3549268222556,
+    "eff": 0.29251835864374615,
+    "tt": 788.6375184556719,
+    "inlet": 480.47693865756867,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2240.389047240631,
+    "comp": 1372.8509484278607,
+    "aux": 232.248132712939,
+    "pump_e": 156.0,
+    "fus": 1835.4512830147435,
+    "lcoe": 1119.4080833905023,
+    "ext_t": 104.66770702324638,
+    "m_comp": 227.14905157213934,
+    "m_he": 603.454833859811,
+    "m_pbli": 760.4738113517697,
+    "m_div": 495.68230754778847,
+    "m_turb": 1458.4195344065724,
+    "m_gen": 1144.6450731777445,
+    "m_rej": 928.3404699173973,
+    "m_fuel": 1.7618672870609994e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.937990999710028,
+    "case": "b3-N-amp5.00e20-hol0.66-net1",
+    "stored_as": "b3-N-amp5.00e20-hol0.66-net1",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 703.2117202160299,
+    "gross": 935.7198607986861,
+    "eff": 0.35579419996882866,
+    "tt": 899.1492926341123,
+    "inlet": 537.405885130481,
+    "unmet": 45.22382593348277,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 45.22382593348277,
+    "accepted": 2629.946921227679,
+    "comp": 1372.8509484278607,
+    "aux": 232.50814058265618,
+    "pump_e": 156.0,
+    "fus": 2220.8960524478384,
+    "lcoe": 798.7835175542847,
+    "ext_t": 126.52985942837266,
+    "m_comp": 227.14905157213934,
+    "m_he": 444.7903489703717,
+    "m_pbli": 542.1733117356421,
+    "m_div": 437.8655921328242,
+    "m_turb": 1172.332867083684,
+    "m_gen": 864.2801392013139,
+    "m_rej": 824.8692632555553,
+    "m_fuel": 1.5018594173438103e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.924969109649133,
+    "case": "b3-N-amp5.50e20-hol0.66-net1",
+    "stored_as": "b3-N-amp5.50e20-hol0.66-net1",
+    "violated": [
+     "plant_ledger__heat_removal_ok"
+    ],
+    "limiting": {
+     "violated": [
+      "plant_ledger__heat_removal_ok"
+     ],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 820.5194466608741,
+    "gross": 1053.1668771737359,
+    "eff": 0.37705539289177675,
+    "tt": 945.4435205444481,
+    "inlet": 561.2538564648012,
+    "unmet": 114.95381919212565,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 114.95381919212565,
+    "accepted": 2793.1356957836115,
+    "comp": 1372.8509484278607,
+    "aux": 232.64743051286183,
+    "pump_e": 156.0,
+    "fus": 2427.384321787001,
+    "lcoe": 742.093562115368,
+    "ext_t": 138.24172678826204,
+    "m_comp": 227.14905157213934,
+    "m_he": 359.79151777959896,
+    "m_pbli": 425.22661551271426,
+    "m_div": 406.8923517319498,
+    "m_turb": 1052.4889728234293,
+    "m_gen": 746.8331228262641,
+    "m_rej": 781.5243829568617,
+    "m_fuel": 1.3625694871381699e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.917993097116511,
+    "case": "b3-N-amp5.75e20-hol0.66-net1",
+    "stored_as": "b3-N-amp5.75e20-hol0.66-net1",
+    "violated": [
+     "plant_ledger__heat_removal_ok"
+    ],
+    "limiting": {
+     "violated": [
+      "plant_ledger__heat_removal_ok"
+     ],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 132.27538613421623,
+    "gross": 364.28165784227843,
+    "eff": 0.19841564466839648,
+    "tt": 673.9048273353199,
+    "inlet": 421.37363242580653,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 1835.9522932331606,
+    "comp": 1372.8509484278607,
+    "aux": 232.0062717080622,
+    "pump_e": 156.0,
+    "fus": 1476.9080613769156,
+    "lcoe": 2961.186936755903,
+    "ext_t": 84.3313912216338,
+    "m_comp": 227.14905157213934,
+    "m_he": 751.0455656148065,
+    "m_pbli": 963.5383503585701,
+    "m_div": 549.4637907934626,
+    "m_turb": 1755.4330741820593,
+    "m_gen": 1435.7183421577215,
+    "m_rej": 1035.7636841589363,
+    "m_fuel": 2.0037282919377862e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.95010404620723,
+    "case": "b3-N-amp4.75e20-hol0.60-net1",
+    "stored_as": "b3-N-amp4.75e20-hol0.60-net1",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 261.69814564686806,
+    "gross": 493.8120478164661,
+    "eff": 0.2449548946290201,
+    "tt": 724.9619727602044,
+    "inlet": 447.67516925806933,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2015.9305188179064,
+    "comp": 1372.8509484278607,
+    "aux": 232.11390216959802,
+    "pump_e": 156.0,
+    "fus": 1636.4632259023992,
+    "lcoe": 1636.0639559217152,
+    "ext_t": 93.38124635136232,
+    "m_comp": 227.14905157213934,
+    "m_he": 685.3662776895364,
+    "m_pbli": 873.1726873779171,
+    "m_div": 525.53051611464,
+    "m_turb": 1623.2592068614597,
+    "m_gen": 1306.187952183534,
+    "m_rej": 987.9593258894574,
+    "m_fuel": 1.8960978304019796e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.944713624606349,
+    "case": "b3-N-amp5.00e20-hol0.60-net1",
+    "stored_as": "b3-N-amp5.00e20-hol0.60-net1",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 540.4548584260799,
+    "gross": 772.8005800512935,
+    "eff": 0.3215211847991816,
+    "tt": 834.9312090531487,
+    "inlet": 504.32463320097486,
+    "unmet": 0.0,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 0.0,
+    "accepted": 2403.5759277696607,
+    "comp": 1372.8509484278607,
+    "aux": 232.3457216252136,
+    "pump_e": 156.0,
+    "fus": 1980.1205033418978,
+    "lcoe": 937.5252465449882,
+    "ext_t": 112.8732420153927,
+    "m_comp": 227.14905157213934,
+    "m_he": 543.9031960043413,
+    "m_pbli": 678.5389517272829,
+    "m_div": 473.98192449871533,
+    "m_turb": 1338.5770311116357,
+    "m_gen": 1027.1994199487065,
+    "m_rej": 884.9960927000297,
+    "m_fuel": 1.6642783747863988e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.933103485773684,
+    "case": "b3-N-amp5.50e20-hol0.60-net1",
+    "stored_as": "b3-N-amp5.50e20-hol0.60-net1",
+    "violated": [],
+    "limiting": {
+     "violated": [],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   },
+   {
+    "net": 671.0150633742444,
+    "gross": 903.4849739935378,
+    "eff": 0.3494893203417192,
+    "tt": 886.4432295728251,
+    "inlet": 530.8604940237424,
+    "unmet": 26.085507149972784,
+    "he_unmet": 0.0,
+    "pbli_unmet": 0.0,
+    "div_unmet": 26.085507149972784,
+    "accepted": 2585.1576039866964,
+    "comp": 1372.8509484278607,
+    "aux": 232.46991061929336,
+    "pump_e": 156.0,
+    "fus": 2164.222616255912,
+    "lcoe": 817.8094909694057,
+    "ext_t": 123.31538254969456,
+    "m_comp": 227.14905157213934,
+    "m_he": 468.1194022444163,
+    "m_pbli": 574.2708790573015,
+    "m_div": 446.3666075616132,
+    "m_turb": 1205.2256087215906,
+    "m_gen": 896.5150260064622,
+    "m_rej": 836.7658388616082,
+    "m_fuel": 1.5400893807066253e+22,
+    "m_hepump": 0.0,
+    "m_pblipump": 0.0,
+    "m_divpump": 0.0,
+    "m_stock": 9.926883768541897,
+    "case": "b3-N-amp5.75e20-hol0.60-net1",
+    "stored_as": "b3-N-amp5.75e20-hol0.60-net1",
+    "violated": [
+     "plant_ledger__heat_removal_ok"
+    ],
+    "limiting": {
+     "violated": [
+      "plant_ledger__heat_removal_ok"
+     ],
+     "smallest_normalized_margin": [
+      {
+       "check": "m_divpump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_hepump",
+       "margin": 0.0,
+       "normalized": 0.0
+      },
+      {
+       "check": "m_pblipump",
+       "margin": 0.0,
+       "normalized": 0.0
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

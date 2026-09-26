@@ -1,0 +1,105 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "recuperation",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__recuperator_effectiveness",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "A3 nominal 0.8 (WI-089); source-supported 0.95 (reconciliation goal L-002/L-004); 0.5 a low-recovery counterfactual inside the closure domain [0,1]."
+    },
+    {
+      "axis": "he_limit",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__he_limit",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Source-supported blanket-helium outlet 729.15 K (reference-case contract \u00a7 2), shifted \u221260/0/+60 K with the other two limits as one temperature-level scenario at unchanged duty."
+    },
+    {
+      "axis": "divertor_limit",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__divertor_limit",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Source-supported divertor-helium outlet 973.15 K, shifted with the level scenario."
+    },
+    {
+      "axis": "pbli_limit",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__pbli_limit",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Source-supported PbLi outlet 1011.15 K, shifted with the level scenario."
+    },
+    {
+      "axis": "he_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__he_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "Raffray blanket-helium flow 3261 kg/s; \u00b120 % window (2600, 3900) with the selected pump capacity held at 3261 so the flow screen can fail."
+    },
+    {
+      "axis": "he_pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__pump_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "E3 (WI-090): mode 0 cubic proxy from 156 MW at 3261 kg/s; mode 1 fixed 156 MW source power."
+    },
+    {
+      "axis": "density_amplitude",
+      "keys": [
+        {
+          "key": "aries_cs_plasma_integration__plasma__amplitude",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "WI-083 reference amplitude 5.0e20; \u00b120 % as in the design-studies goal density cases."
+    },
+    {
+      "axis": "hollowness",
+      "keys": [
+        {
+          "key": "aries_cs_plasma_integration__plasma__hollowness",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "WI-081 reference hollowness 0.66; 0.30 a flatter-profile counterfactual inside the profile domain."
+    },
+    {
+      "axis": "network_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__network_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "WI-092 N1: 0 series (reviewed), 1 published series-then-parallel with the supplied split 0.85."
+    },
+    {
+      "axis": "turbine_efficiency",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__turbine_efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "A3 0.93 (WI-089); 0.90 as the declared assumption change for the B1 explanation."
+    }
+  ]
+}
