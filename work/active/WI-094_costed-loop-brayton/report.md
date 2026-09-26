@@ -1,6 +1,8 @@
 # WI-094 report: costed loop-Brayton assembly
 
-**Status:** implemented and reviewed (fresh implementation review PASS with three notes, 2026-09-26); integration seam CANDIDATE. The item stays `active` until the goal's study (`20260926-design-study-parameters`) has run on the package; closure is the owner's.
+**Status:** implemented and reviewed (fresh implementation review PASS with three notes, 2026-09-26); integration seam CANDIDATE; the goal's study `20260926-design-study-parameters` ran on the package and is sealed (272 points, verification pass under the owner-ruled classes, snapshot `d84c7dac…`). R1–R8 are met; closure through `pm close-item` is the owner's.
+
+**Offered follow-up (not opened):** the 'Primary Coolant Loop' definition states that the IHX must return the helium at `T_comp_in` so that the held blanket inlet holds; this assembly (as C-1) binds the loop into the closure and never compares the closure's `he_return` with `T_comp_in` (goal `evidence/return-condition-check.md`: residual equal to the helium hot-bound margin wherever all heat is removed; 48.8 K at the design point, 0.7–13.6 K at the study's leading passing points). A return-condition screen with an owner-declared tolerance, or an explicit bypass fraction, would be a small additive modeling item.
 
 ## What was built
 
