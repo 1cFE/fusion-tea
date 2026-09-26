@@ -2,7 +2,7 @@
 
 ## Status
 
-`grounded` — 2026-09-26. [OWNER] Issuance of the brief retained verbatim at `evidence/owner-brief.md` (sha256 `37e75a44…`) through `/run-goal` authorizes grounding and execution under its contract; the slug `design-study-parameters` is supplied by the brief and needs no confirmation. [AGENT] Grounded by the round agent from the records in § Grounding evidence; nothing below predicts the answer. Formal closure is the owner's (§ Close rule).
+`closed` — 2026-09-26, answered with the owner's final reporting corrections applied. [OWNER] Closure authorized ("then close the goal and WI-094/WI-095 through the native workflow"; `evidence/owner-direction-close.md`) after the round-3 result, the fresh round-3 review and its applied findings at `b1a3f62f`; the completion condition is assessed in `answer.md` as answered on sealed evidence with the loop's return requirement enforced, 620.8 MW being the best tested point under the stated assumptions and not an upper bound. Grounded 2026-09-26. [OWNER] Issuance of the brief retained verbatim at `evidence/owner-brief.md` (sha256 `37e75a44…`) through `/run-goal` authorizes grounding and execution under its contract; the slug `design-study-parameters` is supplied by the brief and needs no confirmation. [AGENT] Grounded by the round agent from the records in § Grounding evidence; nothing below predicts the answer. Formal closure is the owner's (§ Close rule).
 
 ## Question
 
@@ -60,4 +60,4 @@ Tracked artifacts are cited at entry HEAD `d59e932cf76d442d1acbb4d1ac586003544da
 
 ## Amendments
 
-None.
+- 2026-09-26 — [OWNER] Formal closure authorized with three reporting corrections and a ruling that no bypass limit is invented (`evidence/owner-direction-close.md`). Status `grounded` → `closed`, answered. The corrections are applied in `answer.md`, `proposed-passage.md`, `candidate-ledger.md`, `learnings.md` (L-016) and an addendum to the sealed round-3 record; no sealed value changed. Item closure of WI-094 and WI-095 is authorized by the same direction (trail § Owner item closure).

@@ -26,15 +26,15 @@ Return condition (round 2, `evidence/return-condition-check.md`): residual `T_co
 
 | Candidate | Case | Flow / ratio | Net MW | Bypass fraction | Return residual K | Verdicts | Nonfuel / total LCOE | Standing |
 |---|---|---|---|---|---|---|---|---|
-| starting configuration | `ir-f2500-r1.5183` | 2500 / 1.5183 | 426.579 | 0.3112 | -4.0e-11 | 11 of 11 | 133.09 / 1559.44 | consistent only with 31 % bypass (B); not an operating point under A |
-| best consistent point | `ir-boundary-f2500` | 2500 / 1.4273 | 620.819 | 0.0000 | -5.4e-11 | 11 of 11 | 91.45 / 1071.52 | the matched exchanger at the design flow; best under A and B |
+| starting configuration | `ir-f2500-r1.5183` | 2500 / 1.5183 | 426.579 | 0.3112 | -4.0e-11 | 11 of 11 | 133.09 / 1559.44 | consistent only with a modeled 31 % bypass (B), bypass hardware cost and pressure losses omitted; not an operating point under A |
+| best tested point | `ir-boundary-f2500` | 2500 / 1.4273 | 620.819 | 0.0000 | -5.4e-11 | 11 of 11 | 91.45 / 1071.52 | the matched exchanger at the design flow; best tested point under A and B, not an upper bound; 2,750 kg/s within the 5 MW materiality |
 | matched exchanger | `ir-boundary-f2000` | 2000 / 1.6511 | 535.221 | 0.0000 | +5.2e-11 | 11 of 11 | 106.08 / 1242.90 | arrangement A family |
 | matched exchanger | `ir-boundary-f2250` | 2250 / 1.5169 | 600.165 | 0.0000 | -1.2e-11 | 11 of 11 | 94.60 / 1108.40 | arrangement A family |
-| matched exchanger | `ir-boundary-f2750` | 2750 / 1.3629 | 617.940 | 0.0000 | -4.0e-11 | 11 of 11 | 91.88 / 1076.52 | arrangement A family |
+| matched exchanger | `ir-boundary-f2750` | 2750 / 1.3629 | 617.940 | 0.0000 | -4.0e-11 | 11 of 11 | 91.88 / 1076.52 | arrangement A family; 2.9 MW below the best tested point, within materiality |
 | matched exchanger | `ir-boundary-f3000` | 3000 / 1.3140 | 601.598 | 0.0000 | -3.0e-11 | 11 of 11 | 94.37 / 1105.76 | arrangement A family |
 | matched exchanger | `ir-boundary-f3250` | 3250 / 1.2756 | 577.138 | 0.0000 | -1.5e-11 | 11 of 11 | 98.37 / 1152.62 | arrangement A family |
 | matched exchanger | `ir-boundary-f3500` | 3500 / 1.2444 | 547.582 | 0.0000 | -5.7e-11 | 11 of 11 | 103.68 / 1214.84 | arrangement A family |
-| ladder | `ir-f2500-r1.4300` | 2500 / 1.4300 | 615.602 | 0.0194 | -3.1e-11 | 11 of 11 | 92.23 / 1080.61 | consistent with 1.9 % bypass |
+| ladder | `ir-f2500-r1.4300` | 2500 / 1.4300 | 615.602 | 0.0194 | -3.1e-11 | 11 of 11 | 92.23 / 1080.61 | one ladder step inside the exchanger limit, about 2 % bypass; distinct from the maximum-output point; neither is an operating recommendation |
 | ladder | `ir-f2500-r1.4350` | 2500 / 1.4350 | 605.789 | 0.0520 | -3.3e-11 | 11 of 11 | 93.72 / 1098.11 | 5.2 % bypass |
 | ladder | `ir-f2500-r1.4400` | 2500 / 1.4400 | 595.851 | 0.0808 | +3.7e-11 | 11 of 11 | 95.28 / 1116.42 | 8.1 % bypass |
 | ladder | `ir-f2500-r1.4450` | 2500 / 1.4450 | 585.793 | 0.1065 | -3.6e-12 | 11 of 11 | 96.92 / 1135.59 | 10.7 % bypass |
@@ -50,3 +50,5 @@ Return condition (round 2, `evidence/return-condition-check.md`): residual `T_co
 | I-A starting point | `ia-f2500-r1.5183` | 2500 / 1.5183 | 426.579 | 0.3112 | -4.0e-11 | compressor, helium-duty and rejection ratings violated | 121.70 / 1548.04 | ratings violated; 31 % bypass |
 
 The round-2 bypass-equivalent fractions quoted above (18.8 %, 0.3 %, 3.9 %, 6.0 %, 1.4 %) were a mixing estimate; the solved control settings are the round-3 column.
+
+Owner closure, 2026-09-26 (`evidence/owner-direction-close.md`): every standing reads as a tested point under the stated assumptions; the 426.6 → 620.8 MW comparison is a conditional model result with the same selected major equipment; no bypass limit is specified.
