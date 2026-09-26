@@ -4,7 +4,7 @@
 
 `grounded` — 2026-09-26, under the owner's retained [brief](evidence/owner-brief.md), which supplies the slug and authorizes autonomous technical execution. Formal closure remains owner-held.
 
-Execution stopped in round 1 at the design-review revision cap. The final design has unresolved physical-closure policy findings. [Partial answer](answer.md); [stop and required owner decision](trail.md). This is not goal closure or completed economic-comparison evidence.
+Execution resumed in round 1 under the [owner's one-submission extension](evidence/owner-direction-fourth-submission.md). The fourth design submission must resolve physical-closure roles, scope and handwritten-solver limits before implementation. The [partial answer](answer.md) records the earlier stop; no economic comparison has run. Formal closure remains owner-held.
 
 ## Question
 
@@ -44,7 +44,7 @@ Execution stopped in round 1 at the design-review revision cap. The final design
 | Limit | This goal |
 |---|---|
 | Retry cap | 2 retries (3 attempts) |
-| Checkpoint revision cap | 2 revisions (3 submissions) |
+| Checkpoint revision cap | Normally 2 revisions (3 submissions); owner permits WI-096 one additional submission, number 4, without any policy waiver |
 | Round limit | 4 rounds |
 | Time or iteration limit | Bounded screen first; one primary question; major new physical model returns partial/unmet completion |
 
@@ -57,3 +57,5 @@ Execution stopped in round 1 at the design-review revision cap. The final design
 [OWNER] The owner closes after reviewing the answer and completion assessment. The round agent recommends closure or names unmet requirements; it cannot close the goal itself.
 
 ## Amendments
+
+[OWNER] 2026-09-26: authorize one further design revision and independent review, then autonomous implementation/integration/study/final review only if it passes and stays within bounded scope. Preserve MR-7, explain physical equalities and roles, and account for the cooler/pumping/recuperator additions in the scope assessment. A further failure, major-model dependency or policy exception stops the run. Full direction is retained verbatim in `evidence/owner-direction-fourth-submission.md`.

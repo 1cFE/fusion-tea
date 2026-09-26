@@ -77,3 +77,20 @@ T-002 · native WI-096 Matched Conversion Subsystems · expected native spec/des
 - **Owner decision needed:** whether to allow another design revision addressing model-owned closure and the handwritten-solve tripwire, or retain this partial result. The proposed remedy is not permission to waive the physical-closure policy or begin implementation before review.
 - **Parked work:** WI-096 implementation, generated package, integration, main comparison study, sensitivity cases, economic ranking and result plots. Reporting and reproducibility of already executed diagnostics are completed in the partial-result artifacts.
 - **Handoff:** `answer.md` states established evidence and unmet criteria; `evidence/replay.md` names diagnostic commands; `evidence/partial-result-review.md` checks reporting only. Formal goal and item closure remain owner-held.
+
+### Owner continuation — 2026-09-26
+
+[OWNER] `evidence/owner-direction-fourth-submission.md` extends the exhausted design cap by one submission. The earlier cap stop is lifted only for that revision and independent review. No policy exception, automatic sizing or silent change in variable roles is authorized. If the design passes within bounded scope, continue implementation, integration, study and final review autonomously. Otherwise stop with the exact unresolved requirement; no new round may bypass the cap. Formal closure remains owner-held.
+
+### T-003 scope
+
+- **Objective:** Resolve the physical-equality ownership, MR-7 roles and bounded-scope assessment in WI-096's final authorized design revision.
+- **Why now:** The owner permits one extra submission after the external-closure policy finding.
+- **Scope:** Native spec/design correction and bounded design diagnostics, followed by the same independent reviewer's recheck. No implementation before a passing review. Preserve all historical diagnostics and original model/package bytes.
+- **Inputs:** `goal.md`, owner continuation, final submission-3 review, WI-096 spec/design, original component definitions/bodies, MR-7 and STUDY_POLICY §§3–5.
+- **Done when:** Submission 4 passes independent review within authorized scope, or an exact remaining requirement establishes the mandated stop.
+- **Stop when:** Review fails; scope requires a major physical model or policy exception; another owner gate is reached.
+
+### T-003 start — 2026-09-26
+
+T-003 · WI-096 final design revision and independent review · expected revised spec/design with equality/role table, full addition/solver census, review verdict and exact evidence. The continuing author owns native spec/design; the independent reviewer owns its review. Coordinator owns trail and contract. These stages are sequential because the review depends on the finished design.
