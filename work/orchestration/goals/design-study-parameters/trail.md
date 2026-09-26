@@ -303,3 +303,25 @@ T-009 · `work/BACKLOG.md` (CLI) · `work/active/WI-095_loop-return-control/{spe
 ### T-010 start — 2026-09-26
 
 T-010 · the files above. Coordinator executes directly; a fresh worker extends the oracle; a fresh reviewer for the implementation.
+
+### T-010 return — 2026-09-26
+
+- **Outcome:** COMPLETE.
+- **Native artifacts:** `models/library/analyses/loop_return_control.sysml`; `exploration/costed_loop_brayton/bodies/loop_return_control/primary_bypass_control_impl.py`; additive edits to `models/designs/costed_loop_brayton/costed_loop_brayton.sysml`; the rebuilt package (fixed point; executable `f3cfaa1e…`, semantic `a72fe5c4…`), `census.json` (165 entry points), snapshot; `studies/{interface_data.py, oracle_entry.py (extended, 255 channels), manifest.json (pin `7fb8341c…`, twelve classes)}`; `verify.py`, `verify_return_control.py`, `build.py`/`run.py` evidence paths; `tests/model_families.py`; `work/active/WI-095_loop-return-control/{report.md, evidence/}`; goal `evidence/{implementation-review-r3{-brief,}.md, oracle-extension-brief.md, integration-t010/, preservation-check-t010-{build,seam}.json}`. Commits `f766bbce`, `1127c27e` and this one.
+- **Review:** fresh implementation reviewer: PASS, five notes, no owner gate (the body is the definition; 245 channels bit-exact on every evaluated receipt against WI-094 and the refused case refused in both; the new channels and checks as the design expects, `f` 0.3112 at the starting point and 0.1296 at 2,500 / 1.45, residual 4e-11 K, the infeasible cases carrying +17.8 and +72.3 K; MR-7 compliant; fixed point, registration and preservation met). The oracle worker: 255 catalogued channels, eleven bindings, the new channels within 4e-12 relative of the receipts except the two residual channels (8.5e-12 K absolute, inside their declared 1e-8 K class). The seam: CANDIDATE on commit `1127c27e`, ten gates.
+- **Reading:** the requirement is enforced in the calculation and the checks; the bypass fractions the control needs are 31 % at the starting configuration and 13 % at 2,500 / 1.45, larger than the check file's linear equivalents (18.8 %, 6.0 %) because the reduced flow lowers the exchanger's effectiveness; the cycle side is unchanged bit for bit.
+- **Decision:** the three root-solve classes (`bypass_fraction` 1e-9, the two residual channels 1e-8 K) are declared before any study on this identity, with their bases; execution detail; coordinator; `studies/prepare_interface.py`, `studies/manifest.json`.
+- **Decision:** the T-007 reading's "bypass-equivalent fraction" is superseded by the solved control setting (T-007's numbers were a mixing estimate that assumed the exchanger outlet unchanged by the reduced flow); the answer will carry the solved values; execution detail; coordinator; `answer.md` (round 3).
+
+### T-011 scope
+
+- **Objective:** run and seal the round-3 study `20260926-design-study-parameters-b` on the WI-095 CANDIDATE: the starting configuration, the leading alternatives, the S6 point and the I-A starting point re-evaluated with the bypass control (arrangement B); a fine ratio ladder near the heat-removal boundary at 2,500 and 2,250 kg/s; the boundary family (arrangement A: the ratio at which the bypass fraction reaches 1e-6, one per flow, solved on the oracle inside a declared bracket) executed natively; every point verified against the oracle; the record, findings and discovery rows; the seal.
+- **Why now:** T-010 is complete (CANDIDATE, review PASS); the owner's directions 3–4 need executed, verified cases that satisfy the completed model.
+- **Scope:** new files only under `exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/` and appended rows in `studies/DISCOVERY_LOG.md`; a readout script for this study under `studies/`; the freeze script under this goal's `evidence/` adapted for a record without a grid. No package, manifest, library or model change; no re-pin.
+- **Inputs:** the record's `config.json` (`studies/return_control_config.py`); `evidence/integration-t010/integration_return.json`; the round-1 record's readout (the brackets); the runbook steps 5–15.
+- **Done when:** every composed point is executed and verified (all points; the rule and the twelve classes; every verdict re-derived) or refused by the scan and reported; the boundary solve is recorded per flow with its outcome; the record's seventeen sections are filled; the snapshot resolves; committed.
+- **Stop when:** the executor refuses a point the scan accepted (mechanical, two retries, then prerequisite); a verifier refusal outside the declared classes (owner gate); the boundary solve finds no bracketed root at a flow (reported, not a stop).
+
+### T-011 start — 2026-09-26
+
+T-011 · `exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/` · `studies/return_control_reporting.py` · `studies/DISCOVERY_LOG.md` · goal `evidence/{freeze-study.py (adapted), write-execution-context-b.py, checkpoint-c002.md}`. Coordinator executes directly; checkpoint C-002 after the scan; the fresh review of the reading comes with the round result.
