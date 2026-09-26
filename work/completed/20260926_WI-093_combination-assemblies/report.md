@@ -2,6 +2,20 @@
 
 Owner: reid · Completed (implementation): 2026-09-26 · Spec: `spec.md` · Design: `design.md` (reviewed; § 11 records the implementation deviations) · Goal: `work/orchestration/goals/design-space-combinations/` round 2, T-005.
 
+[AGENT] Closed 2026-09-26 at the owner's direction ("close WI-093 too", goal `evidence/owner-ruling-closure.md`) through `pm close-item WI-093` and archived here from `work/active/`. Reviews: design FINDINGS applied (`evidence/design-review.md` under the goal), implementation FINDINGS applied (`evidence/implementation-review.md`), round-2 and answer FINDINGS applied (`evidence/round2-answer-review.md`). Paths below that name `work/active/WI-093_combination-assemblies/` now resolve under this directory.
+
+## 0. Acceptance criteria
+
+| ID | Requirement (spec) | Evidence | Met |
+|---|---|---|---|
+| R1 | Assemble the previously untested compatible combinations C-1, C-2, C-4, C-5 from existing definitions; C-3 deferred with reason | § 2–3; design § 1 (C-3 deferral) | yes |
+| R2 | No new `calc def`, `part def`, `constraint def` or `port def`; no reviewed body changed (prefix rewrite or typed adapter = reuse) | `evidence/build-hashes.json` (21 bodies `prefix_only`, 0 adapters); implementation review Q1, Q2 (no new definition; diffs prefix-only) | yes |
+| R3 | MR-7: every quantity's role stated; no automatic sizing; supplied ratings the basis of their screens; inherited operating-point directions disclosed | design § 2–6 (role columns, the C-1 role change), § 2 of this report; implementation review Q3 | yes |
+| R4 | MR-4: every inherited value carries its source and grade | design § 2–5 grades; design review Q3 (every value confirmed at its cited line or baseline channel, two grades corrected) | yes |
+| R5 | Each assembly evaluated through the package's own graph with its constraint report on named cases; per case executes / satisfies which checks / refused with the body's message; independent verification by identities | `evidence/native_runs/<case>/result.json` (11 cases, 25 constraint results each, 0 refusals); `exploration/combinations/verify.py`, `evidence/verification-summary.json` (11 of 11); § 2–3 | yes |
+| R6 | Reuse counted by the transfer register's rule | design § 7 (25 definitions instantiated directly, 29 with the four 'Plasma' owns; 21 copied bodies; 0 mathematical changes; new case bindings) | yes |
+| R7 | Registered in `tests/model_families.py`; fixed point under stock regeneration with preserved bodies; Stellaris and ARIES packages, library and both live assemblies unchanged | `tests/model_families.py` (`combinations`; spine tests 15 passed); `evidence/fixed-point-generation.log`, `build-hashes.json` `fixed_point`; goal `evidence/preservation-check-t005-{build,run}.json` and the delivery Stellaris replay | yes |
+
 ## 1. What was built
 
 Four assemblies from existing definitions only, generated into one native package. No library file, completion body, live package or live assembly changed (preservation checks `evidence/preservation-check-t005-{build,run}.json` in the goal, 20,391 protected files unchanged).

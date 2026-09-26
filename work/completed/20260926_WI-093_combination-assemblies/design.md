@@ -1,3 +1,9 @@
+---
+Status: complete
+Created: 2026-09-26
+Updated: '2026-09-26'
+---
+
 # Design: combination assemblies from existing definitions (WI-093)
 
 Owner: reid · Created: 2026-09-26 · Updated: 2026-09-26 · Spec: `spec.md` · Goal: `work/orchestration/goals/design-space-combinations/` round 2. Fresh design review 2026-09-26: FINDINGS, six notes, all applied (goal `evidence/design-review.md`, dispositions there).

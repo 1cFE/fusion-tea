@@ -18,7 +18,7 @@
 
 ## 3. Part A — the assemblies from existing definitions (round 2, WI-093)
 
-Built as one native package from 14 library files and 4 new design files (`models/designs/combinations/`), with 21 reviewed completion bodies reused unchanged apart from their import prefix, a fixed-point regeneration and a snapshot (`exploration/combinations/`, report `work/active/WI-093_combination-assemblies/report.md`). 11 cases, 0 refusals, 25 constraint results per case, every identity in the design's § 8 recomputed on every case (`evidence/verification-summary.json`, `passed: true`). MW unless stated.
+Built as one native package from 14 library files and 4 new design files (`models/designs/combinations/`), with 21 reviewed completion bodies reused unchanged apart from their import prefix, a fixed-point regeneration and a snapshot (`exploration/combinations/`, report `work/completed/20260926_WI-093_combination-assemblies/report.md`). 11 cases, 0 refusals, 25 constraint results per case, every identity in the design's § 8 recomputed on every case (`evidence/verification-summary.json`, `passed: true`). MW unless stated.
 
 | Assembly (map row) | Executes | Satisfies the evaluated checks | Fails which check | Needs new behavior |
 |---|---|---|---|---|
@@ -28,7 +28,7 @@ Built as one native package from 14 library files and 4 new design files (`model
 | **C-5** ARIES selected-purchase law on the Stellaris helium circulator at a re-selected rating, with the ARIES screen (E1) | yes, 3 of 3 cases | 8 MW: capital 565.08 M USD (ratio 1.278), margin 1.74; 12 MW: 847.61 M USD, extrapolated flag set, satisfied | 5 MW: screen violated (margin −1.26), capital 353.17 M USD | none; the Stellaris law's own 0.28 exponent on shaft makes the two laws diverge off the reference point (reported, not quantified) |
 | **C-3** ARIES divertor helium circuit into the Stellaris exchanger, salt loop and matched steam cycle (H3) | not attempted | — | — | none by the map; deferred because 'Primary Heat Transport' and 'Turbine Plant' are whole costed subsystems of about eighty bound attributes each, one in a design package (design § 1); "assemblable in principle, not demonstrated" |
 
-Every value is a stored channel of `work/active/WI-093_combination-assemblies/evidence/native_runs/<case>/result.json`, tabulated in `evidence/cases-summary.json` and the report's § 2.
+Every value is a stored channel of `work/completed/20260926_WI-093_combination-assemblies/evidence/native_runs/<case>/result.json`, tabulated in `evidence/cases-summary.json` and the report's § 2.
 
 ## 4. Characterization of the failed and the new-behavior combinations
 
@@ -84,12 +84,12 @@ R=exploration/aries_integrated/studies/20260926-aries-design-choice-interactions
 .codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" python work/orchestration/goals/design-space-combinations/evidence/scratch-screens.py --work /tmp/scratch-screens --out /tmp/scratch-screens.json'
 # Round 2: execute the 11 cases into a scratch directory (expected: all evaluated; fingerprint 78016859…) and verify
 # every identity there, writing the summaries to the same scratch directory; the sealed receipts under
-# work/active/WI-093_combination-assemblies/evidence are not touched
+# work/completed/20260926_WI-093_combination-assemblies/evidence are not touched
 .codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" python exploration/combinations/run.py --root /tmp/combinations-replay'
 .codex-test/run python exploration/combinations/verify.py --runs /tmp/combinations-replay --out-dir /tmp/combinations-replay
 # Round 2: rebuilding the package rewrites exploration/combinations/combinations_tea, the snapshot and build-hashes.json
 # in place; run it only to reproduce the fixed point and confirm afterwards that nothing changed:
-.codex-test/run python exploration/combinations/build.py && git diff --stat -- exploration/combinations work/active/WI-093_combination-assemblies/evidence
+.codex-test/run python exploration/combinations/build.py && git diff --stat -- exploration/combinations work/completed/20260926_WI-093_combination-assemblies/evidence
 # Preservation of everything the goal must not change
 .codex-test/run python work/orchestration/goals/design-space-combinations/evidence/check-preservation.py --output /tmp/preservation-check.json
 ```

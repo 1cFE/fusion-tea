@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'combinations_tea'
-EVIDENCE = ROOT / 'work/active/WI-093_combination-assemblies/evidence'
+EVIDENCE = ROOT / 'work/completed/20260926_WI-093_combination-assemblies/evidence'
 RUNS = EVIDENCE / 'native_runs'
 L = 'combinations_loop_brayton__loop_brayton__'
 C = 'combinations_plasma_chain__plasma_chain__'

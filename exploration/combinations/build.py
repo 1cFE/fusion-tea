@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'combinations_tea'
-EVIDENCE = ROOT / 'work/active/WI-093_combination-assemblies/evidence'
+EVIDENCE = ROOT / 'work/completed/20260926_WI-093_combination-assemblies/evidence'
 LIBRARY = [
     'models/library/structure/mfe_interfaces.sysml', 'models/library/structure/mfe_plasma.sysml',
     'models/library/analyses/mfe_plasma_sustainment.sysml', 'models/library/analyses/mfe_plasma_scaling.sysml',
