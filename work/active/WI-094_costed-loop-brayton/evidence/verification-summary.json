@@ -1,0 +1,19 @@
+{
+  "fingerprint": "a4c7a87136fe3ea373fb02a899ed8262a800a7443891db986411f00f26c8aeea",
+  "verified_cases": 7,
+  "refused_cases": [
+    "c1-flow4000-reselected-ratings"
+  ],
+  "controls_exact": {
+    "c1-aries-ratios-aries-ratings": true,
+    "c1-aries-ratios-reselected-ratings": true,
+    "c1-ratio1.35-reselected-ratings": true,
+    "c1-flow1400-aries-ratings": true,
+    "c1-flow4000-reselected-ratings": "refused: LCOE undefined for nonpositive net electricity"
+  },
+  "package_tree_clean": false,
+  "failures": [
+    "package tree not clean after the runs"
+  ],
+  "passed": false
+}

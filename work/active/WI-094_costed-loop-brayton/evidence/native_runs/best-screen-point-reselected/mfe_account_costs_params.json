@@ -1,0 +1,11 @@
+{
+  "costed_loop_brayton__plant__annual_om__evaluate__alpha": 0.5,
+  "costed_loop_brayton__plant__annual_om__evaluate__n_mod_in": 1.0,
+  "costed_loop_brayton__plant__annual_om__evaluate__om_ref": 0.0,
+  "costed_loop_brayton__plant__annual_om__evaluate__p_net": 1000.0,
+  "costed_loop_brayton__plant__annual_om__evaluate__ref_net_power": 1000.0,
+  "costed_loop_brayton__plant__indirect_cost__evaluate__construction_time": 6.0,
+  "costed_loop_brayton__plant__indirect_cost__evaluate__reference_construction_time": 6.0,
+  "costed_loop_brayton__plant__operating_levelization__evaluate__inflation_rate_in": 0.0,
+  "costed_loop_brayton__plant__operating_levelization__evaluate__project_time": 0.0
+}

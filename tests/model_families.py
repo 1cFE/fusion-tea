@@ -190,6 +190,21 @@ SOURCE_COLLECTIONS: dict[str, tuple[str, ...]] = {
         "designs/combinations/combinations_lumped_fit.sysml",
         "designs/combinations/combinations_plasma_chain.sysml",
     ),
+    # WI-094 (goal design-study-parameters): the costed loop-Brayton assembly; source: exploration/costed_loop_brayton/build.py staging list.
+    "costed_loop_brayton": (
+        "analyses/mfe_primary_loop.sysml",
+        "analyses/mfe_viability.sysml",
+        "analyses/integrated_heat_electricity.sysml",
+        "analyses/ideal_gas_brayton_components.sysml",
+        "analyses/integrated_equipment_costs.sysml",
+        "structure/integrated_equipment_parts.sysml",
+        "foundation/costed_component.sysml",
+        "analyses/mfe_fuel_cycle.sysml",
+        "analyses/mfe_account_costs.sysml",
+        "analyses/mfe_lcoe_dcf.sysml",
+        "analyses/integrated_lifecycle_costs.sysml",
+        "designs/costed_loop_brayton/costed_loop_brayton.sysml",
+    ),
 }
 
 SHARED_PATHS: tuple[str, ...] = tuple(sorted(set(IFE.owned) & set(MFE.owned)))
