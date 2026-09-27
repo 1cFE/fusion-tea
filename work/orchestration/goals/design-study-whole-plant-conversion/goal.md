@@ -2,7 +2,7 @@
 
 ## Status
 
-grounded — 2026-09-27. [OWNER] Invoked run-goal with the retained owner brief, authorizing grounding and execution with this slug without reconfirmation.
+closed — 2026-09-27. [OWNER-VERBATIM] “please close the goal”. The verified engineering endpoint is complete; the owner authorized formal closure.
 
 ## Question
 
@@ -58,3 +58,7 @@ grounded — 2026-09-27. [OWNER] Invoked run-goal with the retained owner brief,
 ### Engineering endpoint — 2026-09-27
 
 [AGENT] The verified conditional engineering endpoint is met; [answer.md](answer.md) and the sealed study at a7bd94ed record the result. Independent final review passes. Round 2 is closed by the answered-goal trigger. Formal goal and WI-098 closure remain reserved to the owner; closure is recommended.
+
+### Owner closure — 2026-09-27
+
+[OWNER-VERBATIM] “please close the goal”. Closed on the completed [engineering answer](answer.md), sealed study at a7bd94ed9 and [independent final PASS](evidence/final-results-review-r2.md). The conditional scope and recorded limitations remain part of the result.

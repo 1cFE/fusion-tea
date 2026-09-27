@@ -240,3 +240,9 @@ T-005 · native integration and replacement run-study · exploration/whole_plant
 - **Discoveries:** All ten replacement findings and the first record's numerical blocker have joined dispositions in exploration/whole_plant_conversion/studies/DISCOVERY_LOG.md. Their homes resolve to retained evidence. Reviewed limitations remain stated in the answer and study; repaired numerical and preparation issues retain their failed history.
 - **Learning:** Accept the proposed delta with its finite-catalog and conditional-model limits; append it to learnings.md. No general fusion-cost or global technology superiority claim follows.
 - **Recommendation:** Owner may formally close this goal and WI-098. The intended engineering endpoint is complete; no further modeling task is needed to answer the declared question. Future vendor, plasma or neutron-transport qualification would be new scope.
+
+### Goal closure — 2026-09-27
+
+- **Authority:** [OWNER-VERBATIM] “please close the goal”.
+- **Decision:** Trigger: explicit owner authorization following the verified answer and completed Round 2 coverage. Decision: formally close the goal because its declared endpoint is met. Tier: reserved gate. Decided by: owner; recorded by coordinator. Changed: goal.md status to closed.
+- **Evidence:** Sealed study a7bd94ed9, executor reading and round outcome 32adaee9f, answer.md and evidence/final-results-review-r2.md PASS. The scientific qualifications and finding dispositions remain recorded with the result.
