@@ -1,0 +1,11 @@
+{
+  "source": "exploration/aries_integrated/studies/20260925-aries-revised-reference-network/results/cases.json",
+  "source_sha256": "fc9b0ce798419b18461c866a41e15db62c632ee24d9691c936f1ea0f46721aff",
+  "case": "nominal-calculated",
+  "executable": "f739dbce67699b7adfae7c1adf5599ab7c30e85987caad53e0f8affd9b880ce4",
+  "base_manifest_sha256": "16b91d0ef205beb7ac04ad0ae4452a55895efd222bdebde9d7a83cbf237b3078",
+  "composer_sha256": "c78155ea575c300be868b21aea553e687b5c61ac0383c93ff801dc78a4699559",
+  "contract_sha256": "041bf0cd5a273dfb2c813d651e79c6b020022ba89f91ad96d817d40c5c360f61",
+  "brief_sha256": "68e80fc9732ff26e93eed80c19c6ab17319cfc5444fdc0d002a6aff41f4812b6",
+  "native_main_evaluations": 0
+}

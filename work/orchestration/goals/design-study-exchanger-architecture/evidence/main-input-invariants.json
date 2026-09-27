@@ -1,0 +1,12 @@
+{
+  "main_cases": 432,
+  "allowed_main_changes": [
+    "aries_integrated_plant__cycle__selected_flow",
+    "aries_integrated_plant__heat_exchangers__network_mode",
+    "aries_integrated_plant__heat_exchangers__pbli_split_fraction",
+    "aries_integrated_plant__source__producer_mode",
+    "aries_integrated_plant__source__reference_fusion_mw"
+  ],
+  "unexpected_changes": [],
+  "claim": "All other 419 inputs equal the exact original control, including every selected rating, area, pump capacity and purchase/finance/fuel setting. Operating choice set identical across architectures except network split. No demand-derived inventory."
+}

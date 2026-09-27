@@ -1,0 +1,184 @@
+{
+  "study_id": "20260926-design-study-exchanger-architecture",
+  "axes": [
+    {
+      "axis": "source_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__source__producer_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "framing": "sensitivity",
+      "basis": "1 calculated control; 0 supplied downstream family; no sustained plasma claim",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "source_load",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__source__reference_fusion_mw",
+          "provenance": "fan_out"
+        }
+      ],
+      "framing": "search",
+      "basis": "Supplied common-load boundary; exact nominal source anchor and engineered 1650\u20132600 MW window",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "architecture",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__network_mode",
+          "provenance": "fan_out"
+        }
+      ],
+      "framing": "search",
+      "basis": "Existing series or series-then-parallel connection graph",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "cycle_flow",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "framing": "search",
+      "basis": "Same four supplied operating choices for both architectures; installed capacities fixed",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "branch_split",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__heat_exchangers__pbli_split_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "framing": "search",
+      "basis": "Supplied network operating choice; inert .85 placeholder in series",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "conductance_uncertainty",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_hx__assumed_u",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__pbli_hx__assumed_u",
+          "provenance": "tie"
+        },
+        {
+          "key": "aries_integrated_plant__divertor_hx__assumed_u",
+          "provenance": "tie"
+        }
+      ],
+      "framing": "sensitivity",
+      "basis": "[AGENT] correlated 0.8/1.2 multiplier on each inherited U; shared uncertainty, no physical identity or hardware change asserted",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "pressure_loss",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__pressure_loss__loss_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "framing": "sensitivity",
+      "basis": "Common .02/.08 sensitivity and network .08 differential against inherited .045 series",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "pump_mode",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__pump_mode",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__pbli_pump__pump_mode",
+          "provenance": "tie"
+        },
+        {
+          "key": "aries_integrated_plant__divertor_pump__pump_mode",
+          "provenance": "tie"
+        }
+      ],
+      "framing": "sensitivity",
+      "basis": "[AGENT] coordinated switch to existing fixed-power mode 1 for all pumps",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "pump_power",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__he_pump__fixed_power",
+          "provenance": "fan_out"
+        },
+        {
+          "key": "aries_integrated_plant__pbli_pump__fixed_power",
+          "provenance": "tie"
+        },
+        {
+          "key": "aries_integrated_plant__divertor_pump__fixed_power",
+          "provenance": "tie"
+        }
+      ],
+      "framing": "sensitivity",
+      "basis": "[AGENT] coordinated 0.8/1.2 multiplier on each own reference power; preserves distinct powers and existing heat recovery",
+      "window_provenance": "engineered"
+    },
+    {
+      "axis": "tritium_price",
+      "keys": [
+        {
+          "key": "aries_integrated_plant__fuel_inventory__tritium_price",
+          "provenance": "fan_out"
+        }
+      ],
+      "framing": "sensitivity",
+      "basis": "[AGENT] selected zero-price bookkeeping endpoint within owner-authorized fuel sensitivity; reprices annual purchases and initial stock; no breeding claim",
+      "window_provenance": "engineered"
+    }
+  ],
+  "loads": [
+    1650.0,
+    1835.4512830147435,
+    2000.0,
+    2100.0,
+    2200.0,
+    2250.0,
+    2300.0,
+    2350.0,
+    2400.0,
+    2450.0,
+    2500.0,
+    2600.0
+  ],
+  "flows": [
+    1300.0,
+    1400.0,
+    1500.0,
+    1600.0
+  ],
+  "splits": [
+    0.5,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9
+  ],
+  "main_count": 432,
+  "paired_sensitivity_count": 192,
+  "selection_tolerance_MW": 0.01,
+  "baseline_loss": 0.045,
+  "main_execution_authorized": false
+}

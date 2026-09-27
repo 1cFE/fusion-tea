@@ -1,0 +1,25 @@
+{
+  "status": "native execution and complete numerical verification passed; awaiting coordinator reporting/seal",
+  "completed_utc": "2026-09-27T03:38:18.450798+00:00",
+  "cases": 648,
+  "all_implemented_predicates_passing": 397,
+  "cases_with_engineering_failures": 251,
+  "native_outputs_per_case": 551,
+  "native_predicates_per_case": 14,
+  "independently_verified_channels": 364,
+  "verified_rows": 648,
+  "verification_outcome": "pass",
+  "exact_predicate_mismatches": [],
+  "worst_relative_channel": {
+    "case_id": "20260926-design-study-exchanger-architecture:c0296",
+    "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+    "value": 2.6177531253779307e-09
+  },
+  "absolute_tolerance_note": "nearzero residual_magnitude 2.6177531253779307e-9 MW is within unchanged1e-7 MW tolerance; relative deviation alone is not the pass condition",
+  "package_clean": "pass",
+  "proposal_sha256": "259b2ae07fdcdaecd55861c6cb31f93bc067ad2a5a1b79c82f3e09751de65bdd",
+  "cases_sha256": "f6eaa3ec76d5b77d55bc07974181b391c65573623704e21c04eb84fd858c2eed",
+  "verification_sha256": "e12bb12075ea4ed7eed6557d4eaa2d74495879bff491f06bd12eaacc5e545676",
+  "extra_states": "primary hot/return and terminal differences exported but outside independent oracle catalog",
+  "native_refusals": 0
+}

@@ -1,0 +1,18 @@
+{
+  "reason": "Reviewer requested zero-price endpoint provenance remain AGENT-selected within owner-authorized fuel sensitivity",
+  "changed": [
+    {
+      "path": "axes.json",
+      "before_sha256": "802176a684dc5d6792c0c47768b5437b44815038e182f31ffe813557e65555a2",
+      "after_sha256": "f533ca2d4f5f2ae7c56bbbc9ebd68877e77df3d411c589c4ce1f70f3ec87a2c7"
+    },
+    {
+      "path": "axis-plan.json",
+      "before_sha256": "824499f17ad82215b78ee7d2d75ddab6381304c5bd8eeaa849cfb32f81b49fcb",
+      "after_sha256": "e323da19f5ddca00d48462a2c33267da30f5bcb0b1233e4511febd6db6e33161"
+    }
+  ],
+  "physical_inputs_changed": false,
+  "retained_previous_indicators": "indicators-attempt1.json",
+  "retained_previous_preflight": "preparation/preflight_results-attempt1.json"
+}

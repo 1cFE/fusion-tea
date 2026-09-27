@@ -1,0 +1,306 @@
+{
+  "kind": "oracle-only explicit operating selection, never inventory selection",
+  "tolerance_MW": 0.01,
+  "selected": [
+    {
+      "load_MW": 1650.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 341.0394528419434,
+      "ties": [
+        "main-L1650-F1300-M0-S0.85"
+      ],
+      "representative": "main-L1650-F1300-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 1650.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 341.03945284194384,
+      "ties": [
+        "main-L1650-F1300-M1-S0.5",
+        "main-L1650-F1300-M1-S0.6",
+        "main-L1650-F1300-M1-S0.65",
+        "main-L1650-F1300-M1-S0.7",
+        "main-L1650-F1300-M1-S0.75",
+        "main-L1650-F1300-M1-S0.8",
+        "main-L1650-F1300-M1-S0.85"
+      ],
+      "representative": "main-L1650-F1300-M1-S0.5",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 1835.4512830147435,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 491.467781963089,
+      "ties": [
+        "main-L1835.45128301474-F1300-M0-S0.85"
+      ],
+      "representative": "main-L1835.45128301474-F1300-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 1835.4512830147435,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 491.46778196308924,
+      "ties": [
+        "main-L1835.45128301474-F1300-M1-S0.5",
+        "main-L1835.45128301474-F1300-M1-S0.6",
+        "main-L1835.45128301474-F1300-M1-S0.65",
+        "main-L1835.45128301474-F1300-M1-S0.7",
+        "main-L1835.45128301474-F1300-M1-S0.75",
+        "main-L1835.45128301474-F1300-M1-S0.8",
+        "main-L1835.45128301474-F1300-M1-S0.85"
+      ],
+      "representative": "main-L1835.45128301474-F1300-M1-S0.5",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2000.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 624.9410486492652,
+      "ties": [
+        "main-L2000-F1300-M0-S0.85"
+      ],
+      "representative": "main-L2000-F1300-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2000.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 624.9410486492661,
+      "ties": [
+        "main-L2000-F1300-M1-S0.6",
+        "main-L2000-F1300-M1-S0.65",
+        "main-L2000-F1300-M1-S0.7",
+        "main-L2000-F1300-M1-S0.75",
+        "main-L2000-F1300-M1-S0.8"
+      ],
+      "representative": "main-L2000-F1300-M1-S0.6",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2100.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 706.0557903085011,
+      "ties": [
+        "main-L2100-F1300-M0-S0.85"
+      ],
+      "representative": "main-L2100-F1300-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2100.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 706.0557903085006,
+      "ties": [
+        "main-L2100-F1300-M1-S0.6",
+        "main-L2100-F1300-M1-S0.65",
+        "main-L2100-F1300-M1-S0.7",
+        "main-L2100-F1300-M1-S0.75",
+        "main-L2100-F1300-M1-S0.8"
+      ],
+      "representative": "main-L2100-F1300-M1-S0.6",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2200.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 718.8095441085374,
+      "ties": [
+        "main-L2200-F1400-M0-S0.85"
+      ],
+      "representative": "main-L2200-F1400-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2200.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 787.1705319677357,
+      "ties": [
+        "main-L2200-F1300-M1-S0.7",
+        "main-L2200-F1300-M1-S0.75"
+      ],
+      "representative": "main-L2200-F1300-M1-S0.7",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2250.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 759.366914938165,
+      "ties": [
+        "main-L2250-F1400-M0-S0.85"
+      ],
+      "representative": "main-L2250-F1400-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2250.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 759.3669149381565,
+      "ties": [
+        "main-L2250-F1400-M1-S0.6",
+        "main-L2250-F1400-M1-S0.65",
+        "main-L2250-F1400-M1-S0.7",
+        "main-L2250-F1400-M1-S0.75",
+        "main-L2250-F1400-M1-S0.8"
+      ],
+      "representative": "main-L2250-F1400-M1-S0.6",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2300.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 731.5632979085773,
+      "ties": [
+        "main-L2300-F1500-M0-S0.85"
+      ],
+      "representative": "main-L2300-F1500-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2300.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 799.9242857677727,
+      "ties": [
+        "main-L2300-F1400-M1-S0.65",
+        "main-L2300-F1400-M1-S0.7",
+        "main-L2300-F1400-M1-S0.75",
+        "main-L2300-F1400-M1-S0.8"
+      ],
+      "representative": "main-L2300-F1400-M1-S0.65",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2350.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 772.1206687381912,
+      "ties": [
+        "main-L2350-F1500-M0-S0.85"
+      ],
+      "representative": "main-L2350-F1500-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2350.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 840.48165659739,
+      "ties": [
+        "main-L2350-F1400-M1-S0.7",
+        "main-L2350-F1400-M1-S0.75"
+      ],
+      "representative": "main-L2350-F1400-M1-S0.7",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2400.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 812.678039567809,
+      "ties": [
+        "main-L2400-F1500-M0-S0.85"
+      ],
+      "representative": "main-L2400-F1500-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2400.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 812.6780395678215,
+      "ties": [
+        "main-L2400-F1500-M1-S0.6",
+        "main-L2400-F1500-M1-S0.65",
+        "main-L2400-F1500-M1-S0.7",
+        "main-L2400-F1500-M1-S0.75",
+        "main-L2400-F1500-M1-S0.8"
+      ],
+      "representative": "main-L2400-F1500-M1-S0.6",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2450.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 784.8744225382286,
+      "ties": [
+        "main-L2450-F1600-M0-S0.85"
+      ],
+      "representative": "main-L2450-F1600-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2450.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 853.2354103974382,
+      "ties": [
+        "main-L2450-F1500-M1-S0.65",
+        "main-L2450-F1500-M1-S0.7",
+        "main-L2450-F1500-M1-S0.75",
+        "main-L2450-F1500-M1-S0.8"
+      ],
+      "representative": "main-L2450-F1500-M1-S0.65",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2500.0,
+      "mode": 0,
+      "status": "passing_tested",
+      "maximum_net_MW": 825.4317933678403,
+      "ties": [
+        "main-L2500-F1600-M0-S0.85"
+      ],
+      "representative": "main-L2500-F1600-M0-S0.85",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2500.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 893.7927812270445,
+      "ties": [
+        "main-L2500-F1500-M1-S0.7",
+        "main-L2500-F1500-M1-S0.75",
+        "main-L2500-F1500-M1-S0.8"
+      ],
+      "representative": "main-L2500-F1500-M1-S0.7",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    },
+    {
+      "load_MW": 2600.0,
+      "mode": 0,
+      "status": "no_passing_tested_case",
+      "ties": []
+    },
+    {
+      "load_MW": 2600.0,
+      "mode": 1,
+      "status": "passing_tested",
+      "maximum_net_MW": 906.546535027081,
+      "ties": [
+        "main-L2600-F1600-M1-S0.65",
+        "main-L2600-F1600-M1-S0.7",
+        "main-L2600-F1600-M1-S0.75",
+        "main-L2600-F1600-M1-S0.8"
+      ],
+      "representative": "main-L2600-F1600-M1-S0.65",
+      "representative_policy": "lowest tested flow then lowest split among 0.01 MW ties; all ties retained"
+    }
+  ]
+}
