@@ -59,3 +59,7 @@ The owner-authorized fourth design passed independent review. Its model-owned ph
 ## Amendments
 
 [OWNER] 2026-09-26: authorize one further design revision and independent review, then autonomous implementation/integration/study/final review only if it passes and stays within bounded scope. Preserve MR-7, explain physical equalities and roles, and account for the cooler/pumping/recuperator additions in the scope assessment. A further failure, major-model dependency or policy exception stops the run. Full direction is retained verbatim in `evidence/owner-direction-fourth-submission.md`.
+
+[OWNER] 2026-09-26: authorize one bounded numerical-repair continuation, including a new executable, revalidation and complete matched-study replay. The [full direction](evidence/owner-direction-numerical-repair.md) extends the applicable exhausted cap only for confirmed numerical defects. Oracle, tolerances, physical domain, explicit offers and comparison scope remain unchanged. Independent repair and economic review are required. Formal closure remains owner-held.
+
+[AGENT] Execution detail: round 2 records this authorized continuation with one repaired promoted identity and one fresh study. It does not reopen the closed round 1 or replace its failed evidence. The original four-round ceiling and ordinary mechanical retry limits remain; the previous stop on a new numerical executable is superseded only within the owner's repair scope.

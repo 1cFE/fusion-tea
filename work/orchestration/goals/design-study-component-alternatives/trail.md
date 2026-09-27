@@ -212,3 +212,24 @@ T-006 retry 1 of 2 · execute the same 498 proposals using `.codex-test/run bash
 - **Corrected finding:** Earlier reporting attributed all six numerical mismatches to cooler stopping accuracy. That cause was independently established only for c0206. Current goal prose is corrected; the sealed finding is corrected by an immutable-record addendum and a joined discovery row. Other mismatch causes remain unisolated.
 - **Findings and learning:** All seven native findings have concrete dispositions/homes. The numerical dependency remains blocked for owner disposition; qualification limitations remain declared seams; the launch issue is resolved. The three proposed agent learning statements are accepted with the isolated-cause qualification and appended to `learnings.md`.
 - **Recommendation:** Retain this partial result and exact unmet verification requirement. Formal goal/WI-096 closure remains with the owner. No new round is opened.
+
+## Round 2 — bounded-numerical-repair
+
+### Strategy revision — 2026-09-26
+
+[OWNER] The new direction authorizes a bounded numerical repair, its new executable, complete study replay and independent reviews; no tolerance waiver or physical-domain expansion. Direction: `evidence/owner-direction-numerical-repair.md`.
+
+[AGENT] Isolate every scalar discrepancy against unchanged independent evidence, repair only demonstrated native numerical accuracy defects, and compare the same explicit offers on one repaired identity. The assumption is that the six mismatches are numerical rather than substantive physical-model failures. A substantive physics dependency stops dependent repair and is surfaced to the owner. Original blocked executable/cases/diagnostics remain sealed at study commit `49c20e69`, with reporting correction `0485f590`. MR-7 variable roles and selected equipment do not change. The question remains selected steam versus tested Brayton conversion-subsystem cost per net MWh at matched source conditions.
+
+### T-007 scope
+
+- **Objective:** Isolate all six numerical failures and repair confirmed native accuracy defects with focused regressions and preserved historical evidence.
+- **Why now:** Owner explicitly authorizes this repair and necessary new executable after the prior verification stop.
+- **Scope:** WI-096 numerical-repair supplement, goal-owned native body variants/build outputs, targeted numerical checks and validation. Preserve oracle, tolerances, original libraries/packages, old sealed study, all design inputs and physical domains. No technology branch or substantive physics change.
+- **Inputs:** `goal.md`, owner direction, blocked study at `49c20e69`, correction `0485f590`, independent failure review, WI-096 reviewed design/report and actual native implementations.
+- **Done when:** All six causes are individually evidenced; confirmed native defects are repaired and focused failure/nearby-case regressions pass, ready for independent review; or an exact non-numerical dependency is established.
+- **Stop when:** Substantive physical-model change, oracle/tolerance change, unsupported domain extension or owner-reserved decision is required.
+
+### T-007 start — 2026-09-26
+
+T-007 · continuing model author owns `work/active/WI-096_matched-conversion-subsystems/numerical-repair/`, goal-owned native bodies/build/package outputs and focused regressions. Coordinator owns goal records and study metadata/execution. No independent scientific work depends on the repaired identity before independent review. The prior reviewer remains separate from authoring. Exact ownership and requirements are in `evidence/numerical-repair-brief.md`.
