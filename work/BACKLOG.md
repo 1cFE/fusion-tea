@@ -522,6 +522,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-097
+  name: exchanger thermal requirements
+  scale: standard
+  priority: P1
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -649,3 +655,4 @@ standalone:
 | WI-094 | Costed loop-Brayton assembly | standard | P1 | completed | Completed 2026-09-26 |
 | WI-095 | Loop return control | standard | P1 | completed | Completed 2026-09-26 |
 | WI-096 | Matched Conversion Subsystems | standard | P1 | backlog |  |
+| WI-097 | exchanger thermal requirements | standard | P1 | backlog |  |

@@ -28,3 +28,21 @@ Append-only accepted round findings. None yet.
 - **Implication:** Establish applicable thermal requirements and supported source/loop coupling before additional hardware selection studies or physical recommendations.
 - **Supersedes:** none.
 - **Accepted by:** Round 1 review, 2026-09-26; evidence/seal-review.md.
+
+## L-004 — The source's 30 K bank endpoints do not uniquely prescribe six local minima
+
+- **Claim:** [AGENT] Raffray Table III and Fig. 12 support the displayed 30 K differences at the composite bank endpoints. They do not uniquely specify minimum approaches at both actual terminals of all three primary exchangers. Mixed network temperatures cannot substitute for actual branch terminals.
+- **Evidence:** Original retained source pages cited in evidence/r2-thermal-requirements.md; independent original-page check in evidence/r2-source-review.md. Earlier source context: work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/reference-case-contract.md. New interpretation artifacts are committed with the Round 2 records.
+- **Scope:** The retained source pages; not a universal engineering recommendation about approach temperatures. Proposed all-six 30 K minima remain an agent recommendation awaiting owner adoption.
+- **Implication:** Declare the branch-level approach specification and use actual exchanging-stream temperatures before claiming a preferred case satisfies it.
+- **Supersedes:** none; refines L-003's unresolved approach requirement.
+- **Accepted by:** Round 2 coordinator closure using independent source review, 2026-09-27.
+
+## L-005 — Conditional N-R returns exclude the earlier leaders before exchanger refinement
+
+- **Claim:** [AGENT] With the source-informed aggregate returns and unchanged N flow/hot-cap settings, the divertor permits at most 2005.036667 MW supplied fusion. The earlier 2200/2300 MW leaders fail this necessary condition in both architectures, independent of UA or cycle flow/split.
+- **Evidence:** exploration/exchanger_architecture/studies/20260926-design-study-exchanger-architecture/results/cases.json@afd96d51; evidence/r2-return-screen.py and r2-return-screen.json; independently replayed in evidence/r2-source-review.md. The screen assesses all 432 main-grid cases: 324 fail a necessary hot cap, 108 survive only that screen.
+- **Scope:** Exact conditional N-R returns He 659.15 K, PbLi 724.15 K and divertor 846.15 K, full delivered duty with pump heat once, fixed primary flow/cp and inherited hot caps. It does not establish a feasible point below the bound or retroactively impose these requirements on the original study.
+- **Implication:** Re-evaluate thermally admissible operations before selecting a preferred architecture; buying more exchanger area cannot repair this particular fixed-flow source-side limit.
+- **Supersedes:** none; limits application of L-001 under the amended thermal contract.
+- **Accepted by:** Round 2 coordinator closure using independent source review, 2026-09-27.

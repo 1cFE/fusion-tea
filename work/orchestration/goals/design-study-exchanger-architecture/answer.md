@@ -1,6 +1,18 @@
 # Exchanger connections, operating range and electricity cost
 
-**Result: the network expands the modeled operating range and sometimes lowers conditional LCOE, but the evidence cannot yet select a physically qualified plant layout.** Changing the split fixes the prior network shortfall. At several common loads it also permits a lower cycle flow, saving net electricity with the same selected hardware. The advantage can disappear under pumping or pressure-loss assumptions, and the model does not qualify primary return temperatures, practical exchanger approaches or network hydraulics.
+## Thermal continuation — 2026-09-27
+
+**The earlier leading cases do not satisfy the newly proposed primary-return requirements.** The owner's revised criterion is a thermally consistent conditional architecture comparison; full plant qualification is unnecessary. [Owner direction](evidence/owner-supplement-r2.md).
+
+The original Raffray pages put the cited 30 K at the two ends of a typical exchanger-bank temperature diagram. They do not uniquely prescribe minimum differences at all six individual exchanger terminals. The proposed N-R comparison adopts source-informed aggregate cold-return targets of 386 °C for blanket helium, 451 °C for PbLi and 573 °C for divertor helium. These are explicit conditional design choices, not established requirements of the original N case. Existing delivered duty includes recovered pump heat once. [Source reading and proposed requirements](evidence/r2-thermal-requirements.md).
+
+At the retained divertor flow and 700 °C hot cap, that return target permits 329.7555 MW of delivered heat. The old 2200 and 2300 MW fusion cases require 359 and 374 MW: both architectures fail, independently of exchanger area or cycle flow/split refinement. The corresponding source-side upper load is 2005.036667 MW. The reproducible assessment of all 432 prior main-grid cases finds 324 necessary hot-cap failures; the other 108 have not been established thermally passing. [Assessment code](evidence/r2-return-screen.py) and [complete results](evidence/r2-return-screen.json). No native model or historical study was changed by this assessment.
+
+**Pending requirement decision:** adopt at least 30 K at both actual terminals of each of the three primary exchangers as an explicit conservative requirement, or establish branch-specific limits. This does not apply to the recuperator or other plant exchangers. A mixed turbine inlet or a mixed primary return cannot substitute for an actual exchanger terminal. Native implementation and refinement are tracked in [WI-097](../../../active/WI-097_exchanger-thermal-requirements/spec.md), with the [implementation path](evidence/r2-implementation-options.md). No new preferred case is claimed while this requirement is unresolved.
+
+## Round 1 result under the earlier thermal contract
+
+The network expands the operating range under the original implemented checks and sometimes lowers conditional LCOE. Changing the split fixes the prior network shortfall. At several common loads it also permits a lower cycle flow, saving net electricity with the same selected hardware. The following retained results do not include the N-R return requirements or an adopted local approach requirement; they establish neither a preferred N-R operation nor its thermal adequacy.
 
 ## Starting design and changed decision
 
