@@ -1,0 +1,30 @@
+[
+  {
+    "source": "exploration/component_alternatives/studies/study_route.py",
+    "target": "exploration/whole_plant_conversion/studies/study_route.py",
+    "source_sha256": "0a95f34031c2092edb6081db7c6790f02447bf1183d73198a6fb8947e9ed5e35",
+    "target_sha256": "2e24192a20b121d8c90f1d78e7575747fcbe3fdf416e182901231caf62c1b77e",
+    "change": "Reversible package identifier/name only; no physics or lifecycle changes."
+  },
+  {
+    "source": "exploration/component_alternatives/studies/prepare_interface.py",
+    "target": "exploration/whole_plant_conversion/studies/prepare_interface.py",
+    "source_sha256": "a0136074ae48855a4d1eccba3cbd8c7d8bcd9225af2d7dd11dbc62119fc4731b",
+    "target_sha256": "5fa1e61ed73ea057ee4aa700357a0c03642dac1bc60901f087b04bfcfa7157bd",
+    "change": "Reversible package identifier/name only; no physics or lifecycle changes."
+  },
+  {
+    "source": "exploration/component_alternatives/studies/execute_study.py",
+    "target": "exploration/whole_plant_conversion/studies/execute_study.py",
+    "source_sha256": "ee4f53cd669e520e9f67ec6dfeabdef061f1d638af9cd78d3aad930ae73b837f",
+    "target_sha256": "21283696b514eb0a87baa0a421900224eef53af00b4878d320148d09a45526c8",
+    "change": "Reversible package identifier/name only; no physics or lifecycle changes."
+  },
+  {
+    "source": "exploration/component_alternatives/studies/oracle_entry.py",
+    "target": "exploration/whole_plant_conversion/studies/oracle_entry.py",
+    "source_sha256": "93ffec7159798eb3e2ff1ba4a1f4763ae62de4360f5509ae9fd90460bd341a5c",
+    "target_sha256": "c8bbcd8b8979addf81bd644d3059da995d6cb6da90da63bdee075331a2c69554",
+    "change": "Reversible package identifier/name only; no physics or lifecycle changes."
+  }
+]
