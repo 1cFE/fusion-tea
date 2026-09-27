@@ -59,6 +59,11 @@ exploration/stellarator_e2e/outputs/
 
 # Import aliases recreated by historical study and frozen comparison runners.
 /exploration/stellarator_e2e/studies/**/pkg_link/
+/exploration/component_alternatives/links/component_alternatives_tea
+/exploration/component_alternatives/studies/**/pkg_link/
+/exploration/exchanger_architecture/studies/**/pkg_link/
+/exploration/exchanger_architecture/thermal_requirements/studies/**/pkg_link/
+/work/active/WI-097_exchanger-thermal-requirements/evidence/**/pkg_link/
 /work/orchestration/goals/**/pkg_link/
 /.project/active/aries-comparison-preparation/current-readiness/candidate/evidence/**/pkg_link/
 /work/active/WI-073_matched-steam-cycle-for-current-comparison/evidence/structure-probe/selector/probe_selector
