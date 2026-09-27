@@ -7,7 +7,7 @@ from __future__ import annotations
 import math
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from component_alternatives_tea.modules.loop_return_control.primary_bypass_control import Primary_Bypass_ControlInput
+    from costed_loop_brayton_tea.modules.loop_return_control.primary_bypass_control import Primary_Bypass_ControlInput
 
 AUTO_IMPLEMENTED = False
 
@@ -95,6 +95,6 @@ def calculate(inputs) -> dict[str, float]:
 
 
 def run_primary_bypass_control(inputs: Primary_Bypass_ControlInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float]:
-    from component_alternatives_tea.schemas.primary_bypass_control_output import Primary_Bypass_ControlOutput
+    from costed_loop_brayton_tea.schemas.primary_bypass_control_output import Primary_Bypass_ControlOutput
     result = calculate(inputs)
     return tuple(result[name] for name in Primary_Bypass_ControlOutput.model_fields)

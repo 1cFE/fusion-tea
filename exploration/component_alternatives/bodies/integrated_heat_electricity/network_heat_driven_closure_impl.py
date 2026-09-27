@@ -9,7 +9,7 @@ fraction is an operating choice (a stand-in for the unmodelled branch hydraulic 
 resizes a stage. 0 < split < 1 is required in both modes.
 """
 import math
-from component_alternatives_tea.handwritten.integrated_heat_electricity.common import values, require, finish
+from aries_integrated.handwritten.integrated_heat_electricity.common import values, require, finish
 AUTO_IMPLEMENTED = False
 BRANCHES = ('he', 'divertor', 'pbli')
 
@@ -107,7 +107,7 @@ def _reviewed_run_network_heat_driven_closure(inputs):
     return finish('network_heat_driven_closure',out)
 
 
-from component_alternatives_tea.modules.integrated_heat_electricity.network_heat_driven_closure import Network_Heat_Driven_ClosureInput
+from aries_integrated.modules.integrated_heat_electricity.network_heat_driven_closure import Network_Heat_Driven_ClosureInput
 
 
 def run_network_heat_driven_closure(inputs: Network_Heat_Driven_ClosureInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:

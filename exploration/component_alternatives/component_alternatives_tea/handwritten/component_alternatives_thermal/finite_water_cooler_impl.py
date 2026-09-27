@@ -43,8 +43,14 @@ def calculate(x):
         out.update(failure_code=2.)
         return out
     for iteration in range(1,201):
-        mid=(lo+hi)/2;ua,mdot,gap=at(mid)
-        if abs(ua-x['ua'])<=1e-10:break
+        mid=lo+(hi-lo)/2
+        # Resolve the temperature bracket to adjacent floats. A UA-only stop
+        # does not bound flow or pumping power when the water rise is small.
+        if mid==lo or mid==hi:
+            mid=min((lo,hi),key=lambda value:abs(at(value)[0]-x['ua']))
+            ua,mdot,gap=at(mid)
+            break
+        ua,mdot,gap=at(mid)
         if ua<x['ua']:lo=mid
         else:hi=mid
     else:raise ValueError('cooler bisection failed to converge')

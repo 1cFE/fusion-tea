@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 PACKAGE = HERE / 'component_alternatives_tea'
-EVIDENCE = ROOT / 'work/active/WI-096_matched-conversion-subsystems/evidence'
+EVIDENCE = ROOT / 'work/active/WI-096_matched-conversion-subsystems/numerical-repair/build'
 LIBRARY = [
  'models/library/analyses/mfe_primary_loop.sysml', 'models/library/analyses/mfe_viability.sysml',
  'models/library/analyses/integrated_heat_electricity.sysml', 'models/library/analyses/ideal_gas_brayton_components.sysml',
@@ -42,7 +42,7 @@ BODIES = [
  (STELLARIS, 'mfe_account_costs/supplied_purchase_cost_impl.py','stellarator_tea'),
  (STELLARIS, 'mfe_lcoe_dcf/lcoe_dcf_impl.py','stellarator_tea'),
  (ARIES, 'integrated_heat_electricity/common.py','aries_integrated'),
- (ARIES, 'integrated_heat_electricity/network_heat_driven_closure_impl.py','aries_integrated'),
+ (HERE/'bodies', 'integrated_heat_electricity/network_heat_driven_closure_impl.py','aries_integrated'),
  (ARIES, 'integrated_heat_electricity/passive_recuperator_impl.py','aries_integrated'),
  (ARIES, 'integrated_heat_electricity/plant_electrical_balance_impl.py','aries_integrated'),
  (ARIES, 'ideal_gas_brayton_components/ideal_gas_compressor_impl.py','aries_integrated'),
@@ -54,7 +54,7 @@ BODIES = [
  (ARIES, 'integrated_equipment_costs/selected_inventory_purchase_impl.py','aries_integrated'),
  (ARIES, 'integrated_equipment_costs/eight_amount_sum_impl.py','aries_integrated'),
  (ARIES, 'integrated_equipment_costs/scaled_amount_impl.py','aries_integrated'),
- (ROOT/'exploration/costed_loop_brayton/bodies','loop_return_control/primary_bypass_control_impl.py','costed_loop_brayton_tea'),
+ (HERE/'bodies','loop_return_control/primary_bypass_control_impl.py','costed_loop_brayton_tea'),
  (HERE/'bodies','cooling_equipment_selected_pumps/cooling_equipment_with_selected_salt_pump_count_impl.py','component_alternatives_tea'),
 ]
 NAME = 'component_alternatives_tea'
