@@ -2,7 +2,7 @@
 
 **The network retains a real conditional advantage after thermal correction and fine refinement.** At 1,835.451 MW supplied fusion, offer B produces **528.43 MW net in the network versus 497.77 MW in series**, a **30.66 MW gain**. Both operating points meet the specified primary returns, all six 30 K terminal minima, full heat removal and equipment checks. This gain is much larger than the remaining sampled refinement changes. [Verified results](evidence/r3-results-analysis.md).
 
-**Study complete:** independent thermal/economic review passes, the native record is sealed, and a fresh 1,277-case replay reproduces every stored output and verdict exactly. Formal goal and work-item closure remain owner-held. No further thermal or study-choice input is needed from the owner.
+**Study complete:** independent thermal/economic review passes, the native record is sealed, and a fresh 1,277-case replay reproduces every stored output and verdict exactly. The owner closed the goal on 2026-09-27. [Closure decision](evidence/owner-direction-close.md). WI-097 remains open.
 
 ## What is compared
 

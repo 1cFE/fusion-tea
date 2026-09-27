@@ -282,3 +282,9 @@ T-008 · exploration/exchanger_architecture/thermal_requirements/studies/2026092
 - **Goal, task and retry fidelity:** T-007 remained an equivalent numerical repair, with unchanged equations/oracle/tolerances/maps and a new pin in its own authorized round. T-008 completed the original matched comparison and all requested delivery artifacts. Package-path launch correction before sealing changed no native meaning. MR-7 roles and owner preservation boundaries are maintained.
 - **Dispositions and learning:** Both discovery logs record resolved thermal/oracle/numerical findings and retained conditional cost/source/control seams. Independent reviewer accepts L-008–L-011; they are appended with agent provenance and bounded claims. No external cited artifact moved, and no additional scientific prerequisite remains for this goal's revised criterion.
 - **Recommendation:** Round 4 is closed. The revised goal is answered; formal goal and WI-097 closure remain owner-held. Deliver for owner review without requesting another study decision or opening another round.
+
+### Owner closure — 2026-09-27
+
+[OWNER-VERBATIM] “ok please close the goal” Direction retained in evidence/owner-direction-close.md.
+
+[AGENT coordinator] Closed design-study-exchanger-architecture as answered within the revised conditional thermal-comparison criterion. All four rounds are closed; final study@846c098b, delivery@9ca9f77c and replay/seal receipts@3988612a support completion. Every one of the 1277 maps independently verifies and replays exactly, and all 15 preferred main operations satisfy the claimed thermal requirements. Existing substantive and seal reviews PASS; no new review or study is needed for this owner-directed status change. Equipment-price assumptions, substantial primary bypass, constant-U and hydraulic/source limitations remain explicit. Sealed evidence is unchanged. Goal status, answer and project status updated; WI-097 remains open. No push or merge.

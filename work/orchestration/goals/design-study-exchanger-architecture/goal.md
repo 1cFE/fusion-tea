@@ -2,7 +2,9 @@
 
 ## Status
 
-`grounded` — 2026-09-26. [OWNER] The retained brief authorizes this named goal and routine comparison choices.
+`closed` — closed by the owner on 2026-09-27 as answered within the revised conditional thermal-comparison scope. [Closure direction](evidence/owner-direction-close.md).
+
+All four rounds are closed. The final 1277-case study is independently verified and reviewed, and its complete fresh replay is exact. Preferred main cases satisfy the adopted primary returns and all six 30 K terminal requirements. Explicit equipment-price assumptions and hydraulic/control limitations remain documented in the [answer](answer.md). WI-097 remains open.
 
 ## Question
 
