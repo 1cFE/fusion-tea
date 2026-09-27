@@ -27,17 +27,24 @@ The series/network comparison currently checks heat removal and selected equipme
 
 ## Scope and stage status
 
-[AGENT] Source and implementation-path investigations are in progress under goal T-004. Their artifacts are r2-thermal-requirements.md and r2-implementation-options.md in the goal's evidence directory. Independent review will determine which requirements and implementation can proceed. No thermal value or new operating closure is approved by this initial spec. This item owns model meaning and executable checks; the goal's native study owns exploration and reporting. Formal item closure remains with the owner.
+[AGENT] This item owns model meaning and executable checks; the goal's native study owns exploration and reporting. Formal item closure remains with the owner. Source and interface evidence are r2-thermal-requirements.md, r2-implementation-options.md and the independent r2-source-review.md in the goal's evidence directory.
 
 ### 2026-09-27 investigation update
 
 [AGENT] Original-page reading and implementation inspection are complete. The conditional N-R proposal uses exact aggregate cold-return targets He 659.15 K, PbLi 724.15 K and divertor 846.15 K, retaining full delivered duties with pump heat counted once, existing primary flows and hot caps. The replayable necessary-condition assessment at work/orchestration/goals/design-study-exchanger-architecture/evidence/r2-return-screen.py reads all 432 sealed main-grid cases: 324 fail a required-hot cap; the remaining 108 have not been established thermally passing. The unchanged divertor duty/flow/cap relationship limits supplied fusion to 2005.036667 MW under this boundary convention, excluding the former 2200/2300 MW leaders independently of arrangement. This assessment is not native model implementation and changes no historical result.
 
-[AGENT] The proposed isolated additive implementation is documented in the goal's evidence/r2-implementation-options.md. The source does not uniquely supply per-exchanger terminal minima. An owner question is pending on explicitly adopting 30 K at both actual terminals of each of the three primary exchangers. That choice excludes the recuperator and other plant exchangers. New positive thermal-adequacy claims remain dependent on the resolved requirement and independent review. No controller, bypass, effective-UA reduction or hardware change has been implemented.
+[AGENT] The source does not uniquely supply per-exchanger terminal minima. The owner subsequently delegated this choice and further study judgments in the goal's evidence/owner-supplement-r3.md. Adopt 30 K at both actual terminals of each of the three primary exchangers for the main conditional comparison. This excludes the recuperator and other plant exchangers; it is an agent-originated engineering requirement, not a source fact. The source-informed N-R returns above are also explicit conditional requirements. Preserve that authority in model doc comments and reports.
+
+### Executable acceptance contract
+
+- [INFERRED, delegated authority] Main thermal acceptance requires complete delivered duty removal, actual maintained primary returns659.15/724.15/846.15K within declared numerical closure tolerance, actual hot temperatures within independently supplied caps, defined exchanger states, and at least30K at all six actual primary-exchanger terminals. Mixed temperatures must not substitute for active exchanger terminals. Sensitivity requirements remain labelled alternatives.
+- [INFERRED] Keep a legacy mode that reproduces the old physical/economic outputs and original14predicates, while new diagnostics disclose unmet requirements. A separate explicit control mode may change the thermal operating state through reviewed existing relationships; its flow, mixing and residual outputs must make that change inspectable.
+- [INFERRED] Initially keep the original50,000m² exchangers and original ratings. Any alternative exchanger areas are supplied offers with existing native purchase/replacement/annual cost consequences; required area is never bound into inventory. Unpriced control/hydraulic/topology scope is disclosed through conditional allowances and may not be described as cost-free equipment.
+- [INFERRED] Independent verification must cover every new hot/return, secondary-temperature, actual terminal, control and predicate channel. Exercise insufficient and sufficient supplied designs, return mismatch and approach failures; distinguish constructed equation fixtures from passing plant candidates. Exact-return tolerance verifies numerical closure and is not a physical acceptance band.
 
 ## Plan
 
-- [ ] Resolve the thermal contract against original sources and record independent review.
+- [x] Resolve the thermal contract against original sources and record independent review. Source interpretation accepted in r2-source-review.md; the remaining requirement choice resolved by delegated owner authority and recorded in owner-supplement-r3.md.
 - [ ] Record the smallest implementation design, quantity roles, affected bindings and acceptance checks.
 - [ ] Implement in isolated owned paths; preserve and replay legacy behavior.
 - [ ] Independently verify added thermal channels and failure cases; run applicable integration checks.

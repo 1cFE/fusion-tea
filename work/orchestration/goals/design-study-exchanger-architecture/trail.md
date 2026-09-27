@@ -148,3 +148,27 @@ T-004 · goal evidence/r2-thermal-requirements.md and evidence/r2-implementation
 - **Checks:** T-004 stayed within source/interface inspection and diagnostic assessment; WI-097 contains requirements and a persistent checklist only. Prior native study bytes and package state remain unchanged; the review confirms screen input bytes match afd96d51. The retained screen and fresh replay match exactly. No retries, tolerance changes, hidden equipment selection or control were introduced. Owner article/viewer edits are excluded from scoped commits.
 - **Dispositions and accepted learning delta:** The three touched native findings #1, #3 and #5 now have appended concrete dispositions. Accept L-004 and L-005 within the reviewed conditional scope and append them to learnings.md. Source interpretation does not turn the agent's transferred return targets or proposed local approach rule into owner-originated facts.
 - **Remaining uncertainty and recommendation:** Obtain the explicit local approach requirement before native positive-case selection. Keep the goal grounded and WI-097 open; the owner controls formal closure. Round 2 is closed at the reserved gate. The subsequent model/study work remains authorized once that requirement is resolved.
+
+## Round 3 — enforced-thermal-comparison
+
+### Strategy revision — 2026-09-27
+
+- **Approach:** [OWNER] Exercise delegated judgment and proceed to strong results. [AGENT] Enforce the reviewed N-R returns and chosen 30 K actual-terminal minima; establish fixed-equipment adequacy, then compare passing operations with explicit priced exchanger alternatives if necessary. Authority: evidence/owner-supplement-r3.md.
+- **Assumptions:** Existing counterflow/primary-bypass equations and native cost machinery can represent a consistent conditional comparison without major new physical models. Control and equipment selection will remain explicit.
+- **Abandonment conditions:** Numerical or thermal consistency cannot be established, or a physical mechanism needed for a positive result cannot be represented and reviewed within scope. A bounded negative remains a legitimate study outcome, with unmet comparisons explicit.
+- **Intended model increment:** WI-097 isolated thermal checks and, if justified, explicit return control using reviewed existing relationships; unchanged historical package/control path. No hidden effective-UA reduction or demand-derived purchases.
+- **Intended study question:** Which fixed or explicitly priced exchanger inventories support passing series/network operations under maintained primary returns and finite approaches, and does any paired advantage survive fine flow/split refinement and conditional extra costs?
+- **Native-state reading:** Round 2 is closed with evidence@48dcbc43. WI-097 remains a written spec only. Prior sealed native study@afd96d51 and original package are unchanged; no task is interrupted. The approach gate is resolved by delegated owner authority, not by reinterpreting the source.
+
+### T-005 scope
+
+- **Objective:** Design and implement a reviewed isolated thermal-consistent model for the architecture comparison.
+- **Why now:** The owner delegated the open requirement choice; the previous leading cases fail the new source-side condition.
+- **Scope:** WI-097 specification/design, bounded development probes, independent source/math/interface review, native implementation/oracle, legacy replay and integration. Original packages/studies and owner article edits remain untouched; no main study until model verification.
+- **Inputs:** goal.md; owner-supplement-r3.md; r2-thermal-requirements.md and r2-source-review.md; r2-implementation-options.md; WI-097 spec; existing counterflow/bypass definitions and cost machinery.
+- **Done when:** A verified isolated native candidate supports actual return/approach checks and explicit equipment choices, or a precise bounded modeling failure is recorded.
+- **Stop when:** Prerequisite, strategy blocker, unresolved reserved gate or declared limit.
+
+### T-005 start — 2026-09-27
+
+T-005 · work/active/WI-097_exchanger-thermal-requirements and exploration/exchanger_architecture/thermal_requirements · reviewed design, model and executable evidence. Design author owns WI-097 design and bounded development probes; coordinator owns goal records. Independent reviewer retains source review context. Production implementation waits for design review.
