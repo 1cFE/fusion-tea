@@ -1,0 +1,9 @@
+{
+  "repo_commit_at_execution": "17919e73c9b17b84b98621fdac349e6d0966a118",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python -m exploration.whole_plant_conversion.studies.execute_study --record exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b --integration-return work/orchestration/goals/design-study-whole-plant-conversion/evidence/integration-r2/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python scripts/study/verify.py --package exploration/whole_plant_conversion/whole_plant_conversion_tea --manifest exploration/whole_plant_conversion/studies/manifest.json --identity exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/integration/package_identity.json --store exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/native/20260927-design-study-whole-plant-conversion-b.db --sample-size 2496 --out exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/verification_summary.json'",
+  "unique_proposals": 2496,
+  "proposal_sha256": "5ca2398ee367b5438e667c3ee9c74f0e8c90919f2bb0416f31015c7a315b1992",
+  "preparation_scope": "Fixed before first replacement main point; exactly four cryogenic input maps differ from sealed first attempt; all other2492 points and all aliases retained.",
+  "date": "2026-09-27"
+}

@@ -1,0 +1,33 @@
+{
+  "renderer_sha256": "73265e2fce90befdba15064bb80e52d68d152e1bc3872cbc1d66feb1763a9e8f",
+  "native_input_artifacts": {
+    "results/cases.json": "bd13bb1d71831a23afd791d31dd86d3d79dc287b5d1b65f35f7947ddc6ed951d",
+    "proposed-points.json": "5ca2398ee367b5438e667c3ee9c74f0e8c90919f2bb0416f31015c7a315b1992",
+    "preparation/case-membership.json": "15dd1a20cc5ef876e66fa4a1fc1c9c9bc4bfaf91498c126ae87c99c43e5db92d",
+    "preparation/predicate-catalog.json": "e2eaf8ebffe37da5e489d298bb24c6a946e24a9cdadd6d1c21ae88eeb68e0940",
+    "results/verification_summary.json": "50f58c72f6b5335eeed38b8468f4db47b1e1ccf8b32a2235642ac5ee296bb0c9"
+  },
+  "artifacts": {
+    "README.md": "620d145ba7449b70d3080e470d7b37a0ef811135bb71fe30ef7f58d0b9211a7c",
+    "attempted-case-ledger.csv": "63f6e48442cacdf0d18adce86a4fe65104989b640fc5f6ac7397be4063d51fce",
+    "economic-boundary-context.json": "0490393bc427d11f7a591281c1379dc757bd5e5de303c1f9f931087ce0efa372",
+    "economic-boundary-detail.png": "4378f651f3f5ac38d728fc4a2b931075fd8ce3287ba7325cceecfb8576c97716",
+    "economic-boundary-detail.svg": "6420246689084ddd886b7be57900efdd443fda06fae3cf607c9334121b8cee89",
+    "mapping-used.json": "bd8711062d7cc5353d98278d139ec890d5ffb7ef8a6f4dcd3ab0a060d280c7c3",
+    "matched-account-table.csv": "78c9302cc8c28f02275b674a432496017aba8ffbb41280b0a8d731a09e593232",
+    "matched-pairs.csv": "6ca4f4d2ffc6f63a274f88c0d4b8e40c595f4d566412441851437923edb8d942",
+    "native-ranking.csv": "1943ac0151620559e7dd3a65df5abc02803ae3ed168eb4743f52f74e5bab377a",
+    "native-ranking.json": "ae481befdf5054944def30d7c3f766f1657595604739f5d157c0ea8be2beabf4",
+    "power-budget.png": "52595f673a91d77c15d63c78c4ec338d4fe2e176d1c3645f2d1b382a20d9b89a",
+    "power-budget.svg": "097b94ecf48a26bffd1a1514e0d33247098cdd3dc4cb6aeacb2097290768345b",
+    "predecessor-context.csv": "88543388b748e66ed6a2d1de2b9031efc1057fc7ad3a4776e0fafe5b6ddfea4d",
+    "predecessor-context.json": "72aa879387a1ea0aeed5ae6140752346ac3216ba28b5b90b3d5525189cdf3f42",
+    "preference-gap.png": "f7917a751e9d662c9d4e013ad364f96b10405ea92f245065abd6bf143f112608",
+    "preference-gap.svg": "1fd768a80bb253b96370938893ce2bb5b426783d371e2d601ee77f4b373b2104",
+    "preference-sensitivity.png": "9ea44a494cfe506dc65bc476eb50749fe5a4d64c74906870c5a9c6866752321d",
+    "preference-sensitivity.svg": "e5faaf09555a5f3c26bfa9168a96ab928e165a078ea182a2f316f903e9c7c322",
+    "scenario-summary.json": "585861ad9b14a871613d4a6bd01a8189cd80e3e0c018febeff0f47e8aa4afe26",
+    "whole-cost-contributions.png": "4f4dfccfc102aee89c52feccd1416c2c8d9090263170f9e77689fe5d65b6abe2",
+    "whole-cost-contributions.svg": "2826fffb0c3aa5975b7529d3beb24a728a6a19da8f7ddc400c02c363b16f7d0a"
+  }
+}

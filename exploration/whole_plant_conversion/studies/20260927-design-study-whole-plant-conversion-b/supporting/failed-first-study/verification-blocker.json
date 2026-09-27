@@ -1,0 +1,11 @@
+{
+  "authority": "Coordinator receipt of stock command failure; stock verifier aborts before writing its summary",
+  "outcome": "fail",
+  "exit_code": 1,
+  "command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python scripts/study/verify.py --package exploration/whole_plant_conversion/whole_plant_conversion_tea --manifest exploration/whole_plant_conversion/studies/manifest.json --identity exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/integration/package_identity.json --store exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/native/20260927-design-study-whole-plant-conversion.db --sample-size 2496 --out exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/verification_summary.json'",
+  "stdout_stderr": "channel off tolerance on case 20260927-design-study-whole-plant-conversion:c2438, channel whole_plant_conversion__plant__cryogenic_demand__evaluate__cold_margin_W: store 0.003072599989536684, oracle 0.0030725999968126416, relative deviation 2.368e-09 (tolerance 1e-09); absolute error 7.276e-12 (declared tolerance 0)\n",
+  "original_log": "verification.log",
+  "requested_cases": 2496,
+  "physical_or_economic_release": false,
+  "date": "2026-09-27"
+}

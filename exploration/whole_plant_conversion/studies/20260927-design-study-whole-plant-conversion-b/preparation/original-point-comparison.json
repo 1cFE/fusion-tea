@@ -1,0 +1,266 @@
+{
+  "old_proposal_sha256": "55782d25a4c7a6818547e9fe1b587deb79bd3d6ef8535b07ec858e14ab6e1217",
+  "new_proposal_sha256": "5ca2398ee367b5438e667c3ee9c74f0e8c90919f2bb0416f31015c7a315b1992",
+  "old_unique_points": 2496,
+  "new_unique_points": 2496,
+  "unchanged_unique_points": 2492,
+  "removed_point_ids": [
+    "178c062bdd312982bf80e21ef6baf2bf203a1c0b2be2071115275d9771d70c16",
+    "573420a1c11cf2dd6a238e6dd4ac9f9f115e8e2d9fa7ff7589b64f3e6a4177cf",
+    "aa2978513ba74e3a0faca18629baff71c19e07c7574d9037c6ceec7c73f95d85",
+    "cd1780c897de5c8118e4353712e6092c4ffa59be45dfa434c80ef547da52c7e5"
+  ],
+  "added_point_ids": [
+    "30bda3af6117f72506f26936f43e1995bd6b842dad681786d2ffce0e381b0cec",
+    "5d4509a810ecca51fb31cd68d1f1b822d023f308dd88d8d3f467ae0ceb8fc48a",
+    "aa688c6cc385e23f9f1c7a67912fdc85f7d50ac65316bfb224d653fcd5811eb9",
+    "c02a7d53539b072f780b239200a67f44c17d5816d6b4e13f98550998ec53e3ab"
+  ],
+  "old_alias_count": 2651,
+  "new_alias_count": 2651,
+  "removed_aliases": [],
+  "added_aliases": [],
+  "changed_alias_count": 8,
+  "changed_point_count": 4,
+  "changed_by_family": {
+    "cryogenic_boundary": 8
+  },
+  "changed_aliases": [
+    {
+      "alias": "cryo-capacity-q2500-above-gas",
+      "old_point_id": "573420a1c11cf2dd6a238e6dd4ac9f9f115e8e2d9fa7ff7589b64f3e6a4177cf",
+      "new_point_id": "aa688c6cc385e23f9f1c7a67912fdc85f7d50ac65316bfb224d653fcd5811eb9",
+      "scenario": "cryogenic_capacity_above",
+      "family": "cryogenic_boundary",
+      "branch": "gas",
+      "input_differences": {
+        "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": {
+          "before": 75.43261142820313,
+          "after": 75.44260142820313
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2500-above-steam",
+      "old_point_id": "573420a1c11cf2dd6a238e6dd4ac9f9f115e8e2d9fa7ff7589b64f3e6a4177cf",
+      "new_point_id": "aa688c6cc385e23f9f1c7a67912fdc85f7d50ac65316bfb224d653fcd5811eb9",
+      "scenario": "cryogenic_capacity_above",
+      "family": "cryogenic_boundary",
+      "branch": "steam",
+      "input_differences": {
+        "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": {
+          "before": 75.43261142820313,
+          "after": 75.44260142820313
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2500-below-gas",
+      "old_point_id": "178c062bdd312982bf80e21ef6baf2bf203a1c0b2be2071115275d9771d70c16",
+      "new_point_id": "5d4509a810ecca51fb31cd68d1f1b822d023f308dd88d8d3f467ae0ceb8fc48a",
+      "scenario": "cryogenic_capacity_below",
+      "family": "cryogenic_boundary",
+      "branch": "gas",
+      "input_differences": {
+        "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": {
+          "before": 75.43259142820312,
+          "after": 75.42260142820312
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2500-below-steam",
+      "old_point_id": "178c062bdd312982bf80e21ef6baf2bf203a1c0b2be2071115275d9771d70c16",
+      "new_point_id": "5d4509a810ecca51fb31cd68d1f1b822d023f308dd88d8d3f467ae0ceb8fc48a",
+      "scenario": "cryogenic_capacity_below",
+      "family": "cryogenic_boundary",
+      "branch": "steam",
+      "input_differences": {
+        "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": {
+          "before": 75.43259142820312,
+          "after": 75.42260142820312
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2800-above-gas",
+      "old_point_id": "aa2978513ba74e3a0faca18629baff71c19e07c7574d9037c6ceec7c73f95d85",
+      "new_point_id": "c02a7d53539b072f780b239200a67f44c17d5816d6b4e13f98550998ec53e3ab",
+      "scenario": "cryogenic_capacity_above",
+      "family": "cryogenic_boundary",
+      "branch": "gas",
+      "input_differences": {
+        "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": {
+          "before": 75.43261142820313,
+          "after": 75.44260142820313
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2800-above-steam",
+      "old_point_id": "aa2978513ba74e3a0faca18629baff71c19e07c7574d9037c6ceec7c73f95d85",
+      "new_point_id": "c02a7d53539b072f780b239200a67f44c17d5816d6b4e13f98550998ec53e3ab",
+      "scenario": "cryogenic_capacity_above",
+      "family": "cryogenic_boundary",
+      "branch": "steam",
+      "input_differences": {
+        "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": {
+          "before": 75.43261142820313,
+          "after": 75.44260142820313
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2800-below-gas",
+      "old_point_id": "cd1780c897de5c8118e4353712e6092c4ffa59be45dfa434c80ef547da52c7e5",
+      "new_point_id": "30bda3af6117f72506f26936f43e1995bd6b842dad681786d2ffce0e381b0cec",
+      "scenario": "cryogenic_capacity_below",
+      "family": "cryogenic_boundary",
+      "branch": "gas",
+      "input_differences": {
+        "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": {
+          "before": 75.43259142820312,
+          "after": 75.42260142820312
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2800-below-steam",
+      "old_point_id": "cd1780c897de5c8118e4353712e6092c4ffa59be45dfa434c80ef547da52c7e5",
+      "new_point_id": "30bda3af6117f72506f26936f43e1995bd6b842dad681786d2ffce0e381b0cec",
+      "scenario": "cryogenic_capacity_below",
+      "family": "cryogenic_boundary",
+      "branch": "steam",
+      "input_differences": {
+        "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": {
+          "before": 75.43259142820312,
+          "after": 75.42260142820312
+        }
+      }
+    }
+  ],
+  "metadata_changes": [
+    {
+      "alias": "cryo-capacity-q2500-above-gas",
+      "differences": {
+        "chosen": {
+          "before": {
+            "cryogenic_demand__q_nuc_W_m3": 75.43261142820313,
+            "cryogenic_demand__extra_cold_W": 0.0
+          },
+          "after": {
+            "cryogenic_demand__q_nuc_W_m3": 75.44260142820313,
+            "cryogenic_demand__extra_cold_W": 0.0
+          }
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2500-above-steam",
+      "differences": {
+        "chosen": {
+          "before": {
+            "cryogenic_demand__q_nuc_W_m3": 75.43261142820313,
+            "cryogenic_demand__extra_cold_W": 0.0
+          },
+          "after": {
+            "cryogenic_demand__q_nuc_W_m3": 75.44260142820313,
+            "cryogenic_demand__extra_cold_W": 0.0
+          }
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2500-below-gas",
+      "differences": {
+        "chosen": {
+          "before": {
+            "cryogenic_demand__q_nuc_W_m3": 75.43259142820312,
+            "cryogenic_demand__extra_cold_W": 0.0
+          },
+          "after": {
+            "cryogenic_demand__q_nuc_W_m3": 75.42260142820312,
+            "cryogenic_demand__extra_cold_W": 0.0
+          }
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2500-below-steam",
+      "differences": {
+        "chosen": {
+          "before": {
+            "cryogenic_demand__q_nuc_W_m3": 75.43259142820312,
+            "cryogenic_demand__extra_cold_W": 0.0
+          },
+          "after": {
+            "cryogenic_demand__q_nuc_W_m3": 75.42260142820312,
+            "cryogenic_demand__extra_cold_W": 0.0
+          }
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2800-above-gas",
+      "differences": {
+        "chosen": {
+          "before": {
+            "cryogenic_demand__q_nuc_W_m3": 75.43261142820313,
+            "cryogenic_demand__extra_cold_W": 0.0
+          },
+          "after": {
+            "cryogenic_demand__q_nuc_W_m3": 75.44260142820313,
+            "cryogenic_demand__extra_cold_W": 0.0
+          }
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2800-above-steam",
+      "differences": {
+        "chosen": {
+          "before": {
+            "cryogenic_demand__q_nuc_W_m3": 75.43261142820313,
+            "cryogenic_demand__extra_cold_W": 0.0
+          },
+          "after": {
+            "cryogenic_demand__q_nuc_W_m3": 75.44260142820313,
+            "cryogenic_demand__extra_cold_W": 0.0
+          }
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2800-below-gas",
+      "differences": {
+        "chosen": {
+          "before": {
+            "cryogenic_demand__q_nuc_W_m3": 75.43259142820312,
+            "cryogenic_demand__extra_cold_W": 0.0
+          },
+          "after": {
+            "cryogenic_demand__q_nuc_W_m3": 75.42260142820312,
+            "cryogenic_demand__extra_cold_W": 0.0
+          }
+        }
+      }
+    },
+    {
+      "alias": "cryo-capacity-q2800-below-steam",
+      "differences": {
+        "chosen": {
+          "before": {
+            "cryogenic_demand__q_nuc_W_m3": 75.43259142820312,
+            "cryogenic_demand__extra_cold_W": 0.0
+          },
+          "after": {
+            "cryogenic_demand__q_nuc_W_m3": 75.42260142820312,
+            "cryogenic_demand__extra_cold_W": 0.0
+          }
+        }
+      }
+    }
+  ],
+  "changed_anchor_groups": [],
+  "interpretation": "Exact byte-value input comparison; new oracle result changes alone do not count as changed inputs. All differences require coordinator disposition before main execution."
+}

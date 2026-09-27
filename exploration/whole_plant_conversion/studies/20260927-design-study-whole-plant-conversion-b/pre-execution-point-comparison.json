@@ -1,0 +1,31 @@
+{
+  "authority": "Coordinator direct comparison of sealed original and frozen replacement complete maps",
+  "cases": 2496,
+  "unchanged": 2492,
+  "changes": {
+    "cryo-capacity-q2500-below-gas": {
+      "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": [
+        75.43259142820312,
+        75.42260142820312
+      ]
+    },
+    "cryo-capacity-q2500-above-gas": {
+      "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": [
+        75.43261142820313,
+        75.44260142820313
+      ]
+    },
+    "cryo-capacity-q2800-below-gas": {
+      "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": [
+        75.43259142820312,
+        75.42260142820312
+      ]
+    },
+    "cryo-capacity-q2800-above-gas": {
+      "whole_plant_conversion__plant__cryogenic_demand__q_nuc_W_m3": [
+        75.43261142820313,
+        75.44260142820313
+      ]
+    }
+  }
+}

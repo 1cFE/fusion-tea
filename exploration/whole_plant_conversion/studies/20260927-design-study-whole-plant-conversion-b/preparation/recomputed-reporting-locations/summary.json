@@ -1,0 +1,37 @@
+{
+  "kind": "independent oracle planning scan; no native ranking",
+  "status": "ready_for_review",
+  "unique_complete_points": 2496,
+  "alias_count": 2651,
+  "duplicate_aliases": 155,
+  "reserved_threshold_points": 100,
+  "remaining_total_budget": 504,
+  "nominal_catalog": {
+    "gas": 375,
+    "steam": 72
+  },
+  "common_scenarios": 44,
+  "price_service_scenarios": 8,
+  "joint_efficiency_scenarios": 2,
+  "oracle_evaluations": 3900,
+  "oracle_refusals": 0,
+  "admission_audit": {
+    "excluded_by_invariant_failed_predicate": 11735,
+    "still_excluded_after_oracle_evaluation": 189
+  },
+  "predicate_membership": {
+    "steam": 59,
+    "gas": 43,
+    "shared": 23
+  },
+  "native_required": true,
+  "joint_performance_price_scenarios": 2,
+  "cryogenic_bracket_points": 4,
+  "economic_crossing_brackets": 1,
+  "interaction_admission_audit": {
+    "excluded_by_invariant_failed_predicate": 467,
+    "still_excluded_after_oracle_evaluation": 67
+  },
+  "reporting_materiality_USD2025_MWh": 5.0,
+  "reporting_threshold_brackets": 2
+}

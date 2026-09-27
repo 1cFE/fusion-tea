@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "native_cases": 2496,
+  "sampled_ids_exact": true,
+  "scalars_each": 1192,
+  "predicates_each": 125,
+  "receipt_sha": "50f58c72f6b5335eeed38b8468f4db47b1e1ccf8b32a2235642ac5ee296bb0c9",
+  "manifest_sha": "671977f7fbf294ae9ed1fd069f5b606c7c258c0e84bfdab725ffcd34d3b7f7cd",
+  "identity": {
+    "kind": "sealed",
+    "digest": "6915694e74919ebb764445dfc7f0782eda85a9de29fa44c4b55ffa415c1eb30f",
+    "matches_preflight": true
+  }
+}

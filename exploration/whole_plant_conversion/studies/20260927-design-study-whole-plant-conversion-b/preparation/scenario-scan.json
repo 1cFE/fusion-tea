@@ -1,0 +1,3795 @@
+{
+  "scenarios": [
+    {
+      "scenario": "common-quotes-x0.5",
+      "family": "common_capital",
+      "choices": {
+        "auxiliary_rejection_account__price_factor": 0.5,
+        "blanket_account__price_factor": 0.5,
+        "cryoplant_account__price_factor": 0.5,
+        "digital_twin_account__price_factor": 0.5,
+        "divertor_account__price_factor": 0.5,
+        "facilities_account__price_factor": 0.5,
+        "fuel_processing_account__price_factor": 0.5,
+        "heating_account__price_factor": 0.5,
+        "installation_account__price_factor": 0.5,
+        "land_account__price_factor": 0.5,
+        "magnet_account__price_factor": 0.5,
+        "miscellaneous_account__price_factor": 0.5,
+        "other_reactor_account__price_factor": 0.5,
+        "owner_account__price_factor": 0.5,
+        "pbl_initial_account__price_factor": 0.5,
+        "power_supplies_account__price_factor": 0.5,
+        "primary_circulators_account__price_factor": 0.5,
+        "primary_helium_account__price_factor": 0.5,
+        "primary_pipes_account__price_factor": 0.5,
+        "primary_spares_account__price_factor": 0.5,
+        "reactor_controls_account__price_factor": 0.5,
+        "remote_handling_account__price_factor": 0.5,
+        "shared_electrical_account__price_factor": 0.5,
+        "shield_account__price_factor": 0.5,
+        "source_installation_allowance_account__price_factor": 0.5,
+        "structure_account__price_factor": 0.5,
+        "vessel_account__price_factor": 0.5,
+        "waste_account__price_factor": 0.5
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "primary_piping-quote-x0.5",
+      "family": "primary_piping",
+      "choices": {
+        "primary_pipes_account__price_factor": 0.5
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x0.5",
+      "family": "auxiliary_rejection",
+      "choices": {
+        "auxiliary_rejection_account__price_factor": 0.5
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "common-quotes-x1.5",
+      "family": "common_capital",
+      "choices": {
+        "auxiliary_rejection_account__price_factor": 1.5,
+        "blanket_account__price_factor": 1.5,
+        "cryoplant_account__price_factor": 1.5,
+        "digital_twin_account__price_factor": 1.5,
+        "divertor_account__price_factor": 1.5,
+        "facilities_account__price_factor": 1.5,
+        "fuel_processing_account__price_factor": 1.5,
+        "heating_account__price_factor": 1.5,
+        "installation_account__price_factor": 1.5,
+        "land_account__price_factor": 1.5,
+        "magnet_account__price_factor": 1.5,
+        "miscellaneous_account__price_factor": 1.5,
+        "other_reactor_account__price_factor": 1.5,
+        "owner_account__price_factor": 1.5,
+        "pbl_initial_account__price_factor": 1.5,
+        "power_supplies_account__price_factor": 1.5,
+        "primary_circulators_account__price_factor": 1.5,
+        "primary_helium_account__price_factor": 1.5,
+        "primary_pipes_account__price_factor": 1.5,
+        "primary_spares_account__price_factor": 1.5,
+        "reactor_controls_account__price_factor": 1.5,
+        "remote_handling_account__price_factor": 1.5,
+        "shared_electrical_account__price_factor": 1.5,
+        "shield_account__price_factor": 1.5,
+        "source_installation_allowance_account__price_factor": 1.5,
+        "structure_account__price_factor": 1.5,
+        "vessel_account__price_factor": 1.5,
+        "waste_account__price_factor": 1.5
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "primary_piping-quote-x1.5",
+      "family": "primary_piping",
+      "choices": {
+        "primary_pipes_account__price_factor": 1.5
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x1.5",
+      "family": "auxiliary_rejection",
+      "choices": {
+        "auxiliary_rejection_account__price_factor": 1.5
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "source-installation-0",
+      "family": "source_installation",
+      "choices": {
+        "source_installation_allowance_account__quote_USD2025": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "source-installation-1e+09",
+      "family": "source_installation",
+      "choices": {
+        "source_installation_allowance_account__quote_USD2025": 1000000000.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "contingency_rate-0",
+      "family": "overheads",
+      "choices": {
+        "finance__contingency_rate": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "contingency_rate-0.2",
+      "family": "overheads",
+      "choices": {
+        "finance__contingency_rate": 0.2
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "indirect_rate-0.1",
+      "family": "overheads",
+      "choices": {
+        "finance__indirect_rate": 0.1
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "indirect_rate-0.3",
+      "family": "overheads",
+      "choices": {
+        "finance__indirect_rate": 0.3
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "supplementary-rates-x0",
+      "family": "overheads",
+      "choices": {
+        "finance__freight_rate": 0.0,
+        "finance__general_spares_rate": 0.0,
+        "finance__tax_rate": 0.0,
+        "finance__insurance_rate": 0.0,
+        "finance__commissioning_rate": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "supplementary-rates-x2",
+      "family": "overheads",
+      "choices": {
+        "finance__freight_rate": 0.03,
+        "finance__general_spares_rate": 0.04,
+        "finance__tax_rate": 0.02,
+        "finance__insurance_rate": 0.03,
+        "finance__commissioning_rate": 0.01
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "discount-0",
+      "family": "finance",
+      "choices": {
+        "finance__rate": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "discount-0.1",
+      "family": "finance",
+      "choices": {
+        "finance__rate": 0.1
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "availability-0.65",
+      "family": "availability",
+      "choices": {
+        "finance__availability": 0.65
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "availability-0.9",
+      "family": "availability",
+      "choices": {
+        "finance__availability": 0.9
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "magnet-life-8-FPY",
+      "family": "replacement",
+      "choices": {
+        "steam_whole__magnet_life": 8.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "magnet-life-12-FPY",
+      "family": "replacement",
+      "choices": {
+        "steam_whole__magnet_life": 12.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "routine-allocation-0.5",
+      "family": "service",
+      "choices": {
+        "steam_whole__routine_fraction": 0.5
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "routine-allocation-1",
+      "family": "service",
+      "choices": {
+        "steam_whole__routine_fraction": 1.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "import-price-0",
+      "family": "imports",
+      "choices": {
+        "steam_operating__import_price": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "import-price-150",
+      "family": "imports",
+      "choices": {
+        "steam_operating__import_price": 150.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.1980739195540366,
+        "fuel_accounts__tritium_price": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0.333333",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.1980739195540366,
+        "fuel_accounts__tritium_price": 17040762.308099523
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x3.33333",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.1980739195540366,
+        "fuel_accounts__tritium_price": 170407623.08099523
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.1861455810023918,
+        "fuel_accounts__tritium_price": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0.333333",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.1861455810023918,
+        "fuel_accounts__tritium_price": 17040762.308099523
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x1",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.1861455810023918,
+        "fuel_accounts__tritium_price": 51122286.92429857
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x3.33333",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.1861455810023918,
+        "fuel_accounts__tritium_price": 170407623.08099523
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.074,
+        "fuel_accounts__tritium_price": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0.333333",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.074,
+        "fuel_accounts__tritium_price": 17040762.308099523
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x1",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.074,
+        "fuel_accounts__tritium_price": 51122286.92429857
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x3.33333",
+      "family": "fuel",
+      "choices": {
+        "fuel_accounts__tbr": 1.074,
+        "fuel_accounts__tritium_price": 170407623.08099523
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "heating-efficiency-0.4",
+      "family": "source_load",
+      "choices": {
+        "source_basis__heating_source_efficiency": 0.4
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "heating-efficiency-0.6",
+      "family": "source_load",
+      "choices": {
+        "source_basis__heating_source_efficiency": 0.6
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "primary-drive-efficiency-0.9",
+      "family": "source_load",
+      "choices": {
+        "primary_loop__eta_drive": 0.9
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "residual-load-0-MW",
+      "family": "source_load",
+      "choices": {
+        "steam_operating__residual_MW": 0.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "residual-load-20-MW",
+      "family": "source_load",
+      "choices": {
+        "steam_operating__residual_MW": 20.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "nuclear-heating-50-W-m3",
+      "family": "cryogenic_heat",
+      "choices": {
+        "cryogenic_demand__q_nuc_W_m3": 50.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "nuclear-heating-80-W-m3",
+      "family": "cryogenic_heat",
+      "choices": {
+        "cryogenic_demand__q_nuc_W_m3": 80.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "extra-cold-10000-W",
+      "family": "cryogenic_heat",
+      "choices": {
+        "cryogenic_demand__extra_cold_W": 10000.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    },
+    {
+      "scenario": "extra-cold-13000-W",
+      "family": "cryogenic_heat",
+      "choices": {
+        "cryogenic_demand__extra_cold_W": 13000.0
+      },
+      "framing": "sensitivity",
+      "range_authority": "engineered stress, not an uncertainty interval"
+    }
+  ],
+  "results": [
+    {
+      "scenario": "nominal",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 125,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+        "oracle_lcoe_USD2025_MWh": 875.3125606972814,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nominal",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 125,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+        "oracle_lcoe_USD2025_MWh": 1230.2836229746085,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nominal",
+      "source_MW": 3000.0,
+      "branch": "gas",
+      "attempted_aliases": 125,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "nominal",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 24,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+        "oracle_lcoe_USD2025_MWh": 408.163804532198,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nominal",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 24,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+        "oracle_lcoe_USD2025_MWh": 370.701372319356,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nominal",
+      "source_MW": 3000.0,
+      "branch": "steam",
+      "attempted_aliases": 24,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "common-quotes-x0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "common-quotes-x0.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "b5fe4d1e15191c0b9d21ed8d62c688035b0a0c0bbe9651033e5d30f425321d35",
+        "oracle_lcoe_USD2025_MWh": 517.3286064567936,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "common-quotes-x0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "common-quotes-x0.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "54ffdd18419965cc32f8f2e5a5a158fcd192656f405f3af1ded474be4656a73e",
+        "oracle_lcoe_USD2025_MWh": 726.5590773172719,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "common-quotes-x0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "common-quotes-x0.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "b5fe4d1e15191c0b9d21ed8d62c688035b0a0c0bbe9651033e5d30f425321d35",
+        "oracle_lcoe_USD2025_MWh": 254.02763355769002,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "common-quotes-x0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "common-quotes-x0.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "54ffdd18419965cc32f8f2e5a5a158fcd192656f405f3af1ded474be4656a73e",
+        "oracle_lcoe_USD2025_MWh": 232.76205916423206,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary_piping-quote-x0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "primary_piping-quote-x0.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "b1335b6609fb963180fe424cd07c4df9d418990a817a2dd1b9c6c375d0e3e0a9",
+        "oracle_lcoe_USD2025_MWh": 787.9546807573696,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary_piping-quote-x0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "primary_piping-quote-x0.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "6b8762849bf1d5ec13cd5f4cb8c04a8227fd9241562e9a837bf668146238f483",
+        "oracle_lcoe_USD2025_MWh": 1108.1368199076653,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary_piping-quote-x0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "primary_piping-quote-x0.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "b1335b6609fb963180fe424cd07c4df9d418990a817a2dd1b9c6c375d0e3e0a9",
+        "oracle_lcoe_USD2025_MWh": 370.5503613627782,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary_piping-quote-x0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "primary_piping-quote-x0.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "6b8762849bf1d5ec13cd5f4cb8c04a8227fd9241562e9a837bf668146238f483",
+        "oracle_lcoe_USD2025_MWh": 337.2528412433859,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "auxiliary_rejection-quote-x0.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "1e5990ed2b989756130564fb49bf9508ef28ea05300fb28a55ad601c9c0071a5",
+        "oracle_lcoe_USD2025_MWh": 873.8438890524179,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "auxiliary_rejection-quote-x0.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "358b1673fcbfb1be0cbdfb58064e42479c5ad30b170512fd4123000fc0ab77ae",
+        "oracle_lcoe_USD2025_MWh": 1228.2300755865706,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "auxiliary_rejection-quote-x0.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "1e5990ed2b989756130564fb49bf9508ef28ea05300fb28a55ad601c9c0071a5",
+        "oracle_lcoe_USD2025_MWh": 407.5314426034676,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "auxiliary_rejection-quote-x0.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "358b1673fcbfb1be0cbdfb58064e42479c5ad30b170512fd4123000fc0ab77ae",
+        "oracle_lcoe_USD2025_MWh": 370.1390314156229,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "common-quotes-x1.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "common-quotes-x1.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "e86de49ce17a0ebd3323903be62ed5ce54a8a6a2f821b5629defa6183be84ac8",
+        "oracle_lcoe_USD2025_MWh": 1233.2965149377694,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "common-quotes-x1.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "common-quotes-x1.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "ae479321ccada1a50340b987b57abec72a3ff7248deb2ccb14e877c573d20c1e",
+        "oracle_lcoe_USD2025_MWh": 1734.0081686319456,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "common-quotes-x1.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "common-quotes-x1.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "e86de49ce17a0ebd3323903be62ed5ce54a8a6a2f821b5629defa6183be84ac8",
+        "oracle_lcoe_USD2025_MWh": 562.2999755067063,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "common-quotes-x1.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "common-quotes-x1.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "ae479321ccada1a50340b987b57abec72a3ff7248deb2ccb14e877c573d20c1e",
+        "oracle_lcoe_USD2025_MWh": 508.64068547448005,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary_piping-quote-x1.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "primary_piping-quote-x1.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "783ba5e67511afa2f1f4d4155e1534b992fda67457f63c61727af35462d4e7d8",
+        "oracle_lcoe_USD2025_MWh": 962.6704406371932,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary_piping-quote-x1.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "primary_piping-quote-x1.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "d1eaf805bb780a52b6a0052c8acf4e57ebbce00bdef7312cc43b630d2ca07274",
+        "oracle_lcoe_USD2025_MWh": 1352.4304260415515,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary_piping-quote-x1.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "primary_piping-quote-x1.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "783ba5e67511afa2f1f4d4155e1534b992fda67457f63c61727af35462d4e7d8",
+        "oracle_lcoe_USD2025_MWh": 445.7772477016181,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary_piping-quote-x1.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "primary_piping-quote-x1.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "d1eaf805bb780a52b6a0052c8acf4e57ebbce00bdef7312cc43b630d2ca07274",
+        "oracle_lcoe_USD2025_MWh": 404.149903395326,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x1.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "auxiliary_rejection-quote-x1.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "2b1ac825108b74d0d743d6925305a03ca6d099012e6ab9a5dcc3a2e37ae55983",
+        "oracle_lcoe_USD2025_MWh": 876.7812323421448,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x1.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "auxiliary_rejection-quote-x1.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "4d6cc732c7e2e930238e4c649633d6fd07ae37fefeb5812ca7920179323b7c72",
+        "oracle_lcoe_USD2025_MWh": 1232.3371703626462,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x1.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "auxiliary_rejection-quote-x1.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "2b1ac825108b74d0d743d6925305a03ca6d099012e6ab9a5dcc3a2e37ae55983",
+        "oracle_lcoe_USD2025_MWh": 408.7961664609285,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "auxiliary_rejection-quote-x1.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "auxiliary_rejection-quote-x1.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "4d6cc732c7e2e930238e4c649633d6fd07ae37fefeb5812ca7920179323b7c72",
+        "oracle_lcoe_USD2025_MWh": 371.2637132230889,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "source-installation-0",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "source-installation-0::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "38229479d13fe72eca91f80492866ace6eae50dedfbd1f7c888b7f0b6721993c",
+        "oracle_lcoe_USD2025_MWh": 863.8968183957908,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "source-installation-0",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "source-installation-0::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "21059cc02d199f4e42d1fb84fb301129384ea94ad97dbb4350a4f6bf202b3caf",
+        "oracle_lcoe_USD2025_MWh": 1214.321738051093,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "source-installation-0",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "source-installation-0::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "38229479d13fe72eca91f80492866ace6eae50dedfbd1f7c888b7f0b6721993c",
+        "oracle_lcoe_USD2025_MWh": 403.248559627111,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "source-installation-0",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "source-installation-0::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "21059cc02d199f4e42d1fb84fb301129384ea94ad97dbb4350a4f6bf202b3caf",
+        "oracle_lcoe_USD2025_MWh": 366.33038928509137,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "source-installation-1e+09",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "source-installation-1e+09::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "a13f2d2676bb02cacc76f81d4699cc6d1646218044f6cb99c004a593cf9ae86b",
+        "oracle_lcoe_USD2025_MWh": 920.9755299032439,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "source-installation-1e+09",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "source-installation-1e+09::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "ab38e1a716028fcdedae2049ea048e6cf1823415d4c4037d65fcee05f9ca68d0",
+        "oracle_lcoe_USD2025_MWh": 1294.1311626686702,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "source-installation-1e+09",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "source-installation-1e+09::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "a13f2d2676bb02cacc76f81d4699cc6d1646218044f6cb99c004a593cf9ae86b",
+        "oracle_lcoe_USD2025_MWh": 427.8247841525464,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "source-installation-1e+09",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "source-installation-1e+09::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "ab38e1a716028fcdedae2049ea048e6cf1823415d4c4037d65fcee05f9ca68d0",
+        "oracle_lcoe_USD2025_MWh": 388.18530445641426,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "contingency_rate-0",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "contingency_rate-0::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "7520583dd542a462ff95af153a3d5df7cd550879230cc4dea916fd637a70fbdf",
+        "oracle_lcoe_USD2025_MWh": 816.0483582519438,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "contingency_rate-0",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "contingency_rate-0::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "95dd703917ee9bd9d48bd8b17b213b30cbaa97018b3d6deb892d216f0cc7d921",
+        "oracle_lcoe_USD2025_MWh": 1147.418369491015,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "contingency_rate-0",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "contingency_rate-0::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "7520583dd542a462ff95af153a3d5df7cd550879230cc4dea916fd637a70fbdf",
+        "oracle_lcoe_USD2025_MWh": 380.4046544259736,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "contingency_rate-0",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "contingency_rate-0::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "95dd703917ee9bd9d48bd8b17b213b30cbaa97018b3d6deb892d216f0cc7d921",
+        "oracle_lcoe_USD2025_MWh": 345.58608171949044,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "contingency_rate-0.2",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "contingency_rate-0.2::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "5c5540aa37cce9ee11553bde16441e208025ac19f03f37b0b99676ef6be93f15",
+        "oracle_lcoe_USD2025_MWh": 934.576763142619,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "contingency_rate-0.2",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "contingency_rate-0.2::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "67fdd5fb528626847e0fe86c46bfffb5e5404c0650b5b17fe4729d6fe1cc9c30",
+        "oracle_lcoe_USD2025_MWh": 1313.148876458202,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "contingency_rate-0.2",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "contingency_rate-0.2::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "5c5540aa37cce9ee11553bde16441e208025ac19f03f37b0b99676ef6be93f15",
+        "oracle_lcoe_USD2025_MWh": 435.9229546384225,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "contingency_rate-0.2",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "contingency_rate-0.2::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "67fdd5fb528626847e0fe86c46bfffb5e5404c0650b5b17fe4729d6fe1cc9c30",
+        "oracle_lcoe_USD2025_MWh": 395.8166629192215,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "indirect_rate-0.1",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "indirect_rate-0.1::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "a1b79e4dc35107cb4944113dddba4fb655c43b22a12b9baebfb44245dc44b3a4",
+        "oracle_lcoe_USD2025_MWh": 806.6908526026799,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "indirect_rate-0.1",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "indirect_rate-0.1::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "083ebff43375ecd02f74d451b35e7a5eeb70457dd923ddedc2026daec2a5ef34",
+        "oracle_lcoe_USD2025_MWh": 1134.334382098869,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "indirect_rate-0.1",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "indirect_rate-0.1::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "a1b79e4dc35107cb4944113dddba4fb655c43b22a12b9baebfb44245dc44b3a4",
+        "oracle_lcoe_USD2025_MWh": 376.02163072499076,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "indirect_rate-0.1",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "indirect_rate-0.1::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "083ebff43375ecd02f74d451b35e7a5eeb70457dd923ddedc2026daec2a5ef34",
+        "oracle_lcoe_USD2025_MWh": 341.62050951951164,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "indirect_rate-0.3",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "indirect_rate-0.3::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "2d98525678b9decfac43357e15906903dee7879d21bbb771be0f402c17556af9",
+        "oracle_lcoe_USD2025_MWh": 943.9342687918829,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "indirect_rate-0.3",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "indirect_rate-0.3::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "f4014adca23aed174571917dbe0fd5a133699a2eb975be475f59e29cf7d96666",
+        "oracle_lcoe_USD2025_MWh": 1326.2328638503482,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "indirect_rate-0.3",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "indirect_rate-0.3::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "2d98525678b9decfac43357e15906903dee7879d21bbb771be0f402c17556af9",
+        "oracle_lcoe_USD2025_MWh": 440.30597833940527,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "indirect_rate-0.3",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "indirect_rate-0.3::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "f4014adca23aed174571917dbe0fd5a133699a2eb975be475f59e29cf7d96666",
+        "oracle_lcoe_USD2025_MWh": 399.78223511920027,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "supplementary-rates-x0",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "supplementary-rates-x0::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "1eb3346257f39f77a903637d94e164ba940e6a2ae979c08db37fa927de33a223",
+        "oracle_lcoe_USD2025_MWh": 847.8563554415167,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "supplementary-rates-x0",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "supplementary-rates-x0::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "b03e4ef33f944edec8b2caba21954e069a0cf3f3ee93f838b3b11ecad8a52397",
+        "oracle_lcoe_USD2025_MWh": 1191.8934090792134,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "supplementary-rates-x0",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "supplementary-rates-x0::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "1eb3346257f39f77a903637d94e164ba940e6a2ae979c08db37fa927de33a223",
+        "oracle_lcoe_USD2025_MWh": 395.6342346573103,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "supplementary-rates-x0",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "supplementary-rates-x0::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "b03e4ef33f944edec8b2caba21954e069a0cf3f3ee93f838b3b11ecad8a52397",
+        "oracle_lcoe_USD2025_MWh": 359.3723487523556,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "supplementary-rates-x2",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "supplementary-rates-x2::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "124d21202d7e42a53594bad607d753d2e72f2dfeb7df5e242c138cec320145f1",
+        "oracle_lcoe_USD2025_MWh": 902.7687659530462,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "supplementary-rates-x2",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "supplementary-rates-x2::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "3eaa5f8439a507180b397d3b233104df5bbe2a20caaf10b6cb9cd6a99153772c",
+        "oracle_lcoe_USD2025_MWh": 1268.6738368700037,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "supplementary-rates-x2",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "supplementary-rates-x2::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "124d21202d7e42a53594bad607d753d2e72f2dfeb7df5e242c138cec320145f1",
+        "oracle_lcoe_USD2025_MWh": 420.6933744070858,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "supplementary-rates-x2",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "supplementary-rates-x2::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "3eaa5f8439a507180b397d3b233104df5bbe2a20caaf10b6cb9cd6a99153772c",
+        "oracle_lcoe_USD2025_MWh": 382.0303958863563,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "discount-0",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "discount-0::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "1a69c592c4c5facf6d0f3578a0a2f06b7e7e19c647ef6436645302ccfeac8a47",
+        "oracle_lcoe_USD2025_MWh": 528.265324282529,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "discount-0",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "discount-0::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "e9013faec4f3b5309e8b9ba912b5f0b1651f95eae1ad060d751a9b88d6f93163",
+        "oracle_lcoe_USD2025_MWh": 738.6721493905051,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "discount-0",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "discount-0::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "1a69c592c4c5facf6d0f3578a0a2f06b7e7e19c647ef6436645302ccfeac8a47",
+        "oracle_lcoe_USD2025_MWh": 245.30857050945002,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "discount-0",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "discount-0::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "e9013faec4f3b5309e8b9ba912b5f0b1651f95eae1ad060d751a9b88d6f93163",
+        "oracle_lcoe_USD2025_MWh": 221.51580467358394,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "discount-0.1",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "discount-0.1::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "fddb18230724a3982e5415aa26ee16bffcc1d782cd512d1f112a6d05f61b9b19",
+        "oracle_lcoe_USD2025_MWh": 1484.8679170082735,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "discount-0.1",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "discount-0.1::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "d84dfb7fb0eb8a4d695da342e8f571de18761dd55284fa2c123a38fd07acd5d8",
+        "oracle_lcoe_USD2025_MWh": 2085.606603414411,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "discount-0.1",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "discount-0.1::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "fddb18230724a3982e5415aa26ee16bffcc1d782cd512d1f112a6d05f61b9b19",
+        "oracle_lcoe_USD2025_MWh": 693.237550080685,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "discount-0.1",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "discount-0.1::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "d84dfb7fb0eb8a4d695da342e8f571de18761dd55284fa2c123a38fd07acd5d8",
+        "oracle_lcoe_USD2025_MWh": 629.4776008967395,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "availability-0.65",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "availability-0.65::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "1f8df7fb86dec84d3bfeffe8be3199c19859a56cf684b7e18b581cc9b1fafccf",
+        "oracle_lcoe_USD2025_MWh": 1018.5192748860339,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "availability-0.65",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "availability-0.65::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "9046e6552eeb34bd7063c568b3ffe6d92037f6e999b20a39400b4a25b5c877bf",
+        "oracle_lcoe_USD2025_MWh": 1430.133869319797,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "availability-0.65",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "availability-0.65::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "1f8df7fb86dec84d3bfeffe8be3199c19859a56cf684b7e18b581cc9b1fafccf",
+        "oracle_lcoe_USD2025_MWh": 477.0430516471544,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "availability-0.65",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "availability-0.65::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "9046e6552eeb34bd7063c568b3ffe6d92037f6e999b20a39400b4a25b5c877bf",
+        "oracle_lcoe_USD2025_MWh": 433.2285831871194,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "availability-0.9",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "availability-0.9",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "availability-0.9",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "availability-0.9",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "magnet-life-8-FPY",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "magnet-life-8-FPY::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "232fbeb6610dbd55188012ff46b031134db93f65eff3d796bd5b49baaa5e87c6",
+        "oracle_lcoe_USD2025_MWh": 889.5130896650901,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "magnet-life-8-FPY",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "magnet-life-8-FPY::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "96aee54c758305541e80833c1f47fecb36c00d25185a20f4fcddd03518c36479",
+        "oracle_lcoe_USD2025_MWh": 1250.1392927375473,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "magnet-life-8-FPY",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "magnet-life-8-FPY::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "232fbeb6610dbd55188012ff46b031134db93f65eff3d796bd5b49baaa5e87c6",
+        "oracle_lcoe_USD2025_MWh": 414.27808740712317,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "magnet-life-8-FPY",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "magnet-life-8-FPY::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "96aee54c758305541e80833c1f47fecb36c00d25185a20f4fcddd03518c36479",
+        "oracle_lcoe_USD2025_MWh": 376.1386246290695,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "magnet-life-12-FPY",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "magnet-life-12-FPY::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "1ba95f52e28ff005e28fd34223cdadc983a8af4d49fee3cd62fbe36d65846a70",
+        "oracle_lcoe_USD2025_MWh": 841.9123740653608,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "magnet-life-12-FPY",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "magnet-life-12-FPY::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "068b5970deb1833e7177776ba6b836359a0e036838ad9c246e5862560ab091bd",
+        "oracle_lcoe_USD2025_MWh": 1183.5823291504619,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "magnet-life-12-FPY",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "magnet-life-12-FPY::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "1ba95f52e28ff005e28fd34223cdadc983a8af4d49fee3cd62fbe36d65846a70",
+        "oracle_lcoe_USD2025_MWh": 393.78277762779175,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "magnet-life-12-FPY",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "magnet-life-12-FPY::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "068b5970deb1833e7177776ba6b836359a0e036838ad9c246e5862560ab091bd",
+        "oracle_lcoe_USD2025_MWh": 357.91274716877496,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "routine-allocation-0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "routine-allocation-0.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "05f514c49710c2572c7cc0b92f747d7334fc9b4bbf38ae396e415b24dc5b223d",
+        "oracle_lcoe_USD2025_MWh": 867.7331276976994,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "routine-allocation-0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "routine-allocation-0.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "bfb857d50491191b645b5e8806d13c401a0ee610407059d4dd67e2f84cf2f67f",
+        "oracle_lcoe_USD2025_MWh": 1219.6857981350424,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "routine-allocation-0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "routine-allocation-0.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "05f514c49710c2572c7cc0b92f747d7334fc9b4bbf38ae396e415b24dc5b223d",
+        "oracle_lcoe_USD2025_MWh": 404.9003488189607,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "routine-allocation-0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "routine-allocation-0.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "bfb857d50491191b645b5e8806d13c401a0ee610407059d4dd67e2f84cf2f67f",
+        "oracle_lcoe_USD2025_MWh": 367.7992769342673,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "routine-allocation-1",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "routine-allocation-1::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "e7fb7342729cd6537a3f229480eba199d674523c6fc14a0b935fb0b314bc0563",
+        "oracle_lcoe_USD2025_MWh": 880.365516030336,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "routine-allocation-1",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "routine-allocation-1::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "19f0d37f909edcf6a9f2eef3586430bc0b35f2e548c822a77e7317d5d2ed97f2",
+        "oracle_lcoe_USD2025_MWh": 1237.3488395343193,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "routine-allocation-1",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "routine-allocation-1::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "e7fb7342729cd6537a3f229480eba199d674523c6fc14a0b935fb0b314bc0563",
+        "oracle_lcoe_USD2025_MWh": 410.33944167435624,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "routine-allocation-1",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "routine-allocation-1::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "19f0d37f909edcf6a9f2eef3586430bc0b35f2e548c822a77e7317d5d2ed97f2",
+        "oracle_lcoe_USD2025_MWh": 372.6361025760818,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "import-price-0",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "import-price-0::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "cb221f74412d0b2284c1b582c264a58ea6459a0d91222eb58e22bd41ad971e4f",
+        "oracle_lcoe_USD2025_MWh": 874.9392630885997,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "import-price-0",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "import-price-0::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "3e64190b663493cae9c12a4519fc17d13313f7ae0b00bd59f81cdbd96ed3462d",
+        "oracle_lcoe_USD2025_MWh": 1229.761665373023,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "import-price-0",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "import-price-0::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "cb221f74412d0b2284c1b582c264a58ea6459a0d91222eb58e22bd41ad971e4f",
+        "oracle_lcoe_USD2025_MWh": 408.0030748029613,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "import-price-0",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "import-price-0::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "3e64190b663493cae9c12a4519fc17d13313f7ae0b00bd59f81cdbd96ed3462d",
+        "oracle_lcoe_USD2025_MWh": 370.55844008847805,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "import-price-150",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "import-price-150::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "1a0db1f03c060c5908a86534b04c628ce49c83699d974f9d483e2668c9a17224",
+        "oracle_lcoe_USD2025_MWh": 876.059155914645,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "import-price-150",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "import-price-150::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "678a0408f78f5c2b290bba5afe82a247bc7a7db089f9c0789bdf91985819cf2f",
+        "oracle_lcoe_USD2025_MWh": 1231.3275381777792,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "import-price-150",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "import-price-150::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "1a0db1f03c060c5908a86534b04c628ce49c83699d974f9d483e2668c9a17224",
+        "oracle_lcoe_USD2025_MWh": 408.48526399067134,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "import-price-150",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "import-price-150::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "678a0408f78f5c2b290bba5afe82a247bc7a7db089f9c0789bdf91985819cf2f",
+        "oracle_lcoe_USD2025_MWh": 370.98723678111185,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-model-mean-T-price-x0::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "e5d24052132b2cff36ba89f671c9918ace12d2a8a164c81bbc42995b8b7878db",
+        "oracle_lcoe_USD2025_MWh": 864.9295808855657,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-model-mean-T-price-x0::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "52190fe71fcb434447351e0559d3c5bc70e913b78243f1e2afbcefa61c584acb",
+        "oracle_lcoe_USD2025_MWh": 1215.7657822121948,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-model-mean-T-price-x0::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "e5d24052132b2cff36ba89f671c9918ace12d2a8a164c81bbc42995b8b7878db",
+        "oracle_lcoe_USD2025_MWh": 403.6932333445063,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-model-mean-T-price-x0::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "52190fe71fcb434447351e0559d3c5bc70e913b78243f1e2afbcefa61c584acb",
+        "oracle_lcoe_USD2025_MWh": 366.72582457103346,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0.333333",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-model-mean-T-price-x0.333333::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "770ffafcfd344b64d322591e10de2c2622c01012c9a8c7d73c50a40424667d69",
+        "oracle_lcoe_USD2025_MWh": 868.3905741561377,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0.333333",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-model-mean-T-price-x0.333333::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "9ee5f3a64f66b3bed5fcc2ab1c1f8e2241943b8b6ac8c1e5ab791e9be7304a4d",
+        "oracle_lcoe_USD2025_MWh": 1220.605062466333,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0.333333",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-model-mean-T-price-x0.333333::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "770ffafcfd344b64d322591e10de2c2622c01012c9a8c7d73c50a40424667d69",
+        "oracle_lcoe_USD2025_MWh": 405.18342374040367,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x0.333333",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-model-mean-T-price-x0.333333::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "9ee5f3a64f66b3bed5fcc2ab1c1f8e2241943b8b6ac8c1e5ab791e9be7304a4d",
+        "oracle_lcoe_USD2025_MWh": 368.0510071538077,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x3.33333",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-model-mean-T-price-x3.33333::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "53f43b58341f2cee88c7f13a754635fda5da08b5efcc9efbb5387a69bc8266f9",
+        "oracle_lcoe_USD2025_MWh": 899.5395135912848,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x3.33333",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-model-mean-T-price-x3.33333::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "98dd07a3f4e7da6cc360c7b74b2078cfed909683bd4a64c5a3ef674c4888943c",
+        "oracle_lcoe_USD2025_MWh": 1264.1585847535737,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x3.33333",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-model-mean-T-price-x3.33333::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "53f43b58341f2cee88c7f13a754635fda5da08b5efcc9efbb5387a69bc8266f9",
+        "oracle_lcoe_USD2025_MWh": 418.5951373034788,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-mean-T-price-x3.33333",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-model-mean-T-price-x3.33333::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "98dd07a3f4e7da6cc360c7b74b2078cfed909683bd4a64c5a3ef674c4888943c",
+        "oracle_lcoe_USD2025_MWh": 379.97765039877515,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-model-lower-T-price-x0::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "af20eb35886bb7c18a5a5a09152dd8a912162b864778028779712c91c96962cb",
+        "oracle_lcoe_USD2025_MWh": 864.9284558066413,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-model-lower-T-price-x0::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "c3268d1a06362c94aa099f48e71214fa5a20e726b23b6ab0e598c36f179dee6b",
+        "oracle_lcoe_USD2025_MWh": 1215.764016460557,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-model-lower-T-price-x0::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "af20eb35886bb7c18a5a5a09152dd8a912162b864778028779712c91c96962cb",
+        "oracle_lcoe_USD2025_MWh": 403.6927489223545,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-model-lower-T-price-x0::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "c3268d1a06362c94aa099f48e71214fa5a20e726b23b6ab0e598c36f179dee6b",
+        "oracle_lcoe_USD2025_MWh": 366.7253410397658,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0.333333",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-model-lower-T-price-x0.333333::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "9b866ace838eda43791833eabb2a8493c827dd046b86277d29732cfca03b6d0f",
+        "oracle_lcoe_USD2025_MWh": 873.8867721980176,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0.333333",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-model-lower-T-price-x0.333333::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "738da62cf0d71863b239db74d08934b01073a9e106830c7e6b29ec0e19f3249b",
+        "oracle_lcoe_USD2025_MWh": 1228.8216825534178,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0.333333",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-model-lower-T-price-x0.333333::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "9b866ace838eda43791833eabb2a8493c827dd046b86277d29732cfca03b6d0f",
+        "oracle_lcoe_USD2025_MWh": 407.54990668204925,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x0.333333",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-model-lower-T-price-x0.333333::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "738da62cf0d71863b239db74d08934b01073a9e106830c7e6b29ec0e19f3249b",
+        "oracle_lcoe_USD2025_MWh": 370.3010363434515,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x1",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-model-lower-T-price-x1::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "eb7d905b57e4b202e4331e92ff8410c45ed712575da16f3c2b3b09f0240ffa03",
+        "oracle_lcoe_USD2025_MWh": 891.8034049807696,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x1",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-model-lower-T-price-x1::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "38ed7d4d0b5bf7050aea498e3a607966233e6448d38b3677f7cd48add84f2df3",
+        "oracle_lcoe_USD2025_MWh": 1254.937014739138,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x1",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-model-lower-T-price-x1::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "eb7d905b57e4b202e4331e92ff8410c45ed712575da16f3c2b3b09f0240ffa03",
+        "oracle_lcoe_USD2025_MWh": 415.26422220143854,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x1",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-model-lower-T-price-x1::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "38ed7d4d0b5bf7050aea498e3a607966233e6448d38b3677f7cd48add84f2df3",
+        "oracle_lcoe_USD2025_MWh": 377.4524269508227,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x3.33333",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-model-lower-T-price-x3.33333::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "7aa13460e8a076952ab435dad4c7b8bc65d254fb2f11f5a45f93d6edee524735",
+        "oracle_lcoe_USD2025_MWh": 954.5116197204026,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x3.33333",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-model-lower-T-price-x3.33333::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "8ff8fcecc2f4832e309dee4695f8653e23e173d0b36df32666f22a62fe25c0fd",
+        "oracle_lcoe_USD2025_MWh": 1346.3406773891606,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x3.33333",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-model-lower-T-price-x3.33333::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "7aa13460e8a076952ab435dad4c7b8bc65d254fb2f11f5a45f93d6edee524735",
+        "oracle_lcoe_USD2025_MWh": 442.26432651930145,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-model-lower-T-price-x3.33333",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-model-lower-T-price-x3.33333::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "8ff8fcecc2f4832e309dee4695f8653e23e173d0b36df32666f22a62fe25c0fd",
+        "oracle_lcoe_USD2025_MWh": 402.48229407662194,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x0::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "4ff7fbe42a2d1ccec12ba0feb02df648130373e45af4f06b0a5a848a12c89eb6",
+        "oracle_lcoe_USD2025_MWh": 864.9178782539424,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x0::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "e698001d29d42b4d2895fc98a28963117936afb8ea370c55a71b2d45891d1948",
+        "oracle_lcoe_USD2025_MWh": 1215.7474155531916,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x0::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "4ff7fbe42a2d1ccec12ba0feb02df648130373e45af4f06b0a5a848a12c89eb6",
+        "oracle_lcoe_USD2025_MWh": 403.68819457445153,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x0::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "e698001d29d42b4d2895fc98a28963117936afb8ea370c55a71b2d45891d1948",
+        "oracle_lcoe_USD2025_MWh": 366.720795067608,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0.333333",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x0.333333::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "16671fcacb1d296a44597e4575656d7d747af9310b26e0f1d28ec36ff1238eb4",
+        "oracle_lcoe_USD2025_MWh": 964.2553237566055,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0.333333",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x0.333333::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "62847705a187983fb5e5f7cfdcaac53e2e2308ba67dbcfb73430c4a21bb33f84",
+        "oracle_lcoe_USD2025_MWh": 1370.6503262758622,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0.333333",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x0.333333::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "16671fcacb1d296a44597e4575656d7d747af9310b26e0f1d28ec36ff1238eb4",
+        "oracle_lcoe_USD2025_MWh": 446.45964648674413,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x0.333333",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x0.333333::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "62847705a187983fb5e5f7cfdcaac53e2e2308ba67dbcfb73430c4a21bb33f84",
+        "oracle_lcoe_USD2025_MWh": 409.139218579076,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x1",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x1::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "2285b7843c8f860c9b7119263cd23bd27a6a536edb2fb53ad1881c7662c62dc0",
+        "oracle_lcoe_USD2025_MWh": 1162.9302147619314,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x1",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x1::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "a85ca708116d06bb2a996be885a373f7cfda4719e3964b1a919e0b781e7a6ea0",
+        "oracle_lcoe_USD2025_MWh": 1680.4561477212033,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x1",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x1::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "2285b7843c8f860c9b7119263cd23bd27a6a536edb2fb53ad1881c7662c62dc0",
+        "oracle_lcoe_USD2025_MWh": 532.002550311329,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x1",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x1::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "a85ca708116d06bb2a996be885a373f7cfda4719e3964b1a919e0b781e7a6ea0",
+        "oracle_lcoe_USD2025_MWh": 493.9760656020117,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x3.33333",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x3.33333::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "9786e9b2078e756df426d56b568d8e07dc6f197c0b60123e36535d525793c277",
+        "oracle_lcoe_USD2025_MWh": 1858.2923332805724,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x3.33333",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x3.33333::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "849e636dbca6e72278f53c5cf684d5cfa3a67c5d09a3d4c834315f65e5e73ba7",
+        "oracle_lcoe_USD2025_MWh": 2764.776522779897,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x3.33333",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x3.33333::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "9786e9b2078e756df426d56b568d8e07dc6f197c0b60123e36535d525793c277",
+        "oracle_lcoe_USD2025_MWh": 831.4027136973765,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "TBR-paper-reference-T-price-x3.33333",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "TBR-paper-reference-T-price-x3.33333::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "849e636dbca6e72278f53c5cf684d5cfa3a67c5d09a3d4c834315f65e5e73ba7",
+        "oracle_lcoe_USD2025_MWh": 790.905030182287,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "heating-efficiency-0.4",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "heating-efficiency-0.4",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "heating-efficiency-0.4",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "heating-efficiency-0.4",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "heating-efficiency-0.6",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "heating-efficiency-0.6::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "0548482351baa8088e40a26d8d5f34acda45eaf3845c800bcbc5615b314be43e",
+        "oracle_lcoe_USD2025_MWh": 827.0939533100268,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "heating-efficiency-0.6",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "heating-efficiency-0.6::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "0b3947df7ce0a5151430939848ea5ce5decfdf724ebef836d6f7fe680c6dd8ba",
+        "oracle_lcoe_USD2025_MWh": 1137.5553100356772,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "heating-efficiency-0.6",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "heating-efficiency-0.6::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "0548482351baa8088e40a26d8d5f34acda45eaf3845c800bcbc5615b314be43e",
+        "oracle_lcoe_USD2025_MWh": 398.16913555384997,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "heating-efficiency-0.6",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "heating-efficiency-0.6::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "0b3947df7ce0a5151430939848ea5ce5decfdf724ebef836d6f7fe680c6dd8ba",
+        "oracle_lcoe_USD2025_MWh": 362.60722262265404,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary-drive-efficiency-0.9",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "primary-drive-efficiency-0.9::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "3f802269cf5ee53ca6553476cd2c06c1e0a36f367a7600579a8024094daea79f",
+        "oracle_lcoe_USD2025_MWh": 910.1279028345041,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary-drive-efficiency-0.9",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "primary-drive-efficiency-0.9::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "e887f22a8ac0477fada9431a47cb0d824bd8ad30797118d25b7c40cc3d20ab59",
+        "oracle_lcoe_USD2025_MWh": 1330.3818435933556,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary-drive-efficiency-0.9",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "primary-drive-efficiency-0.9::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "3f802269cf5ee53ca6553476cd2c06c1e0a36f367a7600579a8024094daea79f",
+        "oracle_lcoe_USD2025_MWh": 414.99908569106947,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "primary-drive-efficiency-0.9",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "primary-drive-efficiency-0.9::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "e887f22a8ac0477fada9431a47cb0d824bd8ad30797118d25b7c40cc3d20ab59",
+        "oracle_lcoe_USD2025_MWh": 378.4998659821333,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "residual-load-0-MW",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "residual-load-0-MW::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "fd65991b9136faf88900cde3df5ee33f77a7cf30b2fab960d5014983463d780a",
+        "oracle_lcoe_USD2025_MWh": 860.2667971153843,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "residual-load-0-MW",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "residual-load-0-MW::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "dbffe0a4f46a4dc07402f30869af53212210806bc8e18d3aadedf23a8daee486",
+        "oracle_lcoe_USD2025_MWh": 1200.9156748335015,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "residual-load-0-MW",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "residual-load-0-MW::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "fd65991b9136faf88900cde3df5ee33f77a7cf30b2fab960d5014983463d780a",
+        "oracle_lcoe_USD2025_MWh": 405.1131124297889,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "residual-load-0-MW",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "residual-load-0-MW::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "dbffe0a4f46a4dc07402f30869af53212210806bc8e18d3aadedf23a8daee486",
+        "oracle_lcoe_USD2025_MWh": 368.2354373618997,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "residual-load-20-MW",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "residual-load-20-MW::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "b89a89b947e6f5fb6f817fb9aa7d45e4d798c9caec3acdddf51b521b0d1c8297",
+        "oracle_lcoe_USD2025_MWh": 923.7824507415143,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "residual-load-20-MW",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "residual-load-20-MW::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "534fe893fe51e68ff3c6317f8ccd2a1c14b93fb9c967d8cb687f8feb893ffbcb",
+        "oracle_lcoe_USD2025_MWh": 1327.6879764807725,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "residual-load-20-MW",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "residual-load-20-MW::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "b89a89b947e6f5fb6f817fb9aa7d45e4d798c9caec3acdddf51b521b0d1c8297",
+        "oracle_lcoe_USD2025_MWh": 417.5979304793043,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "residual-load-20-MW",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "residual-load-20-MW::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "534fe893fe51e68ff3c6317f8ccd2a1c14b93fb9c967d8cb687f8feb893ffbcb",
+        "oracle_lcoe_USD2025_MWh": 378.3014011728251,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nuclear-heating-50-W-m3",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "nuclear-heating-50-W-m3::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "a151503d39b910b605f88e913c752b29e0df0820a19bf8aa24d713e8388c42d6",
+        "oracle_lcoe_USD2025_MWh": 876.2821290912035,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nuclear-heating-50-W-m3",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "nuclear-heating-50-W-m3::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "74eeb351d28bd5b82707e5dbe0c5d8b2fb82a20eff3b8fdcb183e5b746931797",
+        "oracle_lcoe_USD2025_MWh": 1232.1821711599082,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nuclear-heating-50-W-m3",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "nuclear-heating-50-W-m3::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "a151503d39b910b605f88e913c752b29e0df0820a19bf8aa24d713e8388c42d6",
+        "oracle_lcoe_USD2025_MWh": 408.361484801743,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nuclear-heating-50-W-m3",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "nuclear-heating-50-W-m3::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "74eeb351d28bd5b82707e5dbe0c5d8b2fb82a20eff3b8fdcb183e5b746931797",
+        "oracle_lcoe_USD2025_MWh": 370.8615000675407,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "nuclear-heating-80-W-m3",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "nuclear-heating-80-W-m3",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "nuclear-heating-80-W-m3",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "nuclear-heating-80-W-m3",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "extra-cold-10000-W",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "extra-cold-10000-W::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "f4ce7a2bef654fcbef625d7963322a245d21439b98dc6314d1d11798d8aec98e",
+        "oracle_lcoe_USD2025_MWh": 877.4917506556927,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "extra-cold-10000-W",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "extra-cold-10000-W::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "51529722771e055dda851ed29ee625bcfc1e84bccf3213d9b2e5ba9e98176a74",
+        "oracle_lcoe_USD2025_MWh": 1234.5530940045887,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "extra-cold-10000-W",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "extra-cold-10000-W::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "f4ce7a2bef654fcbef625d7963322a245d21439b98dc6314d1d11798d8aec98e",
+        "oracle_lcoe_USD2025_MWh": 408.6077640405048,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "extra-cold-10000-W",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "extra-cold-10000-W::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "51529722771e055dda851ed29ee625bcfc1e84bccf3213d9b2e5ba9e98176a74",
+        "oracle_lcoe_USD2025_MWh": 371.0609713248169,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "extra-cold-13000-W",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "extra-cold-13000-W",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "extra-cold-13000-W",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "extra-cold-13000-W",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "gas-quote-x0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "gas-quote-x0.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "e45a141f6774dc6d1dd74034a577f1ecc60b54730d95f403a36281f1e1ef807b",
+        "oracle_lcoe_USD2025_MWh": 820.0121831397491,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x1.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "gas-quote-x1.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "1487ded412260d90a9621ddcb731382a5b12a10ab9c8d8cc9bbf0109287fd631",
+        "oracle_lcoe_USD2025_MWh": 930.6129382548137,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-quote-x0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "steam-quote-x0.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "c06ad90fbd332b91a278f7312b9b8a60245b31df921c7e60d609caa47e1dbc42",
+        "oracle_lcoe_USD2025_MWh": 875.3125606972814,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-quote-x1.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "steam-quote-x1.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "ecbfc67a96e1dc22108bb88cd2ea04be8232d8463da49d0bf27cbcb2011c1ad0",
+        "oracle_lcoe_USD2025_MWh": 875.3125606972814,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x0.5-steam-x1.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "gas-quote-x0.5-steam-x1.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "f438a907522c017cb24046b1256914a445210c401a538bdd12fbdf6b37c3b96e",
+        "oracle_lcoe_USD2025_MWh": 820.0121831397491,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x1.5-steam-x0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "gas-quote-x1.5-steam-x0.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "41a8e3e9beb5a9596073100e900b3eacb24002667847aac60938dc15cc559b47",
+        "oracle_lcoe_USD2025_MWh": 930.6129382548137,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "recurring-x0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "recurring-x0.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "5656e5c192762079e235a809c8f18cee732f70f61259d1bd4c937e62aa5dee78",
+        "oracle_lcoe_USD2025_MWh": 865.2162639903339,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "recurring-x1.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 6,
+      "best": {
+        "case": "recurring-x1.5::nominal::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "74ee7cbb60fd4452db35dcf236891a1e2391eab5e4ff37d86d374b13165c323c",
+        "oracle_lcoe_USD2025_MWh": 885.4088574042288,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "gas-quote-x0.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "269933ed08eca3bd63ffae5f1209b3e86fbfae17893c19c3fdb3bdb5c0ad520c",
+        "oracle_lcoe_USD2025_MWh": 1152.9607262686252,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x1.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "gas-quote-x1.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "d14763f92050fb872131a350b123db8daab0955920be84fa693df20acd9f65df",
+        "oracle_lcoe_USD2025_MWh": 1307.6065196805919,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-quote-x0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "steam-quote-x0.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "03a96302cde42469c2747e108e469b9002f655309d60eecd1fa0d289b1964f38",
+        "oracle_lcoe_USD2025_MWh": 1230.2836229746085,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-quote-x1.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "steam-quote-x1.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "145b2dd8e817447b10a00c7f61afa50ce71075332c16b4fae82b132e5b6053ab",
+        "oracle_lcoe_USD2025_MWh": 1230.2836229746085,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x0.5-steam-x1.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "gas-quote-x0.5-steam-x1.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "8283059b92f1a1bf3e42083c6b213938d58f7238b8a30f5cd402dbfc133ddb41",
+        "oracle_lcoe_USD2025_MWh": 1152.9607262686252,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x1.5-steam-x0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "gas-quote-x1.5-steam-x0.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "bf5daf46c2e040273c84d5c13d500836911f5548fb27732a4d76e5dd74012f77",
+        "oracle_lcoe_USD2025_MWh": 1307.6065196805919,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "recurring-x0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "recurring-x0.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "854763c22e33f6c3cc33eb143c8422b348cb527e0074c712c3cb792986e47a2f",
+        "oracle_lcoe_USD2025_MWh": 1216.1666324247326,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "recurring-x1.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 3,
+      "eligible_aliases": 3,
+      "best": {
+        "case": "recurring-x1.5::nominal::gas-q2800-m1750-r1.8-ua25-25-25",
+        "point_id": "d7a65fcf4414e4f76bdb4d9439014b807412e32f35690a2a5f42334fe2ed9701",
+        "oracle_lcoe_USD2025_MWh": 1244.4006135244845,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "gas-quote-x0.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "e45a141f6774dc6d1dd74034a577f1ecc60b54730d95f403a36281f1e1ef807b",
+        "oracle_lcoe_USD2025_MWh": 408.163804532198,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x1.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "gas-quote-x1.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "1487ded412260d90a9621ddcb731382a5b12a10ab9c8d8cc9bbf0109287fd631",
+        "oracle_lcoe_USD2025_MWh": 408.163804532198,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-quote-x0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "steam-quote-x0.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "c06ad90fbd332b91a278f7312b9b8a60245b31df921c7e60d609caa47e1dbc42",
+        "oracle_lcoe_USD2025_MWh": 368.711836394742,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-quote-x1.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "steam-quote-x1.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "ecbfc67a96e1dc22108bb88cd2ea04be8232d8463da49d0bf27cbcb2011c1ad0",
+        "oracle_lcoe_USD2025_MWh": 447.61577266965406,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x0.5-steam-x1.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "gas-quote-x0.5-steam-x1.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "f438a907522c017cb24046b1256914a445210c401a538bdd12fbdf6b37c3b96e",
+        "oracle_lcoe_USD2025_MWh": 447.61577266965406,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x1.5-steam-x0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "gas-quote-x1.5-steam-x0.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "41a8e3e9beb5a9596073100e900b3eacb24002667847aac60938dc15cc559b47",
+        "oracle_lcoe_USD2025_MWh": 368.711836394742,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "recurring-x0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "recurring-x0.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "5656e5c192762079e235a809c8f18cee732f70f61259d1bd4c937e62aa5dee78",
+        "oracle_lcoe_USD2025_MWh": 402.45308185648076,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "recurring-x1.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "recurring-x1.5::nominal::steam-q2500-n10-k4-pump225",
+        "point_id": "74ee7cbb60fd4452db35dcf236891a1e2391eab5e4ff37d86d374b13165c323c",
+        "oracle_lcoe_USD2025_MWh": 413.8745272079152,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "gas-quote-x0.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "269933ed08eca3bd63ffae5f1209b3e86fbfae17893c19c3fdb3bdb5c0ad520c",
+        "oracle_lcoe_USD2025_MWh": 370.701372319356,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x1.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "gas-quote-x1.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "d14763f92050fb872131a350b123db8daab0955920be84fa693df20acd9f65df",
+        "oracle_lcoe_USD2025_MWh": 370.701372319356,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-quote-x0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "steam-quote-x0.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "03a96302cde42469c2747e108e469b9002f655309d60eecd1fa0d289b1964f38",
+        "oracle_lcoe_USD2025_MWh": 332.6263596330837,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-quote-x1.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "steam-quote-x1.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "145b2dd8e817447b10a00c7f61afa50ce71075332c16b4fae82b132e5b6053ab",
+        "oracle_lcoe_USD2025_MWh": 408.77638500562824,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x0.5-steam-x1.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "gas-quote-x0.5-steam-x1.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "8283059b92f1a1bf3e42083c6b213938d58f7238b8a30f5cd402dbfc133ddb41",
+        "oracle_lcoe_USD2025_MWh": 408.77638500562824,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-quote-x1.5-steam-x0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "gas-quote-x1.5-steam-x0.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "bf5daf46c2e040273c84d5c13d500836911f5548fb27732a4d76e5dd74012f77",
+        "oracle_lcoe_USD2025_MWh": 332.6263596330837,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "recurring-x0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "recurring-x0.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "854763c22e33f6c3cc33eb143c8422b348cb527e0074c712c3cb792986e47a2f",
+        "oracle_lcoe_USD2025_MWh": 365.2088633267399,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "recurring-x1.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "recurring-x1.5::nominal::steam-q2800-n11-k4-pump225",
+        "point_id": "d7a65fcf4414e4f76bdb4d9439014b807412e32f35690a2a5f42334fe2ed9701",
+        "oracle_lcoe_USD2025_MWh": 376.1938813119721,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-favourable",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 125,
+      "eligible_aliases": 14,
+      "best": {
+        "case": "gas-favourable::gas-q2500-m2250-r1.35-ua25-25-25",
+        "point_id": "03611a8ce4961925791649d6eb0744f60352fd462fc3763cb05a1d36752f1b68",
+        "oracle_lcoe_USD2025_MWh": 509.3879066019895,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-favourable",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 125,
+      "eligible_aliases": 8,
+      "best": {
+        "case": "gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+        "point_id": "570732eaf6214126a10c541b0f0e171f06383a61d68effd70d74e1675589759b",
+        "oracle_lcoe_USD2025_MWh": 424.0264258334737,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-favourable",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 24,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "gas-favourable::steam-q2500-n10-k4-pump225",
+        "point_id": "03611a8ce4961925791649d6eb0744f60352fd462fc3763cb05a1d36752f1b68",
+        "oracle_lcoe_USD2025_MWh": 425.99664209639883,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-favourable",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 24,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "gas-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "570732eaf6214126a10c541b0f0e171f06383a61d68effd70d74e1675589759b",
+        "oracle_lcoe_USD2025_MWh": 386.99282799835606,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-favourable",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 125,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "steam-favourable::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "bee500deac1f484d11c586242d50a9f94331a6d65e34db16f2da72451bd48114",
+        "oracle_lcoe_USD2025_MWh": 1278.245587991866,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-favourable",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 125,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "steam-favourable::gas-q2800-m2000-r1.65-ua25-25-25",
+        "point_id": "44754006797d02aed4317e3b854270fd75340bab6e3d7260a70049fd3027f5f1",
+        "oracle_lcoe_USD2025_MWh": 3419.6334932080395,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-favourable",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 24,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "steam-favourable::steam-q2500-n10-k4-pump225",
+        "point_id": "bee500deac1f484d11c586242d50a9f94331a6d65e34db16f2da72451bd48114",
+        "oracle_lcoe_USD2025_MWh": 391.91474243265134,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-favourable",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 24,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "steam-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "44754006797d02aed4317e3b854270fd75340bab6e3d7260a70049fd3027f5f1",
+        "oracle_lcoe_USD2025_MWh": 355.86378825385736,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "held_efficiency",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 2,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "held::sensitivity-q2500-gas-eta+0.03",
+        "point_id": "23af328e104519bed794a93ef07ae05732fa801e5ceb995b30c99661f88c3f89",
+        "oracle_lcoe_USD2025_MWh": 675.4438069210381,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "held_efficiency",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 2,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "held::sensitivity-q2500-steam-eta+0.03",
+        "point_id": "842c7b5f493d46e59d737f421cf8b197eb748813a4d6a02081b3df7c430d8f9c",
+        "oracle_lcoe_USD2025_MWh": 391.91474243265134,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "adverse_controller",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 1,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "adverse_controller",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 1,
+      "eligible_aliases": 1,
+      "best": {
+        "case": "adverse::controller-q2500-steam-500",
+        "point_id": "2af1d864d2e417f5436c8c8ad8db900d56999685562e2100aa857bde35f25cb8",
+        "oracle_lcoe_USD2025_MWh": 408.1019366601571,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "held_efficiency",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 2,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "held::sensitivity-q2800-gas-eta+0.03",
+        "point_id": "ead5fbbc0ce7cb135b86ed7785c636a1a4951ca0cc64f7090219f5f1166b7788",
+        "oracle_lcoe_USD2025_MWh": 682.7583014181217,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "held_efficiency",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 2,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "held::sensitivity-q2800-steam-eta+0.03",
+        "point_id": "ef9b21d5542fb04b0916bffd21f340d847848a92c021738c26bbdcb2a309384c",
+        "oracle_lcoe_USD2025_MWh": 355.86378825385736,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "adverse_controller",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 1,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "adverse_controller",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 1,
+      "eligible_aliases": 1,
+      "best": {
+        "case": "adverse::controller-q2800-steam-500",
+        "point_id": "fd4328df017917611def5f8a28fbd17d4fbfc0ba464a7a174d029b2368061f7b",
+        "oracle_lcoe_USD2025_MWh": 370.6463550365392,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "window_edges",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 8,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "edge-q2500-gas-source-lower",
+        "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+        "oracle_lcoe_USD2025_MWh": 875.3125606972814,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "window_edges",
+      "source_MW": 3000.0,
+      "branch": "gas",
+      "attempted_aliases": 2,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "window_edges",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 8,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "edge-q2500-steam-circuits-lower",
+        "point_id": "f494decb498cfb3ab7393068feda33b7ad80cb717d66645fd47cdada28219bfa",
+        "oracle_lcoe_USD2025_MWh": 408.163804532198,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "window_edges",
+      "source_MW": 3000.0,
+      "branch": "steam",
+      "attempted_aliases": 2,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "window_edges",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 6,
+      "eligible_aliases": 1,
+      "best": {
+        "case": "edge-q2800-gas-stage_ratio-upper",
+        "point_id": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+        "oracle_lcoe_USD2025_MWh": 1230.2836229746085,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "window_edges",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 6,
+      "eligible_aliases": 4,
+      "best": {
+        "case": "edge-q2800-steam-pumps_per_circuit-upper",
+        "point_id": "d834f97593315c8567af9e95af937783d3530b65d6c51b753def3f45e3d86b36",
+        "oracle_lcoe_USD2025_MWh": 370.701372319356,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-favourable-gas-quote-x0.5-steam-x1.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 14,
+      "eligible_aliases": 14,
+      "best": {
+        "case": "gas-favourable-gas-quote-x0.5-steam-x1.5::gas-favourable::gas-q2500-m2250-r1.35-ua25-25-25",
+        "point_id": "623089b1028d6ca86b3fbc1466961dd7b39b38cf24f00dd13a40c1c61aa1a60c",
+        "oracle_lcoe_USD2025_MWh": 477.2058669247672,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-favourable-gas-quote-x0.5-steam-x1.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 8,
+      "eligible_aliases": 8,
+      "best": {
+        "case": "gas-favourable-gas-quote-x0.5-steam-x1.5::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+        "point_id": "3e3d439133e33a5e8f5486d65089df05d03d12309306a7b803c9b80682b10b01",
+        "oracle_lcoe_USD2025_MWh": 397.3765128271899,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-favourable-gas-quote-x0.5-steam-x1.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "gas-favourable-gas-quote-x0.5-steam-x1.5::gas-favourable::steam-q2500-n10-k4-pump225",
+        "point_id": "623089b1028d6ca86b3fbc1466961dd7b39b38cf24f00dd13a40c1c61aa1a60c",
+        "oracle_lcoe_USD2025_MWh": 467.17228227819413,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "gas-favourable-gas-quote-x0.5-steam-x1.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "gas-favourable-gas-quote-x0.5-steam-x1.5::gas-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "3e3d439133e33a5e8f5486d65089df05d03d12309306a7b803c9b80682b10b01",
+        "oracle_lcoe_USD2025_MWh": 426.7411481713926,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "economic-bracket-gas-favourable-q2800-lower",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 8,
+      "eligible_aliases": 8,
+      "best": {
+        "case": "economic-bracket-gas-favourable-q2800-lower::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+        "point_id": "a5d788a3a364265caf69eee635b5cb5779aaf9ccba779de9ba8aed3adcc6d286",
+        "oracle_lcoe_USD2025_MWh": 409.1627227706669,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "economic-bracket-gas-favourable-q2800-lower",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "economic-bracket-gas-favourable-q2800-lower::gas-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "a5d788a3a364265caf69eee635b5cb5779aaf9ccba779de9ba8aed3adcc6d286",
+        "oracle_lcoe_USD2025_MWh": 409.16202713075404,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "economic-bracket-gas-favourable-q2800-upper",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 8,
+      "eligible_aliases": 8,
+      "best": {
+        "case": "economic-bracket-gas-favourable-q2800-upper::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+        "point_id": "7f16315839aae8e93c6712e39e1f7980dc65cdf25d3db36ab0508314ce3d2970",
+        "oracle_lcoe_USD2025_MWh": 409.1621897724067,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "economic-bracket-gas-favourable-q2800-upper",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "economic-bracket-gas-favourable-q2800-upper::gas-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "7f16315839aae8e93c6712e39e1f7980dc65cdf25d3db36ab0508314ce3d2970",
+        "oracle_lcoe_USD2025_MWh": 409.16282209715746,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-favourable-gas-quote-x1.5-steam-x0.5",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 2,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "steam-favourable-gas-quote-x1.5-steam-x0.5::steam-favourable::gas-q2500-m2000-r1.5-ua25-25-25",
+        "point_id": "3f18c4caaa0c2aa3f313b767c21f8a7d8f5edb3c79c47ffb3b2a2f5f6511a3d5",
+        "oracle_lcoe_USD2025_MWh": 1359.0024133833463,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-favourable-gas-quote-x1.5-steam-x0.5",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 2,
+      "eligible_aliases": 2,
+      "best": {
+        "case": "steam-favourable-gas-quote-x1.5-steam-x0.5::steam-favourable::gas-q2800-m2000-r1.65-ua25-25-25",
+        "point_id": "2ed8558de3c9c2a856a619c763e2ab1107df669670536d434f68ecd9695504de",
+        "oracle_lcoe_USD2025_MWh": 3634.556265835326,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-favourable-gas-quote-x1.5-steam-x0.5",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 11,
+      "eligible_aliases": 11,
+      "best": {
+        "case": "steam-favourable-gas-quote-x1.5-steam-x0.5::steam-favourable::steam-q2500-n10-k4-pump225",
+        "point_id": "3f18c4caaa0c2aa3f313b767c21f8a7d8f5edb3c79c47ffb3b2a2f5f6511a3d5",
+        "oracle_lcoe_USD2025_MWh": 354.0333630468109,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "steam-favourable-gas-quote-x1.5-steam-x0.5",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "steam-favourable-gas-quote-x1.5-steam-x0.5::steam-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "2ed8558de3c9c2a856a619c763e2ab1107df669670536d434f68ecd9695504de",
+        "oracle_lcoe_USD2025_MWh": 319.31275482342875,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "cryogenic_capacity_below",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 1,
+      "eligible_aliases": 1,
+      "best": {
+        "case": "cryo-capacity-q2500-below-gas",
+        "point_id": "5d4509a810ecca51fb31cd68d1f1b822d023f308dd88d8d3f467ae0ceb8fc48a",
+        "oracle_lcoe_USD2025_MWh": 877.9871779238904,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "cryogenic_capacity_below",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 1,
+      "eligible_aliases": 1,
+      "best": {
+        "case": "cryo-capacity-q2500-below-steam",
+        "point_id": "5d4509a810ecca51fb31cd68d1f1b822d023f308dd88d8d3f467ae0ceb8fc48a",
+        "oracle_lcoe_USD2025_MWh": 408.70852302894826,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "cryogenic_capacity_above",
+      "source_MW": 2500.0,
+      "branch": "gas",
+      "attempted_aliases": 1,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "cryogenic_capacity_above",
+      "source_MW": 2500.0,
+      "branch": "steam",
+      "attempted_aliases": 1,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "cryogenic_capacity_below",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 1,
+      "eligible_aliases": 1,
+      "best": {
+        "case": "cryo-capacity-q2800-below-gas",
+        "point_id": "30bda3af6117f72506f26936f43e1995bd6b842dad681786d2ffce0e381b0cec",
+        "oracle_lcoe_USD2025_MWh": 1235.524901472678,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "cryogenic_capacity_below",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 1,
+      "eligible_aliases": 1,
+      "best": {
+        "case": "cryo-capacity-q2800-below-steam",
+        "point_id": "30bda3af6117f72506f26936f43e1995bd6b842dad681786d2ffce0e381b0cec",
+        "oracle_lcoe_USD2025_MWh": 371.14257254498585,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "cryogenic_capacity_above",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 1,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "cryogenic_capacity_above",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 1,
+      "eligible_aliases": 0,
+      "best": null
+    },
+    {
+      "scenario": "reporting-band-gap+5-q2800-lower",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 8,
+      "eligible_aliases": 8,
+      "best": {
+        "case": "reporting-band-gap+5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+        "point_id": "ac7588fbf846eff520262000ecb3730bb635ae89ac19e27c5fedd34de23d77b2",
+        "oracle_lcoe_USD2025_MWh": 411.169534021198,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "reporting-band-gap+5-q2800-lower",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "reporting-band-gap+5-q2800-lower::gas-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "ac7588fbf846eff520262000ecb3730bb635ae89ac19e27c5fedd34de23d77b2",
+        "oracle_lcoe_USD2025_MWh": 406.1688700388659,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "reporting-band-gap+5-q2800-upper",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 8,
+      "eligible_aliases": 8,
+      "best": {
+        "case": "reporting-band-gap+5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+        "point_id": "3aab17764a349cea3e9df5754feb48037af547165bb38a43972336ea361c17a3",
+        "oracle_lcoe_USD2025_MWh": 411.16900102293783,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "reporting-band-gap+5-q2800-upper",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "reporting-band-gap+5-q2800-upper::gas-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "3aab17764a349cea3e9df5754feb48037af547165bb38a43972336ea361c17a3",
+        "oracle_lcoe_USD2025_MWh": 406.16966500526934,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "reporting-band-gap-5-q2800-lower",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 8,
+      "eligible_aliases": 8,
+      "best": {
+        "case": "reporting-band-gap-5-q2800-lower::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+        "point_id": "24a7db08c1c32a673d5690ee7556a2f2c002c04b6bcffb1f3859f6c91a2c53a2",
+        "oracle_lcoe_USD2025_MWh": 407.15588610765906,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "reporting-band-gap-5-q2800-lower",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "reporting-band-gap-5-q2800-lower::gas-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "24a7db08c1c32a673d5690ee7556a2f2c002c04b6bcffb1f3859f6c91a2c53a2",
+        "oracle_lcoe_USD2025_MWh": 412.1552221253272,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "reporting-band-gap-5-q2800-upper",
+      "source_MW": 2800.0,
+      "branch": "gas",
+      "attempted_aliases": 8,
+      "eligible_aliases": 8,
+      "best": {
+        "case": "reporting-band-gap-5-q2800-upper::gas-favourable::gas-q2800-m2000-r1.5-ua25-25-25",
+        "point_id": "8fa07548ee3fb9f841d62c127d0b00bb384fc65219807d0bc0dc24c944af2ffc",
+        "oracle_lcoe_USD2025_MWh": 407.1553531093991,
+        "interpretation": "planning selection; native ranking required"
+      }
+    },
+    {
+      "scenario": "reporting-band-gap-5-q2800-upper",
+      "source_MW": 2800.0,
+      "branch": "steam",
+      "attempted_aliases": 7,
+      "eligible_aliases": 7,
+      "best": {
+        "case": "reporting-band-gap-5-q2800-upper::gas-favourable::steam-q2800-n11-k4-pump225",
+        "point_id": "8fa07548ee3fb9f841d62c127d0b00bb384fc65219807d0bc0dc24c944af2ffc",
+        "oracle_lcoe_USD2025_MWh": 412.1560170917308,
+        "interpretation": "planning selection; native ranking required"
+      }
+    }
+  ],
+  "extensions": [
+    {
+      "scenario": "gas-favourable-gas-quote-x0.5-steam-x1.5",
+      "performance": "gas-favourable",
+      "gas_quote_factor": 0.5,
+      "steam_quote_factor": 1.5,
+      "admitted_aliases": 40,
+      "eligibility_basis": "full performance catalog; positive price changes preserve physical eligibility"
+    },
+    {
+      "scenario": "steam-favourable-gas-quote-x1.5-steam-x0.5",
+      "performance": "steam-favourable",
+      "gas_quote_factor": 1.5,
+      "steam_quote_factor": 0.5,
+      "admitted_aliases": 22,
+      "eligibility_basis": "full performance catalog; positive price changes preserve physical eligibility"
+    }
+  ]
+}

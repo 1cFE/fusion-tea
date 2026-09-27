@@ -1,0 +1,11 @@
+# Retained reporting locations
+
+Date: 2026-09-27. [AGENT] Independent focused review. **PASS for retaining the original four reporting-band sample locations**, with the preparation consistency checks below required before freezing. This approves a preparation disposition, not final study results.
+
+Inspected `preparation/original-point-comparison.json` and `preparation/reporting-location-drift.md` in the replacement study, the scanner's reporting-band calculation, the original native bracket results, and the corrected-oracle regression already accepted in [correction-acceptance.md](correction-acceptance.md). The recomputed proposal has 2,496 unique points and 2,651 aliases, with no alias or anchor loss. Its 60 changed complete maps comprise the four approved cryogenic changes and 56 reporting-band quote maps. Only the declared conversion quote inputs change in those additional maps; the secant-derived path coordinates move by approximately `1.7e-15`.
+
+The reporting-band endpoints are sampled supplied prices. Recomputing their last binary64 bits is not a physical requirement. The original locations remain valid under the corrected oracle and retain native gas-minus-steam LCOE gaps of approximately `5.0006639823`, `4.9993360177`, `−4.9993360177` and `−5.0006639823 USD2025/MWh`. Thus they bracket both inclusive reporting-band boundaries with the intended strict/indeterminate classifications. Retaining them preserves the reviewed question and the original input declarations.
+
+Before freezing, the replayable preparation helper must preserve the recomputed proposal and drift evidence, restore exactly the 56 original complete quote maps and their 60 aliases' coordinates/choice metadata, and re-evaluate the restored maps with the corrected oracle. Refresh point IDs, memberships, planning outputs and artifact hashes consistently. The final exact comparison must show 2,492 unchanged complete input maps plus only the four approved cryogenic replacements, all 2,651 aliases retained, unchanged anchors and economic-zero brackets, and no oracle refusals. Do not copy old oracle outputs as new evidence.
+
+The main native run and stock verification must still check every frozen point. This disposition does not alter model equations, acceptance tolerances, catalog membership or the sealed failed study.

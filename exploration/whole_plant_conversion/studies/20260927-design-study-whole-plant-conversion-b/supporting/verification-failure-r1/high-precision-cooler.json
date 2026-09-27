@@ -1,0 +1,357 @@
+{
+  "kind": "independent high-precision adjudication; unchanged native/acceptance/oracle files",
+  "case": "gas-favourable::gas-q2500-m2500-r1.8-ua40-40-60",
+  "candidate_id": "20260927-design-study-whole-plant-conversion:c1868",
+  "method": "80-digit Decimal SI equations, independently transcribed piecewise-water enthalpy, analytic segment integration in water temperature, root bracket below1e-65K; repeated at60digits",
+  "input_differences": {},
+  "references": [
+    {
+      "input_basis": "native",
+      "inputs": {
+        "gas_heat_into_fluid": -53.466386605122175,
+        "duty_rating": 2000.0,
+        "head": 20.0,
+        "eta_p": 0.8,
+        "flow_rating": 100000.0,
+        "eta_motor": 0.95,
+        "power_rating": 30.0,
+        "gas_outlet_K": 308.15,
+        "water_inlet_C": 25.0,
+        "gas_inlet_K": 312.2683428927496,
+        "ua": 60.0
+      },
+      "reference": {
+        "water_outlet_C": "39.118200574615598719196863207895629030657332918839894547439624243373867117061784",
+        "water_inlet_after_C": "25.061714367632651293474377402457246699025703242235216946803237651017760997563857",
+        "min_gap": "0.000142318134016483577430512826569455670792081160105452560375756626132882938216",
+        "required_ua": "60.000000000000000000000000000000000000000000000000000000000000140709123492085519",
+        "ua_residual": "1.40709123492085519E-61",
+        "water_flow": "909.91330179693947789183112526848690886248717766490052890369279731991284012250181",
+        "pump_electric": "0.23482108634386727506991559701784789257735292549550112870313086525461608790228396",
+        "total_rejection": "53.701207691466041832961328002315008041197958394245501128703130865254616087902284",
+        "energy_residual": "4E-80",
+        "flow_margin": "99090.086698203060522108168874731513091137512822335099471096307202680087159877498",
+        "power_margin": "29.765178913656132724930084402982152107422647074504498871296869134745383912097716"
+      },
+      "convergence": {
+        "iterations": 220,
+        "root_bracket_width_K": "8.342229158632E-66",
+        "decimal_precision": 80
+      },
+      "repeat_60_digit_max_difference": 4.224609572955624e-42,
+      "comparisons": {
+        "water_outlet_C": {
+          "recorded": 39.11820057461562,
+          "reference": "39.118200574615598719196863207895629030657332918839894547439624243373867117061784",
+          "error": "2.200456495865627718724589296E-14"
+        },
+        "water_inlet_after_C": {
+          "recorded": 25.06171436763265,
+          "reference": "25.061714367632651293474377402457246699025703242235216946803237651017760997563857",
+          "error": "-1.368830093801374385275533272E-15"
+        },
+        "min_gap": {
+          "recorded": 0.00014231813401721638,
+          "reference": "0.000142318134016483577430512826569455670792081160105452560375756626132882938216",
+          "error": "7.328025856669287606300836025E-16"
+        },
+        "required_ua": {
+          "recorded": 59.99999999997155,
+          "reference": "60.000000000000000000000000000000000000000000000000000000000000140709123492085519",
+          "error": "-2.845013113983441144227981567E-11"
+        },
+        "ua_residual": {
+          "recorded": -2.845013113983441e-11,
+          "reference": "1.40709123492085519E-61",
+          "error": "-2.845013113983441144227981567E-11"
+        },
+        "water_flow": {
+          "recorded": 909.9133017969382,
+          "reference": "909.91330179693947789183112526848690886248717766490052890369279731991284012250181",
+          "error": "-1.292530035066554097107837097E-12"
+        },
+        "pump_electric": {
+          "recorded": 0.23482108634386692,
+          "reference": "0.23482108634386727506991559701784789257735292549550112870313086525461608790228396",
+          "error": "-3.557040075222940002165088085E-16"
+        },
+        "total_rejection": {
+          "recorded": 53.70120769146604,
+          "reference": "53.701207691466041832961328002315008041197958394245501128703130865254616087902284",
+          "error": "-3.492084052088361226913268271E-15"
+        },
+        "energy_residual": {
+          "recorded": 3.969047313034935e-15,
+          "reference": "4E-80",
+          "error": "3.969047313034934632014483213E-15"
+        },
+        "flow_margin": {
+          "recorded": 99090.08669820306,
+          "reference": "99090.086698203060522108168874731513091137512822335099471096307202680087159877498",
+          "error": "-3.937064500127783270903637513E-12"
+        },
+        "power_margin": {
+          "recorded": 29.765178913656133,
+          "reference": "29.765178913656132724930084402982152107422647074504498871296869134745383912097716",
+          "error": "-6.062962671213970244235306700E-17"
+        }
+      }
+    },
+    {
+      "input_basis": "oracle",
+      "inputs": {
+        "gas_heat_into_fluid": -53.466386605122175,
+        "duty_rating": 2000.0,
+        "head": 20.0,
+        "eta_p": 0.8,
+        "flow_rating": 100000.0,
+        "eta_motor": 0.95,
+        "power_rating": 30.0,
+        "gas_outlet_K": 308.15,
+        "water_inlet_C": 25.0,
+        "gas_inlet_K": 312.2683428927496,
+        "ua": 60.0
+      },
+      "reference": {
+        "water_outlet_C": "39.118200574615598719196863207895629030657332918839894547439624243373867117061784",
+        "water_inlet_after_C": "25.061714367632651293474377402457246699025703242235216946803237651017760997563857",
+        "min_gap": "0.000142318134016483577430512826569455670792081160105452560375756626132882938216",
+        "required_ua": "60.000000000000000000000000000000000000000000000000000000000000140709123492085519",
+        "ua_residual": "1.40709123492085519E-61",
+        "water_flow": "909.91330179693947789183112526848690886248717766490052890369279731991284012250181",
+        "pump_electric": "0.23482108634386727506991559701784789257735292549550112870313086525461608790228396",
+        "total_rejection": "53.701207691466041832961328002315008041197958394245501128703130865254616087902284",
+        "energy_residual": "4E-80",
+        "flow_margin": "99090.086698203060522108168874731513091137512822335099471096307202680087159877498",
+        "power_margin": "29.765178913656132724930084402982152107422647074504498871296869134745383912097716"
+      },
+      "convergence": {
+        "iterations": 220,
+        "root_bracket_width_K": "8.342229158632E-66",
+        "decimal_precision": 80
+      },
+      "repeat_60_digit_max_difference": 4.224609572955624e-42,
+      "comparisons": {
+        "water_outlet_C": {
+          "recorded": 39.11820057461366,
+          "reference": "39.118200574615598719196863207895629030657332918839894547439624243373867117061784",
+          "error": "-1.939093385739220235817057086E-12"
+        },
+        "water_inlet_after_C": {
+          "recorded": 25.06171436763265,
+          "reference": "25.061714367632651293474377402457246699025703242235216946803237651017760997563857",
+          "error": "-1.368830093801374385275533272E-15"
+        },
+        "min_gap": {
+          "recorded": 0.00014231813597831433,
+          "reference": "0.000142318134016483577430512826569455670792081160105452560375756626132882938216",
+          "error": "1.961830753283543441764933062E-12"
+        },
+        "required_ua": {
+          "recorded": 59.99999992586002,
+          "reference": "60.000000000000000000000000000000000000000000000000000000000000140709123492085519",
+          "error": "-7.413998304173219366930425167E-8"
+        },
+        "ua_residual": {
+          "recorded": -7.41399830417322e-08,
+          "reference": "1.40709123492085519E-61",
+          "error": "-7.413998304173219366930425167E-8"
+        },
+        "water_flow": {
+          "recorded": 909.913301797065,
+          "reference": "909.91330179693947789183112526848690886248717766490052890369279731991284012250181",
+          "error": "1.254682940245353190623007322E-10"
+        },
+        "pump_electric": {
+          "recorded": 0.23482108634389962,
+          "reference": "0.23482108634386727506991559701784789257735292549550112870313086525461608790228396",
+          "error": "3.234036406768856611525944382E-14"
+        },
+        "total_rejection": {
+          "recorded": 53.701207691466074,
+          "reference": "53.701207691466041832961328002315008041197958394245501128703130865254616087902284",
+          "error": "3.203505273591664806664294511E-14"
+        },
+        "energy_residual": {
+          "recorded": 6.800116025829084e-15,
+          "reference": "4E-80",
+          "error": "6.800116025829083810094743967E-15"
+        },
+        "flow_margin": {
+          "recorded": 99090.08669820294,
+          "reference": "99090.086698203060522108168874731513091137512822335099471096307202680087159877498",
+          "error": "-1.203523863270625977240286375E-10"
+        },
+        "power_margin": {
+          "recorded": 29.7651789136561,
+          "reference": "29.765178913656132724930084402982152107422647074504498871296869134745383912097716",
+          "error": "-3.203505273591664806664294511E-14"
+        }
+      }
+    }
+  ],
+  "downstream_propagation": {
+    "whole_plant_conversion__plant__water_pre__evaluate__water_outlet_C": {
+      "native": 39.11820057461562,
+      "original_oracle": 39.11820057461366,
+      "reference_propagated": 39.1182005746156,
+      "propagation_delta": 1.9397816686250735e-12
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__water_flow": {
+      "native": 909.9133017969382,
+      "original_oracle": 909.913301797065,
+      "reference_propagated": 909.9133017969394,
+      "propagation_delta": -1.255102688446641e-10
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__pump_electric": {
+      "native": 0.23482108634386692,
+      "original_oracle": 0.23482108634389962,
+      "reference_propagated": 0.23482108634386728,
+      "propagation_delta": -3.2335245592207684e-14
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__total_rejection": {
+      "native": 53.70120769146604,
+      "original_oracle": 53.701207691466074,
+      "reference_propagated": 53.70120769146604,
+      "propagation_delta": -3.552713678800501e-14
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__min_gap": {
+      "native": 0.00014231813401721638,
+      "original_oracle": 0.00014231813597831433,
+      "reference_propagated": 0.00014231813401648357,
+      "propagation_delta": -1.9618307629462595e-12
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__required_ua": {
+      "native": 59.99999999997155,
+      "original_oracle": 59.99999992586002,
+      "reference_propagated": 60.0,
+      "propagation_delta": 7.41399830417322e-08
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__ua_residual": {
+      "native": -2.845013113983441e-11,
+      "original_oracle": -7.41399830417322e-08,
+      "reference_propagated": 1.4070912349208553e-61,
+      "propagation_delta": 7.41399830417322e-08
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__energy_residual": {
+      "native": 3.969047313034935e-15,
+      "original_oracle": 6.800116025829084e-15,
+      "reference_propagated": 4e-80,
+      "propagation_delta": -6.800116025829084e-15
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__flow_margin": {
+      "native": 99090.08669820306,
+      "original_oracle": 99090.08669820294,
+      "reference_propagated": 99090.08669820306,
+      "propagation_delta": 1.1641532182693481e-10
+    },
+    "whole_plant_conversion__plant__water_pre__evaluate__power_margin": {
+      "native": 29.765178913656133,
+      "original_oracle": 29.7651789136561,
+      "reference_propagated": 29.765178913656133,
+      "propagation_delta": 3.197442310920451e-14
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__annual_energy": {
+      "native": 1644488.1012502345,
+      "original_oracle": 1644488.1012502343,
+      "reference_propagated": 1644488.1012502345,
+      "propagation_delta": 2.3283064365386963e-10
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__discounted_energy": {
+      "native": 25279812.800760772,
+      "original_oracle": 25279812.800760772,
+      "reference_propagated": 25279812.800760776,
+      "propagation_delta": 3.725290298461914e-09
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__cost_per_net_MWh": {
+      "native": 88.52163884156033,
+      "original_oracle": 88.52163884156032,
+      "reference_propagated": 88.5216388415603,
+      "propagation_delta": -1.4210854715202004e-14
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__electrical_load": {
+      "native": 0.3652354952124065,
+      "original_oracle": 0.3652354952124392,
+      "reference_propagated": 0.3652354952124069,
+      "propagation_delta": -3.2307490016592055e-14
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__net_electric": {
+      "native": 234.6586902468942,
+      "original_oracle": 234.65869024689417,
+      "reference_propagated": 234.6586902468942,
+      "propagation_delta": 2.842170943040401e-14
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__total_rejected": {
+      "native": 58.628028748132685,
+      "original_oracle": 58.62802874813272,
+      "reference_propagated": 58.628028748132685,
+      "propagation_delta": -3.552713678800501e-14
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__energy_residual": {
+      "native": 2305.1369793160434,
+      "original_oracle": 2305.1369793160434,
+      "reference_propagated": 2305.1369793160434,
+      "propagation_delta": 0.0
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__conversion_energy_residual": {
+      "native": 2305.1369793160434,
+      "original_oracle": 2305.1369793160434,
+      "reference_propagated": 2305.1369793160434,
+      "propagation_delta": 0.0
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude": {
+      "native": 2305.1369793160434,
+      "original_oracle": 2305.1369793160434,
+      "reference_propagated": 2305.1369793160434,
+      "propagation_delta": 0.0
+    },
+    "whole_plant_conversion__plant__gas_ledger__evaluate__economic_defined": {
+      "native": 1.0,
+      "original_oracle": 1.0,
+      "reference_propagated": 1.0,
+      "propagation_delta": 0.0
+    },
+    "whole_plant_conversion__plant__gas_operating__evaluate__net_export_MW": {
+      "native": -38.951076845482135,
+      "original_oracle": -38.95107684548216,
+      "reference_propagated": -38.951076845482135,
+      "propagation_delta": 2.842170943040401e-14
+    },
+    "whole_plant_conversion__plant__gas_operating__evaluate__annual_export_MWh": {
+      "native": -272969.1465331388,
+      "original_oracle": -272969.146533139,
+      "reference_propagated": -272969.1465331388,
+      "propagation_delta": 1.7462298274040222e-10
+    },
+    "whole_plant_conversion__plant__gas_operating__evaluate__annual_net_grid_MWh": {
+      "native": -287926.96399049886,
+      "original_oracle": -287926.96399049903,
+      "reference_propagated": -287926.96399049886,
+      "propagation_delta": 1.7462298274040222e-10
+    },
+    "whole_plant_conversion__plant__gas_operating__evaluate__power_residual": {
+      "native": 0.0,
+      "original_oracle": 0.0,
+      "reference_propagated": 0.0,
+      "propagation_delta": 0.0
+    },
+    "whole_plant_conversion__plant__gas_whole__evaluate__energy_pv": {
+      "native": -4196204.836930679,
+      "original_oracle": -4196204.836930682,
+      "reference_propagated": -4196204.836930679,
+      "propagation_delta": 2.7939677238464355e-09
+    },
+    "whole_plant_conversion__plant__gas_whole__evaluate__lcoe_USD2025_MWh": {
+      "native": 0.0,
+      "original_oracle": 0.0,
+      "reference_propagated": 0.0,
+      "propagation_delta": 0.0
+    },
+    "whole_plant_conversion__plant__gas_whole__evaluate__economic_defined": {
+      "native": 0.0,
+      "original_oracle": 0.0,
+      "reference_propagated": 0.0,
+      "propagation_delta": 0.0
+    }
+  }
+}
