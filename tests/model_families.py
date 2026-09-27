@@ -260,3 +260,21 @@ def assert_canonical_ownership(root: Path = CANONICAL) -> None:
         "unregistered": sorted(actual - owned),
         "missing": sorted(owned - actual),
     }
+
+# WI-096 additive matched-conversion generation unit; existing collections unchanged.
+SOURCE_COLLECTIONS["component_alternatives"] = (
+    'analyses/mfe_primary_loop.sysml',
+    'analyses/mfe_viability.sysml',
+    'analyses/integrated_heat_electricity.sysml',
+    'analyses/ideal_gas_brayton_components.sysml',
+    'analyses/integrated_equipment_costs.sysml',
+    'structure/integrated_equipment_parts.sysml',
+    'foundation/costed_component.sysml',
+    'analyses/mfe_account_costs.sysml',
+    'analyses/mfe_lcoe_dcf.sysml',
+    'analyses/loop_return_control.sysml',
+    'analyses/mfe_matched_steam_cycle.sysml',
+    'analyses/cooling_equipment_selected_pumps.sysml',
+    'analyses/component_alternatives_thermal.sysml',
+    'designs/component_alternatives/plant.sysml',
+)

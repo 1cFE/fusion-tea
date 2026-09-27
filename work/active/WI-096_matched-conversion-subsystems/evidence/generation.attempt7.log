@@ -1,0 +1,5 @@
+INFO: Generating code from /home/reid/1cfe/fusion-tea/exploration/component_alternatives/input_models
+INFO: Output to /home/reid/1cfe/fusion-tea/exploration/component_alternatives/component_alternatives_tea
+INFO: Package name: component_alternatives_tea
+INFO: Building pipeline context...
+ERROR: Model failed exact-route validation: SI_EDGE_DANGLING: component_alternatives__plant__steam_conditions__supported_required_screen: typed producer dependency cycle: component_alternatives__plant__steam_conditions__supported_required_screen

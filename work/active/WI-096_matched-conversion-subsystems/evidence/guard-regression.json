@@ -1,0 +1,33 @@
+{
+  "expected_authored_guards": 84,
+  "emitted_before": 66,
+  "emitted_after": 84,
+  "added": [
+    "component_alternatives__plant__gas_loss_water__cooling_approach_ok_required__6112b029bb4ede08",
+    "component_alternatives__plant__steam_conditions__supported_required__92a5d05764f5fff9",
+    "component_alternatives__plant__steam_cycle__main_UA_available_required__f9837efa3d05f097",
+    "component_alternatives__plant__steam_cycle__main_admission_ok_required__dbbd20ff9c7f4317",
+    "component_alternatives__plant__steam_cycle__reheat_UA_available_required__bdd3c800a1cc7c08",
+    "component_alternatives__plant__steam_cycle__reheat_admission_ok_required__e88f7416d91d86fd",
+    "component_alternatives__plant__steam_transport__design_motor_base_ok_required__34d2455206f46357",
+    "component_alternatives__plant__steam_transport__design_motor_factor_ok_required__4a9e97f942584206",
+    "component_alternatives__plant__steam_transport__design_pump_size_ok_required__39419b9b933c2a99",
+    "component_alternatives__plant__steam_transport__design_pump_type_ok_required__86fcc6e00c250519",
+    "component_alternatives__plant__steam_transport__ihx_capacity_ok_required__a8ade32d723ec9f2",
+    "component_alternatives__plant__steam_transport__motor_base_ok_required__238e695ccdaf5ebf",
+    "component_alternatives__plant__steam_transport__motor_factor_ok_required__eed87936beb69817",
+    "component_alternatives__plant__steam_transport__pump_size_ok_required__b3af0a8e326050b1",
+    "component_alternatives__plant__steam_transport__pump_type_ok_required__a1706d503ff60f4c",
+    "component_alternatives__plant__steam_transport__salt_flow_regime_ok_required__6e2b05d56b7bbfaf",
+    "component_alternatives__plant__steam_transport__salt_head_ok_required__9049eef128641767",
+    "component_alternatives__plant__steam_water__cooling_approach_ok_required__c8a5d75f54ded9d6"
+  ],
+  "pre_fix_receipt": "native_runs/baseline.attempt2/result.json",
+  "three_pump_before": "native_runs/salt-three-pumps.attempt1/result.json",
+  "three_pump_after": "native_runs/salt-three-pumps/result.json",
+  "raw_design_pump_type_ok": false,
+  "executing_violations": [
+    "component_alternatives__plant__steam_transport__design_pump_type_ok_required__86fcc6e00c250519"
+  ],
+  "status": "pass"
+}

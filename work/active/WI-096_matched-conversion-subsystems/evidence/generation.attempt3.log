@@ -1,0 +1,5 @@
+INFO: Generating code from /home/reid/1cfe/fusion-tea/exploration/component_alternatives/input_models
+INFO: Output to /home/reid/1cfe/fusion-tea/exploration/component_alternatives/component_alternatives_tea
+INFO: Package name: component_alternatives_tea
+INFO: Building pipeline context...
+ERROR: Model is not ready for the exact route: SI_SELF_BINDING: component_alternatives__plant__gas_ledger__net_positive.net_electric: reference='net_electric': unsupported exact source form reference ('net_electric') [root-0/plant.sysml:2422]; SI_SELF_BINDING: component_alternatives__plant__steam_ledger__net_positive.net_electric: reference='net_electric': unsupported exact source form reference ('net_electric') [root-0/plant.sysml:2311]

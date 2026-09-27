@@ -1,0 +1,88 @@
+--- exploration/stellarator_e2e/generated/handwritten/mfe_cooling_equipment/cooling_equipment_impl.py
++++ exploration/component_alternatives/bodies/cooling_equipment_selected_pumps/cooling_equipment_with_selected_salt_pump_count_impl.py
+@@ -1,4 +1,4 @@
+-"""WI-080 native IHX signed margin; retained WI-078 supplied design evaluation.
++"""WI-096 selected salt machine count; retained WI-080/WI-078 equipment equations.
+ 
+ calculate contains the guarded equations. The typed wrapper follows the native generated ABI.
+ All costs USD2025 annual-CPI purchasing-power proxies, not equipment escalation.
+@@ -13,7 +13,7 @@
+ from typing import TYPE_CHECKING
+ 
+ if TYPE_CHECKING:
+-    from stellarator_tea.modules.mfe_cooling_equipment.cooling_equipment import Cooling_EquipmentInput
++    from component_alternatives_tea.modules.cooling_equipment_selected_pumps.cooling_equipment_with_selected_salt_pump_count import Cooling_Equipment_With_Selected_Salt_Pump_CountInput
+ 
+ 
+ def calculate(inputs):
+@@ -46,6 +46,9 @@
+         if not 0 < x[key] <= 1: raise ValueError(f'{key} must be in (0,1]')
+     for key in ('helium_purchased_mass_kg', 'salt_purchased_mass_kg'):
+         if x[key] < 0: raise ValueError(f'{key} must be nonnegative')
++    k=x['salt_pumps_per_circuit']
++    if k <= 0 or k != int(k):
++        raise ValueError('salt_pumps_per_circuit must be a positive integer')
+     n=x['n_loops']; scale=x['costscale']; pi=math.pi; rho_steel=8000.; hp=745.6998715822702; g=9.80665
+     c78=321.9/65.2*scale; c06=321.9/201.6*scale; c17=321.9/245.1*scale
+     install_pump=.27*(1+.155)
+@@ -86,14 +89,14 @@
+         hevol += pi/4*(main_id**2*50+9*branch_id**2*branch_length)*layout
+     ppm=straight*fitting*n; ppp=ppm*x['stainless_fabrication_usd2017_per_kg']*c17; ppi=.5*ppp
+     put(primary_pipe_mass=ppm,primary_pipe_volume=hevol*n,primary_pipe_purchase=ppp,primary_pipe_installation=ppi,primary_piping_cost=ppp+ppi)
+-    # Salt: two cold-side machines each circuit; fixed scenario efficiencies.
++    # Salt: k selected cold-side machines each circuit; fixed scenario efficiencies.
+     rc=2080-.733*270; rh=2080-.733*465; muc=.00622-1.02e-5*270; muh=.00622-1.02e-5*465
+     saltflow=x['q_ihx_MW']*1e6/(1560*195); loopflow=saltflow/n
+     shaftsalt=saltflow*g*x['secondary_head']/x['eta_p']/1e6; elecsalt=shaftsalt/x['eta_motor']
+-    qgpm=loopflow/(2*rc)*15850.323141489; hft=x['secondary_head']/0.3048
++    qgpm=loopflow/(k*rc)*15850.323141489; hft=x['secondary_head']/0.3048
+     s=qgpm*math.sqrt(hft); logs=math.log(s)
+     pump06=3*math.exp(9.7171-.6019*logs+.0519*logs**2)
+-    ph=shaftsalt*1e6/(2*n*hp); eh=elecsalt*1e6/(2*n*hp); le=math.log(eh)
++    ph=shaftsalt*1e6/(k*n*hp); eh=elecsalt*1e6/(k*n*hp); le=math.log(eh)
+     motor06=1.3*math.exp(5.8259+.13141*le+.053255*le**2+.028628*le**3-.0035549*le**4)
+     design_shaft=x['salt_design_flow_kg_s']*g*x['salt_design_head_m']/x['salt_design_eta_p']/1e6
+     design_electric=design_shaft/x['salt_design_eta_motor']
+@@ -102,8 +105,9 @@
+     design_pump06=3*math.exp(9.7171-.6019*dl+.0519*dl**2)
+     design_motor06=1.3*math.exp(5.8259+.13141*dle+.053255*dle**2+.028628*dle**3-.0035549*dle**4)
+     put(helium_design_shaft_MW=x['helium_design_shaft_MW'],helium_design_suction_Pa=x['helium_design_suction_Pa'],salt_design_flow_kg_s=x['salt_design_flow_kg_s'],salt_design_head_m=x['salt_design_head_m'],salt_design_shaft_MW=design_shaft,salt_design_electric_MW=design_electric,design_pump_flow_gpm=dgpm,design_pump_head_ft=dhft,design_pump_size_factor=ds,design_pump_shaft_hp=dph,design_motor_electric_hp=deh,design_pump_size_ok=400<=ds<=100000,design_pump_type_ok=50<=dgpm<=3500 and 50<=dhft<=200 and dph<=200,design_motor_base_ok=1<=deh<=700,design_motor_factor_ok=1<=deh<=250)
+-    saltpackage=(design_pump06+design_motor06)*c06; sv=saltpackage*2*n; si=install_pump*sv
+-    put(salt_flow=loopflow,salt_pump_flow=loopflow/2,salt_pump_shaft_MW=shaftsalt/(2*n),ihx_count=n,salt_shaft_MW=shaftsalt,salt_electric_MW=elecsalt,conversion_heat_MW=x['q_ihx_MW']+shaftsalt,salt_return_C=270-shaftsalt*1e6/(saltflow*1560),salt_pump_count=2*n,pump_flow_gpm=qgpm,pump_head_ft=hft,pump_size_factor=s,pump_shaft_hp=ph,motor_electric_hp=eh,secondary_vendor=sv,secondary_installation=si,secondary_spare=saltpackage,secondary_pumps_cost=sv+si,pump_size_ok=400<=s<=100000,pump_type_ok=50<=qgpm<=3500 and 50<=hft<=200 and ph<=200,motor_base_ok=1<=eh<=700,motor_factor_ok=1<=eh<=250)
++    saltpackage=(design_pump06+design_motor06)*c06; sv=saltpackage*k*n; si=install_pump*sv
++    put(salt_flow=loopflow,salt_pump_flow=loopflow/k,salt_pump_shaft_MW=shaftsalt/(k*n),ihx_count=n,salt_shaft_MW=shaftsalt,salt_electric_MW=elecsalt,conversion_heat_MW=x['q_ihx_MW']+shaftsalt,salt_return_C=270-shaftsalt*1e6/(saltflow*1560),salt_pump_count=k*n,pump_flow_gpm=qgpm,pump_head_ft=hft,pump_size_factor=s,pump_shaft_hp=ph,motor_electric_hp=eh,secondary_vendor=sv,secondary_installation=si,secondary_spare=saltpackage,secondary_pumps_cost=sv+si,pump_size_ok=400<=s<=100000,pump_type_ok=50<=qgpm<=3500 and 50<=hft<=200 and ph<=200,motor_base_ok=1<=eh<=700,motor_factor_ok=1<=eh<=250)
++    put(salt_pump_electric_MW=elecsalt/(k*n),total_salt_flow_kg_s=saltflow,installed_total_UA_MW_K=n*area*uf/1e6)
+     # Smooth-pipe head diagnostic. No claim of solved exchanger/valve losses.
+     saltid=.40; saltod=.44; cross=pi*saltid**2/4
+     spm=rho_steel*pi/4*(saltod**2-saltid**2)*100*layout*n*fitting
+@@ -137,6 +141,7 @@
+     put(inventory_cost=inventory,spares_cost=spares,purchased_total=purchased,installation_total=installation,installed_total=purchased+installation,delivered_total=pv+package+hxp+ppp+spp)
+     # Discrete replacement payments strictly before horizon; constant-base prices.
+     mp=pv+sv; mi=pinstall+si; mr=mi*x['removal_multiplier']
++    put(salt_machine_event_purchase=sv,salt_machine_event_installation=si,salt_machine_event_removal=si*x['removal_multiplier'])
+     bp=bundle*n*x['stainless_fabrication_usd2017_per_kg']*c17; bi=.026*bp; br=.024*bp*x['removal_multiplier']
+     def replacement(life):
+         count=max(0, math.ceil(x['years']/life)-1)
+@@ -158,10 +163,13 @@
+ 
+ OUTPUT_NAMES += ('represented_fill_defined', 'ihx_capacity_margin_m2', 'ihx_capacity_defined')
+ 
++OUTPUT_NAMES += ('salt_machine_event_purchase', 'salt_machine_event_installation', 'salt_machine_event_removal', 'salt_pump_electric_MW', 'total_salt_flow_kg_s', 'installed_total_UA_MW_K')
++
+ # Native wrapper reads the emitted output schema order at invocation.
+-def run_cooling_equipment(inputs: Cooling_EquipmentInput) -> tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]:
++def run_cooling_equipment_with_selected_salt_pump_count(inputs: Cooling_Equipment_With_Selected_Salt_Pump_CountInput) -> tuple[float, ...]:
+     """Complete the native typed calculation using its generated tuple ABI."""
+     result = calculate({
++        'salt_pumps_per_circuit': inputs.salt_pumps_per_circuit_in,
+         'helium_design_shaft_MW': inputs.helium_design_shaft_MW_in,
+         'helium_design_suction_Pa': inputs.helium_design_suction_Pa_in,
+         'salt_design_flow_kg_s': inputs.salt_design_flow_kg_s_in,
+@@ -203,5 +211,5 @@
+         'stainless_fabrication_usd2017_per_kg': inputs.stainless_fabrication_usd2017_per_kg_in,
+         'sourcefitargument_C': inputs.sourcefitargument_C_in,
+     })
+-    from stellarator_tea.schemas.cooling_equipment_output import Cooling_EquipmentOutput
+-    return tuple(result[name] for name in Cooling_EquipmentOutput.model_fields)
++    from component_alternatives_tea.schemas.cooling_equipment_with_selected_salt_pump_count_output import Cooling_Equipment_With_Selected_Salt_Pump_CountOutput
++    return tuple(result[name] for name in Cooling_Equipment_With_Selected_Salt_Pump_CountOutput.model_fields)

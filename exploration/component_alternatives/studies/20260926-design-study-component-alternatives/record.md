@@ -11,8 +11,7 @@ Draft study record. Preparation is authorized; native execution awaits implement
 - **Mode:** execute
 - **Arms:** single arm
 
-Arms are variants of the same question, run to be compared. Two studies asking different
-questions of the same package are two records, not two arms of one.
+Arms are variants of the same question, run to be compared. Two studies asking different questions of the same package are two records, not two arms of one.
 
 ## 2. Intake
 
@@ -125,78 +124,181 @@ Every executing constraint, by qualified identity, with its status.
 |---|---|---|---|
 | `<qualified id>` | `<local identity>` | `<satisfied \| violated \| indeterminate>` | `<where and why, one line>` |
 
-A short display name is not a qualified identity. If the executed artifacts carry only
-the short name, the qualified identity was dropped on export and recovering it is part
-of this section, not optional.
+A short display name is not a qualified identity. If the executed artifacts carry only the short name, the qualified identity was dropped on export and recovering it is part of this section, not optional.
 
 ## 5. Framing
 
-**As proposed at intake.**
+[AGENT] Proposed framing, before the oracle window scan and native study. Coordinated offer selections remain explicit choices.
 
 | Axis | Framing proposed | Why |
 |---|---|---|
-| `<axis>` | `<search \| sensitivity>` | `<one line>` |
+| `blanket_source_q_source` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `cycle_selected_flow` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `compressor_1_selected_ratio` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `compressor_1_efficiency` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `compressor_2_selected_ratio` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `compressor_2_efficiency` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `compressor_3_selected_ratio` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `compressor_3_efficiency` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `cycle_turbine_efficiency` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `water_ic1_ua` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `water_ic2_ua` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `water_pre_ua` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `recuperator_hardware_ua` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `steam_transport_n_loops` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `steam_transport_salt_pumps_per_circuit` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `steam_transport_selected_salt_design_flow_kg_s` | search | Test operating and installed-offer choices in the declared discrete catalog. |
+| `steam_boundary_bypass_flow_rating` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_ledger_controller_capital` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_ledger_annual_service_fraction` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_ledger_replacement_fraction` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_ledger_common_source_pv` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `gas_boundary_bypass_flow_rating` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `gas_ledger_controller_capital` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `gas_ledger_annual_service_fraction` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `gas_ledger_replacement_fraction` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `gas_ledger_common_source_pv` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `compressor_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `turbine_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `generator_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `he_hx_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `he_duty_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `conversion_services_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `heat_rejection_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `gas_ledger_capital9` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_ledger_capital3` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_ledger_capital4` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_transport_costscale` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_cycle_eta_hp` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_cycle_eta_lp` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
+| `steam_cycle_steam_temperature_C` | sensitivity | Declared and traced, then declined because the held steam offer does not support the changed condition. |
+| `steam_cycle_reheat_temperature_C` | sensitivity | Declared and traced, then declined because the held steam offer does not support the changed condition. |
+| `steam_cycle_condenser_temperature_C` | sensitivity | Declared and traced, then declined because the held steam offer does not support the changed condition. |
+| `steam_transport_secondary_head` | sensitivity | Declared and traced, then declined because the held steam offer does not support the changed condition. |
 
-**As judged after the run.**
-
-| Axis | Framing judged | Changed? | Why |
-|---|---|---|---|
-| `<axis>` | `<search \| sensitivity>` | `<yes \| no>` | `<what the result showed>` |
+As judged after the run: pending execution.
 
 ## 6. Per-axis account
 
-One pair of subsections per axis. Both ship present; the `**Applies:**` line
-discharges the one the axis's framing does not owe.
+One pair of subsections per axis. Both ship present; the `**Applies:**` line discharges the one the axis's framing does not owe.
 
 #### `<axis>` — feasible structure (search framing)
 **Applies:** `<yes \| not applicable — this axis is sensitivity-framed>`
 
-`<which constraint is active, where the boundary sits, whether a constrained optimum
-was found and where>`
+`<which constraint is active, where the boundary sits, whether a constrained optimum was found and where>`
 
 #### `<axis>` — observed response (sensitivity framing)
 **Applies:** `<yes \| not applicable — this axis is search-framed>`
 
-`<the observed response; an explicit statement that no boundary claim is made; and,
-for any constraint that goes violated anywhere in the sweep, where in the swept space
-it does — locating a violation is a fact about the run, not a boundary claim>`
+`<the observed response; an explicit statement that no boundary claim is made; and, for any constraint that goes violated anywhere in the sweep, where in the swept space it does — locating a violation is a fact about the run, not a boundary claim>`
 
 ## 7. Axis groups
 
-Every declared qualified entry key, with its per-key provenance.
+Each group is the complete emitted key set for one SysML attribute. Multi-attribute equipment offers are coordinated proposals, with each constituent attribute declared separately. No additional physical identity is inferred.
 
 | Axis | Entry key | Provenance | Note |
 |---|---|---|---|
-| `<axis>` | `<qualified entry key>` | `<fan_out \| tie>` | `<for a tie: the physical identity claimed and who declared it>` |
+| `blanket_source_q_source` | `component_alternatives__plant__blanket_source__q_source` | fan_out | SysML attribute component_alternatives::plant::blanket_source::q_source. Chosen common source heat scenarios; no matching solve. |
+| `cycle_selected_flow` | `component_alternatives__plant__cycle__selected_flow` | fan_out | SysML attribute component_alternatives::plant::cycle::selected_flow. Chosen gas operating flow at held installed ratings. |
+| `compressor_1_selected_ratio` | `component_alternatives__plant__compressor_1__selected_ratio` | fan_out | SysML attribute component_alternatives::plant::compressor_1::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred. |
+| `compressor_1_efficiency` | `component_alternatives__plant__compressor_1__efficiency` | fan_out | SysML attribute component_alternatives::plant::compressor_1::efficiency. Hypothetical performance sensitivity. |
+| `compressor_2_selected_ratio` | `component_alternatives__plant__compressor_2__selected_ratio` | fan_out | SysML attribute component_alternatives::plant::compressor_2::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred. |
+| `compressor_2_efficiency` | `component_alternatives__plant__compressor_2__efficiency` | fan_out | SysML attribute component_alternatives::plant::compressor_2::efficiency. Hypothetical performance sensitivity. |
+| `compressor_3_selected_ratio` | `component_alternatives__plant__compressor_3__selected_ratio` | fan_out | SysML attribute component_alternatives::plant::compressor_3::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred. |
+| `compressor_3_efficiency` | `component_alternatives__plant__compressor_3__efficiency` | fan_out | SysML attribute component_alternatives::plant::compressor_3::efficiency. Hypothetical performance sensitivity. |
+| `cycle_turbine_efficiency` | `component_alternatives__plant__cycle__turbine_efficiency` | fan_out | SysML attribute component_alternatives::plant::cycle::turbine_efficiency. Hypothetical performance sensitivity. |
+| `water_ic1_ua` | `component_alternatives__plant__water_ic1__ua` | fan_out | SysML attribute component_alternatives::plant::water_ic1::ua. Installed capability selected from an explicitly priced coordinated service offer. |
+| `water_ic2_ua` | `component_alternatives__plant__water_ic2__ua` | fan_out | SysML attribute component_alternatives::plant::water_ic2::ua. Installed capability selected from an explicitly priced coordinated service offer. |
+| `water_pre_ua` | `component_alternatives__plant__water_pre__ua` | fan_out | SysML attribute component_alternatives::plant::water_pre::ua. Installed capability selected from an explicitly priced coordinated service offer. |
+| `recuperator_hardware_ua` | `component_alternatives__plant__recuperator_hardware__ua` | fan_out | SysML attribute component_alternatives::plant::recuperator_hardware::ua. Installed capability selected from an explicitly priced coordinated service offer. |
+| `steam_transport_n_loops` | `component_alternatives__plant__steam_transport__n_loops` | fan_out | SysML attribute component_alternatives::plant::steam_transport::n_loops. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14. |
+| `steam_transport_salt_pumps_per_circuit` | `component_alternatives__plant__steam_transport__salt_pumps_per_circuit` | fan_out | SysML attribute component_alternatives::plant::steam_transport::salt_pumps_per_circuit. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14. |
+| `steam_transport_selected_salt_design_flow_kg_s` | `component_alternatives__plant__steam_transport__selected_salt_design_flow_kg_s` | fan_out | SysML attribute component_alternatives::plant::steam_transport::selected_salt_design_flow_kg_s. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14. |
+| `steam_boundary_bypass_flow_rating` | `component_alternatives__plant__steam_boundary__bypass_flow_rating` | fan_out | SysML attribute component_alternatives::plant::steam_boundary::bypass_flow_rating. Full or deliberately undersized purchased controller offer. |
+| `steam_ledger_controller_capital` | `component_alternatives__plant__steam_ledger__controller_capital` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::controller_capital. Hypothetical controller quote paired with its declared flow rating; also subject to branch quote sensitivity. |
+| `steam_ledger_annual_service_fraction` | `component_alternatives__plant__steam_ledger__annual_service_fraction` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::annual_service_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit. |
+| `steam_ledger_replacement_fraction` | `component_alternatives__plant__steam_ledger__replacement_fraction` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::replacement_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit. |
+| `steam_ledger_common_source_pv` | `component_alternatives__plant__steam_ledger__common_source_pv` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::common_source_pv. Illustrative common upstream present-value charge, coordinated equally across branches; no fuel price model. |
+| `gas_boundary_bypass_flow_rating` | `component_alternatives__plant__gas_boundary__bypass_flow_rating` | fan_out | SysML attribute component_alternatives::plant::gas_boundary::bypass_flow_rating. Full or deliberately undersized purchased controller offer. |
+| `gas_ledger_controller_capital` | `component_alternatives__plant__gas_ledger__controller_capital` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::controller_capital. Hypothetical controller quote paired with its declared flow rating; also subject to branch quote sensitivity. |
+| `gas_ledger_annual_service_fraction` | `component_alternatives__plant__gas_ledger__annual_service_fraction` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::annual_service_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit. |
+| `gas_ledger_replacement_fraction` | `component_alternatives__plant__gas_ledger__replacement_fraction` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::replacement_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit. |
+| `gas_ledger_common_source_pv` | `component_alternatives__plant__gas_ledger__common_source_pv` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::common_source_pv. Illustrative common upstream present-value charge, coordinated equally across branches; no fuel price model. |
+| `compressor_equipment_price_factor` | `component_alternatives__plant__compressor_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::compressor_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
+| `turbine_equipment_price_factor` | `component_alternatives__plant__turbine_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::turbine_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
+| `generator_equipment_price_factor` | `component_alternatives__plant__generator_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::generator_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
+| `he_hx_price_factor` | `component_alternatives__plant__he_hx__price_factor` | fan_out | SysML attribute component_alternatives::plant::he_hx::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
+| `he_duty_equipment_price_factor` | `component_alternatives__plant__he_duty_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::he_duty_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
+| `conversion_services_price_factor` | `component_alternatives__plant__conversion_services__price_factor` | fan_out | SysML attribute component_alternatives::plant::conversion_services::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
+| `heat_rejection_equipment_price_factor` | `component_alternatives__plant__heat_rejection_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::heat_rejection_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
+| `gas_ledger_capital9` | `component_alternatives__plant__gas_ledger__capital9` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::capital9. Selected cycle-transport quote in USD2004; physical scope held. |
+| `steam_ledger_capital3` | `component_alternatives__plant__steam_ledger__capital3` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::capital3. Selected steam conversion or rejection aggregate quote in USD2025; physical scope held. |
+| `steam_ledger_capital4` | `component_alternatives__plant__steam_ledger__capital4` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::capital4. Selected steam conversion or rejection aggregate quote in USD2025; physical scope held. |
+| `steam_transport_costscale` | `component_alternatives__plant__steam_transport__costscale` | fan_out | SysML attribute component_alternatives::plant::steam_transport::costscale. Existing salt-connector cost multiplier; no physical equipment sizing. |
+| `steam_cycle_eta_hp` | `component_alternatives__plant__steam_cycle__eta_hp` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::eta_hp. Hypothetical performance sensitivity on the selected steam offer. |
+| `steam_cycle_eta_lp` | `component_alternatives__plant__steam_cycle__eta_lp` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::eta_lp. Hypothetical performance sensitivity on the selected steam offer. |
+| `steam_cycle_steam_temperature_C` | `component_alternatives__plant__steam_cycle__steam_temperature_C` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::steam_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope. |
+| `steam_cycle_reheat_temperature_C` | `component_alternatives__plant__steam_cycle__reheat_temperature_C` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::reheat_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope. |
+| `steam_cycle_condenser_temperature_C` | `component_alternatives__plant__steam_cycle__condenser_temperature_C` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::condenser_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope. |
+| `steam_transport_secondary_head` | `component_alternatives__plant__steam_transport__secondary_head` | fan_out | SysML attribute component_alternatives::plant::steam_transport::secondary_head. Declared but declined: altered operating salt head changes the captured steam return condition. |
 
 ## 8. Indicators and rulings
 
-Per proposed axis, including axes proposed and declined.
+The stock indicator run covers all 43 declared groups, including all four declined directions. Every group is valid and `constraints_reachable`; there are no suffix-sibling warnings. No group reports `no_constraint_response`, so that indicator creates no pending owner gate.
 
-| Axis | Indicator | Ruling | Note |
-|---|---|---|---|
-| `<axis>` | `<no_constraint_response \| constraints_reachable>` | `<the user's ruling, for no_constraint_response axes>` | `<incl. whether the axis was swept or declined, and why>` |
-
-**Not derivable, disclosed in every record.** These are not decidable from the
-indicator run and no indicator output claims them: monotonicity of any channel in any
-axis; identity of the same physical quantity across differing key names; intra-module
-operand dependency. `constraints_reachable` is a *possible* path and never a statement
-that a constraint responds. `unresisted` is the agent's recorded judgment, never a
-tool output.
-
-**Model-development findings.** Every `no_constraint_response` axis carries one, in
-addition to the user's ruling. The ruling does not discharge it.
-
-| Axis | What should push back and is not modeled | Finding id |
+| Axis | Indicator | Ruling / disposition |
 |---|---|---|
-| `<axis>` | `<the missing constraint or coupling, stated as a model gap>` | `<study-id>#<n>` |
+| `blanket_source_q_source` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `cycle_selected_flow` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `compressor_1_selected_ratio` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `compressor_1_efficiency` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `compressor_2_selected_ratio` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `compressor_2_efficiency` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `compressor_3_selected_ratio` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `compressor_3_efficiency` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `cycle_turbine_efficiency` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `water_ic1_ua` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `water_ic2_ua` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `water_pre_ua` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `recuperator_hardware_ua` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `steam_transport_n_loops` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `steam_transport_salt_pumps_per_circuit` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `steam_transport_selected_salt_design_flow_kg_s` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
+| `steam_boundary_bypass_flow_rating` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_ledger_controller_capital` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_ledger_annual_service_fraction` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_ledger_replacement_fraction` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_ledger_common_source_pv` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `gas_boundary_bypass_flow_rating` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `gas_ledger_controller_capital` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `gas_ledger_annual_service_fraction` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `gas_ledger_replacement_fraction` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `gas_ledger_common_source_pv` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `compressor_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `turbine_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `generator_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `he_hx_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `he_duty_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `conversion_services_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `heat_rejection_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `gas_ledger_capital9` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_ledger_capital3` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_ledger_capital4` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_transport_costscale` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_cycle_eta_hp` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_cycle_eta_lp` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
+| `steam_cycle_steam_temperature_C` | `constraints_reachable` | Declined: held offer does not support this direction. |
+| `steam_cycle_reheat_temperature_C` | `constraints_reachable` | Declined: held offer does not support this direction. |
+| `steam_cycle_condenser_temperature_C` | `constraints_reachable` | Declined: held offer does not support this direction. |
+| `steam_transport_secondary_head` | `constraints_reachable` | Declined: held offer does not support this direction. |
+
+**Not derivable:** monotonicity or sign of a response, identity of a physical quantity across differently named keys, and intra-module operand dependency. A reachable constraint is a possible graph path, not proof that a constraint responds. The financial inputs reach ledger constraints at module level; this does not establish physical resistance to price or recurring-cost assumptions. Those axes remain hypothetical sensitivities under the owner brief.
+
+The missing price qualification, installed-scope evidence and validated efficiency maps remain explicit model-development limitations even though no axis receives a sound negative from the graph indicator. The findings register will carry their observed implications after execution and review.
 
 ## 9. Preflight results
 
-Every mechanical gate that ran, with its outcome. The identity and baseline gates
-read the documents the route-preparation step deposited in `results/`; name those
-files in the detail column so a cold reader can open what the gate read. A gate that did not run is stated as
-such with its condition.
+Every mechanical gate that ran, with its outcome. The identity and baseline gates read the documents the route-preparation step deposited in `results/`; name those files in the detail column so a cold reader can open what the gate read. A gate that did not run is stated as such with its condition.
 
 | Gate | Outcome | Detail |
 |---|---|---|
@@ -211,42 +313,27 @@ such with its condition.
 - **Route:** `<teax-study CLI \| study-local direct-API>`
 - **Why this route:** `<what about this study forced or allowed it>`
 
-The rationale is recorded after the route was first exercised and gated, so it accounts
-for a route already known to load rather than predicting one.
+The rationale is recorded after the route was first exercised and gated, so it accounts for a route already known to load rather than predicting one.
 
-**Glue disclosure.** What the harness supplies that the model does not, and what that
-means for the claims. The ledger's entries are values and live in `snapshot.json`
-under `glue_ledger`; this is the argument about them.
+**Glue disclosure.** What the harness supplies that the model does not, and what that means for the claims. The ledger's entries are values and live in `snapshot.json` under `glue_ledger`; this is the argument about them.
 
-`<per rung: what it supplies, why the model cannot, and which claims it scopes — or:
-glue ledger: none. No adapter on this route, so nothing is harness-supplied.>`
+`<per rung: what it supplies, why the model cannot, and which claims it scopes — or: glue ledger: none. No adapter on this route, so nothing is harness-supplied.>`
 
 ## 11. Study definition and window provenance
 
-`<how the window was chosen: what was scanned, with what, and what the scan showed
-that fixed these bounds. The bounds themselves and their engineered|sourced
-provenance are snapshot values under arms[].window — do not restate them here.>`
+`<how the window was chosen: what was scanned, with what, and what the scan showed that fixed these bounds. The bounds themselves and their engineered|sourced provenance are snapshot values under arms[].window — do not restate them here.>`
 
-`<if engineered: state plainly that the window is engineered and what claims that
-costs. If sourced: name the source.>`
+`<if engineered: state plainly that the window is engineered and what claims that costs. If sourced: name the source.>`
 
 ## 12. Cross-fingerprint correlation and what it means
 
-`<when the arms span fingerprints: which boundary was crossed; that constraints were
-matched by definition qualified name plus local identity; every predicate_ir
-difference, disclosed; and what the correlation licenses and does not license. The
-compatibility tuples themselves are snapshot values under stores[]. When they do not
-span fingerprints, discharge the nil by naming the condition: "single fingerprint — no
-cross-arm correlation needed".>`
+`<when the arms span fingerprints: which boundary was crossed; that constraints were matched by definition qualified name plus local identity; every predicate_ir difference, disclosed; and what the correlation licenses and does not license. The compatibility tuples themselves are snapshot values under stores[]. When they do not span fingerprints, discharge the nil by naming the condition: "single fingerprint — no cross-arm correlation needed".>`
 
 ## 13. Verification
 
-`<the outcome: what passed, what did not, and what the result licenses. The command,
-sampling scheme, tolerance, and summary digest are snapshot values under
-arms[].verification — do not restate them here.>`
+`<the outcome: what passed, what did not, and what the result licenses. The command, sampling scheme, tolerance, and summary digest are snapshot values under arms[].verification — do not restate them here.>`
 
-`<what verification did not cover, named. A value that is identical by construction on
-both sides is not independently verified, and saying so here is part of the outcome.>`
+`<what verification did not cover, named. A value that is identical by construction on both sides is not independently verified, and saying so here is part of the outcome.>`
 
 ## 14. Review outcomes
 
@@ -264,8 +351,7 @@ Each finding gets an id used verbatim in `DISCOVERY_LOG.md` as `<study-id>#<n>`.
 |---|---|---|---|---|
 | `<study-id>#<n>` | `<model \| process>` | `<one line>` | `<one line>` | `<home, or unrouted>` |
 
-**Homes a finding may route to:** tool, runbook step, policy rule, skill, modeling
-item, research round, documented seam. `unrouted` is a stated state, not a blank.
+**Homes a finding may route to:** tool, runbook step, policy rule, skill, modeling item, research round, documented seam. `unrouted` is a stated state, not a blank.
 
 ## 16. Snapshot
 
@@ -277,9 +363,7 @@ No snapshot content is restated here.
 
 ## 17. What this record does not contain
 
-`<every fact a reader might expect and will not find, stated rather than left to
-inference. Gaps in the record itself only — the glue disclosure belongs in §10 and a
-framing-conditional nil belongs in §6.>`
+`<every fact a reader might expect and will not find, stated rather than left to inference. Gaps in the record itself only — the glue disclosure belongs in §10 and a framing-conditional nil belongs in §6.>`
 
 ---
 

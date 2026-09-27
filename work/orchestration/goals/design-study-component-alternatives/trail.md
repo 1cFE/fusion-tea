@@ -122,3 +122,26 @@ T-003 · WI-096 final design revision and independent review · expected revised
 ### T-004 start — 2026-09-26
 
 T-004 · WI-096 implementation through native model workflow · expected checklist, additive SysML definitions/assembly, isolated generated package, body/census/fixed-point evidence, complete input/output/check interface and verification report. Continuing author owns implementation paths in the updated brief; coordinator owns trail, commits and dated studies. Original 13,215-file preservation baseline applies.
+
+### T-005 scope
+
+- **Objective:** Independently assess whether the implemented conversion package and proposed study meet the reviewed physical, accounting, MR-7 and bounded-scope requirements.
+- **Why now:** The corrected native development runs independently reproduce 872 scalar channels and all 84 predicates; remaining author work concerns two constraint-label identities and validation reporting.
+- **Scope:** Substantive integration and study-framing review against original evidence. No main-study execution, new design submission, toolkit waiver or formal closure. The stock integration seam remains a subsequent executable gate.
+- **Inputs:** `goal.md`, fourth-submission PASS, `evidence/integration-review-brief.md`, WI-096 implementation and validation receipts, package/source commits `b5269722` and `b4c896ce`, and declared study offers/axes. The final label-only correction and its exact identity map must be checked before a release verdict.
+- **Done when:** The independent reviewer records PASS for the actual final implementation and study framing, or names exact unresolved requirements.
+- **Stop when:** A major physical model, extra coupled solve, policy exception or unreviewed scientific premise is required; a required review fails with an unresolved design-level dependency.
+
+### T-005 start — 2026-09-26
+
+T-005 · independent integration review by continuing non-author `/root/feasibility_review` · expected `evidence/implementation-integration-review.md`. The reviewer owns only that artifact and reads the native evidence. T-004's author finishes the two label corrections and reporting in parallel; these changes leave the physical equations and reviewed choices unchanged. Coordinator supplies the final exact identities for the reviewer's release check and integrates task returns sequentially. No study point is released during this overlap.
+
+### T-004 return — 2026-09-26
+
+- **Outcome:** COMPLETE, ready for substantive integration review; main study not released.
+- **Evidence:** WI-096 `report.md` SHA256 `bbdb17cd99cbe71bcd064ada3bb2f0d58564e369f80ef10b4bb92bdc32b34534`, completed `plan.md`, `evidence/independent-verification-final.json`, `constraint-identity-check.json`, `implementation-census-final.json`, `validation-detail.md/.json`; package commits `b5269722`, `b4c896ce`, `d323fc07`; goal `evidence/original-preservation-after-implementation.json`.
+- **Reading:** The isolated model contains the reviewed five substantive additions/variants and one new iterative cooler calculation. All required coupled physical calculations are model-owned. Source power, ratios and equipment remain chosen. The final native interface has 490 inputs, 876 scalar channels and 84 executing constraints. Seventeen evaluated development cases independently match 872 scalar channels and all 84 predicates; four solver iteration counts are diagnostic-only. One expected water-property refusal and all earlier failed attempts remain retained. Regeneration is an exact fixed point; all 13,215 original protected files are unchanged.
+- **Validation limits:** The six-level validator is not wholly green. It retains 72 L2 literal warnings and 766 L6 alias diagnostics, mapped individually to generated/native evidence; a widened diagnostic scan is retained separately. Independent review must assess that disposition. Native checks establish behavior, not hydraulic, off-design machinery or procurement qualification.
+- **MR-7:** Implementation role/behavior evidence is compliant with the reviewed direction: no source-power or ratio solve, no equipment demand-to-purchase sizing. Controller flow/fraction and cooler water flow are calculated operating states under the reviewed rationale. Independent integration assessment remains T-005.
+- **Decision:** Trigger: completed native implementation and independent numerical/predicate evidence. Decision/reason: accept T-004's bounded implementation handoff and continue T-005 because the owner authorized downstream work after the fourth-design PASS. Tier: execution detail. Decided by: coordinator. Changed: new model/package, tests/model_families.py append, native WI-096 evidence, and study interface/manifest preparation. No original model/package was changed and no integration candidate or main study has been promoted.
+- **Corrective evidence:** Eighteen omitted Boolean guards were expressed through supported existing numeric screens; ledger residual comparisons now consume model-produced magnitudes; two assertion labels were lowercased to align native identities. Recorded regressions preserve prior numerical results and physical verdict meanings. These are implementation/tooling representation repairs within the reviewed design, with no new physical relationship or policy exception.
