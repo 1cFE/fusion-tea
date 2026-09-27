@@ -31,6 +31,8 @@ Native execution includes completed oracle cases with failed engineering predica
 
 Use the best tested passing gas choice at each common source and a supported selected steam hardware choice at that same source. Selection is from the declared discrete catalog. No interpolation, continuous optimization or inferred equipment sizing is proposed.
 
+Show the steam result with the same 14-circuit connecting hardware across the common source range, and also report the least-cost passing steam connector offer at each source from the declared catalog. This makes any cost of holding the common hardware visible. The underlying steam turbine/generator offer remains the same; varying its connecting equipment does not establish an optimized steam-cycle technology. The gas result likewise names its chosen hardware and operating settings at each source.
+
 - Apply the reviewed absolute efficiency offsets of −0.03 and +0.03 to applicable gas compressors/turbine and steam HP/LP turbines, within their input domains. Retain failures. These are hypothetical performance sensitivities on selected equipment, with no claim of validated off-design maps.
 - Vary explicitly selected branch quote factors at 0.5 and 1.5 around the nominal scenario, holding all physical ratings fixed. Preserve the currency conversion and the distinction between hypothetical quotes and qualified procurement scope.
 - Vary the nonfuel service and replacement allowance together at 0.5 and 1.5 of the nominal assumptions. Keep the separately scheduled salt machine and bundle replacements distinct.
