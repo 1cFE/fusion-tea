@@ -60,3 +60,47 @@ T-002 · native modeling PM · registered work item, specification, design/plan,
 ### T-002 design submission r2 — 2026-09-27
 
 [AGENT] Revised complete design/configuration submitted to boundary_review. Corrective scope: disjoint CAS29/30/50 accounts, exact single-source/finance migration, explicit D/Li6 purchase and refill equations, positive-integer operating horizon and capture-key identity. Submission 2 of 3. Native design files remain frozen during review. Reversible conversion-oracle namespace preparation has completed without changed arithmetic; new equations and native hardware execution remain paused.
+
+### T-002 design review r2 — 2026-09-27
+
+- **Evidence:** Accepted design/configuration at 81423599; evidence/boundary-review-r2.md, unpinned; no native digest. Independent verdict PASS for implementation. MR-7 compliant at design level; executed behavior remains unverified.
+- **Decision:** Trigger: F1–F3 resolved by independent corrective review. Decision: release exact48kA capture and isolated native implementation, with independent numerical work in parallel because it owns distinct files and uses the same accepted contract. Tier: execution detail. Decided by: coordinator [AGENT]. Changed: evidence/implementation-brief.md and evidence/verifier-brief.md assignments. Integration audit remains required before the main study.
+- **Decision:** Trigger: gas transport overhead includes inseparable helium stock. Decision: retain it as an explicitly disclosed installed-cost proxy rather than inventing a finer quote split. Tier: execution detail. Decided by: coordinator [AGENT], following the review's nonblocking clarification. Changed: implementation/reporting brief clarification; no source or physical equation change.
+
+### T-002 capture premise check — 2026-09-27
+
+- **Evidence:** WI-098/evidence/magnet-capture retains the exact selected offer and all raw full-model failures. The source investigator and fresh reviewer independently found that the retained volumetric nuclear-heating input is not calculated from fusion power and is not a proven upper bound for the enlarged winding pack.
+- **Decision:** Trigger: evidence contradicts the design's claimed conservative nuclear envelope. Decision: park that conclusion and dependent ranking; obtain focused source review and correct the native design to state the transferred heating assumption at its actual authority. Tier: premise surprise. Decided by: coordinator [AGENT], surfaced in conversation. Changed: evidence/capture-review-brief.md; implementation and verifier assignments. Unaffected account/source algebra may proceed; no selected hardware changed and no failure waived.
+
+### T-002 capture correction review — 2026-09-27
+
+- **Evidence:** evidence/capture-boundary-review.md and capture-boundary-review-r2.md; independent source and arithmetic probes in evidence/boundary-review. The final corrective disposition is PASS with exact accepted design/configuration hashes. Native selected48kA arithmetic independently matches93 channels in WI-098/evidence/independent-verification/capture-check.json.
+- **Decision:** Trigger: unsupported conservative-envelope claim and duplicate coil heat in the auxiliary sink. Decision: release the corrected dynamic cryogenic-demand calculation with fixed equipment, explicit transferred heating assumptions and finite nonnegative demand guards; remove duplicate sink heat while retaining coil electrical consumption. Tier: premise surprise. Decided by: coordinator [AGENT], using focused independent PASS. Changed: WI-098 design/configuration and implementation/oracle assignments. No empirical transport qualification is claimed; native heating-scenario and integration checks remain required before ranking.
+
+### T-002 selected cryoplant role correction — 2026-09-27
+
+- **Evidence:** evidence/cryoplant-offer-proposal.md and independent evidence/cryoplant-offer-review.md, verdict PASS. The first development run remains retained in WI-098/evidence/development; the corrected final run uses a separate directory.
+- **Decision:** Trigger: fixed captured ratings prevented the accepted insufficient/sufficient selected-capacity tests through the new assembly. Decision: release explicit selected cold/intercept ratings and quote, preserving the captured offer as reference and the baseline purchase unchanged. Tier: execution detail. Decided by: coordinator [AGENT], after focused MR-7 review. Changed: native design/bindings and declared small/default/large development offers. No demand-sized purchase or physical equation change.
+- **Decision:** Trigger: independent arithmetic found the generated capture margin used a stress calibration in place of the actual allowable. Decision: correct that operand to the original selected allowable, preserve the first native run, and verify the final executable without changing tolerances. Tier: execution detail. Decided by: coordinator [AGENT]. Changed: native captured-offer implementation; final development and control verification remain pending.
+
+### T-003 scope
+
+- **Objective:** Integrate one reviewed package and run a verified finite whole-plant equipment and sensitivity study that answers the paired component question.
+- **Why now:** Final development and 498 control checks establish numerical parity; independent complete-boundary review is concluding.
+- **Scope:** Prepare record, interface, axes and scan code while review concludes. Dependent oracle scan, integration promotion and main native execution wait for its PASS. One promoted pin and one committed study in this round; at most 3000 unique complete main points. The coordinator owns manifest/record/report; conversion owns axes/annex; upstream owns scan code; reviewer owns assurance. These preparations have separate files and do not alter the frozen package.
+- **Inputs:** goal.md@2c8db9db; model/package d7d8a1e5; WI-098 report, final native and independent control evidence; implementation-integration review when returned; comparison-contract.md and study-preparation-notes.md.
+- **Done when:** Native CANDIDATE and all study gates pass, reranked native results and assumptions are independently reviewed, and a sealed reproducible study supports the required explanation and figures.
+- **Stop when:** Prerequisite, strategy blocker, owner gate, verification failure or declared cap.
+
+### T-003 start — 2026-09-27
+
+T-003 · native integration and run-study · exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/; preparatory record/interface work only until independent boundary PASS.
+
+### T-002 return — 2026-09-27
+
+- **Outcome:** COMPLETE — reviewed isolated model implementation, with formal item closure retained by owner.
+- **Evidence:** Model/package d7d8a1e5; WI-098/report.md and final independent verification; evidence/implementation-integration-review.md PASS at executable 6915694e74919ebb764445dfc7f0782eda85a9de29fa44c4b55ffa415c1eb30f, semantic bb284160ba12996bc129ba91c1838aed3281d54dc0e729fe03ca02a9d413d6e3. Final 32 evaluated development cases and 498 controls agree across 1192 outputs and 125 predicates; 3 expected refusals and 88 behavior checks retained. The 498 old controls match 872 inherited outputs and 84 predicates exactly. Preservation confirms 54169 prior files unchanged.
+- **Reading:** The supplied 2500/2800 MW source pairs pass implemented equipment checks with complete declared whole-plant power and lifecycle accounting. The 3000 MW source fails selected primary/divertor limits. Static validator remains exit 1 with all 72 literal and 1174 alias/readiness diagnostics explicitly mapped and independently reviewed. Scientific transport/plasma/global-fit qualifications remain unresolved and explicit.
+- **MR-7:** Compliant in the reviewed offers/domains. Actual native demand-only, small/default/large cryoplant, stock/processing/primary/auxiliary capacity and source-only tests preserve selected purchases and reject insufficient equipment. Role/binding review covers affected consumers; no autosizing purchase is introduced.
+- **Decision:** Trigger: independent complete-boundary and executed-role PASS. Decision: release T-003 independent scan, stock integration and gated main study, because the implementation satisfies the bounded contract. Tier: execution detail. Decided by: coordinator [AGENT] using independent reviewer evidence. Changed: T-003 release; no package changes.
+- **Decision:** Trigger: unused generated CAS metadata tags differ from the reviewed categories. Decision: retain frozen numerical package and use configuration.md explicit mapping in reports, because exact membership equations drive accounting and no executable consumer reads the tags. Tier: execution detail. Decided by: coordinator [AGENT] following reviewer N1 disposition. Changed: reporting requirement and study finding; metadata defect retained as a declared seam.

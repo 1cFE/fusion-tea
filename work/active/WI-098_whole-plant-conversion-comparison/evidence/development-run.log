@@ -1,0 +1,31 @@
+whole-baseline2500 completed 
+legacy-control2500 completed 
+matched2800 completed 
+matched3000-failed-source completed 
+demand-only2800 completed 
+cryo-q50 completed 
+cryo-q80 completed 
+cryo-extra10000 completed 
+cryo-extra13000 completed 
+negative-cryo-domain failed module_execution: ValueError: finite nonnegative cryogenic heating demands required
+stock-insufficient completed 
+stock-sufficient completed 
+processing-insufficient completed 
+processing-sufficient completed 
+primary-pressure-insufficient completed 
+primary-pressure-sufficient completed 
+auxiliary-insufficient completed 
+auxiliary-sufficient completed 
+negative-whole-net completed 
+annual-import-dominated completed 
+outage-budget-failure completed 
+capture-identity-refusal completed 
+source-path-count-mismatch completed 
+fractional-horizon-refusal failed module_execution: ValueError: whole lifecycle domain: integer years and positive lives required
+zero-discount completed 
+lower-breeding completed 
+lower-extraction completed 
+lower-recovery completed 
+zero-T-price completed 
+gas-price-only completed 
+common-price-only completed 

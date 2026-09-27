@@ -1,0 +1,68 @@
+{
+  "files": {
+    "exploration/whole_plant_conversion/verify.py": "e527b204f14b399b3c5be78d8c0005de30445ed2cae80193a2aec125a6e56e72",
+    "exploration/whole_plant_conversion/oracle_cooling.py": "684e2b786e3e169cd2653dbfc12f06206e46c90b9ca063d23633badc10f0fd6c",
+    "exploration/whole_plant_conversion/oracle_fuel_inventory.py": "8b4a2334e9a165f002ab4b4fabed052e90c6e9125631230f3db5e2433212d2ee",
+    "exploration/whole_plant_conversion/oracle_gas.py": "0ec5245e352934debbfa9c06f21e2248ef1f54351350ec84114feb0262812680",
+    "exploration/whole_plant_conversion/oracle_matched_cycle.py": "b6addafe52e6f74a20a56186de3cea1f4b58f7a3a807fd2492d4bd848939f7cc",
+    "exploration/whole_plant_conversion/oracle_thermal.py": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417",
+    "exploration/whole_plant_conversion/oracle_whole_plant.py": "06150e65776c5008ff3526535c0d4c12d35d0cda7aa85e250bafe620c68361aa",
+    "exploration/whole_plant_conversion/oracle_matched_cycle_properties.json": "b8e5a7d156c7422d95b654bc073e273fd663fc86b6c2151f56b90caec3a40b7b"
+  },
+  "imports": {
+    "exploration/whole_plant_conversion/verify.py": [
+      "",
+      "__future__",
+      "argparse",
+      "functools",
+      "json",
+      "math",
+      "oracle_cooling",
+      "oracle_fuel_inventory",
+      "oracle_gas",
+      "oracle_matched_cycle",
+      "oracle_thermal",
+      "oracle_whole_plant",
+      "pathlib",
+      "re",
+      "scipy.optimize",
+      "sys",
+      "yaml"
+    ],
+    "exploration/whole_plant_conversion/oracle_cooling.py": [
+      "collections.abc",
+      "math"
+    ],
+    "exploration/whole_plant_conversion/oracle_fuel_inventory.py": [
+      "math"
+    ],
+    "exploration/whole_plant_conversion/oracle_gas.py": [
+      "math",
+      "scipy.optimize"
+    ],
+    "exploration/whole_plant_conversion/oracle_matched_cycle.py": [
+      "hashlib",
+      "json",
+      "math",
+      "pathlib"
+    ],
+    "exploration/whole_plant_conversion/oracle_thermal.py": [
+      "",
+      "__future__",
+      "collections.abc",
+      "decimal",
+      "functools",
+      "math",
+      "oracle_matched_cycle",
+      "scipy.optimize"
+    ],
+    "exploration/whole_plant_conversion/oracle_whole_plant.py": [
+      "__future__",
+      "hashlib",
+      "json",
+      "math",
+      "pathlib"
+    ]
+  },
+  "production_body_imports": false
+}

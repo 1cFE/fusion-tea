@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "executable": "6915694e74919ebb764445dfc7f0782eda85a9de29fa44c4b55ffa415c1eb30f",
+  "source_files_checked": 16,
+  "package_files_checked": 279,
+  "installed_bodies_checked": 39,
+  "development_receipt_sha256": "e6b1191a41dcf6a861b2b9d86f3d4aaab2a84c27b67c8ec4bb2ec5ad307cbdda",
+  "model_sha256": "5572bcef980cc12d9001857f4bd266fa5e8872be98cd4d3606ca845d705e7078",
+  "library_sha256": "ed82b7b3309360c6d4447ddd05e3af077c2d670912b6d248b2a5f4282c9f0d6f",
+  "native_guards": {
+    "negative-selected-cryo-quote": "failed",
+    "negative-quote-zero-factor": "failed",
+    "zero-selected-cold-rating": "completed"
+  }
+}

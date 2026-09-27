@@ -51,10 +51,30 @@ def discover(package: Path) -> dict:
     }
 
 
-def prepare(receipt_path: Path, phase: str, headline: str | None, tolerances: Path | None):
+def normalize_receipt(document: dict, case: str | None = None) -> dict:
+    """Map the development runner's native result; preserve its actual statuses."""
+    if "cases" in document:
+        found = [row for row in document["cases"] if row["case"] == case]
+        if len(found) != 1:
+            raise ValueError("select exactly one named development case with --case")
+        document = found[0]
+    if document.get("state") == "completed":
+        outputs = dict(document["outputs"])
+        if "constraint_report" in document:
+            outputs["constraint_report"] = document["constraint_report"]
+        if "constraint_report" not in outputs:
+            outputs["constraint_report"] = {"results": [
+                {"constraint_id": key, "status": value}
+                for key, value in document["responses"].items() if key != "headline"]}
+        return {"status": "evaluated", "fingerprint": document["executable_fingerprint"],
+                "effective_inputs": document["inputs"], "outputs": outputs}
+    return document
+
+
+def prepare(receipt_path: Path, phase: str, headline: str | None, tolerances: Path | None, case: str | None = None):
     common.assert_tree_clean(PACKAGE)
     inventory = discover(PACKAGE.resolve())
-    receipt = common.read_json(receipt_path, "native development receipt")
+    receipt = normalize_receipt(common.read_json(receipt_path, "native development receipt"), case)
     if receipt.get("status") != "evaluated":
         raise ValueError("baseline receipt did not evaluate")
     fingerprints = inventory["fingerprints"]
@@ -140,5 +160,6 @@ if __name__ == "__main__":
     parser.add_argument("--phase", choices=("interface", "manifest"), required=True)
     parser.add_argument("--headline")
     parser.add_argument("--tolerances", type=Path)
+    parser.add_argument("--case", help="Exact case label when --receipt contains a native cases list")
     args = parser.parse_args()
-    print(json.dumps(prepare(args.receipt, args.phase, args.headline, args.tolerances)))
+    print(json.dumps(prepare(args.receipt, args.phase, args.headline, args.tolerances, args.case)))

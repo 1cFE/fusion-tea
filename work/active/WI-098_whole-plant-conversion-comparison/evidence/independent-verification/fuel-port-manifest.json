@@ -1,0 +1,6 @@
+{
+  "source": "exploration/stellarator_e2e/oracle_fuel_inventory.py",
+  "target": "exploration/whole_plant_conversion/oracle_fuel_inventory.py",
+  "byte_identical": true,
+  "sha256": "8b4a2334e9a165f002ab4b4fabed052e90c6e9125631230f3db5e2433212d2ee"
+}

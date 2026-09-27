@@ -1,0 +1,10 @@
+{
+  "expected_executable": "6915694e74919ebb764445dfc7f0782eda85a9de29fa44c4b55ffa415c1eb30f",
+  "cases": 498,
+  "completed": 498,
+  "old_cases_sha256": "f05e905ff1a1e83230551b8f5b5b916ff17dcdeade63068bce21dcbc678fea3f",
+  "new_defaults_sha256": "c4331e506b6f60175bc9c84b98a6e4d0157e32c12e7f6b3ba2a3d444d912386c",
+  "migration": "studies/migrate_controls.py; legacy shared finance preserved",
+  "native_route": "exploration.whole_plant_conversion.run.execute",
+  "scope": "development regression; not the main study"
+}

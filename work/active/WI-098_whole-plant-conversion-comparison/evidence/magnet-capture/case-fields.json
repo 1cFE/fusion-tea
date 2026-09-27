@@ -1,0 +1,15 @@
+[
+  "candidate_id",
+  "state",
+  "inputs",
+  "outputs",
+  "verdicts",
+  "headline",
+  "disposition",
+  "coverage",
+  "catalog_fingerprint",
+  "assessment",
+  "executable_fingerprint",
+  "evidence_digest",
+  "catalog"
+]

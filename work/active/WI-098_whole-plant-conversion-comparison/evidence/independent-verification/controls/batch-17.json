@@ -1,0 +1,307 @@
+{
+  "receipts": "/home/reid/1cfe/fusion-tea/work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/batch-17/cases.json",
+  "receipts_sha256": "86a4cd5ae9e9343e80f14f15ed29d65f782f42f2a3933a6f4a8830b6f9a9020b",
+  "oracle_identity": "77ff2136013c728ba226d858f546a3cbb6c4480fe86eff7b8f99e30f8c91106e",
+  "results": {
+    "steam-q3000-n10-k4-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n10-k4-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n11-k2-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n11-k2-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n11-k3-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n11-k3-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n11-k4-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n11-k4-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n12-k2-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n12-k2-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n12-k3-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n12-k3-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n12-k4-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n12-k4-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n14-k2-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n14-k2-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n14-k3-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n14-k3-pump250": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "steam-q3000-n14-k4-pump225": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "sensitivity-q2500-gas-eta-0.03": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "sensitivity-q2500-gas-eta+0.03": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "sensitivity-q2500-steam-eta-0.03": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "sensitivity-q2500-steam-eta+0.03": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "sensitivity-q2500-both-eta-0.03": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    },
+    "sensitivity-q2500-both-eta+0.03": {
+      "status": "pass",
+      "comparisons": 1192,
+      "predicates": 125,
+      "diagnostic_only": [
+        "whole_plant_conversion__plant__water_ic1__evaluate__iterations",
+        "whole_plant_conversion__plant__heat_exchangers__evaluate__iterations",
+        "whole_plant_conversion__plant__water_pre__evaluate__iterations",
+        "whole_plant_conversion__plant__water_ic2__evaluate__iterations"
+      ],
+      "differences": []
+    }
+  }
+}

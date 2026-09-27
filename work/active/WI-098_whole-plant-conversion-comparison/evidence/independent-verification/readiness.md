@@ -1,25 +1,23 @@
-# Independent verifier readiness: conversion port
+# Independent verifier status
 
-[AGENT] The reversible conversion-oracle port is ready. New whole-plant equations remain unimplemented pending the coordinator's explicit accepted-design release. This is not a complete whole-plant verifier or an independent design approval.
+The accepted design equations and reviewed cryogenic correction are implemented in `exploration/whole_plant_conversion/verify.py`, `oracle_whole_plant.py` and retained oracle support. The verifier imports no production numerical body. Final development comparison passes. All 498 historical replay cases also pass; see `verification-report.md` for complete numerical evidence.
 
-## Owned artifacts
+## Evidence completed
 
-- `exploration/whole_plant_conversion/verify.py` — predecessor authored-binding evaluator and predicate verification, with isolated package/model/result paths and namespace-safe relative imports.
-- `oracle_gas.py` — predecessor gas/primary arithmetic with the package prefix changed only.
-- `oracle_cooling.py`, `oracle_matched_cycle.py`, `oracle_matched_cycle_properties.json`, `oracle_thermal.py` — byte-exact predecessor copies.
-- `conversion-port-manifest.json` — every source/target SHA256 and declared transformation.
-- `check_conversion_port.py` and `conversion-port-check.json` — reversible-source comparison, import/API checks and isolated gas-oracle arithmetic comparison.
+- `conversion-port-manifest.json` and `conversion-port-check.json`: the previously verified conversion oracle was ported with reversible namespace, package and source-path changes. Its six source files were unchanged; 116 gas/loop outputs were bit-exact under the namespace substitution. The retained 498-case study was not rerun.
+- `capture-check.json` and `capture-report.md`: 93 independent geometry, current, material, procurement and cryogenic outputs agree with the exact 48 kA native capture. The supplied 35.5 W/m³ assumption is explicit; transport and global-construction qualification remain zero.
+- `semantic-checks.json`: 69 independent equation checks pass, including every common capital leaf and branch slot, fuel mass balances, isotope recovery/extraction effects, strict event horizons and zero discount.
+- `authored-checks.json`: 48 authored-binding checks pass, including source2500/2800 demand changes with capital invariant, isolated branch quote changes, mean nuclear heating35.5/50/80 W/m³ and extra cold10/13 kW. These checks confirm downstream refrigeration, auxiliary heat and export propagation. They are oracle checks, not native execution receipts.
+- `oracle_fuel_inventory.py` is a byte-identical copy of the previously independent deterministic-delay startup inventory oracle at `exploration/stellarator_e2e/oracle_fuel_inventory.py`.
 
-[AGENT] Verification command: `.codex-test/run python work/active/WI-098_whole-plant-conversion-comparison/evidence/independent-verification/check_conversion_port.py`. All six files reconstruct the exact predecessor bytes when their declared namespace/import edits are reversed. All source hashes remain unchanged. The inherited gas oracle returns116 channels bit-exactly after prefix remapping at the retained input defaults. Python compilation and API import checks pass. No native package or old study was executed; this narrow check does not replace the retained498-case numerical evidence or qualify new whole-plant bindings.
+## Numerical conventions
 
-## Retained evidence and contracts
+Every native scalar output is required to have an independent equation, except solver iteration diagnostics. Every native predicate is checked using independently derived operands and the authored predicate definition. The public adapter exposes `evaluate`, `operand_bindings`, `comparison_catalog` and `absolute_tolerances` for the stock study verifier. Generated scalar `.root` references are mapped to their scalar output channels.
 
-[INHERITED] Numerical authority for unchanged conversion equations remains `exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/record.md`, its sealed498-case results, and predeclared `numerical-tolerances.json`. This port does not revise oracle arithmetic or numerical tolerances. Iteration diagnostics remain excluded from numerical comparisons.
+Relative agreement is1e-9. New normalized isotope residuals use1e-12 absolute tolerance, cost cancellation residuals1e-4 USD2025, and power residuals1e-9 MW. Existing conversion solver residual classes retain their prior tolerances. These are arithmetic cancellation tolerances; capacity predicates receive no margin tolerance beyond the declared native domain convention for tiny primary motor cancellation. Costs, masses, duties and each predicate operand are also compared individually.
 
-[AGENT] The module exports `evaluate(point)`, `operand_bindings()`, `comparison_catalog()` and `absolute_tolerances()`. The predecessor `studies/oracle_entry.py` exports only the first three; the new coordinator-owned adapter should explicitly export all four. The stock verifier consumes the comparison catalog and binding map; the new study manifest must retain the declared absolute classes. `comparison_catalog()` currently requires a generated package and fully implemented accepted calc interfaces, so it must not be treated as ready for the new full assembly yet.
+## Current limits
 
-[AGENT] The evaluator reads flat named `part` occurrences and authored `calc` input bindings from `models/designs/whole_plant_conversion/plant.sysml`; generated inputs provide chosen values; pipeline metadata supplies constraint operand locations only. No native numerical body is imported. Anticipated prefix is `whole_plant_conversion__plant__`; package is `whole_plant_conversion_tea`. Author was informed to preserve existing named conversion occurrences and provide final new calc names/formals/outputs. Unsupported new calculation names deliberately raise an error instead of silently omitting verification.
+The source is conditional and unqualified. The fixed capture establishes local model checks under its declared assumptions, not qualified plasma sustainment or global construction. Nuclear heating is an uncertain independent demand. The hot-source multiplier applies to blanket/shield heat and excludes cryogenic deposition, so the reviewed heating scenarios leave source inversion and fuel demand unchanged. Independent arithmetic does not establish the physical validity of that transfer.
 
-## Release dependencies
-
-[AGENT] Await accepted design/configuration identity and final new calc interfaces before independently deriving source/fuel/power/cost/events/DCF equations. The finance-key migration must reject inconsistent legacy branch values and map them to the single shared finance part; the current port does not invent this migration. Exact48kA capture, conservative nuclear-envelope calculation, monetary repricing breakdown and native selected-capability receipts are also required for the subsequent independent capture check. Missing interfaces will be reported, not inferred from native implementation arithmetic.
+The final generated public surface has 637 inputs, 1,192 independently compared scalar outputs, four solver iteration diagnostics and 125 predicates. The 35-case development battery passes; the independent integration review remains required before main-study ranking.

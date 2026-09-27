@@ -1,0 +1,290 @@
+[
+  {
+    "channel": "whole_plant_conversion__plant__fuel_accounts__evaluate__D_atom_residual",
+    "value": 1e-12,
+    "units": "dimensionless",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__fuel_accounts__evaluate__Li6_atom_residual",
+    "value": 1e-12,
+    "units": "dimensionless",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__fuel_accounts__evaluate__T_atom_residual",
+    "value": 1e-12,
+    "units": "dimensionless",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_boundary__evaluate__duty_correction",
+    "value": 1e-08,
+    "units": "MW",
+    "basis": "1e-8 MW, reviewed control canonicalization tolerance; exact capacity/adequacy predicates unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_boundary__evaluate__raw_heat_residual",
+    "value": 1e-08,
+    "units": "MW",
+    "basis": "1e-8 MW, reviewed control canonicalization tolerance; exact capacity/adequacy predicates unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_boundary__evaluate__raw_return_residual",
+    "value": 1e-06,
+    "units": "K",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_ledger__evaluate__conversion_energy_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "Magnitude view of the existing conversion-energy residual. Same predeclared absolute class, before main study; exact physical predicates unchanged. Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances-indicator.json"
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_ledger__evaluate__energy_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_loss_water__evaluate__water_energy_residual_MW",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_losses__evaluate__duty_correction",
+    "value": 1e-08,
+    "units": "MW",
+    "basis": "1e-8 MW, reviewed control canonicalization tolerance; exact capacity/adequacy predicates unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_losses__evaluate__raw_heat_residual",
+    "value": 1e-08,
+    "units": "MW",
+    "basis": "1e-8 MW, reviewed control canonicalization tolerance; exact capacity/adequacy predicates unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_losses__evaluate__raw_return_residual",
+    "value": 1e-06,
+    "units": "K",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_operating__evaluate__power_residual",
+    "value": 1e-09,
+    "units": "MW",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_overheads__evaluate__reconciliation_residual",
+    "value": 0.0001,
+    "units": "USD2025",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__gas_whole__evaluate__cost_residual",
+    "value": 0.0001,
+    "units": "USD2025",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__heat_exchangers__evaluate__closure_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__return_control__evaluate__bypass_fraction",
+    "value": 1e-10,
+    "units": "dimensionless",
+    "basis": "1e-10 dimensionless, native control bisection versus independent Brent; hardware and predicate checks unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__return_control__evaluate__return_residual",
+    "value": 1e-06,
+    "units": "K",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__return_control__evaluate__return_residual_magnitude",
+    "value": 1e-06,
+    "units": "K",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__source_basis__evaluate__source_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_boundary__evaluate__duty_correction",
+    "value": 1e-08,
+    "units": "MW",
+    "basis": "1e-8 MW, reviewed control canonicalization tolerance; exact capacity/adequacy predicates unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_boundary__evaluate__raw_heat_residual",
+    "value": 1e-08,
+    "units": "MW",
+    "basis": "1e-8 MW, reviewed control canonicalization tolerance; exact capacity/adequacy predicates unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_boundary__evaluate__raw_return_residual",
+    "value": 1e-06,
+    "units": "K",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_cycle__evaluate__cycle_electric_residual_MW",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_cycle__evaluate__cycle_shaft_residual_MW",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_cycle__evaluate__heater_energy_residual_MW",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_cycle__evaluate__heater_mass_residual_kg_s",
+    "value": 1e-06,
+    "units": "kg/s",
+    "basis": "Near-zero mass-balance residual, predeclared at 1e-6 kg/s in the native verification receipt. Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_cycle__evaluate__salt_heat_residual_MW",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_ledger__evaluate__conversion_energy_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "Magnitude view of the existing conversion-energy residual. Same predeclared absolute class, before main study; exact physical predicates unchanged. Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances-indicator.json"
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_ledger__evaluate__energy_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_losses__evaluate__duty_correction",
+    "value": 1e-08,
+    "units": "MW",
+    "basis": "1e-8 MW, reviewed control canonicalization tolerance; exact capacity/adequacy predicates unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_losses__evaluate__raw_heat_residual",
+    "value": 1e-08,
+    "units": "MW",
+    "basis": "1e-8 MW, reviewed control canonicalization tolerance; exact capacity/adequacy predicates unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_losses__evaluate__raw_return_residual",
+    "value": 1e-06,
+    "units": "K",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_operating__evaluate__power_residual",
+    "value": 1e-09,
+    "units": "MW",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_overheads__evaluate__reconciliation_residual",
+    "value": 0.0001,
+    "units": "USD2025",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_return_control__evaluate__bypass_fraction",
+    "value": 1e-10,
+    "units": "dimensionless",
+    "basis": "1e-10 dimensionless, native control bisection versus independent Brent; hardware and predicate checks unchanged Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_return_control__evaluate__return_residual",
+    "value": 1e-06,
+    "units": "K",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_return_control__evaluate__return_residual_magnitude",
+    "value": 1e-06,
+    "units": "K",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_water__evaluate__water_energy_residual_MW",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__steam_whole__evaluate__cost_residual",
+    "value": 0.0001,
+    "units": "USD2025",
+    "basis": "Predeclared independent verification numerical class in exploration/whole_plant_conversion/verify.py; same tolerance used for the development and 498 control checks. No equipment inequality allowance."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__water_ic1__evaluate__energy_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__water_ic1__evaluate__ua_residual",
+    "value": 1e-08,
+    "units": "MW/K",
+    "basis": "1e-8 MW/K, native bisection stops at1e-10 MW/K; independently solved residual centered at zero Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__water_ic2__evaluate__energy_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__water_ic2__evaluate__ua_residual",
+    "value": 1e-08,
+    "units": "MW/K",
+    "basis": "1e-8 MW/K, native bisection stops at1e-10 MW/K; independently solved residual centered at zero Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__water_pre__evaluate__energy_residual",
+    "value": 1e-06,
+    "units": "MW",
+    "basis": "1e-6 in each named channel unit (MW or K), reviewed energy/return numerical checks; no equipment guard tolerance Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  },
+  {
+    "channel": "whole_plant_conversion__plant__water_pre__evaluate__ua_residual",
+    "value": 1e-08,
+    "units": "MW/K",
+    "basis": "1e-8 MW/K, native bisection stops at1e-10 MW/K; independently solved residual centered at zero Declaration: work/active/WI-096_matched-conversion-subsystems/evidence/numerical-tolerances.json. No equipment/property inequality tolerance is added."
+  }
+]

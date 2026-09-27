@@ -1,0 +1,22 @@
+{
+  "scope": "Independent arithmetic for source-envelope review; not native sensitivity execution or physical qualification.",
+  "candidate_id": "wi098-reviewed-magnet-capture:c0001",
+  "executable_fingerprint": "83ea3b6cf99f5fda6045e7e03b5d430ede91abbe8aa41262c2f9f5aba8663d23",
+  "source_sha256": {
+    "offer-inputs.json": "4a80b3efd4e376e6eb23d8c73d2c87d17f1d1a2891390b955e15157f89e5e437",
+    "native-cases.json": "c11e16ef6e4e4d2eb0e69da923000d4bcecdbb783dcf85fed781b5d00885fb13",
+    "package-identity.json": "bbbd283a049529b8e1aa7434cecffe6b72b782a90a98c283012371a1d4f65e61"
+  },
+  "q_nuc_W_m3": 35.5,
+  "cold_volume_m3": 307.2600000000001,
+  "cold_W": 27730.308885170314,
+  "cold_rating_W": 40000.0,
+  "cold_headroom_W": 12269.691114829686,
+  "q_structure_nuclear_W": 0.0,
+  "q_wp_capacity_boundary_W_m3": 75.4326014282031,
+  "q50_cold_W": 32185.578885170315,
+  "q50_delta_electric_MW": 0.31186890000000006,
+  "conditional_same_transport_scaled_q_at_Pf2652_563": 34.87629474791646,
+  "paper_point_fusion_MW": 2700,
+  "conditional_transfer_note": "Linear source-power scaling is a reviewer inference conditional on unchanged transport; original paper does not qualify new geometry."
+}

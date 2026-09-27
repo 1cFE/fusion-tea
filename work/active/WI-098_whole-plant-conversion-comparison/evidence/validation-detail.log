@@ -1,0 +1,32 @@
+{
+  "families": {
+    "cross_part_alias": 45,
+    "dotted_output_alias": 1129,
+    "boolean_requirement_adapter_literal": 72
+  },
+  "unresolved_count": 0,
+  "supplemental_additional": 2766,
+  "l6_all_path_metrics": {
+    "Calc defs checked": 84,
+    "Calc usages checked": 135,
+    "Bindings validated": 1147,
+    "Design attrs checked": 3523,
+    "Manifests checked": 0,
+    "L6_MISSING_QUALIFIED_NAME": 0,
+    "L6_INVALID_QUALIFIED_NAME": 0,
+    "L6_CALC_DEF_NO_OUTPUT": 0,
+    "L6_CALC_DEF_NO_DIRECTION": 0,
+    "L6_INVALID_BINDING_FORMAT": 0,
+    "L6_DESIGN_ATTR_INCOMPLETE": 1599,
+    "L6_DESIGN_ATTR_UNEXTRACTABLE": 1167,
+    "L6_ANONYMOUS_RETURN": 0,
+    "L6_BODY_ASSIGNMENT_IMPL_LOSS": 0,
+    "V4_STATIC_FUNCTION_INVOCATION": 0,
+    "L6_CONSTRAINT_MALFORMED_NUMERICAL": 0,
+    "L6_CONSTRAINT_NON_NUMERICAL": 0,
+    "L6_CALC_DEF_NO_INSTANTIATION": 0,
+    "L6_ATTR_REDEF_EXPR_DROPPED": 0
+  },
+  "screen_count": 18,
+  "exit_status": 1
+}

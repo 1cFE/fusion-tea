@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "controls": 498,
+  "refusals": [
+    "source_collision",
+    "rate_collision",
+    "availability_collision_before_override",
+    "new_finance_collision",
+    "missing_old",
+    "unknown_key",
+    "nonfinite",
+    "fractional_legacy_horizon",
+    "fractional_scenario_horizon",
+    "unknown_override"
+  ],
+  "equal_source_duplicate_accepted": true,
+  "explicit_shared_override_accepted": true,
+  "scope": "Input mapping only; synthetic new schema. No new package or model execution."
+}
