@@ -6,7 +6,7 @@
 
 Use explicit offered pairs of **selected exchanger area and total purchase price**. Keep the original equipment first. For prospective smaller exchangers, use an **agent-selected retained-budget offer of 58.3257 million USD2004 per exchanger**, independent of selected area, as the main conditional price convention. This reuses the existing allocated purchase budget; it is not a vendor quote or evidence that differently sized exchangers really cost the same. It is higher than the inherited linear estimate for smaller area, but is not proved conservative against real procurement cost.
 
-The design author’s prospective tuples of He/PbLi/divertor areas `(12000,12000,3000)`, `(18000,18000,6000)` and `(24000,24000,9000)` m² remain **examples until the design declares the offers**. With U=1000 W/m²/K their conductances would be `(12,12,3)`, `(18,18,6)` and `(24,24,9)` MW/K. Under the retained-budget convention each complete three-exchanger inventory costs 174.9771 million USD2004. Both architectures receive the same offered inventory and prices for each matched comparison.
+The reviewed fixed catalogue is offer A with He/PbLi/divertor areas `(12000,12000,2000)` m² and offer B `(18000,18000,2000)` m². At U=1000 W/m²/K these give UA `(12,12,2)` and `(18,18,2)` MW/K. Each offer books the same declared 58.3257 million USD2004 per exchanger, or 174.9771 million total. Both architectures receive each same offer. The original three 50,000 m² exchangers remain failure controls. Selection is explicit and precedes the main study; the model never resizes an exchanger from demand.
 
 Implement the supplied offer through the existing price-factor input, without changing the historical reference quantity:
 

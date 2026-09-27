@@ -172,3 +172,25 @@ T-004 · goal evidence/r2-thermal-requirements.md and evidence/r2-implementation
 ### T-005 start — 2026-09-27
 
 T-005 · work/active/WI-097_exchanger-thermal-requirements and exploration/exchanger_architecture/thermal_requirements · reviewed design, model and executable evidence. Design author owns WI-097 design and bounded development probes; coordinator owns goal records. Independent reviewer retains source review context. Production implementation waits for design review.
+
+### T-006 scope
+
+- **Objective:** Compare thermally passing series/network operations on the fixed priced catalogue with refined common flow/split freedom and conditional cost allowances.
+- **Why now:** The reviewed thermal contract has a stable isolated generated package; independent development verification passes. Study preparation can proceed while the author completes implementation reporting.
+- **Scope:** Independent oracle scan, declared axes/rulings, native preflight and integration prerequisites, stock study execution, all-point verification, refined comparison and sensitivity reporting, immutable seal and independent review. Preparation has no authority to change the model or catalogue.
+- **Inputs:** WI-097 reviewed design and native package at a97d6db7; r3-study-contract.md, r3-cost-boundary.md, r3-protocol-review.md; exact owner intake and delegated judgments.
+- **Done when:** One sealed replayable native record establishes thermal acceptance and a refined conditional architecture comparison, or the bounded scan establishes a documented negative result.
+- **Stop when:** Native prerequisite fails, independent verification disagrees, unresolved material model change is required, or the declared 200,000-point oracle budget is reached.
+
+### T-006 start — 2026-09-27
+
+T-006 · exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison · coordinator owns preparation, execution and delivery. Oracle-only preparation may overlap T-005 reporting because it changes no model or native result. Main native execution waits for T-005's implementation review and successful integration. The package is fixed at a97d6db7; source and design reviews are reused. Catalogue original/A/B is frozen; source-informed returns and six-terminal 30 K remain agent-selected conditional requirements. The owner delegated routine study judgments; price/source-support findings will accompany unresisted sensitivity axes.
+
+### T-005 return — 2026-09-27
+
+- **Outcome:** COMPLETE. Isolated controlled thermal model and independent oracle implemented, reviewed and integrated.
+- **Evidence:** Native package a97d6db7; audited WI-097 implementation/interface b09198bb; WI-097 evidence/implementation-report.md, implementation-review.md PASS, oracle-native-verification.json and oracle-stock-verification.json; evidence/integration-r3/integration_return.json CANDIDATE, ten gates pass.
+- **Identity:** Executable cd16e8deb2f579e4cb1afcaf0fedbfc53498ba125783fbf8e17af14ffb4cbcc7; semantic 423eebc09f9901ffda8ee77a480d67100919dd7ba4d325e09f8c58f1e704ce31; study manifest pin 873cb9192d6fe7a52bb720959c7f173a6717898e385f6826df625e7d435b1114.
+- **Verification:** Eighteen native development cases agree on 435 independently calculated channels and 35 predicates. Seven legacy replays reproduce all 551 earlier outputs and fourteen checks exactly. Fifty-two independent reviewer tests and 29 author tests pass; these overlap and are not summed as unique coverage. Stock generation is a fixed point. The complete model validator retains 105 identical baseline literal warnings and adds 37 known pure-EXPOSE expression diagnostics to the baseline 498; the report states those limitations instead of claiming an all-level pass.
+- **MR-7 and thermal result:** Explicit fixed area/price selections remain supplied inputs; no equipment or effective UA is sized from demand. Both actual terminals, pre-mix primary HX outlet, aggregate return, required hot temperature, hot cap, active flow and bypass are separate channels. Original inventory fails the declared approach contract; fixed offered A/B controls pass all thirty-five checks. Main-study ranking remains T-006 work.
+- **Disposition:** Independent source/design/implementation evidence covers the new model. T-006 may execute after its completed preflight and final proposal refinement. WI-097's checklist is complete; formal work-item and goal closure remain owner-held.
