@@ -1,0 +1,13 @@
+{
+  "schema_version": "blocked-study-verification/v1",
+  "outcome": "fail",
+  "stock_verifier": "scripts/study/verify.py",
+  "attempt": "results/verification-attempt1-failure.json",
+  "diagnostic": "results/verification-diagnostics.json",
+  "cases_completed": 498,
+  "cases_with_numeric_mismatches": 6,
+  "cases_with_predicate_mismatches": 0,
+  "channels_checked": 872,
+  "constraints_rederived": 84,
+  "disposition": "Stop. Independent review confirms native cooler accuracy shortfall. No tolerance or model change authorized; this is not a released study."
+}

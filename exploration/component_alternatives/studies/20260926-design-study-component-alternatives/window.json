@@ -1,0 +1,44 @@
+{
+  "provenance": "engineered",
+  "selection": "All independently evaluated declared offers and sensitivities, including failed physical checks. No interpolated or solved design choices.",
+  "scans": [
+    {
+      "scan": "core",
+      "cases": 375,
+      "evaluated": 375,
+      "satisfying_all_checks": 14
+    },
+    {
+      "scan": "steam",
+      "cases": 72,
+      "evaluated": 72,
+      "satisfying_all_checks": 21
+    },
+    {
+      "scan": "sensitivity",
+      "cases": 54,
+      "evaluated": 54,
+      "satisfying_all_checks": 51
+    }
+  ],
+  "refusals": [],
+  "duplicate_aliases": [
+    {
+      "alias": "steam-q2500-n14-k4-pump250",
+      "native_case": "gas-q2500-m2000-r1.5-ua25-25-25",
+      "role": "steam_connector_catalog"
+    },
+    {
+      "alias": "steam-q2800-n14-k4-pump250",
+      "native_case": "gas-q2800-m1750-r1.8-ua25-25-25",
+      "role": "steam_connector_catalog"
+    },
+    {
+      "alias": "steam-q3000-n14-k4-pump250",
+      "native_case": "gas-q3000-m2000-r1.65-ua25-25-25",
+      "role": "steam_connector_catalog"
+    }
+  ],
+  "native_case_count": 498,
+  "bound_claim": "Finite catalog only; no continuous feasible boundary or global optimum established."
+}

@@ -145,3 +145,60 @@ T-005 · independent integration review by continuing non-author `/root/feasibil
 - **MR-7:** Implementation role/behavior evidence is compliant with the reviewed direction: no source-power or ratio solve, no equipment demand-to-purchase sizing. Controller flow/fraction and cooler water flow are calculated operating states under the reviewed rationale. Independent integration assessment remains T-005.
 - **Decision:** Trigger: completed native implementation and independent numerical/predicate evidence. Decision/reason: accept T-004's bounded implementation handoff and continue T-005 because the owner authorized downstream work after the fourth-design PASS. Tier: execution detail. Decided by: coordinator. Changed: new model/package, tests/model_families.py append, native WI-096 evidence, and study interface/manifest preparation. No original model/package was changed and no integration candidate or main study has been promoted.
 - **Corrective evidence:** Eighteen omitted Boolean guards were expressed through supported existing numeric screens; ledger residual comparisons now consume model-produced magnitudes; two assertion labels were lowercased to align native identities. Recorded regressions preserve prior numerical results and physical verdict meanings. These are implementation/tooling representation repairs within the reviewed design, with no new physical relationship or policy exception.
+
+### T-005 return — 2026-09-26
+
+- **Outcome:** COMPLETE.
+- **Evidence:** `evidence/implementation-integration-review.md`, independent `/root/feasibility_review`, reviewing WI-096 at `29dcb5d8` and the exact current executable/semantic identities.
+- **Reading:** PASS for implementation and proposed study framing. The reviewer independently replayed 14,824 scalar comparisons and 1,428 predicates, checked the final identity map, modeled choices, source joins, retained failures, selected energy/cost arithmetic and the static-diagnostic disposition. No unresolved implementation requirement, extra physical solve or policy exception remains. MR-7 implementation is compliant within the reviewed conditional scope.
+- **Decision:** Trigger: substantive independent integration PASS. Decision/reason: proceed to the stock integration seam and declared study under the owner's autonomous continuation. Tier: execution detail. Decided by: coordinator under the independent verdict. Changed: review artifact and one study-plan wording correction identifying frontier coefficients as transparent report arithmetic from native cost/energy outputs. Formal closure and final economic-result review remain outstanding.
+
+### T-006 scope
+
+- **Objective:** Execute and verify the matched comparison and its declared sensitivities on one native integrated package identity.
+- **Why now:** T-005 passes the substantive implementation and framing gate; the fourth-design scope and owner continuation authorize downstream work.
+- **Scope:** Stock integration seam, full declared-axis preflight, independent oracle scan, explicit bounded offer list, stock native study execution, numerical/predicate verification, record/report/figure preparation and immutable evidence sealing. No external physical root, new design revision, original-package mutation, equal-optimization claim or whole-plant LCOE claim.
+- **Inputs:** `goal.md`, T-005 review, WI-096 at `29dcb5d8`, current package/interface/manifest, the 43-axis declaration and draft study record/plan. All prior failure evidence remains retained.
+- **Done when:** One integrated identity supports a verified, interpretable matched study with retained failures and sensitivity evidence, ready for final independent result review; or a precise bounded negative or dependency is established.
+- **Stop when:** Native gates refuse for an unresolved model/scientific reason; another coupled physical calculation, major model or policy exception is needed; the declared cap or another owner gate applies.
+
+### T-006 start — 2026-09-26
+
+T-006 · native integration and study `exploration/component_alternatives/studies/20260926-design-study-component-alternatives/` · expected stock CANDIDATE, pinned preflight, scanned window, complete stored/verified cases and evidence-linked report/figures. Coordinator owns the study and goal evidence. The model author has returned; the independent reviewer remains available for final results and concrete corrective checks.
+
+### T-006 return — 2026-09-26
+
+- **Outcome:** MECHANICAL_FAILURE, attempt 1. Stock integration passed all ten gates; all 501 oracle proposals evaluated. Main native execution stopped before creating a store because the direct launcher lacked the documented TEAx `PYTHONPATH` (`ModuleNotFoundError: simkit`).
+- **Evidence:** Study `preparation/execution-attempt1/`; complete 498-point deduplicated list and all scan evidence retained. No model or proposal changed.
+- **Retry:** Add the documented sealed-runner import path. This changes process environment only; task, input list, package, scope and meaning remain identical.
+
+### T-006 start — 2026-09-26
+
+T-006 retry 1 of 2 · execute the same 498 proposals using `.codex-test/run bash -c` with the documented repository and TEAx import roots. Integration already verified this exact runtime revision. No seam or model repair is involved.
+
+### T-006 return — 2026-09-26
+
+- **Outcome:** PREREQUISITE. Integration passed and all 498 native cases completed. Full numerical verification failed; no verified economic study is released.
+- **Evidence:** Native record `results/cases.json`, `results/verification-attempt1-failure.json`, `results/verification-diagnostics.json`, `results/verification-blocker.json`; independent `evidence/verification-failure-review.md`.
+- **Reading:** 83 cases pass all 84 implemented engineering predicates. Independent post-failure diagnostics cover 872 channels and 84 predicates for each of 498 cases: six cases exceed unchanged numerical tolerances, with zero predicate disagreements. Two affected cases are otherwise-passing efficiency sensitivities. No case has been deleted or reclassified to evade verification.
+- **Exact dependency:** The finite-water-cooler calculation must meet the predeclared 1e−9 verification accuracy in its derived water flow, pump loads and propagated outputs throughout the executed window. Its 1e−10 MW/K UA residual stopping rule does not ensure that accuracy near small water temperature rises. A 60-digit independent check confirms the oracle, so this is not a demonstrated oracle error.
+- **Required action outside this authorization:** Repair native numerical accuracy and validate a new executable identity, or obtain explicit tolerance authority. No such repair, exception or new round is performed. The fourth design and integration PASS evidence remain valid for their recorded scope, but do not discharge the failed main-study verification.
+
+### Stop — 2026-09-26
+
+- **Kind:** required review findings / verification prerequisite.
+- **Trigger:** Independent numerical failure review returns FINDINGS / stop. Owner direction requires stopping on unresolved review requirements and prohibits another round to bypass the exhausted design cap.
+- **Unresolved requirement:** Native cooler-derived and downstream scalar outputs must satisfy the unchanged verification contract; six cases do not. The promoted package and every native result remain unchanged.
+- **Work remaining in this turn:** Preserve and seal the blocked attempt, write an explicitly partial answer and diagnostic figures, obtain narrow final assurance of those claims, and commit only owned files. These records do not resume model/study execution. Formal closure remains owner-held.
+
+### Round 1 result — 2026-09-26
+
+- **Strategy:** `supported-common-boundary-screen`, continued under the owner's one-submission extension. One exact package identity was promoted and one blocked study attempt is retained. No second round was opened.
+- **Outcome:** Partial. The fourth design and native implementation satisfy the reviewed physical roles, MR-7 and bounded-scope requirements. Ten integration gates passed. The matched study executed all 498 declared unique points but failed its full numerical verification gate. Independent review confirmed the exact cooler accuracy dependency; technical work stopped.
+- **Native evidence:** WI-096 implementation at `29dcb5d8`; goal design and implementation review artifacts; integration `CANDIDATE`; `exploration/component_alternatives/studies/20260926-design-study-component-alternatives/` blocked record and snapshot. The snapshot explicitly denies release and retains the failed-verification evidence instead of fabricating a passing summary. Exact native outputs, six numeric mismatch cases, 84-predicate results, all chosen inputs, plots/data and package bytes are preserved.
+- **Counts and limits:** 498 completed, 83 passing all native checks, 415 failed engineering combinations, six numeric mismatch cases, zero independent predicate disagreements. Two numerical mismatches occur in otherwise-passing efficiency sensitivities. The selected steam offer versus tested Brayton offers is a conversion-subsystem comparison; price, hydraulics and operating-map qualification remain conditional. No whole-plant or equal-optimization claim is made.
+- **Retry classification:** One environment-only retry corrected a missing TEAx import root before any first-attempt point executed. Same package, scope and complete input list. The subsequent numerical failure was classified as a prerequisite, not a mechanical retry or permission to change tolerances.
+- **Dispositions:** Seven native findings have first-sighting rows and concrete homes in the study register/discovery log. Numerical accuracy is blocked for owner disposition; remaining scientific/cost limits are declared seams, and the import-path failure is resolved. No follow-up modeling was executed.
+- **Artifacts:** Updated answer, candidate ledger, proposed passage, equality explanation, diagnostic figures/data/renderer and replay. The owner's article and unrelated work remain untouched. Final preservation passes all 13,215 original protected files. Formal goal and item closure remain owner-held.
+- **Proposed learning delta:** (1) Model-owned controls can preserve chosen source/ratio/equipment roles while reporting deficient offers. (2) A local heat-transfer residual tolerance does not guarantee downstream flow/power accuracy near a small temperature rise; broader verification can fail after a development PASS. (3) Connecting-equipment selection materially changes the conditional comparison, but this blocked attempt cannot release a technology ranking. These are agent interpretations awaiting final assurance, not settled owner decisions.
+- **Recommendation:** Retain the partial result and exact unresolved verification requirement for the owner. Do not continue the model or open a new round under this exhausted continuation.

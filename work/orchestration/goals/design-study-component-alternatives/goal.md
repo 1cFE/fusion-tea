@@ -2,9 +2,9 @@
 
 ## Status
 
-`grounded` — 2026-09-26, under the owner's retained [brief](evidence/owner-brief.md), which supplies the slug and authorizes autonomous technical execution. Formal closure remains owner-held.
+`grounded` — owner-held formal closure remains pending.
 
-Execution resumed in round 1 under the [owner's one-submission extension](evidence/owner-direction-fourth-submission.md). The [fourth design submission passed independent review](evidence/design-review-fourth-submission.md) within bounded scope and without a policy waiver. T-004 implementation is authorized; native validation and independent integration review remain prerequisites to the main study. The [partial answer](answer.md) records the earlier stop; no economic comparison has run. Formal closure remains owner-held.
+The owner-authorized fourth design passed independent review. Its model-owned physical calculations were implemented and passed independent integration review and all ten stock integration gates. The 498-case native comparison executed, but six numerical mismatch cases prevent verification. Independent failure review returns FINDINGS / stop: the cooler stopping accuracy must meet the unchanged verification contract. No model repair, tolerance exception or additional round was undertaken. The [partial answer](answer.md) and sealed blocked record preserve the evidence; economic completion remains unmet.
 
 ## Question
 

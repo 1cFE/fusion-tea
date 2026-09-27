@@ -1,0 +1,120 @@
+{
+  "model_sources": 14,
+  "part_occurrences": 76,
+  "calc_occurrences": 91,
+  "calc_occurrences_by_definition": {
+    "Controlled Conversion Boundary": 4,
+    "Conversion Subsystem Ledger": 2,
+    "Cooling Equipment With Selected Salt Pump Count": 1,
+    "Cooling Water Rejection": 2,
+    "Eight Amount Sum": 3,
+    "Exchanger Area Conductance": 1,
+    "Finite Water Cooler": 3,
+    "Fixed Outlet Conditioning": 3,
+    "Fractional Pressure Loss": 1,
+    "Ideal Gas Compressor": 3,
+    "Ideal Gas Expander": 1,
+    "Matched Steam Cycle": 1,
+    "Network Heat Driven Closure": 1,
+    "Offered Capacity Screen": 48,
+    "Passive Recuperator": 1,
+    "Plant Electrical Balance": 1,
+    "Primary Bypass Control": 2,
+    "Primary Coolant Loop": 1,
+    "Pump Pressure Rise": 2,
+    "Recuperator Installed Capability": 1,
+    "Scaled Amount": 1,
+    "Selected Inventory Purchase": 6,
+    "Steam Offered Conditions": 1,
+    "Supplied Purchase Cost": 1
+  },
+  "new_or_modified_handwritten_definitions": [
+    "Controlled Conversion Boundary",
+    "Recuperator Installed Capability",
+    "Finite Water Cooler",
+    "Conversion Subsystem Ledger",
+    "Cooling Equipment With Selected Salt Pump Count"
+  ],
+  "root_definitions": {
+    "Network Heat Driven Closure": "reused",
+    "Primary Bypass Control": "reused",
+    "Finite Water Cooler": "new"
+  },
+  "root_occurrences": [
+    {
+      "part": "heat_exchangers",
+      "calc": "evaluate",
+      "definition": "Network Heat Driven Closure",
+      "status": "reused"
+    },
+    {
+      "part": "return_control",
+      "calc": "evaluate",
+      "definition": "Primary Bypass Control",
+      "status": "reused"
+    },
+    {
+      "part": "steam_return_control",
+      "calc": "evaluate",
+      "definition": "Primary Bypass Control",
+      "status": "reused"
+    },
+    {
+      "part": "water_ic1",
+      "calc": "evaluate",
+      "definition": "Finite Water Cooler",
+      "status": "new"
+    },
+    {
+      "part": "water_ic2",
+      "calc": "evaluate",
+      "definition": "Finite Water Cooler",
+      "status": "new"
+    },
+    {
+      "part": "water_pre",
+      "calc": "evaluate",
+      "definition": "Finite Water Cooler",
+      "status": "new"
+    }
+  ],
+  "physical_outer_source_or_ratio_solves": 0,
+  "entry_inputs": 490,
+  "independent_scalar_channels": 872,
+  "executing_constraints": 84,
+  "oracle_dependencies": [
+    {
+      "path": "exploration/component_alternatives/oracle-reuse.json",
+      "sha256": "e0896c9d479ca24ed03ec89adcb417faff305444bff6f51ef16b80ae64cc3de4"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_cooling.py",
+      "sha256": "684e2b786e3e169cd2653dbfc12f06206e46c90b9ca063d23633badc10f0fd6c"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_gas.py",
+      "sha256": "ae12f96870c577eee4e71ff6678f9eb94d75f26a93bad9550fe67dc4ced537a7"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_matched_cycle.py",
+      "sha256": "b6addafe52e6f74a20a56186de3cea1f4b58f7a3a807fd2492d4bd848939f7cc"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_matched_cycle_properties.json",
+      "sha256": "b8e5a7d156c7422d95b654bc073e273fd663fc86b6c2151f56b90caec3a40b7b"
+    },
+    {
+      "path": "exploration/component_alternatives/oracle_thermal.py",
+      "sha256": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417"
+    }
+  ],
+  "oracle_binding_source": "models/designs/component_alternatives/plant.sysml",
+  "native_body_reuse_manifest": "build-hashes.json",
+  "salt_variant_difference": "salt-variant-replay-body.diff",
+  "independence_limits": "Same physical assumptions and retained property values; independently transcribed calculations/alternate algorithms, not independent engineering qualification. Authored bindings shared intentionally; pipeline metadata used solely for constraint operand identity.",
+  "part_count_method": "top-level authored part usages, including parts with only calc bindings",
+  "native_scalar_channels": 876,
+  "snapshot_sha256": "f230e401651b9610a1f9e0302c7bd11bc7f4b8ab10c0899e864c442440f4edd9",
+  "indicator_representation": "Existing ledger emits absolute conversion residual; predicate compares that magnitude directly with tolerance.",
+  "constraint_identity_repair": "Two assertion labels normalized to lowercase; all84 generated module IDs equal catalog IDs; exact map in constraint-identity-check.json"
+}

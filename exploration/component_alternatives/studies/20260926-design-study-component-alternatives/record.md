@@ -1,17 +1,15 @@
 # Selected steam offer versus tested Brayton offers
 
-Draft study record. Preparation is authorized; native execution awaits implementation validation and independent integration review. This is a conversion-subsystem comparison at matched source conditions.
+**Blocked at numerical verification.** This sealed attempt preserves executed evidence; it is not a released economic comparison. Formal goal and work-item closure remain owner-held.
 
 ## 1. Study header
 
 - **Study id:** `20260926-design-study-component-alternatives`
 - **Package:** `component_alternatives_tea`
-- **Date executed:** Not executed
+- **Date executed:** 2026-09-26
 - **Executor:** Goal coordinator `/root`
-- **Mode:** execute
-- **Arms:** single arm
-
-Arms are variants of the same question, run to be compared. Two studies asking different questions of the same package are two records, not two arms of one.
+- **Mode:** execute; stopped at verification
+- **Arm:** `arm-matched-offers`
 
 ## 2. Intake
 
@@ -109,265 +107,340 @@ Arms are variants of the same question, run to be compared. Two studies asking d
 
 [AGENT] The executable comparison will use the independently reviewed fourth design. Its chosen source powers, direct pressure-ratio grid and declared equipment offers define an engineered test window. Feasible points may support conditional comparisons; numerical execution alone does not establish equipment qualification. The selected steam offer and tested Brayton offers have different operating freedoms. Their metric is conversion-subsystem cost per net MWh.
 
+
 ## 3. Objective and result
 
-- **Conversion-subsystem cost-per-net-MWh objective channel(s):** `<qualified channel name(s)>`
-- **Conversion-subsystem cost-per-net-MWh result:** `<value with units, and what point or region it belongs to>`
+The native objectives are `component_alternatives__plant__steam_ledger__evaluate__cost_per_net_MWh` and `component_alternatives__plant__gas_ledger__evaluate__cost_per_net_MWh`, in USD2025 per net MWh. These include the conversion subsystem and its connecting equipment, with common finance and source conditions.
 
-`<one or two sentences: what the objective did over the studied space>`
+All 498 distinct points completed; 83 pass every implemented predicate. Full numerical verification failed. Six cases disagree beyond predeclared tolerances, including two otherwise-passing efficiency sensitivities. Native output and cost plots are diagnostic, unreleased results. They cannot establish a completed economic ranking.
+
+`results/cases.json` and `results/cases.csv` retain every input, output and predicate. `results/verification-diagnostics.json` identifies the numerical qualifications by case. No failed point was deleted.
 
 ## 4. Constraint outcomes
 
-Every executing constraint, by qualified identity, with its status.
+All 84 executing checks are listed below. Counts refer to the 498 native cases. Zero indeterminate verdicts occurred. Independent diagnostic re-derivation agrees with every predicate, but that does not override six numerical failures. Case attribution is in `results/constraint-summary.json`.
 
-| `constraint_id` | `source_local_identity` | Status | Note |
-|---|---|---|---|
-| `<qualified id>` | `<local identity>` | `<satisfied \| violated \| indeterminate>` | `<where and why, one line>` |
-
-A short display name is not a qualified identity. If the executed artifacts carry only the short name, the qualified identity was dropped on export and recovering it is part of this section, not optional.
+| `constraint_id` | `source_local_identity` | Satisfied | Violated |
+|---|---|---:|---:|
+| `component_alternatives__plant__water_ic1__evaluation_defined_ok__49d1611637350e3c` | `evaluation_defined_ok` | 333 | 165 |
+| `component_alternatives__plant__water_ic1__flow_margin_ok__2ca46da8d6c9fc06` | `flow_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__water_ic1__duty_margin_ok__ae893105fd8169d4` | `duty_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__water_ic1__power_margin_ok__ceac76348e0eb2b6` | `power_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__salt_flow_capacity__capacity_requirement__1f3f2b5125f26aed` | `capacity_requirement` | 451 | 47 |
+| `component_alternatives__plant__steam_feed_flow_capacity__capacity_requirement__f522084f390b88ed` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__gas_boundary__bypass_flow_margin_ok__840f5556c962fa45` | `bypass_flow_margin_ok` | 495 | 3 |
+| `component_alternatives__plant__gas_boundary__controller_capacity_ok_ok__3c7a992b7ef572ac` | `controller_capacity_ok_ok` | 495 | 3 |
+| `component_alternatives__plant__gas_boundary__bypass_fraction_margin_ok__7197bb376c493e60` | `bypass_fraction_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_boundary__pressure_margin_ok__023a9033fbabc01f` | `pressure_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_boundary__total_flow_margin_ok__e4fcc2a2f41664a0` | `total_flow_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_boundary__exchanger_flow_margin_ok__586a84274fb7f1fb` | `exchanger_flow_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_boundary__added_dp_margin_ok__daebd77c6cb6ed86` | `added_dp_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_boundary__temperature_margin_ok__b9e59d1aa293995e` | `temperature_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_boundary__source_adequate_ok__dd6d7a3461399330` | `source_adequate_ok` | 281 | 217 |
+| `component_alternatives__plant__water_ic2__duty_margin_ok__8546438198d8a311` | `duty_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__water_ic2__evaluation_defined_ok__06ab6aea3f7f761b` | `evaluation_defined_ok` | 333 | 165 |
+| `component_alternatives__plant__water_ic2__power_margin_ok__9155c8131175c99b` | `power_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__water_ic2__flow_margin_ok__a1238658a4279d69` | `flow_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_ledger__net_positive__7be67634b73dc5d3` | `net_positive` | 498 | 0 |
+| `component_alternatives__plant__steam_ledger__balance__79e79cd29079c8e8` | `balance` | 498 | 0 |
+| `component_alternatives__plant__recuperator_duty_capacity__capacity_requirement__37716788614d63a8` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__steam_condensate_electric_capacity__capacity_requirement__7f87933904cdde5d` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_hp_flow_capacity__capacity_requirement__7d80da68d49ab07e` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__he_capacity__capacity_ok__3993dc4f00da3840` | `capacity_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_loss_duty_capacity__capacity_requirement__3f4fdc86d64b5036` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__salt_electric_capacity__capacity_requirement__d0a6e35468ded9cc` | `capacity_requirement` | 451 | 47 |
+| `component_alternatives__plant__steam_lp_shaft_capacity__capacity_requirement__145e6e0999fc7f4f` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_gross_capacity__capacity_requirement__4252a99565636ed5` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_rejection_capacity__capacity_requirement__ed5a57ebe998f809` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__steam_condenser_capacity__capacity_requirement__67922fb363412df0` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_lp_flow_capacity__capacity_requirement__704e61a5a8c7bf24` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__gas_loss_electric_capacity__capacity_requirement__6a158987313c84e0` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__steam_reheat_ua_capacity__capacity_requirement__ff5775187764fbbd` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_boundary__source_adequate_ok__eaa371ee289234f1` | `source_adequate_ok` | 474 | 24 |
+| `component_alternatives__plant__steam_boundary__exchanger_flow_margin_ok__b6c20f51b00f7b9c` | `exchanger_flow_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_boundary__added_dp_margin_ok__f0c716d635261219` | `added_dp_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_boundary__bypass_flow_margin_ok__8f1459a694a0757a` | `bypass_flow_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_boundary__total_flow_margin_ok__e80a0efbac0d3f57` | `total_flow_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_boundary__controller_capacity_ok_ok__d8dd67a24704a1c0` | `controller_capacity_ok_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_boundary__temperature_margin_ok__39291a564826dd0f` | `temperature_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_boundary__bypass_fraction_margin_ok__32cff09a266a19fc` | `bypass_fraction_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_boundary__pressure_margin_ok__177980a50b09bf98` | `pressure_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_hp_shaft_capacity__capacity_requirement__08512b73f01b2ff4` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_water_flow_capacity__capacity_requirement__f3bfd573273dc22e` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__gas_loss_flow_capacity__capacity_requirement__8a2d8de72c5b2880` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__turbine_capacity__capacity_ok__0178c1184c793932` | `capacity_ok` | 498 | 0 |
+| `component_alternatives__plant__steam_condensate_pressure_capacity__capacity_requirement__d523b96c0c76de1b` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_water__cooling_approach_ok_required__c8a5d75f54ded9d6` | `cooling_approach_ok_required` | 498 | 0 |
+| `component_alternatives__plant__generator_capacity__capacity_ok__ee0395479decdfc2` | `capacity_ok` | 498 | 0 |
+| `component_alternatives__plant__salt_shaft_capacity__capacity_requirement__419a029d2df87f3c` | `capacity_requirement` | 451 | 47 |
+| `component_alternatives__plant__source_checks__flow_ok__d77445a069dcb805` | `flow_ok` | 498 | 0 |
+| `component_alternatives__plant__source_checks__pressure_ok__aa0a62a144e9c75d` | `pressure_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_loss_water__cooling_approach_ok_required__6112b029bb4ede08` | `cooling_approach_ok_required` | 498 | 0 |
+| `component_alternatives__plant__rejection_capacity__capacity_requirement__8eab7ec16a8b759e` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__steam_feed_electric_capacity__capacity_requirement__02f57441b4cf6746` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_water_electric_capacity__capacity_requirement__79eb129457bf9d3d` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__compressor_capacity__capacity_ok__e8c94ef170d28993` | `capacity_ok` | 468 | 30 |
+| `component_alternatives__plant__salt_fill_capacity__capacity_requirement__0d36a52c336754e3` | `capacity_requirement` | 498 | 0 |
+| `component_alternatives__plant__steam_feed_pressure_capacity__capacity_requirement__2b0a04222feb552b` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_main_ua_capacity__capacity_requirement__c2efdc04c52106da` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_condensate_flow_capacity__capacity_requirement__a06233d7139b47ec` | `capacity_requirement` | 474 | 24 |
+| `component_alternatives__plant__steam_transport__motor_factor_ok_required__eed87936beb69817` | `motor_factor_ok_required` | 474 | 24 |
+| `component_alternatives__plant__steam_transport__design_motor_factor_ok_required__4a9e97f942584206` | `design_motor_factor_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_transport__design_pump_size_ok_required__39419b9b933c2a99` | `design_pump_size_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_transport__design_pump_type_ok_required__86fcc6e00c250519` | `design_pump_type_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_transport__pump_type_ok_required__a1706d503ff60f4c` | `pump_type_ok_required` | 464 | 34 |
+| `component_alternatives__plant__steam_transport__pump_size_ok_required__b3af0a8e326050b1` | `pump_size_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_transport__ihx_capacity_ok_required__a8ade32d723ec9f2` | `ihx_capacity_ok_required` | 474 | 24 |
+| `component_alternatives__plant__steam_transport__salt_head_ok_required__9049eef128641767` | `salt_head_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_transport__design_motor_base_ok_required__34d2455206f46357` | `design_motor_base_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_transport__salt_flow_regime_ok_required__6e2b05d56b7bbfaf` | `salt_flow_regime_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_transport__motor_base_ok_required__238e695ccdaf5ebf` | `motor_base_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_conditions__supported_required__92a5d05764f5fff9` | `supported_required` | 474 | 24 |
+| `component_alternatives__plant__water_pre__power_margin_ok__d793d504da406d97` | `power_margin_ok` | 492 | 6 |
+| `component_alternatives__plant__water_pre__flow_margin_ok__129a83656acb8a06` | `flow_margin_ok` | 489 | 9 |
+| `component_alternatives__plant__water_pre__evaluation_defined_ok__bc4741b386520ff5` | `evaluation_defined_ok` | 211 | 287 |
+| `component_alternatives__plant__water_pre__duty_margin_ok__80af75533d32b208` | `duty_margin_ok` | 498 | 0 |
+| `component_alternatives__plant__gas_ledger__net_positive__ee25ae39167c9ad3` | `net_positive` | 497 | 1 |
+| `component_alternatives__plant__gas_ledger__balance__a530b58ca455c8b8` | `balance` | 176 | 322 |
+| `component_alternatives__plant__steam_cycle__main_ua_available_required__6cdb52b3bf9953e0` | `main_ua_available_required` | 498 | 0 |
+| `component_alternatives__plant__steam_cycle__reheat_admission_ok_required__e88f7416d91d86fd` | `reheat_admission_ok_required` | 498 | 0 |
+| `component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d` | `reheat_ua_available_required` | 498 | 0 |
+| `component_alternatives__plant__steam_cycle__main_admission_ok_required__dbbd20ff9c7f4317` | `main_admission_ok_required` | 498 | 0 |
 
 ## 5. Framing
 
-[AGENT] Proposed framing, before the oracle window scan and native study. Coordinated offer selections remain explicit choices.
+[AGENT] Proposed framings are retained as judged; none changed after execution. Search means selection from the finite explicit catalog, not continuous optimization. Sensitivities remain hypothetical scenarios. Thirty-nine attributes varied; four traced directions remained declined.
 
-| Axis | Framing proposed | Why |
-|---|---|---|
-| `blanket_source_q_source` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `cycle_selected_flow` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `compressor_1_selected_ratio` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `compressor_1_efficiency` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `compressor_2_selected_ratio` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `compressor_2_efficiency` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `compressor_3_selected_ratio` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `compressor_3_efficiency` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `cycle_turbine_efficiency` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `water_ic1_ua` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `water_ic2_ua` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `water_pre_ua` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `recuperator_hardware_ua` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `steam_transport_n_loops` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `steam_transport_salt_pumps_per_circuit` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `steam_transport_selected_salt_design_flow_kg_s` | search | Test operating and installed-offer choices in the declared discrete catalog. |
-| `steam_boundary_bypass_flow_rating` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_ledger_controller_capital` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_ledger_annual_service_fraction` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_ledger_replacement_fraction` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_ledger_common_source_pv` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `gas_boundary_bypass_flow_rating` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `gas_ledger_controller_capital` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `gas_ledger_annual_service_fraction` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `gas_ledger_replacement_fraction` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `gas_ledger_common_source_pv` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `compressor_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `turbine_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `generator_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `he_hx_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `he_duty_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `conversion_services_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `heat_rejection_equipment_price_factor` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `gas_ledger_capital9` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_ledger_capital3` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_ledger_capital4` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_transport_costscale` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_cycle_eta_hp` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_cycle_eta_lp` | sensitivity | Describe a response at matched source conditions; no boundary claim. |
-| `steam_cycle_steam_temperature_C` | sensitivity | Declared and traced, then declined because the held steam offer does not support the changed condition. |
-| `steam_cycle_reheat_temperature_C` | sensitivity | Declared and traced, then declined because the held steam offer does not support the changed condition. |
-| `steam_cycle_condenser_temperature_C` | sensitivity | Declared and traced, then declined because the held steam offer does not support the changed condition. |
-| `steam_transport_secondary_head` | sensitivity | Declared and traced, then declined because the held steam offer does not support the changed condition. |
-
-As judged after the run: pending execution.
+| Axis | Proposed | Judged | Executed variation |
+|---|---|---|---|
+| `blanket_source_q_source` | sensitivity | sensitivity | yes |
+| `cycle_selected_flow` | search | search | yes |
+| `compressor_1_selected_ratio` | search | search | yes |
+| `compressor_1_efficiency` | sensitivity | sensitivity | yes |
+| `compressor_2_selected_ratio` | search | search | yes |
+| `compressor_2_efficiency` | sensitivity | sensitivity | yes |
+| `compressor_3_selected_ratio` | search | search | yes |
+| `compressor_3_efficiency` | sensitivity | sensitivity | yes |
+| `cycle_turbine_efficiency` | sensitivity | sensitivity | yes |
+| `water_ic1_ua` | search | search | yes |
+| `water_ic2_ua` | search | search | yes |
+| `water_pre_ua` | search | search | yes |
+| `recuperator_hardware_ua` | search | search | yes |
+| `steam_transport_n_loops` | search | search | yes |
+| `steam_transport_salt_pumps_per_circuit` | search | search | yes |
+| `steam_transport_selected_salt_design_flow_kg_s` | search | search | yes |
+| `steam_boundary_bypass_flow_rating` | sensitivity | sensitivity | yes |
+| `steam_ledger_controller_capital` | sensitivity | sensitivity | yes |
+| `steam_ledger_annual_service_fraction` | sensitivity | sensitivity | yes |
+| `steam_ledger_replacement_fraction` | sensitivity | sensitivity | yes |
+| `steam_ledger_common_source_pv` | sensitivity | sensitivity | yes |
+| `gas_boundary_bypass_flow_rating` | sensitivity | sensitivity | yes |
+| `gas_ledger_controller_capital` | sensitivity | sensitivity | yes |
+| `gas_ledger_annual_service_fraction` | sensitivity | sensitivity | yes |
+| `gas_ledger_replacement_fraction` | sensitivity | sensitivity | yes |
+| `gas_ledger_common_source_pv` | sensitivity | sensitivity | yes |
+| `compressor_equipment_price_factor` | sensitivity | sensitivity | yes |
+| `turbine_equipment_price_factor` | sensitivity | sensitivity | yes |
+| `generator_equipment_price_factor` | sensitivity | sensitivity | yes |
+| `he_hx_price_factor` | sensitivity | sensitivity | yes |
+| `he_duty_equipment_price_factor` | sensitivity | sensitivity | yes |
+| `conversion_services_price_factor` | sensitivity | sensitivity | yes |
+| `heat_rejection_equipment_price_factor` | sensitivity | sensitivity | yes |
+| `gas_ledger_capital9` | sensitivity | sensitivity | yes |
+| `steam_ledger_capital3` | sensitivity | sensitivity | yes |
+| `steam_ledger_capital4` | sensitivity | sensitivity | yes |
+| `steam_transport_costscale` | sensitivity | sensitivity | yes |
+| `steam_cycle_eta_hp` | sensitivity | sensitivity | yes |
+| `steam_cycle_eta_lp` | sensitivity | sensitivity | yes |
+| `steam_cycle_steam_temperature_C` | sensitivity | sensitivity | declined |
+| `steam_cycle_reheat_temperature_C` | sensitivity | sensitivity | declined |
+| `steam_cycle_condenser_temperature_C` | sensitivity | sensitivity | declined |
+| `steam_transport_secondary_head` | sensitivity | sensitivity | declined |
 
 ## 6. Per-axis account
 
-One pair of subsections per axis. Both ship present; the `**Applies:**` line discharges the one the axis's framing does not owe.
+`results/axis-assessment.json` records every tested value, its case identities and the number satisfying all implemented checks. The following compact account uses the same order as those values. Coordinated offers vary several attributes together; grouped counts do not identify an isolated causal effect. The comparison and sensitivity figures use matched cases and carry the verification block.
 
-#### `<axis>` — feasible structure (search framing)
-**Applies:** `<yes \| not applicable — this axis is sensitivity-framed>`
+| Axis | Tested values | Predicate-passing / evaluated at each value | Account |
+|---|---|---|---|
+| `blanket_source_q_source` | 2500, 2800, 3000 | 35/166, 26/166, 22/166 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `cycle_selected_flow` | 1500, 1750, 2000, 2250, 2500 | 0/75, 28/116, 54/157, 1/75, 0/75 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `compressor_1_selected_ratio` | 1.2, 1.35, 1.5, 1.65, 1.8 | 0/75, 0/75, 29/116, 23/116, 31/116 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `compressor_1_efficiency` | 0.86, 0.89, 0.92 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `compressor_2_selected_ratio` | 1.2, 1.35, 1.5, 1.65, 1.8 | 0/75, 0/75, 29/116, 23/116, 31/116 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `compressor_2_efficiency` | 0.86, 0.89, 0.92 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `compressor_3_selected_ratio` | 1.2, 1.35, 1.5, 1.65, 1.8 | 0/75, 0/75, 29/116, 23/116, 31/116 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `compressor_3_efficiency` | 0.86, 0.89, 0.92 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `cycle_turbine_efficiency` | 0.9, 0.93, 0.96 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `water_ic1_ua` | 25, 30, 40 | 83/348, 0/75, 0/75 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `water_ic2_ua` | 25, 30, 40 | 83/348, 0/75, 0/75 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `water_pre_ua` | 20, 25, 40, 50, 60 | 2/75, 81/198, 0/75, 0/75, 0/75 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `recuperator_hardware_ua` | 60, 80 | 83/423, 0/75 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `steam_transport_n_loops` | 10, 11, 12, 14 | 19/36, 21/36, 5/18, 38/408 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `steam_transport_salt_pumps_per_circuit` | 2, 3, 4 | 0/24, 22/42, 61/432 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `steam_transport_selected_salt_design_flow_kg_s` | 225, 250 | 43/72, 40/426 | Discrete catalog evidence only. Coordinated changes in other attributes prevent interpreting grouped counts as an isolated causal effect. |
+| `steam_boundary_bypass_flow_rating` | 500, 2000 | 3/3, 80/495 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_ledger_controller_capital` | 5e+06, 8e+06, 1e+07, 1.5e+07 | 6/6, 3/3, 68/483, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_ledger_annual_service_fraction` | 0.01, 0.02, 0.03 | 3/3, 77/492, 3/3 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_ledger_replacement_fraction` | 0.1, 0.2, 0.3 | 3/3, 77/492, 3/3 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_ledger_common_source_pv` | 0, 5e+08, 2e+09 | 77/492, 3/3, 3/3 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `gas_boundary_bypass_flow_rating` | 500, 2000 | 0/3, 83/495 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `gas_ledger_controller_capital` | 5e+06, 8e+06, 1e+07, 1.5e+07 | 6/6, 0/3, 71/483, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `gas_ledger_annual_service_fraction` | 0.01, 0.02, 0.03 | 3/3, 77/492, 3/3 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `gas_ledger_replacement_fraction` | 0.1, 0.2, 0.3 | 3/3, 77/492, 3/3 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `gas_ledger_common_source_pv` | 0, 5e+08, 2e+09 | 77/492, 3/3, 3/3 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `compressor_equipment_price_factor` | 0.5, 1, 1.5 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `turbine_equipment_price_factor` | 0.5, 1, 1.5 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `generator_equipment_price_factor` | 0.5, 1, 1.5 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `he_hx_price_factor` | 0.5, 1, 1.5 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `he_duty_equipment_price_factor` | 0.5, 1, 1.5 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `conversion_services_price_factor` | 0.5, 1, 1.25, 1.5 | 6/6, 71/336, 0/75, 6/81 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `heat_rejection_equipment_price_factor` | 0.5, 1, 1.5 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `gas_ledger_capital9` | 4.29665e+07, 8.5933e+07, 1.289e+08 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_ledger_capital3` | 1.23732e+08, 2.47464e+08, 3.71197e+08 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_ledger_capital4` | 5.79698e+07, 1.1594e+08, 1.73909e+08 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_transport_costscale` | 0.5, 1, 1.5 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_cycle_eta_hp` | 0.87, 0.9, 0.93 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_cycle_eta_lp` | 0.87, 0.9, 0.93 | 6/6, 71/486, 6/6 | Hypothetical scenario response at selected anchors; no boundary claim. Coordinated attribute changes are identified in proposed-points.json. |
+| `steam_cycle_steam_temperature_C` | 445 | 83/498 | Declined under the held steam offer; no varied native point or boundary claim. |
+| `steam_cycle_reheat_temperature_C` | 445 | 83/498 | Declined under the held steam offer; no varied native point or boundary claim. |
+| `steam_cycle_condenser_temperature_C` | 42 | 83/498 | Declined under the held steam offer; no varied native point or boundary claim. |
+| `steam_transport_secondary_head` | 40 | 83/498 | Declined under the held steam offer; no varied native point or boundary claim. |
 
-`<which constraint is active, where the boundary sits, whether a constrained optimum was found and where>`
-
-#### `<axis>` — observed response (sensitivity framing)
-**Applies:** `<yes \| not applicable — this axis is search-framed>`
-
-`<the observed response; an explicit statement that no boundary claim is made; and, for any constraint that goes violated anywhere in the sweep, where in the swept space it does — locating a violation is a fact about the run, not a boundary claim>`
+The gas catalog has 14 passing cases of 375, below the policy H1 search band of 5–95%. This is a negative result for that hypothesis, not evidence of an equality over chosen source/ratio inputs. Cooler property/root validity and source/capacity requirements account for the failures. Steam connector offers pass in 21 of 72 scans. The 54 sensitivity/controller proposals yield 51 passing cases; three undersized gas bypass offers fail. All scan cases evaluated, and only three exact duplicates were removed from native execution with aliases retained.
 
 ## 7. Axis groups
 
-Each group is the complete emitted key set for one SysML attribute. Multi-attribute equipment offers are coordinated proposals, with each constituent attribute declared separately. No additional physical identity is inferred.
+Every axis is a single SysML attribute with its complete emitted entry-key group. `axes.json` retains all 43 groups and provenance. Equal compressor ratios and common financial choices are coordinated scenario selections, not inferred physical identities.
 
-| Axis | Entry key | Provenance | Note |
-|---|---|---|---|
-| `blanket_source_q_source` | `component_alternatives__plant__blanket_source__q_source` | fan_out | SysML attribute component_alternatives::plant::blanket_source::q_source. Chosen common source heat scenarios; no matching solve. |
-| `cycle_selected_flow` | `component_alternatives__plant__cycle__selected_flow` | fan_out | SysML attribute component_alternatives::plant::cycle::selected_flow. Chosen gas operating flow at held installed ratings. |
-| `compressor_1_selected_ratio` | `component_alternatives__plant__compressor_1__selected_ratio` | fan_out | SysML attribute component_alternatives::plant::compressor_1::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred. |
-| `compressor_1_efficiency` | `component_alternatives__plant__compressor_1__efficiency` | fan_out | SysML attribute component_alternatives::plant::compressor_1::efficiency. Hypothetical performance sensitivity. |
-| `compressor_2_selected_ratio` | `component_alternatives__plant__compressor_2__selected_ratio` | fan_out | SysML attribute component_alternatives::plant::compressor_2::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred. |
-| `compressor_2_efficiency` | `component_alternatives__plant__compressor_2__efficiency` | fan_out | SysML attribute component_alternatives::plant::compressor_2::efficiency. Hypothetical performance sensitivity. |
-| `compressor_3_selected_ratio` | `component_alternatives__plant__compressor_3__selected_ratio` | fan_out | SysML attribute component_alternatives::plant::compressor_3::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred. |
-| `compressor_3_efficiency` | `component_alternatives__plant__compressor_3__efficiency` | fan_out | SysML attribute component_alternatives::plant::compressor_3::efficiency. Hypothetical performance sensitivity. |
-| `cycle_turbine_efficiency` | `component_alternatives__plant__cycle__turbine_efficiency` | fan_out | SysML attribute component_alternatives::plant::cycle::turbine_efficiency. Hypothetical performance sensitivity. |
-| `water_ic1_ua` | `component_alternatives__plant__water_ic1__ua` | fan_out | SysML attribute component_alternatives::plant::water_ic1::ua. Installed capability selected from an explicitly priced coordinated service offer. |
-| `water_ic2_ua` | `component_alternatives__plant__water_ic2__ua` | fan_out | SysML attribute component_alternatives::plant::water_ic2::ua. Installed capability selected from an explicitly priced coordinated service offer. |
-| `water_pre_ua` | `component_alternatives__plant__water_pre__ua` | fan_out | SysML attribute component_alternatives::plant::water_pre::ua. Installed capability selected from an explicitly priced coordinated service offer. |
-| `recuperator_hardware_ua` | `component_alternatives__plant__recuperator_hardware__ua` | fan_out | SysML attribute component_alternatives::plant::recuperator_hardware::ua. Installed capability selected from an explicitly priced coordinated service offer. |
-| `steam_transport_n_loops` | `component_alternatives__plant__steam_transport__n_loops` | fan_out | SysML attribute component_alternatives::plant::steam_transport::n_loops. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14. |
-| `steam_transport_salt_pumps_per_circuit` | `component_alternatives__plant__steam_transport__salt_pumps_per_circuit` | fan_out | SysML attribute component_alternatives::plant::steam_transport::salt_pumps_per_circuit. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14. |
-| `steam_transport_selected_salt_design_flow_kg_s` | `component_alternatives__plant__steam_transport__selected_salt_design_flow_kg_s` | fan_out | SysML attribute component_alternatives::plant::steam_transport::selected_salt_design_flow_kg_s. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14. |
-| `steam_boundary_bypass_flow_rating` | `component_alternatives__plant__steam_boundary__bypass_flow_rating` | fan_out | SysML attribute component_alternatives::plant::steam_boundary::bypass_flow_rating. Full or deliberately undersized purchased controller offer. |
-| `steam_ledger_controller_capital` | `component_alternatives__plant__steam_ledger__controller_capital` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::controller_capital. Hypothetical controller quote paired with its declared flow rating; also subject to branch quote sensitivity. |
-| `steam_ledger_annual_service_fraction` | `component_alternatives__plant__steam_ledger__annual_service_fraction` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::annual_service_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit. |
-| `steam_ledger_replacement_fraction` | `component_alternatives__plant__steam_ledger__replacement_fraction` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::replacement_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit. |
-| `steam_ledger_common_source_pv` | `component_alternatives__plant__steam_ledger__common_source_pv` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::common_source_pv. Illustrative common upstream present-value charge, coordinated equally across branches; no fuel price model. |
-| `gas_boundary_bypass_flow_rating` | `component_alternatives__plant__gas_boundary__bypass_flow_rating` | fan_out | SysML attribute component_alternatives::plant::gas_boundary::bypass_flow_rating. Full or deliberately undersized purchased controller offer. |
-| `gas_ledger_controller_capital` | `component_alternatives__plant__gas_ledger__controller_capital` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::controller_capital. Hypothetical controller quote paired with its declared flow rating; also subject to branch quote sensitivity. |
-| `gas_ledger_annual_service_fraction` | `component_alternatives__plant__gas_ledger__annual_service_fraction` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::annual_service_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit. |
-| `gas_ledger_replacement_fraction` | `component_alternatives__plant__gas_ledger__replacement_fraction` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::replacement_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit. |
-| `gas_ledger_common_source_pv` | `component_alternatives__plant__gas_ledger__common_source_pv` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::common_source_pv. Illustrative common upstream present-value charge, coordinated equally across branches; no fuel price model. |
-| `compressor_equipment_price_factor` | `component_alternatives__plant__compressor_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::compressor_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
-| `turbine_equipment_price_factor` | `component_alternatives__plant__turbine_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::turbine_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
-| `generator_equipment_price_factor` | `component_alternatives__plant__generator_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::generator_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
-| `he_hx_price_factor` | `component_alternatives__plant__he_hx__price_factor` | fan_out | SysML attribute component_alternatives::plant::he_hx::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
-| `he_duty_equipment_price_factor` | `component_alternatives__plant__he_duty_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::he_duty_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
-| `conversion_services_price_factor` | `component_alternatives__plant__conversion_services__price_factor` | fan_out | SysML attribute component_alternatives::plant::conversion_services::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
-| `heat_rejection_equipment_price_factor` | `component_alternatives__plant__heat_rejection_equipment__price_factor` | fan_out | SysML attribute component_alternatives::plant::heat_rejection_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer. |
-| `gas_ledger_capital9` | `component_alternatives__plant__gas_ledger__capital9` | fan_out | SysML attribute component_alternatives::plant::gas_ledger::capital9. Selected cycle-transport quote in USD2004; physical scope held. |
-| `steam_ledger_capital3` | `component_alternatives__plant__steam_ledger__capital3` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::capital3. Selected steam conversion or rejection aggregate quote in USD2025; physical scope held. |
-| `steam_ledger_capital4` | `component_alternatives__plant__steam_ledger__capital4` | fan_out | SysML attribute component_alternatives::plant::steam_ledger::capital4. Selected steam conversion or rejection aggregate quote in USD2025; physical scope held. |
-| `steam_transport_costscale` | `component_alternatives__plant__steam_transport__costscale` | fan_out | SysML attribute component_alternatives::plant::steam_transport::costscale. Existing salt-connector cost multiplier; no physical equipment sizing. |
-| `steam_cycle_eta_hp` | `component_alternatives__plant__steam_cycle__eta_hp` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::eta_hp. Hypothetical performance sensitivity on the selected steam offer. |
-| `steam_cycle_eta_lp` | `component_alternatives__plant__steam_cycle__eta_lp` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::eta_lp. Hypothetical performance sensitivity on the selected steam offer. |
-| `steam_cycle_steam_temperature_C` | `component_alternatives__plant__steam_cycle__steam_temperature_C` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::steam_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope. |
-| `steam_cycle_reheat_temperature_C` | `component_alternatives__plant__steam_cycle__reheat_temperature_C` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::reheat_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope. |
-| `steam_cycle_condenser_temperature_C` | `component_alternatives__plant__steam_cycle__condenser_temperature_C` | fan_out | SysML attribute component_alternatives::plant::steam_cycle::condenser_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope. |
-| `steam_transport_secondary_head` | `component_alternatives__plant__steam_transport__secondary_head` | fan_out | SysML attribute component_alternatives::plant::steam_transport::secondary_head. Declared but declined: altered operating salt head changes the captured steam return condition. |
+| Axis | Complete key | Provenance |
+|---|---|---|
+| `blanket_source_q_source` | `component_alternatives__plant__blanket_source__q_source` | fan_out |
+| `cycle_selected_flow` | `component_alternatives__plant__cycle__selected_flow` | fan_out |
+| `compressor_1_selected_ratio` | `component_alternatives__plant__compressor_1__selected_ratio` | fan_out |
+| `compressor_1_efficiency` | `component_alternatives__plant__compressor_1__efficiency` | fan_out |
+| `compressor_2_selected_ratio` | `component_alternatives__plant__compressor_2__selected_ratio` | fan_out |
+| `compressor_2_efficiency` | `component_alternatives__plant__compressor_2__efficiency` | fan_out |
+| `compressor_3_selected_ratio` | `component_alternatives__plant__compressor_3__selected_ratio` | fan_out |
+| `compressor_3_efficiency` | `component_alternatives__plant__compressor_3__efficiency` | fan_out |
+| `cycle_turbine_efficiency` | `component_alternatives__plant__cycle__turbine_efficiency` | fan_out |
+| `water_ic1_ua` | `component_alternatives__plant__water_ic1__ua` | fan_out |
+| `water_ic2_ua` | `component_alternatives__plant__water_ic2__ua` | fan_out |
+| `water_pre_ua` | `component_alternatives__plant__water_pre__ua` | fan_out |
+| `recuperator_hardware_ua` | `component_alternatives__plant__recuperator_hardware__ua` | fan_out |
+| `steam_transport_n_loops` | `component_alternatives__plant__steam_transport__n_loops` | fan_out |
+| `steam_transport_salt_pumps_per_circuit` | `component_alternatives__plant__steam_transport__salt_pumps_per_circuit` | fan_out |
+| `steam_transport_selected_salt_design_flow_kg_s` | `component_alternatives__plant__steam_transport__selected_salt_design_flow_kg_s` | fan_out |
+| `steam_boundary_bypass_flow_rating` | `component_alternatives__plant__steam_boundary__bypass_flow_rating` | fan_out |
+| `steam_ledger_controller_capital` | `component_alternatives__plant__steam_ledger__controller_capital` | fan_out |
+| `steam_ledger_annual_service_fraction` | `component_alternatives__plant__steam_ledger__annual_service_fraction` | fan_out |
+| `steam_ledger_replacement_fraction` | `component_alternatives__plant__steam_ledger__replacement_fraction` | fan_out |
+| `steam_ledger_common_source_pv` | `component_alternatives__plant__steam_ledger__common_source_pv` | fan_out |
+| `gas_boundary_bypass_flow_rating` | `component_alternatives__plant__gas_boundary__bypass_flow_rating` | fan_out |
+| `gas_ledger_controller_capital` | `component_alternatives__plant__gas_ledger__controller_capital` | fan_out |
+| `gas_ledger_annual_service_fraction` | `component_alternatives__plant__gas_ledger__annual_service_fraction` | fan_out |
+| `gas_ledger_replacement_fraction` | `component_alternatives__plant__gas_ledger__replacement_fraction` | fan_out |
+| `gas_ledger_common_source_pv` | `component_alternatives__plant__gas_ledger__common_source_pv` | fan_out |
+| `compressor_equipment_price_factor` | `component_alternatives__plant__compressor_equipment__price_factor` | fan_out |
+| `turbine_equipment_price_factor` | `component_alternatives__plant__turbine_equipment__price_factor` | fan_out |
+| `generator_equipment_price_factor` | `component_alternatives__plant__generator_equipment__price_factor` | fan_out |
+| `he_hx_price_factor` | `component_alternatives__plant__he_hx__price_factor` | fan_out |
+| `he_duty_equipment_price_factor` | `component_alternatives__plant__he_duty_equipment__price_factor` | fan_out |
+| `conversion_services_price_factor` | `component_alternatives__plant__conversion_services__price_factor` | fan_out |
+| `heat_rejection_equipment_price_factor` | `component_alternatives__plant__heat_rejection_equipment__price_factor` | fan_out |
+| `gas_ledger_capital9` | `component_alternatives__plant__gas_ledger__capital9` | fan_out |
+| `steam_ledger_capital3` | `component_alternatives__plant__steam_ledger__capital3` | fan_out |
+| `steam_ledger_capital4` | `component_alternatives__plant__steam_ledger__capital4` | fan_out |
+| `steam_transport_costscale` | `component_alternatives__plant__steam_transport__costscale` | fan_out |
+| `steam_cycle_eta_hp` | `component_alternatives__plant__steam_cycle__eta_hp` | fan_out |
+| `steam_cycle_eta_lp` | `component_alternatives__plant__steam_cycle__eta_lp` | fan_out |
+| `steam_cycle_steam_temperature_C` | `component_alternatives__plant__steam_cycle__steam_temperature_C` | fan_out |
+| `steam_cycle_reheat_temperature_C` | `component_alternatives__plant__steam_cycle__reheat_temperature_C` | fan_out |
+| `steam_cycle_condenser_temperature_C` | `component_alternatives__plant__steam_cycle__condenser_temperature_C` | fan_out |
+| `steam_transport_secondary_head` | `component_alternatives__plant__steam_transport__secondary_head` | fan_out |
 
 ## 8. Indicators and rulings
 
-The stock indicator run covers all 43 declared groups, including all four declined directions. Every group is valid and `constraints_reachable`; there are no suffix-sibling warnings. No group reports `no_constraint_response`, so that indicator creates no pending owner gate.
+All 43 proposed axes, including the four declined directions, were traced. Every result is `constraints_reachable`; no `no_constraint_response` axis exists, no subset was used, and no new owner ruling is required. `indicators.json` preserves exact paths and evidence.
 
-| Axis | Indicator | Ruling / disposition |
-|---|---|---|
-| `blanket_source_q_source` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `cycle_selected_flow` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `compressor_1_selected_ratio` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `compressor_1_efficiency` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `compressor_2_selected_ratio` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `compressor_2_efficiency` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `compressor_3_selected_ratio` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `compressor_3_efficiency` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `cycle_turbine_efficiency` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `water_ic1_ua` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `water_ic2_ua` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `water_pre_ua` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `recuperator_hardware_ua` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `steam_transport_n_loops` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `steam_transport_salt_pumps_per_circuit` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `steam_transport_selected_salt_design_flow_kg_s` | `constraints_reachable` | Search as proposed; execution awaits review/integration. |
-| `steam_boundary_bypass_flow_rating` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_ledger_controller_capital` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_ledger_annual_service_fraction` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_ledger_replacement_fraction` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_ledger_common_source_pv` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `gas_boundary_bypass_flow_rating` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `gas_ledger_controller_capital` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `gas_ledger_annual_service_fraction` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `gas_ledger_replacement_fraction` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `gas_ledger_common_source_pv` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `compressor_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `turbine_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `generator_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `he_hx_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `he_duty_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `conversion_services_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `heat_rejection_equipment_price_factor` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `gas_ledger_capital9` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_ledger_capital3` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_ledger_capital4` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_transport_costscale` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_cycle_eta_hp` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_cycle_eta_lp` | `constraints_reachable` | Sensitivity as proposed; execution awaits review/integration. |
-| `steam_cycle_steam_temperature_C` | `constraints_reachable` | Declined: held offer does not support this direction. |
-| `steam_cycle_reheat_temperature_C` | `constraints_reachable` | Declined: held offer does not support this direction. |
-| `steam_cycle_condenser_temperature_C` | `constraints_reachable` | Declined: held offer does not support this direction. |
-| `steam_transport_secondary_head` | `constraints_reachable` | Declined: held offer does not support this direction. |
-
-**Not derivable:** monotonicity or sign of a response, identity of a physical quantity across differently named keys, and intra-module operand dependency. A reachable constraint is a possible graph path, not proof that a constraint responds. The financial inputs reach ledger constraints at module level; this does not establish physical resistance to price or recurring-cost assumptions. Those axes remain hypothetical sensitivities under the owner brief.
-
-The missing price qualification, installed-scope evidence and validated efficiency maps remain explicit model-development limitations even though no axis receives a sound negative from the graph indicator. The findings register will carry their observed implications after execution and review.
+Not derivable: monotonicity, identity of the same physical quantity across differing names, and intra-module operand dependency. A reachable constraint is a possible graph path, not evidence that it responds. Financial assumptions remain sensitivity-framed under the owner's requested price/fuel sensitivity. Their missing procurement qualification is a finding, even though the graph reports reachability.
 
 ## 9. Preflight results
 
-Every mechanical gate that ran, with its outcome. The identity and baseline gates read the documents the route-preparation step deposited in `results/`; name those files in the detail column so a cold reader can open what the gate read. A gate that did not run is stated as such with its condition.
+All gates ran on the promoted package. `preparation/package_identity.json` and `preparation/baseline_result.json` are local copies of the exact gate inputs; their digests are in `preparation/preflight_results.json`. `preparation/integration_return.json` preserves all ten integration gates.
 
 | Gate | Outcome | Detail |
 |---|---|---|
-| Declared-group key validation | `<pass \| fail \| did not run, with the condition>` | `<detail>` |
-| Suffix-sibling scan (warnings only) | `<pass \| warnings with count>` | `<the siblings found, or none>` |
-| Baseline gate against the pinned headline | `<pass \| fail>` | `<expected vs observed>` |
-| Manifest / package fingerprint match | `<pass \| fail>` | `<detail>` |
-| Package cleanliness | `<pass \| fail>` | `<detail>` |
+| declared_keys | pass | 43 declared keys across 43 groups, all package inputs |
+| sibling_scan | pass | warnings: 12 |
+| identity | pass | kind sealed, digest 14dddcfe3b0af047b18064f7c284b6739a633f20777558b304c37f6637a372a3 recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches |
+| manifest_currency | pass | both recorded package fingerprints match the package on disk |
+| baseline_headline | pass | component_alternatives__plant__gas_ledger__evaluate__cost_per_net_MWh reproduces at relative deviation 0.000e+00; 36/36 pinned verdicts match |
+| package_clean | pass | package tree is byte-untouched (git clean) |
+
+The suffix scan has 12 advisory warnings. They are different attributes (inactive branch UA, primary loop count and controller-loss ratings), not missing fan-out copies. The declared groups map the actual authored attributes; no sweep key was silently tied to those siblings.
 
 ## 10. Execution route and why
 
-- **Route:** `<teax-study CLI \| study-local direct-API>`
-- **Why this route:** `<what about this study forced or allowed it>`
+The study-local direct API uses stock `StudyRunner` and `PreparedListStrategy` because the list combines explicit coordinated equipment offers with selected-anchor sensitivities. The strict package loader, evaluator, store and query retain the native lifecycle. The matching physical calculations live in the model. Glue ledger: none; no runtime adapter.
 
-The rationale is recorded after the route was first exercised and gated, so it accounts for a route already known to load rather than predicting one.
-
-**Glue disclosure.** What the harness supplies that the model does not, and what that means for the claims. The ledger's entries are values and live in `snapshot.json` under `glue_ledger`; this is the argument about them.
-
-`<per rung: what it supplies, why the model cannot, and which claims it scopes — or: glue ledger: none. No adapter on this route, so nothing is harness-supplied.>`
+The first launch lacked the documented TEAx import root and stopped before creating a native store. `preparation/execution-attempt1/` preserves that attempt. Retry 1 used the documented environment with the same 498 points and package. `results/execution-context.json` records exact commands and revision. No physical or metadata change was needed for the retry.
 
 ## 11. Study definition and window provenance
 
-`<how the window was chosen: what was scanned, with what, and what the scan showed that fixed these bounds. The bounds themselves and their engineered|sourced provenance are snapshot values under arms[].window — do not restate them here.>`
+The window is engineered, not a qualified equipment envelope. `proposals.py` in the archived sources composes independently chosen inputs without a physical root or equipment sizing calculation. Core, steam and sensitivity oracle scans all completed before native execution. Every evaluated offer, including engineering failures, entered the native list; three exact duplicate points have explicit aliases in `window.json`. No body refusal occurred in these scans. Earlier development property refusals remain in the WI-096 evidence.
 
-`<if engineered: state plainly that the window is engineered and what claims that costs. If sourced: name the source.>`
+The best tested passing gas offer at each source anchored the steam connector scan. The least-cost passing connector then anchored the sensitivities. This is discrete offer selection; it does not establish equal optimization of the technologies. The common 14-circuit steam curve remains visible separately. The scan fixes a finite list, not a continuous feasible boundary or global optimum. Every tested value and generating choice is retained in the proposal files and snapshot window.
 
 ## 12. Cross-fingerprint correlation and what it means
 
-`<when the arms span fingerprints: which boundary was crossed; that constraints were matched by definition qualified name plus local identity; every predicate_ir difference, disclosed; and what the correlation licenses and does not license. The compatibility tuples themselves are snapshot values under stores[]. When they do not span fingerprints, discharge the nil by naming the condition: "single fingerprint — no cross-arm correlation needed".>`
+Single fingerprint: no cross-arm correlation needed. Every native case uses the same executable identity and model contract. Earlier development diagnostics and prior goal studies are historical evidence; none is merged into this store or treated as a matched main-study observation.
 
 ## 13. Verification
 
-`<the outcome: what passed, what did not, and what the result licenses. The command, sampling scheme, tolerance, and summary digest are snapshot values under arms[].verification — do not restate them here.>`
+**Failed; dependent completion stopped.** The stock verifier requested all 498 cases and stopped at its first numerical disagreement. `results/verification-attempt1-failure.json` retains the exact case and outputs. `results/verification-blocker.json` records the disposition. There is no successful `verification_summary.json` for this study.
 
-`<what verification did not cover, named. A value that is identical by construction on both sides is not independently verified, and saying so here is part of the outcome.>`
+Post-failure diagnostics compared 872 channels and independently re-derived all 84 predicates in each case. Six cases exceed unchanged predeclared tolerances; zero predicates disagree. These diagnostics inventory the failure and do not replace the stock verifier's release gate. Four solver iteration counts are diagnostic-only and excluded. Chosen inputs, assumed prices, imposed pressure service and supplied property data are common premises, not independently validated scientific facts.
+
+The independent reviewer used a 60-digit cooler calculation at the exact native gas tuple. It agrees with the oracle; the native cooler's residual stopping rule permits amplified flow and pump error at a small water temperature rise. No oracle error was demonstrated. Required native numerical repair/new executable revalidation or new tolerance authority is outside this continuation. No model, tolerance or case selection was changed after the failure.
 
 ## 14. Review outcomes
 
-Each applicable lens, its verdict, and its disposition. Preserve this section when no additional review is needed: record the coordinator check, the reason, and any reused evidence with its revision/scope/environment validity. Label independent review honestly; a separate pre-execution critique is needed only when triggered.
-
 | Lens | Verdict | Disposition |
 |---|---|---|
-| `<lens name, e.g. pre-execution framing critique>` | `<what it found>` | `<what was done about it>` |
+| Fourth design, continuing independent reviewer | PASS | Reviewed physical roles, MR-7, five substantive bodies and one newly written iterative cooler family; scope authorized. |
+| Implemented integration, same non-author reviewer | PASS at WI-096 `29dcb5d8` | Reused exact implementation, 17-case numerical and predicate evidence; this does not cover all main-study points. |
+| Stock integration seam | CANDIDATE, ten gates pass | Exact promoted identity retained. |
+| Full study verification | FAIL | Six numerical mismatch cases identified; none removed. |
+| Independent failure assessment | FINDINGS / stop | Accurate independent cooler root identifies native numerical accuracy dependency. |
+
+Review artifacts and the original design/spec are copied under `results/sources/` at sealing. Final assurance of the blocked answer is recorded in the goal trail; it cannot convert this failure into a verification pass.
 
 ## 15. Findings
 
-Each finding gets an id used verbatim in `DISCOVERY_LOG.md` as `<study-id>#<n>`.
+First sightings are joined to `DISCOVERY_LOG.md` by the following IDs. Every finding has a retained home; future model work remains owner-held.
 
 | Id | Kind | Finding | Disposition | Home |
 |---|---|---|---|---|
-| `<study-id>#<n>` | `<model \| process>` | `<one line>` | `<one line>` | `<home, or unrouted>` |
-
-**Homes a finding may route to:** tool, runbook step, policy rule, skill, modeling item, research round, documented seam. `unrouted` is a stated state, not a blank.
+| `20260926-design-study-component-alternatives#1` | model | Native cooler stopping accuracy exceeds the numerical verification tolerance in six cases, including two predicate-passing sensitivities. | Blocked; independent review confirms native accuracy dependency. No repair or waiver in this run. | `work/orchestration/goals/design-study-component-alternatives/evidence/verification-failure-review.md` |
+| `20260926-design-study-component-alternatives#2` | model | Equipment prices, installed scope, service allowances and replacement costs remain conditional; hypothetical quote changes can alter the comparison. | Declared seam; withheld procurement recommendation and retained cost-correction frontier. | `work/orchestration/goals/design-study-component-alternatives/comparison-contract.md` |
+| `20260926-design-study-component-alternatives#3` | model | The fixed steam turbine offer and tested gas choices have unequal supported operating freedom. | Declared seam; comparison is selected steam versus tested Brayton offers only. | `work/active/WI-096_matched-conversion-subsystems/design.md` |
+| `20260926-design-study-component-alternatives#4` | model | Controller pressure service, machine efficiencies and detailed site hydraulics lack qualification. | Declared seam; modeled checks do not establish operating or procurement qualification. | `work/active/WI-096_matched-conversion-subsystems/design.md` |
+| `20260926-design-study-component-alternatives#5` | model | Only 14 of 375 gas catalog combinations pass all checks (3.73%); finite-water property/root limits reject many combinations. | Declared seam; H1 search feasible-fraction hypothesis is falsified for this catalog. No continuous boundary inferred. | `exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/constraint-summary.json` |
+| `20260926-design-study-component-alternatives#6` | process | Direct study launch initially lacked the documented TEAx import path and stopped before evaluation. | Resolved operationally; same points and package run with the documented environment. | `exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/execution-attempt1/failure.txt` |
+| `20260926-design-study-component-alternatives#7` | process | Reachable-constraint indicators on financial axes do not prove physical resistance to price assumptions. | Declared seam; all financial changes remain sensitivity-framed, with no optimization claim. | `exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/axis-assessment.json` |
 
 ## 16. Snapshot
 
 - **File:** `snapshot.json`
-- **sha256:** `<digest>`
-- **Schema version:** `<snapshot_schema_version>`
+- **Status:** blocked-at-verification evidence seal; `released: false`
+- **Schema version:** 1 with explicit failed-verification fields
+- **SHA256:** `1e8a19872852e19390eba76445e11a866c5da8fb9f791122b6b64d6e16b66641`
 
-No snapshot content is restated here.
+The snapshot preserves the actual failure. Its verification summary digest is null because no passing summary exists; the failure and full diagnostic artifacts have their own digests. This is an explicit blocked-record exception in shape, not a policy exception permitting execution or release.
 
 ## 17. What this record does not contain
 
-`<every fact a reader might expect and will not find, stated rather than left to inference. Gaps in the record itself only — the glue disclosure belongs in §10 and a framing-conditional nil belongs in §6.>`
+There is no passing full-study verification summary, released economic recommendation, qualified procurement quotation, validated machinery map, detailed controller/site hydraulic design, reactor/fuel price model, or equally optimized technology comparison. The sealed runtime and independent oracle are included; their external licensed toolchain and Python environment must still be provided for replay.
 
----
-
-**END OF RECORD**
-
----
-
+Historical source audits, rejected designs and earlier failed native attempts remain in the goal and WI-096 history. This record copies the specific reviewed design, implementation, failure evidence and executed package needed to identify this attempt; it does not duplicate the entire project history. Formal closure is absent because the owner retains it.

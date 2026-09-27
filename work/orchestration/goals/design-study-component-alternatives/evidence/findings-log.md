@@ -23,3 +23,15 @@
 - Initial Git staging failed because the sandbox makes `.git` read-only. The host approved explicit-path Git operations; commits 19c60ae6 and 55eb24b8 contain only this goal's work and its WI-096 registration.
 - Native registration preceded the T-002 start entry; the trail records the ordering deviation. No implementation preceded design review.
 - Readiness S1 and S3 are expected physical/interface refusals. They were retained and not retried; no mechanical retry allowance was consumed.
+
+## F-013 — Reviewed implementation completed within the bounded extension
+
+[AGENT] The fourth design passed independent review. Five substantive bodies include one new iterative finite-water-cooler family; primary loop/network/bypass algorithms remain reused. The isolated package keeps 490 chosen inputs, 876 scalar outputs and 84 executing checks. The independent implementation review accepted numerical/predicate development evidence and the explicit static-diagnostic disposition. Ten stock integration gates passed. Home: WI-096 report and goal `evidence/implementation-integration-review.md`.
+
+## F-014 — Broad native study fails numerical verification
+
+[AGENT] All 498 cases execute; 83 satisfy every native engineering predicate. Six cases exceed unchanged numerical comparison tolerances, including two otherwise-passing efficiency sensitivities. Every independent predicate agrees. Independent review confirms native cooler stopping error near small water temperature rise; no oracle error was demonstrated. Disposition: stop, retain failed evidence, no new model identity or tolerance authority. Home: `evidence/verification-failure-review.md` and native study `results/verification-diagnostics.json`.
+
+## F-015 — Connecting equipment affects conditional comparisons
+
+[AGENT] Unreleased native outputs show that choosing steam exchanger/pump offers instead of retaining all 14 circuits changes the lower-duty cost comparison. Finite catalog results and hypothetical price sensitivities do not establish an unconditional winner. Disposition: retain as diagnostic reading with the verification block, materiality and qualification limits explicit. Home: `evidence/matched-results-draft.md` and complete plot data.
