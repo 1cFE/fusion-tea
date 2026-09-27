@@ -55,3 +55,7 @@
 ## Amendments
 
 None.
+
+### 2026-09-27 — Thermal consistency and refined comparison
+
+[OWNER] Continue under evidence/owner-supplement-r2.md. Establish where the cited 30 K condition applies and specify primary return conditions, implement the justified requirements, and re-evaluate leading cases. Refine common flow and network split sufficiently to test the coarse-grid advantage. Report equipment insufficiency; any revised inventory is explicit and priced. Unknown hydraulic/topology costs remain break-even allowances. A physically qualified plant recommendation is not required; preferred cases must satisfy the thermal requirements claimed for the comparison. This replaces physical plant qualification as the completion criterion. Existing preservation rules, limits and owner-held closure remain.

@@ -97,3 +97,27 @@ T-003 · exploration/exchanger_architecture/studies/20260926-design-study-exchan
 - **Learning delta:** Accept L-001–L-003 as agent findings within this implemented model's conditional scope; append them to learnings.md with the native evidence and this review.
 - **Remaining uncertainty:** Required primary returns, practical temperature approaches, source sustainment, differential hydraulics and topology-specific costs remain unsupported. The return/temperature diagnostics are outside the independent oracle catalog. These limits prevent a physically qualified architecture recommendation.
 - **Recommendation:** Present the partial answer for owner review and formal closure. Another sweep of the unchanged model is unnecessary. Further physical qualification requires supported thermal requirements and costed equipment choices. Round 1 is closed; the goal remains grounded, with formal closure reserved to the owner.
+
+## Round 2 — consistent-thermal-boundaries
+
+### Strategy revision — 2026-09-27
+
+- **Approach:** [OWNER] Establish source-supported thermal requirements, implement them, then refine flow/split around passing operations; preserve conditional hydraulic/topology allowances. Full plant qualification is no longer the answer criterion. Authority: evidence/owner-supplement-r2.md and goal.md amendment.
+- **Assumptions:** Retained source pages and existing heat-transfer relationships can establish a consistent thermal comparison without major new physics. Missing source facts will be distinguished from explicitly chosen comparison requirements.
+- **Abandonment conditions:** No supportable thermal boundary can be established, or representing it requires major new physics or an unresolved material owner choice.
+- **Intended model increment:** Independently reviewed thermal requirements and their executable checks or an isolated additive closure, as justified by the source/interface audit. MR-7 preserves offered area, ratings, prices, flow and split choices; no automatic equipment changes.
+- **Intended study question:** Under explicit primary return and temperature-approach requirements, which existing-equipment operations pass, and does the architecture advantage survive refined operating choices?
+- **Native-state reading:** The prior study remains committed at afd96d51; the reused ARIES executable path's latest model commit remains 49668453. No interrupted task is open. Existing owner article/viewer/status edits remain outside task commits.
+
+### T-004 scope
+
+- **Objective:** Establish the applicable thermal source requirements and minimal executable representation for this comparison.
+- **Why now:** The owner requires consistent primary returns and justified approach conditions before an economic preference.
+- **Scope:** Read retained original source evidence and model interfaces; document source facts, proposed requirements and MR-7 roles; independent source/math/design review before dependent implementation. No production model edits or new studies yet.
+- **Inputs:** goal.md; evidence/owner-supplement-r2.md; prior thermal audit; original retained Raffray source pages and reviewed reconciliation evidence; existing native closure.
+- **Done when:** A reviewed thermal comparison contract is executable, or an exact unresolved requirement is identified.
+- **Stop when:** Missing prerequisite, strategy blocker, reserved gate or declared limit.
+
+### T-004 start — 2026-09-27
+
+T-004 · goal evidence/r2-thermal-requirements.md and evidence/r2-implementation-options.md · bounded source reading and independent implementation-path inspection. Source author owns requirements draft; implementation reader owns options only. These reads may proceed independently because neither changes the model and the options remain provisional until source review. Coordinator integrates and commissions review.
