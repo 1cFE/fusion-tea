@@ -1,4 +1,4 @@
-"""WI-096 independent calculation oracle and native receipt verification.
+"""WI-098 independent calculation oracle and native receipt verification.
 
 Bindings are read from the authored, additive SysML (not native pipeline math).
 Physics/accounting use independent retained/adapted oracles; no native body import.
@@ -62,12 +62,16 @@ def primary_control(v):
 
 def calculate(definition,v,owner,calc,gas):
     try:
-        from . import oracle_thermal,oracle_cooling
+        from . import oracle_thermal,oracle_cooling,oracle_whole_plant,oracle_fuel_inventory
     except ImportError:
-        import oracle_thermal,oracle_cooling
+        import oracle_thermal,oracle_cooling,oracle_whole_plant,oracle_fuel_inventory
     prefix=P+owner+'__'+calc+'__'
     known={k[len(prefix):]:value for k,value in gas.items() if k.startswith(prefix)}
     if known:return known
+    whole=oracle_whole_plant.calculate(definition,v)
+    if whole is not None:return whole
+    if definition=='Captured Reactor Offer':return oracle_whole_plant.captured_interface(v)
+    if definition=='Fuel Inventory':return oracle_fuel_inventory.evaluate(**v)
     if definition=='Cooling Equipment With Selected Salt Pump Count':return oracle_cooling.calculate(v)
     if definition=='Matched Steam Cycle':return oracle_matched_cycle.matched_interface(v)
     if definition=='Cooling Water Rejection':return oracle_matched_cycle.cooling_interface(v)
@@ -98,7 +102,9 @@ def evaluate(point):
     if unknown:raise ValueError('unknown oracle inputs '+repr(sorted(unknown)))
     values.update(point)
     attrs,calcs=authored();parts={a[0] for a in attrs};state={};result={}
-    gas=oracle_gas.evaluate(values)
+    gas_values=dict(values)
+    gas_values[P+"blanket_source__q_source"]=values[P+"source_basis__q_source_MW"]
+    gas=oracle_gas.evaluate(gas_values)
     def resolve(owner,expr):
         n=literal(expr)
         if n is not None:return n
@@ -134,7 +140,7 @@ def operand_bindings():
         if not module['module_type'].endswith('ConstraintModule'):continue
         bindings={}
         for formal,source in module['inputs'].items():
-            key=source.split(' ',1)[1]
+            key=source.split(' ',1)[1].removesuffix('.root')
             bindings[formal]={'kind':'input' if key.split('.')[0].endswith('_params') else 'channel','key':key.split('.',1)[1] if key.split('.')[0].endswith('_params') else key}
         identity=module['outputs']['evaluation'].split(' ',1)[1].removesuffix('__evaluation')
         result[identity]=bindings
@@ -151,7 +157,10 @@ def absolute_tolerances():
     result={}
     for key in comparison_catalog():
         field=key.rsplit('__',1)[-1]
-        if field in ('raw_heat_residual','duty_correction','ua_residual'):result[key]=1e-8
+        if field in ('D_atom_residual','T_atom_residual','Li6_atom_residual'):result[key]=1e-12
+        elif field in ('cost_residual','reconciliation_residual'):result[key]=1e-4
+        elif field=='power_residual':result[key]=1e-9
+        elif field in ('raw_heat_residual','duty_correction','ua_residual'):result[key]=1e-8
         elif 'residual' in field:result[key]=1e-6
         elif field=='bypass_fraction':result[key]=1e-10
     return result
@@ -161,8 +170,24 @@ def agreement(key,actual,expected):
     relative=abs(actual-expected)/scale if scale else 0.
     return relative<1e-9 or abs(actual-expected)<absolute_tolerances().get(key,0.)
 
-def predicate(operands):
+@lru_cache(None)
+def authored_constraint_types():
+    text=(ROOT/'models/designs/whole_plant_conversion/plant.sysml').read_text()
+    text=re.sub(r'/\*.*?\*/','',text,flags=re.S)
+    parts=list(re.finditer(r'^        part (\w+)[^\n]*\{',text,re.M));result={}
+    for i,m in enumerate(parts):
+        chunk=text[m.end():parts[i+1].start() if i+1<len(parts) else len(text)]
+        for name,definition in re.findall(r"assert constraint (\w+) : '([^']+)'",chunk):
+            result[P+m.group(1)+'__'+name]=definition
+    return result
+
+def predicate(operands,definition=None):
     keys=set(operands)
+    if keys=={'metric_in'}:
+        if definition=='Whole Plant Nonnegative':return operands['metric_in']>=0
+        if definition=='Whole Plant Positive':return operands['metric_in']>0
+        if definition=='Whole Plant Supported':return operands['metric_in']>=1
+        raise ValueError('unverified constraint definition '+str(definition))
     if keys=={'defined_in','margin_in'}:return operands['defined_in']>=1 and operands['margin_in']>=0
     if keys=={'margin_in'}:return operands['margin_in']>=0
     if keys=={'flag_in'}:return operands['flag_in']>=1
@@ -173,16 +198,18 @@ def predicate(operands):
     raise ValueError('unverified predicate operands '+repr(keys))
 
 def verify_row(row):
-    if row['status']!='evaluated':return dict(status='refused',reason=row['error'],comparisons=0)
+    if 'status' not in row and 'state' in row:
+        row=dict(row,status='evaluated' if row['state']=='completed' else 'refused',effective_inputs=row['inputs'])
+    if row['status']!='evaluated':return dict(status='refused',reason=row.get('error','native evaluation refused'),comparisons=0)
     expected=evaluate(row['effective_inputs']);native=row['outputs'];diffs=[]
     for key,value in expected.items():
         if key not in native:continue # unused independent bookkeeping channels are not claimed native comparisons
         if not agreement(key,float(native[key]),value):diffs.append(dict(channel=key,expected=value,actual=native[key]))
-    bindings=operand_bindings();reports={v['constraint_id']:v for v in native['constraint_report']['results']}
+    bindings=operand_bindings();reports=({v['constraint_id']:v for v in native['constraint_report']['results']} if 'constraint_report' in native else {cid:{'status':status} for cid,status in row['responses'].items() if cid!='headline'})
     if set(reports)!=set(bindings):diffs.append(dict(constraint_census=sorted(set(reports)^set(bindings))))
     for cid,mapping in bindings.items():
         operands={k:(row['effective_inputs'] if v['kind']=='input' else expected)[v['key']] for k,v in mapping.items()}
-        wanted='satisfied' if predicate(operands) else 'violated'
+        wanted='satisfied' if predicate(operands,authored_constraint_types().get(cid.rsplit("__",1)[0])) else 'violated'
         if reports[cid]['status']!=wanted:diffs.append(dict(constraint=cid,expected=wanted,actual=reports[cid]['status']))
     scalar=[k for k,v in native.items() if isinstance(v,(float,int,bool))]
     omitted=[k for k in scalar if k not in expected]

@@ -278,3 +278,6 @@ SOURCE_COLLECTIONS["component_alternatives"] = (
     'analyses/component_alternatives_thermal.sysml',
     'designs/component_alternatives/plant.sysml',
 )
+
+# WI-098 isolated conditional whole-plant comparison.
+SOURCE_COLLECTIONS["whole_plant_conversion"] = tuple(p for p in SOURCE_COLLECTIONS["component_alternatives"] if not p.startswith("designs/")) + ("analyses/mfe_fuel_cycle.sysml", "analyses/whole_plant_conversion_accounts.sysml", "designs/whole_plant_conversion/plant.sysml")

@@ -1,0 +1,182 @@
+package component_alternatives_thermal {
+    private import ScalarValues::*;
+    calc def 'Conversion Subsystem Ledger' {
+        doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Numerical semantics are the complete calculate function in exploration/component_alternatives/bodies/component_alternatives_thermal/conversion_subsystem_ledger_impl.py; units MW, K/degC, kg/s, Pa, MW/K, USD2025 and years as named. */
+        in attribute available_heat_in : Real default := 0.0;
+        in attribute actual_heat_in : Real default := 0.0;
+        in attribute gross_in : Real default := 0.0;
+        in attribute shaft_import_in : Real default := 0.0;
+        in attribute steam_pumps_in : Real default := 0.0;
+        in attribute salt_pumps_in : Real default := 0.0;
+        in attribute water1_in : Real default := 0.0;
+        in attribute water2_in : Real default := 0.0;
+        in attribute water3_in : Real default := 0.0;
+        in attribute water4_in : Real default := 0.0;
+        in attribute controller_electric_in : Real default := 0.1;
+        in attribute rejected1_in : Real default := 0.0;
+        in attribute rejected2_in : Real default := 0.0;
+        in attribute rejected3_in : Real default := 0.0;
+        in attribute rejected4_in : Real default := 0.0;
+        in attribute capital1_in : Real default := 0.0;
+        in attribute capital2_in : Real default := 0.0;
+        in attribute capital3_in : Real default := 0.0;
+        in attribute capital4_in : Real default := 0.0;
+        in attribute capital5_in : Real default := 0.0;
+        in attribute capital6_in : Real default := 0.0;
+        in attribute capital7_in : Real default := 0.0;
+        in attribute capital8_in : Real default := 0.0;
+        in attribute capital9_in : Real default := 0.0;
+        in attribute capital10_in : Real default := 0.0;
+        in attribute currency_factor_in : Real default := 1.0;
+        in attribute controller_capital_in : Real default := 10000000.0;
+        in attribute separately_replaced_capital_in : Real default := 0.0;
+        in attribute salt_vendor_in : Real default := 0.0;
+        in attribute salt_installation_in : Real default := 0.0;
+        in attribute salt_removal_in : Real default := 0.0;
+        in attribute bundle_event_in : Real default := 0.0;
+        in attribute salt_stock_cost_in : Real default := 0.0;
+        in attribute machine_life_in : Real default := 10.0;
+        in attribute bundle_life_in : Real default := 15.0;
+        in attribute makeup_fraction_in : Real default := 0.001;
+        in attribute annual_service_fraction_in : Real default := 0.02;
+        in attribute replacement_fraction_in : Real default := 0.2;
+        in attribute replacement_year_in : Real default := 15.0;
+        in attribute rate_in : Real default := 0.05;
+        in attribute years_in : Real default := 30.0;
+        in attribute availability_in : Real default := 0.85;
+        in attribute scope_correction_in : Real default := 0.0;
+        in attribute common_source_pv_in : Real default := 0.0;
+        out attribute gross_electric : Real;
+        out attribute electrical_load : Real;
+        out attribute net_electric : Real;
+        out attribute total_rejected : Real;
+        out attribute unremoved_heat : Real;
+        out attribute energy_residual : Real;
+        out attribute conversion_energy_residual : Real;
+        out attribute conversion_energy_residual_magnitude : Real;
+        out attribute capital_total : Real;
+        out attribute recurring_base : Real;
+        out attribute annual_service : Real;
+        out attribute annual_makeup : Real;
+        out attribute machine_replacement_pv : Real;
+        out attribute bundle_replacement_pv : Real;
+        out attribute conversion_replacement_pv : Real;
+        out attribute replacement_pv : Real;
+        out attribute annuity_factor : Real;
+        out attribute annual_energy : Real;
+        out attribute discounted_energy : Real;
+        out attribute accounted_pv : Real;
+        out attribute corrected_pv : Real;
+        out attribute cost_per_net_MWh : Real;
+        out attribute economic_defined : Real;
+        out attribute energy_tolerance : Real;
+        out attribute capital_1 : Real;
+        out attribute capital_2 : Real;
+        out attribute capital_3 : Real;
+        out attribute capital_4 : Real;
+        out attribute capital_5 : Real;
+        out attribute capital_6 : Real;
+        out attribute capital_7 : Real;
+        out attribute capital_8 : Real;
+        out attribute capital_9 : Real;
+        out attribute capital_10 : Real;
+    }
+    calc def 'Finite Water Cooler' {
+        doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Numerical semantics are the complete calculate function in exploration/component_alternatives/bodies/component_alternatives_thermal/finite_water_cooler_impl.py; units MW, K/degC, kg/s, Pa, MW/K, USD2025 and years as named. */
+        in attribute gas_inlet_K_in : Real default := 369.0;
+        in attribute gas_outlet_K_in : Real default := 308.15;
+        in attribute gas_heat_into_fluid_in : Real default := -600.0;
+        in attribute ua_in : Real default := 25.0;
+        in attribute water_inlet_C_in : Real default := 25.0;
+        in attribute head_in : Real default := 20.0;
+        in attribute eta_p_in : Real default := 0.8;
+        in attribute eta_motor_in : Real default := 0.95;
+        in attribute flow_rating_in : Real default := 100000.0;
+        in attribute power_rating_in : Real default := 30.0;
+        in attribute duty_rating_in : Real default := 2000.0;
+        out attribute evaluation_defined : Real;
+        out attribute failure_code : Real;
+        out attribute duty : Real;
+        out attribute water_inlet_after_C : Real;
+        out attribute water_outlet_C : Real;
+        out attribute water_flow : Real;
+        out attribute pump_electric : Real;
+        out attribute total_rejection : Real;
+        out attribute min_gap : Real;
+        out attribute required_ua : Real;
+        out attribute ua_residual : Real;
+        out attribute energy_residual : Real;
+        out attribute flow_margin : Real;
+        out attribute power_margin : Real;
+        out attribute duty_margin : Real;
+        out attribute bracket_low_ua : Real;
+        out attribute bracket_high_ua : Real;
+        out attribute iterations : Real;
+    }
+    calc def 'Recuperator Installed Capability' {
+        doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Numerical semantics are the complete calculate function in exploration/component_alternatives/bodies/component_alternatives_thermal/recuperator_installed_capability_impl.py; units MW, K/degC, kg/s, Pa, MW/K, USD2025 and years as named. */
+        in attribute ua_in : Real default := 60.0;
+        in attribute flow_in : Real default := 2000.0;
+        in attribute cp_in : Real default := 5193.0;
+        out attribute capacity_rate : Real;
+        out attribute effectiveness : Real;
+    }
+    calc def 'Controlled Conversion Boundary' {
+        doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Numerical semantics are the complete calculate function in exploration/component_alternatives/bodies/component_alternatives_thermal/controlled_conversion_boundary_impl.py; units MW, K/degC, kg/s, Pa, MW/K, USD2025 and years as named. */
+        in attribute available_in : Real default := 0.0;
+        in attribute capability_open_in : Real default := 0.0;
+        in attribute raw_heat_in : Real default := 0.0;
+        in attribute feasible_in : Real default := 0.0;
+        in attribute return_residual_in : Real default := 0.0;
+        in attribute primary_flow_in : Real default := 0.0;
+        in attribute exchanger_flow_in : Real default := 0.0;
+        in attribute bypass_fraction_in : Real default := 0.0;
+        in attribute pressure_in : Real default := 0.0;
+        in attribute hot_temperature_in : Real default := 0.0;
+        in attribute dp_in : Real default := 0.0;
+        in attribute loss_factor_in : Real default := 1.1;
+        in attribute total_flow_rating_in : Real default := 4000.0;
+        in attribute exchanger_flow_rating_in : Real default := 4000.0;
+        in attribute bypass_flow_rating_in : Real default := 2000.0;
+        in attribute max_bypass_in : Real default := 0.5;
+        in attribute pressure_rating_in : Real default := 8000000.0;
+        in attribute temperature_rating_in : Real default := 800.0;
+        in attribute added_dp_rating_in : Real default := 100000.0;
+        in attribute salt_flow_in : Real default := 0.0;
+        in attribute salt_cp_in : Real default := 1560.0;
+        in attribute salt_shaft_in : Real default := 0.0;
+        in attribute salt_electric_in : Real default := 0.0;
+        in attribute actuation_in : Real default := 0.1;
+        in attribute gross_electric_in : Real default := 0.0;
+        in attribute net_shaft_in : Real default := 0.0;
+        in attribute imported_electric_in : Real default := 0.0;
+        in attribute cycle_rejection_in : Real default := 0.0;
+        out attribute converged : Real;
+        out attribute actual_heat : Real;
+        out attribute unremoved_heat : Real;
+        out attribute duty_correction : Real;
+        out attribute raw_heat_residual : Real;
+        out attribute raw_return_residual : Real;
+        out attribute salt_hot : Real;
+        out attribute salt_return : Real;
+        out attribute steam_heat : Real;
+        out attribute bypass_flow : Real;
+        out attribute added_dp : Real;
+        out attribute total_flow_margin : Real;
+        out attribute exchanger_flow_margin : Real;
+        out attribute bypass_flow_margin : Real;
+        out attribute bypass_fraction_margin : Real;
+        out attribute pressure_margin : Real;
+        out attribute temperature_margin : Real;
+        out attribute added_dp_margin : Real;
+        out attribute controller_capacity_ok : Real;
+        out attribute source_adequate : Real;
+        out attribute generator_loss : Real;
+        out attribute motor_import_loss : Real;
+        out attribute salt_motor_loss : Real;
+        out attribute rejection_load : Real;
+    }
+    constraint def 'Nonnegative Margin' { doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Chosen capacity minus calculated demand; no physical tolerance. */ in margin_in : Real; margin_in >= 0.0 }
+    constraint def 'Required Flag' { doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. A calculated admission flag must equal one. */ in flag_in : Real; flag_in >= 1.0 }
+    constraint def 'Numerical Residual' { doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Nonnegative residual magnitude compared with numerical calculation tolerance; no physical capacity allowance. */ in residual_in : Real; in tolerance_in : Real; residual_in <= tolerance_in }
+}
