@@ -233,3 +233,24 @@ T-006 retry 1 of 2 · execute the same 498 proposals using `.codex-test/run bash
 ### T-007 start — 2026-09-26
 
 T-007 · continuing model author owns `work/active/WI-096_matched-conversion-subsystems/numerical-repair/`, goal-owned native bodies/build/package outputs and focused regressions. Coordinator owns goal records and study metadata/execution. No independent scientific work depends on the repaired identity before independent review. The prior reviewer remains separate from authoring. Exact ownership and requirements are in `evidence/numerical-repair-brief.md`.
+
+### T-007 return — 2026-09-26
+
+- **Outcome:** COMPLETE, independently reviewed PASS.
+- **Evidence:** WI-096 `numerical-repair/report.md`, focused 15-case and nine high-precision regressions, fixed-point build and preservation receipts; `evidence/numerical-repair-review.md`.
+- **Reading:** All six original causes are isolated. Four originate in cooler root accuracy and its propagated outputs; two share network-root error plus smaller local bypass error. Three existing bisections now resolve adjacent binary64 endpoints. No physical equation, domain, selected input, equipment, oracle or verification tolerance changed. The reviewer independently replayed 13,080 scalar and 1,260 predicate comparisons plus nine local high-precision checks.
+- **Identity:** Core `bf9ebfff`; executable `36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986`; semantic identity unchanged. Seven total new/modified handwritten definitions are disclosed across WI-096; this repair adds zero physical closures.
+- **Decision:** Accept the independent bounded-repair PASS and proceed to fresh integration and full replay under owner authority. Acceptance remains limited to demonstrated cases; the full study and final economic review remain required.
+
+### T-008 scope
+
+- **Objective:** Integrate the repaired executable and verify all 498 original matched-study input maps, then revise the comparison and obtain independent final review.
+- **Why now:** Independent T-007 review passes the numerical repair without a substantive physical-model dependency.
+- **Scope:** Fresh stock integration, indicators and oracle scan; complete native replay, unchanged numerical/predicate verification, case-by-case replay comparison, accurate exclusion classification, rankings/sensitivities/figures and sealed evidence. Same explicit offers, source conditions and conversion-subsystem metric.
+- **Inputs:** T-007 evidence, repaired identity, original sealed study, byte-identical proposed points and tolerance classes, current study interface and independent oracle.
+- **Done when:** Complete verified record and independent economic review support a bounded answer, or an exact unresolved requirement stops dependent work.
+- **Stop when:** Substantive physics, policy/tolerance exception, physical-domain expansion or another owner-reserved decision is required.
+
+### T-008 start — 2026-09-26
+
+Coordinator owns fresh integration and `exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/`. Reporting worker owns only `evidence/verified-comparison/` and is gated on full stock verification PASS. Continuing independent reviewer owns final assurance. Formal closure remains owner-held.

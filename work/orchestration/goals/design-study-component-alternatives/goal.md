@@ -4,7 +4,7 @@
 
 `grounded` — owner-held formal closure remains pending.
 
-The owner-authorized fourth design passed independent review. Its model-owned physical calculations were implemented and passed independent integration review and all ten stock integration gates. The 498-case native comparison executed, but six numerical mismatch cases prevent verification. Independent failure review returns FINDINGS / stop: the cooler stopping accuracy must meet the unchanged verification contract. No model repair, tolerance exception or additional round was undertaken. The [partial answer](answer.md) and sealed blocked record preserve the evidence; economic completion remains unmet.
+Round 2 is active under the [owner-authorized bounded numerical repair](evidence/owner-direction-numerical-repair.md). The prior design and implementation passed review, but the 498-case study failed numerical verification. That executable, its results and corrected diagnosis remain sealed. The continuation isolates all six discrepancies and permits confirmed native numerical repairs plus a new executable and complete replay, with unchanged oracle, tolerances, domain and offers. The earlier [partial answer](answer.md) remains the last completed result until the repaired study and final review finish.
 
 ## Question
 
