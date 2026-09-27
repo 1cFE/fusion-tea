@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+  "margin": null,
+  "observed": {
+    "defined_in": 1.0,
+    "margin_in": 0.0
+  },
+  "status": "satisfied"
+}

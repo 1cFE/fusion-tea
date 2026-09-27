@@ -1024,5 +1024,5 @@ INTERFACE = {'channels': {'aries_cs_plasma_integration__plasma__beta_calculation
                 'aries_integrated_plant__waste_equipment__price_factor': 'plant_params',
                 'aries_integrated_plant__waste_equipment__reference_cost': 'plant_params',
                 'aries_integrated_plant__waste_equipment__selected_quantity': 'plant_params'},
- 'executable_fingerprint': 'cd16e8deb2f579e4cb1afcaf0fedbfc53498ba125783fbf8e17af14ffb4cbcc7',
+ 'executable_fingerprint': '668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23',
  'semantic_fingerprint': '423eebc09f9901ffda8ee77a480d67100919dd7ba4d325e09f8c58f1e704ce31'}

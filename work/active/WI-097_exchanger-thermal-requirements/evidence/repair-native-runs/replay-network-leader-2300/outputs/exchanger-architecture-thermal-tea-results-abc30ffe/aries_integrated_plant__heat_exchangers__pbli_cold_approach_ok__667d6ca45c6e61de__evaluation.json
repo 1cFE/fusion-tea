@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_cold_approach_ok__667d6ca45c6e61de",
+  "margin": 7.573209805538909,
+  "observed": {
+    "margin_in": 7.573209805538909
+  },
+  "status": "satisfied"
+}

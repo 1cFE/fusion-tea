@@ -1,0 +1,9 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__heat_exchangers__he_hot_cap_ok__05ebd6dad2e4adc1",
+  "margin": 20.75488066387527,
+  "observed": {
+    "margin_in": 20.75488066387527
+  },
+  "status": "satisfied"
+}

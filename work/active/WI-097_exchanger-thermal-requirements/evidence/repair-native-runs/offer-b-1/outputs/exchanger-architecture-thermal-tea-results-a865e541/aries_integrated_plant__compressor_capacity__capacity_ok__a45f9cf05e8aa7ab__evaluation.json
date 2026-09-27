@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+  "margin": null,
+  "observed": {
+    "defined_in": 1.0,
+    "margin_in": 364.43414641492564
+  },
+  "status": "satisfied"
+}

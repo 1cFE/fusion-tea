@@ -1,0 +1,348 @@
+{
+  "assessed_entry_count": 35,
+  "catalog_fingerprint": "252ea329ab805a5521706f777b411e46c39c519a057176a4682350c993b80f57",
+  "coverage": {
+    "applicable_gate_total": 35,
+    "assessed_gate_count": 35,
+    "authored_usage_total": 35,
+    "coverage_state": "complete",
+    "inapplicable_gate_count": 0,
+    "unassessed_gate_count": 0,
+    "unassessed_reasons": {}
+  },
+  "headline": "full_satisfaction",
+  "results": [
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 998.0965799772998
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 1486.7242063753326
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 325.2098336027009
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 9.937990999710028
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 760.4738113517697
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 495.68230754778847
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 1.7618672870609994e+22
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_return_ok__f69c5310bdcc41d7",
+      "margin": 1e-06,
+      "observed": {
+        "residual_magnitude_in": 0.0,
+        "tolerance_in": 1e-06
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_control_ok__0c3b021e2e8589fb",
+      "margin": 0.9692805653594405,
+      "observed": {
+        "margin_in": 0.9692805653594405
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_return_ok__100f6bf9ad61a22c",
+      "margin": 1e-06,
+      "observed": {
+        "residual_magnitude_in": 0.0,
+        "tolerance_in": 1e-06
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_control_ok__14c1c0f314a994fd",
+      "margin": 0.4614208241250708,
+      "observed": {
+        "margin_in": 0.4614208241250708
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_return_ok__ae5f4d6db630fc8e",
+      "margin": 1e-06,
+      "observed": {
+        "residual_magnitude_in": 0.0,
+        "tolerance_in": 1e-06
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_cold_approach_ok__e70598993d392f74",
+      "margin": 40.88268284052913,
+      "observed": {
+        "margin_in": 40.88268284052913
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_state_ok__4664e5e1ddbb7ac5",
+      "margin": 0.0,
+      "observed": {
+        "defined_in": 1.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_required_hot_ok__3371b55ff752c6e4",
+      "margin": 17.05766985643993,
+      "observed": {
+        "margin_in": 17.05766985643993
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_state_ok__d5b9d58030392fe5",
+      "margin": 0.0,
+      "observed": {
+        "defined_in": 1.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_state_ok__416e01681b16be81",
+      "margin": 0.0,
+      "observed": {
+        "defined_in": 1.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_hot_cap_ok__05ebd6dad2e4adc1",
+      "margin": 17.05766985643993,
+      "observed": {
+        "margin_in": 17.05766985643993
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_cold_approach_ok__667d6ca45c6e61de",
+      "margin": 4.15056773650133,
+      "observed": {
+        "margin_in": 4.15056773650133
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_control_ok__f48454bb1d6f0e91",
+      "margin": 0.30313492841946754,
+      "observed": {
+        "margin_in": 0.30313492841946754
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_required_hot_ok__712add8be60bd1ae",
+      "margin": 9.796960349620008,
+      "observed": {
+        "margin_in": 9.796960349620008
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_hot_approach_ok__7a2967e855192aeb",
+      "margin": 0.0010000000000047748,
+      "observed": {
+        "margin_in": 0.0010000000000047748
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_hot_approach_ok__85855c74bdb13305",
+      "margin": 60.315731745173935,
+      "observed": {
+        "margin_in": 60.315731745173935
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_hot_cap_ok__cd5f29bd8533c481",
+      "margin": 9.796960349620008,
+      "observed": {
+        "margin_in": 9.796960349620008
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_hot_cap_ok__73a44108fcb5be1c",
+      "margin": 83.30713080530029,
+      "observed": {
+        "margin_in": 83.30713080530029
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_hot_approach_ok__5e95ef937d10cc33",
+      "margin": 249.8092508874339,
+      "observed": {
+        "margin_in": 249.8092508874339
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_cold_approach_ok__eab4f3486f0aa140",
+      "margin": 1.7810431108299554,
+      "observed": {
+        "margin_in": 1.7810431108299554
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_required_hot_ok__aa9057b8ce236e6b",
+      "margin": 83.30713080530029,
+      "observed": {
+        "margin_in": 83.30713080530029
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 603.454833859811
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 0.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+      "margin": null,
+      "observed": {
+        "defined_in": 1.0,
+        "margin_in": 1076.2840853171792
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+      "margin": 2.2403890472406306e-06,
+      "observed": {
+        "tolerance_in": 2.2403890472406306e-06,
+        "unmet_in": 0.0
+      },
+      "status": "satisfied"
+    },
+    {
+      "actual_value": true,
+      "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+      "margin": 2.230951220720333e-06,
+      "observed": {
+        "magnitude_in": 9.437826520297676e-09,
+        "tolerance_in": 2.2403890472406306e-06
+      },
+      "status": "satisfied"
+    }
+  ]
+}

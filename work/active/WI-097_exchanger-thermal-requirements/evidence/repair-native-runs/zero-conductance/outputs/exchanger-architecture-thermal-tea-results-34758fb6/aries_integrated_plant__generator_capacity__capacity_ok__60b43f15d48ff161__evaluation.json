@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+  "margin": null,
+  "observed": {
+    "defined_in": 1.0,
+    "margin_in": 1295.3016317540216
+  },
+  "status": "satisfied"
+}
