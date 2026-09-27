@@ -1,0 +1,1 @@
+Record-check development attempt1 stopped before reading evidence: ModuleNotFoundError: No module named tests. The script now adds its repository root to sys.path before importing the stock record-test helpers. No record or study result changed.

@@ -1,0 +1,435 @@
+{
+  "schema_version": "study-axis-declaration/v1",
+  "groups": [
+    {
+      "axis": "blanket_source_q_source",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__blanket_source__q_source",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::blanket_source::q_source. Chosen common source heat scenarios; no matching solve."
+    },
+    {
+      "axis": "cycle_selected_flow",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__cycle__selected_flow",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::cycle::selected_flow. Chosen gas operating flow at held installed ratings."
+    },
+    {
+      "axis": "compressor_1_selected_ratio",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__compressor_1__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::compressor_1::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred."
+    },
+    {
+      "axis": "compressor_1_efficiency",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__compressor_1__efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::compressor_1::efficiency. Hypothetical performance sensitivity."
+    },
+    {
+      "axis": "compressor_2_selected_ratio",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__compressor_2__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::compressor_2::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred."
+    },
+    {
+      "axis": "compressor_2_efficiency",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__compressor_2__efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::compressor_2::efficiency. Hypothetical performance sensitivity."
+    },
+    {
+      "axis": "compressor_3_selected_ratio",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__compressor_3__selected_ratio",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::compressor_3::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred."
+    },
+    {
+      "axis": "compressor_3_efficiency",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__compressor_3__efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::compressor_3::efficiency. Hypothetical performance sensitivity."
+    },
+    {
+      "axis": "cycle_turbine_efficiency",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__cycle__turbine_efficiency",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::cycle::turbine_efficiency. Hypothetical performance sensitivity."
+    },
+    {
+      "axis": "water_ic1_ua",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__water_ic1__ua",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::water_ic1::ua. Installed capability selected from an explicitly priced coordinated service offer."
+    },
+    {
+      "axis": "water_ic2_ua",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__water_ic2__ua",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::water_ic2::ua. Installed capability selected from an explicitly priced coordinated service offer."
+    },
+    {
+      "axis": "water_pre_ua",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__water_pre__ua",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::water_pre::ua. Installed capability selected from an explicitly priced coordinated service offer."
+    },
+    {
+      "axis": "recuperator_hardware_ua",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__recuperator_hardware__ua",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::recuperator_hardware::ua. Installed capability selected from an explicitly priced coordinated service offer."
+    },
+    {
+      "axis": "steam_transport_n_loops",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_transport__n_loops",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_transport::n_loops. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14."
+    },
+    {
+      "axis": "steam_transport_salt_pumps_per_circuit",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_transport__salt_pumps_per_circuit",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_transport::salt_pumps_per_circuit. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14."
+    },
+    {
+      "axis": "steam_transport_selected_salt_design_flow_kg_s",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_transport__selected_salt_design_flow_kg_s",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_transport::selected_salt_design_flow_kg_s. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14."
+    },
+    {
+      "axis": "steam_boundary_bypass_flow_rating",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_boundary__bypass_flow_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_boundary::bypass_flow_rating. Full or deliberately undersized purchased controller offer."
+    },
+    {
+      "axis": "steam_ledger_controller_capital",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_ledger__controller_capital",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_ledger::controller_capital. Hypothetical controller quote paired with its declared flow rating; also subject to branch quote sensitivity."
+    },
+    {
+      "axis": "steam_ledger_annual_service_fraction",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_ledger__annual_service_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_ledger::annual_service_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit."
+    },
+    {
+      "axis": "steam_ledger_replacement_fraction",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_ledger__replacement_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_ledger::replacement_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit."
+    },
+    {
+      "axis": "steam_ledger_common_source_pv",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_ledger__common_source_pv",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_ledger::common_source_pv. Illustrative common upstream present-value charge, coordinated equally across branches; no fuel price model."
+    },
+    {
+      "axis": "gas_boundary_bypass_flow_rating",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__gas_boundary__bypass_flow_rating",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::gas_boundary::bypass_flow_rating. Full or deliberately undersized purchased controller offer."
+    },
+    {
+      "axis": "gas_ledger_controller_capital",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__gas_ledger__controller_capital",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::gas_ledger::controller_capital. Hypothetical controller quote paired with its declared flow rating; also subject to branch quote sensitivity."
+    },
+    {
+      "axis": "gas_ledger_annual_service_fraction",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__gas_ledger__annual_service_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::gas_ledger::annual_service_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit."
+    },
+    {
+      "axis": "gas_ledger_replacement_fraction",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__gas_ledger__replacement_fraction",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::gas_ledger::replacement_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit."
+    },
+    {
+      "axis": "gas_ledger_common_source_pv",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__gas_ledger__common_source_pv",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::gas_ledger::common_source_pv. Illustrative common upstream present-value charge, coordinated equally across branches; no fuel price model."
+    },
+    {
+      "axis": "compressor_equipment_price_factor",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__compressor_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::compressor_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer."
+    },
+    {
+      "axis": "turbine_equipment_price_factor",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__turbine_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::turbine_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer."
+    },
+    {
+      "axis": "generator_equipment_price_factor",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__generator_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::generator_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer."
+    },
+    {
+      "axis": "he_hx_price_factor",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__he_hx__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::he_hx::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer."
+    },
+    {
+      "axis": "he_duty_equipment_price_factor",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__he_duty_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::he_duty_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer."
+    },
+    {
+      "axis": "conversion_services_price_factor",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__conversion_services__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::conversion_services::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer."
+    },
+    {
+      "axis": "heat_rejection_equipment_price_factor",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__heat_rejection_equipment__price_factor",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::heat_rejection_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer."
+    },
+    {
+      "axis": "gas_ledger_capital9",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__gas_ledger__capital9",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::gas_ledger::capital9. Selected cycle-transport quote in USD2004; physical scope held."
+    },
+    {
+      "axis": "steam_ledger_capital3",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_ledger__capital3",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_ledger::capital3. Selected steam conversion or rejection aggregate quote in USD2025; physical scope held."
+    },
+    {
+      "axis": "steam_ledger_capital4",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_ledger__capital4",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_ledger::capital4. Selected steam conversion or rejection aggregate quote in USD2025; physical scope held."
+    },
+    {
+      "axis": "steam_transport_costscale",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_transport__costscale",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_transport::costscale. Existing salt-connector cost multiplier; no physical equipment sizing."
+    },
+    {
+      "axis": "steam_cycle_eta_hp",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_cycle__eta_hp",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_cycle::eta_hp. Hypothetical performance sensitivity on the selected steam offer."
+    },
+    {
+      "axis": "steam_cycle_eta_lp",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_cycle__eta_lp",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_cycle::eta_lp. Hypothetical performance sensitivity on the selected steam offer."
+    },
+    {
+      "axis": "steam_cycle_steam_temperature_C",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_cycle__steam_temperature_C",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_cycle::steam_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope."
+    },
+    {
+      "axis": "steam_cycle_reheat_temperature_C",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_cycle__reheat_temperature_C",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_cycle::reheat_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope."
+    },
+    {
+      "axis": "steam_cycle_condenser_temperature_C",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_cycle__condenser_temperature_C",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_cycle::condenser_temperature_C. Declared but declined: held steam offer does not establish an off-design temperature envelope."
+    },
+    {
+      "axis": "steam_transport_secondary_head",
+      "keys": [
+        {
+          "key": "component_alternatives__plant__steam_transport__secondary_head",
+          "provenance": "fan_out"
+        }
+      ],
+      "note": "SysML attribute component_alternatives::plant::steam_transport::secondary_head. Declared but declined: altered operating salt head changes the captured steam return condition."
+    }
+  ]
+}

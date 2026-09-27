@@ -1,0 +1,211 @@
+{
+  "baseline": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "bypass-small-offer": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "flow2250-fixed-UA": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "gas-low-ratio-flow": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "pre-UA20-no-root": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "pre-UA40-no-root": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "recuperator-UA80": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "salt-three-pumps": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "salt-two-pumps": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "salt225-offer": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "source2800-ihx10": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "source3000-ihx12": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "source3000-ihx14": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "water-duty-insufficient": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "water-flow-insufficient": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "water-power-insufficient": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  },
+  "water-property-refusal": {
+    "status": "refused",
+    "reason": "cooler water/property/pump domain",
+    "comparisons": 0
+  },
+  "zero-discount": {
+    "status": "pass",
+    "comparisons": 872,
+    "predicates": 84,
+    "diagnostic_only": [
+      "component_alternatives__plant__water_ic1__evaluate__iterations",
+      "component_alternatives__plant__water_ic2__evaluate__iterations",
+      "component_alternatives__plant__heat_exchangers__evaluate__iterations",
+      "component_alternatives__plant__water_pre__evaluate__iterations"
+    ],
+    "differences": []
+  }
+}

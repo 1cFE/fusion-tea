@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "cases": 498,
+  "scalar_comparisons": 434256,
+  "predicate_comparisons": 41832,
+  "input_changes": 0,
+  "predicate_changes": 0,
+  "passing": 83,
+  "gas_counts": {
+    "failed_solved": 39,
+    "upper_60C": 233,
+    "pass": 14,
+    "lower": 78,
+    "mixed": 11
+  },
+  "cooler_occurrences": {
+    "upper_60C": 464,
+    "lower": 153
+  },
+  "cooler_cases_with_other_predicate_failures": 322,
+  "anchors": [
+    {
+      "source_MW": 2500.0,
+      "steam_case": "steam-q2500-n10-k4-pump225",
+      "gap": -0.006083287333332521,
+      "common_PV": -966088.1518859128,
+      "sensitivity": {
+        "efficiency": [
+          -6.489380439950018,
+          4.429069840480594
+        ],
+        "quote": [
+          -33.77135063673492,
+          33.75918406206826
+        ]
+      }
+    },
+    {
+      "source_MW": 2800.0,
+      "steam_case": "steam-q2800-n11-k4-pump225",
+      "gap": -4.060079973548682,
+      "common_PV": -470856412.5787399,
+      "sensitivity": {
+        "efficiency": [
+          -21.831585101319725,
+          4.706162720072637
+        ],
+        "quote": [
+          -38.496306855403006,
+          30.376146908305664
+        ]
+      }
+    },
+    {
+      "source_MW": 3000.0,
+      "steam_case": "steam-q3000-n14-k3-pump250",
+      "gap": 9.445633782072306,
+      "common_PV": 1831385590.2437189,
+      "sensitivity": {
+        "efficiency": [
+          4.006541371396125,
+          13.103637698028376
+        ],
+        "quote": [
+          -22.94589407417762,
+          41.83716163832225
+        ]
+      }
+    }
+  ],
+  "verification_sha256": "8150abe4c4a1ea5366dc2e9aeece5d0a583d952d1bcdc22e1ebf53cec96f2c01"
+}

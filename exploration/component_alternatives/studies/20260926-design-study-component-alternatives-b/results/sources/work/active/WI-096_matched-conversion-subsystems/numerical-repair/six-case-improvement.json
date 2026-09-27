@@ -1,0 +1,227 @@
+[
+  {
+    "case": "c0035",
+    "prior_mismatched_channels": [
+      {
+        "channel": "component_alternatives__plant__water_pre__evaluate__flow_margin",
+        "old_native": 14530.146798748945,
+        "new_native": 14530.146814067397,
+        "oracle": 14530.146814067703,
+        "old_relative_deviation": 1.0542741034333448e-09,
+        "new_relative_deviation": 2.1031461258178036e-14,
+        "absolute_error": 3.055902197957039e-10
+      }
+    ],
+    "full_verification": "872 channels and 84 predicates pass"
+  },
+  {
+    "case": "c0040",
+    "prior_mismatched_channels": [
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__annual_energy",
+        "old_native": 1176630.4152317059,
+        "new_native": 1176630.4137177737,
+        "oracle": 1176630.4137183127,
+        "old_relative_deviation": 1.2862094269439192e-09,
+        "new_relative_deviation": 4.580902667264781e-13,
+        "absolute_error": 5.390029400587082e-07
+      },
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__cost_per_net_MWh",
+        "old_native": 119.56031712546974,
+        "new_native": 119.56031727930412,
+        "oracle": 119.56031727924935,
+        "old_relative_deviation": 1.286209446330245e-09,
+        "new_relative_deviation": 4.580837130470628e-13,
+        "absolute_error": 5.476863407238852e-11
+      },
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__discounted_energy",
+        "old_native": 18087693.434890214,
+        "new_native": 18087693.411617365,
+        "oracle": 18087693.411625654,
+        "old_relative_deviation": 1.2862093755703243e-09,
+        "new_relative_deviation": 4.582547218956203e-13,
+        "absolute_error": 8.288770914077759e-06
+      },
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__net_electric",
+        "old_native": 158.0218124136054,
+        "new_native": 158.02181221028388,
+        "oracle": 158.02181221035625,
+        "old_relative_deviation": 1.2862095118735024e-09,
+        "new_relative_deviation": 4.579220501121822e-13,
+        "absolute_error": 7.23616722098086e-11
+      }
+    ],
+    "full_verification": "872 channels and 84 predicates pass"
+  },
+  {
+    "case": "c0160",
+    "prior_mismatched_channels": [
+      {
+        "channel": "component_alternatives__plant__water_pre__evaluate__flow_margin",
+        "old_native": -608.7376620943251,
+        "new_native": -608.7376674753323,
+        "oracle": -608.7376674751285,
+        "old_relative_deviation": 8.839281309221994e-09,
+        "new_relative_deviation": 3.3467094954394537e-13,
+        "absolute_error": 2.0372681319713593e-10
+      }
+    ],
+    "full_verification": "872 channels and 84 predicates pass"
+  },
+  {
+    "case": "c0206",
+    "prior_mismatched_channels": [
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__annual_energy",
+        "old_native": -8284329.920145388,
+        "new_native": -8284330.0859542675,
+        "oracle": -8284330.085954271,
+        "old_relative_deviation": 2.0014760611331836e-08,
+        "new_relative_deviation": 4.496791242997409e-16,
+        "absolute_error": 3.725290298461914e-09
+      },
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__discounted_energy",
+        "old_native": -127350455.98797517,
+        "new_native": -127350458.53686404,
+        "oracle": -127350458.53686412,
+        "old_relative_deviation": 2.0014760691279074e-08,
+        "new_relative_deviation": 5.850454472268044e-16,
+        "absolute_error": 7.450580596923828e-08
+      },
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__electrical_load",
+        "old_native": 1865.5176491904367,
+        "new_native": 1865.5176714604158,
+        "oracle": 1865.517671460416,
+        "old_relative_deviation": 1.1937694128899071e-08,
+        "new_relative_deviation": 1.2188234875589954e-16,
+        "absolute_error": 2.2737367544323206e-13
+      },
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__net_electric",
+        "old_native": -1112.5879559690288,
+        "new_native": -1112.5879782372103,
+        "oracle": -1112.5879782372108,
+        "old_relative_deviation": 2.0014760540849903e-08,
+        "new_relative_deviation": 4.087293407636561e-16,
+        "absolute_error": 4.547473508864641e-13
+      },
+      {
+        "channel": "component_alternatives__plant__gas_ledger__evaluate__total_rejected",
+        "old_native": 3782.846371710214,
+        "new_native": 3782.8463939810417,
+        "oracle": 3782.846393981042,
+        "old_relative_deviation": 5.887320239943244e-09,
+        "new_relative_deviation": 1.202130098673901e-16,
+        "absolute_error": 4.547473508864641e-13
+      },
+      {
+        "channel": "component_alternatives__plant__rejection_capacity__evaluate__margin",
+        "old_native": 1217.153628289786,
+        "new_native": 1217.1536060189583,
+        "oracle": 1217.1536060189578,
+        "old_relative_deviation": 1.8297467164168288e-08,
+        "new_relative_deviation": 3.736154160310486e-16,
+        "absolute_error": 4.547473508864641e-13
+      },
+      {
+        "channel": "component_alternatives__plant__water_pre__evaluate__flow_margin",
+        "old_native": -7113405.915089925,
+        "new_native": -7113406.001384442,
+        "oracle": -7113406.001384442,
+        "old_relative_deviation": 1.2131251457353676e-08,
+        "new_relative_deviation": 0.0,
+        "absolute_error": 0.0
+      },
+      {
+        "channel": "component_alternatives__plant__water_pre__evaluate__power_margin",
+        "old_native": -1831.561766242542,
+        "new_native": -1831.5617885125455,
+        "oracle": -1831.5617885125455,
+        "old_relative_deviation": 1.2159023842513152e-08,
+        "new_relative_deviation": 0.0,
+        "absolute_error": 0.0
+      },
+      {
+        "channel": "component_alternatives__plant__water_pre__evaluate__pump_electric",
+        "old_native": 1861.561766242542,
+        "new_native": 1861.5617885125455,
+        "oracle": 1861.5617885125455,
+        "old_relative_deviation": 1.1963075087265624e-08,
+        "new_relative_deviation": 0.0,
+        "absolute_error": 0.0
+      },
+      {
+        "channel": "component_alternatives__plant__water_pre__evaluate__total_rejection",
+        "old_native": 2731.5639790570594,
+        "new_native": 2731.564001327875,
+        "oracle": 2731.564001327875,
+        "old_relative_deviation": 8.15313695601814e-09,
+        "new_relative_deviation": 0.0,
+        "absolute_error": 0.0
+      },
+      {
+        "channel": "component_alternatives__plant__water_pre__evaluate__water_flow",
+        "old_native": 7213405.915089925,
+        "new_native": 7213406.001384442,
+        "oracle": 7213406.001384442,
+        "old_relative_deviation": 1.1963074989052496e-08,
+        "new_relative_deviation": 0.0,
+        "absolute_error": 0.0
+      }
+    ],
+    "full_verification": "872 channels and 84 predicates pass"
+  },
+  {
+    "case": "c0480",
+    "prior_mismatched_channels": [
+      {
+        "channel": "component_alternatives__plant__gas_boundary__evaluate__bypass_flow",
+        "old_native": 6.979494101063665,
+        "new_native": 6.979494118403636,
+        "oracle": 6.979494118551429,
+        "old_relative_deviation": 2.5055919281037223e-09,
+        "new_relative_deviation": 2.1175301035825612e-11,
+        "absolute_error": 1.4779288903810084e-10
+      },
+      {
+        "channel": "component_alternatives__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+        "old_native": 0.13846356435738016,
+        "new_native": 0.13846356477893096,
+        "oracle": 0.13846356477915833,
+        "old_relative_deviation": 3.0461310787419645e-09,
+        "new_relative_deviation": 1.6421191799148057e-12,
+        "absolute_error": 2.2737367544323206e-13
+      }
+    ],
+    "full_verification": "872 channels and 84 predicates pass"
+  },
+  {
+    "case": "c0484",
+    "prior_mismatched_channels": [
+      {
+        "channel": "component_alternatives__plant__gas_boundary__evaluate__bypass_flow",
+        "old_native": 6.979494101063665,
+        "new_native": 6.979494118403636,
+        "oracle": 6.979494118551429,
+        "old_relative_deviation": 2.5055919281037223e-09,
+        "new_relative_deviation": 2.1175301035825612e-11,
+        "absolute_error": 1.4779288903810084e-10
+      },
+      {
+        "channel": "component_alternatives__plant__heat_exchangers__evaluate__he_hot_bound_margin",
+        "old_native": 0.13846356435738016,
+        "new_native": 0.13846356477893096,
+        "oracle": 0.13846356477915833,
+        "old_relative_deviation": 3.0461310787419645e-09,
+        "new_relative_deviation": 1.6421191799148057e-12,
+        "absolute_error": 2.2737367544323206e-13
+      }
+    ],
+    "full_verification": "872 channels and 84 predicates pass"
+  }
+]

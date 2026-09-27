@@ -4,7 +4,7 @@
 
 `grounded` — owner-held formal closure remains pending.
 
-Round 2 is active under the [owner-authorized bounded numerical repair](evidence/owner-direction-numerical-repair.md). The prior design and implementation passed review, but the 498-case study failed numerical verification. That executable, its results and corrected diagnosis remain sealed. The continuation isolates all six discrepancies and permits confirmed native numerical repairs plus a new executable and complete replay, with unchanged oracle, tolerances, domain and offers. The earlier [partial answer](answer.md) remains the last completed result until the repaired study and final review finish.
+Round 2 completed the [owner-authorized bounded numerical repair](evidence/owner-direction-numerical-repair.md). All six original numerical defects were isolated and repaired without changing the oracle, tolerances, physical domain, variable roles or equipment offers. Fresh integration and full 498-case verification pass; all input maps and engineering verdicts match the retained predecessor. Independent repair and final economic reviews PASS. The [answer](answer.md) releases a conditional conversion-subsystem comparison with explicit cooler/property and procurement limitations. The original failed executable and study remain preserved. Formal goal and WI-096 closure remain owner-held.
 
 ## Question
 

@@ -35,3 +35,7 @@
 ## F-015 — Connecting equipment affects conditional comparisons
 
 [AGENT] Unreleased native outputs show that choosing steam exchanger/pump offers instead of retaining all 14 circuits changes the lower-duty cost comparison. Finite catalog results and hypothetical price sensitivities do not establish an unconditional winner. Disposition: retain as diagnostic reading with the verification block, materiality and qualification limits explicit. Home: `evidence/matched-results-draft.md` and complete plot data.
+
+## F-016 — Bounded repair verifies the complete unchanged catalog
+
+[AGENT] Owner authorized the numerical continuation. Independent diagnosis identified four cooler-root defects and two gas cases dominated by heater-root propagation plus smaller local bypass error. Three goal-local numerical variants now resolve the existing bisection brackets to adjacent floating-point endpoints. The oracle, tolerances, equations, physical domain, variable roles and offers are unchanged. Independent repair review passes15 assembled regressions and nine high-precision checks. Fresh integration passes all ten gates; full stock verification passes498 cases ×872 scalars ×84 predicates. All original input maps and engineering verdicts are unchanged. Home: WI-096 numerical-repair report, goal numerical-repair review and repaired study `results/verification_summary.json`/`replay-comparison.json`. Final economic assurance follows separately.

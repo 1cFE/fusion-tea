@@ -1,58 +1,54 @@
-# Matched conversion comparison: verification blocked
+# Verified matched conversion comparison
 
-**The fourth design passed review, implementation and integration completed, and all 498 matched-study cases executed. The economic comparison remains incomplete because numerical verification failed.** Independent review confirmed the native cooler accuracy problem and required a stop. No model repair, tolerance exception or additional round followed. Formal goal and WI-096 closure remain with the owner.
+**The bounded numerical repair is complete, and all 498 original study cases now pass the unchanged independent verification contract.** The result supports a conditional comparison of the selected steam offer versus tested helium Brayton offers at matched source conditions. At 2500 and 2800 MW source heat, the nominal cost differences fall inside the declared 5 USD2025/net MWh materiality band. At 3000 MW, the tested Brayton offer has a nominal 9.446 USD/net MWh advantage, but quote assumptions can reverse it. There is no unconditional technology recommendation.
 
-## Exact unresolved requirement
+## What the verified offers show
 
-The model must reproduce required scalar outputs within the predeclared verification tolerances: normally relative error below 1e−9, with named absolute classes declared before execution. Six cases fail this requirement. Two are efficiency sensitivities that pass all implemented engineering checks. Every case is retained. The two otherwise-passing sensitivity cases disagree on bypass flow and helium hot-bound margin. Their causes were not independently isolated; the cooler diagnosis below applies to case c0206. A [record addendum](../../../../exploration/component_alternatives/studies/20260926-design-study-component-alternatives/addendum-20260926-cause-attribution.md) corrects the original findings row without changing sealed evidence.
+| Chosen reactor heat, MW | Selected steam net MW | Tested Brayton net MW | Steam USD2025/net MWh | Brayton USD2025/net MWh | Steam minus Brayton |
+|---:|---:|---:|---:|---:|---:|
+| 2500 | 937.579 | 559.493 | 33.762 | 33.768 | −0.006 |
+| 2800 | 1060.283 | 518.099 | 32.406 | 36.466 | −4.060 |
+| 3000 | 1144.003 | 682.834 | 37.114 | 27.669 | +9.446 |
 
-The clearest failure is `gas-q2800-m2250-r1.35-ua25-25-25`. Its precooler water warms by only about 0.02884 K. A tiny outlet-temperature error therefore produces a larger relative error in calculated water flow and pumping demand. The native cooler meets its local UA residual stopping criterion, but its flow differs from an independent 60-digit result by about 1.03e−8 relative. The oracle agrees with that independent result to about 1.04e−12. This is a native numerical accuracy shortfall, not a demonstrated oracle error. See the [independent failure review](evidence/verification-failure-review.md).
+These are conversion-subsystem costs per net MWh. The steam turbine offer is held at its supported temperatures; its connecting equipment is selected from explicit offers. Gas flow, pressure ratio and service equipment vary within the tested catalog. The branches have different supported operating freedoms, so these results do not establish equal optimization or whole-plant LCOE.
 
-Resolving it requires improved native numerical accuracy and revalidation of a new executable, or explicit new tolerance authority. Neither was taken. The original failed cases, package identity and verification thresholds remain unchanged.
+Steam generates 378–542 MW more net electricity at the selected points. Its larger capital and recurring costs offset much of that benefit. At 2500 MW, for example, steam delivers 937.579 MW net from 960.275 MW gross, after 22.696 MW of internal electrical loads. Brayton delivers 559.493 MW from 566.911 MW gross, after 7.418 MW of loads. Steam capital is 2.548 billion USD2025, versus 1.541 billion for Brayton. The resulting costs per net MWh are nearly equal.
 
-## What the authorized revision achieved
+The connecting hardware materially affects the comparison. Selected steam connectors use 10 circuits ×4 salt pumps at 225 kg/s design flow, 11×4 at 225 kg/s, and 14×3 at 250 kg/s. Holding the larger 14×4 connector at all source duties would instead give steam costs of 45.309, 40.065 and 37.133 USD/net MWh. The lower-duty improvement therefore comes from a declared equipment choice, with its price and capacity checks retained. No hardware is automatically resized.
 
-The [engineering equality explanation](evidence/engineering-equalities.md) identifies chosen inputs, calculated operating states and checks. Source heat, compressor ratios and purchased equipment remain explicit designer choices. Model-owned bypass controllers calculate the operating split or report insufficient heat transfer. Finite water cooling calculates required flow and pumping demand; recuperator effectiveness follows installed conductance and gas flow.
+The selected gas offers use 2000 kg/s at stage ratio 1.5, 1750 kg/s at 1.8, and 2000 kg/s at 1.65. Each uses 25/25/25 MW/K cooler conductance and 60 MW/K recuperator conductance. These remain the least-cost passing gas offers in the exact finite catalog after numerical repair.
 
-These are substantive physical additions. The reviewed scope counted five new or modified bodies, including one newly written iterative cooler calculation used three times. The [fourth design review](evidence/design-review-fourth-submission.md) accepted the scope and MR-7 roles without a solver-policy waiver. The [implementation review](evidence/implementation-integration-review.md) passed the exact implemented design and development evidence. All ten stock integration gates passed. The broader study then exposed the numerical limitation above.
+## Sensitivity and exclusions
 
-The static validator is not wholly green: 72 literal-screen warnings and 766 alias diagnostics were individually mapped to native evidence and accepted within the implementation review. They are separate from the subsequent numerical failure.
+All 48 declared efficiency, price, recurring-cost and common-charge sensitivities now verify. At 3000 MW, efficiency scenarios retain a positive steam-minus-Brayton cost gap of 4.007–13.104 USD/net MWh, but part of that range falls below the 5 USD materiality threshold. Branch quote scenarios span −22.946 to+41.837 and reverse the preference. A common upstream present-value charge of about 1.831 billion USD2025 would erase the nominal 3000 MW advantage because steam spreads that common cost over more net electricity. This is an accounting sensitivity, not a fuel-price or whole-plant model.
 
-## What the retained native outputs show
+Only 14 of 375 gas catalog offers pass every engineering check. The excluded offers comprise:
 
-**The following values are unreleased diagnostics, not a verified economic result or procurement recommendation.** They compare the selected steam offer with tested Brayton offers at matched source conditions, using conversion-subsystem cost per net MWh. They do not compare equally optimized technologies or whole-plant LCOE.
+- **39 equipment or coupling failures with solved coolers:** offered ratings or source/return requirements fail.
+- **233 with only upper cooler-root exclusions:** at least one cooler cannot find a solution below the retained 60°C water-property ceiling.
+- **78 with only lower cooler-root exclusions:** selected conductance is below the model's lower bracket near the infinite-water-flow limit.
+- **11 with both lower and upper exclusions across their coolers.**
 
-| Chosen reactor heat, MW | Selected steam cost, USD2025/net MWh | Best tested passing Brayton cost | Steam minus Brayton | Diagnostic interpretation |
-|---:|---:|---:|---:|---|
-| 2500 | 33.762 | 33.768 | −0.006 | Indistinguishable at the declared materiality |
-| 2800 | 32.406 | 36.466 | −4.060 | Inside the 5 USD/net MWh materiality band |
-| 3000 | 37.114 | 27.669 | +9.446 | Nominal Brayton advantage; conditional and unreleased |
+These categories prioritize cooler validity; other failures can overlap and remain visible in the full predicate data. All 464 individual upper-root exclusions in this catalog occur at the 60°C property ceiling. They are unsupported calculation ranges, not proof that the physical equipment cannot operate. A lower conductance exclusion is a modeled heat-transfer limitation. Solved coolers separately check purchased flow, power and duty ratings. The comparison ranks only supported passing offers, so these exclusions substantially limit catalog coverage. No property range was extended to create more passing candidates.
 
-The selected steam connecting hardware uses 10, 11 and 14 exchanger circuits, respectively. The same 14-circuit steam hardware at all source levels costs 45.309, 40.065 and 37.133 USD/net MWh. This shows why explicit connecting-equipment selection matters: holding excess hardware at lower source duty can dominate the apparent technology difference. The steam turbine offer itself remains fixed.
+Steam has 21 passing connecting-equipment offers out of 72 tested. Across the complete deduplicated study, 83 cases pass all 84 engineering predicates and 415 fail one or more. All 498 cases, including those failures, pass numerical verification. Failed offers never enter the economic ranking.
 
-There are 83 cases passing all 84 implemented engineering checks and 415 with failed checks. Of 375 gas catalog combinations, only 14 pass. Many failures occur because the finite-water cooler has no supported root inside its retained property range; this does not prove that a larger real cooler is physically worse. Other cases exceed offered equipment or fail source matching. Failed offers never enter the ranking. All 48 declared efficiency/price/service/common-charge sensitivities executed, but the two numerical failures prevent releasing the full sensitivity result.
+## What the repair changed
 
-The [diagnostic figures and detailed decomposition](evidence/matched-results-draft.md) retain net output, internal loads, capital, service, replacements, common-source-charge effects and price sensitivity. [Plot data](evidence/plot-data.json) joins every point to its native case and check status. The [candidate ledger](candidate-ledger.md) includes rejected approaches and the changed/reused inventory.
+Independent diagnosis isolated every original discrepancy. Four cases had cooler root errors amplified into water flow, pumping, small capacity margins or net energy. Two efficiency cases had heater-network root errors propagated into the hot-side margin and bypass flow, plus smaller local bypass error. The latter were not cooler failures.
 
-## Boundary and practical limits
+The three existing bisections now resolve their brackets to adjacent representable floating-point values and select the endpoint with the smaller equation residual. Focused regressions test the required outputs against unchanged independent evidence: 15 assembled cases and nine high-precision local cases. Full replay then verifies 434,256 scalar comparisons and 41,832 exact predicate comparisons. No input map, physical equation, property range, equipment offer, oracle, tolerance or engineering verdict changed. The original failed executable and evidence remain sealed.
 
-Both branches use the same calculated primary source state at each chosen reactor duty: 14 original helium paths, 8 MPa nominal source pressure, 773.15 K hot supply, and the inherited circulation law with the reviewed pressure-service assumption. Delivered heat includes recovered primary circulation work. Required return conditions are shared within each pair.
+The repair adds zero physical closures. Across the full work item, seven new or modified handwritten definitions are now disclosed, including the two local numerical variants. The [repair review](evidence/numerical-repair-review.md) passes this bounded scope. The earlier [engineering equality explanation](evidence/engineering-equalities.md) and [design review](evidence/design-review-fourth-submission.md) retain the physical variable roles and MR-7 rationale. Adjacent-float convergence and this verification do not promise uniform relative accuracy for arbitrary near-zero outputs outside the tested cases.
 
-The subsystem includes connecting heat exchangers, salt transport where required, conversion machinery, controllers, water pumping and heat rejection. Reactor equipment, fuel and upstream primary circulation costs and electricity remain outside the metric. Finance is common: USD2025, 85% availability, 5% real discount and 30 calendar years. The illustrative common upstream present-value charge is a denominator sensitivity, not a fuel-market model.
+## Boundary and qualification
 
-Installed prices and scope, controller/site hydraulics, machine efficiency maps and some service allowances remain conditional. A price multiplier cannot qualify missing hardware scope. Even after numerical repair, those limitations would prevent an unconditional technology recommendation.
+Both branches receive the same calculated source conditions at each chosen reactor duty: 14 original helium paths, 8 MPa nominal pressure and 773.15 K hot supply. The shared return state follows the inherited primary circulation law and reviewed pressure-service assumption. Delivered heat includes recovered primary circulation work. The subsystem includes connecting exchangers, salt transport where required, conversion machinery, controllers, water pumping and heat rejection. Upstream reactor equipment, fuel, primary circulation electricity and its costs remain outside the metric. Finance is common: USD2025, 85% availability, 5% real discount and 30 years.
 
-## Completion assessment
+Installed prices, scope allowances, pressure service, site hydraulics and machine efficiency maps remain conditional. The static validator retains 72 literal warnings and 766 alias diagnostics with their independently reviewed native-evidence dispositions. Numerical acceptance does not remove those disclosed qualification limits.
 
-| Requested outcome | State |
-|---|---|
-| Physical equalities, variable roles and bounded scope | Explained; independently reviewed |
-| MR-7 compliant implementation and native integration | Completed on the retained identity |
-| Matched source scenarios and explicit equipment offers | 498 native cases completed; failed cases retained |
-| Verified performance/economic comparison | **Unmet: six numerical mismatch cases** |
-| Price/efficiency sensitivity and causal decomposition | Executed; retained as unreleased diagnostics |
-| Sealed evidence, figures, data, renderer and replay | Supplied for the blocked attempt |
-| Final independent assurance | Failure assessment completed; blocked-record assurance recorded in the trail |
-| Formal goal/work-item closure | Owner-held |
+## Evidence and completion
 
-[Study record](../../../../exploration/component_alternatives/studies/20260926-design-study-component-alternatives/record.md) · [Replay](evidence/replay.md) · [Proposed passage](proposed-passage.md) · [Trail](trail.md).
+The [verified report](evidence/verified-comparison/report.md) contains the accounting, sensitivity and cost-correction details. Publication figures show [net output and failed offers](evidence/verified-comparison/matched-output.svg), [cost contributions](evidence/verified-comparison/matched-cost.svg), and [sensitivities](evidence/verified-comparison/matched-sensitivity.svg), with PNG copies, exact data and a reproducible renderer. The [assembly diagram](evidence/reviewed-comparison-boundary.svg) shows the common boundary.
+
+The [new native record](../../../../exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/record.md), [candidate ledger](candidate-ledger.md), [replay instructions](evidence/replay.md), and [final independent review](evidence/repaired-results-review.md) carry the completion evidence. Independent repair and final economic reviews both PASS. The new snapshot is `ea6b9de7cf242c88f764a9a997aadd1b6d813560b5c0953e84e63a7aeef9928e`; all 720 artifact hashes were checked. The authorized technical work is complete. Formal goal and WI-096 closure remain with the owner.

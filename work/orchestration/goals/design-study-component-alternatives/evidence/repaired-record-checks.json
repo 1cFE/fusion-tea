@@ -1,0 +1,10 @@
+{
+  "outcome": "pass",
+  "snapshot_sha256": "ea6b9de7cf242c88f764a9a997aadd1b6d813560b5c0953e84e63a7aeef9928e",
+  "artifact_hashes_checked": 720,
+  "findings_joined": 6,
+  "cases": 498,
+  "channels": 872,
+  "predicates": 84,
+  "record_links_resolve": true
+}

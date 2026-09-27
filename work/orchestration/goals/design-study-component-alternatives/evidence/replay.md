@@ -1,51 +1,45 @@
-# Replay and preservation
+# Replay the repaired matched comparison
 
-## Status and prerequisites
+The current record is `exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/`. Its predecessor, without the `-b` suffix, preserves the original failed executable, all 498 cases, six numerical failures and attribution correction. Never execute into either retained results directory. The route refuses an existing results directory.
 
-This is a blocked study, not a released economic result. Native execution completed all 498 points. The stock verifier is expected to fail on the retained evidence; six numeric mismatch cases are inventoried. Reproducing that failure is the faithful replay.
+## Verify the repaired native store
 
-Use the repository's `.codex-test/run` launcher and its licensed environment. TEAx revision is `8d877460ac4f6f264561d916e40c1708adb13397`; exact package/tool identities and source copies are in the study snapshot. The package was committed before execution at `29dcb5d8`. The original 13,215 protected files passed final preservation.
-
-Record: `exploration/component_alternatives/studies/20260926-design-study-component-alternatives/`. `snapshot.json` hashes the sealed package, native store, outputs, proposals, scans, verification failure, source copies and diagnostic figures. It explicitly records `released: false` and no passing verification-summary digest.
-
-## Read retained evidence
-
-- `record.md` contains the owner intake, all 84 constraint identities, all 43 axis groups, framing, failures and findings.
-- `results/cases.json` and `cases.csv` contain all native inputs, 876 scalar outputs and 84 verdicts per case.
-- `results/native/20260926-design-study-component-alternatives.db` is the primary stock study store.
-- `results/verification-attempt1-failure.json` records the first stock mismatch. `verification-diagnostics.json` inventories all 498 cases using the unchanged comparisons and independently derived predicates. `verification-blocker.json` records the stopped disposition.
-- `preparation/` contains exact local integration/preflight/identity/baseline receipts and the first launch's import failure. The successful integration return is also under the goal's `evidence/integration/`.
-- `sealed-package.tar.gz` preserves the exact native executable bytes; `results/sources/` retains model, oracle, route, tool and review inputs. Extract only into a fresh scratch directory when auditing.
-
-## Reproduce the expected verification failure
-
-Run from the repository root with the retained package still at its sealed identity:
+From the repository root, with the repaired package at executable `36f653faacc301e76132a9364c1b1024e6d0b3d28742138fcc4759aeef7b3986`:
 
 ```bash
-.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" python scripts/study/verify.py --package exploration/component_alternatives/component_alternatives_tea --manifest exploration/component_alternatives/studies/20260926-design-study-component-alternatives/manifest.json --identity exploration/component_alternatives/studies/20260926-design-study-component-alternatives/preparation/package_identity.json --store exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/native/20260926-design-study-component-alternatives.db --sample-size 498 --out /tmp/component-alternatives-verification-replay.json'
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" python scripts/study/verify.py --package exploration/component_alternatives/component_alternatives_tea --manifest exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/manifest.json --identity exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/preparation/package_identity.json --store exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/results/native/20260926-design-study-component-alternatives-b.db --sample-size 498 --out /tmp/component-alternatives-repaired-verification.json'
 ```
 
-Expected exit: failure on `c0206` annual energy, relative deviation about 2.001e−8 against 1e−9. The tool does not write a passing summary. This command reads the store; it does not rerun the model or change the record.
+This reads the retained native store and independently checks every case. The record's `results/execution-context.json` carries exact execution and verification commands. `preparation/` contains fresh baseline and integration receipts; its verification summary covers the integration baseline only. The full study summary is `results/verification_summary.json`.
 
-The complete native execution command and failed first-launch correction are preserved in `results/execution-context.json`. Do not run `execute_study.py` against the sealed record: it refuses an existing results directory. Any future authorized model repair must preserve this record and use a new identity and record; this turn does not authorize that work.
+## Re-execute in a fresh record
 
-## Render retained diagnostics
+Create a fresh repository-local scratch record and copy the new record's `proposed-points.json` into it. Choose a path that has no `results/` directory. Substitute that path for `FRESH_RECORD` below:
 
 ```bash
-.codex-test/run python work/orchestration/goals/design-study-component-alternatives/evidence/analyze-matched-study.py
-.codex-test/run python work/orchestration/goals/design-study-component-alternatives/evidence/render-reviewed-boundary.py
+.codex-test/run bash -c 'PYTHONPATH="$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit" python -m exploration.component_alternatives.studies.execute_study --record FRESH_RECORD --integration-return work/orchestration/goals/design-study-component-alternatives/evidence/integration-repaired/integration_return.json'
 ```
 
-The analysis reads native stored outputs and declared choices; it performs report arithmetic only. It writes the goal's SVG/PNG figures, summary and data. Figures state verification is blocked, distinguish engineering failures and mark numerical mismatches. It does not rewrite the sealed study's copies. The boundary renderer describes the reviewed model, including controller, cooler and pump scope.
+The study-local route composes all 490 inputs and calls stock PreparedListStrategy, StudyRunner and Store. It runs no physical solve. The three fresh `*-scan.json` files document the unchanged oracle's pre-execution scan of 501 offers, with three duplicate aliases consolidated into 498 exact native points. `window.json` records that finite catalog; it establishes no continuous optimum.
 
-## Original diagnostics and exact stop
+## Reproduce the figures in a fresh directory
 
-Earlier audits, rejected design submissions, source-matching probes and failed development cases remain in the goal evidence and WI-096 history. The current study does not reuse external source-power/ratio roots as an execution route. The independent failure review identifies the required native numerical accuracy repair. No tolerance waiver or new round is implicit in these replay instructions.
+```bash
+.codex-test/run python work/orchestration/goals/design-study-component-alternatives/evidence/verified-comparison/analyze-verified.py --out-dir /tmp/component-alternatives-repaired-figures
+```
 
-## Evidence seal
+The renderer checks complete stock verification, exact case coverage and fingerprint before reporting stored outputs. It performs only reporting arithmetic. Every plotted point retains its native ID, evidence digest, chosen inputs and all predicate verdicts. The unchanged assembly diagram and renderer remain `reviewed-comparison-boundary.svg`, `reviewed-comparison-boundary.png` and `render-reviewed-boundary.py` in this evidence directory.
 
-Blocked snapshot SHA256: `1e8a19872852e19390eba76445e11a866c5da8fb9f791122b6b64d6e16b66641`. All 635 retained artifact hashes were checked after sealing. This confirms preservation, not numerical acceptance.
+## Focused numerical regressions
 
-## Reporting correction
+See WI-096 `numerical-repair/report.md` for the kept 15-run regression and nine high-precision local checks. Use new output directories. They cover all six original failures and nearby sensitive offers while preserving the original independent oracle and tolerances. Full-study verification remains the wider acceptance evidence.
 
-The [cause-attribution addendum](../../../../../exploration/component_alternatives/studies/20260926-design-study-component-alternatives/addendum-20260926-cause-attribution.md) corrects the original finding #1: six cases fail verification, but only c0206 has an independently diagnosed cooler cause. The snapshot and results remain unchanged.
+## Preserved predecessor
+
+The original blocked snapshot remains `1e8a19872852e19390eba76445e11a866c5da8fb9f791122b6b64d6e16b66641`. Its `sealed-package.tar.gz`, native store, cases and failure diagnostics are unchanged. Replaying that executable requires its archived bytes or a separate checkout at `49c20e69`; the live package now carries the authorized repair. Extract archives only into a fresh scratch directory. Do not substitute the repaired package when interpreting the predecessor's identity.
+
+The old cooler-only attribution was corrected by its retained addendum. The repair's diagnosis and independent review now isolate all six causes: four cooler-root accuracy defects and two cases with network-root propagation plus smaller local bypass error. Old diagnostic figures remain in their original locations; verified figures live in `verified-comparison/`.
+
+## Current seal and review
+
+Verified snapshot SHA256: `ea6b9de7cf242c88f764a9a997aadd1b6d813560b5c0953e84e63a7aeef9928e`. Independent final assurance checks all 720 new artifacts and all 635 predecessor artifacts with zero changes. The archived initial economic review remains immutable; external `repaired-results-review.md` adds final hash assurance. Run `.codex-test/run python work/orchestration/goals/design-study-component-alternatives/evidence/check-repaired-record.py` for record hashes, exact sample coverage, native findings joins and top-level record links.

@@ -1,6 +1,6 @@
 # Candidate ledger
 
-[AGENT] Updated during round 1. A candidate here is a comparison strategy, not a successful engineering design. Native diagnostic case identities and every failure are in `evidence/readiness-screen.json`; the executed 498-case blocked study retains complete case identities in `exploration/component_alternatives/studies/20260926-design-study-component-alternatives/results/cases.json`. No verified ranking is released.
+[AGENT] Updated for the authorized numerical-repair continuation. Strategies below preserve the earlier accepted and rejected paths. The complete 498-case repaired record is `exploration/component_alternatives/studies/20260926-design-study-component-alternatives-b/results/cases.json`; all input maps and engineering verdicts match the retained predecessor. Stock verification now passes all cases. Native readiness failures and the original blocked study remain unchanged. Final economic review is recorded in the goal trail.
 
 | Candidate | Evidence and disposition | Status |
 |---|---|---|
@@ -11,7 +11,7 @@
 | Original C-1 versus original whole-plant steam outputs | Diagnostic controls execute; C-1 needs 31% modeled bypass and has different auxiliary/cost boundaries | Retained controls; not a matched economic comparison |
 | Fixed supplied source at 80/90/100% duty | Steam temperature checks remain applicable at fixed temperatures, but a fixed active IHX may not achieve all duties and required returns without a modeled control | Replaced as primary design proposal by offered exchanger circuit counts; no main points executed |
 | Offered steam IHX circuit counts with externally matched source duty | Original diagnostic matches the unchanged primary loop and selected 10/11/12 IHXs at delivered heat 2819.514/3024.031/3214.740 MW. Submission 3 rejected external physical-closure solves as the main-study route. | Historical diagnostic retained; superseded production design |
-| Chosen source heat/ratio with model-owned primary bypass control | Source offers 2500/2800/3000 MW and independently chosen 10/11/12/14 IHXs; controllers calculate bypass or retain deficient transfer. Five substantive bodies include one new finite-water-cooler closure family. Submission 4 passed independent review without a policy waiver. | Implemented and integrated; 498-case native study completed, but six numerical verification failures block release |
+| Chosen source heat/ratio with model-owned primary bypass control | Source offers 2500/2800/3000 MW and independently chosen 10/11/12/14 IHXs; controllers calculate bypass or retain deficient transfer. Five substantive bodies include one new finite-water-cooler closure family. Submission 4 passed independent review without a policy waiver. | Implemented and integrated; repaired replay verifies all 498 cases under unchanged tolerances. Same source, equipment, domain and physical equations |
 | Two circulator cost correlations (C-5) | Changes price equation for the same equipment | Declined; does not answer the categorical component question |
 | Recuperator present/absent | Genuine physical alternative but shares omitted equipment/cooling issues and does not improve the present scope | Deferred; no unrelated study opened |
 
@@ -25,16 +25,16 @@ The isolated assembly is `models/designs/component_alternatives/plant.sysml`, wi
 
 | Scope | Final behavior and evidence |
 |---|---|
-| Primary loop, bypass algorithms and gas network | Existing definitions/bodies reused; chosen source and ratios remain public inputs. |
+| Primary loop, bypass algorithms and gas network | Existing physical definitions reused. Network and bypass now use isolated numerical variants resolving the original brackets to adjacent floating-point values; chosen source and ratios remain public inputs. |
 | Steam cycle and original ratings | Reused at the held 445/445/42 °C offer; broader temperature/head variation declined. |
 | Selected salt pump count | Additive variant permits independently chosen pump count; k=2 control matches the original implementation. |
 | Controlled boundary | New bounded accounting/algebra connects actual transfer, returned temperature, controller loads and ratings. |
 | Recuperator capability | New algebra derives effectiveness from selected UA and operating flow. |
-| Finite water cooler | One new iterative definition used for three coolers, including pump heat and property limits; main-study numerical accuracy remains unresolved. |
+| Finite water cooler | One new iterative definition used for three coolers, including pump heat and property limits. Its numerical stopping rule was repaired and all original/nearby cases plus the full catalog verified; property domain unchanged. |
 | Conversion ledger | New subsystem energy and present-value cost accounting, with explicit replacement/service assumptions. |
 | Native constraint representation | Boolean guards use supported numeric screens; two labels and residual-magnitude views align stock identities without changing physical predicate meanings. |
 
-WI-096's report, implementation census and independent integration review distinguish these extensions from unchanged reuse. No required coupled physical solve runs in a study harness.
+WI-096's report, numerical-repair supplement and independent reviews distinguish these extensions from unchanged reuse. The repair census counts seven new or modified handwritten definitions across WI-096, including two new local numerical variants; the repair adds no physical closure. No required coupled physical solve runs in a study harness.
 
 ## Executed catalog and disposition
 
@@ -42,10 +42,10 @@ WI-096's report, implementation census and independent integration review distin
 |---|---:|---|---|
 | Gas flow × stage ratio × service offer at three source duties | 375 | 14 pass; 322 have a cooler no-root validity failure; 39 other failed combinations | Retained finite catalog; no continuous optimum or envelope claim |
 | Steam connecting-equipment offers at selected passing gas anchors | 72 / 69 additional | 21 pass including three aliases | Retained; turbine offer remains fixed |
-| Efficiency, price, recurring allowance and common upstream PV sensitivities | 48 | All native predicates pass; two cases fail numerical verification | Unreleased sensitivity evidence |
+| Efficiency, price, recurring allowance and common upstream PV sensitivities | 48 | All native predicates and scalar verification pass | Verified conditional sensitivity evidence |
 | Smaller controller offers | 6 | Three steam offers pass; three gas offers fail bypass capacity | Retained; no assumption that every smaller offer must fail |
-| All distinct native cases | 498 | 83 pass all checks, 415 fail; six numerical mismatches in total | Verification blocked; no economic release |
+| All distinct native cases | 498 | 83 pass all checks, 415 fail; zero numerical mismatches | Complete verified catalog; failures excluded from economic ranking |
 
 The nominal selected steam connectors are 10 circuits × 4 pumps at 225 kg/s design flow, 11 × 4 at 225 kg/s, and 14 × 3 at 250 kg/s for reactor heat 2500, 2800 and 3000 MW. Gas selections are 2000 kg/s with stage ratio 1.5, 1750 kg/s with ratio 1.8, and 2000 kg/s with ratio 1.65. All use the tested 25/25/25 MW/K cooler offer and 60 MW/K recuperator. These are selected discrete offers, not automatically sized equipment or equally optimized technologies.
 
-Full choice provenance and duplicate aliases are retained in the study's proposal files, anchor selections and `window.json`. Every native failed case and all earlier diagnostic refusals remain available. Numerical verification failures are separately joined in `results/verification-diagnostics.json`; passing predicates do not override them.
+Full choice provenance and duplicate aliases are retained in the study's proposal files, anchor selections and `window.json`. Every native failed case and all earlier diagnostic refusals remain available. The predecessor retains its six numerical failures in `results/verification-diagnostics.json`. The new `results/replay-comparison.json` joins every old/new identity and shows zero engineering-verdict changes. New report data separates lower cooler-approach limits, upper property/terminal limits and solved equipment-rating failures. These exclusions restrict the catalog comparison; they do not establish a physical technology envelope.
