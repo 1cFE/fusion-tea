@@ -1,0 +1,266 @@
+{
+  "status": "PASS",
+  "kind": "constructed equation fixtures; not plant candidates",
+  "precisions_decimal_digits": [
+    80,
+    160
+  ],
+  "cases": [
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 0.001,
+      "ch": 0.4,
+      "cs": 4.0,
+      "value_80_digits": 0.2995879401935822,
+      "value_160_digits": 0.2995879401935822,
+      "binary64": 0.2995879401935822,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 2.0,
+      "ch": 0.4,
+      "cs": 4.0,
+      "value_80_digits": 118.79889406570322,
+      "value_160_digits": 118.79889406570322,
+      "binary64": 118.79889406570322,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 50.0,
+      "ch": 0.4,
+      "cs": 4.0,
+      "value_80_digits": 120.0,
+      "value_160_digits": 120.0,
+      "binary64": 120.0,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 1000.0,
+      "ch": 0.4,
+      "cs": 4.0,
+      "value_80_digits": 120.0,
+      "value_160_digits": 120.0,
+      "binary64": 120.0,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 0.001,
+      "ch": 3.99999999996,
+      "cs": 4.0,
+      "value_80_digits": 0.2999250187453133,
+      "value_160_digits": 0.2999250187453133,
+      "binary64": 0.29992501874531324,
+      "relative_error": 1.8508343006355238e-16
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 2.0,
+      "ch": 3.99999999996,
+      "cs": 4.0,
+      "value_80_digits": 399.99999999933334,
+      "value_160_digits": 399.99999999933334,
+      "binary64": 399.9999999993334,
+      "relative_error": 1.4210854715225687e-16
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 50.0,
+      "ch": 3.99999999996,
+      "cs": 4.0,
+      "value_80_digits": 1111.111111105967,
+      "value_160_digits": 1111.111111105967,
+      "binary64": 1111.1111111059672,
+      "relative_error": 2.0463630789985622e-16
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 1000.0,
+      "ch": 3.99999999996,
+      "cs": 4.0,
+      "value_80_digits": 1195.219123500024,
+      "value_160_digits": 1195.219123500024,
+      "binary64": 1195.219123500024,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 0.001,
+      "ch": 4.0,
+      "cs": 4.0,
+      "value_80_digits": 0.2999250187453137,
+      "value_160_digits": 0.2999250187453137,
+      "binary64": 0.29992501874531363,
+      "relative_error": 1.8508343006355213e-16
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 2.0,
+      "ch": 4.0,
+      "cs": 4.0,
+      "value_80_digits": 400.0,
+      "value_160_digits": 400.0,
+      "binary64": 400.0,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 50.0,
+      "ch": 4.0,
+      "cs": 4.0,
+      "value_80_digits": 1111.111111111111,
+      "value_160_digits": 1111.111111111111,
+      "binary64": 1111.111111111111,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 1000.0,
+      "ch": 4.0,
+      "cs": 4.0,
+      "value_80_digits": 1195.219123505976,
+      "value_160_digits": 1195.219123505976,
+      "binary64": 1195.219123505976,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 0.001,
+      "ch": 4.00000000004,
+      "cs": 4.0,
+      "value_80_digits": 0.2999250187453141,
+      "value_160_digits": 0.2999250187453141,
+      "binary64": 0.299925018745314,
+      "relative_error": 1.8508343006355188e-16
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 2.0,
+      "ch": 4.00000000004,
+      "cs": 4.0,
+      "value_80_digits": 400.00000000066666,
+      "value_160_digits": 400.00000000066666,
+      "binary64": 400.0000000006666,
+      "relative_error": 1.4210854715178318e-16
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 50.0,
+      "ch": 4.00000000004,
+      "cs": 4.0,
+      "value_80_digits": 1111.1111111162552,
+      "value_160_digits": 1111.1111111162552,
+      "binary64": 1111.1111111162552,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 1000.0,
+      "ch": 4.00000000004,
+      "cs": 4.0,
+      "value_80_digits": 1195.2191235119283,
+      "value_160_digits": 1195.2191235119283,
+      "binary64": 1195.2191235119283,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 0.001,
+      "ch": 40.0,
+      "cs": 4.0,
+      "value_80_digits": 0.2999587544058182,
+      "value_160_digits": 0.2999587544058182,
+      "binary64": 0.29995875440581826,
+      "relative_error": 1.8506261416246595e-16
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 2.0,
+      "ch": 40.0,
+      "cs": 4.0,
+      "value_80_digits": 464.4615970142194,
+      "value_160_digits": 464.4615970142194,
+      "binary64": 464.4615970142194,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 50.0,
+      "ch": 40.0,
+      "cs": 4.0,
+      "value_80_digits": 1199.985952100261,
+      "value_160_digits": 1199.985952100261,
+      "binary64": 1199.985952100261,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "passive",
+      "drive": 300.0,
+      "ua": 1000.0,
+      "ch": 40.0,
+      "cs": 4.0,
+      "value_80_digits": 1200.0,
+      "value_160_digits": 1200.0,
+      "binary64": 1200.0,
+      "relative_error": 0.0
+    },
+    {
+      "fixture": "inverse_LMTD",
+      "hot_gap": 30.0,
+      "prescribed_mean": 30.0,
+      "log_cold_gap_80_digits": 3.4011973816621555,
+      "log_cold_gap_160_digits": 3.4011973816621555,
+      "log_cold_gap_binary64": 3.4011973816621555,
+      "log_absolute_error": 0.0
+    },
+    {
+      "fixture": "inverse_LMTD",
+      "hot_gap": 230.0,
+      "prescribed_mean": 3.0866006705172273,
+      "log_cold_gap_80_digits": -69.07755278982137,
+      "log_cold_gap_160_digits": -69.07755278982137,
+      "log_cold_gap_binary64": -69.07755278982141,
+      "log_absolute_error": 4.263256414560601e-14
+    },
+    {
+      "fixture": "inverse_LMTD",
+      "hot_gap": 1e-25,
+      "prescribed_mean": 3.650636810525568,
+      "log_cold_gap_80_digits": 5.438079308923196,
+      "log_cold_gap_160_digits": 5.438079308923196,
+      "log_cold_gap_binary64": 5.438079308923022,
+      "log_absolute_error": 1.7319479184152442e-13
+    }
+  ],
+  "sub_float_hot_gap": {
+    "drive": 100.0,
+    "ua": 1000.0,
+    "ch": 10.0,
+    "cs": 1.0,
+    "log_hot_gap": -895.5001903296697,
+    "log_cold_gap": 4.499809670330266,
+    "rounded_transferred_heat": 100.0
+  }
+}

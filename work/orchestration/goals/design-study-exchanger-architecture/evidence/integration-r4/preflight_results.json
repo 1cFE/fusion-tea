@@ -1,0 +1,130 @@
+{
+  "schema_version": "study-preflight-results/v1",
+  "tool": {
+    "path": "scripts/study/preflight.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "52c3a709175a3aaded006bb96576aa2407689f598fa13528b8c2f8db493900be",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/preflight.py",
+          "sha256": "86acedcd1b5c35a658c692b5a6631f2f2e0e96ccd05d1e11c65143fa55688472"
+        },
+        {
+          "path": "scripts/study/schemas/baseline_result.v1.schema.json",
+          "sha256": "103cf640a5c9d4a2d7b7fbe13efa887fd8471ffe79a11cc0a7fc4f71ff86e53b"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/preflight_results.v1.schema.json",
+          "sha256": "c6d25e857e533a4f92666533b31f3cd86641521c159e6cc300fb85e62dda27be"
+        }
+      ]
+    }
+  },
+  "subcommand": "gates",
+  "inputs": {
+    "package": "exploration/exchanger_architecture/thermal_requirements/exchanger_architecture_thermal_tea",
+    "manifest": "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/manifest.json",
+    "axis_declaration": "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/axes.json",
+    "identity_document": "work/orchestration/goals/design-study-exchanger-architecture/evidence/integration-r4/package_identity.json",
+    "baseline_result": "work/orchestration/goals/design-study-exchanger-architecture/evidence/integration-r4/baseline_result.json"
+  },
+  "input_digests": {
+    "axis_declaration": "8a098c9645633d25b2c7b6ae9dd662d461cb5e2bb1b7fe278bb36584e13d1c66",
+    "baseline_result": "5e5976937a1c1a969dcbdf55796bdc68b48cab65c45aeff007f582da2294f035",
+    "identity_document": "8dc754cd87ba9f6b9a16814d8abf98f8a2242883425d902d3e2e492a5a8bd14d",
+    "manifest": "dd062a9aea815e70e5b9ed131c33dcb0e7816ea34b97c210860c9b851952e621"
+  },
+  "gates": [
+    {
+      "gate": "declared_keys",
+      "status": "pass",
+      "checked": "declared axis keys against the package's inputs",
+      "detail": "35 declared keys across 15 groups, all package inputs"
+    },
+    {
+      "gate": "sibling_scan",
+      "status": "pass",
+      "checked": "undeclared suffix siblings (advisory)",
+      "detail": "warnings: 35",
+      "warnings": [
+        "offer: undeclared suffix-sibling aries_integrated_plant__auxiliary_cooling__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__blanket_inventory__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__compressor_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__conversion_services__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__divertor_duty_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__divertor_inventory__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__divertor_pump__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__electrical_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__facilities__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__fuel_processing_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__fuel_services__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__generator_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__he_duty_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__he_pump__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__heat_rejection_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__heating_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__impurity_control__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__instrumentation_control__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__lipb_inventory__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__magnet_inventory__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__magnet_power_supplies__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__miscellaneous_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__other_reactor_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__pbli_duty_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__pbli_pump__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__primary_piping__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__primary_support__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__secondary_transport__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__shield_inventory__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__site_land__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__turbine_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__unallocated_source_scope__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__vacuum_equipment__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__vf_coils__price_factor",
+        "offer: undeclared suffix-sibling aries_integrated_plant__waste_equipment__price_factor"
+      ]
+    },
+    {
+      "gate": "identity",
+      "status": "pass",
+      "checked": "the executable identity, recomputed",
+      "detail": "kind sealed, digest 668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23 recomputed from 0 allowed-modified file(s) and 0 declared source(s); every other sealed artifact matches"
+    },
+    {
+      "gate": "manifest_currency",
+      "status": "pass",
+      "checked": "the manifest's recorded package facts",
+      "detail": "both recorded package fingerprints match the package on disk"
+    },
+    {
+      "gate": "baseline_headline",
+      "status": "pass",
+      "checked": "the pinned headline and verdicts",
+      "detail": "aries_integrated_plant__lifecycle_price__evaluate__lcoe reproduces at relative deviation 0.000e+00; 24/24 pinned verdicts match"
+    },
+    {
+      "gate": "package_clean",
+      "status": "pass",
+      "checked": "the committed package tree",
+      "detail": "package tree is byte-untouched (git clean)"
+    }
+  ],
+  "outcome": "pass"
+}

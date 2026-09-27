@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/reid/1cfe/fusion-tea/work/orchestration/goals/design-study-exchanger-architecture/evidence/r4-freeze-study.py", line 35, in <module>
+    prepared=route.prepare(route.PACKAGE_DIR,Path(tmp))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/reid/1cfe/fusion-tea/exploration/exchanger_architecture/thermal_requirements/studies/study_route.py", line 83, in prepare
+    from simkit.evaluation.evaluator import PreparedEvaluator
+ModuleNotFoundError: No module named 'simkit'

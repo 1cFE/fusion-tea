@@ -1,0 +1,32 @@
+{
+  "source_record": "20260927-exchanger-thermal-comparison-b",
+  "files": {
+    "figures/r3-actual-thermal-states.png": "30fc8e164acde2a0cbb3314191089bae77e08c3008d27ba58a2c11cffa7bfcc0",
+    "figures/r3-actual-thermal-states.svg": "601cbb1ce4a63fd2a254e0ddd150e43b8c9b63c29846cf9329f661562e6a0fb4",
+    "figures/r3-break-even.png": "fe65def1be7d93fefb2494c63f743b26bebd713d1b0eaa6826a6e6be19280977",
+    "figures/r3-break-even.svg": "b16d4e77a2e7332565a6686caf8a6ae9e4e42fe13643f6c6db8aca89549d2617",
+    "figures/r3-connections.png": "9ebfc35e520f2247b03dd04e3f172e86228621a54de953109abc98e40feebe0f",
+    "figures/r3-connections.svg": "c5ec6b3cc90b93c052f7e5dd5cf0d56c4b68a662e3aefbf560ed8bdf02142c7c",
+    "figures/r3-main-performance.png": "5edf0af8fbd4b0bf29e383cdef45576a6449e1612668c5aa326b761410bc52d2",
+    "figures/r3-main-performance.svg": "5b6ac19b77e478c28af76bec87035266ba5796b5fabd289fe325a70b96ec34c8",
+    "figures/r3-sensitivities.png": "b371fd2cbefb8f25e46a9573ae32686ab225bd5ec7f51a301ebfe2efb6fa62ab",
+    "figures/r3-sensitivities.svg": "9f63e4b63da889d786474652233261dda8bd5de7f07efa477f338f7f4317e114",
+    "r3-data/best-ties.csv": "82271c041f2208563517c1a6a0f55f7e610b17bf3f1144a19460d637bbeef0b3",
+    "r3-data/break-even.csv": "252e74eed96fe12db1270c9e26ab9974a1f36af720c55df971574b02a19a8e19",
+    "r3-data/cases.csv": "21ca04633fdd35e0b23ae07ea755f13ac2b9d22e564e0b0b7addcae45718b803",
+    "r3-data/equal-flow.csv": "a362128730700e5cea534a650f663c59ca1f292a5badc67356d49f9af3466a35",
+    "r3-data/financial-parents.csv": "21e1100dd9ca6dd2168017722bc145e35721c5056a647daa041a2988a6c20adf",
+    "r3-data/pairs.csv": "5c5078c08e87efc13fa72cd1db5687b4537f80da930de04737c2e0b490bc0cf5",
+    "r3-data/refinement.csv": "4e951b1e373ee5b42880a62456cd68990141d42c57206e9a91f3044d82b5d7ff",
+    "r3-data/reporting.json": "c57697e4611fe67849da9d5e03ecc01638e7c00b8232adf9754e2190e2025e14",
+    "r3-data/selections.csv": "2f0cd7f53754a4a0f85bcd947f18bca9cc2ba5252b32313832ce27d6058d2ea7",
+    "r3-data/sensitivities.csv": "2c119436b9a672b80bd447ab4653d212c113d2653fd388c3f2b384e3d5843e9e",
+    "r3-data/sensitivity-coverage.csv": "7a2cdb7a32d8ad923d37ab50bf599767963e1d7f6465410e4ebdf1aa7601a99a",
+    "r3-data/thermal.csv": "cfc84ca4f398f12168d2ecc6efb4f8e1ae063699db9e7523443f90049a88fa61",
+    "r3-data/unpaired.csv": "7464829e1b87779e0d513e54a716cddcd7023c12e8b32dbd3988603091b97b0c",
+    "r3-render-results.py": "581aa5ed650d2848f10e324384a595cfccc93529967709984c9207e5f930cbb1",
+    "r3-results-analysis.md": "bcd9f74f510e6e6a757046f9bdfc5871026af6086e3c93505d2b82fbc24b1594"
+  },
+  "relative_reading_links_checked": 13,
+  "copied_bytes_identical": true
+}

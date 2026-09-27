@@ -238,3 +238,21 @@ T-006 · exploration/exchanger_architecture/thermal_requirements/studies/2026092
 ### T-007 start — 2026-09-27
 
 T-007 · work/active/WI-097_exchanger-thermal-requirements · numerical repair under unchanged semantics. Continuing implementation author owns diagnosis/body/tests; independent oracle author owns failed-map calculations; continuing independent reviewer checks remedy before model changes. Coordinator preserves failed evidence and owns integration. Model edits remain gated on the remedy review.
+
+### T-007 return — 2026-09-27
+
+- **Outcome:** COMPLETE. Independently reviewed stable counterflow evaluation repairs both failures without changing equations, requirements, oracle or tolerances. Implementation bf1fae9f and audited interface/evidence 0c60dc4a pass all ten native integration gates in evidence/integration-r4/integration_return.json.
+- **Evidence:** WI-097 evidence/numerical-repair-review.md, repair-implementation-report.md and repair-oracle-verification.json. Twenty controls verify 435 channels and 35 predicates; seven legacy cases retain exact outputs. Fifty-six author regression tests pass. Executable 668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23; semantic fingerprint unchanged.
+- **Disposition:** Release exact-map study T-008. The failed attempt remains immutable at ca25c49c; all 1277 supplied maps are retained byte-for-byte. Formal work-item closure remains owner-held.
+
+### T-008 scope
+
+- **Objective:** Execute and independently verify the unchanged 1277 maps, then deliver the refined thermal and economic comparison with an immutable record and full replay.
+- **Scope:** Reuse accepted physical design, source reading and study protocol. Fresh independent recheck of all maps and original outer edges, native execution on the corrected pin, all-point verification, data/figures/answer, independent final review and seal. No new maps, model changes or relaxed requirements.
+- **Inputs:** Corrected integration return; replacement record 20260927-exchanger-thermal-comparison-b; prior immutable scan and failed attempt; accepted reviews.
+- **Done when:** Every retained map completes and verifies, preferred main cases satisfy the declared thermal contract, refined comparisons and missing-cost allowances are independently reviewed, and the sealed study replays exactly.
+- **Stop when:** Native or independent verification fails, a scientific meaning change is needed, or the fourth-round limit prevents completion. Report any unmet criteria explicitly.
+
+### T-008 start — 2026-09-27
+
+T-008 · exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b · coordinator owns execution, record and delivery; independent oracle author owns all-point verification; reporting author owns derived tables/figures; continuing independent reviewer owns final comparison/seal review. Fresh independent window recheck evaluates all 1277 maps and 46 outer-edge witnesses. No owner decision remains pending for this work.

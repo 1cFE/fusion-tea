@@ -1,0 +1,36 @@
+{
+  "kind": "Reuse completed native integration route and preflight; no repeated physical execution",
+  "integration_return": "work/orchestration/goals/design-study-exchanger-architecture/evidence/integration-r4/integration_return.json",
+  "integration_return_sha256": "d7e3fd698962df82a97f82733a70144978ae85b7a03361399848b394c488905f",
+  "integration_class": "CANDIDATE",
+  "preflight_outcome": "pass",
+  "record_manifest_and_axes_match_integration": true,
+  "baseline_inputs_equal_pinned_record_point": true,
+  "input_file_sha256": {
+    "axis_declaration": "8a098c9645633d25b2c7b6ae9dd662d461cb5e2bb1b7fe278bb36584e13d1c66",
+    "baseline_result": "5e5976937a1c1a969dcbdf55796bdc68b48cab65c45aeff007f582da2294f035",
+    "identity_document": "8dc754cd87ba9f6b9a16814d8abf98f8a2242883425d902d3e2e492a5a8bd14d",
+    "manifest": "dd062a9aea815e70e5b9ed131c33dcb0e7816ea34b97c210860c9b851952e621"
+  },
+  "copies": [
+    {
+      "source": "work/orchestration/goals/design-study-exchanger-architecture/evidence/integration-r4/package_identity.json",
+      "destination": "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/preparation/package_identity.json",
+      "sha256": "8dc754cd87ba9f6b9a16814d8abf98f8a2242883425d902d3e2e492a5a8bd14d",
+      "byte_identical": true
+    },
+    {
+      "source": "work/orchestration/goals/design-study-exchanger-architecture/evidence/integration-r4/baseline_result.json",
+      "destination": "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/preparation/baseline_result.json",
+      "sha256": "5e5976937a1c1a969dcbdf55796bdc68b48cab65c45aeff007f582da2294f035",
+      "byte_identical": true
+    },
+    {
+      "source": "work/orchestration/goals/design-study-exchanger-architecture/evidence/integration-r4/preflight_results.json",
+      "destination": "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/preparation/preflight.json",
+      "sha256": "68a24222cc6e654c8a683923262b55fc53a888484ec213387be9ecc602c6a11e",
+      "byte_identical": true
+    }
+  ],
+  "native_evaluations_during_copy": 0
+}

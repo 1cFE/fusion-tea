@@ -1,0 +1,3580 @@
+{
+  "schema_version": "study-verification-summary/v1",
+  "tool": {
+    "path": "scripts/study/verify.py",
+    "source_digest": {
+      "recipe": "tool-source-digest/v1",
+      "digest": "f733a8c2c236082aea48853c2da7e060c727bd1bb11d2515c8fce25657329831",
+      "files": [
+        {
+          "path": "scripts/study/common.py",
+          "sha256": "ae5fbca7be87d2fa1783affe4773332c9a898a265f70215aec9ad1489c8df521"
+        },
+        {
+          "path": "scripts/study/identity.py",
+          "sha256": "a6871eaaba1078a524b27c998744c6778ac6b5304d39d6eb083b9be4533dc01e"
+        },
+        {
+          "path": "scripts/study/manifest.py",
+          "sha256": "3c1bd8043b1f4ab0424ea9a77cc243e03bc10b3766e7ac634b9e93c25eb749ee"
+        },
+        {
+          "path": "scripts/study/schemas/package_identity.v1.schema.json",
+          "sha256": "d312ac300f1f639bccad3300e5c617658fe307594eaf9deadea66d6162008ad9"
+        },
+        {
+          "path": "scripts/study/schemas/verification_summary.v1.schema.json",
+          "sha256": "7afe14d745ac7241116096f0a93af35f675d3570c96e5b0e080fac427a17fc87"
+        },
+        {
+          "path": "scripts/study/verify.py",
+          "sha256": "34ee38ed9ae38f448199f0e968a13cd2448ec97098bef601995031d1c3fbc8ba"
+        }
+      ]
+    }
+  },
+  "command": [
+    "scripts/study/verify.py",
+    "--package",
+    "exploration/exchanger_architecture/thermal_requirements/exchanger_architecture_thermal_tea",
+    "--manifest",
+    "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/manifest.json",
+    "--identity",
+    "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/preparation/package_identity.json",
+    "--store",
+    "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/results/native/20260927-exchanger-thermal-comparison-b.db",
+    "--sample-size",
+    "1277",
+    "--out",
+    "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/results/verification_summary.json"
+  ],
+  "teax": {
+    "module_path": "../teax/packages/teax-simkit/simkit",
+    "revision": "unrecorded"
+  },
+  "package": {
+    "path": "exploration/exchanger_architecture/thermal_requirements/exchanger_architecture_thermal_tea",
+    "package_name": "exchanger_architecture_thermal_tea",
+    "git_clean": true
+  },
+  "identity": {
+    "kind": "sealed",
+    "digest": "668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23",
+    "matches_preflight": true
+  },
+  "manifest": {
+    "path": "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/manifest.json",
+    "schema_version": "study-package-manifest/v1",
+    "digest": "dd062a9aea815e70e5b9ed131c33dcb0e7816ea34b97c210860c9b851952e621"
+  },
+  "oracle": {
+    "kind": "python_callable",
+    "sys_path": ".",
+    "module": "exploration.exchanger_architecture.thermal_requirements.studies.oracle_entry",
+    "callable": "evaluate",
+    "operand_bindings_digest": "1b0b13880319562cdc1e6c00937fa8d00739aab746ea1d9e15a5b10b4e44dfbb"
+  },
+  "stores": [
+    {
+      "path": "exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison-b/results/native/20260927-exchanger-thermal-comparison-b.db",
+      "study_id": "20260927-exchanger-thermal-comparison-b",
+      "compatibility": {
+        "digest": "6b1c0f1063995e51a3be8a64023005575ad8d67c73dcb0cc4ab601726d6ea32b",
+        "evidence_schema_version": "v3",
+        "executable_fingerprint": "668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23",
+        "input_schema_version": "input-v1",
+        "model_contract_fingerprint": "423eebc09f9901ffda8ee77a480d67100919dd7ba4d325e09f8c58f1e704ce31",
+        "strategy_config": "d8c1069131c4a71915e3f0f26470a6027471be87b5368e68126bd4c5916cb1fc",
+        "strategy_identity": "prepared-list/v1",
+        "study_definition_fingerprint": "ec91fae18df3a019b3a812d735e48d2fc0b1097bf47b1add826423ef8f060efc",
+        "study_id": "20260927-exchanger-thermal-comparison-b"
+      },
+      "cases_total": 1277,
+      "cases_completed": 1277,
+      "sampling": {
+        "scheme": "stratified-by-verdict-combination/v1",
+        "seed": "124a644c5002a819",
+        "seed_source": "derived",
+        "sample_size_requested": 1277,
+        "strata_observed": 24,
+        "sampled_rows": 1277,
+        "sampled_case_ids": [
+          "20260927-exchanger-thermal-comparison-b:c0275",
+          "20260927-exchanger-thermal-comparison-b:c1189",
+          "20260927-exchanger-thermal-comparison-b:c0169",
+          "20260927-exchanger-thermal-comparison-b:c0729",
+          "20260927-exchanger-thermal-comparison-b:c0377",
+          "20260927-exchanger-thermal-comparison-b:c0104",
+          "20260927-exchanger-thermal-comparison-b:c0116",
+          "20260927-exchanger-thermal-comparison-b:c0179",
+          "20260927-exchanger-thermal-comparison-b:c0320",
+          "20260927-exchanger-thermal-comparison-b:c1098",
+          "20260927-exchanger-thermal-comparison-b:c1134",
+          "20260927-exchanger-thermal-comparison-b:c1261",
+          "20260927-exchanger-thermal-comparison-b:c1146",
+          "20260927-exchanger-thermal-comparison-b:c1162",
+          "20260927-exchanger-thermal-comparison-b:c1150",
+          "20260927-exchanger-thermal-comparison-b:c1158",
+          "20260927-exchanger-thermal-comparison-b:c1157",
+          "20260927-exchanger-thermal-comparison-b:c1159",
+          "20260927-exchanger-thermal-comparison-b:c1161",
+          "20260927-exchanger-thermal-comparison-b:c1271",
+          "20260927-exchanger-thermal-comparison-b:c1272",
+          "20260927-exchanger-thermal-comparison-b:c1269",
+          "20260927-exchanger-thermal-comparison-b:c1270",
+          "20260927-exchanger-thermal-comparison-b:c1276",
+          "20260927-exchanger-thermal-comparison-b:c1262",
+          "20260927-exchanger-thermal-comparison-b:c0001",
+          "20260927-exchanger-thermal-comparison-b:c0816",
+          "20260927-exchanger-thermal-comparison-b:c1128",
+          "20260927-exchanger-thermal-comparison-b:c0640",
+          "20260927-exchanger-thermal-comparison-b:c0240",
+          "20260927-exchanger-thermal-comparison-b:c0162",
+          "20260927-exchanger-thermal-comparison-b:c0630",
+          "20260927-exchanger-thermal-comparison-b:c1273",
+          "20260927-exchanger-thermal-comparison-b:c0712",
+          "20260927-exchanger-thermal-comparison-b:c1153",
+          "20260927-exchanger-thermal-comparison-b:c0508",
+          "20260927-exchanger-thermal-comparison-b:c0013",
+          "20260927-exchanger-thermal-comparison-b:c0016",
+          "20260927-exchanger-thermal-comparison-b:c0406",
+          "20260927-exchanger-thermal-comparison-b:c0955",
+          "20260927-exchanger-thermal-comparison-b:c0379",
+          "20260927-exchanger-thermal-comparison-b:c0437",
+          "20260927-exchanger-thermal-comparison-b:c0439",
+          "20260927-exchanger-thermal-comparison-b:c0441",
+          "20260927-exchanger-thermal-comparison-b:c0580",
+          "20260927-exchanger-thermal-comparison-b:c1186",
+          "20260927-exchanger-thermal-comparison-b:c0511",
+          "20260927-exchanger-thermal-comparison-b:c1060",
+          "20260927-exchanger-thermal-comparison-b:c1227",
+          "20260927-exchanger-thermal-comparison-b:c0682",
+          "20260927-exchanger-thermal-comparison-b:c0199",
+          "20260927-exchanger-thermal-comparison-b:c0310",
+          "20260927-exchanger-thermal-comparison-b:c0811",
+          "20260927-exchanger-thermal-comparison-b:c0517",
+          "20260927-exchanger-thermal-comparison-b:c0882",
+          "20260927-exchanger-thermal-comparison-b:c1004",
+          "20260927-exchanger-thermal-comparison-b:c0648",
+          "20260927-exchanger-thermal-comparison-b:c1040",
+          "20260927-exchanger-thermal-comparison-b:c1239",
+          "20260927-exchanger-thermal-comparison-b:c0306",
+          "20260927-exchanger-thermal-comparison-b:c0731",
+          "20260927-exchanger-thermal-comparison-b:c0315",
+          "20260927-exchanger-thermal-comparison-b:c0185",
+          "20260927-exchanger-thermal-comparison-b:c0507",
+          "20260927-exchanger-thermal-comparison-b:c0322",
+          "20260927-exchanger-thermal-comparison-b:c0620",
+          "20260927-exchanger-thermal-comparison-b:c1075",
+          "20260927-exchanger-thermal-comparison-b:c0870",
+          "20260927-exchanger-thermal-comparison-b:c0771",
+          "20260927-exchanger-thermal-comparison-b:c1142",
+          "20260927-exchanger-thermal-comparison-b:c0506",
+          "20260927-exchanger-thermal-comparison-b:c0804",
+          "20260927-exchanger-thermal-comparison-b:c0033",
+          "20260927-exchanger-thermal-comparison-b:c0148",
+          "20260927-exchanger-thermal-comparison-b:c1200",
+          "20260927-exchanger-thermal-comparison-b:c0768",
+          "20260927-exchanger-thermal-comparison-b:c1256",
+          "20260927-exchanger-thermal-comparison-b:c0568",
+          "20260927-exchanger-thermal-comparison-b:c0967",
+          "20260927-exchanger-thermal-comparison-b:c0835",
+          "20260927-exchanger-thermal-comparison-b:c1252",
+          "20260927-exchanger-thermal-comparison-b:c0542",
+          "20260927-exchanger-thermal-comparison-b:c0554",
+          "20260927-exchanger-thermal-comparison-b:c0237",
+          "20260927-exchanger-thermal-comparison-b:c0259",
+          "20260927-exchanger-thermal-comparison-b:c0998",
+          "20260927-exchanger-thermal-comparison-b:c1152",
+          "20260927-exchanger-thermal-comparison-b:c0877",
+          "20260927-exchanger-thermal-comparison-b:c0090",
+          "20260927-exchanger-thermal-comparison-b:c0567",
+          "20260927-exchanger-thermal-comparison-b:c0413",
+          "20260927-exchanger-thermal-comparison-b:c0400",
+          "20260927-exchanger-thermal-comparison-b:c0644",
+          "20260927-exchanger-thermal-comparison-b:c0890",
+          "20260927-exchanger-thermal-comparison-b:c1223",
+          "20260927-exchanger-thermal-comparison-b:c0463",
+          "20260927-exchanger-thermal-comparison-b:c0369",
+          "20260927-exchanger-thermal-comparison-b:c0376",
+          "20260927-exchanger-thermal-comparison-b:c1049",
+          "20260927-exchanger-thermal-comparison-b:c0860",
+          "20260927-exchanger-thermal-comparison-b:c0392",
+          "20260927-exchanger-thermal-comparison-b:c0861",
+          "20260927-exchanger-thermal-comparison-b:c0041",
+          "20260927-exchanger-thermal-comparison-b:c0213",
+          "20260927-exchanger-thermal-comparison-b:c0066",
+          "20260927-exchanger-thermal-comparison-b:c1172",
+          "20260927-exchanger-thermal-comparison-b:c0363",
+          "20260927-exchanger-thermal-comparison-b:c0563",
+          "20260927-exchanger-thermal-comparison-b:c0151",
+          "20260927-exchanger-thermal-comparison-b:c0432",
+          "20260927-exchanger-thermal-comparison-b:c0465",
+          "20260927-exchanger-thermal-comparison-b:c0069",
+          "20260927-exchanger-thermal-comparison-b:c0381",
+          "20260927-exchanger-thermal-comparison-b:c0489",
+          "20260927-exchanger-thermal-comparison-b:c0959",
+          "20260927-exchanger-thermal-comparison-b:c0665",
+          "20260927-exchanger-thermal-comparison-b:c1058",
+          "20260927-exchanger-thermal-comparison-b:c0876",
+          "20260927-exchanger-thermal-comparison-b:c0970",
+          "20260927-exchanger-thermal-comparison-b:c0681",
+          "20260927-exchanger-thermal-comparison-b:c0677",
+          "20260927-exchanger-thermal-comparison-b:c0735",
+          "20260927-exchanger-thermal-comparison-b:c1112",
+          "20260927-exchanger-thermal-comparison-b:c1054",
+          "20260927-exchanger-thermal-comparison-b:c1095",
+          "20260927-exchanger-thermal-comparison-b:c1123",
+          "20260927-exchanger-thermal-comparison-b:c0034",
+          "20260927-exchanger-thermal-comparison-b:c0697",
+          "20260927-exchanger-thermal-comparison-b:c1028",
+          "20260927-exchanger-thermal-comparison-b:c0560",
+          "20260927-exchanger-thermal-comparison-b:c0324",
+          "20260927-exchanger-thermal-comparison-b:c0382",
+          "20260927-exchanger-thermal-comparison-b:c1213",
+          "20260927-exchanger-thermal-comparison-b:c1052",
+          "20260927-exchanger-thermal-comparison-b:c0490",
+          "20260927-exchanger-thermal-comparison-b:c0042",
+          "20260927-exchanger-thermal-comparison-b:c0553",
+          "20260927-exchanger-thermal-comparison-b:c0759",
+          "20260927-exchanger-thermal-comparison-b:c0673",
+          "20260927-exchanger-thermal-comparison-b:c0067",
+          "20260927-exchanger-thermal-comparison-b:c1000",
+          "20260927-exchanger-thermal-comparison-b:c1022",
+          "20260927-exchanger-thermal-comparison-b:c1044",
+          "20260927-exchanger-thermal-comparison-b:c0765",
+          "20260927-exchanger-thermal-comparison-b:c0081",
+          "20260927-exchanger-thermal-comparison-b:c1133",
+          "20260927-exchanger-thermal-comparison-b:c0092",
+          "20260927-exchanger-thermal-comparison-b:c0696",
+          "20260927-exchanger-thermal-comparison-b:c0820",
+          "20260927-exchanger-thermal-comparison-b:c1202",
+          "20260927-exchanger-thermal-comparison-b:c0551",
+          "20260927-exchanger-thermal-comparison-b:c1037",
+          "20260927-exchanger-thermal-comparison-b:c0128",
+          "20260927-exchanger-thermal-comparison-b:c0133",
+          "20260927-exchanger-thermal-comparison-b:c0726",
+          "20260927-exchanger-thermal-comparison-b:c1204",
+          "20260927-exchanger-thermal-comparison-b:c1210",
+          "20260927-exchanger-thermal-comparison-b:c0182",
+          "20260927-exchanger-thermal-comparison-b:c0367",
+          "20260927-exchanger-thermal-comparison-b:c0350",
+          "20260927-exchanger-thermal-comparison-b:c0528",
+          "20260927-exchanger-thermal-comparison-b:c0134",
+          "20260927-exchanger-thermal-comparison-b:c0778",
+          "20260927-exchanger-thermal-comparison-b:c1101",
+          "20260927-exchanger-thermal-comparison-b:c0548",
+          "20260927-exchanger-thermal-comparison-b:c0446",
+          "20260927-exchanger-thermal-comparison-b:c0671",
+          "20260927-exchanger-thermal-comparison-b:c1155",
+          "20260927-exchanger-thermal-comparison-b:c0425",
+          "20260927-exchanger-thermal-comparison-b:c1115",
+          "20260927-exchanger-thermal-comparison-b:c0786",
+          "20260927-exchanger-thermal-comparison-b:c0641",
+          "20260927-exchanger-thermal-comparison-b:c0571",
+          "20260927-exchanger-thermal-comparison-b:c0212",
+          "20260927-exchanger-thermal-comparison-b:c0321",
+          "20260927-exchanger-thermal-comparison-b:c0523",
+          "20260927-exchanger-thermal-comparison-b:c0866",
+          "20260927-exchanger-thermal-comparison-b:c0709",
+          "20260927-exchanger-thermal-comparison-b:c0109",
+          "20260927-exchanger-thermal-comparison-b:c1084",
+          "20260927-exchanger-thermal-comparison-b:c0161",
+          "20260927-exchanger-thermal-comparison-b:c0587",
+          "20260927-exchanger-thermal-comparison-b:c0484",
+          "20260927-exchanger-thermal-comparison-b:c0434",
+          "20260927-exchanger-thermal-comparison-b:c0433",
+          "20260927-exchanger-thermal-comparison-b:c0311",
+          "20260927-exchanger-thermal-comparison-b:c0515",
+          "20260927-exchanger-thermal-comparison-b:c0947",
+          "20260927-exchanger-thermal-comparison-b:c0905",
+          "20260927-exchanger-thermal-comparison-b:c0233",
+          "20260927-exchanger-thermal-comparison-b:c0362",
+          "20260927-exchanger-thermal-comparison-b:c1145",
+          "20260927-exchanger-thermal-comparison-b:c0314",
+          "20260927-exchanger-thermal-comparison-b:c0443",
+          "20260927-exchanger-thermal-comparison-b:c1105",
+          "20260927-exchanger-thermal-comparison-b:c0103",
+          "20260927-exchanger-thermal-comparison-b:c0946",
+          "20260927-exchanger-thermal-comparison-b:c0085",
+          "20260927-exchanger-thermal-comparison-b:c0273",
+          "20260927-exchanger-thermal-comparison-b:c0761",
+          "20260927-exchanger-thermal-comparison-b:c0177",
+          "20260927-exchanger-thermal-comparison-b:c0046",
+          "20260927-exchanger-thermal-comparison-b:c0112",
+          "20260927-exchanger-thermal-comparison-b:c0099",
+          "20260927-exchanger-thermal-comparison-b:c0825",
+          "20260927-exchanger-thermal-comparison-b:c0949",
+          "20260927-exchanger-thermal-comparison-b:c1143",
+          "20260927-exchanger-thermal-comparison-b:c0669",
+          "20260927-exchanger-thermal-comparison-b:c1068",
+          "20260927-exchanger-thermal-comparison-b:c0159",
+          "20260927-exchanger-thermal-comparison-b:c0459",
+          "20260927-exchanger-thermal-comparison-b:c0813",
+          "20260927-exchanger-thermal-comparison-b:c0429",
+          "20260927-exchanger-thermal-comparison-b:c0283",
+          "20260927-exchanger-thermal-comparison-b:c0191",
+          "20260927-exchanger-thermal-comparison-b:c0618",
+          "20260927-exchanger-thermal-comparison-b:c1070",
+          "20260927-exchanger-thermal-comparison-b:c1067",
+          "20260927-exchanger-thermal-comparison-b:c1249",
+          "20260927-exchanger-thermal-comparison-b:c0926",
+          "20260927-exchanger-thermal-comparison-b:c0541",
+          "20260927-exchanger-thermal-comparison-b:c0660",
+          "20260927-exchanger-thermal-comparison-b:c0500",
+          "20260927-exchanger-thermal-comparison-b:c1031",
+          "20260927-exchanger-thermal-comparison-b:c0080",
+          "20260927-exchanger-thermal-comparison-b:c0975",
+          "20260927-exchanger-thermal-comparison-b:c0819",
+          "20260927-exchanger-thermal-comparison-b:c0921",
+          "20260927-exchanger-thermal-comparison-b:c0188",
+          "20260927-exchanger-thermal-comparison-b:c0526",
+          "20260927-exchanger-thermal-comparison-b:c0505",
+          "20260927-exchanger-thermal-comparison-b:c1114",
+          "20260927-exchanger-thermal-comparison-b:c0138",
+          "20260927-exchanger-thermal-comparison-b:c0717",
+          "20260927-exchanger-thermal-comparison-b:c0329",
+          "20260927-exchanger-thermal-comparison-b:c1106",
+          "20260927-exchanger-thermal-comparison-b:c0969",
+          "20260927-exchanger-thermal-comparison-b:c0864",
+          "20260927-exchanger-thermal-comparison-b:c0387",
+          "20260927-exchanger-thermal-comparison-b:c1100",
+          "20260927-exchanger-thermal-comparison-b:c0488",
+          "20260927-exchanger-thermal-comparison-b:c0127",
+          "20260927-exchanger-thermal-comparison-b:c0532",
+          "20260927-exchanger-thermal-comparison-b:c1072",
+          "20260927-exchanger-thermal-comparison-b:c1064",
+          "20260927-exchanger-thermal-comparison-b:c0994",
+          "20260927-exchanger-thermal-comparison-b:c0586",
+          "20260927-exchanger-thermal-comparison-b:c0356",
+          "20260927-exchanger-thermal-comparison-b:c0966",
+          "20260927-exchanger-thermal-comparison-b:c0060",
+          "20260927-exchanger-thermal-comparison-b:c0398",
+          "20260927-exchanger-thermal-comparison-b:c1117",
+          "20260927-exchanger-thermal-comparison-b:c1055",
+          "20260927-exchanger-thermal-comparison-b:c0063",
+          "20260927-exchanger-thermal-comparison-b:c0293",
+          "20260927-exchanger-thermal-comparison-b:c0250",
+          "20260927-exchanger-thermal-comparison-b:c0176",
+          "20260927-exchanger-thermal-comparison-b:c0105",
+          "20260927-exchanger-thermal-comparison-b:c0604",
+          "20260927-exchanger-thermal-comparison-b:c0936",
+          "20260927-exchanger-thermal-comparison-b:c0855",
+          "20260927-exchanger-thermal-comparison-b:c0229",
+          "20260927-exchanger-thermal-comparison-b:c0231",
+          "20260927-exchanger-thermal-comparison-b:c1020",
+          "20260927-exchanger-thermal-comparison-b:c0944",
+          "20260927-exchanger-thermal-comparison-b:c0827",
+          "20260927-exchanger-thermal-comparison-b:c0349",
+          "20260927-exchanger-thermal-comparison-b:c0168",
+          "20260927-exchanger-thermal-comparison-b:c0244",
+          "20260927-exchanger-thermal-comparison-b:c0388",
+          "20260927-exchanger-thermal-comparison-b:c0004",
+          "20260927-exchanger-thermal-comparison-b:c1174",
+          "20260927-exchanger-thermal-comparison-b:c0974",
+          "20260927-exchanger-thermal-comparison-b:c0267",
+          "20260927-exchanger-thermal-comparison-b:c0529",
+          "20260927-exchanger-thermal-comparison-b:c1104",
+          "20260927-exchanger-thermal-comparison-b:c0444",
+          "20260927-exchanger-thermal-comparison-b:c0900",
+          "20260927-exchanger-thermal-comparison-b:c0139",
+          "20260927-exchanger-thermal-comparison-b:c1236",
+          "20260927-exchanger-thermal-comparison-b:c0202",
+          "20260927-exchanger-thermal-comparison-b:c0802",
+          "20260927-exchanger-thermal-comparison-b:c1156",
+          "20260927-exchanger-thermal-comparison-b:c1139",
+          "20260927-exchanger-thermal-comparison-b:c0061",
+          "20260927-exchanger-thermal-comparison-b:c1006",
+          "20260927-exchanger-thermal-comparison-b:c1154",
+          "20260927-exchanger-thermal-comparison-b:c0457",
+          "20260927-exchanger-thermal-comparison-b:c0396",
+          "20260927-exchanger-thermal-comparison-b:c0045",
+          "20260927-exchanger-thermal-comparison-b:c1198",
+          "20260927-exchanger-thermal-comparison-b:c0163",
+          "20260927-exchanger-thermal-comparison-b:c0468",
+          "20260927-exchanger-thermal-comparison-b:c0165",
+          "20260927-exchanger-thermal-comparison-b:c0776",
+          "20260927-exchanger-thermal-comparison-b:c0599",
+          "20260927-exchanger-thermal-comparison-b:c0274",
+          "20260927-exchanger-thermal-comparison-b:c0051",
+          "20260927-exchanger-thermal-comparison-b:c0477",
+          "20260927-exchanger-thermal-comparison-b:c1138",
+          "20260927-exchanger-thermal-comparison-b:c0422",
+          "20260927-exchanger-thermal-comparison-b:c0754",
+          "20260927-exchanger-thermal-comparison-b:c1194",
+          "20260927-exchanger-thermal-comparison-b:c0023",
+          "20260927-exchanger-thermal-comparison-b:c0737",
+          "20260927-exchanger-thermal-comparison-b:c0722",
+          "20260927-exchanger-thermal-comparison-b:c0598",
+          "20260927-exchanger-thermal-comparison-b:c1183",
+          "20260927-exchanger-thermal-comparison-b:c0010",
+          "20260927-exchanger-thermal-comparison-b:c0308",
+          "20260927-exchanger-thermal-comparison-b:c0734",
+          "20260927-exchanger-thermal-comparison-b:c0064",
+          "20260927-exchanger-thermal-comparison-b:c0427",
+          "20260927-exchanger-thermal-comparison-b:c0336",
+          "20260927-exchanger-thermal-comparison-b:c0895",
+          "20260927-exchanger-thermal-comparison-b:c0126",
+          "20260927-exchanger-thermal-comparison-b:c0775",
+          "20260927-exchanger-thermal-comparison-b:c0025",
+          "20260927-exchanger-thermal-comparison-b:c1199",
+          "20260927-exchanger-thermal-comparison-b:c0845",
+          "20260927-exchanger-thermal-comparison-b:c0545",
+          "20260927-exchanger-thermal-comparison-b:c0218",
+          "20260927-exchanger-thermal-comparison-b:c0741",
+          "20260927-exchanger-thermal-comparison-b:c0792",
+          "20260927-exchanger-thermal-comparison-b:c0675",
+          "20260927-exchanger-thermal-comparison-b:c0058",
+          "20260927-exchanger-thermal-comparison-b:c0763",
+          "20260927-exchanger-thermal-comparison-b:c0248",
+          "20260927-exchanger-thermal-comparison-b:c0200",
+          "20260927-exchanger-thermal-comparison-b:c1131",
+          "20260927-exchanger-thermal-comparison-b:c0476",
+          "20260927-exchanger-thermal-comparison-b:c0294",
+          "20260927-exchanger-thermal-comparison-b:c0868",
+          "20260927-exchanger-thermal-comparison-b:c0962",
+          "20260927-exchanger-thermal-comparison-b:c1010",
+          "20260927-exchanger-thermal-comparison-b:c1248",
+          "20260927-exchanger-thermal-comparison-b:c0540",
+          "20260927-exchanger-thermal-comparison-b:c0843",
+          "20260927-exchanger-thermal-comparison-b:c1243",
+          "20260927-exchanger-thermal-comparison-b:c1253",
+          "20260927-exchanger-thermal-comparison-b:c0271",
+          "20260927-exchanger-thermal-comparison-b:c0368",
+          "20260927-exchanger-thermal-comparison-b:c1005",
+          "20260927-exchanger-thermal-comparison-b:c0225",
+          "20260927-exchanger-thermal-comparison-b:c1163",
+          "20260927-exchanger-thermal-comparison-b:c0332",
+          "20260927-exchanger-thermal-comparison-b:c0862",
+          "20260927-exchanger-thermal-comparison-b:c0208",
+          "20260927-exchanger-thermal-comparison-b:c1027",
+          "20260927-exchanger-thermal-comparison-b:c1033",
+          "20260927-exchanger-thermal-comparison-b:c0803",
+          "20260927-exchanger-thermal-comparison-b:c0742",
+          "20260927-exchanger-thermal-comparison-b:c1170",
+          "20260927-exchanger-thermal-comparison-b:c0333",
+          "20260927-exchanger-thermal-comparison-b:c0793",
+          "20260927-exchanger-thermal-comparison-b:c0885",
+          "20260927-exchanger-thermal-comparison-b:c0415",
+          "20260927-exchanger-thermal-comparison-b:c0557",
+          "20260927-exchanger-thermal-comparison-b:c0242",
+          "20260927-exchanger-thermal-comparison-b:c0956",
+          "20260927-exchanger-thermal-comparison-b:c0992",
+          "20260927-exchanger-thermal-comparison-b:c1251",
+          "20260927-exchanger-thermal-comparison-b:c0753",
+          "20260927-exchanger-thermal-comparison-b:c1127",
+          "20260927-exchanger-thermal-comparison-b:c0902",
+          "20260927-exchanger-thermal-comparison-b:c0755",
+          "20260927-exchanger-thermal-comparison-b:c0436",
+          "20260927-exchanger-thermal-comparison-b:c0117",
+          "20260927-exchanger-thermal-comparison-b:c1047",
+          "20260927-exchanger-thermal-comparison-b:c0268",
+          "20260927-exchanger-thermal-comparison-b:c0979",
+          "20260927-exchanger-thermal-comparison-b:c0770",
+          "20260927-exchanger-thermal-comparison-b:c0575",
+          "20260927-exchanger-thermal-comparison-b:c0299",
+          "20260927-exchanger-thermal-comparison-b:c0068",
+          "20260927-exchanger-thermal-comparison-b:c0043",
+          "20260927-exchanger-thermal-comparison-b:c1113",
+          "20260927-exchanger-thermal-comparison-b:c0152",
+          "20260927-exchanger-thermal-comparison-b:c1102",
+          "20260927-exchanger-thermal-comparison-b:c0358",
+          "20260927-exchanger-thermal-comparison-b:c0174",
+          "20260927-exchanger-thermal-comparison-b:c0340",
+          "20260927-exchanger-thermal-comparison-b:c0323",
+          "20260927-exchanger-thermal-comparison-b:c0916",
+          "20260927-exchanger-thermal-comparison-b:c0736",
+          "20260927-exchanger-thermal-comparison-b:c1201",
+          "20260927-exchanger-thermal-comparison-b:c0403",
+          "20260927-exchanger-thermal-comparison-b:c0573",
+          "20260927-exchanger-thermal-comparison-b:c0657",
+          "20260927-exchanger-thermal-comparison-b:c0021",
+          "20260927-exchanger-thermal-comparison-b:c0815",
+          "20260927-exchanger-thermal-comparison-b:c0716",
+          "20260927-exchanger-thermal-comparison-b:c1175",
+          "20260927-exchanger-thermal-comparison-b:c0738",
+          "20260927-exchanger-thermal-comparison-b:c0880",
+          "20260927-exchanger-thermal-comparison-b:c0518",
+          "20260927-exchanger-thermal-comparison-b:c0951",
+          "20260927-exchanger-thermal-comparison-b:c1120",
+          "20260927-exchanger-thermal-comparison-b:c0017",
+          "20260927-exchanger-thermal-comparison-b:c0280",
+          "20260927-exchanger-thermal-comparison-b:c0937",
+          "20260927-exchanger-thermal-comparison-b:c0234",
+          "20260927-exchanger-thermal-comparison-b:c0983",
+          "20260927-exchanger-thermal-comparison-b:c0692",
+          "20260927-exchanger-thermal-comparison-b:c0095",
+          "20260927-exchanger-thermal-comparison-b:c0129",
+          "20260927-exchanger-thermal-comparison-b:c0421",
+          "20260927-exchanger-thermal-comparison-b:c0276",
+          "20260927-exchanger-thermal-comparison-b:c1181",
+          "20260927-exchanger-thermal-comparison-b:c0666",
+          "20260927-exchanger-thermal-comparison-b:c0189",
+          "20260927-exchanger-thermal-comparison-b:c0087",
+          "20260927-exchanger-thermal-comparison-b:c1263",
+          "20260927-exchanger-thermal-comparison-b:c0853",
+          "20260927-exchanger-thermal-comparison-b:c0935",
+          "20260927-exchanger-thermal-comparison-b:c0222",
+          "20260927-exchanger-thermal-comparison-b:c0226",
+          "20260927-exchanger-thermal-comparison-b:c0430",
+          "20260927-exchanger-thermal-comparison-b:c1211",
+          "20260927-exchanger-thermal-comparison-b:c1245",
+          "20260927-exchanger-thermal-comparison-b:c0178",
+          "20260927-exchanger-thermal-comparison-b:c1215",
+          "20260927-exchanger-thermal-comparison-b:c0071",
+          "20260927-exchanger-thermal-comparison-b:c0154",
+          "20260927-exchanger-thermal-comparison-b:c0216",
+          "20260927-exchanger-thermal-comparison-b:c0791",
+          "20260927-exchanger-thermal-comparison-b:c0093",
+          "20260927-exchanger-thermal-comparison-b:c0756",
+          "20260927-exchanger-thermal-comparison-b:c0713",
+          "20260927-exchanger-thermal-comparison-b:c0609",
+          "20260927-exchanger-thermal-comparison-b:c0345",
+          "20260927-exchanger-thermal-comparison-b:c0449",
+          "20260927-exchanger-thermal-comparison-b:c0893",
+          "20260927-exchanger-thermal-comparison-b:c0878",
+          "20260927-exchanger-thermal-comparison-b:c0399",
+          "20260927-exchanger-thermal-comparison-b:c0304",
+          "20260927-exchanger-thermal-comparison-b:c0781",
+          "20260927-exchanger-thermal-comparison-b:c0869",
+          "20260927-exchanger-thermal-comparison-b:c0467",
+          "20260927-exchanger-thermal-comparison-b:c0285",
+          "20260927-exchanger-thermal-comparison-b:c0451",
+          "20260927-exchanger-thermal-comparison-b:c0245",
+          "20260927-exchanger-thermal-comparison-b:c0204",
+          "20260927-exchanger-thermal-comparison-b:c0931",
+          "20260927-exchanger-thermal-comparison-b:c0834",
+          "20260927-exchanger-thermal-comparison-b:c0037",
+          "20260927-exchanger-thermal-comparison-b:c0968",
+          "20260927-exchanger-thermal-comparison-b:c1122",
+          "20260927-exchanger-thermal-comparison-b:c1197",
+          "20260927-exchanger-thermal-comparison-b:c1184",
+          "20260927-exchanger-thermal-comparison-b:c1126",
+          "20260927-exchanger-thermal-comparison-b:c0214",
+          "20260927-exchanger-thermal-comparison-b:c0623",
+          "20260927-exchanger-thermal-comparison-b:c0718",
+          "20260927-exchanger-thermal-comparison-b:c0555",
+          "20260927-exchanger-thermal-comparison-b:c0558",
+          "20260927-exchanger-thermal-comparison-b:c1144",
+          "20260927-exchanger-thermal-comparison-b:c0809",
+          "20260927-exchanger-thermal-comparison-b:c1069",
+          "20260927-exchanger-thermal-comparison-b:c0492",
+          "20260927-exchanger-thermal-comparison-b:c0939",
+          "20260927-exchanger-thermal-comparison-b:c0872",
+          "20260927-exchanger-thermal-comparison-b:c0884",
+          "20260927-exchanger-thermal-comparison-b:c1036",
+          "20260927-exchanger-thermal-comparison-b:c1257",
+          "20260927-exchanger-thermal-comparison-b:c0516",
+          "20260927-exchanger-thermal-comparison-b:c1087",
+          "20260927-exchanger-thermal-comparison-b:c0899",
+          "20260927-exchanger-thermal-comparison-b:c0841",
+          "20260927-exchanger-thermal-comparison-b:c0175",
+          "20260927-exchanger-thermal-comparison-b:c0919",
+          "20260927-exchanger-thermal-comparison-b:c0230",
+          "20260927-exchanger-thermal-comparison-b:c0929",
+          "20260927-exchanger-thermal-comparison-b:c0385",
+          "20260927-exchanger-thermal-comparison-b:c0417",
+          "20260927-exchanger-thermal-comparison-b:c0863",
+          "20260927-exchanger-thermal-comparison-b:c0743",
+          "20260927-exchanger-thermal-comparison-b:c0491",
+          "20260927-exchanger-thermal-comparison-b:c0197",
+          "20260927-exchanger-thermal-comparison-b:c1015",
+          "20260927-exchanger-thermal-comparison-b:c0135",
+          "20260927-exchanger-thermal-comparison-b:c0435",
+          "20260927-exchanger-thermal-comparison-b:c0183",
+          "20260927-exchanger-thermal-comparison-b:c0380",
+          "20260927-exchanger-thermal-comparison-b:c1042",
+          "20260927-exchanger-thermal-comparison-b:c0201",
+          "20260927-exchanger-thermal-comparison-b:c0749",
+          "20260927-exchanger-thermal-comparison-b:c0940",
+          "20260927-exchanger-thermal-comparison-b:c0512",
+          "20260927-exchanger-thermal-comparison-b:c0610",
+          "20260927-exchanger-thermal-comparison-b:c0989",
+          "20260927-exchanger-thermal-comparison-b:c0691",
+          "20260927-exchanger-thermal-comparison-b:c0556",
+          "20260927-exchanger-thermal-comparison-b:c0708",
+          "20260927-exchanger-thermal-comparison-b:c0688",
+          "20260927-exchanger-thermal-comparison-b:c0836",
+          "20260927-exchanger-thermal-comparison-b:c0309",
+          "20260927-exchanger-thermal-comparison-b:c1108",
+          "20260927-exchanger-thermal-comparison-b:c0401",
+          "20260927-exchanger-thermal-comparison-b:c0173",
+          "20260927-exchanger-thermal-comparison-b:c0913",
+          "20260927-exchanger-thermal-comparison-b:c0440",
+          "20260927-exchanger-thermal-comparison-b:c1179",
+          "20260927-exchanger-thermal-comparison-b:c0769",
+          "20260927-exchanger-thermal-comparison-b:c0678",
+          "20260927-exchanger-thermal-comparison-b:c0684",
+          "20260927-exchanger-thermal-comparison-b:c1222",
+          "20260927-exchanger-thermal-comparison-b:c0903",
+          "20260927-exchanger-thermal-comparison-b:c1065",
+          "20260927-exchanger-thermal-comparison-b:c0720",
+          "20260927-exchanger-thermal-comparison-b:c0307",
+          "20260927-exchanger-thermal-comparison-b:c0636",
+          "20260927-exchanger-thermal-comparison-b:c0918",
+          "20260927-exchanger-thermal-comparison-b:c0653",
+          "20260927-exchanger-thermal-comparison-b:c0039",
+          "20260927-exchanger-thermal-comparison-b:c0335",
+          "20260927-exchanger-thermal-comparison-b:c0124",
+          "20260927-exchanger-thermal-comparison-b:c0076",
+          "20260927-exchanger-thermal-comparison-b:c0639",
+          "20260927-exchanger-thermal-comparison-b:c0849",
+          "20260927-exchanger-thermal-comparison-b:c0642",
+          "20260927-exchanger-thermal-comparison-b:c0145",
+          "20260927-exchanger-thermal-comparison-b:c0278",
+          "20260927-exchanger-thermal-comparison-b:c0482",
+          "20260927-exchanger-thermal-comparison-b:c0115",
+          "20260927-exchanger-thermal-comparison-b:c0026",
+          "20260927-exchanger-thermal-comparison-b:c1132",
+          "20260927-exchanger-thermal-comparison-b:c0172",
+          "20260927-exchanger-thermal-comparison-b:c0687",
+          "20260927-exchanger-thermal-comparison-b:c0405",
+          "20260927-exchanger-thermal-comparison-b:c0464",
+          "20260927-exchanger-thermal-comparison-b:c0206",
+          "20260927-exchanger-thermal-comparison-b:c0110",
+          "20260927-exchanger-thermal-comparison-b:c0458",
+          "20260927-exchanger-thermal-comparison-b:c0794",
+          "20260927-exchanger-thermal-comparison-b:c1041",
+          "20260927-exchanger-thermal-comparison-b:c0694",
+          "20260927-exchanger-thermal-comparison-b:c1050",
+          "20260927-exchanger-thermal-comparison-b:c0339",
+          "20260927-exchanger-thermal-comparison-b:c0837",
+          "20260927-exchanger-thermal-comparison-b:c1178",
+          "20260927-exchanger-thermal-comparison-b:c0088",
+          "20260927-exchanger-thermal-comparison-b:c0255",
+          "20260927-exchanger-thermal-comparison-b:c1205",
+          "20260927-exchanger-thermal-comparison-b:c0830",
+          "20260927-exchanger-thermal-comparison-b:c0600",
+          "20260927-exchanger-thermal-comparison-b:c0659",
+          "20260927-exchanger-thermal-comparison-b:c0290",
+          "20260927-exchanger-thermal-comparison-b:c0952",
+          "20260927-exchanger-thermal-comparison-b:c0384",
+          "20260927-exchanger-thermal-comparison-b:c0150",
+          "20260927-exchanger-thermal-comparison-b:c1077",
+          "20260927-exchanger-thermal-comparison-b:c0930",
+          "20260927-exchanger-thermal-comparison-b:c0171",
+          "20260927-exchanger-thermal-comparison-b:c0621",
+          "20260927-exchanger-thermal-comparison-b:c1164",
+          "20260927-exchanger-thermal-comparison-b:c0049",
+          "20260927-exchanger-thermal-comparison-b:c0002",
+          "20260927-exchanger-thermal-comparison-b:c0032",
+          "20260927-exchanger-thermal-comparison-b:c1268",
+          "20260927-exchanger-thermal-comparison-b:c0733",
+          "20260927-exchanger-thermal-comparison-b:c0056",
+          "20260927-exchanger-thermal-comparison-b:c1191",
+          "20260927-exchanger-thermal-comparison-b:c0746",
+          "20260927-exchanger-thermal-comparison-b:c0442",
+          "20260927-exchanger-thermal-comparison-b:c1241",
+          "20260927-exchanger-thermal-comparison-b:c0897",
+          "20260927-exchanger-thermal-comparison-b:c0048",
+          "20260927-exchanger-thermal-comparison-b:c0254",
+          "20260927-exchanger-thermal-comparison-b:c1177",
+          "20260927-exchanger-thermal-comparison-b:c1107",
+          "20260927-exchanger-thermal-comparison-b:c0070",
+          "20260927-exchanger-thermal-comparison-b:c1078",
+          "20260927-exchanger-thermal-comparison-b:c0450",
+          "20260927-exchanger-thermal-comparison-b:c1074",
+          "20260927-exchanger-thermal-comparison-b:c1136",
+          "20260927-exchanger-thermal-comparison-b:c1207",
+          "20260927-exchanger-thermal-comparison-b:c0224",
+          "20260927-exchanger-thermal-comparison-b:c0619",
+          "20260927-exchanger-thermal-comparison-b:c0856",
+          "20260927-exchanger-thermal-comparison-b:c0269",
+          "20260927-exchanger-thermal-comparison-b:c0627",
+          "20260927-exchanger-thermal-comparison-b:c0603",
+          "20260927-exchanger-thermal-comparison-b:c0221",
+          "20260927-exchanger-thermal-comparison-b:c0762",
+          "20260927-exchanger-thermal-comparison-b:c0318",
+          "20260927-exchanger-thermal-comparison-b:c0370",
+          "20260927-exchanger-thermal-comparison-b:c0588",
+          "20260927-exchanger-thermal-comparison-b:c0796",
+          "20260927-exchanger-thermal-comparison-b:c0453",
+          "20260927-exchanger-thermal-comparison-b:c1225",
+          "20260927-exchanger-thermal-comparison-b:c0483",
+          "20260927-exchanger-thermal-comparison-b:c0972",
+          "20260927-exchanger-thermal-comparison-b:c1088",
+          "20260927-exchanger-thermal-comparison-b:c0373",
+          "20260927-exchanger-thermal-comparison-b:c0824",
+          "20260927-exchanger-thermal-comparison-b:c0187",
+          "20260927-exchanger-thermal-comparison-b:c0141",
+          "20260927-exchanger-thermal-comparison-b:c0730",
+          "20260927-exchanger-thermal-comparison-b:c0132",
+          "20260927-exchanger-thermal-comparison-b:c0007",
+          "20260927-exchanger-thermal-comparison-b:c1137",
+          "20260927-exchanger-thermal-comparison-b:c1012",
+          "20260927-exchanger-thermal-comparison-b:c0689",
+          "20260927-exchanger-thermal-comparison-b:c0077",
+          "20260927-exchanger-thermal-comparison-b:c0495",
+          "20260927-exchanger-thermal-comparison-b:c0365",
+          "20260927-exchanger-thermal-comparison-b:c0917",
+          "20260927-exchanger-thermal-comparison-b:c0910",
+          "20260927-exchanger-thermal-comparison-b:c0625",
+          "20260927-exchanger-thermal-comparison-b:c1008",
+          "20260927-exchanger-thermal-comparison-b:c0980",
+          "20260927-exchanger-thermal-comparison-b:c0454",
+          "20260927-exchanger-thermal-comparison-b:c0493",
+          "20260927-exchanger-thermal-comparison-b:c0059",
+          "20260927-exchanger-thermal-comparison-b:c0670",
+          "20260927-exchanger-thermal-comparison-b:c1048",
+          "20260927-exchanger-thermal-comparison-b:c0850",
+          "20260927-exchanger-thermal-comparison-b:c0680",
+          "20260927-exchanger-thermal-comparison-b:c0122",
+          "20260927-exchanger-thermal-comparison-b:c0461",
+          "20260927-exchanger-thermal-comparison-b:c0700",
+          "20260927-exchanger-thermal-comparison-b:c0337",
+          "20260927-exchanger-thermal-comparison-b:c1013",
+          "20260927-exchanger-thermal-comparison-b:c0074",
+          "20260927-exchanger-thermal-comparison-b:c1081",
+          "20260927-exchanger-thermal-comparison-b:c0019",
+          "20260927-exchanger-thermal-comparison-b:c0927",
+          "20260927-exchanger-thermal-comparison-b:c0028",
+          "20260927-exchanger-thermal-comparison-b:c0810",
+          "20260927-exchanger-thermal-comparison-b:c0658",
+          "20260927-exchanger-thermal-comparison-b:c0005",
+          "20260927-exchanger-thermal-comparison-b:c0086",
+          "20260927-exchanger-thermal-comparison-b:c0941",
+          "20260927-exchanger-thermal-comparison-b:c0838",
+          "20260927-exchanger-thermal-comparison-b:c1053",
+          "20260927-exchanger-thermal-comparison-b:c0249",
+          "20260927-exchanger-thermal-comparison-b:c0685",
+          "20260927-exchanger-thermal-comparison-b:c0706",
+          "20260927-exchanger-thermal-comparison-b:c0960",
+          "20260927-exchanger-thermal-comparison-b:c0906",
+          "20260927-exchanger-thermal-comparison-b:c0914",
+          "20260927-exchanger-thermal-comparison-b:c0925",
+          "20260927-exchanger-thermal-comparison-b:c0566",
+          "20260927-exchanger-thermal-comparison-b:c0840",
+          "20260927-exchanger-thermal-comparison-b:c0790",
+          "20260927-exchanger-thermal-comparison-b:c0196",
+          "20260927-exchanger-thermal-comparison-b:c0616",
+          "20260927-exchanger-thermal-comparison-b:c1091",
+          "20260927-exchanger-thermal-comparison-b:c1002",
+          "20260927-exchanger-thermal-comparison-b:c1185",
+          "20260927-exchanger-thermal-comparison-b:c0693",
+          "20260927-exchanger-thermal-comparison-b:c0814",
+          "20260927-exchanger-thermal-comparison-b:c0539",
+          "20260927-exchanger-thermal-comparison-b:c0330",
+          "20260927-exchanger-thermal-comparison-b:c0848",
+          "20260927-exchanger-thermal-comparison-b:c0107",
+          "20260927-exchanger-thermal-comparison-b:c0626",
+          "20260927-exchanger-thermal-comparison-b:c1039",
+          "20260927-exchanger-thermal-comparison-b:c0203",
+          "20260927-exchanger-thermal-comparison-b:c0395",
+          "20260927-exchanger-thermal-comparison-b:c0993",
+          "20260927-exchanger-thermal-comparison-b:c0633",
+          "20260927-exchanger-thermal-comparison-b:c0164",
+          "20260927-exchanger-thermal-comparison-b:c0460",
+          "20260927-exchanger-thermal-comparison-b:c0291",
+          "20260927-exchanger-thermal-comparison-b:c0537",
+          "20260927-exchanger-thermal-comparison-b:c0978",
+          "20260927-exchanger-thermal-comparison-b:c1180",
+          "20260927-exchanger-thermal-comparison-b:c0874",
+          "20260927-exchanger-thermal-comparison-b:c0932",
+          "20260927-exchanger-thermal-comparison-b:c0547",
+          "20260927-exchanger-thermal-comparison-b:c0418",
+          "20260927-exchanger-thermal-comparison-b:c0527",
+          "20260927-exchanger-thermal-comparison-b:c0812",
+          "20260927-exchanger-thermal-comparison-b:c1085",
+          "20260927-exchanger-thermal-comparison-b:c0605",
+          "20260927-exchanger-thermal-comparison-b:c0100",
+          "20260927-exchanger-thermal-comparison-b:c1275",
+          "20260927-exchanger-thermal-comparison-b:c1029",
+          "20260927-exchanger-thermal-comparison-b:c0546",
+          "20260927-exchanger-thermal-comparison-b:c0963",
+          "20260927-exchanger-thermal-comparison-b:c1228",
+          "20260927-exchanger-thermal-comparison-b:c1003",
+          "20260927-exchanger-thermal-comparison-b:c0215",
+          "20260927-exchanger-thermal-comparison-b:c1238",
+          "20260927-exchanger-thermal-comparison-b:c0262",
+          "20260927-exchanger-thermal-comparison-b:c0714",
+          "20260927-exchanger-thermal-comparison-b:c1130",
+          "20260927-exchanger-thermal-comparison-b:c0431",
+          "20260927-exchanger-thermal-comparison-b:c0597",
+          "20260927-exchanger-thermal-comparison-b:c0757",
+          "20260927-exchanger-thermal-comparison-b:c0108",
+          "20260927-exchanger-thermal-comparison-b:c1212",
+          "20260927-exchanger-thermal-comparison-b:c0643",
+          "20260927-exchanger-thermal-comparison-b:c1038",
+          "20260927-exchanger-thermal-comparison-b:c0582",
+          "20260927-exchanger-thermal-comparison-b:c0416",
+          "20260927-exchanger-thermal-comparison-b:c0065",
+          "20260927-exchanger-thermal-comparison-b:c0852",
+          "20260927-exchanger-thermal-comparison-b:c0261",
+          "20260927-exchanger-thermal-comparison-b:c0576",
+          "20260927-exchanger-thermal-comparison-b:c0995",
+          "20260927-exchanger-thermal-comparison-b:c0831",
+          "20260927-exchanger-thermal-comparison-b:c0106",
+          "20260927-exchanger-thermal-comparison-b:c0360",
+          "20260927-exchanger-thermal-comparison-b:c1030",
+          "20260927-exchanger-thermal-comparison-b:c0823",
+          "20260927-exchanger-thermal-comparison-b:c0805",
+          "20260927-exchanger-thermal-comparison-b:c0536",
+          "20260927-exchanger-thermal-comparison-b:c0950",
+          "20260927-exchanger-thermal-comparison-b:c0143",
+          "20260927-exchanger-thermal-comparison-b:c1244",
+          "20260927-exchanger-thermal-comparison-b:c0748",
+          "20260927-exchanger-thermal-comparison-b:c0928",
+          "20260927-exchanger-thermal-comparison-b:c0715",
+          "20260927-exchanger-thermal-comparison-b:c1247",
+          "20260927-exchanger-thermal-comparison-b:c0217",
+          "20260927-exchanger-thermal-comparison-b:c0628",
+          "20260927-exchanger-thermal-comparison-b:c0886",
+          "20260927-exchanger-thermal-comparison-b:c1258",
+          "20260927-exchanger-thermal-comparison-b:c0964",
+          "20260927-exchanger-thermal-comparison-b:c0879",
+          "20260927-exchanger-thermal-comparison-b:c0238",
+          "20260927-exchanger-thermal-comparison-b:c0317",
+          "20260927-exchanger-thermal-comparison-b:c0996",
+          "20260927-exchanger-thermal-comparison-b:c0252",
+          "20260927-exchanger-thermal-comparison-b:c0617",
+          "20260927-exchanger-thermal-comparison-b:c0078",
+          "20260927-exchanger-thermal-comparison-b:c1235",
+          "20260927-exchanger-thermal-comparison-b:c0300",
+          "20260927-exchanger-thermal-comparison-b:c0524",
+          "20260927-exchanger-thermal-comparison-b:c0826",
+          "20260927-exchanger-thermal-comparison-b:c1259",
+          "20260927-exchanger-thermal-comparison-b:c1188",
+          "20260927-exchanger-thermal-comparison-b:c1246",
+          "20260927-exchanger-thermal-comparison-b:c1165",
+          "20260927-exchanger-thermal-comparison-b:c1220",
+          "20260927-exchanger-thermal-comparison-b:c1230",
+          "20260927-exchanger-thermal-comparison-b:c0760",
+          "20260927-exchanger-thermal-comparison-b:c0091",
+          "20260927-exchanger-thermal-comparison-b:c0859",
+          "20260927-exchanger-thermal-comparison-b:c0773",
+          "20260927-exchanger-thermal-comparison-b:c0721",
+          "20260927-exchanger-thermal-comparison-b:c0799",
+          "20260927-exchanger-thermal-comparison-b:c0629",
+          "20260927-exchanger-thermal-comparison-b:c0883",
+          "20260927-exchanger-thermal-comparison-b:c0485",
+          "20260927-exchanger-thermal-comparison-b:c1092",
+          "20260927-exchanger-thermal-comparison-b:c0394",
+          "20260927-exchanger-thermal-comparison-b:c0409",
+          "20260927-exchanger-thermal-comparison-b:c1066",
+          "20260927-exchanger-thermal-comparison-b:c1193",
+          "20260927-exchanger-thermal-comparison-b:c0683",
+          "20260927-exchanger-thermal-comparison-b:c1234",
+          "20260927-exchanger-thermal-comparison-b:c0624",
+          "20260927-exchanger-thermal-comparison-b:c0788",
+          "20260927-exchanger-thermal-comparison-b:c0389",
+          "20260927-exchanger-thermal-comparison-b:c0782",
+          "20260927-exchanger-thermal-comparison-b:c1254",
+          "20260927-exchanger-thermal-comparison-b:c1063",
+          "20260927-exchanger-thermal-comparison-b:c0780",
+          "20260927-exchanger-thermal-comparison-b:c0277",
+          "20260927-exchanger-thermal-comparison-b:c0520",
+          "20260927-exchanger-thermal-comparison-b:c0745",
+          "20260927-exchanger-thermal-comparison-b:c1140",
+          "20260927-exchanger-thermal-comparison-b:c0891",
+          "20260927-exchanger-thermal-comparison-b:c1218",
+          "20260927-exchanger-thermal-comparison-b:c0020",
+          "20260927-exchanger-thermal-comparison-b:c0664",
+          "20260927-exchanger-thermal-comparison-b:c0420",
+          "20260927-exchanger-thermal-comparison-b:c1125",
+          "20260927-exchanger-thermal-comparison-b:c0501",
+          "20260927-exchanger-thermal-comparison-b:c1176",
+          "20260927-exchanger-thermal-comparison-b:c0054",
+          "20260927-exchanger-thermal-comparison-b:c0764",
+          "20260927-exchanger-thermal-comparison-b:c0146",
+          "20260927-exchanger-thermal-comparison-b:c0857",
+          "20260927-exchanger-thermal-comparison-b:c0832",
+          "20260927-exchanger-thermal-comparison-b:c0472",
+          "20260927-exchanger-thermal-comparison-b:c0907",
+          "20260927-exchanger-thermal-comparison-b:c0499",
+          "20260927-exchanger-thermal-comparison-b:c0281",
+          "20260927-exchanger-thermal-comparison-b:c0411",
+          "20260927-exchanger-thermal-comparison-b:c1135",
+          "20260927-exchanger-thermal-comparison-b:c0123",
+          "20260927-exchanger-thermal-comparison-b:c0514",
+          "20260927-exchanger-thermal-comparison-b:c0195",
+          "20260927-exchanger-thermal-comparison-b:c0266",
+          "20260927-exchanger-thermal-comparison-b:c0009",
+          "20260927-exchanger-thermal-comparison-b:c1083",
+          "20260927-exchanger-thermal-comparison-b:c0973",
+          "20260927-exchanger-thermal-comparison-b:c1086",
+          "20260927-exchanger-thermal-comparison-b:c0977",
+          "20260927-exchanger-thermal-comparison-b:c0478",
+          "20260927-exchanger-thermal-comparison-b:c0531",
+          "20260927-exchanger-thermal-comparison-b:c0181",
+          "20260927-exchanger-thermal-comparison-b:c1229",
+          "20260927-exchanger-thermal-comparison-b:c0498",
+          "20260927-exchanger-thermal-comparison-b:c0651",
+          "20260927-exchanger-thermal-comparison-b:c0971",
+          "20260927-exchanger-thermal-comparison-b:c1214",
+          "20260927-exchanger-thermal-comparison-b:c0806",
+          "20260927-exchanger-thermal-comparison-b:c0589",
+          "20260927-exchanger-thermal-comparison-b:c0591",
+          "20260927-exchanger-thermal-comparison-b:c0378",
+          "20260927-exchanger-thermal-comparison-b:c0480",
+          "20260927-exchanger-thermal-comparison-b:c0297",
+          "20260927-exchanger-thermal-comparison-b:c0353",
+          "20260927-exchanger-thermal-comparison-b:c0965",
+          "20260927-exchanger-thermal-comparison-b:c1017",
+          "20260927-exchanger-thermal-comparison-b:c0752",
+          "20260927-exchanger-thermal-comparison-b:c0593",
+          "20260927-exchanger-thermal-comparison-b:c0260",
+          "20260927-exchanger-thermal-comparison-b:c0257",
+          "20260927-exchanger-thermal-comparison-b:c0606",
+          "20260927-exchanger-thermal-comparison-b:c1062",
+          "20260927-exchanger-thermal-comparison-b:c0631",
+          "20260927-exchanger-thermal-comparison-b:c0140",
+          "20260927-exchanger-thermal-comparison-b:c0581",
+          "20260927-exchanger-thermal-comparison-b:c0534",
+          "20260927-exchanger-thermal-comparison-b:c0615",
+          "20260927-exchanger-thermal-comparison-b:c0702",
+          "20260927-exchanger-thermal-comparison-b:c0055",
+          "20260927-exchanger-thermal-comparison-b:c0867",
+          "20260927-exchanger-thermal-comparison-b:c0131",
+          "20260927-exchanger-thermal-comparison-b:c0635",
+          "20260927-exchanger-thermal-comparison-b:c1032",
+          "20260927-exchanger-thermal-comparison-b:c0343",
+          "20260927-exchanger-thermal-comparison-b:c0057",
+          "20260927-exchanger-thermal-comparison-b:c0326",
+          "20260927-exchanger-thermal-comparison-b:c0114",
+          "20260927-exchanger-thermal-comparison-b:c1151",
+          "20260927-exchanger-thermal-comparison-b:c0153",
+          "20260927-exchanger-thermal-comparison-b:c0084",
+          "20260927-exchanger-thermal-comparison-b:c1023",
+          "20260927-exchanger-thermal-comparison-b:c0723",
+          "20260927-exchanger-thermal-comparison-b:c0948",
+          "20260927-exchanger-thermal-comparison-b:c0452",
+          "20260927-exchanger-thermal-comparison-b:c0611",
+          "20260927-exchanger-thermal-comparison-b:c0111",
+          "20260927-exchanger-thermal-comparison-b:c0098",
+          "20260927-exchanger-thermal-comparison-b:c0533",
+          "20260927-exchanger-thermal-comparison-b:c0239",
+          "20260927-exchanger-thermal-comparison-b:c0601",
+          "20260927-exchanger-thermal-comparison-b:c0371",
+          "20260927-exchanger-thermal-comparison-b:c0525",
+          "20260927-exchanger-thermal-comparison-b:c0663",
+          "20260927-exchanger-thermal-comparison-b:c0594",
+          "20260927-exchanger-thermal-comparison-b:c0777",
+          "20260927-exchanger-thermal-comparison-b:c0469",
+          "20260927-exchanger-thermal-comparison-b:c0119",
+          "20260927-exchanger-thermal-comparison-b:c0502",
+          "20260927-exchanger-thermal-comparison-b:c1090",
+          "20260927-exchanger-thermal-comparison-b:c0456",
+          "20260927-exchanger-thermal-comparison-b:c0331",
+          "20260927-exchanger-thermal-comparison-b:c0412",
+          "20260927-exchanger-thermal-comparison-b:c0767",
+          "20260927-exchanger-thermal-comparison-b:c1167",
+          "20260927-exchanger-thermal-comparison-b:c1169",
+          "20260927-exchanger-thermal-comparison-b:c0543",
+          "20260927-exchanger-thermal-comparison-b:c0156",
+          "20260927-exchanger-thermal-comparison-b:c0364",
+          "20260927-exchanger-thermal-comparison-b:c0521",
+          "20260927-exchanger-thermal-comparison-b:c0160",
+          "20260927-exchanger-thermal-comparison-b:c0999",
+          "20260927-exchanger-thermal-comparison-b:c1073",
+          "20260927-exchanger-thermal-comparison-b:c0011",
+          "20260927-exchanger-thermal-comparison-b:c0348",
+          "20260927-exchanger-thermal-comparison-b:c1216",
+          "20260927-exchanger-thermal-comparison-b:c0842",
+          "20260927-exchanger-thermal-comparison-b:c0448",
+          "20260927-exchanger-thermal-comparison-b:c0246",
+          "20260927-exchanger-thermal-comparison-b:c0655",
+          "20260927-exchanger-thermal-comparison-b:c0565",
+          "20260927-exchanger-thermal-comparison-b:c0976",
+          "20260927-exchanger-thermal-comparison-b:c0079",
+          "20260927-exchanger-thermal-comparison-b:c0698",
+          "20260927-exchanger-thermal-comparison-b:c0142",
+          "20260927-exchanger-thermal-comparison-b:c0263",
+          "20260927-exchanger-thermal-comparison-b:c0807",
+          "20260927-exchanger-thermal-comparison-b:c0180",
+          "20260927-exchanger-thermal-comparison-b:c0650",
+          "20260927-exchanger-thermal-comparison-b:c0372",
+          "20260927-exchanger-thermal-comparison-b:c0690",
+          "20260927-exchanger-thermal-comparison-b:c0957",
+          "20260927-exchanger-thermal-comparison-b:c0634",
+          "20260927-exchanger-thermal-comparison-b:c0338",
+          "20260927-exchanger-thermal-comparison-b:c0894",
+          "20260927-exchanger-thermal-comparison-b:c1011",
+          "20260927-exchanger-thermal-comparison-b:c1226",
+          "20260927-exchanger-thermal-comparison-b:c1168",
+          "20260927-exchanger-thermal-comparison-b:c0496",
+          "20260927-exchanger-thermal-comparison-b:c0725",
+          "20260927-exchanger-thermal-comparison-b:c1192",
+          "20260927-exchanger-thermal-comparison-b:c0674",
+          "20260927-exchanger-thermal-comparison-b:c0911",
+          "20260927-exchanger-thermal-comparison-b:c0158",
+          "20260927-exchanger-thermal-comparison-b:c0247",
+          "20260927-exchanger-thermal-comparison-b:c0470",
+          "20260927-exchanger-thermal-comparison-b:c1265",
+          "20260927-exchanger-thermal-comparison-b:c0577",
+          "20260927-exchanger-thermal-comparison-b:c1071",
+          "20260927-exchanger-thermal-comparison-b:c0219",
+          "20260927-exchanger-thermal-comparison-b:c1267",
+          "20260927-exchanger-thermal-comparison-b:c0839",
+          "20260927-exchanger-thermal-comparison-b:c1250",
+          "20260927-exchanger-thermal-comparison-b:c1051",
+          "20260927-exchanger-thermal-comparison-b:c0391",
+          "20260927-exchanger-thermal-comparison-b:c0282",
+          "20260927-exchanger-thermal-comparison-b:c0562",
+          "20260927-exchanger-thermal-comparison-b:c0602",
+          "20260927-exchanger-thermal-comparison-b:c0040",
+          "20260927-exchanger-thermal-comparison-b:c0027",
+          "20260927-exchanger-thermal-comparison-b:c0424",
+          "20260927-exchanger-thermal-comparison-b:c0256",
+          "20260927-exchanger-thermal-comparison-b:c0652",
+          "20260927-exchanger-thermal-comparison-b:c0024",
+          "20260927-exchanger-thermal-comparison-b:c0614",
+          "20260927-exchanger-thermal-comparison-b:c0649",
+          "20260927-exchanger-thermal-comparison-b:c0102",
+          "20260927-exchanger-thermal-comparison-b:c0120",
+          "20260927-exchanger-thermal-comparison-b:c0846",
+          "20260927-exchanger-thermal-comparison-b:c0270",
+          "20260927-exchanger-thermal-comparison-b:c0801",
+          "20260927-exchanger-thermal-comparison-b:c0661",
+          "20260927-exchanger-thermal-comparison-b:c0530",
+          "20260927-exchanger-thermal-comparison-b:c0871",
+          "20260927-exchanger-thermal-comparison-b:c0727",
+          "20260927-exchanger-thermal-comparison-b:c0699",
+          "20260927-exchanger-thermal-comparison-b:c0008",
+          "20260927-exchanger-thermal-comparison-b:c1118",
+          "20260927-exchanger-thermal-comparison-b:c0193",
+          "20260927-exchanger-thermal-comparison-b:c0739",
+          "20260927-exchanger-thermal-comparison-b:c0035",
+          "20260927-exchanger-thermal-comparison-b:c0072",
+          "20260927-exchanger-thermal-comparison-b:c0486",
+          "20260927-exchanger-thermal-comparison-b:c0985",
+          "20260927-exchanger-thermal-comparison-b:c0327",
+          "20260927-exchanger-thermal-comparison-b:c0579",
+          "20260927-exchanger-thermal-comparison-b:c1221",
+          "20260927-exchanger-thermal-comparison-b:c0990",
+          "20260927-exchanger-thermal-comparison-b:c0192",
+          "20260927-exchanger-thermal-comparison-b:c0428",
+          "20260927-exchanger-thermal-comparison-b:c0982",
+          "20260927-exchanger-thermal-comparison-b:c0243",
+          "20260927-exchanger-thermal-comparison-b:c0383",
+          "20260927-exchanger-thermal-comparison-b:c0003",
+          "20260927-exchanger-thermal-comparison-b:c1099",
+          "20260927-exchanger-thermal-comparison-b:c0817",
+          "20260927-exchanger-thermal-comparison-b:c0426",
+          "20260927-exchanger-thermal-comparison-b:c0569",
+          "20260927-exchanger-thermal-comparison-b:c1093",
+          "20260927-exchanger-thermal-comparison-b:c0292",
+          "20260927-exchanger-thermal-comparison-b:c0423",
+          "20260927-exchanger-thermal-comparison-b:c1166",
+          "20260927-exchanger-thermal-comparison-b:c0253",
+          "20260927-exchanger-thermal-comparison-b:c1103",
+          "20260927-exchanger-thermal-comparison-b:c0510",
+          "20260927-exchanger-thermal-comparison-b:c0785",
+          "20260927-exchanger-thermal-comparison-b:c1076",
+          "20260927-exchanger-thermal-comparison-b:c1035",
+          "20260927-exchanger-thermal-comparison-b:c0471",
+          "20260927-exchanger-thermal-comparison-b:c0938",
+          "20260927-exchanger-thermal-comparison-b:c0419",
+          "20260927-exchanger-thermal-comparison-b:c1190",
+          "20260927-exchanger-thermal-comparison-b:c0740",
+          "20260927-exchanger-thermal-comparison-b:c0036",
+          "20260927-exchanger-thermal-comparison-b:c0564",
+          "20260927-exchanger-thermal-comparison-b:c0251",
+          "20260927-exchanger-thermal-comparison-b:c1217",
+          "20260927-exchanger-thermal-comparison-b:c0953",
+          "20260927-exchanger-thermal-comparison-b:c0942",
+          "20260927-exchanger-thermal-comparison-b:c0744",
+          "20260927-exchanger-thermal-comparison-b:c1171",
+          "20260927-exchanger-thermal-comparison-b:c0808",
+          "20260927-exchanger-thermal-comparison-b:c0198",
+          "20260927-exchanger-thermal-comparison-b:c0354",
+          "20260927-exchanger-thermal-comparison-b:c0062",
+          "20260927-exchanger-thermal-comparison-b:c1082",
+          "20260927-exchanger-thermal-comparison-b:c0038",
+          "20260927-exchanger-thermal-comparison-b:c0209",
+          "20260927-exchanger-thermal-comparison-b:c0355",
+          "20260927-exchanger-thermal-comparison-b:c0149",
+          "20260927-exchanger-thermal-comparison-b:c0147",
+          "20260927-exchanger-thermal-comparison-b:c0044",
+          "20260927-exchanger-thermal-comparison-b:c0504",
+          "20260927-exchanger-thermal-comparison-b:c0981",
+          "20260927-exchanger-thermal-comparison-b:c1124",
+          "20260927-exchanger-thermal-comparison-b:c1046",
+          "20260927-exchanger-thermal-comparison-b:c1147",
+          "20260927-exchanger-thermal-comparison-b:c0298",
+          "20260927-exchanger-thermal-comparison-b:c0487",
+          "20260927-exchanger-thermal-comparison-b:c0747",
+          "20260927-exchanger-thermal-comparison-b:c0475",
+          "20260927-exchanger-thermal-comparison-b:c0704",
+          "20260927-exchanger-thermal-comparison-b:c0101",
+          "20260927-exchanger-thermal-comparison-b:c0986",
+          "20260927-exchanger-thermal-comparison-b:c0170",
+          "20260927-exchanger-thermal-comparison-b:c1026",
+          "20260927-exchanger-thermal-comparison-b:c0075",
+          "20260927-exchanger-thermal-comparison-b:c1160",
+          "20260927-exchanger-thermal-comparison-b:c0934",
+          "20260927-exchanger-thermal-comparison-b:c0157",
+          "20260927-exchanger-thermal-comparison-b:c0592",
+          "20260927-exchanger-thermal-comparison-b:c0144",
+          "20260927-exchanger-thermal-comparison-b:c0408",
+          "20260927-exchanger-thermal-comparison-b:c0784",
+          "20260927-exchanger-thermal-comparison-b:c0113",
+          "20260927-exchanger-thermal-comparison-b:c0854",
+          "20260927-exchanger-thermal-comparison-b:c0667",
+          "20260927-exchanger-thermal-comparison-b:c0137",
+          "20260927-exchanger-thermal-comparison-b:c0818",
+          "20260927-exchanger-thermal-comparison-b:c0637",
+          "20260927-exchanger-thermal-comparison-b:c0015",
+          "20260927-exchanger-thermal-comparison-b:c0361",
+          "20260927-exchanger-thermal-comparison-b:c0390",
+          "20260927-exchanger-thermal-comparison-b:c0264",
+          "20260927-exchanger-thermal-comparison-b:c1111",
+          "20260927-exchanger-thermal-comparison-b:c0847",
+          "20260927-exchanger-thermal-comparison-b:c0833",
+          "20260927-exchanger-thermal-comparison-b:c0136",
+          "20260927-exchanger-thermal-comparison-b:c0118",
+          "20260927-exchanger-thermal-comparison-b:c0258",
+          "20260927-exchanger-thermal-comparison-b:c0295",
+          "20260927-exchanger-thermal-comparison-b:c0265",
+          "20260927-exchanger-thermal-comparison-b:c0232",
+          "20260927-exchanger-thermal-comparison-b:c0538",
+          "20260927-exchanger-thermal-comparison-b:c0018",
+          "20260927-exchanger-thermal-comparison-b:c1096",
+          "20260927-exchanger-thermal-comparison-b:c1129",
+          "20260927-exchanger-thermal-comparison-b:c1148",
+          "20260927-exchanger-thermal-comparison-b:c0991",
+          "20260927-exchanger-thermal-comparison-b:c1173",
+          "20260927-exchanger-thermal-comparison-b:c0166",
+          "20260927-exchanger-thermal-comparison-b:c0595",
+          "20260927-exchanger-thermal-comparison-b:c0410",
+          "20260927-exchanger-thermal-comparison-b:c0404",
+          "20260927-exchanger-thermal-comparison-b:c1110",
+          "20260927-exchanger-thermal-comparison-b:c0873",
+          "20260927-exchanger-thermal-comparison-b:c1203",
+          "20260927-exchanger-thermal-comparison-b:c0909",
+          "20260927-exchanger-thermal-comparison-b:c0393",
+          "20260927-exchanger-thermal-comparison-b:c0787",
+          "20260927-exchanger-thermal-comparison-b:c0130",
+          "20260927-exchanger-thermal-comparison-b:c0012",
+          "20260927-exchanger-thermal-comparison-b:c0750",
+          "20260927-exchanger-thermal-comparison-b:c0612",
+          "20260927-exchanger-thermal-comparison-b:c0228",
+          "20260927-exchanger-thermal-comparison-b:c0889",
+          "20260927-exchanger-thermal-comparison-b:c1206",
+          "20260927-exchanger-thermal-comparison-b:c0583",
+          "20260927-exchanger-thermal-comparison-b:c0961",
+          "20260927-exchanger-thermal-comparison-b:c0351",
+          "20260927-exchanger-thermal-comparison-b:c0342",
+          "20260927-exchanger-thermal-comparison-b:c0646",
+          "20260927-exchanger-thermal-comparison-b:c0922",
+          "20260927-exchanger-thermal-comparison-b:c0987",
+          "20260927-exchanger-thermal-comparison-b:c0821",
+          "20260927-exchanger-thermal-comparison-b:c0789",
+          "20260927-exchanger-thermal-comparison-b:c0703",
+          "20260927-exchanger-thermal-comparison-b:c0945",
+          "20260927-exchanger-thermal-comparison-b:c0705",
+          "20260927-exchanger-thermal-comparison-b:c0347",
+          "20260927-exchanger-thermal-comparison-b:c1016",
+          "20260927-exchanger-thermal-comparison-b:c1097",
+          "20260927-exchanger-thermal-comparison-b:c1149",
+          "20260927-exchanger-thermal-comparison-b:c0898",
+          "20260927-exchanger-thermal-comparison-b:c0535",
+          "20260927-exchanger-thermal-comparison-b:c1009",
+          "20260927-exchanger-thermal-comparison-b:c0672",
+          "20260927-exchanger-thermal-comparison-b:c0235",
+          "20260927-exchanger-thermal-comparison-b:c0896",
+          "20260927-exchanger-thermal-comparison-b:c0774",
+          "20260927-exchanger-thermal-comparison-b:c0205",
+          "20260927-exchanger-thermal-comparison-b:c0479",
+          "20260927-exchanger-thermal-comparison-b:c0407",
+          "20260927-exchanger-thermal-comparison-b:c0220",
+          "20260927-exchanger-thermal-comparison-b:c1080",
+          "20260927-exchanger-thermal-comparison-b:c0549",
+          "20260927-exchanger-thermal-comparison-b:c0397",
+          "20260927-exchanger-thermal-comparison-b:c0359",
+          "20260927-exchanger-thermal-comparison-b:c1094",
+          "20260927-exchanger-thermal-comparison-b:c1019",
+          "20260927-exchanger-thermal-comparison-b:c0638",
+          "20260927-exchanger-thermal-comparison-b:c0711",
+          "20260927-exchanger-thermal-comparison-b:c1224",
+          "20260927-exchanger-thermal-comparison-b:c0272",
+          "20260927-exchanger-thermal-comparison-b:c0312",
+          "20260927-exchanger-thermal-comparison-b:c0207",
+          "20260927-exchanger-thermal-comparison-b:c0668",
+          "20260927-exchanger-thermal-comparison-b:c0097",
+          "20260927-exchanger-thermal-comparison-b:c0316",
+          "20260927-exchanger-thermal-comparison-b:c0984",
+          "20260927-exchanger-thermal-comparison-b:c0779",
+          "20260927-exchanger-thermal-comparison-b:c0325",
+          "20260927-exchanger-thermal-comparison-b:c1021",
+          "20260927-exchanger-thermal-comparison-b:c1018",
+          "20260927-exchanger-thermal-comparison-b:c0241",
+          "20260927-exchanger-thermal-comparison-b:c1109",
+          "20260927-exchanger-thermal-comparison-b:c0519",
+          "20260927-exchanger-thermal-comparison-b:c0210",
+          "20260927-exchanger-thermal-comparison-b:c0654",
+          "20260927-exchanger-thermal-comparison-b:c0797",
+          "20260927-exchanger-thermal-comparison-b:c0082",
+          "20260927-exchanger-thermal-comparison-b:c0466",
+          "20260927-exchanger-thermal-comparison-b:c0997",
+          "20260927-exchanger-thermal-comparison-b:c0357",
+          "20260927-exchanger-thermal-comparison-b:c0751",
+          "20260927-exchanger-thermal-comparison-b:c0186",
+          "20260927-exchanger-thermal-comparison-b:c0954",
+          "20260927-exchanger-thermal-comparison-b:c0908",
+          "20260927-exchanger-thermal-comparison-b:c0578",
+          "20260927-exchanger-thermal-comparison-b:c0933",
+          "20260927-exchanger-thermal-comparison-b:c0822",
+          "20260927-exchanger-thermal-comparison-b:c1274",
+          "20260927-exchanger-thermal-comparison-b:c0798",
+          "20260927-exchanger-thermal-comparison-b:c0473",
+          "20260927-exchanger-thermal-comparison-b:c0772",
+          "20260927-exchanger-thermal-comparison-b:c0301",
+          "20260927-exchanger-thermal-comparison-b:c1057",
+          "20260927-exchanger-thermal-comparison-b:c0047",
+          "20260927-exchanger-thermal-comparison-b:c0707",
+          "20260927-exchanger-thermal-comparison-b:c0572",
+          "20260927-exchanger-thermal-comparison-b:c1034",
+          "20260927-exchanger-thermal-comparison-b:c1141",
+          "20260927-exchanger-thermal-comparison-b:c0701",
+          "20260927-exchanger-thermal-comparison-b:c0447",
+          "20260927-exchanger-thermal-comparison-b:c0513",
+          "20260927-exchanger-thermal-comparison-b:c0783",
+          "20260927-exchanger-thermal-comparison-b:c0414",
+          "20260927-exchanger-thermal-comparison-b:c1266",
+          "20260927-exchanger-thermal-comparison-b:c0865",
+          "20260927-exchanger-thermal-comparison-b:c0943",
+          "20260927-exchanger-thermal-comparison-b:c0676",
+          "20260927-exchanger-thermal-comparison-b:c1233",
+          "20260927-exchanger-thermal-comparison-b:c0022",
+          "20260927-exchanger-thermal-comparison-b:c0923",
+          "20260927-exchanger-thermal-comparison-b:c0574",
+          "20260927-exchanger-thermal-comparison-b:c0613",
+          "20260927-exchanger-thermal-comparison-b:c1121",
+          "20260927-exchanger-thermal-comparison-b:c0920",
+          "20260927-exchanger-thermal-comparison-b:c0050",
+          "20260927-exchanger-thermal-comparison-b:c0851",
+          "20260927-exchanger-thermal-comparison-b:c1255",
+          "20260927-exchanger-thermal-comparison-b:c0014",
+          "20260927-exchanger-thermal-comparison-b:c0550",
+          "20260927-exchanger-thermal-comparison-b:c0607",
+          "20260927-exchanger-thermal-comparison-b:c0334",
+          "20260927-exchanger-thermal-comparison-b:c0656",
+          "20260927-exchanger-thermal-comparison-b:c0194",
+          "20260927-exchanger-thermal-comparison-b:c0346",
+          "20260927-exchanger-thermal-comparison-b:c0288",
+          "20260927-exchanger-thermal-comparison-b:c0795",
+          "20260927-exchanger-thermal-comparison-b:c0445",
+          "20260927-exchanger-thermal-comparison-b:c0662",
+          "20260927-exchanger-thermal-comparison-b:c0758",
+          "20260927-exchanger-thermal-comparison-b:c0724",
+          "20260927-exchanger-thermal-comparison-b:c1260",
+          "20260927-exchanger-thermal-comparison-b:c0522",
+          "20260927-exchanger-thermal-comparison-b:c0766",
+          "20260927-exchanger-thermal-comparison-b:c0509",
+          "20260927-exchanger-thermal-comparison-b:c0121",
+          "20260927-exchanger-thermal-comparison-b:c1231",
+          "20260927-exchanger-thermal-comparison-b:c0875",
+          "20260927-exchanger-thermal-comparison-b:c1264",
+          "20260927-exchanger-thermal-comparison-b:c0386",
+          "20260927-exchanger-thermal-comparison-b:c0000",
+          "20260927-exchanger-thermal-comparison-b:c0184",
+          "20260927-exchanger-thermal-comparison-b:c0030",
+          "20260927-exchanger-thermal-comparison-b:c0287",
+          "20260927-exchanger-thermal-comparison-b:c0313",
+          "20260927-exchanger-thermal-comparison-b:c0481",
+          "20260927-exchanger-thermal-comparison-b:c0455",
+          "20260927-exchanger-thermal-comparison-b:c0083",
+          "20260927-exchanger-thermal-comparison-b:c0912",
+          "20260927-exchanger-thermal-comparison-b:c1061",
+          "20260927-exchanger-thermal-comparison-b:c0647",
+          "20260927-exchanger-thermal-comparison-b:c1089",
+          "20260927-exchanger-thermal-comparison-b:c0695",
+          "20260927-exchanger-thermal-comparison-b:c0645",
+          "20260927-exchanger-thermal-comparison-b:c0904",
+          "20260927-exchanger-thermal-comparison-b:c0006",
+          "20260927-exchanger-thermal-comparison-b:c0719",
+          "20260927-exchanger-thermal-comparison-b:c0302",
+          "20260927-exchanger-thermal-comparison-b:c0800",
+          "20260927-exchanger-thermal-comparison-b:c0328",
+          "20260927-exchanger-thermal-comparison-b:c0632",
+          "20260927-exchanger-thermal-comparison-b:c0901",
+          "20260927-exchanger-thermal-comparison-b:c0892",
+          "20260927-exchanger-thermal-comparison-b:c1240",
+          "20260927-exchanger-thermal-comparison-b:c0584",
+          "20260927-exchanger-thermal-comparison-b:c1196",
+          "20260927-exchanger-thermal-comparison-b:c0303",
+          "20260927-exchanger-thermal-comparison-b:c0828",
+          "20260927-exchanger-thermal-comparison-b:c0497",
+          "20260927-exchanger-thermal-comparison-b:c0474",
+          "20260927-exchanger-thermal-comparison-b:c0732",
+          "20260927-exchanger-thermal-comparison-b:c0053",
+          "20260927-exchanger-thermal-comparison-b:c0374",
+          "20260927-exchanger-thermal-comparison-b:c1195",
+          "20260927-exchanger-thermal-comparison-b:c0561",
+          "20260927-exchanger-thermal-comparison-b:c0352",
+          "20260927-exchanger-thermal-comparison-b:c0858",
+          "20260927-exchanger-thermal-comparison-b:c0829",
+          "20260927-exchanger-thermal-comparison-b:c0686",
+          "20260927-exchanger-thermal-comparison-b:c0223",
+          "20260927-exchanger-thermal-comparison-b:c1014",
+          "20260927-exchanger-thermal-comparison-b:c1208",
+          "20260927-exchanger-thermal-comparison-b:c0031",
+          "20260927-exchanger-thermal-comparison-b:c0227",
+          "20260927-exchanger-thermal-comparison-b:c1219",
+          "20260927-exchanger-thermal-comparison-b:c0305",
+          "20260927-exchanger-thermal-comparison-b:c0881",
+          "20260927-exchanger-thermal-comparison-b:c1001",
+          "20260927-exchanger-thermal-comparison-b:c1242",
+          "20260927-exchanger-thermal-comparison-b:c1059",
+          "20260927-exchanger-thermal-comparison-b:c0286",
+          "20260927-exchanger-thermal-comparison-b:c0596",
+          "20260927-exchanger-thermal-comparison-b:c0402",
+          "20260927-exchanger-thermal-comparison-b:c0211",
+          "20260927-exchanger-thermal-comparison-b:c0190",
+          "20260927-exchanger-thermal-comparison-b:c0503",
+          "20260927-exchanger-thermal-comparison-b:c0366",
+          "20260927-exchanger-thermal-comparison-b:c0915",
+          "20260927-exchanger-thermal-comparison-b:c0887",
+          "20260927-exchanger-thermal-comparison-b:c1024",
+          "20260927-exchanger-thermal-comparison-b:c0089",
+          "20260927-exchanger-thermal-comparison-b:c0710",
+          "20260927-exchanger-thermal-comparison-b:c1025",
+          "20260927-exchanger-thermal-comparison-b:c0344",
+          "20260927-exchanger-thermal-comparison-b:c0924",
+          "20260927-exchanger-thermal-comparison-b:c1119",
+          "20260927-exchanger-thermal-comparison-b:c1116",
+          "20260927-exchanger-thermal-comparison-b:c0552",
+          "20260927-exchanger-thermal-comparison-b:c0029",
+          "20260927-exchanger-thermal-comparison-b:c0155",
+          "20260927-exchanger-thermal-comparison-b:c0544",
+          "20260927-exchanger-thermal-comparison-b:c1056",
+          "20260927-exchanger-thermal-comparison-b:c0438",
+          "20260927-exchanger-thermal-comparison-b:c0608",
+          "20260927-exchanger-thermal-comparison-b:c1187",
+          "20260927-exchanger-thermal-comparison-b:c0073",
+          "20260927-exchanger-thermal-comparison-b:c0052",
+          "20260927-exchanger-thermal-comparison-b:c0094",
+          "20260927-exchanger-thermal-comparison-b:c0279",
+          "20260927-exchanger-thermal-comparison-b:c0341",
+          "20260927-exchanger-thermal-comparison-b:c0559",
+          "20260927-exchanger-thermal-comparison-b:c0494",
+          "20260927-exchanger-thermal-comparison-b:c0375",
+          "20260927-exchanger-thermal-comparison-b:c0679",
+          "20260927-exchanger-thermal-comparison-b:c1045",
+          "20260927-exchanger-thermal-comparison-b:c0319",
+          "20260927-exchanger-thermal-comparison-b:c0125",
+          "20260927-exchanger-thermal-comparison-b:c1232",
+          "20260927-exchanger-thermal-comparison-b:c0462",
+          "20260927-exchanger-thermal-comparison-b:c1209",
+          "20260927-exchanger-thermal-comparison-b:c0590",
+          "20260927-exchanger-thermal-comparison-b:c0888",
+          "20260927-exchanger-thermal-comparison-b:c0958",
+          "20260927-exchanger-thermal-comparison-b:c1043",
+          "20260927-exchanger-thermal-comparison-b:c0570",
+          "20260927-exchanger-thermal-comparison-b:c1237",
+          "20260927-exchanger-thermal-comparison-b:c0296",
+          "20260927-exchanger-thermal-comparison-b:c0585",
+          "20260927-exchanger-thermal-comparison-b:c0236",
+          "20260927-exchanger-thermal-comparison-b:c1079",
+          "20260927-exchanger-thermal-comparison-b:c0096",
+          "20260927-exchanger-thermal-comparison-b:c0728",
+          "20260927-exchanger-thermal-comparison-b:c0289",
+          "20260927-exchanger-thermal-comparison-b:c0622",
+          "20260927-exchanger-thermal-comparison-b:c1182",
+          "20260927-exchanger-thermal-comparison-b:c0167",
+          "20260927-exchanger-thermal-comparison-b:c0844",
+          "20260927-exchanger-thermal-comparison-b:c1007",
+          "20260927-exchanger-thermal-comparison-b:c0988",
+          "20260927-exchanger-thermal-comparison-b:c0284"
+        ]
+      },
+      "worst_channel_rel_dev": 9.99671101453714e+21,
+      "worst_at": {
+        "case_id": "20260927-exchanger-thermal-comparison-b:c0485",
+        "channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+        "value": 9.99671101453714e-09
+      }
+    }
+  ],
+  "tolerance": 1e-09,
+  "channels_checked": [
+    {
+      "channel": "aries_integrated_plant__annual_om__evaluate__annual_om",
+      "objective": "aries_integrated_plant__annual_om__evaluate__annual_om"
+    },
+    {
+      "channel": "aries_integrated_plant__auxiliary_cooling__estimate__amount",
+      "objective": "aries_integrated_plant__auxiliary_cooling__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__auxiliary_cooling__purchase__cost",
+      "objective": "aries_integrated_plant__auxiliary_cooling__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__capital",
+      "objective": "aries_integrated_plant__blanket_inventory__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__extrapolated",
+      "objective": "aries_integrated_plant__blanket_inventory__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__blanket_inventory__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__blanket_inventory__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__blanket_inventory__purchase__source_budget",
+      "objective": "aries_integrated_plant__blanket_inventory__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined",
+      "objective": "aries_integrated_plant__compressor_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_capacity__evaluate__margin",
+      "objective": "aries_integrated_plant__compressor_capacity__evaluate__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__compressor_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__compressor_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__compressor_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__compressor_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__compressor_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__compressor_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__contingency__evaluate__cost",
+      "objective": "aries_integrated_plant__contingency__evaluate__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__contingency_basis__evaluate__total",
+      "objective": "aries_integrated_plant__contingency_basis__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__conversion_equipment__evaluate__total",
+      "objective": "aries_integrated_plant__conversion_equipment__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__conversion_services__estimate__amount",
+      "objective": "aries_integrated_plant__conversion_services__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__conversion_services__purchase__cost",
+      "objective": "aries_integrated_plant__conversion_services__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__core_cost__evaluate__total",
+      "objective": "aries_integrated_plant__core_cost__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__core_first__evaluate__total",
+      "objective": "aries_integrated_plant__core_first__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__annual_export_mwh"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_import_cost",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__annual_import_cost"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__annual_import_mwh"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_operating",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__annual_operating"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__annual_replacement_reserve"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__currency_year",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__currency_year"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__direct",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__direct"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__direct_difference",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__direct_difference"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__lifetime_replacement"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__overnight",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__overnight"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_coil_excess",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__source_coil_excess"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_core_excess",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__source_core_excess"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_direct",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__source_direct"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_inclusive",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__source_inclusive"
+    },
+    {
+      "channel": "aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap",
+      "objective": "aries_integrated_plant__cost_ledger__evaluate__source_reactor_gap"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__divertor_friction",
+      "objective": "aries_integrated_plant__deposition__evaluate__divertor_friction"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__he_friction",
+      "objective": "aries_integrated_plant__deposition__evaluate__he_friction"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__pbli_friction",
+      "objective": "aries_integrated_plant__deposition__evaluate__pbli_friction"
+    },
+    {
+      "channel": "aries_integrated_plant__deposition__evaluate__pump_electric",
+      "objective": "aries_integrated_plant__deposition__evaluate__pump_electric"
+    },
+    {
+      "channel": "aries_integrated_plant__direct_cost__evaluate__total",
+      "objective": "aries_integrated_plant__direct_cost__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__direct_source_scope__evaluate__total",
+      "objective": "aries_integrated_plant__direct_source_scope__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined",
+      "objective": "aries_integrated_plant__divertor_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_capacity__evaluate__margin",
+      "objective": "aries_integrated_plant__divertor_capacity__evaluate__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat",
+      "objective": "aries_integrated_plant__divertor_coolant__evaluate__delivered_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__divertor_duty_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__divertor_duty_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__divertor_duty_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__divertor_duty_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_duty_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__divertor_duty_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__evaluate__area",
+      "objective": "aries_integrated_plant__divertor_hx__evaluate__area"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__evaluate__ua",
+      "objective": "aries_integrated_plant__divertor_hx__evaluate__ua"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__capital",
+      "objective": "aries_integrated_plant__divertor_hx__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__extrapolated",
+      "objective": "aries_integrated_plant__divertor_hx__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__divertor_hx__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__divertor_hx__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_hx__purchase__source_budget",
+      "objective": "aries_integrated_plant__divertor_hx__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_inventory__estimate__amount",
+      "objective": "aries_integrated_plant__divertor_inventory__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_inventory__purchase__cost",
+      "objective": "aries_integrated_plant__divertor_inventory__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__evaluate__electric",
+      "objective": "aries_integrated_plant__divertor_pump__evaluate__electric"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported",
+      "objective": "aries_integrated_plant__divertor_pump__evaluate__hydraulic_supported"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__evaluate__mode",
+      "objective": "aries_integrated_plant__divertor_pump__evaluate__mode"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__evaluate__operating_flow",
+      "objective": "aries_integrated_plant__divertor_pump__evaluate__operating_flow"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__capital",
+      "objective": "aries_integrated_plant__divertor_pump__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__extrapolated",
+      "objective": "aries_integrated_plant__divertor_pump__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__divertor_pump__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__divertor_pump__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__purchase__source_budget",
+      "objective": "aries_integrated_plant__divertor_pump__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__screen__evaluation_defined",
+      "objective": "aries_integrated_plant__divertor_pump__screen__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__divertor_pump__screen__margin",
+      "objective": "aries_integrated_plant__divertor_pump__screen__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__electrical_equipment__estimate__amount",
+      "objective": "aries_integrated_plant__electrical_equipment__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__electrical_equipment__purchase__cost",
+      "objective": "aries_integrated_plant__electrical_equipment__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__facilities__estimate__amount",
+      "objective": "aries_integrated_plant__facilities__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__facilities__purchase__cost",
+      "objective": "aries_integrated_plant__facilities__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__burn_rate",
+      "objective": "aries_integrated_plant__fuel__evaluate__burn_rate"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__exhaust_rate",
+      "objective": "aries_integrated_plant__fuel__evaluate__exhaust_rate"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__loss_rate",
+      "objective": "aries_integrated_plant__fuel__evaluate__loss_rate"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel__evaluate__tbr_required",
+      "objective": "aries_integrated_plant__fuel__evaluate__tbr_required"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined",
+      "objective": "aries_integrated_plant__fuel_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_capacity__evaluate__margin",
+      "objective": "aries_integrated_plant__fuel_capacity__evaluate__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_equipment__evaluate__total",
+      "objective": "aries_integrated_plant__fuel_equipment__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_burn",
+      "objective": "aries_integrated_plant__fuel_inventory__annual__annual_burn"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_cost",
+      "objective": "aries_integrated_plant__fuel_inventory__annual__annual_cost"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_decay",
+      "objective": "aries_integrated_plant__fuel_inventory__annual__annual_decay"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_external",
+      "objective": "aries_integrated_plant__fuel_inventory__annual__annual_external"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_loss",
+      "objective": "aries_integrated_plant__fuel_inventory__annual__annual_loss"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__annual_recovery",
+      "objective": "aries_integrated_plant__fuel_inventory__annual__annual_recovery"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__breeding_supported",
+      "objective": "aries_integrated_plant__fuel_inventory__annual__breeding_supported"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__annual__required_stock",
+      "objective": "aries_integrated_plant__fuel_inventory__annual__required_stock"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__atoms__atoms",
+      "objective": "aries_integrated_plant__fuel_inventory__atoms__atoms"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__atoms__stock_kg",
+      "objective": "aries_integrated_plant__fuel_inventory__atoms__stock_kg"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__deuterium__annual_fuel",
+      "objective": "aries_integrated_plant__fuel_inventory__deuterium__annual_fuel"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__purchase__amount",
+      "objective": "aries_integrated_plant__fuel_inventory__purchase__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__screen__evaluation_defined",
+      "objective": "aries_integrated_plant__fuel_inventory__screen__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_inventory__screen__margin",
+      "objective": "aries_integrated_plant__fuel_inventory__screen__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__fuel_processing_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__fuel_processing_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__fuel_processing_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__fuel_processing_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_processing_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__fuel_processing_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_services__estimate__amount",
+      "objective": "aries_integrated_plant__fuel_services__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__fuel_services__purchase__cost",
+      "objective": "aries_integrated_plant__fuel_services__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric",
+      "objective": "aries_integrated_plant__generator_auxiliaries__evaluate__fuel_variable_electric"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined",
+      "objective": "aries_integrated_plant__generator_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_capacity__evaluate__margin",
+      "objective": "aries_integrated_plant__generator_capacity__evaluate__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__generator_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__generator_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__generator_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__generator_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__generator_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__generator_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined",
+      "objective": "aries_integrated_plant__he_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__he_capacity__evaluate__margin",
+      "objective": "aries_integrated_plant__he_capacity__evaluate__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__he_coolant__evaluate__delivered_heat",
+      "objective": "aries_integrated_plant__he_coolant__evaluate__delivered_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__he_duty_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__he_duty_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__he_duty_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__he_duty_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__he_duty_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__he_duty_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__evaluate__area",
+      "objective": "aries_integrated_plant__he_hx__evaluate__area"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__evaluate__ua",
+      "objective": "aries_integrated_plant__he_hx__evaluate__ua"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__capital",
+      "objective": "aries_integrated_plant__he_hx__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__extrapolated",
+      "objective": "aries_integrated_plant__he_hx__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__he_hx__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__he_hx__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__he_hx__purchase__source_budget",
+      "objective": "aries_integrated_plant__he_hx__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__evaluate__electric",
+      "objective": "aries_integrated_plant__he_pump__evaluate__electric"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__evaluate__hydraulic_supported",
+      "objective": "aries_integrated_plant__he_pump__evaluate__hydraulic_supported"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__evaluate__mode",
+      "objective": "aries_integrated_plant__he_pump__evaluate__mode"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__evaluate__operating_flow",
+      "objective": "aries_integrated_plant__he_pump__evaluate__operating_flow"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__capital",
+      "objective": "aries_integrated_plant__he_pump__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__extrapolated",
+      "objective": "aries_integrated_plant__he_pump__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__he_pump__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__he_pump__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__purchase__source_budget",
+      "objective": "aries_integrated_plant__he_pump__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__screen__evaluation_defined",
+      "objective": "aries_integrated_plant__he_pump__screen__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__he_pump__screen__margin",
+      "objective": "aries_integrated_plant__he_pump__screen__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__accepted_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__control_mode_used",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__control_mode_used"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_active_flow",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_active_flow"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_bypass_fraction",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_bypass_fraction"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability_at_solution",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability_at_solution"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hx_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hx_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_mixed_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_mixed_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_in"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_secondary_out"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_state_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_stream_out"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_transferred"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__expansion_factor",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__expansion_factor"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_active_flow",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_active_flow"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_bypass_fraction",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_bypass_fraction"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_capability",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_capability"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_capability_at_solution",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_capability_at_solution"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_hot"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hx_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_hx_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_mixed_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_mixed_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual_magnitude",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual_magnitude"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_in"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_secondary_out"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_state_defined",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_state_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_transferred",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_transferred"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__heater_inlet"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__mixed_outlet"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__network_mode_used",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__network_mode_used"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_active_flow",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_active_flow"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_bypass_fraction",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_bypass_fraction"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability_at_solution",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability_at_solution"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_control_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_control_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hx_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hx_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_mixed_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_mixed_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot_margin",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot_margin"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_in"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_secondary_out"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_split_used",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_split_used"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_state_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_stream_out"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_transferred"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__turbine_temperature"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+      "objective": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__heat_rejection_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__heat_rejection_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__heat_rejection_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__heat_rejection_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_rejection_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__heat_rejection_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_transport_cost__evaluate__total",
+      "objective": "aries_integrated_plant__heat_transport_cost__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__heating_equipment__estimate__amount",
+      "objective": "aries_integrated_plant__heating_equipment__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__heating_equipment__purchase__cost",
+      "objective": "aries_integrated_plant__heating_equipment__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__impurity_control__estimate__amount",
+      "objective": "aries_integrated_plant__impurity_control__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__impurity_control__purchase__cost",
+      "objective": "aries_integrated_plant__impurity_control__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__indirect_cost__evaluate__cost",
+      "objective": "aries_integrated_plant__indirect_cost__evaluate__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__instrumentation_control__estimate__amount",
+      "objective": "aries_integrated_plant__instrumentation_control__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__instrumentation_control__purchase__cost",
+      "objective": "aries_integrated_plant__instrumentation_control__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__inventory_comparison__evaluate__difference",
+      "objective": "aries_integrated_plant__inventory_comparison__evaluate__difference"
+    },
+    {
+      "channel": "aries_integrated_plant__inventory_comparison__support__amount",
+      "objective": "aries_integrated_plant__inventory_comparison__support__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__known_dry_inventory__evaluate__total",
+      "objective": "aries_integrated_plant__known_dry_inventory__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__annual_capital",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__annual_capital"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__annual_energy",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__annual_energy"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__breeding_supported",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__breeding_supported"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__capital_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__capital_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__consumables_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__consumables_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__currency_year",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__currency_year"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__deuterium_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__deuterium_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__financed_capital",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__financed_capital"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__financial_defined",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__financial_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__gross_makeup",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__gross_makeup"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__gross_terminal",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__gross_terminal"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__idc",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__idc"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__imports_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__imports_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__lcoe_sum",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__lcoe_sum"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__lifetime_energy",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__lifetime_energy"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__new_feed",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__new_feed"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__noncapital_annual",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__noncapital_annual"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__om_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__om_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_cost",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_cost"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__other_overhaul_occurs"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_energy",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_energy"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_operating",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_operating"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_other_overhaul",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_other_overhaul"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_replacement",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_replacement"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_salvage",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_salvage"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_supply",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_supply"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_gross",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_gross"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_net",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_terminal_net"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_total_cost",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__pv_total_cost"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__real_convention",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__real_convention"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__replacement_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__replacement_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__salvage",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__salvage"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__salvage_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__salvage_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__supply_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__supply_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__supply_supported",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__supply_supported"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__terminal_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__terminal_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__tritium_lcoe",
+      "objective": "aries_integrated_plant__lifecycle_accounts__evaluate__tritium_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_price__evaluate__lcoe",
+      "objective": "aries_integrated_plant__lifecycle_price__evaluate__lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_comparison__evaluate__difference",
+      "objective": "aries_integrated_plant__lipb_comparison__evaluate__difference"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_comparison__price__amount",
+      "objective": "aries_integrated_plant__lipb_comparison__price__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__inventory__amount",
+      "objective": "aries_integrated_plant__lipb_inventory__inventory__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__capital",
+      "objective": "aries_integrated_plant__lipb_inventory__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__extrapolated",
+      "objective": "aries_integrated_plant__lipb_inventory__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__lipb_inventory__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__lipb_inventory__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__lipb_inventory__purchase__source_budget",
+      "objective": "aries_integrated_plant__lipb_inventory__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__inventory__total",
+      "objective": "aries_integrated_plant__magnet_inventory__inventory__total"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__capital",
+      "objective": "aries_integrated_plant__magnet_inventory__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__extrapolated",
+      "objective": "aries_integrated_plant__magnet_inventory__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__magnet_inventory__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__magnet_inventory__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_inventory__purchase__source_budget",
+      "objective": "aries_integrated_plant__magnet_inventory__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_power_supplies__estimate__amount",
+      "objective": "aries_integrated_plant__magnet_power_supplies__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__magnet_power_supplies__purchase__cost",
+      "objective": "aries_integrated_plant__magnet_power_supplies__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__miscellaneous_equipment__estimate__amount",
+      "objective": "aries_integrated_plant__miscellaneous_equipment__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__miscellaneous_equipment__purchase__cost",
+      "objective": "aries_integrated_plant__miscellaneous_equipment__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__operating_levelization__evaluate__crf",
+      "objective": "aries_integrated_plant__operating_levelization__evaluate__crf"
+    },
+    {
+      "channel": "aries_integrated_plant__operating_levelization__evaluate__levelized",
+      "objective": "aries_integrated_plant__operating_levelization__evaluate__levelized"
+    },
+    {
+      "channel": "aries_integrated_plant__other_reactor_equipment__estimate__amount",
+      "objective": "aries_integrated_plant__other_reactor_equipment__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__other_reactor_equipment__purchase__cost",
+      "objective": "aries_integrated_plant__other_reactor_equipment__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__owner_commissioning__evaluate__amount",
+      "objective": "aries_integrated_plant__owner_commissioning__evaluate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined",
+      "objective": "aries_integrated_plant__pbli_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_capacity__evaluate__margin",
+      "objective": "aries_integrated_plant__pbli_capacity__evaluate__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat",
+      "objective": "aries_integrated_plant__pbli_coolant__evaluate__delivered_heat"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__pbli_duty_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__pbli_duty_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__pbli_duty_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__pbli_duty_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_duty_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__pbli_duty_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__evaluate__area",
+      "objective": "aries_integrated_plant__pbli_hx__evaluate__area"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__evaluate__ua",
+      "objective": "aries_integrated_plant__pbli_hx__evaluate__ua"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__capital",
+      "objective": "aries_integrated_plant__pbli_hx__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__extrapolated",
+      "objective": "aries_integrated_plant__pbli_hx__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__pbli_hx__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__pbli_hx__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_hx__purchase__source_budget",
+      "objective": "aries_integrated_plant__pbli_hx__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__evaluate__electric",
+      "objective": "aries_integrated_plant__pbli_pump__evaluate__electric"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported",
+      "objective": "aries_integrated_plant__pbli_pump__evaluate__hydraulic_supported"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__evaluate__mode",
+      "objective": "aries_integrated_plant__pbli_pump__evaluate__mode"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__evaluate__operating_flow",
+      "objective": "aries_integrated_plant__pbli_pump__evaluate__operating_flow"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__capital",
+      "objective": "aries_integrated_plant__pbli_pump__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__extrapolated",
+      "objective": "aries_integrated_plant__pbli_pump__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__pbli_pump__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__pbli_pump__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__purchase__source_budget",
+      "objective": "aries_integrated_plant__pbli_pump__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__screen__evaluation_defined",
+      "objective": "aries_integrated_plant__pbli_pump__screen__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__pbli_pump__screen__margin",
+      "objective": "aries_integrated_plant__pbli_pump__screen__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance",
+      "objective": "aries_integrated_plant__plant_ledger__evaluate__energy_tolerance"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__gross_electric",
+      "objective": "aries_integrated_plant__plant_ledger__evaluate__gross_electric"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__net_electric",
+      "objective": "aries_integrated_plant__plant_ledger__evaluate__net_electric"
+    },
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "objective": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_heat_cost__evaluate__total",
+      "objective": "aries_integrated_plant__primary_heat_cost__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_piping__estimate__amount",
+      "objective": "aries_integrated_plant__primary_piping__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_piping__purchase__cost",
+      "objective": "aries_integrated_plant__primary_piping__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__capital",
+      "objective": "aries_integrated_plant__primary_support__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__extrapolated",
+      "objective": "aries_integrated_plant__primary_support__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__primary_support__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__primary_support__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__primary_support__purchase__source_budget",
+      "objective": "aries_integrated_plant__primary_support__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__reactor_cost__evaluate__total",
+      "objective": "aries_integrated_plant__reactor_cost__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined",
+      "objective": "aries_integrated_plant__rejection_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__rejection_capacity__evaluate__margin",
+      "objective": "aries_integrated_plant__rejection_capacity__evaluate__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__annual_reserve",
+      "objective": "aries_integrated_plant__replacement__evaluate__annual_reserve"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__event_cost",
+      "objective": "aries_integrated_plant__replacement__evaluate__event_cost"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__event_count",
+      "objective": "aries_integrated_plant__replacement__evaluate__event_count"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__first_event_year",
+      "objective": "aries_integrated_plant__replacement__evaluate__first_event_year"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__interval_years",
+      "objective": "aries_integrated_plant__replacement__evaluate__interval_years"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__last_event_year",
+      "objective": "aries_integrated_plant__replacement__evaluate__last_event_year"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement__evaluate__lifetime_total",
+      "objective": "aries_integrated_plant__replacement__evaluate__lifetime_total"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement_lipb__evaluate__amount",
+      "objective": "aries_integrated_plant__replacement_lipb__evaluate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement_price__evaluate__amount",
+      "objective": "aries_integrated_plant__replacement_price__evaluate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__replacement_scope__evaluate__total",
+      "objective": "aries_integrated_plant__replacement_scope__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__secondary_transport__estimate__amount",
+      "objective": "aries_integrated_plant__secondary_transport__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__secondary_transport__purchase__cost",
+      "objective": "aries_integrated_plant__secondary_transport__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__inventory__total",
+      "objective": "aries_integrated_plant__shield_inventory__inventory__total"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__capital",
+      "objective": "aries_integrated_plant__shield_inventory__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__extrapolated",
+      "objective": "aries_integrated_plant__shield_inventory__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__shield_inventory__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__shield_inventory__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__shield_inventory__purchase__source_budget",
+      "objective": "aries_integrated_plant__shield_inventory__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__site_land__estimate__amount",
+      "objective": "aries_integrated_plant__site_land__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__site_land__purchase__cost",
+      "objective": "aries_integrated_plant__site_land__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__source__evaluate__selected_power",
+      "objective": "aries_integrated_plant__source__evaluate__selected_power"
+    },
+    {
+      "channel": "aries_integrated_plant__source_budget__evaluate__direct_total",
+      "objective": "aries_integrated_plant__source_budget__evaluate__direct_total"
+    },
+    {
+      "channel": "aries_integrated_plant__source_budget__evaluate__inclusive_capital",
+      "objective": "aries_integrated_plant__source_budget__evaluate__inclusive_capital"
+    },
+    {
+      "channel": "aries_integrated_plant__source_coil_children__evaluate__total",
+      "objective": "aries_integrated_plant__source_coil_children__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__source_core_children_first__evaluate__total",
+      "objective": "aries_integrated_plant__source_core_children_first__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__source_finance__boundary__years",
+      "objective": "aries_integrated_plant__source_finance__boundary__years"
+    },
+    {
+      "channel": "aries_integrated_plant__source_finance_energy__evaluate__annual_energy",
+      "objective": "aries_integrated_plant__source_finance_energy__evaluate__annual_energy"
+    },
+    {
+      "channel": "aries_integrated_plant__source_fuel_children__evaluate__total",
+      "objective": "aries_integrated_plant__source_fuel_children__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_capital",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_capital"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_energy",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__annual_energy"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__breeding_supported",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__breeding_supported"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__capital_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__capital_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__consumables_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__consumables_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__currency_year",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__currency_year"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__deuterium_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__deuterium_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__financed_capital",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__financed_capital"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__financial_defined",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__financial_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_makeup",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_makeup"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_terminal",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__gross_terminal"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__idc",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__idc"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__imports_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__imports_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__lcoe_sum",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__lcoe_sum"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__lifetime_energy",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__lifetime_energy"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__new_feed",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__new_feed"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__noncapital_annual",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__noncapital_annual"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__om_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__om_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_cost",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_cost"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_occurs",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__other_overhaul_occurs"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_energy",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_energy"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_operating",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_operating"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_other_overhaul",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_other_overhaul"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_replacement",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_replacement"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_salvage",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_salvage"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_supply",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_supply"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_gross",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_gross"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_net",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_terminal_net"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_total_cost",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__pv_total_cost"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__real_convention",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__real_convention"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__replacement_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__replacement_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__salvage_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_supported",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__supply_supported"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__terminal_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__terminal_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__tritium_lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_accounts__evaluate__tritium_lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe",
+      "objective": "aries_integrated_plant__source_lifecycle_price__evaluate__lcoe"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reactor_children__evaluate__total",
+      "objective": "aries_integrated_plant__source_reactor_children__evaluate__total"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reconciliation__coil_excess_calc__difference",
+      "objective": "aries_integrated_plant__source_reconciliation__coil_excess_calc__difference"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reconciliation__core_excess_calc__difference",
+      "objective": "aries_integrated_plant__source_reconciliation__core_excess_calc__difference"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reconciliation__fuel_gap_calc__difference",
+      "objective": "aries_integrated_plant__source_reconciliation__fuel_gap_calc__difference"
+    },
+    {
+      "channel": "aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference",
+      "objective": "aries_integrated_plant__source_reconciliation__reactor_gap_calc__difference"
+    },
+    {
+      "channel": "aries_integrated_plant__source_replacement_comparison__cost__amount",
+      "objective": "aries_integrated_plant__source_replacement_comparison__cost__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__source_replacement_comparison__evaluate__difference",
+      "objective": "aries_integrated_plant__source_replacement_comparison__evaluate__difference"
+    },
+    {
+      "channel": "aries_integrated_plant__source_replacement_comparison__mass__amount",
+      "objective": "aries_integrated_plant__source_replacement_comparison__mass__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined",
+      "objective": "aries_integrated_plant__turbine_capacity__evaluate__evaluation_defined"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_capacity__evaluate__margin",
+      "objective": "aries_integrated_plant__turbine_capacity__evaluate__margin"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__turbine_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__turbine_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__turbine_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__turbine_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__turbine_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__turbine_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__unallocated_source_scope__estimate__amount",
+      "objective": "aries_integrated_plant__unallocated_source_scope__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__unallocated_source_scope__purchase__cost",
+      "objective": "aries_integrated_plant__unallocated_source_scope__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__inventory__total",
+      "objective": "aries_integrated_plant__vacuum_equipment__inventory__total"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__capital",
+      "objective": "aries_integrated_plant__vacuum_equipment__purchase__capital"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__extrapolated",
+      "objective": "aries_integrated_plant__vacuum_equipment__purchase__extrapolated"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity",
+      "objective": "aries_integrated_plant__vacuum_equipment__purchase__purchased_quantity"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio",
+      "objective": "aries_integrated_plant__vacuum_equipment__purchase__quantity_ratio"
+    },
+    {
+      "channel": "aries_integrated_plant__vacuum_equipment__purchase__source_budget",
+      "objective": "aries_integrated_plant__vacuum_equipment__purchase__source_budget"
+    },
+    {
+      "channel": "aries_integrated_plant__vf_coils__estimate__amount",
+      "objective": "aries_integrated_plant__vf_coils__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__vf_coils__purchase__cost",
+      "objective": "aries_integrated_plant__vf_coils__purchase__cost"
+    },
+    {
+      "channel": "aries_integrated_plant__waste_equipment__estimate__amount",
+      "objective": "aries_integrated_plant__waste_equipment__estimate__amount"
+    },
+    {
+      "channel": "aries_integrated_plant__waste_equipment__purchase__cost",
+      "objective": "aries_integrated_plant__waste_equipment__purchase__cost"
+    }
+  ],
+  "verdicts_rederived": true,
+  "constraints_rederived": [
+    {
+      "constraint_id": "aries_integrated_plant__compressor_capacity__capacity_ok__a45f9cf05e8aa7ab",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__divertor_pump__capacity_ok__d6730c7060447f4c",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__fuel_capacity__capacity_ok__8eb5888bfe62cd64",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__fuel_inventory__capacity_ok__37f4667fbfb616d0",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__generator_capacity__capacity_ok__60b43f15d48ff161",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__he_capacity__capacity_ok__db2733d1d5baf3cf",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__he_pump__capacity_ok__fcee5ee009fe5180",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_cold_approach_ok__e70598993d392f74",
+      "source_local_identity": "divertor_cold_approach_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_control_ok__14c1c0f314a994fd",
+      "source_local_identity": "divertor_control_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_hot_approach_ok__5e95ef937d10cc33",
+      "source_local_identity": "divertor_hot_approach_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_hot_cap_ok__cd5f29bd8533c481",
+      "source_local_identity": "divertor_hot_cap_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_required_hot_ok__712add8be60bd1ae",
+      "source_local_identity": "divertor_required_hot_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_return_ok__f69c5310bdcc41d7",
+      "source_local_identity": "divertor_return_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__divertor_state_ok__416e01681b16be81",
+      "source_local_identity": "divertor_state_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_cold_approach_ok__eab4f3486f0aa140",
+      "source_local_identity": "he_cold_approach_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_control_ok__f48454bb1d6f0e91",
+      "source_local_identity": "he_control_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_hot_approach_ok__7a2967e855192aeb",
+      "source_local_identity": "he_hot_approach_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_hot_cap_ok__05ebd6dad2e4adc1",
+      "source_local_identity": "he_hot_cap_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_required_hot_ok__3371b55ff752c6e4",
+      "source_local_identity": "he_required_hot_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_return_ok__ae5f4d6db630fc8e",
+      "source_local_identity": "he_return_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__he_state_ok__d5b9d58030392fe5",
+      "source_local_identity": "he_state_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_cold_approach_ok__667d6ca45c6e61de",
+      "source_local_identity": "pbli_cold_approach_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_control_ok__0c3b021e2e8589fb",
+      "source_local_identity": "pbli_control_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_hot_approach_ok__85855c74bdb13305",
+      "source_local_identity": "pbli_hot_approach_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_hot_cap_ok__73a44108fcb5be1c",
+      "source_local_identity": "pbli_hot_cap_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_required_hot_ok__aa9057b8ce236e6b",
+      "source_local_identity": "pbli_required_hot_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_return_ok__100f6bf9ad61a22c",
+      "source_local_identity": "pbli_return_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__heat_exchangers__pbli_state_ok__4664e5e1ddbb7ac5",
+      "source_local_identity": "pbli_state_ok",
+      "operands_resolved": 1
+    },
+    {
+      "constraint_id": "aries_integrated_plant__pbli_capacity__capacity_ok__55a012a287da9395",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__pbli_pump__capacity_ok__79d116aa320dd4fb",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__plant_ledger__balances_ok__9af2e85b5e4e5535",
+      "source_local_identity": "balances_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__plant_ledger__heat_removal_ok__695378663bcd8d07",
+      "source_local_identity": "heat_removal_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__rejection_capacity__capacity_ok__295420bc9fb25608",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    },
+    {
+      "constraint_id": "aries_integrated_plant__turbine_capacity__capacity_ok__089f9e8e61919ec1",
+      "source_local_identity": "capacity_ok",
+      "operands_resolved": 2
+    }
+  ],
+  "verdict_mismatches": [],
+  "not_independently_verified": [],
+  "worst_channel_rel_dev": 9.99671101453714e+21,
+  "outcome": "pass",
+  "absolute_tolerances": [
+    {
+      "channel": "aries_integrated_plant__plant_ledger__evaluate__residual_magnitude",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Native root termination1e-8MW plus roundoff allowance; below minimum1e-6MW engineering balance tolerance; independently reviewed T-005"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__idc",
+      "value": 1.9073486328125e-06,
+      "units": "USD2004",
+      "basis": "Two ULP of the capital magnitude covers cancellation in the subtractive IDC diagnostic; no other financial channel relaxed. Evidence: exploration/aries_integrated/studies/20260922-aries-integrated-lcoe/tiny-rate-tolerance.json"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__unmet_heat",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_unmet",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Difference of order-1000 MW delivered and transferred duties fixed by a root solve terminating at 1e-8 MW residual (native) against a 1e-11 K checker root; observed store-versus-oracle differences at most 4.9e-9 MW over 27 points; below the 1e-6 MW engineering balance tolerance; declared for the round-2 reconciliation study and independently reviewed (work/orchestration/goals/aries-reference-heat-electricity-reconciliation/evidence/unmet-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__curtailed_feed",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(new_feed - gross_makeup, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__lifecycle_accounts__evaluate__external_shortfall",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(gross_makeup - new_feed, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__curtailed_feed",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(new_feed - gross_makeup, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__source_lifecycle_accounts__evaluate__external_shortfall",
+      "value": 1e-09,
+      "units": "kg/year",
+      "basis": "max(gross_makeup - new_feed, 0) at exact feed equality: the package sums burn + loss + decay in float64 and the checker takes the same difference of a Decimal sum, so the package gives exactly 0.0 and the checker exposes the float64 rounding error (about one ulp, 2.8e-14 kg/year at 139 kg/year; 6.8e-15 observed over 8 points); 1e-9 kg/year is 7e-12 of the makeup and far below any accounting meaning (one microgram of tritium per year); relaxes no other channel and no verdict; declared for 20260925-aries-reconciled-alternative-economics and independently reviewed (work/orchestration/goals/aries-reconciled-alternative-economics/evidence/curtailed-tolerance-review.md)"
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__closure_residual",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Native root termination 1e-8 MW plus roundoff; independent Brent root 1e-11 K. Numerical comparison only, below 1e-6 MW engineering solve contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__he_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__pbli_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_bound_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_required_hot_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_terminal_difference",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_hot_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_cold_approach_margin",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_return_residual_magnitude",
+      "value": 1e-07,
+      "units": "K",
+      "basis": "Difference of order-1000 K temperatures from native 1e-8 MW cycle and 1e-10 MW control solves; allows float cancellation in saturated terminal gaps. Numerical agreement only; exact margin signs determine physical verdicts and 1e-6 K checks numerical return closure."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_bypass_fraction",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_control_margin",
+      "value": 1e-09,
+      "units": "1",
+      "basis": "Control root fraction can approach zero; independent LMTD inverse versus native 1e-10 MW capability solve. Absolute scale below flow/split study resolution; no acceptance relaxation."
+    },
+    {
+      "channel": "aries_integrated_plant__heat_exchangers__evaluate__divertor_capability_at_solution",
+      "value": 1e-07,
+      "units": "MW",
+      "basis": "Finite transfer can approach zero; native 1e-10 MW controller solve and cycle 1e-8 MW termination. Below inherited heat-removal numerical contract."
+    }
+  ]
+}

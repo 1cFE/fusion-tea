@@ -1,0 +1,8 @@
+load_MW,offer,common_flow_kg_s,series_case,network_case,series_id,network_id,series_pass,network_pass,delta_net_MW,comparison_usable
+1650.0,A,1228.8046875,case-01114,case-01115,20260927-exchanger-thermal-comparison-b:c1114,20260927-exchanger-thermal-comparison-b:c1115,True,True,0.0,True
+1835.4512830147435,A,1353.90859375,case-01116,case-01117,20260927-exchanger-thermal-comparison-b:c1116,20260927-exchanger-thermal-comparison-b:c1117,True,True,0.0,True
+1835.4512830147435,B,1290.8833984375,case-01118,case-01119,20260927-exchanger-thermal-comparison-b:c1118,20260927-exchanger-thermal-comparison-b:c1119,True,True,0.0,True
+1950.0,A,1431.67578125,case-01120,case-01121,20260927-exchanger-thermal-comparison-b:c1120,20260927-exchanger-thermal-comparison-b:c1121,True,True,0.0,True
+1950.0,B,1361.71484375,case-01122,case-01123,20260927-exchanger-thermal-comparison-b:c1122,20260927-exchanger-thermal-comparison-b:c1123,True,True,0.0,True
+2000.0,A,1465.73828125,case-01124,case-01125,20260927-exchanger-thermal-comparison-b:c1124,20260927-exchanger-thermal-comparison-b:c1125,True,True,0.0,True
+2000.0,B,1392.671875,case-01126,case-01127,20260927-exchanger-thermal-comparison-b:c1126,20260927-exchanger-thermal-comparison-b:c1127,True,True,0.0,True
