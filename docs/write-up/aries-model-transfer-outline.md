@@ -75,65 +75,85 @@ The expanded model supported three kinds of experiment: change operating paramet
 
 To test this, we used each of our classes of experiment to ask a concrete engineering question. The results show both what the model can teach us and where the comparisons remain incomplete.
 
-### Parameters: when does producing less electricity lower its cost?
+### Parameters: how far can lowering compressor pressure improve output?
 
-We varied plasma density while keeping the selected equipment fixed. Lower density reduced fusion power, electricity output and fuel demand. Whether that improved LCOE depended on how the plant obtained its tritium.
+We connected the Stellaris helium cooling loop to the ARIES helium Brayton power cycle and varied two operating parameters: cycle flow and pressure ratio per compressor stage. The reactor heat input and selected major equipment stayed fixed. The question was how much electricity those components could produce together, and what would limit further improvement.
 
-| Operating point | Net electricity | LCOE: purchase all new tritium | LCOE: assume 100 kg/year of new supply |
-|---|---:|---:|---:|
-| Baseline density | 423 MW | $1,119/MWh | $176/MWh |
-| Lower density | 350 MW | $1,295/MWh | $160/MWh |
+At a cycle flow of 2,500 kg/s, lowering the stage pressure ratio from **1.45 to about 1.4273 increased net electricity from 576 to 621 MW**. Lowering it further to 1.425 left **7.8 MW of reactor heat unremoved**. That setting could not sustain the required heat balance, despite still reporting about 620 MW of electricity.
 
-Both rows use the same selected exchanger areas of 45,000 m² each and pass the evaluated checks. Prices are USD2004. Purchased tritium is assumed to cost $30 million/kg; the 100 kg/year supply carries an assumed $30 million/year service charge. These are operating scenarios from the earlier design study, separate from the 891 MW comparison above. [Cases and accounting](../../work/orchestration/goals/aries-integrated-design-studies/answer.md)
+![Net electricity rises as compressor pressure ratio falls, until the exchanger can no longer remove all reactor heat](aries-study-assets/parameter-pressure-ratio.png)
 
-When all new tritium is purchased, the lower-density plant is more expensive per MWh: its reduced fuel bill does not compensate for producing less electricity from the same equipment. With the assumed 100 kg/year supply, the ranking reverses. Lower density brings annual demand below that supply limit and eliminates the remaining external purchases.
+*Read from right to left as pressure ratio decreases. Blue points satisfy the implemented checks, including the loop return-temperature requirement. The red point fails heat removal and the return requirement. Points are verified evaluations; connecting lines guide the eye.*
 
-The lower-density case is cheaper only because it avoids expensive tritium purchases. It does not generate electricity more efficiently. Before recommending lower density, we would need to establish whether the plant can obtain the assumed 100 kg/year supply at the stated cost. The study tells us which missing information could change the design recommendation.
+The limit comes from the connection between the power cycle and the exchanger. Lowering pressure ratio changes the turbine and recuperator temperatures. The recuperator, which recovers turbine exhaust heat, then sends warmer gas toward the reactor heat exchanger. Eventually that gas is too warm for the exchanger to transfer all the required reactor heat. **A compressor operating choice is therefore limited by heat transfer elsewhere in the plant.**
+
+Changing cycle flow moves that limit. We located the limiting pressure ratio at each tested flow, enforcing the required primary-loop return temperature. Increasing flow allows a lower ratio, but does not always produce more electricity: compressor work also increases and turbine inlet temperature changes.
+
+![Pressure ratio and net electricity at the exchanger limit across seven cycle flows](aries-study-assets/parameter-flow-boundary.png)
+
+*Each point uses the same selected equipment and its own limiting pressure ratio, with essentially no primary bypass. The best tested outputs are about 621 MW at 2,500 kg/s and 618 MW at 2,750 kg/s; their difference is smaller than the study's declared 5 MW materiality threshold.*
+
+The economic consequence is direct. Over the 1.45 → 1.4273 pressure-ratio change, the nonfuel cost contribution falls from **$98.6 to $91.5/MWh in 2004 dollars** because the same assumed expenses are spread over more electricity. The study identifies both the benefit of changing an operating parameter and the physical constraint that stops it. These results use assumed machine efficiencies rather than vendor operating maps; the modeled return-temperature control omits bypass hardware costs and pressure losses.
+
+Evidence: [final parameter-study assessment](../../work/orchestration/goals/design-study-parameters/answer.md), [verified case results](../../exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/results/readout.md), [figure data](aries-study-assets/parameter-figure-data.json) and [reproducible renderer](aries-study-assets/render_parameters.py).
 
 ### Components: steam or helium Brayton conversion?
 
-We connected components developed for the two plants in new combinations, then compared steam and helium Brayton conversion using the same modeled heat source. Each option included its connecting exchangers, conversion equipment, cooling and internal electrical loads. Reactor equipment, fuel and primary circulation were excluded equally. The result is **conversion-system cost per net MWh**, not whole-plant LCOE.
+Which power-conversion system gives cheaper electricity from the same reactor? We assembled steam and helium Brayton alternatives using the expanded component library, including their connecting exchangers and cooling equipment. We held the reactor configuration fixed within each comparison and calculated the consequences for the whole plant: electricity exported after internal consumption, capital, fuel, operation and equipment replacement.
 
-| Reactor heat input | Selected steam system | Tested Brayton system | Cost preference under the assumed prices |
-|---|---:|---:|---|
-| 2,500 MW | $33.76/MWh | $33.77/MWh | No material difference |
-| 2,800 MW | $32.41/MWh | $36.47/MWh | Difference below the declared $5/MWh threshold |
-| 3,000 MW | $37.11/MWh | $27.67/MWh | Brayton cheaper by $9.45/MWh |
+**Steam's higher electricity output outweighed its higher equipment cost.** It gave the lower whole-plant LCOE at both supported heat loads.
 
-All costs are USD2025. These compare specific equipment selections within supported operating ranges, not equally optimized technologies. The full study verified 498 cases; only cases passing the implemented engineering checks entered the ranking. [Verified comparison](../../work/orchestration/goals/design-study-component-alternatives/answer.md)
+| Reactor heat supplied | Steam net export | Steam LCOE | Brayton net export | Brayton LCOE |
+|---|---:|---:|---:|---:|
+| 2,500 MW | 664 MW | $408/MWh | 286 MW | $875/MWh |
+| 2,800 MW | 747 MW | $371/MWh | 204 MW | $1,230/MWh |
 
-**More electricity did not necessarily mean cheaper electricity.** At 2,500 MW of reactor heat, the steam system produced about 938 MW net, versus 559 MW for Brayton. But steam's selected equipment cost $2.55 billion versus $1.54 billion. Its higher output and higher costs left the two systems almost equal in cost per MWh.
+Costs are USD2025, with 80% availability, a 30-year operating life and a 5% real discount rate. Equipment and operating settings were selected separately at each heat load from the modeled catalog. At 2,800 MW, the earlier Brayton selection could no longer accept the source heat within its limits; the replacement selection exported less electricity. These rows therefore compare different selections, rather than tracing one plant as its heat input rises. [Study results and assumptions](../../work/orchestration/goals/design-study-whole-plant-conversion/answer.md)
 
-![Conversion-system cost by reactor heat input, with capital and recurring-cost contributions](../../work/orchestration/goals/design-study-component-alternatives/evidence/verified-comparison/matched-cost.png)
+At 2,500 MW, steam delivered 938 MW after its conversion equipment's own consumption, versus 559 MW for Brayton. Both plants then needed another 274 MW for reactor circulation, heating, refrigeration and other services. That left 664 MW and 286 MW to sell. The same reactor electrical demand consumed a much larger share of Brayton's output.
 
-*The dashed line holds a larger steam-side exchanger and pump arrangement fixed. Selecting a smaller arrangement that still passes its checks lowers steam's cost at the lower heat loads. The component comparison therefore depends on the connecting equipment as well as the turbine technology.*
+![Electricity exported and consumed internally by the steam and helium Brayton plants](../../exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/presentation/power-budget.png)
 
-The 3,000 MW Brayton advantage was conditional. Changing the assumed equipment prices could reverse it. Including the cost of producing the reactor heat could also change the preference: steam produces more electricity over which to spread that common expense. A sensitivity calculation found that a common upstream present-value cost of about $1.83 billion erased the nominal Brayton advantage at this point; it was not a complete reactor-cost estimate.
+*Blue is electricity available for sale; orange and green show internal consumption. “Gas” denotes helium Brayton. Brayton compressor work has already been subtracted before the quantities plotted here.*
 
-![Sensitivity of steam-minus-Brayton conversion cost to efficiency, equipment prices and common upstream costs](../../work/orchestration/goals/design-study-component-alternatives/evidence/verified-comparison/matched-sensitivity.png)
+Steam's conversion equipment cost $2.55 billion to purchase, versus $1.54 billion for Brayton. But both required the same roughly $10.23 billion of other plant purchases. Steam's additional electricity spread those common costs, and later reactor replacements, over more than twice as many exported MWh. The cheaper conversion equipment therefore produced the more expensive electricity.
 
-*Positive differences favor Brayton; negative differences favor steam. The gray band marks differences smaller than the declared $5/MWh threshold. The right panel shows why a cheaper conversion subsystem need not give the cheaper complete plant.*
+![Whole-plant LCOE contributions for steam and helium Brayton at both supported heat loads](../../exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/presentation/whole-cost-contributions.png)
 
-This is a practical use of component alternatives: we can compare the electricity gained against the equipment and operating costs required to obtain it, then identify which assumptions could change the choice. The models still restrict that comparison. Many Brayton offers lay outside the cooler calculation's supported water-temperature range, so the results do not establish the best possible Brayton design. [Sensitivity, exclusions and reproducible figures](../../work/orchestration/goals/design-study-component-alternatives/evidence/verified-comparison/report.md)
+*Capital and replacement costs dominate this comparison. A similar reactor expense becomes a much larger cost per MWh when the plant exports less electricity.*
 
-### Architecture: which exchanger arrangement can handle more fusion power?
+What would change the choice? Steam remained cheaper under the individually tested price, reactor-cost and operating assumptions. A combined scenario reversed the result at 2,800 MW: raise Brayton compressor and turbine efficiencies by three percentage points, lower steam turbine efficiencies by three points, halve Brayton equipment prices and increase steam prices by 50%. Brayton then cost $397/MWh versus steam's $427/MWh. This identifies a combination of performance and price improvements that could make Brayton competitive; it is an assumed scenario, not an available vendor offer. [Sensitivity results](../../exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/results/presentation/preference-sensitivity.svg)
 
-We compared two arrangements of the same exchanger stages: all in series, or a first stage followed by two parallel branches. We then increased plasma density and checked both electricity and heat removal.
+The study completed and independently verified 2,496 cases. At 3,000 MW, the selected primary cooling and divertor hardware failed their checks, so neither conversion option provided a supported plant design. The conclusions apply to the supplied reactor, assumed prices and tested equipment catalog. Within that scope, the model answered the component-choice question at plant level: saving on conversion equipment was a poor trade when it sharply reduced the electricity available to repay the reactor's cost.
 
-| Peak density, m⁻³ | Series: net electricity / unremoved heat | Split flow: net electricity / unremoved heat |
-|---|---:|---:|
-| 5.0 × 10²⁰ | 423 MW / 0 MW | 423 MW / 0 MW |
-| 5.5 × 10²⁰ | 736 MW / 0 MW | 703 MW / 45 MW |
-| 5.75 × 10²⁰ | 795 MW / 150 MW | 821 MW / 115 MW |
+### Architecture: can different exchanger connections produce more electricity?
 
-These cases use the same density-profile shape and selected hardware. Electrical output and unremoved thermal power are separate quantities. A case with unremoved heat fails the modeled steady-operation requirement, regardless of its electricity output. [Verified architecture study](../../exploration/aries_integrated/studies/20260926-aries-design-choice-interactions/results/interactions.md)
+We kept the reactor heat source and selected equipment the same, then changed how the power-cycle helium passes through three heat exchangers. In series, the whole stream visits each exchanger in turn. In the split network, it passes through the blanket-helium exchanger first, divides between the PbLi and divertor exchangers, then mixes before the turbine.
 
-At the lower load, the arrangements give the same result. At the middle load, only the series arrangement removes all the heat. At the highest load, the split-flow arrangement produces more electricity, but neither arrangement removes all the heat. The apparent ranking reversal therefore does not identify a better operating design.
+![Series and split-network exchanger connections](../../work/orchestration/goals/design-study-exchanger-architecture/evidence/figures/r3-connections.png)
 
-**Changing the connections changes the usable operating range.** In these cases, heat removal fails before the fuel-processing or compressor-capacity checks. A study that ranked only net electricity or LCOE would miss the reason the apparently attractive operating point cannot be sustained under the model's assumptions.
+*The choice is the connections between components. Both arrangements use the same selected exchangers and machinery. Cycle flow is adjustable in both; the network also has a selectable split between its branches.*
+
+At **1,835 MW supplied fusion power**, the best tested network operation produced **528 MW net versus 498 MW for series**, a gain of about **31 MW, or 6.2%**. Both removed all the assigned heat, met the specified primary return temperatures and maintained at least the adopted 30 K temperature difference at both ends of every primary exchanger. The comparison uses revised exchanger selections because the original inventory could not satisfy these thermal requirements. The 30 K requirement at each individual terminal is an explicit study assumption, not a complete reconstruction of the published ARIES exchanger design.
+
+![Nominal architecture comparison: the split network needs less cycle flow, produces more electricity and reduces the nonfuel cost contribution](aries-study-assets/architecture-nominal-pair.png)
+
+*Both cases use the same revised inventory: 18,000 m² each for the blanket-helium and PbLi exchangers and 2,000 m² for the divertor exchanger. The costs retain the same assumed equipment budgets. The plotted cost contribution excludes recurring fuel charges but retains initial fuel inventory in capital; unknown additional piping and control costs are not included.*
+
+**The connections let the cycle accept the same heat with less circulating helium.** In series, the divertor exchanger warms the entire stream before it reaches the PbLi exchanger. Splitting the stream avoids that preheating. The network therefore needs about 1,246 kg/s of cycle flow where series needs 1,291 kg/s. Lower flow reduces compressor demand, increasing the electricity available for export. At equal flow, when both arrangements remove all heat, their modeled electricity is identical: splitting does not provide a separate efficiency bonus.
+
+With the represented costs unchanged, more electricity reduces the nonfuel cost contribution from **$104.29 to $98.24/MWh in 2004 dollars**. Fine refinement of flow and split retained the advantage; it is not an artifact of choosing a coarse set of operating points. [Verified performance, thermal conditions and cost accounting](../../work/orchestration/goals/design-study-exchanger-architecture/answer.md)
+
+The study also identifies what could reverse the choice. With an assumed **8% cycle pressure loss for the network versus 4.5% for series**, network output falls to **491 MW**, below series at **498 MW**. The extra pressure loss outweighs the benefit of the connections. Actual network hydraulics and additional piping/control costs are therefore decision-relevant inputs, not details that can be ignored after selecting the layout.
+
+Both arrangements also depend on modeled bypass controls to maintain the reactor-loop return temperatures. At the highlighted points, roughly 63–69% of blanket-helium flow bypasses its exchanger. Valve capacities, hydraulic losses and incremental costs remain unqualified; restricting every bypass to 50% eliminated the sampled passing cases. The result is a conditional comparison under that control assumption.
+
+The useful architectural result is specific: **changing connections can reduce the circulation required to carry the reactor heat, increasing plant output—but added hydraulic losses can erase the gain.** The model quantifies both effects, giving us a reason to prefer the network under the nominal assumptions and a concrete requirement to investigate before choosing it.
+
+Evidence: [final architecture assessment and replay](../../work/orchestration/goals/design-study-exchanger-architecture/answer.md), [verified sensitivities](../../work/orchestration/goals/design-study-exchanger-architecture/evidence/r3-data/sensitivity-coverage.csv), [figure data](aries-study-assets/architecture-figure-data.json) and [renderer](aries-study-assets/render_architecture.py).
 
 ### What these studies add to the assessment
 
-The parameter study exposed a fuel-supply threshold that reverses an economic preference. The component studies demonstrated new pairings and compared the output and cost of steam and Brayton conversion at matched heat inputs. The architecture study showed where changing connections changes the heat-removal limit. These are concrete uses of the expanded design space beyond evaluating Stellaris and ARIES separately.
+The parameter study showed how compressor settings improve electricity output until exchanger heat transfer becomes limiting. The component study showed why steam's higher output justified its more expensive conversion equipment once the reactor's costs and electrical consumption were included. The architecture study showed how changing exchanger connections reduces circulation demand and increases net output, and how additional pressure loss can reverse the preference. These are concrete uses of the expanded design space beyond evaluating Stellaris and ARIES separately.
 
-The studies answer different design questions: how operating parameters affect LCOE, how conversion-system choices trade output against cost, and how exchanger connections change operating limits. Their conclusions remain conditional on the represented physics, supported ranges and cost assumptions; none establishes a fully qualified plant design.
+The studies answer different design questions: how operating parameters affect LCOE, how conversion-system choices trade output against cost, and how exchanger connections affect plant electricity and cost. Their conclusions remain conditional on the represented physics, supported ranges and cost assumptions; none establishes a fully qualified plant design.
