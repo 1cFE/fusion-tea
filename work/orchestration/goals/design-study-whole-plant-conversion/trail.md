@@ -193,3 +193,8 @@ T-004 · independent numerical adjudication · evidence/verification-failure-r1 
 ### T-005 start — 2026-09-27
 
 T-005 · native integration and replacement run-study · exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/.
+
+### T-005 integration candidate — 2026-09-27
+
+- **Evidence:** evidence/integration-r2/integration_return.json: all ten gates PASS, CANDIDATE on corrected-oracle commit ae6819d1. Native executable 6915694e74919ebb764445dfc7f0782eda85a9de29fa44c4b55ffa415c1eb30f and semantic bb284160ba12996bc129ba91c1838aed3281d54dc0e729fe03ca02a9d413d6e3 are unchanged. Pin 89acea93750da8794f74883315fb0ff658d6213d0d4b2ffcaf2b1edb320deeae is reused with fresh integration and corrected-verifier provenance.
+- **Decision:** Trigger: corrected-oracle regression and native integration PASS. Decision: promote this candidate as Round 2’s only pin and release replacement preparation on the now-stable package. Tier: execution detail. Decided by: coordinator [AGENT], using independent correction acceptance. Changed: replacement record integration receipts; no package changes. Main execution awaits a frozen reviewed list.
