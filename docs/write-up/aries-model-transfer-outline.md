@@ -90,13 +90,31 @@ When all new tritium is purchased, the lower-density plant is more expensive per
 
 The lower-density case is cheaper only because it avoids expensive tritium purchases. It does not generate electricity more efficiently. Before recommending lower density, we would need to establish whether the plant can obtain the assumed 100 kg/year supply at the stated cost. The study tells us which missing information could change the design recommendation.
 
-### Components: can the same models work with different partners?
+### Components: steam or helium Brayton conversion?
 
-We connected the Stellaris helium-loop model to the ARIES Brayton components, and separately connected the Stellaris plasma model to the ARIES thermal and fuel chain. Both assemblies used existing definitions without changing their equations. Several configurations passed every check their assembly included; others reported insufficient equipment or heat-removal capacity. [Assembly results](../../work/orchestration/goals/design-space-combinations/answer.md)
+We connected components developed for the two plants in new combinations, then compared steam and helium Brayton conversion using the same modeled heat source. Each option included its connecting exchangers, conversion equipment, cooling and internal electrical loads. Reactor equipment, fuel and primary circulation were excluded equally. The result is **conversion-system cost per net MWh**, not whole-plant LCOE.
 
-These tests demonstrate component reuse directly: the definitions worked with partners outside the plant for which they were developed. They also identified specific limits. For example, the steam-cycle path expects a salt-loop heat interface, so it cannot accept every ARIES coolant stream without an appropriate exchanger model.
+| Reactor heat input | Selected steam system | Tested Brayton system | Cost preference under the assumed prices |
+|---|---:|---:|---|
+| 2,500 MW | $33.76/MWh | $33.77/MWh | No material difference |
+| 2,800 MW | $32.41/MWh | $36.47/MWh | Difference below the declared $5/MWh threshold |
+| 3,000 MW | $37.11/MWh | $27.67/MWh | Brayton cheaper by $9.45/MWh |
 
-We have not yet established whether steam or Brayton conversion gives lower LCOE for the same plant. That requires a matched heat source, complete auxiliary-power accounting and comparable equipment costs. The hybrid tests still contain gaps, including the connection between plasma heating demand and the electrical balance. Their numerical outputs establish execution and the reported checks, not a complete economic ranking. No material-substitution comparison was demonstrated in these tests.
+All costs are USD2025. These compare specific equipment selections within supported operating ranges, not equally optimized technologies. The full study verified 498 cases; only cases passing the implemented engineering checks entered the ranking. [Verified comparison](../../work/orchestration/goals/design-study-component-alternatives/answer.md)
+
+**More electricity did not necessarily mean cheaper electricity.** At 2,500 MW of reactor heat, the steam system produced about 938 MW net, versus 559 MW for Brayton. But steam's selected equipment cost $2.55 billion versus $1.54 billion. Its higher output and higher costs left the two systems almost equal in cost per MWh.
+
+![Conversion-system cost by reactor heat input, with capital and recurring-cost contributions](../../work/orchestration/goals/design-study-component-alternatives/evidence/verified-comparison/matched-cost.png)
+
+*The dashed line holds a larger steam-side exchanger and pump arrangement fixed. Selecting a smaller arrangement that still passes its checks lowers steam's cost at the lower heat loads. The component comparison therefore depends on the connecting equipment as well as the turbine technology.*
+
+The 3,000 MW Brayton advantage was conditional. Changing the assumed equipment prices could reverse it. Including the cost of producing the reactor heat could also change the preference: steam produces more electricity over which to spread that common expense. A sensitivity calculation found that a common upstream present-value cost of about $1.83 billion erased the nominal Brayton advantage at this point; it was not a complete reactor-cost estimate.
+
+![Sensitivity of steam-minus-Brayton conversion cost to efficiency, equipment prices and common upstream costs](../../work/orchestration/goals/design-study-component-alternatives/evidence/verified-comparison/matched-sensitivity.png)
+
+*Positive differences favor Brayton; negative differences favor steam. The gray band marks differences smaller than the declared $5/MWh threshold. The right panel shows why a cheaper conversion subsystem need not give the cheaper complete plant.*
+
+This is a practical use of component alternatives: we can compare the electricity gained against the equipment and operating costs required to obtain it, then identify which assumptions could change the choice. The models still restrict that comparison. Many Brayton offers lay outside the cooler calculation's supported water-temperature range, so the results do not establish the best possible Brayton design. [Sensitivity, exclusions and reproducible figures](../../work/orchestration/goals/design-study-component-alternatives/evidence/verified-comparison/report.md)
 
 ### Architecture: which exchanger arrangement can handle more fusion power?
 
@@ -116,6 +134,6 @@ At the lower load, the arrangements give the same result. At the middle load, on
 
 ### What these studies add to the assessment
 
-The parameter study exposed a fuel-supply threshold that reverses an economic preference. The component tests demonstrated new pairings without new equations. The architecture study showed where changing connections changes the heat-removal limit. These are concrete uses of the expanded design space beyond evaluating Stellaris and ARIES separately.
+The parameter study exposed a fuel-supply threshold that reverses an economic preference. The component studies demonstrated new pairings and compared the output and cost of steam and Brayton conversion at matched heat inputs. The architecture study showed where changing connections changes the heat-removal limit. These are concrete uses of the expanded design space beyond evaluating Stellaris and ARIES separately.
 
-The evidence is uneven: we have conditional LCOE comparisons for operating parameters, direct reuse tests for components, and operating-limit comparisons for architecture. A matched economic comparison between component alternatives remains unfinished. That distinction lets us show useful design studies without claiming that every represented combination is physically qualified or economically comparable.
+The studies answer different design questions: how operating parameters affect LCOE, how conversion-system choices trade output against cost, and how exchanger connections change operating limits. Their conclusions remain conditional on the represented physics, supported ranges and cost assumptions; none establishes a fully qualified plant design.

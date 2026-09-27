@@ -10,7 +10,7 @@ The hard part is not any single session. A session with a good prompt does good 
 
 AI has inherent entropy. Left to its own devices, a modeling environment goes the way an unattended codebase does: it becomes chaotic and incomprehensible, which is what people mean by slop. Fighting that entropy is the job of the harness. The aim is a closed system that is never deterministic but stays predictable over time. Some of the problems it has to solve:
 
-- Avoid multiple, conflicting sources of truth. The first study run under the study tooling found four values in the model with no source anywhere in the repository (`.project/research/20260822-120756_research-extraction-harness.md`). An agent that needs a value and cannot find one will supply a plausible one from memory, and the next session reads it as a fact.
+- Avoid multiple, conflicting sources of truth. The first study run under the study tooling found four values the study needed that no source in the repository supplied (`.project/research/20260822-120756_research-extraction-harness.md`). An agent that needs a value and cannot find one will supply a plausible one from memory, and the next session reads it as a fact.
 - Keep work continuous across agent sessions, so that a fresh session can pick up where the last one stopped without redoing or undoing it.
 - Keep intent consistent, so that agents working on one piece do not lose the forest for the trees.
 - Hold the level of performance as the system grows in volume. That takes an architecture and a set of patterns that an agent, or a person, can still read and understand.
@@ -58,7 +58,7 @@ A plan cannot carry that, because a plan lists the actions in advance. What can 
 
 *Figure 1. One goal, pursued in rounds. Inside a round, the pin divides the tasks: before it the model can change; after it the model is fixed and studies run against it. The only path from one round to the next runs through the review and the owner. Rendered by `harness-assets/render_goal_loop.py`.*
 
-**The goal is written first** Before any work starts, the owner and an agent write the goal (`work/orchestration/GOAL_RUNBOOK.md` § Grounding a goal). It carries:
+**The goal is written first.** Before any work starts, the owner and an agent write the goal (`work/orchestration/GOAL_RUNBOOK.md` § Grounding a goal). It carries:
 
 - the question, in one sentence, and who is asking;
 - what would count as answered, concrete enough that two people would agree;

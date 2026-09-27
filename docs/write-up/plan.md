@@ -16,9 +16,9 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 | Part | Support | Status |
 |---|---|---|
 | 1. Why SysMLv2 | The existing blog post | Done. Main post only needs the short argument (strict semantics fight AI entropy; composability enables categorical trade studies). |
-| 2. Model execution and studies | [sysml-codegen-model-evaluation.md](sysml-codegen-model-evaluation.md), to become HTML | Prose revised through the writing prompt. Figures and evidence live in `sysml-codegen-assets/`. Needs HTML conversion. |
-| 3. The full harness | [harness.md](harness.md) (outline: [harness-outline.md](harness-outline.md); figure: `harness-assets/`) | Drafted: sections 1–8 filled in and revised with the owner, 2026-09-26. Figure 1 (the goal loop) done. Open: whether section 4 gets a figure; HTML conversion. |
-| 4. The demo, support 1: modeling Stellaris | Evolution viewer (`feat/model-viz-evolution`, page at `~/1cfe/stellarator_evolution.html`) plus [stellaris-evolution.md](stellaris-evolution.md) (outline: [stellaris-evolution-outline.md](stellaris-evolution-outline.md); evidence: `stellaris-evolution-assets/`) | Viewer built, 29 frames (baseline plus 28 goals). Drafted 2026-09-26: six theme notes with evidence links, every outline number checked against the goal records. Open: owner review; where the notes sit on the viewer page; HTML merge. |
+| 2. Model execution and studies | [sysml-codegen-model-evaluation.html](sysml-codegen-model-evaluation.html) (source: [sysml-codegen-model-evaluation.md](sysml-codegen-model-evaluation.md); figures and evidence: `sysml-codegen-assets/`) | Done: HTML accepted by the owner, 2026-09-26. Retitled "Executing the trade studies on a SysML v2 plant model" [OWNER]. The page adds four interactive figures (field equation, calculation graph, breeding surrogate, feasibility map), approved by the owner for this page. |
+| 3. The full harness | [harness.html](harness.html) (source: [harness.md](harness.md); outline: [harness-outline.md](harness-outline.md); figures: `harness-assets/`) | Done: HTML accepted by the owner, 2026-09-26. The page adds nine figures, three of them interactive (the goal loop, the repository areas, the checks), with the detail in collapsed sections. `harness.md` stays the full-text source; the page deliberately carries less text than it. |
+| 4. The demo, support 1: modeling Stellaris | Evolution viewer (`feat/model-viz-evolution`, page at `~/1cfe/stellarator_evolution.html`) plus [stellaris-evolution.md](stellaris-evolution.md) (outline: [stellaris-evolution-outline.md](stellaris-evolution-outline.md); evidence: `stellaris-evolution-assets/`) | Done, per the owner, 2026-09-26: [stellaris-evolution.html](stellaris-evolution.html). Viewer built, 29 frames (baseline plus 28 goals); six theme notes with evidence links, every outline number checked against the goal records. |
 | 4. The demo, support 2: the ARIES test | [aries-model-transfer-outline.md](aries-model-transfer-outline.md) | Narrative draft awaiting owner discussion. |
 | 5. Takeaways and forward outlook | Probably none | Main post only. |
 
@@ -31,13 +31,18 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
    - **Outline stage shape** (settled 2026-09-25 on [harness-outline.md](harness-outline.md), which is the reference example). One numbered beat per section. Each beat is a bold title, one sentence of setup if needed, then the point in one sentence, then a few short bullets. Every sentence says an idea in plain words; no naming parts or systems as shorthand for the idea. No evidence paths, no figure specs, no sub-sections. The whole outline fits on one screen. Evidence and detail belong to the fill-in stage.
    - **Fill-in stage.** An agent takes the settled outline and [writing-prompt.md](writing-prompt.md) and drafts the prose, section by section, with evidence links and figures.
 3. Once all supporting pieces are ready, return to the main post and integrate diagrams, plots and links to the supports.
+4. Publish and clean up, before the PR. [OWNER, 2026-09-26] Once all the HTML pages are finished, move them to a clean spot in the folder GitHub Pages publishes from, probably next to [the demo page](https://scoring.1cf.energy/demo/index.html#the-question). Before the PR:
+   - Fix all the links.
+   - Archive all the supporting docs and prompts.
+   - [AGENT] Where Pages publishes from: this repo's `docs/` folder on `main`, served at scoring.1cf.energy (`docs/CNAME`). The demo page is `docs/demo/index.html`, so a folder beside it, `docs/<name>/`, publishes at `scoring.1cf.energy/<name>/`. There is no `.nojekyll`, so Jekyll also publishes markdown: anything left under `docs/` when the branch merges, including `docs/write-up/` with its drafts, prompts and `html-work/`, becomes public. The archive therefore has to land outside `docs/`.
+   - [AGENT] Links found in the pages on 2026-09-26: each links `write-up.css` and the other pages by relative path, so those files move together. Two links point at the main post as `fusion-tea-exploratory-modeling.md`, which needs its published address. One points at `aries-model-transfer-outline.html`, which does not exist yet.
 
 Working order for step 2, by readiness and dependency:
 
-1. Part 3 (the gap; the main post's Part 3 and Part 4 both lean on the goal and round vocabulary it establishes). Drafted 2026-09-26.
-2. Part 4 support 1: capture the Stellaris evolution using the viewer. Drafted 2026-09-26.
+1. Part 3 (the gap; the main post's Part 3 and Part 4 both lean on the goal and round vocabulary it establishes). Drafted 2026-09-26; HTML accepted 2026-09-26.
+2. Part 4 support 1: capture the Stellaris evolution using the viewer. Drafted 2026-09-26; HTML done 2026-09-26.
 3. Part 4 support 2: discuss and settle the ARIES narrative, then fill.
-4. Part 2: convert the evaluation article to HTML.
+4. Part 2: convert the evaluation article to HTML. Done 2026-09-26.
 5. Return to the main post.
 
 ## Part 3: the full harness (the gap)
@@ -73,10 +78,7 @@ Decisions taken during fill-in:
 - [AGENT] (ratified by owner, 2026-09-26) Section 7 ends by pointing to the Part 4 hold-out test as the test of whether the model predicts a real plant; section 8 cites the four integrated ARIES goals (Part 4) as the low-input example.
 - [AGENT] Corrections to the outline found against the record: round 1's research wrote no "found nothing" record (the run returned `REGISTERED` with two candidates queued); the quarantine is checked by the script only at registration, with the before-fetch screen an instruction in the research agent's prompt; WI-042 changed two calculations, not one.
 
-Open for Part 3:
-
-- Whether section 4 gets a figure. The outline proposed the evolution viewer's before-and-after frame for this goal; the viewer's frame texts are agent condensations and would need checking against the goal's trail.
-- HTML conversion, with the other supports.
+**HTML, 2026-09-26.** [OWNER] Accepted [harness.html](harness.html). Section 4 got its figures from the goal's own record (the discrepancy chain, a task strip for each round, the stored-energy values), so the evolution viewer's frame was not used. Markdown changes made with the owner during the conversion: section 2 now allows independent tasks to run in parallel and says the question, not the goal, is fixed while it runs; section 4 is split into Goal, Round 1 and Round 2; section 1's "four values" wording now matches the record; a missing period in section 2 was restored.
 
 ## Part 4, support 1: capturing the Stellaris evolution
 

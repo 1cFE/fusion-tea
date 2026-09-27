@@ -1,6 +1,6 @@
 # Stellarator examples and figures
 
-These assets support [Turning a SysML model into a calculator](../sysml-codegen-model-evaluation.md). The figures use the stellarator model and retained study records. They contain no invented study points. Captions identify historical model snapshots and their limits.
+These assets support [Executing the trade studies on a SysML v2 plant model](../sysml-codegen-model-evaluation.md). The figures use the stellarator model and retained study records. They contain no invented study points. Captions identify historical model snapshots and their limits.
 
 ## Figures
 
@@ -18,12 +18,12 @@ The page `../sysml-codegen-model-evaluation.html` embeds these as inline SVG, dr
 
 | File | Page figure | Purpose | Evidence |
 |---|---|---|---|
-| `page-calculation-graph.svg` (+ `.dot`) | Figure 4 | The magnet graph, redrawn in the page's fonts and colors; its node and edge titles drive the page's explore panel | [graph-evidence.json](graph-evidence.json) |
-| `page-winding-pack-fit.svg` | Figure 3 | What the fit calculation compares: casing, cavity, required envelope, the two margins (names only, schematic proportions) | Normative equations in `models/library/analyses/mfe_winding_pack_fit.sysml` |
-| `page-fit-case-{reference,reference-sized,reference-accommodated}.svg` | Figure 7 | Each recorded case's required envelope against its clear cavity, one shared scale | [magnet-sizing-comparison.csv](magnet-sizing-comparison.csv); margins agree with the 15 September report |
-| `page-breeding-response.svg` (+ `page-breeding-nodes.json`) | Figure 5 | The five stored transport results and the interpolated response; the JSON and the SVG's `data-*` transform drive the page's slider | Table embedded in `exploration/stellarator_e2e/generated/handwritten/mfe_tritium_breeding/blanket_tritium_breeding_impl.py`, from `models/designs/stellarator_09/breeding_response.json` |
-| `page-feasibility-cost.svg` (+ `page-map-data.json`) | Figure 8 | The 17 September map redrawn with one SVG group per case and a single-hue cost ramp; the JSON drives the page's readout and check coloring | [feasibility-cost-map.csv](feasibility-cost-map.csv) |
-| `page-feasibility-cost-stacked.svg` | Figure 8, narrow screens | The same map with the panels stacked, drawn at a phone's width; the page shows it below 56rem | [feasibility-cost-map.csv](feasibility-cost-map.csv) |
+| `page-calculation-graph.svg` (+ `.dot`) | Figure 5 | The magnet graph, redrawn in the page's fonts and colors; its node and edge titles drive the page's explore panel | [graph-evidence.json](graph-evidence.json) |
+| `page-winding-pack-fit.svg` | Figure 4 | What the fit calculation compares: casing, cavity, required envelope, the two margins (names only, schematic proportions) | Normative equations in `models/library/analyses/mfe_winding_pack_fit.sysml` |
+| `page-fit-case-{reference,reference-sized,reference-accommodated}.svg` | Figure 10 | Each recorded case's required envelope against its clear cavity, one shared scale | [magnet-sizing-comparison.csv](magnet-sizing-comparison.csv); margins agree with the 15 September report |
+| `page-breeding-response.svg` (+ `page-breeding-nodes.json`) | Figure 7 | The five stored transport results and the interpolated response; the JSON and the SVG's `data-*` transform drive the page's slider | Table embedded in `exploration/stellarator_e2e/generated/handwritten/mfe_tritium_breeding/blanket_tritium_breeding_impl.py`, from `models/designs/stellarator_09/breeding_response.json` |
+| `page-feasibility-cost.svg` (+ `page-map-data.json`) | Figure 11 | The 17 September map redrawn with one SVG group per case, a single-hue cost ramp, and text labels above the feasibility panel, each bracketing the stretch of the top row where its limit fails (read off the failing-check classes; no label sits on the grid and no region is shaded); the JSON drives the page's readout and check coloring | [feasibility-cost-map.csv](feasibility-cost-map.csv) |
+| `page-feasibility-cost-stacked.svg` | Figure 11, narrow screens | The same map with the panels stacked, drawn at a phone's width; the page shows it below 56rem | [feasibility-cost-map.csv](feasibility-cost-map.csv) |
 
 Reproduce from the repository root: `uv run python docs/write-up/sysml-codegen-assets/render_page_figures.py` (needs Graphviz `dot`).
 

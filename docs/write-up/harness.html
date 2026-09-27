@@ -6,11 +6,8 @@
 <title>Part 3: The full harness</title>
 <link rel="stylesheet" href="write-up.css">
 <style>
-  /* Table 1 keeps the markdown's caption above its table. */
-  .table-figure figcaption { margin: 0 auto 0.6rem; }
-
-  /* Figure 2 is drawn at the plate's width; on a narrow screen it keeps a readable width and scrolls sideways,
-     like Figures 1 and 3. */
+  /* Figure 6 is drawn at the plate's width; on a narrow screen it keeps a readable width and scrolls sideways,
+     like Figures 1 and 9. */
   .energy-scroll { flex: 1 1 auto; min-width: 0; overflow-x: auto; }
   .energy-scroll svg { width: 100%; min-width: 50rem; max-width: none; }
 
@@ -246,19 +243,22 @@
     border-bottom: 2px solid var(--role-calc);
   }
 
-  /* Figure 3 layout: one column per step of round 2, the steps on a line across the middle, code checks
-     above it and agent reviews below. Each step is a subgrid, so its three parts line up across steps. */
+  /* Figure 9: one column per step of round 2, the steps on a line across the middle, code checks above it
+     and agent reviews below, each lane titled with its question. Each step is a subgrid, so its three parts line up
+     across steps. */
+  .checks-wrap { min-width: 60rem; }
+  .checks-wrap .lane-title { position: sticky; left: 0; max-width: min(100%, calc(100vw - 5rem)); margin: 0 0 0.6rem; font-size: 0.875rem; font-weight: 600; color: var(--ink-strong); }
+  .checks-wrap .lane-title.bottom { margin: 0.6rem 0 0; }
   .fig-checks {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     grid-template-rows: auto auto auto;
-    min-width: 50rem;
     margin: 0;
     padding: 0;
     list-style: none;
   }
   .fig-checks .step { display: grid; grid-row: 1 / 4; grid-template-rows: subgrid; margin: 0; }
-  .fig-checks .checks { display: flex; flex-direction: column; gap: 0.45rem; padding: 0 0.3rem; }
+  .fig-checks .checks { display: flex; flex-direction: column; gap: 0.45rem; padding: 0 0.25rem; }
   .fig-checks .lane-code { grid-row: 1; justify-content: flex-end; }
   .fig-checks .lane-review { grid-row: 3; }
   .fig-checks .step-name {
@@ -282,8 +282,145 @@
     border-bottom: 6px solid transparent;
     border-left: 10px solid var(--ink-strong);
   }
-  .fig-checks .dg-box { padding: 0.45rem 0.6rem 0.5rem; font-size: 0.875rem; line-height: 1.35; }
-  .fig-checks .dg-label { margin-bottom: 0.2rem; font-size: 0.68rem; }
+  .fig-checks .dg-box { padding: 0.45rem 0.55rem 0.5rem; font-size: 0.8125rem; line-height: 1.35; }
+  .fig-checks .dg-label { margin-bottom: 0.2rem; font-size: 0.66rem; }
+  .fig-checks .ck-name { margin: 0; font-size: 0.875rem; font-weight: 600; color: var(--ink-strong); }
+  .fig-checks .dg-box .ck-ask { margin: 0.25rem 0 0; font-size: 0.8125rem; color: var(--ink); }
+  .fig-checks .dg-box .ck-found { margin: 0.35rem 0 0; padding-top: 0.3rem; border-top: 1px solid var(--rule); font-size: 0.8125rem; color: var(--ink); }
+
+  /* Figure 2: the six areas under the work that writes each. Model updates write two areas, stacked. */
+  .fig-areas { min-width: 56rem; }
+  .fig-areas .entry {
+    margin: 0 0 0.9rem;
+    padding: 0.5rem 0.8rem;
+    border: 1.5px solid var(--ink-strong);
+    border-radius: 6px;
+    background: var(--surface);
+    font-size: 0.875rem;
+    color: var(--ink);
+  }
+  .fig-areas .areas {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: auto 1fr 1fr;
+    gap: 0.5rem 0.6rem;
+  }
+  .fig-areas .col-head {
+    grid-row: 1;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--rule);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .fig-areas .c1 { grid-column: 1; }
+  .fig-areas .c2 { grid-column: 2; }
+  .fig-areas .c3 { grid-column: 3; }
+  .fig-areas .c4 { grid-column: 4; }
+  .fig-areas .c5 { grid-column: 5; }
+  .fig-areas .area.span { grid-row: 2 / 4; }
+  .fig-areas .area.top { grid-row: 2; }
+  .fig-areas .area.bottom { grid-row: 3; }
+  .fig-areas .dg-box.base { --role: var(--muted); background: var(--surface-2); }
+  .fig-areas .area { font-size: 0.8125rem; line-height: 1.4; }
+  .fig-areas .where { font-size: 0.8125rem; }
+  .fig-areas .where code { padding: 0; background: none; font-size: 0.92em; color: var(--ink-strong); }
+  .fig-areas .dg-box p { margin-top: 0.45rem; font-size: 0.8125rem; color: var(--ink); }
+
+  /* Figure 3: the stored-energy excess as a chain. The start spans both rows; each arrow is a drawn line. */
+  .fig-chain { min-width: 60rem; }
+  .fig-chain .chain {
+    display: grid;
+    grid-template-columns: 10rem repeat(5, 1.6rem minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    row-gap: 0.9rem;
+  }
+  .fig-chain .dg-box { font-size: 0.8125rem; line-height: 1.35; }
+  .fig-chain .dg-box p { margin: 0.2rem 0 0; font-size: 0.8125rem; color: var(--ink); }
+  .fig-chain .dg-box p.big { margin-top: 0; font-size: 1rem; font-weight: 600; color: var(--ink-strong); }
+  .fig-chain .start { grid-column: 1; grid-row: 1 / 3; align-self: center; }
+  .fig-chain .a0 { grid-column: 2; grid-row: 1; }
+  .fig-chain .a1 { grid-column: 3; grid-row: 1; }
+  .fig-chain .a1l { grid-column: 4; grid-row: 1; }
+  .fig-chain .a2 { grid-column: 5; grid-row: 1; }
+  .fig-chain .b0 { grid-column: 2; grid-row: 2; }
+  .fig-chain .b1 { grid-column: 3; grid-row: 2; }
+  .fig-chain .b1l { grid-column: 4; grid-row: 2; }
+  .fig-chain .b2 { grid-column: 5; grid-row: 2; }
+  .fig-chain .b2l { grid-column: 6; grid-row: 2; }
+  .fig-chain .b3 { grid-column: 7; grid-row: 2; }
+  .fig-chain .b3l { grid-column: 8; grid-row: 2; }
+  .fig-chain .b4 { grid-column: 9; grid-row: 2; }
+  .fig-chain .b4l { grid-column: 10; grid-row: 2; }
+  .fig-chain .b5 { grid-column: 11; grid-row: 2; }
+  .fig-chain .link { position: relative; }
+  .fig-chain .link::before,
+  .fig-chain .link::after { content: ""; position: absolute; }
+  .fig-chain .link::before { left: 0.15rem; right: 9px; top: calc(50% - 1px); border-top: 2px solid var(--muted); }
+  .fig-chain .link::after {
+    right: 0.05rem;
+    top: calc(50% - 5px);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 9px solid var(--muted);
+  }
+
+  /* Figures 4, 5, 7 and 8: a sequence of cards, joined by arrows; stacked on a narrow screen. */
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    column-gap: 2rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .strip > li { position: relative; margin: 0; font-size: 0.875rem; line-height: 1.4; }
+  .strip > li + li::before {
+    content: "";
+    position: absolute;
+    left: calc(-2rem + 0.3rem);
+    width: calc(2rem - 0.6rem - 8px);
+    top: 1.35rem;
+    border-top: 2px solid var(--muted);
+  }
+  .strip > li + li::after {
+    content: "";
+    position: absolute;
+    left: calc(-0.3rem - 9px);
+    top: calc(1.35rem - 4px);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 9px solid var(--muted);
+  }
+  .strip .st-q { margin: 0; font-weight: 600; color: var(--ink-strong); }
+  .strip .st-q a { color: var(--ink-strong); }
+  .strip .st-r { margin: 0.45rem 0 0; font-size: 0.9375rem; font-weight: 600; line-height: 1.3; color: var(--role); }
+  .strip .dg-box .dg-note { margin-top: 0.4rem; font-size: 0.8125rem; color: var(--ink); }
+  .strip .dg-note code, .strip .st-r code { font-size: 0.85em; overflow-wrap: anywhere; }
+  .strip .dg-label a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .strip .dg-label a:hover { text-decoration-thickness: 2px; }
+  /* Figures 7 and 8: the same cards as rows, the step's name to the left of what it does and produced. */
+  .strip.rows { grid-template-columns: 1fr; row-gap: 1.6rem; }
+  .strip.rows > li + li::before { left: 1.4rem; top: calc(-1.6rem + 0.25rem); width: 0; height: calc(1.6rem - 0.5rem - 8px); border-top: 0; border-left: 2px solid var(--muted); }
+  .strip.rows > li + li::after { left: calc(1.4rem - 4px); top: calc(-0.25rem - 9px); border: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 9px solid var(--muted); }
+  .strip.rows > li { display: grid; grid-template-columns: 11rem minmax(0, 1fr); column-gap: 1.25rem; align-items: start; }
+  .strip.rows > li > .dg-label { grid-column: 1; grid-row: 1 / span 3; margin: 0.2rem 0 0; }
+  .strip.rows > li > p { grid-column: 2; }
+  .strip.rows > li > p:first-of-type { margin-top: 0; }
+  .strip.rows .st-q { font-weight: 400; color: var(--ink); }
+  .strip.rows .st-r { margin-top: 0.35rem; }
+  .strip.rows > li > p.st-r:first-of-type { margin-top: 0; }
+  @media (max-width: 48rem) {
+    .strip.rows > li { grid-template-columns: 1fr; }
+    .strip.rows > li > .dg-label { grid-row: auto; margin: 0 0 0.3rem; }
+    .strip.rows > li > p { grid-column: 1; }
+  }
+  @media (max-width: 48rem) {
+    .strip { grid-template-columns: 1fr; row-gap: 1.6rem; }
+    .strip > li + li::before { left: 1.4rem; top: calc(-1.6rem + 0.25rem); width: 0; height: calc(1.6rem - 0.5rem - 8px); border-top: 0; border-left: 2px solid var(--muted); }
+    .strip > li + li::after { left: calc(1.4rem - 4px); top: calc(-0.25rem - 9px); border: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 9px solid var(--muted); }
+  }
 </style>
 </head>
 <body>
@@ -300,7 +437,13 @@
         </ol>
       </li>
       <li><a href="#3-where-everything-lives"><span class="n">3</span><span>Where everything lives</span></a></li>
-      <li><a href="#4-a-worked-example-the-stored-energy-goal"><span class="n">4</span><span>A worked example: the stored-energy goal</span></a></li>
+      <li><a href="#4-a-worked-example-the-stored-energy-goal"><span class="n">4</span><span>A worked example: the stored-energy goal</span></a>
+        <ol>
+          <li><a href="#goal"><span class="n"></span><span>Goal</span></a></li>
+          <li><a href="#round-1-find-the-papers-definition"><span class="n"></span><span>Round 1: find the paper's definition</span></a></li>
+          <li><a href="#round-2-fix-the-profile-and-study-again"><span class="n"></span><span>Round 2: fix the profile and study again</span></a></li>
+        </ol>
+      </li>
       <li><a href="#5-research-from-a-question-to-a-citable-source"><span class="n">5</span><span>Research: from a question to a citable source</span></a></li>
       <li><a href="#6-model-updates-the-ash-profile-work-item"><span class="n">6</span><span>Model updates: the ash-profile work item</span></a></li>
       <li><a href="#7-checks-code-and-fresh-reviewers"><span class="n">7</span><span>Checks: code and fresh reviewers</span></a></li>
@@ -316,14 +459,14 @@
 <p>Supports <a href="fusion-tea-exploratory-modeling.md">the main post</a>. Part 2, <a href="sysml-codegen-model-evaluation.html">turning a SysML model into a calculator</a>, covers evaluating one version of the model; this part covers everything around it.</p>
 <section>
 <h2 id="1-the-problem-engineering-work-that-has-to-build-on-itself"><span class="num">1</span>The problem: engineering work that has to build on itself</h2>
-<p>We want an AI to do engineering work the way a small team does it over weeks: research a system, model it, run studies against the model, find what is wrong, fix it, and go around again. Part 2 showed how a study evaluates one version of the model. This part is about the rest of the loop: how the model gets its numbers, how it changes, and how anyone can tell whether a change was right.</p>
-<p>The hard part is not any single session. A session with a good prompt does good work. The hard part is that every session starts from what earlier sessions wrote down, because that is all it has. The model, the sources, the study records and the decisions are the memory of the whole effort, and an agent's own context is gone when its session ends.</p>
-<p>AI has inherent entropy. Left to its own devices, a modeling environment goes the way an unattended codebase does: it becomes chaotic and incomprehensible, which is what people mean by slop. Fighting that entropy is the job of the harness. The aim is a closed system that is never deterministic but stays predictable over time. Some of the problems it has to solve:</p>
+<p>We want an AI to do engineering work the way a small team does it over weeks: research a system, model it, run studies against the model, find what is wrong, fix it, and go around again. Part 2 showed how a study evaluates one version of the model. <mark class="skim">This part is about the rest of the loop: how the model gets its numbers, how it changes, and how anyone can tell whether a change was right.</mark></p>
+<p>The hard part is not any single session. A session with a good prompt does good work. <mark class="skim">The hard part is that every session starts from what earlier sessions wrote down, because that is all it has.</mark> The model, the sources, the study records and the decisions are the memory of the whole effort, and an agent's own context is gone when its session ends.</p>
+<p>AI has inherent entropy. Left to its own devices, a modeling environment goes the way an unattended codebase does: it becomes chaotic and incomprehensible, which is what people mean by slop. <mark class="skim">Fighting that entropy is the job of the harness.</mark> The aim is a closed system that is never deterministic but stays predictable over time. Some of the problems it has to solve:</p>
 <ul>
-<li>Avoid multiple, conflicting sources of truth. The first study run under the study tooling found four values in the model with no source anywhere in the repository (<code class="path">.project/research/20260822-120756_research-extraction-harness.md</code>). An agent that needs a value and cannot find one will supply a plausible one from memory, and the next session reads it as a fact.</li>
-<li>Keep work continuous across agent sessions, so that a fresh session can pick up where the last one stopped without redoing or undoing it.</li>
-<li>Keep intent consistent, so that agents working on one piece do not lose the forest for the trees.</li>
-<li>Hold the level of performance as the system grows in volume. That takes an architecture and a set of patterns that an agent, or a person, can still read and understand.</li>
+<li><strong>Avoid multiple, conflicting sources of truth.</strong> The first study run under the study tooling found four values the study needed that no source in the repository supplied (<code class="path">.project/research/20260822-120756_research-extraction-harness.md</code>). An agent that needs a value and cannot find one will supply a plausible one from memory, and the next session reads it as a fact.</li>
+<li><strong>Keep work continuous across agent sessions</strong>, so that a fresh session can pick up where the last one stopped without redoing or undoing it.</li>
+<li><strong>Keep intent consistent</strong>, so that agents working on one piece do not lose the forest for the trees.</li>
+<li><strong>Hold the level of performance as the system grows in volume.</strong> That takes an architecture and a set of patterns that an agent, or a person, can still read and understand.</li>
 </ul>
 <details class="evidence">
 <summary><span class="evidence-kind">In the record</span><span>The four values without a source</span></summary>
@@ -338,19 +481,19 @@
 <p>The first two fed a power-cycle comparison, the last two a magnet-technology comparison.</p>
 </div>
 </details>
-<p>Part 1 argued that SysML v2's strict semantics help protect the model from this kind of entropy: the language fixes what a model can say and how, so an agent cannot redefine the semantics as it goes. But the model is a small part of the record. Nothing in the language protects the research behind a number, the study that found a problem, the decision about what to do about it, or the account of what was actually done.</p>
+<p>Part 1 argued that SysML v2's strict semantics help protect the model from this kind of entropy: the language fixes what a model can say and how, so an agent cannot redefine the semantics as it goes. <mark class="skim">But the model is a small part of the record.</mark> Nothing in the language protects the research behind a number, the study that found a problem, the decision about what to do about it, or the account of what was actually done.</p>
 <p>So what is a harness? For this project it is four kinds of thing:</p>
 <ul>
-<li>Tools that provide deterministic structure: one script registers a source, one operation mints a work item, one pipeline regenerates the program from the model.</li>
-<li>Distinct prompts that define process stages, each doing a bounded chunk of work with a defined input and a defined record.</li>
-<li>Other agent prompts and reference material that enforce patterns and behaviors, so that reviewers, critics and rules keep the system in check.</li>
-<li>A file system that keeps everything organized and interpretable, so that anything the process names can be found.</li>
+<li><strong>Tools that provide deterministic structure</strong>: one script registers a source, one operation mints a work item, one pipeline regenerates the program from the model.</li>
+<li><strong>Distinct prompts that define process stages</strong>, each doing a bounded chunk of work with a defined input and a defined record.</li>
+<li><strong>Other agent prompts and reference material that enforce patterns and behaviors</strong>, so that reviewers, critics and rules keep the system in check.</li>
+<li><strong>A file system that keeps everything organized and interpretable</strong>, so that anything the process names can be found.</li>
 </ul>
-<p>Ours is far from refined. It has not demonstrated full closure over a long horizon, and it grew with need and by trial and error rather than from a design. But some of its techniques have shown promise, and the rest of this part walks through them: how the work sorts into classes, where each class writes its record, and what checks that record before the next session builds on it.</p>
+<p><mark class="skim">Ours is far from refined.</mark> It has not demonstrated full closure over a long horizon, and it grew with need and by trial and error rather than from a design. But some of its techniques have shown promise, and the rest of this part walks through them: how the work sorts into classes, where each class writes its record, and what checks that record before the next session builds on it.</p>
 </section>
 <section>
 <h2 id="2-the-mental-model-three-classes-of-work-and-a-loop-above-them"><span class="num">2</span>The mental model: three classes of work, and a loop above them</h2>
-<p>The main post describes exploratory modeling as a cycle: build a rough design, evaluate it, refine it, and go again. Inside that cycle an engineer does three recurring things: finds out what is known about the system, changes the model to reflect it, and evaluates the model to see what it now says. The harness treats each as a class of work with its own tools, prompts and record, and a person can run any of them on its own.</p>
+<p>The main post describes exploratory modeling as a cycle: build a rough design, evaluate it, refine it, and go again. Inside that cycle an engineer does three recurring things: finds out what is known about the system, changes the model to reflect it, and evaluates the model to see what it now says. <mark class="skim">The harness treats each as a class of work with its own tools, prompts and record, and a person can run any of them on its own.</mark></p>
 <p><strong>Research</strong> answers &quot;we need to know X.&quot; Agents search and triage candidate sources, but one script does all the writing into the knowledge base. Given a URL or a PDF and three sentences about what the source is for, how to check its numbers, and what limits its authority, it captures the source, checks it against the quarantine, and commits the extraction, a manifest row and an index entry together, or writes nothing at all (<code class="path">docs/research_seam_operator_guide.md</code>). A number in the model can then cite a page in the repository, and a search that found nothing is recorded so nobody runs it again.</p>
 <p><strong>Model updates</strong> change the SysML v2 in an organized way. Before an edit, the agent writes down what will change, which definitions and consumers it touches, and what source the change rests on. Then it makes the change, regenerates the program, and records the result so a reviewer can check the change against what was intended rather than only whether the numbers moved the right way. The stages that exist for this (spec, design, plan, implement, review) can be brief or skipped when the change is small, but the evidence obligation does not shrink with the stage count (<code class="path">modeling_project/MODELING_PROCESS.md</code>).</p>
 <p><strong>Studies</strong> probe a generated program after codegen. A study runs against one pinned version of the generated program, sweeps inputs, and records what pushed back, what did not, and what the agent judges that to mean. It stops only on mechanical faults, never on a result that looks wrong; a surprising result is recorded and argued, not suppressed (<code class="path">.claude/skills/run-study/runbook.md</code>). Part 2 covered the machinery; here the point is that a study is a bounded unit of work with a record that a later session can read cold.</p>
@@ -391,15 +534,15 @@
 <p>A user can manage research, model development and studies directly, and that was our initial mode of operation. For the Stellaris demo we wanted to test whether the AI could take on larger chunks of work. The primitive we settled on is the <strong>goal</strong>.</p>
 <p>What makes a goal different from a task is the shape of the uncertainty:</p>
 <ul>
-<li>We start with a clear motivation. There is a specific question, and we know what an answer would look like.</li>
-<li>We do not have a known series of actions to take. The next step depends on what the last one found.</li>
-<li>The total amount of work is not set. It might be one study, or it might be three model changes and some research.</li>
+<li><strong>We start with a clear motivation.</strong> There is a specific question, and we know what an answer would look like.</li>
+<li><strong>We do not have a known series of actions to take.</strong> The next step depends on what the last one found.</li>
+<li><strong>The total amount of work is not set.</strong> It might be one study, or it might be three model changes and some research.</li>
 </ul>
-<p>A plan cannot carry that, because a plan lists the actions in advance. What can carry it is a fixed question, a bounded attempt at a time, and a record of each attempt that the next one builds on. <a href="#figure-1">Figure 1</a> shows that structure, and the rest of this section walks it from top to bottom.</p>
+<p>A plan cannot carry that, because a plan lists the actions in advance. <mark class="skim">What can carry it is a fixed question, a bounded attempt at a time, and a record of each attempt that the next one builds on.</mark> <a href="#figure-1">Figure 1</a> shows that structure, and the rest of this section walks it from top to bottom.</p>
 <figure class="figure wide" id="figure-1">
   <div class="frame diagram-scroll">
     <div class="diagram fig-loop" role="img" aria-label="A goal at the top: a question and what would count as answering it, fixed while it runs. Below it, a round run by the AI: an approach, then tasks one at a time or independent tasks in parallel, with research and model changes before the model is pinned and studies after, ending in a record. Below that, a review by someone who did not do the work, then the owner: if the goal is answered it closes; if not, the next round opens with a revised approach.">
-      <div class="dg-box goal">
+      <div class="dg-box goal" data-part="goal" data-label="The goal" data-show="loop-goal">
         <span class="dg-label">Goal</span>
         <span>a question, and what would count as answering it</span>
         <span class="aside">written first, not changed while it runs</span>
@@ -408,12 +551,12 @@
       <div class="round">
         <div class="round-head"><span class="round-title">Round</span><span class="aside">one bounded attempt by the AI</span></div>
         <div class="round-row">
-          <div class="dg-box approach">
+          <div class="dg-box approach" data-part="approach" data-label="The approach" data-show="loop-approach">
             <div class="dg-label">Approach</div>
             <p>a bet on how to answer the question. No task list.</p>
           </div>
           <div class="link flow" aria-hidden="true"></div>
-          <div class="tasks">
+          <div class="tasks" data-part="tasks" data-label="The tasks" data-show="loop-tasks">
             <div class="tasks-head">
               <span class="loop" aria-hidden="true">↻</span>
               <div>
@@ -423,24 +566,24 @@
             </div>
             <div class="tasks-body">
               <div class="half open"><div>research<br>model changes</div><div class="state">the model can change</div></div>
-              <div class="pin"><div>pin the model</div><div class="aside">at most once</div></div>
+              <div class="pin" data-part="pin" data-label="The pin" data-show="loop-pin"><div>pin the model</div><div class="aside">at most once</div></div>
               <div class="half fixed"><div>studies</div><div class="state">the model is fixed</div></div>
             </div>
           </div>
           <div class="link flow" aria-hidden="true"></div>
-          <div class="dg-box record">
+          <div class="dg-box record" data-part="record" data-label="The record" data-show="loop-record">
             <div class="dg-label">Record</div>
             <p>what was tried, what was found, why it stopped</p>
           </div>
         </div>
       </div>
       <div class="link to-review" aria-hidden="true"></div>
-      <div class="dg-box data review">
+      <div class="dg-box data review" data-part="review" data-label="The review" data-show="loop-review">
         <div class="dg-label">Review</div>
         <p>by someone who did not do the work</p>
       </div>
       <div class="link from-review" aria-hidden="true"></div>
-      <div class="dg-box check owner">
+      <div class="dg-box check owner" data-part="owner" data-label="The owner" data-show="loop-owner">
         <div class="dg-label">Owner</div>
         <p>is the goal answered?</p>
       </div>
@@ -452,7 +595,17 @@
   </div>
   <figcaption><span class="fig-label">Figure 1</span>One goal, pursued in rounds. Inside a round, the pin divides the tasks: before it the model can change; after it the model is fixed and studies run against it. The only path from one round to the next runs through the review and the owner.</figcaption>
 </figure>
-<p><strong>The goal is written first</strong> Before any work starts, the owner and an agent write the goal (<code class="path">work/orchestration/GOAL_RUNBOOK.md</code> § Grounding a goal). It carries:</p>
+<div class="live" data-explorer="figure-1" hidden>
+  <div class="live-head"><span class="live-kind">Explore</span><span>How each part of the loop works</span></div>
+  <p class="muted">Choose a part of the loop, here or in the drawing, to read how it works.</p>
+  <div class="chips"></div>
+  <div class="readout" aria-live="polite"></div>
+</div>
+<details class="detail" id="the-loop-part-by-part" data-fallback="figure-1">
+<summary><span>The loop, part by part</span></summary>
+<div class="detail-body">
+<div id="loop-goal">
+<p><strong>The goal is written first.</strong> Before any work starts, the owner and an agent write the goal (<code class="path">work/orchestration/GOAL_RUNBOOK.md</code> § Grounding a goal). It carries:</p>
 <ul>
 <li>the question, in one sentence, and who is asking;</li>
 <li>what would count as answered, concrete enough that two people would agree;</li>
@@ -461,41 +614,85 @@
 <li>the limits on rounds and retries, and the decisions the owner keeps.</li>
 </ul>
 <p>The question is not changed as it executes; any other change is a dated amendment.</p>
-<p><strong>A round is one bounded attempt at the question.</strong> It opens with an approach: the agent's bet on how to answer the question, what that bet assumes, what would make the agent abandon it, and what model change and study it expects to need. The approach carries no task list, because a list written before the evidence arrives is authority granted in advance (<code class="path">.project/adr/0001-strategy-and-task.md</code>).</p>
-<p><strong>The round then works through tasks one at a time (or multiple independent tasks run in parallel).</strong> Each task is a piece of research, a model change or a study, carried out through that class's own workflow. It gets a written scope before it starts and a written return when it finishes, and that return feeds the decision on what to do next. This is how the agent follows the evidence without a plan.</p>
-<p><strong>A round pins the model at most once.</strong> That limit keeps rounds bounded. When the round's model changes have landed, codegen regenerates the program and the round pins that exact version. Any and all studies then belong to one known version of the model and can be compared with earlier ones. Learnings from the studies inform the next round.</p>
-<p>A round can also stop early, for example when the premise of its approach proves wrong or it hits a declared limit. Either way, it ends by writing down what it tried, what it found and why it stopped.</p>
-<p><strong>Nothing builds on a round until it has been checked.</strong> Two checks sit at the boundary between rounds. Before any follow-up acts on a study's reading, the reading and the proposed dispositions (what will be done about each finding) are checked. After the round closes, a fresh reviewer, one who did not do the work, walks the record against the cited evidence: did the round pursue the approach it declared, did each task stay in scope, did every finding it touched get its disposition, and is the proposed learning right (<code class="path">.project/adr/0002-round-boundary.md</code>, <code class="path">.project/adr/0005-review-topology.md</code>).</p>
-<p><strong>Then the owner decides whether the goal is answered.</strong> If it is, the owner closes it. If not, the next round opens with a revised approach that starts from what the last round found.</p>
-<p>That gives three roles. The owner sets the question and holds the gates: merges, closures, and the scientific calls reserved in the goal. The round agent pursues one approach and writes the result. The fresh reviewer checks it (<code class="path">.claude/skills/run-goal/SKILL.md</code>). A human or an agent can take any of the three, and the runbook is the same document for both.</p>
-<p>The reader can now place any piece of the harness: it is a tool, a prompt, or a record belonging to one of the three classes, or it is part of the loop that decides which class to call next. The <a href="#3-where-everything-lives">next section</a> shows where each of those lives on disk.</p>
+</div>
+<p id="loop-approach"><strong>A round is one bounded attempt at the question.</strong> It opens with an approach: the agent's bet on how to answer the question, what that bet assumes, what would make the agent abandon it, and what model change and study it expects to need. The approach carries no task list, because a list written before the evidence arrives is authority granted in advance (<code class="path">.project/adr/0001-strategy-and-task.md</code>).</p>
+<p id="loop-tasks"><strong>The round then works through tasks one at a time (or multiple independent tasks run in parallel).</strong> Each task is a piece of research, a model change or a study, carried out through that class's own workflow. It gets a written scope before it starts and a written return when it finishes, and that return feeds the decision on what to do next. This is how the agent follows the evidence without a plan.</p>
+<p id="loop-pin"><strong>A round pins the model at most once.</strong> That limit keeps rounds bounded. When the round's model changes have landed, codegen regenerates the program and the round pins that exact version. Any and all studies then belong to one known version of the model and can be compared with earlier ones. Learnings from the studies inform the next round.</p>
+<p id="loop-record">A round can also stop early, for example when the premise of its approach proves wrong or it hits a declared limit. <mark class="skim">Either way, it ends by writing down what it tried, what it found and why it stopped.</mark></p>
+<p id="loop-review"><strong>Nothing builds on a round until it has been checked.</strong> Two checks sit at the boundary between rounds. Before any follow-up acts on a study's reading, the reading and the proposed dispositions (what will be done about each finding) are checked. After the round closes, a fresh reviewer, one who did not do the work, walks the record against the cited evidence: did the round pursue the approach it declared, did each task stay in scope, did every finding it touched get its disposition, and is the proposed learning right (<code class="path">.project/adr/0002-round-boundary.md</code>, <code class="path">.project/adr/0005-review-topology.md</code>).</p>
+<p id="loop-owner"><strong>Then the owner decides whether the goal is answered.</strong> If it is, the owner closes it. If not, the next round opens with a revised approach that starts from what the last round found.</p>
+</div>
+</details>
+<p>That gives three roles. The owner sets the question and holds the gates: merges, closures, and the scientific calls reserved in the goal. The round agent pursues one approach and writes the result. The fresh reviewer checks it (<code class="path">.claude/skills/run-goal/SKILL.md</code>). <mark class="skim">A human or an agent can take any of the three, and the runbook is the same document for both.</mark></p>
+<p><mark class="skim">The reader can now place any piece of the harness: it is a tool, a prompt, or a record belonging to one of the three classes, or it is part of the loop that decides which class to call next.</mark> The <a href="#3-where-everything-lives">next section</a> shows where each of those lives on disk.</p>
 </section>
 </section>
 <section>
 <h2 id="3-where-everything-lives"><span class="num">3</span>Where everything lives</h2>
-<p>Agent sessions keep no memory between them, so the work carries forward only through the repository. A new session has to find what earlier sessions wrote and be able to trust it. We divide the repository into a few areas, one for each part of the harness described in <a href="#2-the-mental-model-three-classes-of-work-and-a-loop-above-them">section 2</a>, and organize every area the same way so that a session knows how to find and add to any of them.</p>
+<p>Agent sessions keep no memory between them, so the work carries forward only through the repository. A new session has to find what earlier sessions wrote and be able to trust it. <mark class="skim">We divide the repository into a few areas, one for each part of the harness described in <a href="#2-the-mental-model-three-classes-of-work-and-a-loop-above-them">section 2</a>, and organize every area the same way so that a session knows how to find and add to any of them.</mark></p>
+<p>In <a href="#figure-2">Figure 2</a>, start at the top bar, then read down each column: the heading names the work, and the cards below it are the areas that work writes to.</p>
 <p>Each class of work from <a href="#2-the-mental-model-three-classes-of-work-and-a-loop-above-them">section 2</a> writes to its own areas, the goal loop has one, and the harness itself has one:</p>
-<ul>
-<li><strong>Sources</strong> (<code>knowledge/</code>) hold what research finds. Every number in the model cites a file here. One directory, <code>knowledge/holdout/</code>, is quarantined for the test in Part 4: agents are told never to read it, and the registration script refuses anything from it.</li>
-<li><strong>The model</strong> (<code>models/</code>) is the SysML v2 description of the plant. Model updates are the only work that changes it.</li>
-<li><strong>The program and studies</strong> (<code>exploration/&lt;pkg&gt;/</code>, one directory per generated package) hold what is generated from the model and what runs against it: the program codegen writes (Part 2), the pin that fixes which version of it a study uses, and the study records.</li>
-<li><strong>Work items and modeling rules</strong> (<code>work/</code>, <code>modeling_project/</code>) record each model update from its spec to its evidence, along with the requirements every update must meet.</li>
-<li><strong>Goals</strong> (<code>work/orchestration/</code>) hold the outer loop's records: the goal, the trail of rounds and the accepted learnings. A trail cites records in the other areas instead of holding results of its own.</li>
-<li><strong>The harness</strong> (<code>.claude/</code>, <code>.project/</code>) holds the agent prompts and the engineering of the harness itself, including the decision records behind the goal loop.</li>
-</ul>
-<p>We reuse similar patterns across these components: an index file where a session starts, a tool that adds entries so they keep their structure, and a record that keeps the history of changes. <code>CLAUDE.md</code> at the root points to each area's index.</p>
+<figure class="figure wide" id="figure-2">
+  <div class="frame diagram-scroll">
+    <div class="diagram fig-areas" role="group" aria-label="The six areas of the repository, grouped by the work that writes to each.">
+      <div class="entry"><code>CLAUDE.md</code>, at the root, is the first file every session reads. It points to each area's index.</div>
+      <div class="areas">
+        <div class="col-head c1">Research writes</div>
+        <div class="col-head c2">Model updates write</div>
+        <div class="col-head c3">Studies write</div>
+        <div class="col-head c4">The goal loop writes</div>
+        <div class="col-head c5">The harness's own</div>
+        <div class="dg-box area c1 span data">
+          <div class="dg-label">Sources</div>
+          <div class="where"><code>knowledge/</code></div>
+          <p>What research finds. Every number in the model cites a file here.</p>
+          <p>One directory, <code>knowledge/<wbr>holdout/</code>, is quarantined for the test in Part 4: agents are told never to read it, and the registration script refuses anything from it.</p>
+        </div>
+        <div class="dg-box area c2 top ">
+          <div class="dg-label">The model</div>
+          <div class="where"><code>models/</code></div>
+          <p>The SysML v2 description of the plant. Model updates are the only work that changes it.</p>
+        </div>
+        <div class="dg-box area c2 bottom ">
+          <div class="dg-label">Work items and modeling rules</div>
+          <div class="where"><code>work/</code>, <code>modeling_project/</code></div>
+          <p>Each model update from its spec to its evidence, along with the requirements every update must meet.</p>
+        </div>
+        <div class="dg-box area c3 span ">
+          <div class="dg-label">The program and studies</div>
+          <div class="where"><code>exploration/&lt;pkg&gt;/</code>, one directory per generated package</div>
+          <p>What is generated from the model and what runs against it: the program codegen writes (Part 2), the pin that fixes which version of it a study uses, and the study records.</p>
+        </div>
+        <div class="dg-box area c4 span check">
+          <div class="dg-label">Goals</div>
+          <div class="where"><code>work/orchestration/</code></div>
+          <p>The outer loop's records: the goal, the trail of rounds and the accepted learnings.</p>
+          <p>A trail cites records in the other areas instead of holding results of its own.</p>
+        </div>
+        <div class="dg-box area c5 span base">
+          <div class="dg-label">The harness</div>
+          <div class="where"><code>.claude/</code>, <code>.project/</code></div>
+          <p>The agent prompts and the engineering of the harness itself, including the decision records behind the goal loop.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <figcaption><span class="fig-label">Figure 2</span>The six areas of the repository.</figcaption>
+</figure>
+<p><mark class="skim">We reuse similar patterns across these components: an index file where a session starts, a tool that adds entries so they keep their structure, and a record that keeps the history of changes.</mark></p>
 <p><strong>Indexes.</strong> Each area has one file where a session starts, and that file points to the rest. A session looking for the source behind a number reads <code>SOURCE_INDEX.md</code>, which says what each source is for, how to check its numbers and what limits its authority. A session resuming a goal reads <code>goal.md</code> and then the trail. A session can therefore find what it needs by following references from <code>CLAUDE.md</code> instead of searching the repository.</p>
 <p><strong>Write tools.</strong> Where a record needs a strict structure, agents add to it through a tool instead of editing the file. In round 1 of the goal in <a href="#4-a-worked-example-the-stored-energy-goal">section 4</a>, a research request found two papers, and <code>source_registry.py</code> registered each one by writing its extraction, its manifest row with the hash and its index entry in one step. If any part had failed, it would have written nothing. The model and the goal records have no write tool, for different reasons. The model's structure comes from SysML itself: the language fixes what a model can say, and the validator checks each change. We built the goal records as plain files with written rules and add a tool only when a real run shows a written rule failing (<code class="path">.project/adr/0003-lean-first-persistence.md</code>). So far their templates and fixed headings have been enough.</p>
 <p><strong>History.</strong> Each area keeps a record that later work can rely on, and entries are added to it rather than edited. The trail is only appended to, and a correction is a dated amendment that names what it corrects. A committed study record is not changed. A finding's first sighting in the discovery log stays as written, and later rows record what was done about it. A new session can therefore read an old record and know it describes what happened at the time.</p>
 <p>Three further rules apply across all the areas.</p>
 <ul>
-<li>Records refer to each other by path instead of copying. A number in the model cites a file in <code>knowledge/sources/</code>, and a goal's trail cites a study's directory instead of restating its results. Each fact has one home, so a correction cannot leave two versions that disagree.</li>
-<li>The status of a piece of work is read from its files, not stored separately. We avoided separate status fields because they drift out of step with the records they describe (<code class="path">work/orchestration/GOAL_RUNBOOK.md</code> § Opening and closing a round).</li>
-<li>Searches that found nothing are recorded with the queries that were tried, and a round that ends without a result still writes one. A new session can see that the ground was already covered.</li>
+<li><strong>Records refer to each other by path instead of copying.</strong> A number in the model cites a file in <code>knowledge/sources/</code>, and a goal's trail cites a study's directory instead of restating its results. Each fact has one home, so a correction cannot leave two versions that disagree.</li>
+<li><strong>The status of a piece of work is read from its files, not stored separately.</strong> We avoided separate status fields because they drift out of step with the records they describe (<code class="path">work/orchestration/GOAL_RUNBOOK.md</code> § Opening and closing a round).</li>
+<li><strong>Searches that found nothing are recorded with the queries that were tried, and a round that ends without a result still writes one.</strong> A new session can see that the ground was already covered.</li>
 </ul>
 <p><a href="#table-1">Table 1</a> shows how each area implements the pattern.</p>
-<figure class="figure wide table-figure" id="table-1">
-<figcaption><span class="fig-label">Table 1</span>The areas of the repository and the pattern each one follows.</figcaption>
+<details class="detail wide" id="table-1">
+<summary><span><span class="fig-label">Table 1</span>The areas of the repository and the pattern each one follows.</span></summary>
+<div class="detail-body">
 <div class="table-wrap">
 <table>
 <thead>
@@ -553,7 +750,8 @@
 </tbody>
 </table>
 </div>
-</figure>
+</div>
+</details>
 <details class="evidence">
 <summary><span class="evidence-kind">In the repository</span><span>Directory tree of the areas above, with the goal from section 4 as the example</span></summary>
 <div class="evidence-body">
@@ -595,7 +793,7 @@
 </section>
 <section>
 <h2 id="4-a-worked-example-the-stored-energy-goal"><span class="num">4</span>A worked example: the stored-energy goal</h2>
-<p>To show how the loop in <a href="#figure-1">Figure 1</a> works in practice, we follow one goal from its question to its close. The goal investigated why the model's stored plasma energy was 9 percent above the value printed in the Stellaris design paper. It ran two rounds between 4 and 6 September 2026 (<code class="path">work/orchestration/goals/stored-energy-basis/</code>).</p>
+<p>To show how the loop in <a href="#figure-1">Figure 1</a> works in practice, we follow one goal from its question to its close. <mark class="skim">The goal investigated why the model's stored plasma energy was 9 percent above the value printed in the Stellaris design paper.</mark> It ran two rounds between 4 and 6 September 2026 (<code class="path">work/orchestration/goals/stored-energy-basis/</code>).</p>
 <details class="evidence">
 <summary><span class="evidence-kind">In the record</span><span>The goal's record</span></summary>
 <div class="evidence-body">
@@ -610,25 +808,39 @@
 <p>The trail calls a round's approach its strategy. Each checkpoint entry is one submission of the dispositions to their check.</p>
 </div>
 </details>
+<section>
+<h3 id="goal">Goal</h3>
 <p><strong>The discrepancy.</strong> Our model reproduced the paper's power balance to within 4 percent on every term except the energy stored in the plasma.</p>
-<ul>
-<li>The model's stored energy was 9 percent above the paper's. The model integrates assumed density and temperature profiles over the plasma volume and found 551 MJ, where the paper prints 504.65 MJ.</li>
-<li>A small change in stored energy has a big impact on losses. In the model's confinement scaling, the loss by conduction grows roughly as the 2.5th power of stored energy, so a 9 percent excess adds about 25 percent to the loss.</li>
-<li>With higher losses, the design point needed more heating input power. The heating has to make up the loss, and the model said the plasma needed 90.6 MW against the 50 MW the design installs.</li>
-<li>Downstream, the wall load is also impacted, which drives cost.
-<ul>
-<li>Stored energy sets the confinement time. When the model overstates stored energy, its confinement scaling gives a shorter energy confinement time.</li>
-<li>Confinement time sets how much helium ash stays in the plasma. Following the paper, the model holds ash for eight times the energy confinement time, so a shorter confinement time leaves less ash.</li>
-<li>Less ash means more fusion. With less ash diluting the fuel, fusion power comes out higher.</li>
-<li>More fusion means a higher wall load. The peak wall load scales with fusion power and sets how often the first wall is replaced, which is part of the plant's cost. At the design point it was 4.09 MW/m², just over its 4.05 limit.</li>
-</ul>
-</li>
-</ul>
+<p>In <a href="#figure-3">Figure 3</a>, start at the left and follow the two rows: the top row runs through the losses to the heating check, the bottom row through the ash to the wall load and the cost.</p>
+<figure class="figure wide" id="figure-3">
+  <div class="frame diagram-scroll">
+    <div class="diagram fig-chain" role="group" aria-label="How the 9 percent excess in stored energy reaches the heating check, the wall-load check and the cost.">
+      <div class="chain">
+        <div class="dg-box start"><div class="dg-label">Stored energy</div><p class="big">9% too high</p><p>The model integrates assumed density and temperature profiles over the plasma volume and found 551 MJ, where the paper prints 504.65 MJ.</p></div>
+        <div class="link a0" aria-hidden="true"></div>
+        <div class="dg-box a1"><div class="dg-label">Losses</div><p class="big">About 25% higher</p><p>In the model's confinement scaling, the loss by conduction grows roughly as the 2.5th power of stored energy.</p></div>
+        <div class="link a1l" aria-hidden="true"></div>
+        <div class="dg-box check a2"><div class="dg-label">Heating check fails</div><p class="big">90.6 MW needed</p><p>The heating has to make up the loss, and the design installs 50 MW.</p></div>
+        <div class="link b0" aria-hidden="true"></div>
+        <div class="dg-box b1"><div class="dg-label">Confinement</div><p class="big">Shorter</p><p>When the model overstates stored energy, its scaling gives a shorter energy confinement time.</p></div>
+        <div class="link b1l" aria-hidden="true"></div>
+        <div class="dg-box b2"><div class="dg-label">Helium ash</div><p class="big">Less held</p><p>Following the paper, the model holds ash for eight times the energy confinement time.</p></div>
+        <div class="link b2l" aria-hidden="true"></div>
+        <div class="dg-box b3"><div class="dg-label">Fusion power</div><p class="big">Higher</p><p>Less ash dilutes the fuel.</p></div>
+        <div class="link b3l" aria-hidden="true"></div>
+        <div class="dg-box check b4"><div class="dg-label">Wall-load check fails</div><p class="big">4.09 MW/m²</p><p>Just over its 4.05 limit. The peak wall load scales with fusion power.</p></div>
+        <div class="link b4l" aria-hidden="true"></div>
+        <div class="dg-box b5"><div class="dg-label">Cost</div><p class="big">Higher</p><p>The wall load sets how often the first wall is replaced, which is part of the plant's cost.</p></div>
+      </div>
+    </div>
+  </div>
+  <figcaption><span class="fig-label">Figure 3</span>How the 9 percent excess in stored energy reaches both failed checks and the plant's cost, at the paper's design point.</figcaption>
+</figure>
 <p>Two earlier goals had treated the gap as outside their scope, under an agent-written rule that stored energy is never tuned to match the paper, and no work item owned it.</p>
 <p><strong>The goal.</strong> Before writing the goal, the agent ran a quick check on a copy of the calculation, leaving the model unchanged. It found two things:</p>
 <ul>
-<li>The heating failure depends on the stored energy. With the stored energy scaled down to the printed value, the required heating fell from 90.6 to 37.5 MW, and both the heating and wall-load checks passed.</li>
-<li>The printed value may not be the right number to match. Every reading of the paper's plotted profiles and printed peak values that the agent tried gave 527 to 575 MJ, not 504.65. The paper's printed beta implies 567 MJ.</li>
+<li><strong>The heating failure depends on the stored energy.</strong> With the stored energy scaled down to the printed value, the required heating fell from 90.6 to 37.5 MW, and both the heating and wall-load checks passed.</li>
+<li><strong>The printed value may not be the right number to match.</strong> Every reading of the paper's plotted profiles and printed peak values that the agent tried gave 527 to 575 MJ, not 504.65. The paper's printed beta implies 567 MJ.</li>
 </ul>
 <p>The agent then wrote the goal around what was still open, and the owner approved it the next day:</p>
 <ul>
@@ -637,57 +849,113 @@
 <li><strong>Invariant:</strong> the model's stored energy is never tuned toward the printed value.</li>
 <li><strong>Owner keeps:</strong> any change to how the model shapes its profiles.</li>
 </ul>
-<p><strong>Round 1: find the paper's definition.</strong> The round's approach was to explain the excess without changing the model. It ran two tasks.</p>
-<p><em>Task 1, research: how does the paper define stored energy?</em></p>
+</section>
+<section>
+<h3 id="round-1-find-the-papers-definition">Round 1: find the paper's definition</h3>
+<p><mark class="skim">The round's approach was to explain the excess without changing the model.</mark> It ran two tasks.</p>
+<figure class="figure wide" id="figure-4">
+  <div class="frame">
+    <ol class="diagram strip" style="--n: 2" aria-label="Round 1's tasks">
+      <li class="dg-box">
+        <div class="dg-label"><a href="#round-1-task-1">Task 1 · Research</a></div>
+        <p class="st-r">The paper's own rules give 518.3 MJ, not the printed 504.65.</p>
+        <p class="dg-note">The sources define stored energy as the thermal energy of the assumed profiles over the plasma volume. With that definition, the paper's rules at its printed peak values also reproduce its fusion power (2711 against 2700 MW) and densities.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#round-1-task-2">Task 2 · Evaluation</a></div>
+        <p class="st-r">At 518.3 MJ, a simple scaling estimate put the design point at 51.4 MW of required heating against 50.</p>
+        <p class="dg-note">It still failed the heating check, but by 1.4 MW rather than 40.6, and the wall load passed. That was the number the owner needed to decide whether to change the model.</p>
+      </li>
+    </ol>
+  </div>
+  <figcaption><span class="fig-label">Figure 4</span>Round 1's two tasks and what each found. Each task's label opens its details below.</figcaption>
+</figure>
+<details class="detail" id="round-1-task-1">
+<summary><span>Task 1, research: how does the paper define stored energy?</span></summary>
+<div class="detail-body">
 <ul>
 <li><strong>What it was:</strong> one research request asking what the paper's &quot;total plasma energy&quot; integrates (<code class="path">knowledge/research/requests/REQ-W-01.json</code>).</li>
 <li><strong>Changes:</strong> two sources registered in the knowledge base, a 2021 journal paper and a 2023 doctoral thesis by the Stellaris paper's first author. Both describe the systems code the paper used. Nothing in the model changed.</li>
-<li><strong>Findings:</strong> the paper's own rules give 518.3 MJ, not the printed 504.65. The sources define stored energy as the thermal energy of the assumed profiles over the plasma volume. With that definition, the paper's rules at its printed peak values also reproduce its fusion power (2711 against 2700 MW) and densities. The model's 9.2 percent excess over the printed value splits into three parts:
+<li><strong>Findings:</strong> the model's 9.2 percent excess over the printed value splits into three parts:
 <ul>
-<li>5.3 points come from the helium ash, the helium the fusion reactions leave in the plasma. The model gave the ash the fuel's broad profile, while the paper's own rule peaks it in the core, where the fusion happens.</li>
-<li>1.2 points come from the profile exponents. The model's were read from the paper's plotted curves, which differ slightly from the values the paper states.</li>
-<li>2.7 points lie between the paper's own rules and its printed value, and no source we found explains them.</li>
+<li><strong>5.3 points come from the helium ash</strong>, the helium the fusion reactions leave in the plasma. The model gave the ash the fuel's broad profile, while the paper's own rule peaks it in the core, where the fusion happens.</li>
+<li><strong>1.2 points come from the profile exponents.</strong> The model's were read from the paper's plotted curves, which differ slightly from the values the paper states.</li>
+<li><strong>2.7 points lie between the paper's own rules and its printed value</strong>, and no source we found explains them.</li>
 </ul>
 </li>
 </ul>
-<p><em>Task 2, evaluation: what would the paper's rules mean for the design point?</em></p>
+</div>
+</details>
+<details class="detail" id="round-1-task-2">
+<summary><span>Task 2, evaluation: what would the paper's rules mean for the design point?</span></summary>
+<div class="detail-body">
 <ul>
 <li><strong>What it was:</strong> re-run the quick check at 518.3 MJ, and write the round's proposed learnings and its dispositions for the earlier findings this evidence touched.</li>
 <li><strong>Changes:</strong> nothing in the model. The dispositions were checked before they were recorded and passed on the third submission.</li>
-<li><strong>Findings:</strong> at 518.3 MJ, a simple scaling estimate put the design point at 51.4 MW of required heating against 50. It still failed the heating check, but by 1.4 MW rather than 40.6, and the wall load passed. That was the number the owner needed to decide whether to change the model.</li>
 </ul>
+</div>
+</details>
 <p><strong>How the round ended.</strong> The round then stopped to wait for the owner, because the one thing left was the owner's decision on how the model should calculate stored energy. A fresh reviewer checked the round, raised six precision-level findings, and accepted three learnings with corrections.</p>
 <p><strong>The owner's ruling.</strong> The round offered two options: keep the model and footnote the gap, or change the ash profile to follow the paper's rule. The owner ruled: &quot;we should fix the ash profile (and make sure this scales up for larger stellarators). and I don't want to add the footnote.&quot; The printed value was still not a target. The change implements the paper's rule, and the stored energy is whatever that rule gives.</p>
-<p><strong>Round 2: fix the profile and study again.</strong> The round's approach was to make the owner's fix as one model change, pin the regenerated program, and re-run an earlier study against it. It ran three tasks.</p>
-<p><em>Task 1, model change: compute the ash profile from the paper's rule.</em></p>
+</section>
+<section>
+<h3 id="round-2-fix-the-profile-and-study-again">Round 2: fix the profile and study again</h3>
+<p><mark class="skim">The round's approach was to make the owner's fix as one model change, pin the regenerated program, and re-run an earlier study against it.</mark> It ran three tasks.</p>
+<figure class="figure wide" id="figure-5">
+  <div class="frame">
+    <ol class="diagram strip" style="--n: 3" aria-label="Round 2's tasks">
+      <li class="dg-box">
+        <div class="dg-label"><a href="#round-2-task-1">Task 1 · Model change</a></div>
+        <p class="st-r">The design point now passes the heating check, by a small margin.</p>
+        <p class="dg-note">Stored energy fell from 551 to 519.9 MJ, and the required heating fell from 90.6 to 49.08 MW against 50.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label">Task 2 · Pin</div>
+        <p class="st-r">The integration check regenerated the program from the model, confirmed that nothing changed, and accepted the pin on its first run.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#round-2-task-3">Task 3 · Study</a></div>
+        <p class="st-r">Most of the earlier driven points now ignite.</p>
+        <p class="dg-note">The earlier study had classed 681 points as driven, meaning they need some external heating within what the design supplies. At the new pin 510 of them ignite, meaning fusion heating alone exceeds the losses. The model checks only that the plasma needs no more heating than the design supplies, so an ignited point passes the check, but the model does not represent how that burn would be controlled.</p>
+      </li>
+    </ol>
+  </div>
+  <figcaption><span class="fig-label">Figure 5</span>Round 2's three tasks and a main result of each. Tasks 1 and 3 open their details below.</figcaption>
+</figure>
+<details class="detail" id="round-2-task-1">
+<summary><span>Task 1, model change: compute the ash profile from the paper's rule.</span></summary>
+<div class="detail-body">
 <ul>
 <li><strong>What it was:</strong> one work item, carried through spec, design, plan and implementation (<code class="path">work/completed/20260906_WI-042_sourced-helium-ash-profile/</code>).</li>
 <li><strong>Changes:</strong> the ash profile is now computed from the paper's rule at every design point, and the electron density follows from charge balance. Because the shape comes from the rule rather than from an exponent fitted at the paper's design point, it stays valid when a study moves to other machine sizes, as the owner asked. The program was regenerated from the changed model, and nothing was tuned.</li>
-<li><strong>Findings:</strong> the design point now passes the heating check, by a small margin.
+<li><strong>Findings:</strong>
 <ul>
-<li>Stored energy fell from 551 to 519.9 MJ, and the required heating fell from 90.6 to 49.08 MW against 50.</li>
-<li>Round 1's estimate had predicted a narrow failure at 51.4 MW. The estimate scaled stored energy alone, while the real change also reshaped the electron density, which moved the density and radiation loss the estimate had held fixed. The net result was a pass by 0.92 MW instead of a failure by 1.4.</li>
-<li>Fusion power fell 2.7 percent, because the core now holds more ash and less fuel. That brought the wall load under its limit (3.98 against 4.05 MW/m²), and with less electricity produced, levelized cost rose from 313.5 to 322.3 $/MWh.</li>
+<li><strong>Round 1's estimate had predicted a narrow failure at 51.4 MW.</strong> The estimate scaled stored energy alone, while the real change also reshaped the electron density, which moved the density and radiation loss the estimate had held fixed. The net result was a pass by 0.92 MW instead of a failure by 1.4.</li>
+<li><strong>Fusion power fell 2.7 percent, because the core now holds more ash and less fuel.</strong> That brought the wall load under its limit (3.98 against 4.05 MW/m²), and with less electricity produced, levelized cost rose from 313.5 to 322.3 $/MWh.</li>
 </ul>
 </li>
 </ul>
-<p><em>Task 2, pin.</em> The integration check regenerated the program from the model, confirmed that nothing changed, and accepted the pin on its first run.</p>
-<p><em>Task 3, study: re-run the earlier window at the new pin.</em></p>
+</div>
+</details>
+<details class="detail" id="round-2-task-3">
+<summary><span>Task 3, study: re-run the earlier window at the new pin.</span></summary>
+<div class="detail-body">
 <ul>
 <li><strong>What it was:</strong> a re-run of an earlier study's 6,311-point window against the new pin (<code class="path">exploration/stellarator_e2e/studies/20260905-stored-energy-basis/</code>).</li>
 <li><strong>Changes:</strong> a critique of the study plan changed it before any point ran. The earlier study had dropped its 13 keV rows only because the old profile made them fail the heating check, so the round restored them, for 7,712 points in all.</li>
 <li><strong>Findings:</strong>
 <ul>
-<li>Most of the earlier driven points now ignite. The earlier study had classed 681 points as driven, meaning they need some external heating within what the design supplies. At the new pin 510 of them ignite, meaning fusion heating alone exceeds the losses. The model checks only that the plasma needs no more heating than the design supplies, so an ignited point passes the check, but the model does not represent how that burn would be controlled.</li>
-<li>The cheapest driven point moved to a machine larger and cooler than the paper's design. It sits at major radius 15.7 m, minor radius 2.2 m and 13 keV, at 202.19 $/MWh, on the edge of the minor-radius range the window allowed.</li>
-<li>The paper's design point sits on the boundary of feasibility. It passes every limit, but the heating check passes by only 0.92 MW, which corresponds to about 1 MJ of stored energy. The paper's own figures for that stored energy range from 504.65 MJ, printed, to 567 MJ, implied by its beta. The earlier result that it needs 90 MW no longer holds, and whether it is feasible cannot be decided from the paper.</li>
+<li><strong>The cheapest driven point moved to a machine larger and cooler than the paper's design.</strong> It sits at major radius 15.7 m, minor radius 2.2 m and 13 keV, at 202.19 $/MWh, on the edge of the minor-radius range the window allowed.</li>
+<li><strong>The paper's design point sits on the boundary of feasibility.</strong> It passes every limit, but the heating check passes by only 0.92 MW, which corresponds to about 1 MJ of stored energy. The paper's own figures for that stored energy range from 504.65 MJ, printed, to 567 MJ, implied by its beta. The earlier result that it needs 90 MW no longer holds, and whether it is feasible cannot be decided from the paper.</li>
 </ul>
 </li>
 </ul>
+</div>
+</details>
 <p><strong>How the round ended.</strong> The study's reading and its dispositions passed their check on the second submission, and the round stopped on that reading. A fresh reviewer recounted the study's numbers with their own script, raised eight precision-level findings that reopened no task, and recommended closing the goal.</p>
 <p><strong>The close.</strong> The owner closed the goal on 6 September and declined to ask the paper's author about the remaining 2.7 points. An answer would not change what the model says, because its 519.9 MJ is already above both the printed value and what the paper's rules give, and the verdict is the same across that range. The ignited points became the next goal, <code>burn-control</code>, and the minor-radius edge became the goal after that, <code>minor-radius</code>.</p>
-<p>In <a href="#figure-2">Figure 2</a>, start below the axis with the model's move from 551 MJ before the fix to 519.9 MJ after it. Then compare 519.9 with the paper's values above the axis: it sits above both the printed 504.65 and the 518.3 the paper's own rules give.</p>
-<figure class="figure wide" id="figure-2">
+<p>In <a href="#figure-6">Figure 6</a>, the model's values sit below the axis and the paper's above it. Start with the model's move below the axis, then compare where it lands with the paper's values above.</p>
+<figure class="figure wide" id="figure-6">
   <div class="plate"><div class="energy-scroll"><svg class="fig-energy" role="img" aria-label="Stored energy in megajoules on one axis. From the paper: printed 504.65, its own rules 518.3, implied by its beta 567, and readings of its plotted profiles and printed peaks from 527 to 575. From the model: 551 before the fix and 519.9 after it." xmlns:xlink="http://www.w3.org/1999/xlink" width="734.4pt" height="194.4pt" viewBox="0 0 734.4 194.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <defs>
   <style type="text/css">.fig-energy *{stroke-linejoin: round; stroke-linecap: butt}</style>
@@ -912,59 +1180,97 @@ z
   </clipPath>
  </defs>
 </svg></div></div>
-  <figcaption><span class="fig-label">Figure 2</span>Stored energy, in MJ, from the paper and from the model before and after the ash-profile fix. Records: <code class="path">work/orchestration/goals/stored-energy-basis/</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 6</span>Stored energy, in MJ, from the paper and from the model before and after the ash-profile fix. Records: <code class="path">work/orchestration/goals/stored-energy-basis/</code>.</figcaption>
 </figure>
 <p><a href="#5-research-from-a-question-to-a-citable-source">Sections 5 to 7</a> look at three parts of this goal in more detail: the research request that registered the two sources, the work item that changed the model, and the checks that ran before each result was used.</p>
 </section>
+</section>
 <section>
 <h2 id="5-research-from-a-question-to-a-citable-source"><span class="num">5</span>Research: from a question to a citable source</h2>
-<p>We want every number in the model to cite a page in a source that anyone can open in the repository. An agent that cannot find a value will often supply a plausible one from memory, and the next session reads that value as a fact. The research workflow therefore separates judgment from writing: agents search for sources and decide which are useful, and one script does all the writing into the knowledge base. We follow round 1's research request from <a href="#4-a-worked-example-the-stored-energy-goal">section 4</a> through each step and the record it leaves.</p>
-<p><strong>The request.</strong> A research request is a small JSON file with the question, who is waiting for the answer, where to look, and how much effort is allowed (<code class="path">knowledge/research/requests/REQ-W-01.json</code>).</p>
+<p>We want every number in the model to cite a page in a source that anyone can open in the repository. An agent that cannot find a value will often supply a plausible one from memory, and the next session reads that value as a fact. <mark class="skim">The research workflow therefore separates judgment from writing: agents search for sources and decide which are useful, and one script does all the writing into the knowledge base.</mark> We follow round 1's research request from <a href="#4-a-worked-example-the-stored-energy-goal">section 4</a> through each step and the record it leaves.</p>
+<figure class="figure wide" id="figure-7">
+  <div class="frame">
+    <ol class="diagram strip rows" style="--n: 5" aria-label="The research request's steps">
+      <li class="dg-box">
+        <div class="dg-label"><a href="#the-request">1 · The request</a></div>
+        <p class="st-q">A research request is a small JSON file with the question, who is waiting for the answer, where to look, and how much effort is allowed.</p>
+        <p class="st-r">This one allowed six searches and three registrations.</p>
+        <p class="dg-note">It is <code>knowledge/<wbr>research/<wbr>requests/<wbr>REQ-W-01.json</code>.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#the-search">2 · The search</a></div>
+        <p class="st-q">An agent runs the search from a saved prompt, and a script logs every search and every candidate with a decision.</p>
+        <p class="st-r">It kept a 2021 paper and a 2023 thesis, rejected four candidates and queued two for a person.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#the-registration">3 · The registration</a></div>
+        <p class="st-q"><code>source_registry.py</code> refuses to register a source without three sentences: what it is for, how to check its numbers, and what limits its authority. It also records a hash of the file as fetched, so a later copy can be checked against it.</p>
+        <p class="st-r">Both kept sources went through it and are now citable.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#the-return">4 · The return</a></div>
+        <p class="st-q">When the run closes, the bookkeeping script computes the result from what landed on disk, not from what the agent reports, and writes it to <code>return.json</code> in the run directory.</p>
+        <p class="st-r">This run returned <code>REGISTERED</code> with two candidates queued, so no negative result was written.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#what-the-model-cites">5 · What the model cites</a></div>
+        <p class="st-r">The model's stored-energy calculation now cites both sources by their repository paths.</p>
+        <p class="dg-note">A reviewer can open the page behind the definition, and the index entry tells them what to check and what the source does not settle. The citation is at line 130 of <code>mfe_plasma_sustainment.sysml</code>.</p>
+      </li>
+    </ol>
+  </div>
+  <figcaption><span class="fig-label">Figure 7</span>Round 1's research request, step by step: what each step does, and what it produced this time. Each step's label opens its details below.</figcaption>
+</figure>
+<details class="detail" id="the-request">
+<summary><span>The request.</span></summary>
+<div class="detail-body">
 <ul>
 <li>The question asked how the Stellaris paper defines its printed total plasma energy and volume averages, and which magnetic field its beta refers to.</li>
 <li>The consumer was the stored-energy calculation in the model.</li>
 <li>The places to look started with the paper's own pages, then its supplementary material, Proxima Fusion's publications, the systems-code papers it cites, and the papers behind its confinement scaling.</li>
-<li>The limits were six searches and three registrations.</li>
 </ul>
-<p><strong>The search.</strong> A research agent ran the search from a written prompt that the round saved first (<code class="path">work/orchestration/goals/stored-energy-basis/evidence/T-001_REQ-W-01_prompt.md</code>). The prompt carried the quarantine rules, because the registration script checks for quarantined material only when a source is registered, after the agent would already have read it. A second script, <code>scripts/research_seam.py</code>, kept the run's record, and every search and every candidate went into its log with a decision (<code class="path">knowledge/research/requests/runs/REQ-W-01/</code>):</p>
-<ul>
-<li>Kept: a 2021 journal paper and a 2023 doctoral thesis by the Stellaris paper's first author, which define stored energy in the systems code the paper uses.</li>
-<li>Rejected: the publisher's page, because the paper has no supplementary data; two Proxima Fusion pages that state no definitions; and a paper on the Helios design, which the quarantine bars, so the agent did not open it.</li>
-<li>Queued for a person: a query to the paper's author, whose paper offers data on request, and the paywalled paper that defines the confinement scaling.</li>
-</ul>
-<details class="evidence">
-<summary><span class="evidence-kind">In the record</span><span>The request and its run log</span></summary>
-<div class="evidence-body">
-<p>The question, as the request states it:</p>
-<p>“How does the Stellaris design paper (Lion et al., Fusion Engineering and Design 2025, doi 10.1016/j.fusengdes.2025.114868) define the 'Total plasma energy' (printed 504.65 MJ) and the 'Vol. av.' quantities in its Table 5 -- which profile set is integrated (the Fig. 16 profiles or another), over which volume element, thermal only or including fast alphas -- and to which magnetic field is its printed volume-averaged beta (2.76 %) referenced?”</p>
-<p>Six searches, in order: the paper's own pages; the first author's 2023 thesis; the 2021 journal paper; the publisher's record; Proxima Fusion's pages; and the paper behind the confinement scaling. The candidates they turned up:</p>
-<div class="table-wrap">
-<table>
-<thead><tr><th>Candidate</th><th>Decision</th></tr></thead>
-<tbody>
-<tr><td>The Stellaris paper</td><td>kept; already in the index, so not registered again</td></tr>
-<tr><td>The 2021 journal paper</td><td>kept; registered</td></tr>
-<tr><td>The 2023 thesis</td><td>kept; registered</td></tr>
-<tr><td>The publisher's record</td><td>rejected: the paper has no supplementary data</td></tr>
-<tr><td>Proxima Fusion's technology page</td><td>rejected: no definitions</td></tr>
-<tr><td>A paper on the Helios design</td><td>rejected unopened: the quarantine bars it</td></tr>
-<tr><td>Proxima Fusion's press release</td><td>rejected: no definitions</td></tr>
-<tr><td>A query to the paper's corresponding author</td><td>queued: a person must send it</td></tr>
-<tr><td>The paper behind the confinement scaling</td><td>queued: paywalled</td></tr>
-</tbody>
-</table>
-</div>
 </div>
 </details>
-<p><strong>The registration.</strong> Each kept source goes in through <code>scripts/source_registry.py</code>, which refuses to register a source without three sentences: what it is for, how to check its numbers, and what limits its authority. It also records a hash of the file as fetched, so a later copy can be checked against it. For the 2021 paper the three sentences say:</p>
+<details class="detail" id="the-search">
+<summary><span>The search.</span></summary>
+<div class="detail-body">
+<p>A research agent ran the search from a written prompt that the round saved first (<code class="path">work/orchestration/goals/stored-energy-basis/evidence/T-001_REQ-W-01_prompt.md</code>). The prompt carried the quarantine rules, because the registration script checks for quarantined material only when a source is registered, after the agent would already have read it. A second script, <code>scripts/research_seam.py</code>, kept the run's record, and every search and every candidate went into its log with a decision (<code class="path">knowledge/research/requests/runs/REQ-W-01/</code>):</p>
 <ul>
-<li>Use for: its equations (8) to (11) define stored energy as the thermal energy of the assumed profiles over the plasma volume, with no fast-particle term.</li>
-<li>Validation: check the equations on the PDF page, because they exist only as images in the extracted text.</li>
-<li>Caveat: this is the definition in the authors' systems code, not a statement by the Stellaris paper, and it does not settle whether the printed 504.65 MJ is this quantity.</li>
+<li><strong>Kept:</strong> a 2021 journal paper and a 2023 doctoral thesis by the Stellaris paper's first author, which define stored energy in the systems code the paper uses.</li>
+<li><strong>Rejected:</strong> the publisher's page, because the paper has no supplementary data; two Proxima Fusion pages that state no definitions; and a paper on the Helios design, which the quarantine bars, so the agent did not open it.</li>
+<li><strong>Queued for a person:</strong> a query to the paper's author, whose paper offers data on request, and the paywalled paper that defines the confinement scaling.</li>
+</ul>
+<details class="evidence">
+<summary><span class="evidence-kind">In the record</span><span>The six searches</span></summary>
+<div class="evidence-body">
+<p>The run log, in order: the paper's own pages; the first author's 2023 thesis; the 2021 journal paper; the publisher's record; Proxima Fusion's pages; and the paper behind the confinement scaling.</p>
+<p>The log also lists the Stellaris paper itself as kept. It was already in the index, so it was not registered again.</p>
+</div>
+</details>
+</div>
+</details>
+<details class="detail" id="the-registration">
+<summary><span>The registration.</span></summary>
+<div class="detail-body">
+<p>For the 2021 paper the three sentences say:</p>
+<ul>
+<li><strong>Use for:</strong> its equations (8) to (11) define stored energy as the thermal energy of the assumed profiles over the plasma volume, with no fast-particle term.</li>
+<li><strong>Validation:</strong> check the equations on the PDF page, because they exist only as images in the extracted text.</li>
+<li><strong>Caveat:</strong> this is the definition in the authors' systems code, not a statement by the Stellaris paper, and it does not settle whether the printed 504.65 MJ is this quantity.</li>
 </ul>
 <p>The caveat carried into the goal's learnings, which describe the definition as the authors' systems code's rather than the paper's own.</p>
-<p><strong>The return.</strong> When the run closes, the bookkeeping script computes the result from what landed on disk, not from what the agent reports (<code class="path">return.json</code> in the run directory). This run returned <code>REGISTERED</code>: two sources registered and citable, and two candidates queued. Because candidates were queued, no negative result was written. A search that still has a named source someone could obtain is not a dead end, so the request stays open to search again. When a search does find nothing, the script writes a negative result listing the queries and candidates, and the same request cannot run again without a stated reason.</p>
-<p><strong>What the model cites.</strong> The model's stored-energy calculation now cites both sources by their repository paths (<code class="path">models/library/analyses/mfe_plasma_sustainment.sysml:130</code>). A reviewer can open the page behind the definition, and the index entry tells them what to check and what the source does not settle. The queued author query was the owner's to send, and the owner declined it at the goal's close.</p>
+</div>
+</details>
+<details class="detail" id="the-return">
+<summary><span>The return.</span></summary>
+<div class="detail-body">
+<p>A search that still has a named source someone could obtain is not a dead end, so the request stays open to search again. When a search does find nothing, the script writes a negative result listing the queries and candidates, and the same request cannot run again without a stated reason.</p>
+</div>
+</details>
+<details class="detail" id="what-the-model-cites">
+<summary><span>What the model cites.</span></summary>
+<div class="detail-body">
+<p>The queued author query was the owner's to send, and the owner declined it at the goal's close.</p>
 <details class="evidence">
 <summary><span class="evidence-kind">In the model</span><span>The stored-energy calculation's source lines</span></summary>
 <div class="evidence-body">
@@ -980,21 +1286,48 @@ z
 <p>The same field also cites the Stellaris paper's pages and two files of the upstream costing code.</p>
 </div>
 </details>
+</div>
+</details>
 <p><a href="#6-model-updates-the-ash-profile-work-item">Section 6</a> follows the work item that used this definition to change the model.</p>
 </section>
 <section>
 <h2 id="6-model-updates-the-ash-profile-work-item"><span class="num">6</span>Model updates: the ash-profile work item</h2>
-<p>Model changes go through work items, each with four stages: a spec, a design, a plan and the implementation, checked by the six-level validation stack. The <a href="https://1cf.energy/searching-the-fusion-design-space-systematically/">earlier post</a> describes these stages. Here we show one work item, WI-042, which made round 2's change (<code class="path">work/completed/20260906_WI-042_sourced-helium-ash-profile/</code>).</p>
-<p><strong>Spec.</strong> The spec turned the owner's ruling into 15 requirements, each with its source and a way to check it. The ones that define the change:</p>
-<ul>
-<li>The ash profile follows the paper's rule at every design point, never a fixed exponent.</li>
-<li>The electron density follows from charge balance.</li>
-<li>Stored energy and beta use the same plasma pressure. Before the change, beta had its own copy of the pressure calculation.</li>
-<li>Nothing else is tuned. The fuel and temperature exponents, the peak values and the stored-energy formula stay as they are.</li>
-</ul>
-<details class="evidence">
-<summary><span class="evidence-kind">In the record</span><span>The spec's 15 requirements</span></summary>
-<div class="evidence-body">
+<p>Model changes go through work items, each with four stages: a spec, a design, a plan and the implementation, checked by the six-level validation stack. The <a href="https://1cf.energy/searching-the-fusion-design-space-systematically/">earlier post</a> describes these stages. <mark class="skim">Here we show one work item, WI-042, which made round 2's change</mark> (<code class="path">work/completed/20260906_WI-042_sourced-helium-ash-profile/</code>).</p>
+<figure class="figure wide" id="figure-8">
+  <div class="frame">
+    <ol class="diagram strip rows" style="--n: 5" aria-label="WI-042's stages">
+      <li class="dg-box">
+        <div class="dg-label"><a href="#spec">Spec</a></div>
+        <p class="st-r">The spec turned the owner's ruling into 15 requirements, each with its source and a way to check it.</p>
+        <p class="dg-note">Four of them define the change. The ash profile follows the paper's rule at every design point, never a fixed exponent. The electron density follows from charge balance. Stored energy and beta use the same plasma pressure. Before the change, beta had its own copy of the pressure calculation. Nothing else is tuned. The fuel and temperature exponents, the peak values and the stored-energy formula stay as they are.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#design">Design</a></div>
+        <p class="st-r">The design predicted every affected result with a prototype calculation before the program was regenerated.</p>
+        <p class="dg-note">It also checked that the fix holds for larger machines, as the owner asked. Across the machine sizes the earlier studies covered, the correction to stored energy ranged from 1 to 23 percent, larger where the machine holds more ash.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#plan">Plan</a></div>
+        <p class="st-r">Before regenerating the program, the item committed the model edits together with a written account of the eight earlier studies the change affects.</p>
+        <p class="dg-note">None of their stored-energy results can be rescaled, because the change moves each one by a different amount, so the account names a re-run of the most recent study as the update. Writing it first meant it could not be fitted to the new results.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label"><a href="#implementation">Implementation</a></div>
+        <p class="st-r">The regenerated program matched the design's prediction.</p>
+        <p class="dg-note">The rule itself is a few lines of the stored-energy calculation's Python.</p>
+      </li>
+      <li class="dg-box">
+        <div class="dg-label">Review</div>
+        <p class="st-r">Only one input value changed, the removed electron-profile exponent, and none of the values the owner had reserved moved.</p>
+        <p class="dg-note">The round 2 reviewer checked the record against the spec. The account of affected studies was committed 27 minutes before the regenerated program.</p>
+      </li>
+    </ol>
+  </div>
+  <figcaption><span class="fig-label">Figure 8</span>WI-042 stage by stage, and what each stage produced. Spec, design, plan and implementation open their details below.</figcaption>
+</figure>
+<details class="detail" id="spec">
+<summary><span>Spec: all 15 requirements</span></summary>
+<div class="detail-body">
 <p>What each requirement asks, grouped, with the spec's numbers (<code class="path">work/completed/20260906_WI-042_sourced-helium-ash-profile/spec.md</code>):</p>
 <p><strong>The change</strong></p>
 <ul>
@@ -1023,13 +1356,12 @@ z
 <li>Every result that moves at the design point, including the two checks that now pass, is written down with how it follows from the change. (9)</li>
 <li>Before regeneration, the plan states what the change means for each of the eight earlier studies. (14)</li>
 </ul>
-<p>Each also carries a priority, a rationale, a validation and a source. For requirement 1, the validation is that the ash shape's exponent is calculated and moves with the ion temperature (4.7 at 10 keV, 3.5 at 20 keV); the sources are the owner's ruling and the paper's pages 9 and 32.</p>
+<p>Besides its source and its check, each requirement carries a priority and a rationale. For requirement 1, the check is that the ash shape's exponent is calculated and moves with the ion temperature (4.7 at 10 keV, 3.5 at 20 keV); its sources are the owner's ruling and the paper's pages 9 and 32.</p>
 </div>
 </details>
-<p><strong>Design.</strong> The design predicted every affected result with a prototype calculation before the program was regenerated. It also checked that the fix holds for larger machines, as the owner asked. Across the machine sizes the earlier studies covered, the correction to stored energy ranged from 1 to 23 percent, larger where the machine holds more ash.</p>
-<details class="evidence">
-<summary><span class="evidence-kind">In the record</span><span>Stored energy after the change, by machine size</span></summary>
-<div class="evidence-body">
+<details class="detail" id="design">
+<summary><span>Design: stored energy by machine size</span></summary>
+<div class="detail-body">
 <p>Stored energy after the change as a fraction of before, at the corners of the range the earlier studies swept: 12 and 18 keV, and 0.9 and 1.1 times the paper's peak density (<code class="path">work/completed/20260906_WI-042_sourced-helium-ash-profile/prototype/window_corners.json</code>).</p>
 <div class="table-wrap">
 <table>
@@ -1044,10 +1376,9 @@ z
 <p>One corner (11.2 m, 2.2 m, 18 keV, 1.1 times the density) stops at the calculation's fuel-density guard, before and after the change.</p>
 </div>
 </details>
-<p><strong>Plan.</strong> Before regenerating the program, the item committed the model edits together with a written account of the eight earlier studies the change affects. None of their stored-energy results can be rescaled, because the change moves each one by a different amount, so the account names a re-run of the most recent study as the update. Writing it first meant it could not be fitted to the new results.</p>
-<details class="evidence">
-<summary><span class="evidence-kind">In the record</span><span>The eight studies the account names</span></summary>
-<div class="evidence-body">
+<details class="detail" id="plan">
+<summary><span>Plan: what the account says about each study</span></summary>
+<div class="detail-body">
 <p>From the account (<code class="path">work/completed/20260906_WI-042_sourced-helium-ash-profile/plan.md</code> § MR-WI042-14 restatement):</p>
 <div class="table-wrap">
 <table>
@@ -1063,7 +1394,9 @@ z
 </div>
 </div>
 </details>
-<p><strong>Implementation.</strong> The rule itself is a few lines of the stored-energy calculation's Python (<code class="path">exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py</code>):</p>
+<details class="detail" id="implementation">
+<summary><span>Implementation: the code, and how it was checked</span></summary>
+<div class="detail-body">
 <div class="code">
 <div class="code-head"><span class="file">exploration/stellarator_e2e/generated/handwritten/mfe_plasma_sustainment/plasma_sustainment_impl.py</span><span class="lang">Python</span></div>
 <pre><code># The ash shape: the fusion-rate profile normalised to its peak, S(0) = 1
@@ -1078,8 +1411,7 @@ def n_e(u: float) -&gt; float:
     return 2.0 * n_D0 * (u ** alpha_n) + 2.0 * n_He0 * S(u)
 </code></pre>
 </div>
-<p>Here <code>u</code> is 1 − ρ², which falls from 1 at the plasma's center to 0 at its edge, and the fuel density follows <code>u ** alpha_n</code>. The fusion rate at each radius is the fuel density squared times the reaction rate at the local temperature, so <code>S</code> gives the ash that rate's shape. Before the change, the ash followed the fuel's shape, <code>u ** alpha_n</code>. The electron density is then the ions' charge: one electron for each deuterium or tritium ion and two for each helium ion.</p>
-<p>The regenerated program matched the design's prediction:</p>
+<p>Here <code>u</code> is 1 − ρ², which falls from 1 at the plasma's center to 0 at its edge, and the fuel density follows <code>u ** alpha_n</code>. <mark class="skim">The fusion rate at each radius is the fuel density squared times the reaction rate at the local temperature, so <code>S</code> gives the ash that rate's shape.</mark> Before the change, the ash followed the fuel's shape, <code>u ** alpha_n</code>. The electron density is then the ions' charge: one electron for each deuterium or tritium ion and two for each helium ion.</p>
 <div class="table-wrap">
 <table>
 <thead>
@@ -1119,67 +1451,80 @@ def n_e(u: float) -&gt; float:
 </table>
 </div>
 <ul>
-<li>A second implementation of the calculation (<code class="path">exploration/stellarator_e2e/verify_stellaris.py</code>), written from the design's equations, agreed exactly. This shows the program implements those equations.</li>
-<li>At the paper's printed peak values, the new calculation reproduces round 1's results exactly, 524.5 and 518.3 MJ. This ties the equations to round 1's research.</li>
-<li>The new program got its own pin, and the earlier study keeps its old one, so each result stays tied to the version of the model that produced it.</li>
+<li><strong>A second implementation of the calculation (<code class="path">exploration/stellarator_e2e/verify_stellaris.py</code>), written from the design's equations, agreed exactly.</strong> This shows the program implements those equations.</li>
+<li><strong>At the paper's printed peak values, the new calculation reproduces round 1's results exactly, 524.5 and 518.3 MJ.</strong> This ties the equations to round 1's research.</li>
+<li><strong>The new program got its own pin, and the earlier study keeps its old one</strong>, so each result stays tied to the version of the model that produced it.</li>
 </ul>
-<p><strong>Review.</strong> The round 2 reviewer checked the record against the spec. Only one input value changed, the removed electron-profile exponent, and none of the values the owner had reserved moved. The account of affected studies was committed 27 minutes before the regenerated program.</p>
+</div>
+</details>
 <p><a href="#7-checks-code-and-fresh-reviewers">Section 7</a> describes the checks that ran along the way and what they caught.</p>
 </section>
 <section>
 <h2 id="7-checks-code-and-fresh-reviewers"><span class="num">7</span>Checks: code and fresh reviewers</h2>
-<p>A major challenge in running an AI system over many sessions is catching its errors early, before later work builds on them. An agent can state a number it never computed (a hallucination), misread its own results, or claim more than its evidence supports. To catch these, we use two general classes of checks: checks written as code, which pass or refuse with no judgment involved, and reviews by an agent in a fresh session that did not do the work. Below we describe the mechanisms in each class, each with an example from the stored-energy goal.</p>
-<p><a href="#figure-3">Figure 3</a> places each check at the step of round 2 where it ran: code checks above the steps, agent reviews below.</p>
-<figure class="figure wide" id="figure-3">
+<p>A major challenge in running an AI system over many sessions is catching its errors early, before later work builds on them. An agent can state a number it never computed (a hallucination), misread its own results, or claim more than its evidence supports. <mark class="skim">To catch these, we use two general classes of checks: checks written as code, which pass or refuse with no judgment involved, and reviews by an agent in a fresh session that did not do the work.</mark> Below we describe the mechanisms in each class, each with an example from the stored-energy goal.</p>
+<p>In <a href="#figure-9">Figure 9</a>, the steps of round 2 run left to right along the middle, and each check sits above or below the step where it ran. Each card gives the check's question and, where there was one, what it caught on this goal.</p>
+<figure class="figure wide" id="figure-9">
   <div class="frame diagram-scroll">
-    <ol class="diagram fig-checks">
+    <div class="diagram checks-wrap">
+      <p class="lane-title top">Code checks: is the program the model, and do the numbers reproduce?</p>
+      <ol class="fig-checks">
       <li class="step">
         <div class="step-name">Model change</div>
-        <div class="checks lane-code"><div class="dg-box"><div class="dg-label">Code check</div>Validation levels</div><div class="dg-box"><div class="dg-label">Code check</div>Regression tests</div></div>
+        <div class="checks lane-code"><div class="dg-box" data-part="validation" data-label="Validation levels" data-show="check-validation"><div class="dg-label">Code check</div><p class="ck-name">Validation levels</p><p class="ck-ask">Does the SysML parse, and does every value cite a source?</p></div><div class="dg-box" data-part="regression" data-label="Regression tests" data-show="check-regression"><div class="dg-label">Code check</div><p class="ck-name">Regression tests</p><p class="ck-ask">Did a change move an expected result?</p><p class="ck-found">On this goal, the plan for the ash-profile change listed every place the change had to update but missed three study tests. They failed, and that is how they were found.</p></div></div>
         <div class="checks lane-review"></div>
       </li>
       <li class="step">
         <div class="step-name">Pin</div>
-        <div class="checks lane-code"><div class="dg-box"><div class="dg-label">Code check</div>Integration check</div></div>
+        <div class="checks lane-code"><div class="dg-box" data-part="integration" data-label="Integration check" data-show="check-integration integration-gates"><div class="dg-label">Code check</div><p class="ck-name">Integration check</p><p class="ck-ask">Is the pinned program exactly what the model describes?</p></div></div>
         <div class="checks lane-review"></div>
       </li>
       <li class="step">
         <div class="step-name">Study plan</div>
         <div class="checks lane-code"></div>
-        <div class="checks lane-review"><div class="dg-box data"><div class="dg-label">Agent review</div>Critique of the study plan</div></div>
+        <div class="checks lane-review"><div class="dg-box data" data-part="critique" data-label="Critique of the study plan" data-show="check-critique"><div class="dg-label">Agent review</div><p class="ck-name">Critique of the study plan</p><p class="ck-ask">Would any choice in the plan make the results misleading?</p><p class="ck-found">On this goal, it found that the earlier study had dropped its 13 keV rows only because of the old profile.</p></div></div>
       </li>
       <li class="step">
         <div class="step-name">Study run</div>
-        <div class="checks lane-code"><div class="dg-box"><div class="dg-label">Code check</div>Study checks</div></div>
+        <div class="checks lane-code"><div class="dg-box" data-part="study-checks" data-label="Study checks" data-show="check-study-checks"><div class="dg-label">Code check</div><p class="ck-name">Study checks</p><p class="ck-ask">Do the program's results match the reference calculation?</p><p class="ck-found">On this goal, the stored energy agreed at all 7,712 points.</p></div></div>
         <div class="checks lane-review"></div>
       </li>
       <li class="step">
         <div class="step-name">Study record</div>
         <div class="checks lane-code"></div>
-        <div class="checks lane-review"><div class="dg-box data"><div class="dg-label">Agent review</div>Recount of the study record</div></div>
+        <div class="checks lane-review"><div class="dg-box data" data-part="recount" data-label="Recount of the study record" data-show="check-recount"><div class="dg-label">Agent review</div><p class="ck-name">Recount of the study record</p><p class="ck-ask">Does every count in the record match the raw results?</p><p class="ck-found">On this goal, it found seven statements that did not match the data, and one omission.</p></div></div>
       </li>
       <li class="step">
         <div class="step-name">Follow-up</div>
         <div class="checks lane-code"></div>
-        <div class="checks lane-review"><div class="dg-box data"><div class="dg-label">Agent review</div>Checkpoint on the conclusions</div></div>
+        <div class="checks lane-review"><div class="dg-box data" data-part="checkpoint" data-label="Checkpoint on the conclusions" data-show="check-checkpoint"><div class="dg-label">Agent review</div><p class="ck-name">Checkpoint on the conclusions</p><p class="ck-ask">Do the conclusions and the follow-up fit the evidence?</p><p class="ck-found">On this goal, it sent back a reading whose reason pointed the wrong way.</p></div></div>
       </li>
       <li class="step">
         <div class="step-name">Round close</div>
         <div class="checks lane-code"></div>
-        <div class="checks lane-review"><div class="dg-box data"><div class="dg-label">Agent review</div>Fresh review of the round</div></div>
+        <div class="checks lane-review"><div class="dg-box data" data-part="fresh-review" data-label="Fresh review of the round" data-show="check-fresh-review"><div class="dg-label">Agent review</div><p class="ck-name">Fresh review of the round</p><p class="ck-ask">Did the round keep to its approach and scope?</p><p class="ck-found">On this goal, it found a learning that called a 39 percent drop in the amount of ash “halves”, and the learning was corrected before it was recorded.</p></div></div>
       </li>
-    </ol>
+      </ol>
+      <p class="lane-title bottom">Agent reviews: is the reading right?</p>
+    </div>
   </div>
-  <figcaption><span class="fig-label">Figure 3</span>The checks on round 2 of the stored-energy goal, in the order they ran.</figcaption>
+  <figcaption><span class="fig-label">Figure 9</span>The checks on round 2 of the stored-energy goal, in the order they ran.</figcaption>
 </figure>
-<p><strong>Code checks: is the program the model, and do the numbers reproduce?</strong></p>
+<div class="live" data-explorer="figure-9" hidden>
+  <div class="live-head"><span class="live-kind">Explore</span><span>Each check in full</span></div>
+  <p class="muted">Choose a check, here or in the drawing, to read how it works.</p>
+  <div class="chips"></div>
+  <div class="readout" aria-live="polite"></div>
+</div>
+<details class="detail" id="code-checks" data-fallback="figure-9">
+<summary><span>The code checks</span></summary>
+<div class="detail-body">
 <ul>
-<li><strong>Validation levels.</strong> The six levels from the <a href="https://1cf.energy/searching-the-fusion-design-space-systematically/">earlier post</a> check the SysML itself after every edit, from whether it parses to whether every value cites a source.</li>
-<li><strong>Integration check.</strong> Before a new version of the program is pinned for studies, a script regenerates the program from the model and confirms that nothing changes. That shows the program the studies will use is exactly the one the current model describes. The script also runs the program at the design point and confirms it matches the reference calculation from <a href="#6-model-updates-the-ash-profile-work-item">section 6</a> (<code class="path">docs/integration_seam_operator_guide.md</code>).</li>
-<li><strong>Regression tests.</strong> Test suites for the model and the study tools hold the model's expected results, so a change that moves a result fails a test until someone updates it and records why. <strong>Example:</strong> the plan for the ash-profile change listed every place the change had to update, but it missed three study tests. They failed, and that is how they were found.</li>
-<li><strong>Study checks.</strong> During a study, the program's results are compared with the reference calculation. <strong>Example:</strong> in round 2's study, the stored energy agreed at all 7,712 points.</li>
+<li id="check-validation"><strong>Validation levels.</strong> The six levels from the <a href="https://1cf.energy/searching-the-fusion-design-space-systematically/">earlier post</a> check the SysML itself after every edit, from whether it parses to whether every value cites a source.</li>
+<li id="check-integration"><strong>Integration check.</strong> Before a new version of the program is pinned for studies, a script regenerates the program from the model and confirms that nothing changes. The script also runs the program at the design point and confirms it matches the reference calculation from <a href="#6-model-updates-the-ash-profile-work-item">section 6</a> (<code class="path">docs/integration_seam_operator_guide.md</code>).</li>
+<li id="check-regression"><strong>Regression tests.</strong> Test suites for the model and the study tools hold the model's expected results, so a change that moves a result fails a test until someone updates it and records why.</li>
+<li id="check-study-checks"><strong>Study checks.</strong> During a study, the program's results are compared with the reference calculation.</li>
 </ul>
-<details class="evidence">
+<details class="evidence" id="integration-gates">
 <summary><span class="evidence-kind">In the tooling</span><span>What the integration check runs</span></summary>
 <div class="evidence-body">
 <p>The check stops at the first gate that does not pass (<code class="path">docs/integration_seam_operator_guide.md</code> § The ten gates, in order).</p>
@@ -1203,19 +1548,25 @@ def n_e(u: float) -&gt; float:
 </div>
 </div>
 </details>
-<p><strong>Agent reviews: is the reading right?</strong></p>
+</div>
+</details>
+<details class="detail" id="agent-reviews" data-fallback="figure-9">
+<summary><span>The agent reviews</span></summary>
+<div class="detail-body">
 <ul>
-<li><strong>Critique of the study plan.</strong> Before a study runs, a fresh agent reviews its plan for choices that would make the results misleading. <strong>Example:</strong> when round 2 set out to re-run an earlier study, the critique noticed that the earlier study had dropped its 13 keV rows only because the old profile made them fail the heating check. Under the corrected profile the cheapest driven designs were in those rows, so the plan was changed to include them before any point ran.</li>
-<li><strong>Recount of the study record.</strong> After a study runs, an agent that did not run it recomputes every count in the written record from the raw results. <strong>Example:</strong> in round 2's study it found seven statements that did not match the data, such as an average cost increase reported as if it held at every point, and one omission. They were corrected in an addendum, and no result changed.</li>
-<li><strong>Checkpoint on the conclusions.</strong> Before any follow-up acts on a study, a fresh agent checks the study's conclusions and the proposed follow-up against the evidence. <strong>Example:</strong> round 2's reading said the design point was undecided because its heating margin fell inside the paper's 2.7 percent residual. The checkpoint found that this reason pointed the wrong way, because the model's stored energy is above both of the paper's values, and sent the reading back. The corrected reason is the one <a href="#4-a-worked-example-the-stored-energy-goal">section 4</a> gives.</li>
-<li><strong>Fresh review of the round.</strong> After a round closes, a fresh agent checks it against its approach and scope, re-runs the tests and recounts the numbers with its own scripts. <strong>Example:</strong> round 2's reviewer found a learning that described a 39 percent drop in the amount of ash as &quot;halves&quot;, and the learning was corrected before it was recorded.</li>
+<li id="check-critique"><strong>Critique of the study plan.</strong> Before a study runs, a fresh agent reviews its plan for choices that would make the results misleading. <strong>Example:</strong> when round 2 set out to re-run an earlier study, the critique noticed that the earlier study had dropped its 13 keV rows only because the old profile made them fail the heating check. Under the corrected profile the cheapest driven designs were in those rows, so the plan was changed to include them before any point ran.</li>
+<li id="check-recount"><strong>Recount of the study record.</strong> After a study runs, an agent that did not run it recomputes every count in the written record from the raw results. <strong>Example:</strong> in round 2's study it found seven statements that did not match the data, such as an average cost increase reported as if it held at every point, and one omission. They were corrected in an addendum, and no result changed.</li>
+<li id="check-checkpoint"><strong>Checkpoint on the conclusions.</strong> Before any follow-up acts on a study, a fresh agent checks the study's conclusions and the proposed follow-up against the evidence. <strong>Example:</strong> round 2's reading said the design point was undecided because its heating margin fell inside the paper's 2.7 percent residual. The checkpoint found that this reason pointed the wrong way, because the model's stored energy is above both of the paper's values, and sent the reading back. The corrected reason is the one <a href="#4-a-worked-example-the-stored-energy-goal">section 4</a> gives.</li>
+<li id="check-fresh-review"><strong>Fresh review of the round.</strong> After a round closes, a fresh agent checks it against its approach and scope, re-runs the tests and recounts the numbers with its own scripts.</li>
 </ul>
+</div>
+</details>
 <p><strong>What the checks establish.</strong> The code checks show that the model is well formed and that the program computes it correctly. The agent reviews show that the study's design and its conclusions fit the evidence, and on this goal they produced the corrections that mattered.</p>
-<p>These checks show that the work is consistent with the model and its sources. They do not show that the model predicts a real plant correctly, which is what the hold-out test in Part 4 is designed to test.</p>
+<p>These checks show that the work is consistent with the model and its sources. <mark class="skim">They do not show that the model predicts a real plant correctly, which is what the hold-out test in Part 4 is designed to test.</mark></p>
 </section>
 <section>
 <h2 id="8-where-the-harness-stands"><span class="num">8</span>Where the harness stands</h2>
-<p>We built the harness so that an AI could carry engineering work across many sessions and have that work build on itself. Our assessment has three parts: the harness is still being refined, it runs our demo's goals almost on its own, and its analysis has been credible but has leaned on a published design to check against. That last part leaves our biggest open question.</p>
+<p>We built the harness so that an AI could carry engineering work across many sessions and have that work build on itself. <mark class="skim">Our assessment has three parts: the harness is still being refined, it runs our demo's goals almost on its own, and its analysis has been credible but has leaned on a published design to check against.</mark> That last part leaves our biggest open question.</p>
 <p><strong>It is still being refined.</strong> We continued to develop the harness as we used it and found issues. Many of those fixes were new rules written into the agents' instructions. As much as possible, moving these prompt-rules into deterministic scripts improves scalability.</p>
 <p><strong>It runs goals almost on its own.</strong> We estimate that about 95 percent of the work on our demo's goals ran without us. The stored-energy goal was an early one, and the owner stepped in at four points: approving the goal, leaving the research decision to the agent, ruling on the fix, and closing the goal. Agents did everything else, including the research request, the work item, the regenerated program and its pin, the 7,712-point study, and six reviews by fresh agents. Later goals needed even less. The four goals that built the integrated ARIES model in Part 4 ran seven rounds between them, and the owner's only input was a written brief at the start and the decision to close at the end.</p>
 <p><strong>Its analysis has been credible, but it has leaned on ground truth.</strong> Many of the issues we caught were found by comparing the model with a published design, such as the Stellaris paper.</p>
@@ -1226,8 +1577,68 @@ def n_e(u: float) -&gt; float:
 </main>
 
 <script>
-  // Navigation state only; the page reads the same without it.
+  // Navigation state, and the two explore panels (Figures 1 and 9). The page reads the same without any of it:
+  // each explore panel starts hidden, and the text it shows sits in detail sections marked data-fallback. Once a
+  // panel is live it becomes that text's one home, and those detail sections are hidden.
   (() => {
+    const reveal = new Map(); // id of a passage an explorer shows -> shows it there
+
+    // Explore: choose a part of a figure to light it and read the page's own text about it.
+    const copy = (el) => {
+      const c = el.cloneNode(true);
+      c.removeAttribute('id');
+      c.querySelectorAll('[id]').forEach((n) => n.removeAttribute('id'));
+      return c;
+    };
+    document.querySelectorAll('.live[data-explorer]').forEach((panel) => {
+      const fig = document.getElementById(panel.dataset.explorer);
+      if (!fig) return;
+      const parts = [...fig.querySelectorAll('[data-part]')];
+      const chips = panel.querySelector('.chips');
+      const readout = panel.querySelector('.readout');
+      const buttons = new Map();
+      let current = null;
+      const show = (part) => {
+        current = part === current ? null : part;
+        fig.classList.toggle('exploring', !!current);
+        parts.forEach((p) => {
+          p.classList.toggle('picked', p === current);
+          p.classList.toggle('holds-pick', !!current && p !== current && p.contains(current));
+        });
+        buttons.forEach((b, p) => b.setAttribute('aria-pressed', String(p === current)));
+        readout.replaceChildren();
+        if (!current) return;
+        for (const id of current.dataset.show.split(' ')) {
+          const src = document.getElementById(id);
+          if (!src) continue;
+          if (src.tagName === 'LI') { const ul = document.createElement('ul'); ul.append(copy(src)); readout.append(ul); }
+          else readout.append(copy(src));
+        }
+      };
+      for (const p of parts) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'chip';
+        b.textContent = p.dataset.label;
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', () => show(p));
+        chips.append(b);
+        buttons.set(p, b);
+        p.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return;
+          e.stopPropagation();
+          show(p);
+        });
+        for (const id of p.dataset.show.split(' ')) {
+          reveal.set(id, () => { if (current !== p) show(p); panel.scrollIntoView({ block: 'start' }); });
+        }
+      }
+      fig.classList.add('explorable');
+      panel.hidden = false;
+      document.querySelectorAll(`[data-fallback="${panel.dataset.explorer}"]`).forEach((d) => { d.hidden = true; });
+    });
+
+    // Navigation: mark the current section in the rail.
     const links = [...document.querySelectorAll('.toc a[href^="#"]')];
     const byId = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
     const heads = [...document.querySelectorAll('.article [id]')].filter((h) => byId.has(h.id));
@@ -1240,11 +1651,24 @@ def n_e(u: float) -&gt; float:
       links.forEach((a) => a.removeAttribute('aria-current'));
       if (current) byId.get(current.id).setAttribute('aria-current', 'location');
     };
-    // A link to a heading inside a closed detail opens it.
+    // A link to a detail section, or to anything inside one, opens it. A link to text that an explore panel now
+    // holds shows that text in the panel.
     const openTarget = () => {
       const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
-      const details = target && target.closest('details');
-      if (details && !details.open) { details.open = true; target.scrollIntoView(); }
+      if (!target) return;
+      if (target.closest('[data-fallback][hidden]')) {
+        for (let n = target; n; n = n.parentElement) {
+          if (n.id && reveal.has(n.id)) { reveal.get(n.id)(); return; }
+        }
+        return;
+      }
+      let d = target.tagName === 'DETAILS' ? target : target.closest('details');
+      let opened = false;
+      while (d) {
+        if (!d.open) { d.open = true; opened = true; }
+        d = d.parentElement && d.parentElement.closest('details');
+      }
+      if (opened) target.scrollIntoView();
     };
     addEventListener('scroll', update, { passive: true });
     addEventListener('hashchange', openTarget);

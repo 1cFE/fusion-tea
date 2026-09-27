@@ -2,9 +2,13 @@
 
 Supports [the main post](fusion-tea-exploratory-modeling.md). The viewer is the page; these notes are context for its frames. Part 3, [the full harness](harness.md), explains goals and rounds.
 
-We started with a model that could price the Stellaris design but mostly just repeated the paper's numbers back to us. Over about a month, we ran 28 goals against it to turn the model into something that actually computes the plant from its design: from 55 calculations, 6 checks and 14 parts to 199, 67 and 76. Looking back over those goals, they generally fall within six themes.
+We started with a model that could price the Stellaris design but mostly just repeated the paper's numbers back to us. Over about a month, we ran 28 goals against it to turn the model into something that actually computes the plant from its design: from 55 calculations, 6 checks and 14 parts to 199, 67 and 76.
 
-## 1. Replacing typed-in numbers with physics
+## Six themes in the model’s evolution
+
+Looking back over those goals, they generally fall within six themes.
+
+### 1. Replacing typed-in numbers with physics
 
 The starting model was mostly fixed numbers from the paper and from 1costingFE: key system attributes (like field strength) were not modeled as a function of design parameters (like coil current). A typical goal took one of those attributes and modeled it from its design parameters, anchored so that it still reproduces the paper at the design point.
 
@@ -13,7 +17,7 @@ The starting model was mostly fixed numbers from the paper and from 1costingFE: 
 - Pumping power is modeled from the coolant flow and pressure loss, cycle efficiency from the power cycle, and availability from the maintenance calendar (frame 10, [record](../../work/orchestration/goals/plant-closure/trail.md)).
 - Tritium breeding is modeled from blanket thickness, using five OpenMC neutron-transport runs (frame 21, [answer](../../work/orchestration/goals/computed-tritium-breeding/answer.md)). Net electricity is modeled from the salt heat and temperature through a steam cycle (frame 27, [answer](../../work/orchestration/goals/current-model-comparison-readiness/answer.md)).
 
-## 2. Making the model push back
+### 2. Making the model push back
 
 Modeling an attribute is not enough. The model also has to say when a design choice is not feasible. So we run studies: sweep the design parameters, see what LCOE is sensitive to, and find where the engineering limits are. If a sweep shows that a parameter can change cost without ever hitting a limit, then the model is missing a physical constraint. Modeling that constraint becomes the next goal.
 
@@ -24,7 +28,7 @@ Modeling an attribute is not enough. The model also has to say when a design cho
 - A fatter plasma cost nothing at the magnet. Now the coil bore sets the peak field and casing mass, and the fattest plasmas at the paper's radius fail the conductor limit (frame 9, [record](../../work/orchestration/goals/minor-radius/trail.md)).
 - Nothing checked that the winding pack fits its casing or that the conductor has current margin. We added both. Stellaris fails both: 370 mm of pack in 250 mm of casing, and 29.65 kA of critical current against 50 kA operating (frames 16 and 17, [fit](../../work/orchestration/goals/winding-pack-casing-fit/answer.md), [current](../../work/orchestration/goals/absolute-conductor-current-margin/answer.md)).
 
-## 3. Making cost follow the design
+### 3. Making cost follow the design
 
 Modeling the physics does not fix the costing: an account can still be a lump sum that ignores the design. We wanted each account to follow the equipment, sized by the calculated demand (like heat exchangers by heat load) and priced by quantity, with installation and, for equipment that wears out, spares and replacements. The cooling goal is the largest LCOE move in the run.
 
@@ -33,14 +37,14 @@ Modeling the physics does not fix the costing: an account can still be a lump su
 - The winding pack's single cost multiplier was replaced by material inventory, tape procurement and winding operations, and a later goal priced the tape by its purchased length (frames 13 and 15, [claim](../../work/orchestration/goals/magnet-design-transfer/transfer-claim.md), [answer](../../work/orchestration/goals/tape-procurement-consistency/answer.md)).
 - Then we graded the estimate's maturity and where the cost concentrates: a Class 5 conceptual estimate, with cooling, magnets and facilities at 73 percent of direct cost (frame 26, [answer](../../work/orchestration/goals/cost-estimate-maturity-and-uncertainty/answer.md)).
 
-## 4. Following the engineering design pattern
+### 4. Following the engineering design pattern
 
 Inputs are choices an engineer would make (like coil current or exchanger area), and the model calculates the consequences of those choices in causal order. The model must not size equipment to meet a demand, because then it has decided which parameters are free instead of the engineer. We broke this rule without noticing, and the ARIES reveal caught it.
 
 - Restructured 14 flat parts into 23 nested physical parts with ports, so a subsystem can be swapped for a trade study. Every output stayed identical (frame 12, [record](../../work/orchestration/goals/structural-decomposition/trail.md)).
 - Several calculations sized magnet inventory, facilities, fuel processing and cooling equipment from demand. Those became inputs, with 33 capacity checks that fail when the supplied equipment is too small (frame 28, [answer](../../work/orchestration/goals/preserve-model-design-choices/answer.md)).
 
-## 5. Reconciling against Stellaris
+### 5. Reconciling against Stellaris
 
 Once an attribute is modeled, its value can differ from the paper. We trace each difference to its cause rather than tuning it away, since the cause might be our model, our reading of the paper, or the paper itself.
 
@@ -48,11 +52,13 @@ Once an attribute is modeled, its value can differ from the paper. We trace each
 - The wall-load check compared a flat-wall average to the paper's peak limit. Now it computes the peak, which the design failed narrowly, 4.088 against 4.05 MW/m², until the ash fix (frame 6, [record](../../work/orchestration/goals/wall-and-heating/trail.md)).
 - Checked whether our reference is one coherent published design point. It is not, and each remaining difference was classified by cause (comments only, so no frame; [answer](../../work/orchestration/goals/stellaris-reference-reconciliation/answer.md)).
 
-## 6. Fixing defects
+### 6. Fixing defects
 
 All of this adds code, and code has bugs, so some goals were repairs.
 
 - An audit found 20 findings: heating demand confused with installed capacity, a duplicated major radius, finance formulas that divided by zero at equal interest and inflation rates, missing range checks (frame 11, [record](../../work/orchestration/goals/fusion-audit-remediation/trail.md)).
 - A conductor cost multiplier applied twice (frame 15, [answer](../../work/orchestration/goals/tape-procurement-consistency/answer.md)).
+
+## Model limits
 
 The models are still limited to the ranges they were built for. For example, the conductor performance model, which gives the current the superconducting tape can carry at a given field, is only valid for peak fields between 20 and 32 T, and the tritium breeding calculation was built from neutron-transport runs at the Stellaris radius, so it only covers blanket thicknesses of 0.6 to 1.0 m at that radius (frame 29, [answer](../../work/orchestration/goals/model-evaluation-domain-readiness/answer.md)). Expanding the design space the model can handle is more work to be done. We look at this question further in [support 2](aries-model-transfer-outline.md).

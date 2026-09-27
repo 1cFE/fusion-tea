@@ -27,6 +27,7 @@
   --code-bg: #e6e2dc;
   --plate: #fbfaf8;
   --note-ink: #8a5200;
+  --skim: #f2cf8c;       /* the key-sentence band: amber, so it never reads as a link */
 
   /* Diagram roles */
   --role-calc: #1b5f99;
@@ -289,6 +290,9 @@ ul, ol {
 li { margin-bottom: 0.45rem; }
 li::marker { color: var(--faint); }
 
+code,
+pre { font-variant-ligatures: none; }
+
 code {
   padding: 0.08em 0.3em;
   border-radius: 3px;
@@ -326,6 +330,17 @@ code.path {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--note-ink);
+}
+
+/* A key sentence for a skimming reader: a highlighter band under the lower part of the text, repeated on each
+   line when the sentence wraps. Amber, so it never reads as a link (links carry a blue underline). Mark it up
+   as <mark class="skim">. */
+.skim {
+  padding: 0 0.06em;
+  background: linear-gradient(to bottom, transparent 52%, var(--skim) 52%, var(--skim) 94%, transparent 94%);
+  color: inherit;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* === Figures === */
@@ -574,6 +589,10 @@ details.detail > summary .num { font-size: 0.8em; }
   details.detail > summary::before { transition: none; }
 }
 
+/* Prose that follows a closed detail section keeps a gap below the section's rule. */
+details.detail + p,
+details.detail + ul { margin-top: 1.25rem; }
+
 /* === Evidence panel: the information a repository reference points to, closed by default === */
 
 details.evidence {
@@ -626,7 +645,81 @@ details.evidence > summary:hover { background: var(--accent-soft); }
 
 .evidence-body .code { margin-top: 0.4rem; }
 
+/* === Explore panels: a live part the page's script wakes, hidden until it runs, so the page reads without it ===
+   A panel holds a lead, a row of chip buttons and a readout. A figure it explores marks its parts with
+   data-part; the script adds .explorable to the figure, and .exploring while a part is chosen. */
+
+[hidden] { display: none !important; }
+
+.live {
+  margin: 0.4rem 0 1.75rem;
+  padding: 0.85rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-size: 0.9375rem;
+}
+
+.live-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: var(--ink-strong);
+}
+
+.live-kind {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.live p { margin: 0 0 0.6rem; }
+.live p:last-child { margin-bottom: 0; }
+.live .muted { color: var(--muted); font-size: 0.875rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0 0.8rem; }
+
+.chip {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--plate);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.chip:hover { border-color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.readout { font-size: 0.9375rem; }
+.readout > :last-child { margin-bottom: 0; }
+.readout .readout-title { font-weight: 600; color: var(--ink-strong); }
+.readout ul { margin: 0 0 0.6rem; padding-left: 1.3rem; }
+.readout dl { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.9rem; margin: 0.4rem 0 0; }
+.readout dt { color: var(--muted); font-size: 0.875rem; }
+.readout dd { margin: 0; }
+
+.explorable [data-part] { cursor: pointer; }
+.exploring [data-part] { transition: opacity 0.15s ease; }
+.exploring [data-part]:not(.picked):not(.holds-pick) { opacity: 0.4; }
+.exploring [data-part].picked { opacity: 1; box-shadow: 0 0 0 3px var(--brand-blue); }
+
+@media (prefers-reduced-motion: reduce) {
+  .exploring [data-part] { transition: none; }
+}
+
 /* === Tables === */
+
+/* A table set as a figure keeps its caption above the table. */
+.table-figure figcaption { margin: 0 auto 0.6rem; }
 
 .table-wrap {
   margin: 0.75rem 0 1.25rem;
@@ -656,7 +749,7 @@ td {
 
 td code {
   font-size: 0.85em;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 th.r, td.r { text-align: right; }

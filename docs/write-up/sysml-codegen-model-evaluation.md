@@ -1,4 +1,4 @@
-# Turning a SysML model into a calculator
+# *Executing* the trade studies on a SysML v2 plant model
 
 ## 1. Introduction
 

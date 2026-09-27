@@ -4,11 +4,12 @@ Run from the repository root:
   uv run python docs/write-up/sysml-codegen-assets/render_page_figures.py
 
 Writes, next to this script (all new files; the markdown's figures are untouched):
-  page-calculation-graph.svg      Figure 4, the magnet graph from graph-evidence.json, in the page's fonts
-  page-winding-pack-fit.svg       Figure 3, what the fit calculation compares (mfe_winding_pack_fit.sysml equations)
-  page-fit-case-*.svg             Figure 7, each recorded case's required envelope against its clear cavity
-  page-breeding-response.svg      Figure 5, the five stored transport results and the interpolated response
-  page-feasibility-cost.svg       Figure 8, the 17 September map, one SVG group per evaluated case
+  page-calculation-graph.svg      Figure 5, the magnet graph from graph-evidence.json, in the page's fonts
+  page-winding-pack-fit.svg       Figure 4, what the fit calculation compares (mfe_winding_pack_fit.sysml equations)
+  page-fit-case-*.svg             Figure 10, each recorded case's required envelope against its clear cavity
+  page-breeding-response.svg      Figure 7, the five stored transport results and the interpolated response
+  page-feasibility-cost.svg       Figure 11, the 17 September map, one SVG group per evaluated case, with text
+                                  labels where each limit bites
   page-feasibility-cost-stacked.svg  the same map with the panels stacked, for narrow screens
   page-map-data.json              the map's cases, as the page's readout needs them
 
@@ -109,7 +110,7 @@ def esc(s: str) -> str:
 
 
 # ----------------------------------------------------------------------------------------------
-# Figure 4: the magnet calculation graph (Graphviz, page fonts and colors)
+# Figure 5: the magnet calculation graph (Graphviz, page fonts and colors)
 # ----------------------------------------------------------------------------------------------
 
 LABELS = {
@@ -170,7 +171,7 @@ def calculation_graph():
 
 
 # ----------------------------------------------------------------------------------------------
-# Figure 3: what the fit calculation compares (generic proportions, names only)
+# Figure 4: what the fit calculation compares (generic proportions, names only)
 # ----------------------------------------------------------------------------------------------
 
 def fit_schematic():
@@ -251,7 +252,7 @@ def fit_schematic():
 
 
 # ----------------------------------------------------------------------------------------------
-# Figure 7: each recorded case's required envelope against its clear cavity, to one scale
+# Figure 10: each recorded case's required envelope against its clear cavity, to one scale
 # ----------------------------------------------------------------------------------------------
 
 def fit_cases():
@@ -290,7 +291,7 @@ def fit_cases():
 
 
 # ----------------------------------------------------------------------------------------------
-# Figure 5: the breeding response table and its interpolation (matplotlib, fixed layout)
+# Figure 7: the breeding response table and its interpolation (matplotlib, fixed layout)
 # ----------------------------------------------------------------------------------------------
 
 def breeding_chart():
@@ -362,7 +363,7 @@ def _finish_mpl_svg(path: Path, root_attrs: str, prefix: str):
 
 
 # ----------------------------------------------------------------------------------------------
-# Figure 8: the 17 September radius-current map, one group per case so the page can read each mark
+# Figure 11: the 17 September radius-current map, one group per case so the page can read each mark
 # ----------------------------------------------------------------------------------------------
 
 CHECK_NAMES = {
@@ -422,6 +423,35 @@ def feasibility_map():
                 b = ax2.scatter([x], [y], s=70, c="white", edgecolors=fs.INK, marker="D", linewidths=1.4, zorder=4)
             a.set_gid(f"{prefix}-a-{i:03d}"); b.set_gid(f"{prefix}-b-{i:03d}")
 
+    def edge_labels(fig, ax, items, prefix):
+        """Plain text naming where each limit bites, set above the feasibility panel so that no label covers a
+        mark. Along the top row (13.2 MA-turn) the three classes the page's toggle colors read left to right:
+        field-limit failures, the passing band, then divertor or installed-heating failures. Each label sits in
+        its own tier over that stretch of the top edge, with a bracket down to the edge and a leader up to the
+        text. Nothing is shaded, because no region was interpolated. Returns the height used above the axes,
+        in points, so the panel title can clear it."""
+        from matplotlib import transforms
+        blended = transforms.blended_transform_factory(ax.transData, ax.transAxes)
+        ax_h = fig.get_figheight() * 72 * ax.get_position().height
+        up = lambda pt: 1.0 + pt / ax_h          # points above the top edge, in axes fraction
+        style = dict(color=fs.INK, lw=0.9, transform=blended, clip_on=False, solid_capstyle="butt")
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        top = 0.0
+        for k, (text, x0, x1, label_x, ha, rise) in enumerate(items):
+            xc = (x0 + x1) / 2
+            a, b = x0 - 0.045, x1 + 0.045
+            ax.plot([a, a, b, b], [up(1.5), up(5), up(5), up(1.5)], **style)[0].set_gid(f"maplabel-{prefix}-bracket-{k}")
+            ax.plot([xc, xc], [up(5), up(rise - 2)], **style)[0].set_gid(f"maplabel-{prefix}-leader-{k}")
+            t = ax.text(label_x, up(rise), text, transform=blended, ha=ha, va="bottom", fontsize=fs.TEXT_PT,
+                        color=fs.INK, linespacing=1.15, clip_on=False)
+            t.set_gid(f"maplabel-{prefix}-{k}")
+            ext = t.get_window_extent(renderer)
+            top = max(top, rise + ext.height * 72 / fig.dpi)
+            span = ax.transData.inverted().transform([[ext.x0, 0], [ext.x1, 0]])[:, 0]
+            assert span[0] <= xc <= span[1], (text, span, xc)   # the leader lands under its own label
+        return top
+
     def colorbar(cax, orientation):
         sm = matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap)
         cb = plt.colorbar(sm, cax=cax, orientation=orientation)
@@ -433,15 +463,24 @@ def feasibility_map():
              '210 failing samples, two invalid power accounts, and the conditional electricity cost at valid points."')
 
     # Wide: the two panels side by side, at the width of the page's wide column.
-    fig = plt.figure(figsize=(fs.WIDE_IN, 5.8))
-    ax1 = fig.add_axes([0.065, 0.20, 0.385, 0.66])
-    ax2 = fig.add_axes([0.505, 0.20, 0.385, 0.66])
-    cax = fig.add_axes([0.905, 0.20, 0.012, 0.66])
+    H = 83.5 + 275.6 + 118            # bottom margin, axes height and the room above them, in points
+    fig = plt.figure(figsize=(fs.WIDE_IN, H / 72))
+    b, h = 83.5 / H, 275.6 / H
+    ax1 = fig.add_axes([0.065, b, 0.385, h])
+    ax2 = fig.add_axes([0.505, b, 0.385, h])
+    cax = fig.add_axes([0.905, b, 0.012, h])
     panels(ax1, ax2)
     for ax in (ax1, ax2): ax.set_xlabel("Major radius (m)", labelpad=8)
     ax1.set_ylabel("Coil ampere-turns (MA-turn)", labelpad=8)
     ax2.tick_params(labelleft=False)
     marks(ax1, ax2, "map")
+    used = edge_labels(fig, ax1, [
+        ("Smaller radius: field limit fails", 10.62, 11.68, 11.15, "center", 12),
+        ("Passing band", 11.80, 11.92, 11.80, "center", 33),
+        ("Larger radius: divertor heat or\ninstalled-heating limits fail", 12.03, 12.15, 12.22, "right", 54),
+    ], "w")
+    for ax in (ax1, ax2):
+        ax.set_title(ax.get_title(loc="left"), loc="left", pad=used + 14)
     colorbar(cax, "vertical")
     fig.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.055, 0.01), ncol=3, columnspacing=1.6,
                handletextpad=0.4)
@@ -451,10 +490,11 @@ def feasibility_map():
     _finish_mpl_svg(out, label + ' data-marks="map"', prefix="fc")
 
     # Stacked: one panel above the other, drawn at a phone's width so its text keeps its size there.
-    fig = plt.figure(figsize=(3.5, 9.9))
-    ax1 = fig.add_axes([0.19, 0.615, 0.78, 0.33])
-    ax2 = fig.add_axes([0.19, 0.245, 0.78, 0.33])
-    cax = fig.add_axes([0.19, 0.165, 0.78, 0.012])
+    H = 712.8 + 104                   # the earlier layout plus room for the labels above the top panel, in points
+    fig = plt.figure(figsize=(3.5, H / 72))
+    ax1 = fig.add_axes([0.19, 438.4 / H, 0.78, 235.2 / H])
+    ax2 = fig.add_axes([0.19, 174.6 / H, 0.78, 235.2 / H])
+    cax = fig.add_axes([0.19, 117.6 / H, 0.78, 8.6 / H])
     panels(ax1, ax2)
     ax1.set_title("Feasibility, 20 modeled screens", loc="left", pad=8)
     ax2.set_title("Cost of electricity, same points", loc="left", pad=8)
@@ -462,9 +502,15 @@ def feasibility_map():
     ax2.set_xlabel("Major radius (m)", labelpad=6)
     for ax in (ax1, ax2): ax.set_ylabel("Coil ampere-turns (MA-turn)", labelpad=6)
     marks(ax1, ax2, "maps")
+    used = edge_labels(fig, ax1, [
+        ("Smaller radius:\nfield limit fails", 10.62, 11.68, 11.15, "center", 12),
+        ("Passing band", 11.80, 11.92, 11.74, "center", 50),
+        ("Larger radius: divertor heat\nor installed-heating\nlimits fail", 12.03, 12.15, 12.22, "right", 71),
+    ], "s")
+    ax1.set_title("Feasibility, 20 modeled screens", loc="left", pad=used + 16)
     cb = colorbar(cax, "horizontal")
     cb.set_label("Conditional LCOE ($/MWh)", labelpad=4)
-    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.12, 0.095), ncol=1, handletextpad=0.4,
+    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.12, 67.7 / H), ncol=1, handletextpad=0.4,
                labelspacing=0.25)
     out = HERE / "page-feasibility-cost-stacked.svg"
     fig.savefig(out, format="svg"); plt.close(fig)
