@@ -1,0 +1,162 @@
+"""Constraint report aggregator (Item 7 / D5/D11) — exact schema, one required field per
+eligible assertion.
+
+Exists even for zero eligible assertions (D11): a missing result is a schema failure, never a
+silent gap.
+"""
+
+from pydantic import BaseModel
+from simkit.config.schema import MultiOutput
+from simkit.core.base import ModuleBase, ModuleResult
+
+from component_alternatives_tea.schemas.constraint_types import (
+    ConstraintEvaluation,
+    ConstraintReport,
+    CoverageAccount,
+)
+
+EXPECTED_IDS = ('component_alternatives_plant_water_ic1_evaluation_defined_ok_49d1611637350e3c', 'component_alternatives_plant_water_ic1_flow_margin_ok_2ca46da8d6c9fc06', 'component_alternatives_plant_water_ic1_duty_margin_ok_ae893105fd8169d4', 'component_alternatives_plant_water_ic1_power_margin_ok_ceac76348e0eb2b6', 'component_alternatives_plant_salt_flow_capacity_capacity_requirement_1f3f2b5125f26aed', 'component_alternatives_plant_steam_feed_flow_capacity_capacity_requirement_f522084f390b88ed', 'component_alternatives_plant_gas_boundary_bypass_flow_margin_ok_840f5556c962fa45', 'component_alternatives_plant_gas_boundary_controller_capacity_ok_ok_3c7a992b7ef572ac', 'component_alternatives_plant_gas_boundary_bypass_fraction_margin_ok_7197bb376c493e60', 'component_alternatives_plant_gas_boundary_pressure_margin_ok_023a9033fbabc01f', 'component_alternatives_plant_gas_boundary_total_flow_margin_ok_e4fcc2a2f41664a0', 'component_alternatives_plant_gas_boundary_exchanger_flow_margin_ok_586a84274fb7f1fb', 'component_alternatives_plant_gas_boundary_added_dp_margin_ok_daebd77c6cb6ed86', 'component_alternatives_plant_gas_boundary_temperature_margin_ok_b9e59d1aa293995e', 'component_alternatives_plant_gas_boundary_source_adequate_ok_dd6d7a3461399330', 'component_alternatives_plant_water_ic2_duty_margin_ok_8546438198d8a311', 'component_alternatives_plant_water_ic2_evaluation_defined_ok_06ab6aea3f7f761b', 'component_alternatives_plant_water_ic2_power_margin_ok_9155c8131175c99b', 'component_alternatives_plant_water_ic2_flow_margin_ok_a1238658a4279d69', 'component_alternatives_plant_steam_ledger_net_positive_7be67634b73dc5d3', 'component_alternatives_plant_steam_ledger_balance_79e79cd29079c8e8', 'component_alternatives_plant_recuperator_duty_capacity_capacity_requirement_37716788614d63a8', 'component_alternatives_plant_steam_condensate_electric_capacity_capacity_requirement_7f87933904cdde5d', 'component_alternatives_plant_steam_hp_flow_capacity_capacity_requirement_7d80da68d49ab07e', 'component_alternatives_plant_he_capacity_capacity_ok_3993dc4f00da3840', 'component_alternatives_plant_gas_loss_duty_capacity_capacity_requirement_3f4fdc86d64b5036', 'component_alternatives_plant_salt_electric_capacity_capacity_requirement_d0a6e35468ded9cc', 'component_alternatives_plant_steam_lp_shaft_capacity_capacity_requirement_145e6e0999fc7f4f', 'component_alternatives_plant_steam_gross_capacity_capacity_requirement_4252a99565636ed5', 'component_alternatives_plant_steam_rejection_capacity_capacity_requirement_ed5a57ebe998f809', 'component_alternatives_plant_steam_condenser_capacity_capacity_requirement_67922fb363412df0', 'component_alternatives_plant_steam_lp_flow_capacity_capacity_requirement_704e61a5a8c7bf24', 'component_alternatives_plant_gas_loss_electric_capacity_capacity_requirement_6a158987313c84e0', 'component_alternatives_plant_steam_reheat_ua_capacity_capacity_requirement_ff5775187764fbbd', 'component_alternatives_plant_steam_boundary_source_adequate_ok_eaa371ee289234f1', 'component_alternatives_plant_steam_boundary_exchanger_flow_margin_ok_b6c20f51b00f7b9c', 'component_alternatives_plant_steam_boundary_added_dp_margin_ok_f0c716d635261219', 'component_alternatives_plant_steam_boundary_bypass_flow_margin_ok_8f1459a694a0757a', 'component_alternatives_plant_steam_boundary_total_flow_margin_ok_e80a0efbac0d3f57', 'component_alternatives_plant_steam_boundary_controller_capacity_ok_ok_d8dd67a24704a1c0', 'component_alternatives_plant_steam_boundary_temperature_margin_ok_39291a564826dd0f', 'component_alternatives_plant_steam_boundary_bypass_fraction_margin_ok_32cff09a266a19fc', 'component_alternatives_plant_steam_boundary_pressure_margin_ok_177980a50b09bf98', 'component_alternatives_plant_steam_hp_shaft_capacity_capacity_requirement_08512b73f01b2ff4', 'component_alternatives_plant_steam_water_flow_capacity_capacity_requirement_f3bfd573273dc22e', 'component_alternatives_plant_gas_loss_flow_capacity_capacity_requirement_8a2d8de72c5b2880', 'component_alternatives_plant_turbine_capacity_capacity_ok_0178c1184c793932', 'component_alternatives_plant_steam_condensate_pressure_capacity_capacity_requirement_d523b96c0c76de1b', 'component_alternatives_plant_steam_water_cooling_approach_ok_required_c8a5d75f54ded9d6', 'component_alternatives_plant_generator_capacity_capacity_ok_ee0395479decdfc2', 'component_alternatives_plant_salt_shaft_capacity_capacity_requirement_419a029d2df87f3c', 'component_alternatives_plant_source_checks_flow_ok_d77445a069dcb805', 'component_alternatives_plant_source_checks_pressure_ok_aa0a62a144e9c75d', 'component_alternatives_plant_gas_loss_water_cooling_approach_ok_required_6112b029bb4ede08', 'component_alternatives_plant_rejection_capacity_capacity_requirement_8eab7ec16a8b759e', 'component_alternatives_plant_steam_feed_electric_capacity_capacity_requirement_02f57441b4cf6746', 'component_alternatives_plant_steam_water_electric_capacity_capacity_requirement_79eb129457bf9d3d', 'component_alternatives_plant_compressor_capacity_capacity_ok_e8c94ef170d28993', 'component_alternatives_plant_salt_fill_capacity_capacity_requirement_0d36a52c336754e3', 'component_alternatives_plant_steam_feed_pressure_capacity_capacity_requirement_2b0a04222feb552b', 'component_alternatives_plant_steam_main_ua_capacity_capacity_requirement_c2efdc04c52106da', 'component_alternatives_plant_steam_condensate_flow_capacity_capacity_requirement_a06233d7139b47ec', 'component_alternatives_plant_steam_transport_motor_factor_ok_required_eed87936beb69817', 'component_alternatives_plant_steam_transport_design_motor_factor_ok_required_4a9e97f942584206', 'component_alternatives_plant_steam_transport_design_pump_size_ok_required_39419b9b933c2a99', 'component_alternatives_plant_steam_transport_design_pump_type_ok_required_86fcc6e00c250519', 'component_alternatives_plant_steam_transport_pump_type_ok_required_a1706d503ff60f4c', 'component_alternatives_plant_steam_transport_pump_size_ok_required_b3af0a8e326050b1', 'component_alternatives_plant_steam_transport_ihx_capacity_ok_required_a8ade32d723ec9f2', 'component_alternatives_plant_steam_transport_salt_head_ok_required_9049eef128641767', 'component_alternatives_plant_steam_transport_design_motor_base_ok_required_34d2455206f46357', 'component_alternatives_plant_steam_transport_salt_flow_regime_ok_required_6e2b05d56b7bbfaf', 'component_alternatives_plant_steam_transport_motor_base_ok_required_238e695ccdaf5ebf', 'component_alternatives_plant_steam_conditions_supported_required_92a5d05764f5fff9', 'component_alternatives_plant_water_pre_power_margin_ok_d793d504da406d97', 'component_alternatives_plant_water_pre_flow_margin_ok_129a83656acb8a06', 'component_alternatives_plant_water_pre_evaluation_defined_ok_bc4741b386520ff5', 'component_alternatives_plant_water_pre_duty_margin_ok_80af75533d32b208', 'component_alternatives_plant_gas_ledger_net_positive_ee25ae39167c9ad3', 'component_alternatives_plant_gas_ledger_balance_a530b58ca455c8b8', 'component_alternatives_plant_steam_cycle_main_UA_available_required_f9837efa3d05f097', 'component_alternatives_plant_steam_cycle_reheat_admission_ok_required_e88f7416d91d86fd', 'component_alternatives_plant_steam_cycle_main_admission_ok_required_dbbd20ff9c7f4317', 'component_alternatives_plant_steam_cycle_reheat_UA_available_required_bdd3c800a1cc7c08')
+
+#: The coverage account, derived at generation from the sealed catalog by
+#: `generation/coverage.py::coverage_account` and baked here exactly the way
+#: CATALOG_FINGERPRINT and EXPECTED_IDS are. Which gates are applicable and which were
+#: assessed depends on the model, never on this candidate's input values, so recomputing it
+#: per evaluation would recompute a constant.
+COVERAGE = {'authored_usage_total': 84, 'applicable_gate_total': 84, 'assessed_gate_count': 84, 'unassessed_gate_count': 0, 'inapplicable_gate_count': 0, 'unassessed_reasons': {}, 'coverage_state': 'complete'}
+
+
+class ConstraintReportAggregatorInput(BaseModel):
+    model_config = {"extra": "forbid"}
+
+    component_alternatives_plant_water_ic1_evaluation_defined_ok_49d1611637350e3c: ConstraintEvaluation
+    component_alternatives_plant_water_ic1_flow_margin_ok_2ca46da8d6c9fc06: ConstraintEvaluation
+    component_alternatives_plant_water_ic1_duty_margin_ok_ae893105fd8169d4: ConstraintEvaluation
+    component_alternatives_plant_water_ic1_power_margin_ok_ceac76348e0eb2b6: ConstraintEvaluation
+    component_alternatives_plant_salt_flow_capacity_capacity_requirement_1f3f2b5125f26aed: ConstraintEvaluation
+    component_alternatives_plant_steam_feed_flow_capacity_capacity_requirement_f522084f390b88ed: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_bypass_flow_margin_ok_840f5556c962fa45: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_controller_capacity_ok_ok_3c7a992b7ef572ac: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_bypass_fraction_margin_ok_7197bb376c493e60: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_pressure_margin_ok_023a9033fbabc01f: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_total_flow_margin_ok_e4fcc2a2f41664a0: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_exchanger_flow_margin_ok_586a84274fb7f1fb: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_added_dp_margin_ok_daebd77c6cb6ed86: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_temperature_margin_ok_b9e59d1aa293995e: ConstraintEvaluation
+    component_alternatives_plant_gas_boundary_source_adequate_ok_dd6d7a3461399330: ConstraintEvaluation
+    component_alternatives_plant_water_ic2_duty_margin_ok_8546438198d8a311: ConstraintEvaluation
+    component_alternatives_plant_water_ic2_evaluation_defined_ok_06ab6aea3f7f761b: ConstraintEvaluation
+    component_alternatives_plant_water_ic2_power_margin_ok_9155c8131175c99b: ConstraintEvaluation
+    component_alternatives_plant_water_ic2_flow_margin_ok_a1238658a4279d69: ConstraintEvaluation
+    component_alternatives_plant_steam_ledger_net_positive_7be67634b73dc5d3: ConstraintEvaluation
+    component_alternatives_plant_steam_ledger_balance_79e79cd29079c8e8: ConstraintEvaluation
+    component_alternatives_plant_recuperator_duty_capacity_capacity_requirement_37716788614d63a8: ConstraintEvaluation
+    component_alternatives_plant_steam_condensate_electric_capacity_capacity_requirement_7f87933904cdde5d: ConstraintEvaluation
+    component_alternatives_plant_steam_hp_flow_capacity_capacity_requirement_7d80da68d49ab07e: ConstraintEvaluation
+    component_alternatives_plant_he_capacity_capacity_ok_3993dc4f00da3840: ConstraintEvaluation
+    component_alternatives_plant_gas_loss_duty_capacity_capacity_requirement_3f4fdc86d64b5036: ConstraintEvaluation
+    component_alternatives_plant_salt_electric_capacity_capacity_requirement_d0a6e35468ded9cc: ConstraintEvaluation
+    component_alternatives_plant_steam_lp_shaft_capacity_capacity_requirement_145e6e0999fc7f4f: ConstraintEvaluation
+    component_alternatives_plant_steam_gross_capacity_capacity_requirement_4252a99565636ed5: ConstraintEvaluation
+    component_alternatives_plant_steam_rejection_capacity_capacity_requirement_ed5a57ebe998f809: ConstraintEvaluation
+    component_alternatives_plant_steam_condenser_capacity_capacity_requirement_67922fb363412df0: ConstraintEvaluation
+    component_alternatives_plant_steam_lp_flow_capacity_capacity_requirement_704e61a5a8c7bf24: ConstraintEvaluation
+    component_alternatives_plant_gas_loss_electric_capacity_capacity_requirement_6a158987313c84e0: ConstraintEvaluation
+    component_alternatives_plant_steam_reheat_ua_capacity_capacity_requirement_ff5775187764fbbd: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_source_adequate_ok_eaa371ee289234f1: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_exchanger_flow_margin_ok_b6c20f51b00f7b9c: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_added_dp_margin_ok_f0c716d635261219: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_bypass_flow_margin_ok_8f1459a694a0757a: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_total_flow_margin_ok_e80a0efbac0d3f57: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_controller_capacity_ok_ok_d8dd67a24704a1c0: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_temperature_margin_ok_39291a564826dd0f: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_bypass_fraction_margin_ok_32cff09a266a19fc: ConstraintEvaluation
+    component_alternatives_plant_steam_boundary_pressure_margin_ok_177980a50b09bf98: ConstraintEvaluation
+    component_alternatives_plant_steam_hp_shaft_capacity_capacity_requirement_08512b73f01b2ff4: ConstraintEvaluation
+    component_alternatives_plant_steam_water_flow_capacity_capacity_requirement_f3bfd573273dc22e: ConstraintEvaluation
+    component_alternatives_plant_gas_loss_flow_capacity_capacity_requirement_8a2d8de72c5b2880: ConstraintEvaluation
+    component_alternatives_plant_turbine_capacity_capacity_ok_0178c1184c793932: ConstraintEvaluation
+    component_alternatives_plant_steam_condensate_pressure_capacity_capacity_requirement_d523b96c0c76de1b: ConstraintEvaluation
+    component_alternatives_plant_steam_water_cooling_approach_ok_required_c8a5d75f54ded9d6: ConstraintEvaluation
+    component_alternatives_plant_generator_capacity_capacity_ok_ee0395479decdfc2: ConstraintEvaluation
+    component_alternatives_plant_salt_shaft_capacity_capacity_requirement_419a029d2df87f3c: ConstraintEvaluation
+    component_alternatives_plant_source_checks_flow_ok_d77445a069dcb805: ConstraintEvaluation
+    component_alternatives_plant_source_checks_pressure_ok_aa0a62a144e9c75d: ConstraintEvaluation
+    component_alternatives_plant_gas_loss_water_cooling_approach_ok_required_6112b029bb4ede08: ConstraintEvaluation
+    component_alternatives_plant_rejection_capacity_capacity_requirement_8eab7ec16a8b759e: ConstraintEvaluation
+    component_alternatives_plant_steam_feed_electric_capacity_capacity_requirement_02f57441b4cf6746: ConstraintEvaluation
+    component_alternatives_plant_steam_water_electric_capacity_capacity_requirement_79eb129457bf9d3d: ConstraintEvaluation
+    component_alternatives_plant_compressor_capacity_capacity_ok_e8c94ef170d28993: ConstraintEvaluation
+    component_alternatives_plant_salt_fill_capacity_capacity_requirement_0d36a52c336754e3: ConstraintEvaluation
+    component_alternatives_plant_steam_feed_pressure_capacity_capacity_requirement_2b0a04222feb552b: ConstraintEvaluation
+    component_alternatives_plant_steam_main_ua_capacity_capacity_requirement_c2efdc04c52106da: ConstraintEvaluation
+    component_alternatives_plant_steam_condensate_flow_capacity_capacity_requirement_a06233d7139b47ec: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_motor_factor_ok_required_eed87936beb69817: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_design_motor_factor_ok_required_4a9e97f942584206: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_design_pump_size_ok_required_39419b9b933c2a99: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_design_pump_type_ok_required_86fcc6e00c250519: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_pump_type_ok_required_a1706d503ff60f4c: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_pump_size_ok_required_b3af0a8e326050b1: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_ihx_capacity_ok_required_a8ade32d723ec9f2: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_salt_head_ok_required_9049eef128641767: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_design_motor_base_ok_required_34d2455206f46357: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_salt_flow_regime_ok_required_6e2b05d56b7bbfaf: ConstraintEvaluation
+    component_alternatives_plant_steam_transport_motor_base_ok_required_238e695ccdaf5ebf: ConstraintEvaluation
+    component_alternatives_plant_steam_conditions_supported_required_92a5d05764f5fff9: ConstraintEvaluation
+    component_alternatives_plant_water_pre_power_margin_ok_d793d504da406d97: ConstraintEvaluation
+    component_alternatives_plant_water_pre_flow_margin_ok_129a83656acb8a06: ConstraintEvaluation
+    component_alternatives_plant_water_pre_evaluation_defined_ok_bc4741b386520ff5: ConstraintEvaluation
+    component_alternatives_plant_water_pre_duty_margin_ok_80af75533d32b208: ConstraintEvaluation
+    component_alternatives_plant_gas_ledger_net_positive_ee25ae39167c9ad3: ConstraintEvaluation
+    component_alternatives_plant_gas_ledger_balance_a530b58ca455c8b8: ConstraintEvaluation
+    component_alternatives_plant_steam_cycle_main_UA_available_required_f9837efa3d05f097: ConstraintEvaluation
+    component_alternatives_plant_steam_cycle_reheat_admission_ok_required_e88f7416d91d86fd: ConstraintEvaluation
+    component_alternatives_plant_steam_cycle_main_admission_ok_required_dbbd20ff9c7f4317: ConstraintEvaluation
+    component_alternatives_plant_steam_cycle_reheat_UA_available_required_bdd3c800a1cc7c08: ConstraintEvaluation
+
+
+class ConstraintReportAggregatorOutput(MultiOutput):
+    constraint_report: ConstraintReport
+
+
+class ConstraintReportAggregatorModule(
+    ModuleBase[ConstraintReportAggregatorInput, ConstraintReportAggregatorOutput]
+):
+    name: str = "constraint_report_aggregator"
+    version: str = "v0.1"
+
+    CATALOG_FINGERPRINT = "172086914524a24d51ecbf86ee3b031955c9350c3a9185bbcc595d3eb7fb1f64"
+
+    def run(self, **evaluations) -> ModuleResult[ConstraintReportAggregatorOutput]:
+        validated = ConstraintReportAggregatorInput(**evaluations)
+        results = [getattr(validated, cid) for cid in EXPECTED_IDS]
+        statuses = [r.status for r in results]
+        coverage = CoverageAccount(**COVERAGE)
+
+        # Statuses decide the top two arms; the account decides the rest. The status set
+        # contains only occurrences of applicable assessed gates by construction, so the
+        # `violation` arm cannot fire from a gate outside the denominator: an inapplicable
+        # gate is either unassessed (no entries, no results) or refused at generation.
+        #
+        # Result-list non-emptiness stops deciding anything. That was the whole defect —
+        # `all_satisfied` meant "nothing that arrived failed", whatever fraction arrived.
+        if "violated" in statuses:
+            headline = "violation"
+        elif "indeterminate" in statuses:
+            headline = "indeterminate"
+        elif coverage.unassessed_gate_count == 0 and coverage.assessed_gate_count > 0:
+            headline = "full_satisfaction"
+        elif coverage.applicable_gate_total > 0:
+            headline = "partial_coverage"
+        else:
+            headline = "not_assessed"
+        return ModuleResult(
+            data=ConstraintReportAggregatorOutput(
+                constraint_report=ConstraintReport(
+                    catalog_fingerprint=self.CATALOG_FINGERPRINT,
+                    assessed_entry_count=len(results),
+                    headline=headline,
+                    coverage=coverage,
+                    results=results,
+                )
+            )
+        )

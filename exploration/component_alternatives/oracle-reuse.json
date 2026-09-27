@@ -1,0 +1,21 @@
+[
+  {
+    "source": "exploration/stellarator_e2e/oracle_matched_cycle.py",
+    "target": "exploration/component_alternatives/oracle_matched_cycle.py",
+    "sha256": "b6addafe52e6f74a20a56186de3cea1f4b58f7a3a807fd2492d4bd848939f7cc",
+    "transformation": "byte exact copy"
+  },
+  {
+    "source": "exploration/stellarator_e2e/oracle_matched_cycle_properties.json",
+    "target": "exploration/component_alternatives/oracle_matched_cycle_properties.json",
+    "sha256": "b8e5a7d156c7422d95b654bc073e273fd663fc86b6c2151f56b90caec3a40b7b",
+    "transformation": "byte exact copy"
+  },
+  {
+    "source": "exploration/costed_loop_brayton/studies/oracle_entry.py",
+    "source_sha256": "de02f843ade2ff8cfab58da2943ad0b5b562a66e511bb7f56e17292b727f90ec",
+    "target": "exploration/component_alternatives/oracle_gas.py",
+    "target_sha256": "ae12f96870c577eee4e71ff6678f9eb94d75f26a93bad9550fe67dc4ced537a7",
+    "transformation": "physical section extraction; prefix/UA/upstream-boundary substitutions documented in header"
+  }
+]
