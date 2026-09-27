@@ -62,3 +62,35 @@ Append-only accepted round findings. None yet.
 - **Scope:** Demonstrated numerical defect in executable cd16e8deb2f579e4cb1afcaf0fedbfc53498ba125783fbf8e17af14ffb4cbcc7; no changed thermal requirement or rejected physical point.
 - **Implication:** Preserve the failure, repair stable evaluation under independent review and rerun every unchanged map with a new pin. Do not select a winner by removing failed executions.
 - **Accepted by:** Round 3 closure with independent failed-state verification and disposition review, 2026-09-27.
+
+## L-008 — Stable evaluation repairs finite cases without changing the comparison
+
+- **Claim:** [AGENT] The equivalent counterflow denominator `(1−r) + r×[−expm1(−NTU×(1−r))]`, with the exact equal-capacity limit, removes the demonstrated cancellation and approximation discontinuity. Both failed native cases recover.
+- **Evidence:** WI-097 numerical-repair-review.md; replacement study prior-attempt-correlation.json and complete verification. All 1277 maps complete; all 1275 previously completed verdict sets remain exact. Full delivery replay reproduces all stored outputs.
+- **Scope:** Corrected executable 668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23; unchanged thermal equations, oracle, tolerances, requirements, equipment and candidate maps.
+- **Implication:** Numerical execution failures need preserved failed evidence and an independently checked equivalent repair; they are not physical infeasibility or a reason to drop candidates.
+- **Accepted by:** Round 4 independent comparison and delivery review, 2026-09-27.
+
+## L-009 — A refined network advantage survives explicit thermal requirements
+
+- **Claim:** [AGENT] With N-R returns, six actual 30 K terminal requirements and the explicit A/B offers, all 15 selected main operations pass. At 1835.451283 MW supplied fusion and offer B, network net output exceeds series by 30.658968 MW; the lower passing cycle flow explains the gain.
+- **Evidence:** Sealed replacement study@846c098b; main selections, complete thermal states, accepted refinement receipts and seven exactly equal-output passing equal-flow controls. Final native lower-flow failure brackets are 0.00625 kg/s.
+- **Scope:** Best tested operations in the declared engineered window; no global optimum, unseen-island exclusion or source-sustainment claim. The local six-terminal minimum is an agent-selected requirement under delegated authority. The original equipment and old high-load leaders fail that main contract.
+- **Implication:** The effect is larger than coarse-grid artifacts and remaining sampled refinement changes, while its thermal validity depends on explicit equipment and boundary conditions.
+- **Accepted by:** Round 4 independent comparison and delivery review, 2026-09-27.
+
+## L-010 — Missing costs remain conditional allowances and hydraulics can reverse the preference
+
+- **Claim:** [AGENT] At nominal B and the executed zero-tritium-price endpoint, the network can carry 21.906610 million USD2004/year extra annualized cost at zero extra power under the explicitly one-sided slice. Common unknown costs do not cancel from LCOE when outputs differ. An assumed 8% network loss versus 4.5% series loss reverses the nominal preference.
+- **Evidence:** Native paired lifecycle results, 328 reporting allowance coordinates, coupled pressure-loss cases and independent economic recalculation in r4-review-probe.json.
+- **Scope:** Both parent cases must pass, adjusted net output must remain positive, and post hoc electrical demand must be external dissipative load without recovered heat or pressure feedback. Missing amounts are incremental beyond retained budgets. No piping estimate or fuel-supply claim follows.
+- **Implication:** A conditional comparison can report an affordability threshold without inventing detailed hydraulics or calling control hardware free.
+- **Accepted by:** Round 4 independent comparison and delivery review, 2026-09-27.
+
+## L-011 — Thermal consistency exposes substantial return-control requirements
+
+- **Claim:** [AGENT] Nominal B needs blanket-He bypass fractions of 68.87% in series and 63.23% in the network. No sampled B/N operation passes with all branch bypasses capped at 25% or 50%. The positive result therefore relies on the declared control freedom.
+- **Evidence:** Verified active primary flows, actual HX returns, mixed returns and branch fractions; restricted-control sensitivity coverage in the sealed record.
+- **Scope:** B at the nominal supplied source only; sampled absence does not prove global impossibility. Constant U and ideal mixing are modeled assumptions. Solved bypass is not a purchased valve rating or demonstrated operating capability.
+- **Implication:** The implemented thermal requirements are satisfied while exchanger geometry, actuator capability and related prices remain explicit conditional seams.
+- **Accepted by:** Round 4 independent comparison and delivery review, 2026-09-27.
