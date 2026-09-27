@@ -69,6 +69,48 @@ def renamed(snap: dict) -> dict:
     return out
 
 
+PREFIX = "renamed_"
+
+
+def renamed_everything(snap: dict) -> dict:
+    """Prefix every name either view or panel shows: calc display_name and output name, occurrence
+    display_segment and package_display, attribute display_name and owner_qualified_name."""
+    out = copy.deepcopy(snap)
+    graph = out["instance_graph"]["graph"]
+    for calc in graph["calcs"]:
+        calc["display_name"] = PREFIX + calc["display_name"]
+        for output in calc["outputs"]:
+            output["name"] = PREFIX + output["name"]
+    for occ in graph["occurrences"]:
+        occ["display_segment"] = PREFIX + occ["display_segment"]
+        if occ["package_display"] is not None:
+            occ["package_display"] = PREFIX + occ["package_display"]
+    for attr in graph["attrs"]:
+        attr["display_name"] = PREFIX + attr["display_name"]
+        # Each qualified-name segment, so the root's own usage owner still reads
+        # package_display::display_segment after the rename.
+        attr["owner_qualified_name"] = "::".join(
+            PREFIX + segment for segment in attr["owner_qualified_name"].split("::")
+        )
+    return out
+
+
+def shown_names(snap: dict) -> set[str]:
+    """Every name renamed_everything prefixes, as it stands in the given snapshot."""
+    graph = snap["instance_graph"]["graph"]
+    names = set()
+    for calc in graph["calcs"]:
+        names.add(calc["display_name"])
+        names.update(output["name"] for output in calc["outputs"])
+    for occ in graph["occurrences"]:
+        names.add(occ["display_segment"])
+        if occ["package_display"] is not None:
+            names.add(occ["package_display"])
+    for attr in graph["attrs"]:
+        names.update((attr["display_name"], attr["owner_qualified_name"]))
+    return names
+
+
 def consumers_of(snap: dict, producer_node_id: str) -> list[tuple[str, str]]:
     """(consumer node_id, input name) for every producer input pointing at the calc."""
     return [

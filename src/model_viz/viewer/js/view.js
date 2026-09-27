@@ -42,12 +42,7 @@ ModelViz.view = (function () {
       if (needed.has(occ.occurrenceId)) idByOccurrence.set(occ.occurrenceId, "o" + n++);
     }
     // Parents before children, so compound parents exist when a child is added.
-    const depth = (id) => {
-      let d = 0;
-      for (let p = model.occurrences.get(id).parentId; p !== null; p = model.occurrences.get(p).parentId) d++;
-      return d;
-    };
-    const ordered = [...idByOccurrence.keys()].sort((a, b) => depth(a) - depth(b));
+    const ordered = [...idByOccurrence.keys()].sort((a, b) => model.occurrences.get(a).depth - model.occurrences.get(b).depth);
     const containers = new Map();
     for (const occurrenceId of ordered) {
       const occ = model.occurrences.get(occurrenceId);
@@ -103,6 +98,12 @@ ModelViz.view = (function () {
     return found;
   }
 
+  // The visibility rule shared by both views (design D14, I11): a container is drawn when none of
+  // its ancestors is collapsed. Returns the drawn containers in tree order (parents first).
+  function visibleContainers(tree, collapsed) {
+    return [...tree.containers.values()].filter((container) => outermostCollapsed(containerAncestors(tree, container.id), collapsed) === null);
+  }
+
   function containerNode(tree, container, isCollapsed) {
     const data = {
       id: container.id,
@@ -139,8 +140,7 @@ ModelViz.view = (function () {
   // nearest visible thing at each end; equal ends vanish; equal directed ends merge into one edge.
   function visibleElements(model, tree, collapsed) {
     const elements = [];
-    for (const container of tree.containers.values()) {
-      if (outermostCollapsed(containerAncestors(tree, container.id), collapsed) !== null) continue;
+    for (const container of visibleContainers(tree, collapsed)) {
       elements.push(containerNode(tree, container, collapsed.has(container.id)));
     }
     const repOf = new Map();
@@ -167,5 +167,5 @@ ModelViz.view = (function () {
     return elements;
   }
 
-  return { containerTree, containerChain, visibleElements };
+  return { containerTree, containerChain, containerAncestors, visibleContainers, visibleElements };
 })();

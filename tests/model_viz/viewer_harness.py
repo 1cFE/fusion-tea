@@ -9,8 +9,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 VIEWER_HTML = REPO / "src/model_viz/viewer/index.html"
-FIXTURE = REPO / "exploration/stellarator_e2e/stellarator.snapshot.json"
-FIXTURE_SHA256 = "a5c17bb49184bf16f4c357ab8b9f0ddaba6140e355c2709b8de8533d413e3ae5"  # WI-058 (2026-09-14): the winding length follows the coil bore (k_coil retired, c_coil_ref bound); recaptured from the twin tree. Was 8e79aa4e489e… —  # WI-057 (2026-09-13): the nested snapshot, re-applied onto feat/demo-maturation
+FIXTURE = REPO / "tests/model_viz/fixtures/stellarator.snapshot.json"
+FIXTURE_SHA256 = "8e79aa4e489e7bcf1be8e24796a77a6df3acbbf8b327b3eb6b961e96b55bf9ae"  # WI-057 (2026-09-13): the nested snapshot, re-applied onto feat/demo-maturation
 INSTALL_HELP = (
     "The model_viz tests need Playwright and Chromium. Install them with:\n"
     "  uv sync --extra e2e\n"
@@ -46,8 +46,8 @@ class PageProblems:
         assert not self.items, "viewer page problems:\n" + "\n".join(self.items)
 
 
-def open_viewer(browser):
-    page = browser.new_page(viewport={"width": 1600, "height": 1000})
+def open_viewer(browser, viewport=None):
+    page = browser.new_page(viewport=viewport or {"width": 1600, "height": 1000})
     problems = PageProblems(page)
     page.goto(VIEWER_HTML.as_uri(), wait_until="load")
     page.wait_for_function("() => window.modelVizApp !== undefined")
@@ -109,3 +109,59 @@ def panel_node_id(page) -> str | None:
 def css_str(value: str) -> str:
     """Quote a raw string for a CSS attribute selector value."""
     return '"' + value.replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
+def switch_view(page, view: str) -> None:
+    """Switch views through the real View select."""
+    page.select_option("[data-role=view-select]", view)
+
+
+def part_id_for_occurrence(page, occurrence_id: str) -> str:
+    """The part node drawn for an occurrence id (reads cy only to find the id)."""
+    ids = page.evaluate(
+        """occ => window.modelVizApp.cy.nodes('[kind="part"]')
+             .filter(n => n.data('occurrence_id') === occ).map(n => n.id())""",
+        occurrence_id,
+    )
+    assert len(ids) == 1, f"expected one drawn part for {occurrence_id}, found {ids}"
+    return ids[0]
+
+
+def toggle_part(page, occurrence_id: str) -> None:
+    part_id = part_id_for_occurrence(page, occurrence_id)
+    page.evaluate("id => window.modelVizApp.toggleContainer(id)", part_id)
+
+
+def click_rendered_point(page, x: float, y: float) -> None:
+    """A real mouse click at a point in the graph pane's rendered coordinates."""
+    width, height = page.evaluate(
+        "() => [window.modelVizApp.cy.width(), window.modelVizApp.cy.height()]"
+    )
+    assert 0 < x < width and 0 < y < height, f"point ({x}, {y}) is outside the graph pane"
+    box = page.locator("[data-role=graph-pane]").bounding_box()
+    page.mouse.click(box["x"] + x, box["y"] + y)
+
+
+def click_element_centre(page, element_id: str) -> None:
+    box = page.evaluate(
+        "id => window.modelVizApp.cy.getElementById(id).renderedBoundingBox()", element_id
+    )
+    click_rendered_point(page, (box["x1"] + box["x2"]) / 2, (box["y1"] + box["y2"]) / 2)
+
+
+def view_geometry(page) -> dict:
+    """Zoom, pan and every drawn non-compound node's model position, read from cy.
+
+    Compound nodes are left out: layout never places them. Cytoscape derives a compound's centre
+    from its children's boxes, so a selection border on a child shifts it by a fraction of a pixel
+    although nothing was laid out.
+    """
+    return page.evaluate(
+        """() => {
+             const cy = window.modelVizApp.cy;
+             const positions = {};
+             cy.nodes().filter(n => !n.isParent())
+               .forEach(n => { positions[n.id()] = n.position(); });
+             return {zoom: cy.zoom(), pan: cy.pan(), positions};
+           }"""
+    )

@@ -5,14 +5,20 @@ targets and groups come from the raw snapshot.
 """
 
 from edge_oracle import calc_by_name, calcs, load_fixture, path_of, producer_bindings
+from structure_oracle import attributes_of, displayed_parts, occurrences
+from structure_oracle import path_of as part_path_of
 from viewer_harness import (
     calc_key,
     container_id_for_path,
     css_str,
     group_collapsed,
+    load_snapshot,
+    open_viewer,
     panel_node_id,
+    part_id_for_occurrence,
     selected_node_ids,
     show_calc,
+    switch_view,
     toggle_group,
 )
 
@@ -213,3 +219,222 @@ def test_navigate_unknown_key(fixture_page):
     assert "nope" in page.text_content("[data-role=missing-calc]")
     assert panel_node_id(page) is None
     assert selected_node_ids(page) == []
+
+
+# --- Structure view: part gestures, cross-view links, part search (design D19, D21, D22) ---
+
+
+def occurrence_at(snap, path: str) -> str:
+    (found,) = [
+        o["occurrence_id"]
+        for o in occurrences(snap)
+        if part_path_of(snap, o["occurrence_id"]) == path
+    ]
+    return found
+
+
+def structure_state(page) -> dict:
+    return page.evaluate("() => window.modelVizApp.state.structure")
+
+
+def panel_part(page) -> str | None:
+    return page.get_attribute("[data-role=panel]", "data-part-occurrence-id")
+
+
+def selected_parts(page) -> list[str]:
+    return page.evaluate(
+        "() => window.modelVizApp.cy.nodes(':selected').map(n => n.data('occurrence_id'))"
+    )
+
+
+def box_inside_pane(page, element_id: str) -> bool:
+    """The element's rendered box, label included, lies inside the graph pane."""
+    box = rendered_box(page, element_id)
+    width, height = pane_size(page)
+    return box["x1"] >= 0 and box["y1"] >= 0 and box["x2"] <= width and box["y2"] <= height
+
+
+def assert_part_arrived(page, occurrence_id: str) -> None:
+    assert page.get_attribute("body", "data-view") == "structure"
+    assert structure_state(page)["selected"] == occurrence_id
+    assert panel_part(page) == occurrence_id
+    assert selected_parts(page) == [occurrence_id]
+    assert box_inside_pane(page, part_id_for_occurrence(page, occurrence_id))
+
+
+def test_part_canvas_gestures(fixture_page):
+    snap = load_fixture()
+    page = fixture_page
+    switch_view(page, "structure")
+    root = occurrence_at(snap, "stellaris")
+    magnet = occurrence_at(snap, "stellaris/magnet")
+    coil = occurrence_at(snap, "stellaris/magnet/coil")
+
+    # (1) The background of the expanded root: selected, panel open, nothing hidden or shown.
+    visible = displayed_parts(page)
+    point = page.evaluate(_CONTAINER_BACKGROUND_POINT_JS, part_id_for_occurrence(page, root))
+    assert point is not None, "no background point inside the expanded root"
+    click_rendered_point(page, *point)
+    assert (structure_state(page)["selected"], panel_part(page)) == (root, root)
+    assert displayed_parts(page) == visible
+
+    # (2) Collapsed magnet: it expands and is selected.
+    magnet_pid = part_id_for_occurrence(page, magnet)
+    assert magnet_pid in structure_state(page)["collapsed"]
+    click_element_centre(page, magnet_pid)
+    assert magnet_pid not in structure_state(page)["collapsed"]
+    assert (structure_state(page)["selected"], panel_part(page)) == (magnet, magnet)
+    assert coil in {occ for occ, _parent in displayed_parts(page)}
+
+    # (3) Leaf magnet/coil: its panel, and the visible set stays.
+    visible = displayed_parts(page)
+    click_element_centre(page, part_id_for_occurrence(page, coil))
+    assert (structure_state(page)["selected"], panel_part(page)) == (coil, coil)
+    assert page.text_content("[data-role=panel] [data-role=part-path]") == "stellaris/magnet/coil"
+    assert displayed_parts(page) == visible
+    assert page.query_selector("[data-role=panel] [data-action=toggle-part]") is None
+
+    # (4) The panel's Collapse button on magnet collapses it and keeps it selected.
+    page.evaluate("id => window.modelVizApp.showPart(id)", magnet)
+    assert page.text_content("[data-action=toggle-part]") == "Collapse"
+    page.click("[data-role=panel] [data-action=toggle-part]")
+    assert magnet_pid in structure_state(page)["collapsed"]
+    assert coil not in {occ for occ, _parent in displayed_parts(page)}
+    assert (structure_state(page)["selected"], panel_part(page)) == (magnet, magnet)
+    assert selected_parts(page) == [magnet]
+    assert page.get_attribute("[data-action=toggle-part]", "data-part-collapsed") == "true"
+    assert page.text_content("[data-action=toggle-part]") == "Expand"
+
+
+def test_calc_link_from_part_panel(fixture_page):
+    snap = load_fixture()
+    page = fixture_page
+    switch_view(page, "structure")
+    page.evaluate("id => window.modelVizApp.showPart(id)", occurrence_at(snap, "stellaris/blanket"))
+    link = page.query_selector("[data-section=part-calcs] [data-calc-key]")
+    key = link.get_attribute("data-calc-key")
+    node_id = page.evaluate("k => window.modelVizApp.model.byKey.get(k).nodeId", key)
+    link.click()
+    assert page.get_attribute("body", "data-view") == "calcs"
+    assert page.evaluate("() => window.modelVizApp.state.selected") == key
+    assert panel_node_id(page) == node_id
+    assert selected_node_ids(page) == [node_id]
+    assert fully_inside_pane(page, node_id)
+
+
+_ROW_IN_PANEL_VIEW_JS = """id => {
+  const panel = document.querySelector('[data-role=panel]');
+  const row = [...panel.querySelectorAll('li[data-attr-node-id]')]
+    .find(li => li.dataset.attrNodeId === id);
+  const p = panel.getBoundingClientRect(), r = row.getBoundingClientRect();
+  return r.top >= p.top && r.bottom <= p.bottom;
+}"""
+
+
+def attr_bound_row(snap, source_path: str, name: str) -> dict:
+    (row,) = [r for r in attributes_of(snap, occurrence_at(snap, source_path)) if r["name"] == name]
+    assert row["kind"] == "attr-bound"
+    return row
+
+
+def follow_attr_link(page, row: dict) -> None:
+    page.click(f"li[data-attr-node-id={css_str(row['node_id'])}] [data-target-occurrence-id]")
+
+
+def test_attribute_link_to_part(fixture_page):
+    snap = load_fixture()
+    page = fixture_page
+    switch_view(page, "structure")
+    magnet = occurrence_at(snap, "stellaris/magnet")
+    magnet_pid = part_id_for_occurrence(page, magnet)
+    page.click("[data-action=collapse-all]")
+
+    # turbine.n_mod is bound to the root's n_mod; the root is drawn, collapsed, and stays so.
+    page.evaluate("id => window.modelVizApp.showPart(id)", occurrence_at(snap, "stellaris/turbine"))
+    row = attr_bound_row(snap, "stellaris/turbine", "n_mod")
+    root = occurrence_at(snap, "stellaris")
+    assert row["binding"]["target_occurrence_id"] == root
+    follow_attr_link(page, row)
+    assert_part_arrived(page, root)
+    assert page.evaluate(_ROW_IN_PANEL_VIEW_JS, row["binding"]["target_attr_node_id"])
+
+    # An attribute bound into collapsed magnet: navigation opens magnet (and nothing else).
+    inside = [
+        (path, r)
+        for o in occurrences(snap)
+        for path in [part_path_of(snap, o["occurrence_id"])]
+        for r in attributes_of(snap, o["occurrence_id"])
+        if r["kind"] == "attr-bound"
+        and part_path_of(snap, r["binding"]["target_occurrence_id"]).startswith("stellaris/magnet/")
+    ]
+    assert inside, "the fixture binds an attribute into a magnet part"
+    source_path, row = inside[0]
+    page.click("[data-action=collapse-all]")
+    page.evaluate("id => window.modelVizApp.showPart(id)", occurrence_at(snap, source_path))
+    assert magnet_pid in structure_state(page)["collapsed"]
+    follow_attr_link(page, row)
+    assert_part_arrived(page, row["binding"]["target_occurrence_id"])
+    assert magnet_pid not in structure_state(page)["collapsed"]
+    assert page.evaluate(_ROW_IN_PANEL_VIEW_JS, row["binding"]["target_attr_node_id"])
+
+
+def test_navigate_to_part_larger_than_pane(browser, fixture_path):
+    """A part too big for the pane at zoom 1.0 is fitted, so its label shows (design § Navigation
+    to a part)."""
+    page, problems = open_viewer(browser, viewport={"width": 900, "height": 700})
+    snap = load_fixture()
+    assert load_snapshot(page, fixture_path) == "ready"
+    switch_view(page, "structure")
+    page.click("[data-action=expand-all]")
+    root = occurrence_at(snap, "stellaris")
+    root_pid = part_id_for_occurrence(page, root)
+    box = page.evaluate("id => window.modelVizApp.cy.getElementById(id).boundingBox()", root_pid)
+    assert box["w"] > pane_size(page)[0], "the root must be wider than the pane at zoom 1.0"
+    page.evaluate("() => window.modelVizApp.cy.zoom(2)")
+    page.evaluate("id => window.modelVizApp.navigateToPart(id)", root)
+    assert_part_arrived(page, root)
+    assert page.evaluate("() => window.modelVizApp.cy.zoom()") < 1.0
+    page.close()
+    problems.assert_clean()
+
+
+def search(page, query: str) -> None:
+    page.fill("[data-role=search-input]", query)
+    page.press("[data-role=search-input]", "Enter")
+
+
+def test_part_search(fixture_page):
+    snap = load_fixture()
+    page = fixture_page
+    switch_view(page, "structure")
+    magnet_pid = part_id_for_occurrence(page, occurrence_at(snap, "stellaris/magnet"))
+    assert magnet_pid in structure_state(page)["collapsed"]
+
+    search(page, "coil")
+    coil = occurrence_at(snap, "stellaris/magnet/coil")
+    assert page.text_content("[data-role=search-status]") == ""
+    assert magnet_pid not in structure_state(page)["collapsed"]
+    assert_part_arrived(page, coil)
+
+    search(page, "nothing_here")
+    assert page.text_content("[data-role=search-status]") == "no part matches"
+    assert panel_part(page) == coil
+
+    paths = [part_path_of(snap, o["occurrence_id"]) for o in occurrences(snap)]
+    assert not [p for p in paths if p == "heat" or p.split("/")[-1] == "heat"]
+    several = [p for p in paths if "heat" in p]
+    assert len(several) > 1
+    search(page, "HEAT")
+    assert page.text_content("[data-role=search-status]") == f"{len(several)} parts match"
+    assert panel_part(page) == coil
+
+
+def test_navigate_part_unknown(fixture_page):
+    page = fixture_page
+    page.evaluate("() => window.modelVizApp.navigateToPart('nope')")
+    assert page.get_attribute("body", "data-view") == "structure"
+    assert page.is_visible("[data-role=missing-part]")
+    assert "nope" in page.text_content("[data-role=missing-part]")
+    assert panel_part(page) is None and panel_node_id(page) is None
+    assert structure_state(page)["selected"] is None
+    assert selected_parts(page) == []

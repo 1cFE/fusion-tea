@@ -1,0 +1,874 @@
+{
+ "title": "Stellarator model evolution",
+ "model": "stellarator",
+ "snapshot_path": "exploration/stellarator_e2e/stellarator.snapshot.json",
+ "handwritten_path": "exploration/stellarator_e2e/generated/handwritten",
+ "root_prefix": "stellarator_09__stellaris__",
+ "baseline": {
+  "sha": "ba5c9945",
+  "title": "Starting point: the migrated model",
+  "result": "The model as the first goals found it: 55 calcs and 6 checks, every calc scoped to the plant root. It follows the migration to the current snapshot format and work item WI-030, which added a computed volume-averaged beta and a conductor peak-field limit. The first two goals, cryo-volume-basis and p-pump-basis, examined this version. p-pump-basis found the 1 MW pumping power indefensible and routed the fix to WI-033; the regenerated model first appears in the next frame.",
+  "result_source": "commits 89f78130 and ba5c9945; work/orchestration/goals/cryo-volume-basis/; work/orchestration/goals/p-pump-basis/; .project/completed/CHANGELOG.md (Goal Harness Item 5)"
+ },
+ "unframed": [
+  {
+   "sha": "5dd9cbd0",
+   "slug": "stellaris-reference-reconciliation",
+   "reason": "Its only model change is source-attribution comments, so there is nothing to show. Owner decision 2026-09-20.",
+   "attribution": [
+    {
+     "sha": "5dd9cbd0",
+     "basis": "trail.md:106 (T-004 return) says 'Comment-only correction and recaptured source snapshot committed at `5dd9cbd0`'; the commit touches models/designs/stellarator_09 and this goal's own directory.",
+     "confidence": "high"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "slug": "p-pump-fence",
+   "title": "Rerunning the model with pumping power corrected to 195 MW",
+   "closed": "2026-08-29",
+   "shas": [
+    "8099217b"
+   ],
+   "question": "With `p_pump` re-based to 195 MW, where does the `recirc_ok` fence move, and what happens to LCOE?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded; adopted verbatim by owner ruling, 2026-08-29",
+   "question_source": "work/orchestration/goals/p-pump-fence/goal.md § Question",
+   "result": "The goal regenerated the model package so it carried the pumping power already corrected from 1 MW to 195 MW, then ran a study on it. The recirculating-power check now fails at 184 swept points instead of 32. LCOE at the baseline design rose from 275.264 to 333.067 $/MWh (+21.0%), with all six checks still passing there.",
+   "result_source": "work/orchestration/goals/p-pump-fence/trail.md § Round 1 result — 2026-08-29 (Last semantic outcome); § Goal close — 2026-08-29",
+   "model_change": "No new equations: the generated package, snapshot and pinned expectations were regenerated so the executed model uses the 195 MW pumping power (was 1.0 MW) that WI-033 had already put in the model source.",
+   "work_items": [],
+   "attribution": [
+    {
+     "sha": "8099217b",
+     "basis": "work/orchestration/goals/p-pump-fence/trail.md:106 says the T-002 refusal was 'Discharged by `8099217b`', and the Round 1 result (trail.md:455) lists `8099217b` (regeneration) among the commits the round rests on; the commit body reads 'T-002 discharge, plan P1b'.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question in goal.md rather than preceding it; as written: `[AGENT] (adopted verbatim by owner ruling, 2026-08-29)`. work_items is empty on purpose: WI-033 (the p_pump change to 195 MW) was implemented and archived on 2026-08-28, before this goal, under goal p-pump-basis's routing (goal.md:79, :91); this goal's strategy states 'Intended model increment: None' and only integrated WI-033's model into the package. The commit subject tags the work 'GSTH-6' (the coding-PM goal-integration-study-proof item) rather than the goal slug; the trail (trail.md:104) records the commit was made by the interrupted T-002 session and found already committed. goal.md § Status still reads 'grounded'; the close is in § Amendments (2026-08-29) and the trail's § Goal close."
+  },
+  {
+   "slug": "magnet-closure",
+   "title": "Deriving the magnets from their own design",
+   "closed": "2026-09-01",
+   "shas": [
+    "ef1724d1"
+   ],
+   "question": "Can the magnet system's field, feasibility, and cost be derived from its own engineering design — coil geometry and current giving the peak field, a stress or current-density limit that pushes back on coil sizing, and magnet cost split into separately sized winding-pack / structure / cryoplant accounts — instead of cited constants?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded; ratified by owner 2026-08-30",
+   "question_source": "work/orchestration/goals/magnet-closure/goal.md § Question",
+   "result": "The magnet's field, a structural limit and its cost now come from the coil design instead of cited constants. The on-axis field is computed from coil current and geometry, a winding-pack stress check pushes back on coil sizing, and magnet cost is split into separately sized accounts. Baseline LCOE fell from 333.067 to 304.482 $/MWh.",
+   "result_source": "work/orchestration/goals/magnet-closure/trail.md § Round 1 result — 2026-08-30; § T-004 return — 2026-08-30; § Goal close — 2026-09-01",
+   "model_change": "WI-035 added a calculation of the on-axis field from coil count, coil current and major radius, a winding-pack stress check (wp_stress_ok, the seventh check), and decomposed magnet cost accounts; coil current replaced the field B as the design lever.",
+   "work_items": [
+    "WI-035"
+   ],
+   "attribution": [
+    {
+     "sha": "ef1724d1",
+     "basis": "work/orchestration/goals/magnet-closure/trail.md:160 (T-004 return) lists `ef1724d1` as the 'regeneration hop: snapshot, manifest re-pin, oracle extension, I_coil axis, fixtures'; the commit subject is 'integrate(magnet-closure T-004): regenerate package on WI-035 model'.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question in goal.md; as written: `[AGENT] (ratified by owner 2026-08-30)`. The close entry discloses that the cryoplant account was exposed as its own output rather than newly sized, and that only the winding pack responds to a magnet design lever (trail.md § Goal close). goal.md § Status still reads 'grounded'; the close is in § Amendments (2026-09-01)."
+  },
+  {
+   "slug": "operating-point-closure",
+   "title": "Checking the plasma operating point against the machine",
+   "closed": "2026-09-02",
+   "shas": [
+    "ff807d3d"
+   ],
+   "question": "Can the plasma operating point be solved from the machine — a confinement or transport relation linking field and heating power to density and temperature, with a beta, density, or power limit pushing back on the choice — instead of prescribed as typed-in density, temperature, and profile inputs?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded; delegated by owner 2026-09-01",
+   "question_source": "work/orchestration/goals/operating-point-closure/goal.md § Question",
+   "result": "The plasma operating point is now checked against the machine instead of typed in. A confinement relation (ISS04) links field and heating to density and temperature, and a new sustained-heating check pushes back. The study found no feasible point at the printed 50 MW of installed heating; feasibility returns at about 91 MW.",
+   "result_source": "work/orchestration/goals/operating-point-closure/trail.md § Goal close — 2026-09-02; § Round 2 result — 2026-09-01 (L-005)",
+   "model_change": "WI-037 added calculations for line-averaged density, ISS04 energy confinement time, radiation and required sustained heating, computed the fuel and ash densities instead of taking them as inputs, and added an eighth check (sustainment_ok) that reads violated at the baseline; headline LCOE moved from 304.482 to 307.087 $/MWh.",
+   "work_items": [
+    "WI-037"
+   ],
+   "attribution": [
+    {
+     "sha": "ff807d3d",
+     "basis": "work/orchestration/goals/operating-point-closure/trail.md:191 (round 2 T-004 return) lists `ff807d3d` as the regeneration hop with the snapshot recaptured; the commit subject is 'integrate(operating-point-closure T-004): regenerate package on WI-037 model'.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question in goal.md; as written: `[AGENT] (delegated by owner 2026-09-01)`. The model landed in round 2 of 2; round 1 was a prototype that produced no model version. goal.md § Status still reads 'grounded'; the close is in § Amendments (2026-09-02)."
+  },
+  {
+   "slug": "priced-levers",
+   "title": "Making the escape levers carry real costs",
+   "closed": "2026-09-03",
+   "shas": [
+    "4f3dd511"
+   ],
+   "question": "Can the two levers the machine would use to escape the deadlock — conductor grade and heating power — be made to carry their real consequences, so the model charges honestly for using them?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded",
+   "question_source": "work/orchestration/goals/priced-levers/goal.md § Question",
+   "result": "The winding pack is now sized from coil current, the cold volume is computed, and a conductor strain check was added; the design point did not move. The study still found no feasible point at the printed 50 MW. There the neutron wall load alone blocks 27 of 240 points, the conductor limit 6. The goal closed by redirect.",
+   "result_source": "work/orchestration/goals/priced-levers/trail.md § Round 1 result — 2026-09-03; § Goal close — 2026-09-03; work/orchestration/goals/priced-levers/goal.md § Amendment 2026-09-03",
+   "model_change": "WI-036 added four library calculations (winding-pack sizing, coil winding length, winding-pack cold volume, conductor strain) and a ninth check (cond_strain_ok); the pack side and coil length became computed instead of entered, and the design point's nine anchor numbers reproduced exactly (LCOE 307.087).",
+   "work_items": [
+    "WI-036"
+   ],
+   "attribution": [
+    {
+     "sha": "4f3dd511",
+     "basis": "work/orchestration/goals/priced-levers/trail.md:151 (T-005 return, WI-036 implement) cites commit `4f3dd511`; the commit subject is 'goal(priced-levers): WI-036 implemented -- pack sized by current, cold volume computed, conductor strain checked'.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question in goal.md; as written: `[AGENT] (adopted by the owner 2026-09-02, after the owner corrected an earlier \"which escape does the machine buy\" framing as a design question rather than a realism question)`. Closed by redirect, not on its answered-when condition: the heating half moved to goal wall-and-heating and the conductor half is recorded open (vehicle WI-038). The trail's own summary of the answer is 'half'. goal.md § Status still reads 'grounded'; the close is in § Amendment 2026-09-03."
+  },
+  {
+   "slug": "wall-and-heating",
+   "title": "Making the wall-load and heating checks honest",
+   "closed": "2026-09-05",
+   "shas": [
+    "015f026e",
+    "cb355321"
+   ],
+   "question": "Can the two fences that actually bound the machine at the printed 50 MW of installed heating — neutron wall load and sustained heating — be made honest, so that the wall-load check measures what it claims to measure, the heating system carries real structure, and the model charges truthfully for escaping from between them?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded; proposed wording",
+   "question_source": "work/orchestration/goals/wall-and-heating/goal.md § Question",
+   "result": "Heating became a real chain from wall-plug power to plasma-coupled power, and the wall-load check now compares a computed peak with the paper's printed peak. The machine as designed then slightly fails the wall limit (4.088 against 4.05) and baseline LCOE rose from 307.087 to 313.513 $/MWh. A working point at the printed heating needs a fatter plasma.",
+   "result_source": "work/orchestration/goals/wall-and-heating/trail.md § Goal close — 2026-09-05; § Round 2 result — 2026-09-04; commit cb355321 message (LCOE figures)",
+   "model_change": "WI-039 added a heating power chain calculation (wall-plug power, source and coupling efficiencies, plasma-coupled power) that feeds the recirculating-power sum and the sustainment check; WI-041 added a computed peak wall load, calibrated on the paper's design point, that drives the wall-load check and the in-vessel replacement cost.",
+   "work_items": [
+    "WI-039",
+    "WI-041"
+   ],
+   "attribution": [
+    {
+     "sha": "015f026e",
+     "basis": "work/orchestration/goals/wall-and-heating/trail.md:63 (round 1 T-002 return, WI-039) lists `015f026e` (re-pin, census, snapshot, seam, fixtures); the commit subject is 'WI-039 phase 5 (part): re-pin, census, snapshot, oracle seam, fixture re-derivation'.",
+     "confidence": "high"
+    },
+    {
+     "sha": "cb355321",
+     "basis": "work/orchestration/goals/wall-and-heating/trail.md:281 (round 2 T-002 return, WI-041) names `cb355321` as commit B: the regenerated package, the oracle, the re-pin, the fixtures; the commit subject begins 'WI-041 (commit B)'.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question in goal.md; as written: `[AGENT] — proposed wording.` The same paragraph carries the owner's direction as `[OWNER-VERBATIM 2026-09-03, relayed by the round-1 handoff ...]`: \"we need to create a new goal for the wall-load and the heating structure\". Two model versions: 015f026e (round 1, WI-039; the trail says the baseline was unchanged in every number) and cb355321 (round 2, WI-041; wall_load_ok flips to violated). The LCOE pair 307.087 to 313.513 is stated in the cb355321 commit message, and 313.513 is confirmed as the baseline of record in stored-energy-basis/goal.md § Amendment 2026-09-05 (c). goal.md § Status still reads 'grounded'; the close is in § Amendment 2026-09-05."
+  },
+  {
+   "slug": "stored-energy-basis",
+   "title": "Why the stored energy ran 9% high",
+   "closed": "2026-09-06",
+   "shas": [
+    "9ac167b8"
+   ],
+   "question": "Does the pinned baseline's `sustainment_ok` violation, and the committed \"no feasible driven point at the printed 100 MW wall-plug on the design geometry\" result, survive when the model's stored thermal energy is set to the paper's printed 504.65 MJ? If not, what in the profile integral produces the +9.2 % — and is the printed value the right target?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded; proposed wording",
+   "question_source": "work/orchestration/goals/stored-energy-basis/goal.md § Question",
+   "result": "The model's stored energy sat 9% above the paper's printed value because the helium ash was given the fuel's flat profile; the printed value is not a target. Computing the ash profile from the paper's own rule dropped the required heating from 90.6 to 49.1 MW against a 50 MW limit. Both failing baseline checks now pass, with nothing tuned.",
+   "result_source": "work/orchestration/goals/stored-energy-basis/trail.md § Goal close — 2026-09-06; § T-001 return — 2026-09-05 (round 2)",
+   "model_change": "WI-042 computes the helium-ash profile from the paper's rule (the fusion-rate shape) with electrons closed by quasi-neutrality, reads stored energy and beta from one volume-averaged pressure, and retires the electron-profile exponent as an input; baseline LCOE moved from 313.513 to 322.318 $/MWh.",
+   "work_items": [
+    "WI-042"
+   ],
+   "attribution": [
+    {
+     "sha": "9ac167b8",
+     "basis": "work/orchestration/goals/stored-energy-basis/trail.md:197 (round 2 T-001 return, WI-042) names `9ac167b8` as commit B: the regenerated package, the impl, the oracle, the re-pin, the fixtures; the commit subject begins 'WI-042 commit B (phases 5-6)' and lists the snapshot re-pin.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question in goal.md; as written: `[AGENT] — proposed wording: the handoff's draft with the last clause added on the grounding evidence.` goal.md § Amendment 2026-09-05 restates it as `[AGENT] (grounding ratified by owner 2026-09-05; wording not separately reviewed)`. goal.md § Status still reads 'draft' (2026-09-04); grounding and close are in § Amendments (grounded 2026-09-05, closed 2026-09-06). Round 1 was written analysis only and produced no model version; the model change landed in round 2."
+  },
+  {
+   "slug": "burn-control",
+   "title": "Ruling out plasmas the heating cannot hold",
+   "closed": "2026-09-07",
+   "shas": [
+    "a7afd8f1",
+    "9e9e27b9"
+   ],
+   "question": "Can the sustainment check become the operating-point condition the sister systems codes use — the power balance closes with an auxiliary heating that is zero or positive and no larger than what is installed — so that a point whose alpha heating exceeds its losses is declared no operating point of this model, and once it is, what do the feasibility counts, the cheapest machine, and the reading of the machine as designed become?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded; proposed",
+   "question_source": "work/orchestration/goals/burn-control/goal.md § Question",
+   "result": "The sustainment check became two-sided: the heating a point needs must be zero or positive, and no more than what is installed. No number changed; at all 7,712 re-run points the new check failed exactly the ignited ones. The cheapest feasible machine stayed at 202 $/MWh, and the machine as designed needs 49 of its 50 MW.",
+   "result_source": "work/orchestration/goals/burn-control/trail.md § Goal close — 2026-09-07",
+   "model_change": "WI-043 added a tenth check (burn_hold_ok) that fails any point whose required heating is negative; a second commit only narrowed that check's explanatory text and changed no generated file or fingerprint.",
+   "work_items": [
+    "WI-043"
+   ],
+   "attribution": [
+    {
+     "sha": "a7afd8f1",
+     "basis": "work/orchestration/goals/burn-control/trail.md:35 (T-001 return, WI-043) names commit B `a7afd8f1` (the regenerated package, the re-pin, the fixtures); the commit subject begins 'WI-043 (commit B): regenerated package with burn_hold_ok'.",
+     "confidence": "high"
+    },
+    {
+     "sha": "9e9e27b9",
+     "basis": "work/orchestration/goals/burn-control/trail.md:147 (Goal close, ruling 1) records commit D `9e9e27b9` as the 'Burn Hold' doc-text correction folded into WI-043 before close, with the snapshot recaptured because it carries doc text; goal.md:124 cites the same commit.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question in goal.md; as written: `[AGENT] — proposed.` 9e9e27b9 is a text-only model version: the commit message and trail both say regeneration changed no generated file and no fingerprint, and the pin stands. goal.md § Status still reads 'grounded'; the close is in § Amendment 2026-09-07."
+  },
+  {
+   "slug": "minor-radius",
+   "title": "Making a fatter plasma cost something",
+   "closed": "2026-09-08",
+   "shas": [
+    "57360a47"
+   ],
+   "question": "Once the magnet chain computes the conductor peak field, the stored magnetic energy and the coil casing mass from coil geometry — the sourced shapes, anchored at the design point — does the minor radius stop being a free ride, and where do the feasible region and the cheapest feasible machine sit, at what aspect ratio, once it does?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded; proposed, the form ratified by the owner",
+   "question_source": "work/orchestration/goals/minor-radius/goal.md § Question",
+   "result": "The magnet chain now computes conductor peak field, stored magnetic energy and casing mass from the coil bore, anchored so the design point reproduces exactly. A fatter plasma is caught by the conductor limit only where the bore is large relative to the major radius. The cheapest machine is unchanged at 202 $/MWh, because there the bore is nearly free.",
+   "result_source": "work/orchestration/goals/minor-radius/trail.md § Goal close — 2026-09-08",
+   "model_change": "WI-044 added three library calculations that take conductor peak field, stored magnetic energy and coil casing mass from coil-bore geometry, reports the aspect ratio as an output, and retired the held casing mass input; every existing baseline channel stayed bit-identical.",
+   "work_items": [
+    "WI-044"
+   ],
+   "attribution": [
+    {
+     "sha": "57360a47",
+     "basis": "work/orchestration/goals/minor-radius/trail.md:36 (T-001 return, WI-044) names commit B `57360a47` (the regenerated package, the oracle, the seam, the re-pin, the fixtures); the commit subject begins 'WI-044 (commit B): the regenerated package'.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question in goal.md; as written: `[AGENT] — proposed; the form ratified by the owner (§ Reserved gates 1).` The commit is dated 2026-09-07; the goal closed 2026-09-08. The trail calls the outcome a bounded negative on the price question. Two things stay unbuilt by the goal's own record: a sourced bound on the minor radius (needs a coefficient no admissible source prints) and the wall-peak calibration's re-anchoring. goal.md § Status still reads 'grounded'; the close is in § Amendment 2026-09-08."
+  },
+  {
+   "slug": "plant-closure",
+   "title": "Compute the plant's pumping power, cycle efficiency and availability from the design",
+   "closed": null,
+   "shas": [
+    "5eccf3bb",
+    "9f6058f6",
+    "d235dde4"
+   ],
+   "question": "Once the primary coolant loop, the power cycle and the maintenance calendar are computed from the design instead of held, and the fuel, exhaust and vacuum flows are carried as reduced calculations with every missing input surfaced, does the machine as designed still close and where does the cheapest feasible machine move — and which of the twelve rubric cells still below target can a fresh grader move to target or to a written disposition at one pin?",
+   "question_grade": null,
+   "question_grade_detail": "no provenance grade recorded in goal.md",
+   "question_source": "work/orchestration/goals/plant-closure/goal.md § Question",
+   "result": "The goal replaced three fixed plant multipliers (pumping power, cycle efficiency, availability) with calculations from the design and added fuel, divertor-heat and vacuum flow calculations. The baseline LCOE fell from 322.32 to 224.61 $/MWh, and the new divertor heat check fails at the design point. A fresh grader later found 17 of 23 rubric cells at target.",
+   "result_source": "work/orchestration/goals/plant-closure/trail.md (T-004, T-005, T-006 returns; Round 5 result; Owner packet acceptance 2026-09-12); work/analysis/20260912-plant-closure-consolidated-grade.md",
+   "model_change": "New calculations for the primary coolant loop, the power-cycle efficiency, the maintenance calendar (availability and replacement cost) and the fuel, divertor-heat and vacuum flows replaced held constants, and the verdict list grew from ten to fourteen including a divertor heat limit.",
+   "work_items": [
+    "WI-045",
+    "WI-046",
+    "WI-047"
+   ],
+   "attribution": [
+    {
+     "sha": "5eccf3bb",
+     "basis": "trail.md:99 (T-004 return) lists 5eccf3bb as WI-045 commit B with the re-pinned snapshot; the commit message is titled goal(plant-closure) round 1 T-004 / WI-045.",
+     "confidence": "high"
+    },
+    {
+     "sha": "9f6058f6",
+     "basis": "trail.md:120 (T-005 return) lists 9f6058f6 as WI-046 commit B; the commit message is titled goal(plant-closure) round 1 T-005 / WI-046.",
+     "confidence": "high"
+    },
+    {
+     "sha": "d235dde4",
+     "basis": "trail.md:141 (T-006 return) lists d235dde4 as WI-047 commit B; the commit message is titled goal(plant-closure) round 1 T-006 / WI-047.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not formally closed: goal.md Status still reads grounded, and the Owner packet acceptance entry of 2026-09-12 (trail.md:555-559) says acceptance does not close the goal. Round 1 (2026-09-08) produced all three model versions; it was closed by owner redirection on 2026-09-11 so the audit-remediation goal could repair operating heating. Rounds 2-5 (2026-09-11 to 2026-09-12) ran in parallel with fusion-audit-remediation, changed no model, and ran their study on the package built from 641c1051 (pin 609e6cca). The Question carries no grade tag of its own; goal.md line 5 says untagged session-supplied text is [AGENT] proposal under the owner's direction. The 322.32 to 224.61 move is the design-point baseline with all three chains live (trail.md:99, :121, :142); the held-value mode reproduced 322.32 exactly."
+  },
+  {
+   "slug": "fusion-audit-remediation",
+   "title": "Fix the defects found by the fusion model audit",
+   "closed": null,
+   "shas": [
+    "b9d096f6",
+    "641c1051",
+    "75bb4824",
+    "708dddef",
+    "3d9711e2",
+    "4ca1f299",
+    "747a8a35",
+    "b413838c"
+   ],
+   "question": "Can the current IFE and MFE models resolve all 20 audit findings with independently checked corrections, while making every remaining source, engineering, and comparison limitation explicit and enforceable within each model's supported use?",
+   "question_grade": null,
+   "question_grade_detail": "no provenance grade recorded in goal.md",
+   "question_source": "work/orchestration/goals/fusion-audit-remediation/goal.md § Question",
+   "result": "The goal repaired defects from a 20-finding model audit. Heating now uses operating demand separately from installed capacity, the plant owns one major radius, finance formulas handle zero and equal rates, and magnet, cryogenic, winding and primary-loop inputs are range-checked. Six findings have bounded corrections, nine are partial and five remain open, so the goal is unanswered.",
+   "result_source": "work/orchestration/goals/fusion-audit-remediation/trail.md (Round 4, 5, 7-11 results; T-051 return and Round 12 result, 2026-09-13); work/orchestration/mfe-financial-rate-limits.md",
+   "model_change": "Operating heating was separated from installed heating capacity, the duplicate magnet major-radius input was retired in favour of the plant's radius, the finance rate singularities were fixed, input-domain checks were added for magnet clearance, cryogenic temperature, winding pack and primary-loop operands, and equation comments and source citations were corrected.",
+   "work_items": [
+    "WI-048",
+    "WI-049",
+    "WI-050",
+    "WI-051",
+    "WI-052",
+    "WI-053",
+    "WI-054",
+    "WI-055",
+    "WI-056"
+   ],
+   "attribution": [
+    {
+     "sha": "b9d096f6",
+     "basis": "trail.md:744 (T-016 return) and :864 name b9d096f6 as the WI-050 implementation; the commit touches work/active/WI-050_mfe-coherent-operating-heating; work/orchestration/mfe-operating-heating-repair.md ties the repair to this goal's Round 4.",
+     "confidence": "high"
+    },
+    {
+     "sha": "641c1051",
+     "basis": "trail.md:1045 (T-022 return) says WI-051 production implementation is at 641c1051; work/orchestration/mfe-model-owned-major-radius.md is the alignment for this goal's T-022.",
+     "confidence": "high"
+    },
+    {
+     "sha": "75bb4824",
+     "basis": "trail.md:1379 (T-031 return) cites native production 75bb4824; the commit touches work/active/WI-052_mfe-financial-rate-limits; work/orchestration/mfe-financial-rate-limits.md names goal task fusion-audit-remediation T-029, Round 7.",
+     "confidence": "high"
+    },
+    {
+     "sha": "708dddef",
+     "basis": "trail.md:1401 and :1405 (T-032 return) name 708dddef as the native documentation repair of WI-052.",
+     "confidence": "high"
+    },
+    {
+     "sha": "3d9711e2",
+     "basis": "trail.md:1510 (T-034 return) says WI-053 native implementation and evidence are committed at 3d9711e2.",
+     "confidence": "high"
+    },
+    {
+     "sha": "4ca1f299",
+     "basis": "trail.md:1648 (T-038 return) says the WI-054 documentation implementation is committed at 4ca1f299.",
+     "confidence": "high"
+    },
+    {
+     "sha": "747a8a35",
+     "basis": "trail.md:1798 (T-042 return) names native WI-055 production 747a8a35.",
+     "confidence": "high"
+    },
+    {
+     "sha": "b413838c",
+     "basis": "trail.md:1908 (T-045 return) names WI-056 production b413838c.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not closed: the Round 12 result and review (trail.md:2086-2102, 2026-09-13) say the goal remains grounded and unanswered with an owner gate pending. The Question has no grade tag; goal.md line 5 says proposals are [AGENT] unless marked, and line 3 records owner ratification of the grounding contract. WI-048 and WI-049 (Rounds 1-2) repaired the IFE model and did not touch the stellarator snapshot. The only stellarator baseline move this goal's trail reports is WI-050's copied historical change of -0.340291844 $/MWh (224.61 to 224.27, trail.md:866); 708dddef and 4ca1f299 are documentation and citation repairs that the trail says preserve executable meaning. WI-052 production was held by the owner until plant-closure finished (trail.md:1305, :1354), which is why the two goals interleave on 2026-09-11 and 2026-09-12."
+  },
+  {
+   "slug": "structural-decomposition",
+   "title": "Restructure the model into nested physical parts without changing its numbers",
+   "closed": null,
+   "shas": [
+    "82ae3958"
+   ],
+   "question": "Can the Stellaris model be restructured so its SysML reads as the machine it represents — subsystems decomposed into the physical parts the source describes, the energy topology declared as ports and connections, every attribute living on the part it belongs to — such that the generated package computes the same LCOE and the same verdicts, the model renders as a hierarchy rather than a flat list, and a subsystem definition can be swapped for a trade study without editing the calcs?",
+   "question_grade": "AGENT",
+   "question_grade_detail": "agent-worded; the form; the direction is the owner's, quoted above",
+   "question_source": "work/orchestration/goals/structural-decomposition/goal.md § Question",
+   "result": "The goal reorganized the stellarator model into nested physical parts with declared ports and connections, leaving every calculation definition untouched. At the baseline all 158 output channels and 18 verdicts matched the previous package, and LCOE stayed at 224.27. A wider two-package comparison matched on all 769 points reached before the owner stopped it.",
+   "result_source": "work/orchestration/goals/structural-decomposition/trail.md (Amendment 2026-09-13 after T-004, lines 108-118)",
+   "model_change": "The flat model (14 parts, depth 2, per goal.md) became a hierarchy of 23 parts three levels deep with ports and connections, which renamed 180 of 246 parameters and 99 of 177 outputs while no calculation or number changed.",
+   "work_items": [
+    "WI-057"
+   ],
+   "attribution": [
+    {
+     "sha": "82ae3958",
+     "basis": "The commit message is titled model(WI-057) Stellaris structural decomposition and reports new pin cf6f6bb8 / 1459254b; trail.md:111-113 describes the same WI-057 re-application, neutrality result and re-pinned snapshot as this goal's work.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not closed: goal.md Status reads grounded and the trail has no round result or close entry; the last entry says the goal's close remains the owner's (trail.md:118). The grade tag follows the question rather than preceding it: goal.md line 15 reads '[AGENT] — the form; the direction is the owner's, quoted above.' The work was first built as WI-048 on branch feat/model-viz against the older plant-closure package (pin 7f6882b7, LCOE 224.61, 3,751-point study identical); that base lacked the audit remediation, so it was re-applied as WI-057 onto feat/demo-maturation, and 82ae3958 is that re-application. The trail does not cite the sha 82ae3958 itself; attribution rests on the matching commit message, pins and the sibling goal commit 4d5afbd6 made at the same timestamp. The trail gives LCOE without units. One unresolved behaviour finding is recorded: at a negative major radius the first failure is now an incidental TypeError (trail.md:114)."
+  },
+  {
+   "slug": "magnet-design-transfer",
+   "title": "Price the winding pack and conductor so magnet results can move off the reference design",
+   "closed": "2026-09-14",
+   "shas": [
+    "173ac157",
+    "9e942fac",
+    "0e3bf944",
+    "48417c9e"
+   ],
+   "question": "Within a documented geometry and conductor-technology range, do magnet sizing, operating limits, and component costs respond consistently enough to support a defensible design-point transfer?",
+   "question_grade": "OWNER-VERBATIM",
+   "question_grade_detail": "the owner's words",
+   "question_source": "work/orchestration/goals/magnet-design-transfer/goal.md § Question",
+   "result": "The goal split winding-pack cost into explicit material inventory, tape procurement and winding operations, then added a priced conductor field-capability setting. A 108-case study found magnet sizing, limits and component costs respond consistently, but the evidence does not qualify an engineering design range. The reference LCOE became 142.507 $/MWh, a replacement estimate, not demonstrated savings.",
+   "result_source": "work/orchestration/goals/magnet-design-transfer/transfer-claim.md; work/orchestration/goals/magnet-design-transfer/trail.md (Round 2 result; Goal close 2026-09-14)",
+   "model_change": "The single unsplit winding-pack cost multiplier was replaced by an explicit material inventory with separate tape procurement and winding-operation costs, and a selectable conductor field envelope now drives pack sizing, tape quantity and cost at a fixed reference density.",
+   "work_items": [
+    "WI-040",
+    "WI-038"
+   ],
+   "attribution": [
+    {
+     "sha": "173ac157",
+     "basis": "trail.md:112 (T-003 return) says WI-040 implementation is at 173ac157; the commit touches work/active/WI-040_winding-pack-mass-cost.",
+     "confidence": "high"
+    },
+    {
+     "sha": "9e942fac",
+     "basis": "trail.md:112 (T-003 return) lists 9e942fac as the WI-040 repairs; the commit message names WI-040 audit source formatting.",
+     "confidence": "high"
+    },
+    {
+     "sha": "0e3bf944",
+     "basis": "The commit 'Implement priced fixed-reference conductor field envelope' touches work/active/WI-038_conductor-grade-lever (20 files), which is this goal's T-004 (trail.md:118-129); it lands between the T-004 start and the T-004 return.",
+     "confidence": "high"
+    },
+    {
+     "sha": "48417c9e",
+     "basis": "trail.md:144 and :146 (T-004 return) cite WI-038 native implementation and repair evidence and the changed package identity at 48417c9e.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The grade tag follows the question: goal.md line 11 reads '[OWNER-VERBATIM] Current request. Execution order: \"WI-040 first, then WI-038\".' The trail names 48417c9e for WI-038 but never cites 0e3bf944 by sha; 0e3bf944 is attributed from its commit message, the WI-038 files it touches and its time (22:30, nine minutes before 48417c9e). The goal closed on its explicit inconclusive branch: conditional numerical transfer supported, engineering-qualified transfer not established (trail.md:224-230). The move of the reference LCOE from 224.27 to 142.507 $/MWh comes from WI-040 replacing the old estimate (transfer-claim.md:21); the entering value 224.27 is from the structural-decomposition trail, not this goal's files."
+  },
+  {
+   "slug": "magnet-coil-realism",
+   "title": "Make winding length, cooling load and support structure follow the coil the model builds",
+   "closed": "2026-09-15",
+   "shas": [
+    "6e8eafa2",
+    "295751fa"
+   ],
+   "question": "Does the magnet's winding length, cold load and structure follow the coil the model builds — the bore the radial build sets, the leads and shield a 20 K coil set needs, the whole support structure the source's mass shape describes — and once they do, does the machine the model favours change: what does a fatter plasma now cost at the magnet, where does the cheapest feasible machine sit, and how much of the plant's recirculating power is the cryoplant?",
+   "question_grade": null,
+   "question_grade_detail": "no provenance grade recorded in goal.md",
+   "question_source": "work/orchestration/goals/magnet-coil-realism/goal.md § Question",
+   "result": "The goal made winding length follow the coil bore, added lead, radiation and support heat loads to refrigeration at two temperature stages, and priced a total support-mass fit. Design-point LCOE rose from 142.51 to 146.31 $/MWh and refrigeration power from 0.864 to 2.138 MW. The cheapest sampled feasible machine stayed at R = 12.7 m, a = 1.7 m.",
+   "result_source": "work/orchestration/goals/magnet-coil-realism/answer.md",
+   "model_change": "Winding length is now computed from the coil bore instead of the major radius, the cryoplant load gained explicit lead, radiation and support-conduction terms at 20 K and 77 K, and magnet support cost now uses a total support-mass fit (11,615.6 tonnes at the 111 GJ anchor).",
+   "work_items": [
+    "WI-058",
+    "WI-059"
+   ],
+   "attribution": [
+    {
+     "sha": "6e8eafa2",
+     "basis": "trail.md:39 (T-001 return) and :110 (Round 1 result) list 6e8eafa2 among the WI-058 commits (regenerated package and re-pin); the commit message is titled WI-058 (B).",
+     "confidence": "high"
+    },
+    {
+     "sha": "295751fa",
+     "basis": "trail.md:266 and :272 (T-006) say the WI-059 implementation is committed at 295751fa; the commit touches work/active/WI-059_coil-thermal-and-total-support-inventory and this goal's directory.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Closed date is the trail's 'Goal completion — 2026-09-15' entry and the goal.md amendment 'answered and completed'; the top Status line in goal.md still reads grounded, and completion was declared by the agent under the owner's delegated-completion instruction, not by an owner-verbatim close. The Question has no grade tag; goal.md line 3 says the owner asked for a proposal and ruled 'ok agreed, draft the goal file and /run-goal'. 6e8eafa2 (WI-058) left the baseline bit-identical at LCOE 142.507 per its commit message; the design-point move to 146.31 comes from 295751fa (WI-059), which answer.md reports against the 'entering Round 3 package'. A later snapshot commit cf3002f6 (2026-09-15 09:31, 'Refresh tape model snapshot') falls after this goal's completion commit and is not in the assigned list."
+  },
+  {
+   "slug": "tape-procurement-consistency",
+   "title": "Price conductor tape by its physical length",
+   "closed": null,
+   "shas": [
+    "cf3002f6"
+   ],
+   "question": "How can conductor procurement cost follow one traceable physical tape inventory consistently when geometry, current, reference winding-pack current density or selected conductor envelope changes?",
+   "question_grade": "OWNER",
+   "question_grade_detail": "owner-stated",
+   "question_source": "work/orchestration/goals/tape-procurement-consistency/goal.md § Question",
+   "result": "Tape procurement now prices the same composite-tape length the model builds, and the field-envelope multiplier is applied once. At the reference point tape cost falls from $804.00 million to $731.57 million, and LCOE from $146.31 to $144.74/MWh. Only three of 64 study cases satisfy all eighteen constraints, and all three use an extrapolated 30 T envelope.",
+   "result_source": "work/orchestration/goals/tape-procurement-consistency/answer.md",
+   "model_change": "Changed calculation: tape procurement cost is now purchased tape length (tape volume divided by tape width times full composite thickness) times a price per tape metre, replacing ampere-metre pricing that applied the envelope multiplier a second time through an effective-price term.",
+   "work_items": [
+    "WI-060"
+   ],
+   "attribution": [
+    {
+     "sha": "9e22a0a6",
+     "basis": "Model-source commit, not a snapshot version: trail.md:70 (T-002 return) says the WI-060 'package implemented at 9e22a0a6'; the commit touches models/ and work/active/WI-060_tape-procurement-quantity-basis/ but not stellarator.snapshot.json.",
+     "confidence": "high"
+    },
+    {
+     "sha": "cf3002f6",
+     "basis": "trail.md:110-112 (T-005 return) cites 'WI-060 snapshot-repair.json and implementation.md@cf3002f6' and lists 'tracked snapshot' as changed; trail.md:147 repeats 'snapshot repair @cf3002f6'; the commit touches only the snapshot and WI-060 files.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not formally closed: goal.md Status still reads `grounded` and the trail has no owner-closure entry. The trail's Round 1 review (trail.md:153-159) is dated 2026-09-15, says the technical answer is complete and recommends owner-held formal closure. Both commits belong to this goal: 9e22a0a6 changed the model and package under WI-060 (task T-002), then integration refused the stale snapshot (T-004, trail.md:91), and cf3002f6 refreshed the snapshot with no equation or package change (T-005). The model version cf3002f6 therefore records the 9e22a0a6 model change. The $146.31/MWh entering LCOE is a captured-oracle value (answer.md:31). Commit messages are one-line subjects with no body."
+  },
+  {
+   "slug": "winding-pack-casing-fit",
+   "title": "Check that the winding pack fits inside its casing",
+   "closed": null,
+   "shas": [
+    "ece3a7ed"
+   ],
+   "question": "Can an explicitly defined, independently based casing interior accommodate the calculated winding-pack envelope, insulation and assembly clearances, and how does adding that geometric screen change sampled feasibility and the cheapest feasible choice?",
+   "question_grade": null,
+   "question_grade_detail": "no provenance grade recorded in goal.md",
+   "question_source": "work/orchestration/goals/winding-pack-casing-fit/goal.md § Question",
+   "result": "The model gained a fit check that compares the winding pack plus insulation and clearance against an independently set casing interior. The reference fails: it needs 370 mm radially and has 250 mm. Across 116 study cases, passes drop from 45 to twelve, and all three earlier nominal-geometry passes are rejected.",
+   "result_source": "work/orchestration/goals/winding-pack-casing-fit/answer.md",
+   "model_change": "New calculation and a nineteenth feasibility check: required and available casing dimensions, radial and transverse fit margins, and a pass rule that the smaller margin is nonnegative, with invalid geometry raising errors; the eighteen earlier checks and all cost accounts are unchanged.",
+   "work_items": [
+    "WI-061"
+   ],
+   "attribution": [
+    {
+     "sha": "ece3a7ed",
+     "basis": "trail.md:80 (T-003 return) cites 'implementation.md@b69616b3; production `ece3a7ed`' and trail.md:135 lists 'implementation ece3a7ed/b69616b3'; the commit touches models/ and work/active/WI-061_winding-pack-casing-fit/.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not formally closed: goal.md Status still reads `grounded` and the trail has no owner-closure entry. The trail's Round 1 review (trail.md:147-153) is dated 2026-09-15, says the technical answer is complete and recommends owner-held formal closure. The Question in goal.md carries no grade tag, so question_grade is null. The reference LCOE stays $144.74/MWh (answer.md:27); adding the check does not itself add cost."
+  },
+  {
+   "slug": "absolute-conductor-current-margin",
+   "title": "Estimate conductor critical current and operating margin",
+   "closed": null,
+   "shas": [
+    "09178a90"
+   ],
+   "question": "Can an admissible explicit tape-to-cable performance basis establish estimated conductor critical current, operating fraction and allowable-fraction margin for the modeled inventory?",
+   "question_grade": null,
+   "question_grade_detail": "no provenance grade recorded in goal.md",
+   "question_source": "work/orchestration/goals/absolute-conductor-current-margin/goal.md § Question",
+   "result": "The model now estimates the reference conductor's critical current from its tape inventory and checks operating current against an allowed fraction of 0.80. The reference fails: 29.65 kA critical current against 50.00 kA operating current, a margin of −26.28 kA. In the 295-case study, all thirteen combined passes depend on an assumed orientation factor of 3.",
+   "result_source": "work/orchestration/goals/absolute-conductor-current-margin/answer.md",
+   "model_change": "New calculation and a twentieth feasibility check: effective parallel tape count, single-tape and conductor critical current at 20 K and the actual peak field, operating fraction and current margins, with unsupported inputs refused; no geometry, price or existing check changed.",
+   "work_items": [
+    "WI-062"
+   ],
+   "attribution": [
+    {
+     "sha": "09178a90",
+     "basis": "trail.md:72 (T-002 return) cites 'source/package checkpoint `09178a90`' and trail.md:118 lists 'Model/package `09178a90`'; the commit touches models/ and work/active/WI-062_absolute-conductor-current-margin/.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not formally closed: goal.md Status still reads `grounded` and the trail has no owner-closure entry. The trail's Round 1 review (trail.md:126-135) is dated 2026-09-15, says the technical answer is complete and recommends owner-held formal closure. answer.md:7 also says formal goal closure remains owner-held. The Question in goal.md carries no grade tag, so question_grade is null. The result is a conditional engineering estimate; answer.md:5 says it does not qualify a manufactured cable."
+  },
+  {
+   "slug": "magnet-manufacturing-cost-completeness",
+   "title": "Account for what the magnet manufacturing charges cover",
+   "closed": null,
+   "shas": [
+    "19e47125"
+   ],
+   "question": "What do the modeled magnet procurement and manufacturing charges cover, which overlaps can be demonstrated and removed, and which missing costs can be estimated or made explicit using admissible evidence and current conductor/pack geometry?",
+   "question_grade": "OWNER",
+   "question_grade_detail": "owner-stated",
+   "question_source": "work/orchestration/goals/magnet-manufacturing-cost-completeness/goal.md § Question",
+   "result": "The goal mapped what each magnet procurement and manufacturing charge covers and found no demonstrated duplicate charge. It added a conditional inter-pancake insulation stock cost of $421,131.97 and made the steel support rate one explicit $18/kg all-in assumption. LCOE moves from $144.738301 to $144.747431/MWh, and the remaining process costs stay unpriced and visible.",
+   "result_source": "work/orchestration/goals/magnet-manufacturing-cost-completeness/answer.md; work/orchestration/goals/magnet-manufacturing-cost-completeness/account-ledger.md",
+   "model_change": "New small cost term: inter-pancake insulation sheet stock (3.414 m³ from existing geometry) priced through a separate stock-price input, plus an exposed effective all-in support rate composed from the inherited $6/kg and factor 3; a ground-insulation shell volume is reported but left unpriced.",
+   "work_items": [
+    "WI-063"
+   ],
+   "attribution": [
+    {
+     "sha": "19e47125",
+     "basis": "trail.md:90 (T-003 return) cites 'production checkpoint `19e47125`' for WI-063; the commit touches models/, work/active/WI-063_magnet-manufacturing-account-completeness/ and this goal's own directory.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not formally closed: goal.md Status still reads `grounded` and the trail has no owner-closure entry. The trail's Round 1 review (trail.md:105-113) is dated 2026-09-15, says the technical answer is complete and recommends owner-held formal closure. That round review is a coordinator check, not an independent verdict; the trail says independent coverage comes from evidence/source-design-review.md and evidence/implementation-review.md (trail.md:107). No parameter study was run for this goal (answer.md:55). trail.md:108 also names commits 3f6211bb and 8da090b7 for WI-063; neither changed the snapshot file."
+  },
+  {
+   "slug": "joint-magnet-sizing-feasibility",
+   "title": "Size the magnet tape inventory from the required current",
+   "closed": null,
+   "shas": [
+    "a8589d6b"
+   ],
+   "question": "Can a magnet carry the required current at the selected operating margin, fit inside an explicitly allocated casing, and satisfy the existing plant constraints under one consistent set of construction and performance assumptions?",
+   "question_grade": "OWNER-VERBATIM",
+   "question_grade_detail": "the owner's words",
+   "question_source": "work/orchestration/goals/joint-magnet-sizing-feasibility/goal.md § Question",
+   "result": "The model gained an optional mode that sizes tape inventory from the actual field and the allowed operating fraction; legacy mode stays the default. In 324 default cases the current check always passes and 154 also fit their casing, but none passes the other eighteen constraints. This is a bounded negative answer, not proof of global infeasibility.",
+   "result_source": "work/orchestration/goals/joint-magnet-sizing-feasibility/answer.md",
+   "model_change": "New optional calculation mode: required parallel tapes, conductor area, pack area and effective current density are derived from turn current, allowable fraction and available current per tape, with a 1.01 inventory reserve; legacy mode remains the default and reproduces the entering package.",
+   "work_items": [
+    "WI-064"
+   ],
+   "attribution": [
+    {
+     "sha": "a8589d6b",
+     "basis": "answer.md:82 states 'implementation checkpoint: `a8589d6b`' and trail.md:49-51 (T-002 return) cites 'WI-064 ... audit.md@a8589d6b'; the commit touches models/, work/active/WI-064_current-driven-magnet-inventory-sizing/ and this goal's own directory.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not formally closed: goal.md Status still reads `grounded` and the trail has no owner-closure entry. The trail's Round 1 review (trail.md:104-111) is dated 2026-09-15, says the technical answer is complete and recommends owner-held formal closure. At the current-sized reference the required tape count rises from 112.709 to 237.608 parallel tapes and LCOE from $144.747 to $163.194/MWh (answer.md:27, 70-71); these apply only when the optional sizing mode is selected."
+  },
+  {
+   "slug": "divertor-peak-heat-load",
+   "title": "Trace divertor heat from plasma exhaust to peak load",
+   "closed": null,
+   "shas": [
+    "48b65159"
+   ],
+   "question": "Can the represented stellarator divertor peak heat load be traced consistently from plasma exhaust through deposition, geometry and spatial concentration, and what does that establish at the joint magnet-sizing rejection cases?",
+   "question_grade": "OWNER",
+   "question_grade_detail": "owner-stated",
+   "question_source": "work/orchestration/goals/divertor-peak-heat-load/goal.md § Question",
+   "result": "The model now reports where plasma heating power goes: radiated, deposited on the divertor target, or uncaptured, plus the area implied by the source heat profile. The peak-load formula, the 10 MW/m² limit and every existing constraint are unchanged. The reference peak stays 10.517842 MW/m², and none of 27 study cases passes all 20 constraints.",
+   "result_source": "work/orchestration/goals/divertor-peak-heat-load/answer.md",
+   "model_change": "New diagnostic outputs only: total and edge radiation, deposited and uncaptured non-radiated power, peak-equivalent area and power-account validity flags; default peaks and all constraints are unchanged from the entering package.",
+   "work_items": [
+    "WI-065"
+   ],
+   "attribution": [
+    {
+     "sha": "48b65159",
+     "basis": "trail.md:88 (T-003 return) cites 'WI-065 implementation checkpoint `48b65159`'; the commit touches models/, work/active/WI-065_divertor-deposited-power-and-peak-area-account/ and this goal's own directory.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Not formally closed: goal.md Status still reads `grounded` and the trail has no owner-closure entry. The trail's Round 1 review (trail.md:143-150) is dated 2026-09-15, says the technical answer is complete and recommends owner-held formal closure. answer.md:92 also says formal goal closure remains owner-held. The native study directory is named 20260915-divertor-heat-account, not the goal slug."
+  },
+  {
+   "slug": "computed-tritium-breeding",
+   "title": "Calculate tritium breeding from the blanket",
+   "closed": "2026-09-18",
+   "shas": [
+    "d2e29237"
+   ],
+   "question": "Can we calculate tritium production from the modeled blanket configuration, verify that calculation, and make insufficient breeding constrain the design?",
+   "question_grade": "OWNER-VERBATIM",
+   "question_grade_detail": "the owner's words",
+   "question_source": "work/orchestration/goals/computed-tritium-breeding/goal.md § Question",
+   "result": "The model now calculates the tritium breeding ratio from blanket thickness using neutron-transport results, replacing the manually assigned 1.074, and fails designs that breed too little. The current 0.80 m blanket fails: its numerical lower estimate of 1.18615 is below the 1.190 fuel requirement. The 0.825–1.00 m samples pass breeding but violate the peak-field limit.",
+   "result_source": "work/orchestration/goals/computed-tritium-breeding/answer.md",
+   "model_change": "New calculation and a changed check: breeding ratio is interpolated from five OpenMC transport runs over 0.60–1.00 m breeder thickness and is undefined outside that domain, a fuel balance computes the required ratio, and the breeding constraint now tests a numerical lower estimate against max(1.05, fuel requirement); the manual breeding-ratio input was removed.",
+   "work_items": [
+    "WI-066"
+   ],
+   "attribution": [
+    {
+     "sha": "d2e29237",
+     "basis": "answer.md:54 states 'Audited model commit `d2e29237`' and trail.md:128 (T-003 return) cites 'the independently audited WI-066 commit `d2e29237`'; the commit touches models/, work/active/WI-066_computed-tritium-breeding/ and this goal's own directory.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "Closed by the owner: goal.md Status ('`closed` — 2026-09-18') and trail.md:175-177 (Owner closure). The goal ran two rounds; round 1 was research only with no model change (trail.md:65), and the model change came in round 2. The answer reports an independent grade of 'R2c.P3' against the goal's rubric (answer.md:5: P2 means the breeding ratio is computed from blanket configuration and verified, P3 means computed adequacy changes the accepted blanket choices); I left the code out of the result text. No study case is a feasible whole plant (answer.md:3)."
+  },
+  {
+   "slug": "installed-cooling-equipment-costs",
+   "title": "Installed cooling equipment costs",
+   "closed": "2026-09-18",
+   "shas": [
+    "c6906cbe"
+   ],
+   "question": "Can we size and separately cost the cooling system’s pumps, piping and heat exchangers from the plant’s calculated heat-removal requirements, including installation and appropriate lifecycle costs?",
+   "question_grade": "OWNER-VERBATIM",
+   "question_grade_detail": "the owner's words",
+   "question_source": "work/orchestration/goals/installed-cooling-equipment-costs/goal.md § Question",
+   "result": "The model now sizes and separately prices helium circulators, salt pumps, piping and helium-to-salt heat exchangers, with installation, spares, coolant inventories and scheduled replacements. For the selected 18-circuit design, the old $205 million cooling allowance became an $8.2 billion equipment estimate, and electricity cost rose from $150 to $311/MWh. Independent review passed it at the target depth.",
+   "result_source": "work/orchestration/goals/installed-cooling-equipment-costs/answer.md",
+   "model_change": "Replaced the two old cooling cost allowances with seven separately calculated equipment accounts, and added equipment sizing, dated replacement costs, salt-pump electricity and a HITEC molten-salt intermediate loop.",
+   "work_items": [
+    "WI-067"
+   ],
+   "attribution": [
+    {
+     "sha": "c6906cbe",
+     "basis": "work/orchestration/goals/installed-cooling-equipment-costs/trail.md:307 says 'Reviewed implementation committed locally at c6906cbe', and trail.md:311 calls it the 'Local model/evidence checkpoint'; learnings.md:53 names it the reviewed model.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The commit message has no body. A later oracle-only coverage correction (03e45168) and the frozen study commit (5b956a82) belong to this goal but did not change the model equations per trail.md:307-311. The $150 and $311/MWh figures are the selected 18-circuit 'legacy' and 'full' modes in answer.md (150.430 and 310.633)."
+  },
+  {
+   "slug": "layout-based-facilities",
+   "title": "Buildings sized from equipment and maintenance needs",
+   "closed": "2026-09-19",
+   "shas": [
+    "f1e70c48"
+   ],
+   "question": "Can we derive the size and cost of plant buildings and maintenance facilities from the equipment they contain and the maintenance work they must support?",
+   "question_grade": "OWNER-VERBATIM",
+   "question_grade_detail": "the owner's words",
+   "question_source": "work/orchestration/goals/layout-based-facilities/goal.md § Question",
+   "result": "The model now derives 25 separately costed buildings and transfer links from equipment dimensions, component movement space and dated maintenance inventories, including shielded maintenance wings and remote-handling routes. At the 14-circuit reference, plant capital rose $199 million and electricity cost went from $270.8 to $273.5/MWh. Independent review passed it at the target depth.",
+   "result_source": "work/orchestration/goals/layout-based-facilities/answer.md",
+   "model_change": "Replaced the grouped building allowance with civil quantities for 25 layout-sized buildings and links plus a separate ventilation estimate, and added facility capacity checks against the unchanged maintenance calendar.",
+   "work_items": [
+    "WI-068"
+   ],
+   "attribution": [
+    {
+     "sha": "f1e70c48",
+     "basis": "work/orchestration/goals/layout-based-facilities/trail.md:134 accepts the native candidate for audited work 'work/active/WI-068_layout-based-facilities@f1e70c48', and trail.md:170 lists 'Model f1e70c48' as this round's evidence.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "This goal cites c6906cbe only in evidence/inventory.md as the entering cooling baseline, not as its own work. The study found 20 of 48 cases fail at least one facility check (answer.md:47)."
+  },
+  {
+   "slug": "fuel-inventory-and-startup",
+   "title": "Fuel inventory, startup stock and processing throughput",
+   "closed": "2026-09-19",
+   "shas": [
+    "956444b5"
+   ],
+   "question": "Can we calculate the tritium held throughout the fuel system, the stock needed to start operation, and the processing throughput from explicit operating and fuel-system assumptions?",
+   "question_grade": "OWNER-VERBATIM",
+   "question_grade_detail": "the owner's words",
+   "question_source": "work/orchestration/goals/fuel-inventory-and-startup/goal.md § Question",
+   "result": "The model now calculates tritium held in the fuel system, startup supply and processing throughput from explicit assumptions. At the reference point it holds 4.418 kg of tritium, needs 4.400 kg of initial external supply and processes 7.743 kg of tritium per operating day. Fuel-processing costs and electricity cost are unchanged. Independent review passed it at the target depth.",
+   "result_source": "work/orchestration/goals/fuel-inventory-and-startup/answer.md",
+   "model_change": "Added 70 new inventory, startup and throughput outputs computed from burn fraction, residence times and reserve policy; the computed inventory raises the required-breeding value from 1.19 to 1.191670.",
+   "work_items": [
+    "WI-069"
+   ],
+   "attribution": [
+    {
+     "sha": "956444b5",
+     "basis": "work/orchestration/goals/fuel-inventory-and-startup/trail.md:71 records all ten integration gates passing 'for audited commit 956444b5...', and answer.md:62 and trail.md:110 name it this goal's model candidate.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The estimates are for the represented equipment and storage only; answer.md says they do not establish a complete plant inventory or fuel self-sufficiency."
+  },
+  {
+   "slug": "throughput-based-fuel-processing-costs",
+   "title": "Fuel-processing cost that follows throughput",
+   "closed": "2026-09-19",
+   "shas": [
+    "2a50d3ec"
+   ],
+   "question": "Can we make the cost of the fuel-processing plant follow its calculated processing demand, using applicable cost sources and explicit equipment boundaries?",
+   "question_grade": "OWNER",
+   "question_grade_detail": "owner-stated",
+   "question_source": "work/orchestration/goals/throughput-based-fuel-processing-costs/goal.md § Question",
+   "result": "Fuel-processing capital now follows the calculated running exhaust flow through a sourced scaling relationship, replacing the old allowance once. At the reference point the account fell from $120.7 million to $22.8 million, and electricity cost from $273.455 to $271.584/MWh. These are matched model results, not procurement savings. Independent review passed it at the target depth.",
+   "result_source": "work/orchestration/goals/throughput-based-fuel-processing-costs/answer.md",
+   "model_change": "Replaced the old fuel-processing cost allowance with four historical equipment cost rows scaled by processing capacity to the 0.3 power, fed by the upstream throughput output.",
+   "work_items": [
+    "WI-070"
+   ],
+   "attribution": [
+    {
+     "sha": "2a50d3ec",
+     "basis": "work/orchestration/goals/throughput-based-fuel-processing-costs/trail.md:143 names 'Audited model commit 2a50d3ec...' with all ten gates passing; goal.md:5 and answer.md:3 call it this goal's audited model.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "This goal also cites 956444b5, but only as the upstream WI-069 producer it consumes (goal.md:33, answer.md:11). The question carries the grade [OWNER], not OWNER-VERBATIM."
+  },
+  {
+   "slug": "cost-estimate-maturity-and-uncertainty",
+   "title": "Cost-estimate maturity and uncertainty",
+   "closed": "2026-09-19",
+   "shas": [
+    "fe720553"
+   ],
+   "question": "Can we state how well developed the plant cost estimate is, expose the functional accounts where cost is concentrated, and quantify the uncertainty that the available evidence supports?",
+   "question_grade": "OWNER",
+   "question_grade_detail": "owner-stated",
+   "question_source": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/goal.md § Question",
+   "result": "The goal assessed the estimate as a provisional Class 5 conceptual estimate and mapped 23 direct cost accounts; cooling, magnets and facilities hold 73% of direct cost. It added one shared stainless fabrication-price input to the model. Across 36 source alternatives, capital spans $15.9–19.3 billion and electricity cost $245–290/MWh. This is a partial envelope, not a confidence interval.",
+   "result_source": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/answer.md",
+   "model_change": "Added one shared stainless fabrication-price input that drives exchanger, primary piping and secondary piping purchases and future exchanger-bundle replacement together; at its nominal value all 956 baseline outputs are unchanged.",
+   "work_items": [
+    "WI-071"
+   ],
+   "attribution": [
+    {
+     "sha": "fe720553",
+     "basis": "work/orchestration/goals/cost-estimate-maturity-and-uncertainty/answer.md:7 says 'Audited model commit fe720553 adds one shared stainless fabrication-price input through WI-071'; trail.md:106 and goal.md:55 name it the audited candidate.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "This goal cites 2a50d3ec in evidence files only as its entering baseline. Most of the goal's output is assessment (maturity class, account map, uncertainty register); the model change itself is small. Independent review passed it at the target depth (R12.S = 3)."
+  },
+  {
+   "slug": "current-model-comparison-readiness",
+   "title": "Getting the current model ready for comparison",
+   "closed": "2026-09-20",
+   "shas": [
+    "3093d167"
+   ],
+   "question": "Can we prepare a reproducible comparison package using the model that meets all 23 depth targets, with a justified cooling-to-electricity calculation and no unexplained validation failures affecting the comparison?",
+   "question_grade": "OWNER-VERBATIM",
+   "question_grade_detail": "the owner's words",
+   "question_source": "work/orchestration/goals/current-model-comparison-readiness/goal.md § Question",
+   "result": "A water-state steam cycle now connects salt heat to electricity, replacing a conversion fit that bypassed the 465°C salt supply. At the raw baseline, net electricity fell from 1,009 to 850 MW and electricity cost rose from $271.6 to $318.7/MWh. The owner adopted the independently reproduced package as r3. Four engineering failures remain visible.",
+   "result_source": "work/orchestration/goals/current-model-comparison-readiness/answer.md; work/orchestration/goals/current-model-comparison-readiness/approval-packet.md",
+   "model_change": "Added a matched steam-cycle calculation using actual salt heat, water properties, finite temperature differences, staged expansion with reheat, and explicit steam and cooling-water pump loads; gross efficiency changed from 41.1% to 36.9%.",
+   "work_items": [
+    "WI-072",
+    "WI-073"
+   ],
+   "attribution": [
+    {
+     "sha": "3093d167",
+     "basis": "work/orchestration/goals/current-model-comparison-readiness/trail.md:280 records 'Local scientific commit 3093d1676d33...' for the matched cycle, and approval-packet.md:7 names it the 'Scientific source checkpoint'.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "answer.md and decision-status.md have identical text. WI-073 is the steam-cycle work that produced this model version. WI-072 (Round 1) added independent numerical coverage for 22 previously unchecked outputs 'for the unchanged current executable' (trail.md:159), so it produced no model version. The commit is dated 2026-09-19; the goal closed 2026-09-20 when the owner adopted and published the package as r3. A separate coding/oracle checkpoint 5fc80501 is also cited."
+  },
+  {
+   "slug": "preserve-model-design-choices",
+   "title": "Keeping supplied design choices through evaluation",
+   "closed": "2026-09-20",
+   "shas": [
+    "b11567eb",
+    "fce78841"
+   ],
+   "question": "Can the stellarator model and shared dependencies evaluate and cost supplied designs without silently selecting different hardware, while preserving supported physical relationships and validity limits?",
+   "question_grade": null,
+   "question_grade_detail": "no provenance grade recorded in goal.md",
+   "question_source": "work/orchestration/goals/preserve-model-design-choices/goal.md § Question",
+   "result": "The model now evaluates and costs supplied designs without silently selecting different hardware. Round 1 preserved supplied magnet, facility, fuel-processor and cooling choices. Round 2 made equipment prices follow the chosen purchase and added 33 capacity checks, for 67 in total. Independent review passed both rounds. The baseline still fails six engineering checks.",
+   "result_source": "work/orchestration/goals/preserve-model-design-choices/answer.md",
+   "model_change": "Magnet geometry and inventory, facility geometry, processor throughput, cooling purchase points, equipment ratings and package prices became supplied inputs that operating demand no longer overrides, and calculated thermal demand is now checked against supplied ratings.",
+   "work_items": [
+    "WI-074",
+    "WI-075",
+    "WI-076",
+    "WI-077",
+    "WI-078",
+    "WI-079",
+    "WI-080"
+   ],
+   "attribution": [
+    {
+     "sha": "b11567eb",
+     "basis": "work/orchestration/goals/preserve-model-design-choices/answer.md:36 lists 'Accepted Round 1 implementation: b11567eb...', and trail.md:106 and :124 record the integration seam passing against WI-074–078 at that checkpoint.",
+     "confidence": "high"
+    },
+    {
+     "sha": "fce78841",
+     "basis": "work/orchestration/goals/preserve-model-design-choices/answer.md:37 lists 'Round 2 implementation/integration checkpoint: fce78841...'; goal.md:56 and trail.md:233 confirm all ten integration gates pass there.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "The Question line in goal.md has no grade tag. Two model versions: b11567eb is Round 1 (WI-074 to WI-078: inventory and contract, magnets, facilities, fuel processing, cooling); fce78841 is Round 2 (WI-079 residual equipment prices, WI-080 thermal capability and demand checks), which the owner made mandatory after Round 1. Round 2 added 118 public inputs and retired 11 (answer.md:20). The goal describes itself as post-reveal repair from pre-reveal code."
+  },
+  {
+   "slug": "model-evaluation-domain-readiness",
+   "title": "How far the repaired model can be evaluated",
+   "closed": "2026-09-20",
+   "shas": [
+    "ba29c9ac"
+   ],
+   "question": "How far can the repaired stellarator model evaluate the intended design space, with verified file-read identity coverage and a compatible comparison adapter?",
+   "question_grade": "OWNER",
+   "question_grade_detail": "owner-stated",
+   "question_source": "work/orchestration/goals/model-evaluation-domain-readiness/goal.md § Question",
+   "result": "Broad readiness is not established: the intended size range exceeds the current breeding-geometry and conductor support. The model now refuses invalid compressor suction conditions explicitly and gives useful conductor-domain messages. It does not expand the supported design space. File-read verification and a synthetic comparison adapter were completed within their documented limits.",
+   "result_source": "work/orchestration/goals/model-evaluation-domain-readiness/answer.md",
+   "model_change": "Added a guard in the primary-loop calculation that refuses invalid compressor suction conditions before the arithmetic, plus conductor-domain messages; valid-state equations and every baseline numeric output are unchanged.",
+   "work_items": [],
+   "attribution": [
+    {
+     "sha": "ba29c9ac",
+     "basis": "work/orchestration/goals/model-evaluation-domain-readiness/answer.md:35 says 'Diagnostic model/package changes are at ba29c9ac...', and trail.md:106-108 cites the primary-loop guard and native refusal records at ba29c9ac.",
+     "confidence": "high"
+    }
+   ],
+   "notes": "No native work item is named as implemented by this goal; WI-074 and WI-080 appear only as inputs. The diagnostic work is recorded under work/analysis/model-evaluation-diagnostics/ and the adapter and read-coverage work under .project/active/. The semantic fingerprint is unchanged from fce78841 while the executable fingerprint is new (answer.md:37-38, trail.md:106). fce78841 is cited only as the entering reviewed implementation. The outcome is a bounded negative for broad evaluation, accepted by independent review."
+  }
+ ]
+}

@@ -4,6 +4,7 @@ window.ModelViz = window.ModelViz || {};
 ModelViz.graph = (function () {
   const LAYOUT = { name: "dagre", rankDir: "LR", nodeSep: 20, rankSep: 60, edgeSep: 5, padding: 20, animate: false, fit: true };
   const HIGHLIGHT = "#d9480f";
+  const PART = ModelViz.structure.constants;
 
   function labelWidth(ele, charWidth, minimum) {
     return Math.max(minimum, ele.data("label").length * charWidth + 16);
@@ -61,12 +62,42 @@ ModelViz.graph = (function () {
         "curve-style": "bezier",
       },
     },
-    { selector: "node[kind='calc']:selected", style: { "border-color": HIGHLIGHT, "border-width": 3 } },
+    {
+      selector: "node[kind='part']",
+      style: {
+        shape: "round-rectangle",
+        label: "data(label)",
+        "font-size": PART.FONT_PX,
+        "line-height": PART.LINE_H / PART.FONT_PX,
+        "text-wrap": "wrap",
+        "text-valign": "center",
+        "text-halign": "center",
+        "background-color": "#eef3f8",
+        "border-color": "#5b7db1",
+        "border-width": 1,
+      },
+    },
+    // Box sizes come from structure.js on element data (D26); compound parts carry none (PD9).
+    { selector: "node[kind='part'][width]", style: { width: "data(width)", height: "data(height)" } },
+    {
+      selector: "node[kind='part']:parent",
+      style: {
+        "text-valign": "top",
+        // Lift the label by the clearance LABEL_BAND reserves above the two label lines.
+        "text-margin-y": -(PART.LABEL_BAND - PART.LINES * PART.LINE_H),
+        "background-color": "#f7f9fc",
+        "background-opacity": 1,
+        "border-width": 1.5,
+        padding: PART.PARENT_PAD,
+      },
+    },
+    { selector: "node[kind='part'][?collapsed]", style: { "background-color": "#dfe7f1", "border-style": "dashed" } },
+    { selector: "node[kind='calc']:selected, node[kind='part']:selected", style: { "border-color": HIGHLIGHT, "border-width": 3 } },
     { selector: "node.mv-neighbour", style: { "border-color": HIGHLIGHT, "border-width": 2 } },
     { selector: "edge.mv-highlight", style: { "line-color": HIGHLIGHT, "target-arrow-color": HIGHLIGHT } },
   ];
 
-  // handlers: { onCalcTap(key), onContainerTap(containerId) }
+  // handlers: { onCalcTap(key), onContainerTap(containerId), onPartTap(partId) }
   function create(containerElement, handlers) {
     const cy = cytoscape({
       container: containerElement,
@@ -82,7 +113,9 @@ ModelViz.graph = (function () {
     cy.on("tap", (evt) => {
       const target = evt.target;
       if (target === cy || !target.isNode()) return;
-      if (target.data("kind") === "calc") handlers.onCalcTap(target.id());
+      const kind = target.data("kind");
+      if (kind === "calc") handlers.onCalcTap(target.id());
+      else if (kind === "part") handlers.onPartTap(target.id());
       else handlers.onContainerTap(target.id());
     });
 
@@ -90,17 +123,22 @@ ModelViz.graph = (function () {
       const data = evt.target.data();
       containerElement.title = data.mode === "source" ? data.group_path || "no source file recorded" : data.occurrence_id || "no occurrence recorded";
     });
-    cy.on("mouseout", "node[kind='container']", () => {
+    cy.on("mouseover", "node[kind='part']", (evt) => {
+      containerElement.title = evt.target.data("path");
+    });
+    cy.on("mouseout", "node[kind='container'], node[kind='part']", () => {
       containerElement.title = "";
     });
     window.addEventListener("resize", () => cy.resize());
 
-    function render(elements) {
+    // opts.layout: a Cytoscape layout; the calc view's dagre layout when omitted (D26).
+    function render(elements, opts) {
+      const layout = opts === undefined ? LAYOUT : opts.layout;
       cy.batch(() => {
         cy.elements().remove();
         cy.add(elements);
       });
-      if (elements.length > 0) cy.layout(LAYOUT).run();
+      if (elements.length > 0) cy.layout(layout).run();
     }
 
     function clearSelection() {
@@ -111,13 +149,13 @@ ModelViz.graph = (function () {
       all.unselectify();
     }
 
-    // Mark one calc selected and highlight its visible edges and their other ends.
-    // A calc inside a collapsed container is not drawn, so nothing is marked.
-    function selectCalc(key) {
+    // Mark one node selected and highlight its visible edges and their other ends.
+    // A node inside a collapsed container is not drawn, so nothing is marked.
+    function selectNode(id) {
       clearSelection();
       const all = cy.elements();
       all.selectify();
-      const node = cy.getElementById(key);
+      const node = cy.getElementById(id);
       if (node.nonempty()) {
         node.select();
         const edges = node.connectedEdges();
@@ -127,19 +165,36 @@ ModelViz.graph = (function () {
       all.unselectify();
     }
 
-    // Zoom to at least 1.0 and centre the calc in the pane (design D6, same tick, no animation).
-    function focusCalc(key) {
-      const node = cy.getElementById(key);
-      if (node.empty()) throw new Error(`Calc ${key} is not drawn, so it cannot be centred.`);
+    // Zoom to at least 1.0 and centre the node in the pane (design D6, same tick, no animation).
+    function focusNode(id) {
+      const node = cy.getElementById(id);
+      if (node.empty()) throw new Error(`Node ${id} is not drawn, so it cannot be centred.`);
       cy.zoom(Math.max(cy.zoom(), 1.0));
       cy.center(node);
+    }
+
+    // Whether the node's box, labels included, fits inside the pane at a zoom.
+    function fitsPane(id, zoom) {
+      const box = drawnNode(id).boundingBox();
+      return box.w * zoom <= cy.width() && box.h * zoom <= cy.height();
+    }
+
+    // Fit the view to one node, labels included.
+    function fitNode(id) {
+      cy.fit(drawnNode(id), LAYOUT.padding);
+    }
+
+    function drawnNode(id) {
+      const node = cy.getElementById(id);
+      if (node.empty()) throw new Error(`Node ${id} is not drawn.`);
+      return node;
     }
 
     function fit() {
       cy.fit(undefined, LAYOUT.padding);
     }
 
-    return { cy, render, clearSelection, selectCalc, focusCalc, fit };
+    return { cy, render, clearSelection, selectNode, focusNode, fitsPane, fitNode, fit };
   }
 
   return { create };

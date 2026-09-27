@@ -128,6 +128,12 @@ ModelViz.model = (function () {
         occurrenceId,
         parentId: raw.parent_id,
         segment: stringOrNull(raw.display_segment),
+        packageDisplay: stringOrNull(raw.package_display),
+        typeIds: readTypeIds(raw.effective_type_ids),
+        depth: 0,
+        childIds: [],
+        attrIds: [],
+        calcKeys: [],
       });
     });
     for (const occ of occurrences.values()) {
@@ -141,23 +147,58 @@ ModelViz.model = (function () {
         }
         visited.add(parent);
       }
+      // The walk above reached the root without a cycle, so its length is the depth.
+      occ.depth = visited.size - 1;
+      if (occ.parentId !== null) occurrences.get(occ.parentId).childIds.push(occ.occurrenceId);
     }
     return occurrences;
   }
 
-  function buildAttrs(rawAttrs) {
+  // A list of string ids, or null when absent or not such a list (design Appendix B: labelled, not an error).
+  function readTypeIds(value) {
+    return Array.isArray(value) && value.every((id) => typeof id === "string") ? value.slice() : null;
+  }
+
+  // An alias's target (design § Model additions). Only read when is_alias is true; a target that is
+  // missing or not one of the two known shapes is kept raw and labelled later (Appendix B).
+  function readAliasTarget(target) {
+    if (isObject(target) && target.kind === "producer" && isObject(target.target)) {
+      const calcNodeId = target.target.calculation;
+      const outputId = target.target.output;
+      if (typeof calcNodeId === "string" && typeof outputId === "string") return { kind: "producer", calcNodeId, outputId };
+    }
+    if (isObject(target) && target.kind === "node" && typeof target.target === "string") {
+      return { kind: "node", attrNodeId: target.target };
+    }
+    return { kind: "unknown", raw: target === undefined ? null : target };
+  }
+
+  // Attributes, and each one filed under the occurrence its scope names (Occ.attrIds, snapshot order).
+  // An attribute whose scope names no occurrence goes into unscopedAttrIds.
+  function buildAttrs(rawAttrs, occurrences) {
     const attrs = new Map();
+    const unscopedAttrIds = [];
     rawAttrs.forEach((raw, i) => {
       if (!isObject(raw)) throw new SnapshotError(`Attribute ${i} is not a record.`);
       const nodeId = requireString(raw.node_id, `attrs[${i}].node_id`);
+      const isAlias = raw.is_alias === true;
+      const occurrenceId = isObject(raw.scope) ? stringOrNull(raw.scope.wire) : null;
       attrs.set(nodeId, {
         nodeId,
         name: stringOrNull(raw.display_name),
         hasValue: raw.value !== null && raw.value !== undefined,
         value: raw.value === undefined ? null : raw.value,
+        occurrenceId,
+        owner: stringOrNull(raw.owner_qualified_name),
+        sourceFile: stringOrNull(raw.source_file),
+        sourceLine: Number.isInteger(raw.source_line) ? raw.source_line : null,
+        isAlias,
+        alias: isAlias ? readAliasTarget(raw.alias_target) : null,
       });
+      if (occurrences.has(occurrenceId)) occurrences.get(occurrenceId).attrIds.push(nodeId);
+      else unscopedAttrIds.push(nodeId);
     });
-    return attrs;
+    return { attrs, unscopedAttrIds };
   }
 
   function buildFileHashes(sources) {
@@ -229,7 +270,7 @@ ModelViz.model = (function () {
     });
     const { groups, gidByPath } = buildGroups(rawCalcs);
     const occurrences = buildOccurrences(optionalArray(graph.occurrences, "graph.occurrences"));
-    const attrs = buildAttrs(optionalArray(graph.attrs, "graph.attrs"));
+    const { attrs, unscopedAttrIds } = buildAttrs(optionalArray(graph.attrs, "graph.attrs"), occurrences);
     const fileHashes = buildFileHashes(snap.sources);
 
     const calcs = [];
@@ -261,6 +302,7 @@ ModelViz.model = (function () {
       };
       calcs.push(calc);
       byKey.set(key, calc);
+      if (occurrences.has(calc.occurrenceId)) occurrences.get(calc.occurrenceId).calcKeys.push(key);
     });
 
     // Bindings and the reverse index come from one pass over the same records.
@@ -294,7 +336,7 @@ ModelViz.model = (function () {
     }
     const bindingById = new Map(bindings.map((b) => [b.id, b]));
 
-    return { calcs, byKey, keyByNodeId, bindings, bindingById, consumersOf, groups, occurrences, attrs, fileHashes };
+    return { calcs, byKey, keyByNodeId, bindings, bindingById, consumersOf, groups, occurrences, attrs, unscopedAttrIds, fileHashes };
   }
 
   return { SnapshotError, readSnapshot, buildModel };

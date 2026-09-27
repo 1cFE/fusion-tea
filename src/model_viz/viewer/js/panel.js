@@ -218,20 +218,31 @@ ModelViz.panel = (function () {
       section("inputs", `Inputs (${calc.inputs.length})`, [inputs]),
       section("outputs", `Outputs (${calc.outputs.length})`, [outputs])
     );
+    delete panelElement.dataset.partOccurrenceId;
     panelElement.dataset.calcNodeId = calc.nodeId;
     panelElement.scrollTop = 0;
   }
 
-  function renderPlaceholder(panelElement) {
+  const PLACEHOLDER_TEXT = {
+    calcs: "Select a calc in the graph to see its formula, documentation, inputs and outputs.",
+    structure: "Select a part in the structure to see its type, calcs and attributes.",
+  };
+
+  // The empty panel for a view ("calcs" or "structure").
+  function renderPlaceholder(panelElement, view) {
+    if (!(view in PLACEHOLDER_TEXT)) throw new Error(`panel: no placeholder for view ${view}`);
     delete panelElement.dataset.calcNodeId;
-    panelElement.replaceChildren(el("p", { className: "placeholder", text: "Select a calc in the graph to see its formula, documentation, inputs and outputs." }));
+    delete panelElement.dataset.partOccurrenceId;
+    panelElement.replaceChildren(el("p", { className: "placeholder", text: PLACEHOLDER_TEXT[view] }));
   }
 
   // A panel-level warning for a link or search whose target is not in the model.
   function renderMissingCalc(panelElement, key) {
     delete panelElement.dataset.calcNodeId;
+    delete panelElement.dataset.partOccurrenceId;
     panelElement.replaceChildren(el("p", { "data-role": "missing-calc" }, [warning(`No calc ${key} in this snapshot; nothing to show.`)]));
   }
 
-  return { renderPanel, renderPlaceholder, renderMissingCalc };
+  // dom: the DOM helpers part_panel.js reuses (D24).
+  return { renderPanel, renderPlaceholder, renderMissingCalc, dom: { el, warning, section, displayValue, calcLink } };
 })();
