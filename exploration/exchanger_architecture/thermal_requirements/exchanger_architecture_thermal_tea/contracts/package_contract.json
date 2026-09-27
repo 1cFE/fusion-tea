@@ -10,7 +10,7 @@
     "handwritten/aries_cs_plasma_integration/plasma/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
     "handwritten/aries_cs_plasma_integration/plasma/edge_density_impl.py": "197059272f9574efd30be0329a43733b28529fc3b3b7b9a444e434086a2a3bf5",
     "handwritten/controlled_exchanger_closure/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
-    "handwritten/controlled_exchanger_closure/controlled_network_heat_driven_closure_impl.py": "0adc7b3661f7c3eae7cb8976b84ef9461da61a0fe5b99e0f9e667fd63a0f58bd",
+    "handwritten/controlled_exchanger_closure/controlled_network_heat_driven_closure_impl.py": "2ce90995a4df2698ce3b83744902093107c54b229e2924bc109c3c21b221a02a",
     "handwritten/controlled_exchanger_closure/legacy_network.py": "28eb7dd86abf68ad53b4f8d937c5a6cd6b5991b97ea58edc9d61b2254cebf6b4",
     "handwritten/controlled_exchanger_closure/legacy_support.py": "d39e9945d78a86f38223359dad8dac71be69fbaac9ffa346eb2a75a405cbcf3d",
     "handwritten/dual_circuit_heat_accounting/__init__.py": "200b1c90d646c8c58c2644945ee551dddc12adcfdab30b7ae4197891284a70c8",
@@ -212,7 +212,7 @@
     ],
     "runtime_output_globs": []
   },
-  "executable_fingerprint": "cd16e8deb2f579e4cb1afcaf0fedbfc53498ba125783fbf8e17af14ffb4cbcc7",
+  "executable_fingerprint": "668b903599f995fd6e9038d61a2401144d79f1db13f221b4a663df7cb24a2a23",
   "generator_version": "0.1.1",
   "package_name": "exchanger_architecture_thermal_tea",
   "runtime_contract_version": "2.0.0"

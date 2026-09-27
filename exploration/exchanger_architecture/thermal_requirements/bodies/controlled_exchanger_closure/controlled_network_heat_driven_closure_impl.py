@@ -23,11 +23,11 @@ def conductance(ua, ch, cs):
         return 0.0
     low, high = min(ch, cs), max(ch, cs)
     ratio, ntu = low / high, ua / low
-    if abs(1.0 - ratio) < 1e-10:
+    if ratio == 1.0:
         epsilon = ntu / (1.0 + ntu)
     else:
-        exponent = -ntu * (1.0 - ratio)
-        epsilon = -math.expm1(exponent) / (1.0 - ratio * math.exp(exponent))
+        loss = -math.expm1(-ntu * (1.0 - ratio))
+        epsilon = loss / ((1.0 - ratio) + ratio * loss)
     return epsilon * low
 
 
