@@ -45,3 +45,7 @@ Earlier audits, rejected design submissions, source-matching probes and failed d
 ## Evidence seal
 
 Blocked snapshot SHA256: `1e8a19872852e19390eba76445e11a866c5da8fb9f791122b6b64d6e16b66641`. All 635 retained artifact hashes were checked after sealing. This confirms preservation, not numerical acceptance.
+
+## Reporting correction
+
+The [cause-attribution addendum](../../../../../exploration/component_alternatives/studies/20260926-design-study-component-alternatives/addendum-20260926-cause-attribution.md) corrects the original finding #1: six cases fail verification, but only c0206 has an independently diagnosed cooler cause. The snapshot and results remain unchanged.

@@ -4,7 +4,7 @@
 
 ## Exact unresolved requirement
 
-The model must reproduce required scalar outputs within the predeclared verification tolerances: normally relative error below 1e−9, with named absolute classes declared before execution. Six cases fail this requirement. Two are efficiency sensitivities that pass all implemented engineering checks. Every case is retained.
+The model must reproduce required scalar outputs within the predeclared verification tolerances: normally relative error below 1e−9, with named absolute classes declared before execution. Six cases fail this requirement. Two are efficiency sensitivities that pass all implemented engineering checks. Every case is retained. The two otherwise-passing sensitivity cases disagree on bypass flow and helium hot-bound margin. Their causes were not independently isolated; the cooler diagnosis below applies to case c0206. A [record addendum](../../../../exploration/component_alternatives/studies/20260926-design-study-component-alternatives/addendum-20260926-cause-attribution.md) corrects the original findings row without changing sealed evidence.
 
 The clearest failure is `gas-q2800-m2250-r1.35-ua25-25-25`. Its precooler water warms by only about 0.02884 K. A tiny outlet-temperature error therefore produces a larger relative error in calculated water flow and pumping demand. The native cooler meets its local UA residual stopping criterion, but its flow differs from an independent 60-digit result by about 1.03e−8 relative. The oracle agrees with that independent result to about 1.04e−12. This is a native numerical accuracy shortfall, not a demonstrated oracle error. See the [independent failure review](evidence/verification-failure-review.md).
 
