@@ -1,0 +1,221 @@
+{
+  "interactions": [
+    {
+      "scenario": "gas-favourable-gas-quote-x0.5-steam-x1.5",
+      "performance": "gas-favourable",
+      "gas_quote_factor": 0.5,
+      "steam_quote_factor": 1.5,
+      "admitted_aliases": 40,
+      "eligibility_basis": "full performance catalog; positive price changes preserve physical eligibility"
+    },
+    {
+      "scenario": "steam-favourable-gas-quote-x1.5-steam-x0.5",
+      "performance": "steam-favourable",
+      "gas_quote_factor": 1.5,
+      "steam_quote_factor": 0.5,
+      "admitted_aliases": 22,
+      "eligibility_basis": "full performance catalog; positive price changes preserve physical eligibility"
+    }
+  ],
+  "economic_crossings": [
+    {
+      "performance": "gas-favourable",
+      "source_MW": 2500.0,
+      "path": "gas quote factor 1+t*(gas_endpoint-1); steam quote factor 1+t*(steam_endpoint-1)",
+      "gas_endpoint": 0.5,
+      "steam_endpoint": 1.5,
+      "t_domain": [
+        0.0,
+        1.0
+      ],
+      "endpoint_gaps": [
+        83.39126450559024,
+        10.033584646572592
+      ],
+      "endpoint_best": [
+        {
+          "gas": 509.3879066019891,
+          "steam": 425.99664209639883
+        },
+        {
+          "gas": 477.2058669247667,
+          "steam": 467.17228227819413
+        }
+      ],
+      "interpretation": "finite catalog reranking at fixed performance; native confirmation required",
+      "disposition": "no crossing in declared positive quote path"
+    },
+    {
+      "performance": "gas-favourable",
+      "source_MW": 2800.0,
+      "path": "gas quote factor 1+t*(gas_endpoint-1); steam quote factor 1+t*(steam_endpoint-1)",
+      "gas_endpoint": 0.5,
+      "steam_endpoint": 1.5,
+      "t_domain": [
+        0.0,
+        1.0
+      ],
+      "endpoint_gaps": [
+        37.03359783511752,
+        -29.36463534420278
+      ],
+      "endpoint_best": [
+        {
+          "gas": 424.0264258334736,
+          "steam": 386.99282799835606
+        },
+        {
+          "gas": 397.3765128271898,
+          "steam": 426.7411481713926
+        }
+      ],
+      "interpretation": "finite catalog reranking at fixed performance; native confirmation required",
+      "disposition": "crossing bracket proposed",
+      "oracle_bracket_t": [
+        0.5577392713928223,
+        0.5577592713928222
+      ],
+      "bracket_results": [
+        {
+          "t": 0.5577392713928223,
+          "gap": 0.0006956399127489021,
+          "best": {
+            "gas": 409.1627227706668,
+            "steam": 409.16202713075404
+          },
+          "scenario": "economic-bracket-gas-favourable-q2800-lower"
+        },
+        {
+          "t": 0.5577592713928222,
+          "gap": -0.0006323247508248642,
+          "best": {
+            "gas": 409.16218977240663,
+            "steam": 409.16282209715746
+          },
+          "scenario": "economic-bracket-gas-favourable-q2800-upper"
+        }
+      ]
+    },
+    {
+      "performance": "steam-favourable",
+      "source_MW": 2500.0,
+      "path": "gas quote factor 1+t*(gas_endpoint-1); steam quote factor 1+t*(steam_endpoint-1)",
+      "gas_endpoint": 1.5,
+      "steam_endpoint": 0.5,
+      "t_domain": [
+        0.0,
+        1.0
+      ],
+      "endpoint_gaps": [
+        886.3308455592146,
+        1004.9690503365354
+      ],
+      "endpoint_best": [
+        {
+          "gas": 1278.245587991866,
+          "steam": 391.91474243265134
+        },
+        {
+          "gas": 1359.0024133833463,
+          "steam": 354.0333630468109
+        }
+      ],
+      "interpretation": "finite catalog reranking at fixed performance; native confirmation required",
+      "disposition": "no crossing in declared positive quote path"
+    },
+    {
+      "performance": "steam-favourable",
+      "source_MW": 2800.0,
+      "path": "gas quote factor 1+t*(gas_endpoint-1); steam quote factor 1+t*(steam_endpoint-1)",
+      "gas_endpoint": 1.5,
+      "steam_endpoint": 0.5,
+      "t_domain": [
+        0.0,
+        1.0
+      ],
+      "endpoint_gaps": [
+        3063.769704954185,
+        3315.2435110119
+      ],
+      "endpoint_best": [
+        {
+          "gas": 3419.633493208042,
+          "steam": 355.86378825385736
+        },
+        {
+          "gas": 3634.5562658353288,
+          "steam": 319.31275482342875
+        }
+      ],
+      "interpretation": "finite catalog reranking at fixed performance; native confirmation required",
+      "disposition": "no crossing in declared positive quote path"
+    }
+  ],
+  "cryogenic_brackets": [
+    {
+      "source_MW": 2500.0,
+      "end": "below",
+      "threshold_W_m3": 75.43260142820313,
+      "chosen": {
+        "cryogenic_demand__q_nuc_W_m3": 75.43259142820312,
+        "cryogenic_demand__extra_cold_W": 0.0
+      },
+      "point_id": "178c062bdd312982bf80e21ef6baf2bf203a1c0b2be2071115275d9771d70c16",
+      "failed": {
+        "steam": [],
+        "gas": []
+      }
+    },
+    {
+      "source_MW": 2500.0,
+      "end": "above",
+      "threshold_W_m3": 75.43260142820313,
+      "chosen": {
+        "cryogenic_demand__q_nuc_W_m3": 75.43261142820313,
+        "cryogenic_demand__extra_cold_W": 0.0
+      },
+      "point_id": "573420a1c11cf2dd6a238e6dd4ac9f9f115e8e2d9fa7ff7589b64f3e6a4177cf",
+      "failed": {
+        "steam": [
+          "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+        ],
+        "gas": [
+          "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+        ]
+      }
+    },
+    {
+      "source_MW": 2800.0,
+      "end": "below",
+      "threshold_W_m3": 75.43260142820313,
+      "chosen": {
+        "cryogenic_demand__q_nuc_W_m3": 75.43259142820312,
+        "cryogenic_demand__extra_cold_W": 0.0
+      },
+      "point_id": "cd1780c897de5c8118e4353712e6092c4ffa59be45dfa434c80ef547da52c7e5",
+      "failed": {
+        "steam": [],
+        "gas": []
+      }
+    },
+    {
+      "source_MW": 2800.0,
+      "end": "above",
+      "threshold_W_m3": 75.43260142820313,
+      "chosen": {
+        "cryogenic_demand__q_nuc_W_m3": 75.43261142820313,
+        "cryogenic_demand__extra_cold_W": 0.0
+      },
+      "point_id": "aa2978513ba74e3a0faca18629baff71c19e07c7574d9037c6ceec7c73f95d85",
+      "failed": {
+        "steam": [
+          "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+        ],
+        "gas": [
+          "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d"
+        ]
+      }
+    }
+  ],
+  "added_unique_points": 90
+}

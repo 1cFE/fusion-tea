@@ -1,0 +1,1 @@
+channel off tolerance on case 20260927-design-study-whole-plant-conversion:c2438, channel whole_plant_conversion__plant__cryogenic_demand__evaluate__cold_margin_W: store 0.003072599989536684, oracle 0.0030725999968126416, relative deviation 2.368e-09 (tolerance 1e-09); absolute error 7.276e-12 (declared tolerance 0)

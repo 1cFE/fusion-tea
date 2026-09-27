@@ -1,0 +1,46 @@
+{
+  "status": "frozen independent preparation; native confirmation required",
+  "integration_candidate": {
+    "package": "exploration/whole_plant_conversion/whole_plant_conversion_tea",
+    "manifest": "exploration/whole_plant_conversion/studies/manifest.json",
+    "pin": "89acea93750da8794f74883315fb0ff658d6213d0d4b2ffcaf2b1edb320deeae",
+    "semantic_fingerprint": "bb284160ba12996bc129ba91c1838aed3281d54dc0e729fe03ca02a9d413d6e3",
+    "executable_fingerprint": "6915694e74919ebb764445dfc7f0782eda85a9de29fa44c4b55ffa415c1eb30f",
+    "identity_document": "work/orchestration/goals/design-study-whole-plant-conversion/evidence/integration/package_identity.json",
+    "baseline_result": "work/orchestration/goals/design-study-whole-plant-conversion/evidence/integration/baseline_result.json",
+    "verification_summary": "work/orchestration/goals/design-study-whole-plant-conversion/evidence/integration/verification_summary.json"
+  },
+  "unique_complete_points": 2496,
+  "alias_count": 2651,
+  "native_evaluation_budget": 3000,
+  "artifact_sha256": {
+    "README.md": "f98e9751874620c77dd2a035f7aca1b55cc641f33d5cb485304ea31512bd7b4f",
+    "admission-audit.json": "7be5d7227d5d6f0379587ff271c57605af718efa1e8385cd9cbf45d98c9d6725",
+    "anchors.json": "421701dae1932964283e9e2bfa5b9da6c0f911813e85bfdaaf739621a82c8667",
+    "baseline.json": "16fe592b3988a73adc8c113c4122f2487283e0504e72970f83edebe6ddc5404e",
+    "case-membership.json": "3dc07c2f7bea07e95d73faae782639de0e35c9e7ed58489479a3a04138a8f3ab",
+    "extension-plan.json": "f2af7f6299c3c3916a773ec232301aebf1836b9873c90a706478f66ce2f0c5e5",
+    "interaction-admission-audit.json": "bce91871f54745549cc881ee41f4325e0f1d115b23fcdeab4943dba5f9658e98",
+    "oracle-scan.json": "b713eca23c0a2f973018d1c7ea85ca4a95b825bc2f409e8d949213343b6c7cfe",
+    "predicate-catalog.json": "e2eaf8ebffe37da5e489d298bb24c6a946e24a9cdadd6d1c21ae88eeb68e0940",
+    "predicate-input-dependencies.json": "0079e0258d606eef3595e09117af5dba3a393b94a634a3cff8676cf27a3304a8",
+    "proposed-points.json": "55782d25a4c7a6818547e9fe1b587deb79bd3d6ef8535b07ec858e14ab6e1217",
+    "reporting-band-plan.json": "cff0ee0f0a55b03102b0d42827bb3a1f354334309b4e29a7e1fdd6184f408547",
+    "scenario-scan.json": "cb8dba6905f7921b155695655cc404b940fbdd99d4c338bf769cb13071f3c936",
+    "summary-before-extension.json": "0b9d114b5abb97a0eea61bd6bd8642384a0b6cdb3d0b64017ae0d617e4d7f1c2",
+    "summary.json": "59438e63dd6146a14d5d2ab72cf21bc2155d62a6565b42ab4550d3da9702c2f8",
+    "window.json": "687ac87f37f8e6a5a982f962eaed86ec72d36187ca8c62852e4e78f80acd86bc"
+  },
+  "code_sha256": {
+    "exploration/whole_plant_conversion/studies/scan_catalog.py": "75cf3cfdd7df72f76464825948ada29322cc0512f854d4f532d31e1c7404252d",
+    "exploration/whole_plant_conversion/studies/proposals.py": "fb4ba469cf08648eb9e27694eff6e6726306f2908008666b7a2a0d6159445971",
+    "exploration/whole_plant_conversion/studies/scenarios.py": "fe7bfc8ef4bbb52fc75785158e1db1bd01569cfa85e6904ab05e1ea88db0fd43",
+    "exploration/whole_plant_conversion/verify.py": "e527b204f14b399b3c5be78d8c0005de30445ed2cae80193a2aec125a6e56e72",
+    "exploration/whole_plant_conversion/oracle_cooling.py": "684e2b786e3e169cd2653dbfc12f06206e46c90b9ca063d23633badc10f0fd6c",
+    "exploration/whole_plant_conversion/oracle_fuel_inventory.py": "8b4a2334e9a165f002ab4b4fabed052e90c6e9125631230f3db5e2433212d2ee",
+    "exploration/whole_plant_conversion/oracle_gas.py": "0ec5245e352934debbfa9c06f21e2248ef1f54351350ec84114feb0262812680",
+    "exploration/whole_plant_conversion/oracle_matched_cycle.py": "b6addafe52e6f74a20a56186de3cea1f4b58f7a3a807fd2492d4bd848939f7cc",
+    "exploration/whole_plant_conversion/oracle_thermal.py": "5d77285a3c816f8ce88a6da83b0b7f1ef98eefc7cdd06186c05fe6cbe360b417",
+    "exploration/whole_plant_conversion/oracle_whole_plant.py": "06150e65776c5008ff3526535c0d4c12d35d0cda7aa85e250bafe620c68361aa"
+  }
+}

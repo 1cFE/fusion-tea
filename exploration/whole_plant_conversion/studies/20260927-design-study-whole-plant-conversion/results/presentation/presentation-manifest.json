@@ -1,0 +1,30 @@
+{
+  "renderer_sha256": "456759cde64b5177e0e45db6cc79649633de1576af6bfae47ad0b8f12f480224",
+  "native_input_artifacts": {
+    "results/cases.json": "d8c376386777e17cca8aa74fcc1b63a4e5fc082b11400d1fc9a41b6698d49292",
+    "proposed-points.json": "55782d25a4c7a6818547e9fe1b587deb79bd3d6ef8535b07ec858e14ab6e1217",
+    "preparation/case-membership.json": "3dc07c2f7bea07e95d73faae782639de0e35c9e7ed58489479a3a04138a8f3ab",
+    "preparation/predicate-catalog.json": "e2eaf8ebffe37da5e489d298bb24c6a946e24a9cdadd6d1c21ae88eeb68e0940"
+  },
+  "artifacts": {
+    "README.md": "b2da36d63e8cd95262688d9726c858b9f8d5c752693c4bc1a41ee76e033c4dca",
+    "attempted-case-ledger.csv": "91228adf30bce38b19857a42f83f836e22f67b13e148bbc88a80e5093818a6e1",
+    "economic-boundary-context.json": "b5b44db079740d970c5f3ca8b8fe4aa4161c2355acf9bcf00fc3798cd90e4c36",
+    "mapping-used.json": "bd8711062d7cc5353d98278d139ec890d5ffb7ef8a6f4dcd3ab0a060d280c7c3",
+    "matched-account-table.csv": "78c9302cc8c28f02275b674a432496017aba8ffbb41280b0a8d731a09e593232",
+    "matched-pairs.csv": "646e5bec38743eda85e90dc50fddd3a283c8393a806021abf0438bb3ea2014ac",
+    "native-ranking.csv": "1943ac0151620559e7dd3a65df5abc02803ae3ed168eb4743f52f74e5bab377a",
+    "native-ranking.json": "5eb8fae96dbb1aca97645ec595d019399ef5496c94fce313f0385ffec0d5d515",
+    "power-budget.png": "a4b8064fd464d9e8ee0cdd32e4f0bbf624d8e0ac2b214d8b42a665f1d47c983c",
+    "power-budget.svg": "76e02df6e54bb47bc6fa57e2bf640966963c3ccba7c98aaee875057de58291a7",
+    "predecessor-context.csv": "88543388b748e66ed6a2d1de2b9031efc1057fc7ad3a4776e0fafe5b6ddfea4d",
+    "predecessor-context.json": "72aa879387a1ea0aeed5ae6140752346ac3216ba28b5b90b3d5525189cdf3f42",
+    "preference-gap.png": "8f965ad93c13159876038f27c1a15ff0a35ea0a27cef3ae9fcf4f89769b75d09",
+    "preference-gap.svg": "d23dac5b1e13850fd3b92c1288d491a149f74d685644b4b6cb29ec037a811f3e",
+    "preference-sensitivity.png": "6b2e168c5a2f8167f899d5fec2f5995ec356fabd7ad80b15b967291e9f38980d",
+    "preference-sensitivity.svg": "97e69e6fd543ab3295c8c80b16aa02d5e8bc99f226e6b0be5980cc816f9738bd",
+    "scenario-summary.json": "ce0b8b2528103a0d39e5ac1fa9c24f5fcc3057c52c75db44162559a39921ac44",
+    "whole-cost-contributions.png": "ab65bbd160b27ea95c3be302bd18e8c9a6e1a2a12071ca5d40fd590e95ecb8b7",
+    "whole-cost-contributions.svg": "7c3d9d8f0606b19ae00c697ddfe6a994d650560c631d86f5586e8e8ddbecc2c1"
+  }
+}

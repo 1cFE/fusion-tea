@@ -1,0 +1,58 @@
+{
+  "materiality_band_USD2025_MWh": 5.0,
+  "interpretation": "strict zero crossing is algebraic; absolute gas-minus-steam gap at most five is reporting-indeterminate",
+  "brackets": [
+    {
+      "target_gap_USD2025_MWh": 5.0,
+      "source_MW": 2800.0,
+      "performance": "gas-favourable",
+      "path": "gas factor=1-0.5t; steam factor=1+0.5t",
+      "bracket": [
+        {
+          "scenario": "reporting-band-gap+5-q2800-lower",
+          "t": 0.4824365396331414,
+          "gap_USD2025_MWh": 5.000663982331957,
+          "best": {
+            "gas": 411.1695340211979,
+            "steam": 406.1688700388659
+          }
+        },
+        {
+          "scenario": "reporting-band-gap+5-q2800-upper",
+          "t": 0.48245653963314145,
+          "gap_USD2025_MWh": 4.999336017668384,
+          "best": {
+            "gas": 411.1690010229377,
+            "steam": 406.16966500526934
+          }
+        }
+      ]
+    },
+    {
+      "target_gap_USD2025_MWh": -5.0,
+      "source_MW": 2800.0,
+      "performance": "gas-favourable",
+      "path": "gas factor=1-0.5t; steam factor=1+0.5t",
+      "bracket": [
+        {
+          "scenario": "reporting-band-gap-5-q2800-lower",
+          "t": 0.6330429567194699,
+          "gap_USD2025_MWh": -4.999336017668213,
+          "best": {
+            "gas": 407.155886107659,
+            "steam": 412.1552221253272
+          }
+        },
+        {
+          "scenario": "reporting-band-gap-5-q2800-upper",
+          "t": 0.6330629567194698,
+          "gap_USD2025_MWh": -5.000663982331787,
+          "best": {
+            "gas": 407.155353109399,
+            "steam": 412.1560170917308
+          }
+        }
+      ]
+    }
+  ]
+}

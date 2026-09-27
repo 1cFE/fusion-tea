@@ -1,0 +1,730 @@
+{
+  "groups": [
+    {
+      "axis": "auxiliary_rejection_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::auxiliary_rejection_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "blanket_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::blanket_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "compressor_1_efficiency",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::compressor_1::efficiency. Hypothetical performance sensitivity.",
+      "judged": null
+    },
+    {
+      "axis": "compressor_1_selected_ratio",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::compressor_1::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred.",
+      "judged": null
+    },
+    {
+      "axis": "compressor_2_efficiency",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::compressor_2::efficiency. Hypothetical performance sensitivity.",
+      "judged": null
+    },
+    {
+      "axis": "compressor_2_selected_ratio",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::compressor_2::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred.",
+      "judged": null
+    },
+    {
+      "axis": "compressor_3_efficiency",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::compressor_3::efficiency. Hypothetical performance sensitivity.",
+      "judged": null
+    },
+    {
+      "axis": "compressor_3_selected_ratio",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::compressor_3::selected_ratio. Independent stage choice. The proposal catalog coordinates the three choices at equal values; no physical identity is inferred.",
+      "judged": null
+    },
+    {
+      "axis": "compressor_equipment_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::compressor_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer.",
+      "judged": null
+    },
+    {
+      "axis": "conversion_services_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::conversion_services::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer.",
+      "judged": null
+    },
+    {
+      "axis": "cryogenic_demand_extra_cold_W",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::cryogenic_demand::extra_cold_W. Sensitivity: supplied nuclear/extra cold heat at fixed captured geometry and selected cryoplant. These engineered stresses are not qualified transport uncertainty bounds.",
+      "judged": null
+    },
+    {
+      "axis": "cryogenic_demand_q_nuc_W_m3",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::cryogenic_demand::q_nuc_W_m3. Sensitivity: supplied nuclear/extra cold heat at fixed captured geometry and selected cryoplant. These engineered stresses are not qualified transport uncertainty bounds.",
+      "judged": null
+    },
+    {
+      "axis": "cryoplant_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::cryoplant_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "cycle_selected_flow",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::cycle::selected_flow. Chosen gas operating flow at held installed ratings.",
+      "judged": null
+    },
+    {
+      "axis": "cycle_turbine_efficiency",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::cycle::turbine_efficiency. Hypothetical performance sensitivity.",
+      "judged": null
+    },
+    {
+      "axis": "digital_twin_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::digital_twin_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "divertor_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::divertor_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "facilities_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::facilities_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "finance_availability",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::availability. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "finance_commissioning_rate",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::commissioning_rate. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "finance_contingency_rate",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::contingency_rate. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "finance_freight_rate",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::freight_rate. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "finance_general_spares_rate",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::general_spares_rate. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "finance_indirect_rate",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::indirect_rate. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "finance_insurance_rate",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::insurance_rate. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "finance_rate",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::rate. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "finance_tax_rate",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::finance::tax_rate. Sensitivity: shared whole-plant finance or account-overhead assumption; both branches and event ledgers consume this single owner through native bindings.",
+      "judged": null
+    },
+    {
+      "axis": "fuel_accounts_tbr",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::fuel_accounts::tbr. Sensitivity: declared breeding or fuel-price assumption; fuel flows remain calculated at the shared source and availability.",
+      "judged": null
+    },
+    {
+      "axis": "fuel_accounts_tritium_price",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::fuel_accounts::tritium_price. Sensitivity: declared breeding or fuel-price assumption; fuel flows remain calculated at the shared source and availability.",
+      "judged": null
+    },
+    {
+      "axis": "fuel_processing_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::fuel_processing_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "gas_boundary_bypass_flow_rating",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::gas_boundary::bypass_flow_rating. Full or deliberately undersized purchased controller offer.",
+      "judged": null
+    },
+    {
+      "axis": "gas_ledger_annual_service_fraction",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::gas_ledger::annual_service_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit.",
+      "judged": null
+    },
+    {
+      "axis": "gas_ledger_capital9",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::gas_ledger::capital9. Selected cycle-transport quote in USD2004; physical scope held.",
+      "judged": null
+    },
+    {
+      "axis": "gas_ledger_controller_capital",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::gas_ledger::controller_capital. Hypothetical controller quote paired with its declared flow rating; also subject to branch quote sensitivity.",
+      "judged": null
+    },
+    {
+      "axis": "gas_ledger_replacement_fraction",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::gas_ledger::replacement_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit.",
+      "judged": null
+    },
+    {
+      "axis": "generator_equipment_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::generator_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer.",
+      "judged": null
+    },
+    {
+      "axis": "he_duty_equipment_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::he_duty_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer.",
+      "judged": null
+    },
+    {
+      "axis": "he_hx_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::he_hx::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer.",
+      "judged": null
+    },
+    {
+      "axis": "heat_rejection_equipment_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::heat_rejection_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer.",
+      "judged": null
+    },
+    {
+      "axis": "heating_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::heating_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "installation_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::installation_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "land_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::land_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "magnet_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::magnet_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "miscellaneous_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::miscellaneous_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "other_reactor_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::other_reactor_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "owner_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::owner_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "pbl_initial_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::pbl_initial_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "power_supplies_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::power_supplies_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "primary_circulators_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::primary_circulators_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "primary_helium_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::primary_helium_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "primary_loop_eta_drive",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::primary_loop::eta_drive. Sensitivity: declared upstream electrical efficiency, with native electrical and auxiliary-rejection consequences.",
+      "judged": null
+    },
+    {
+      "axis": "primary_loop_n_loops",
+      "framing": "sensitivity",
+      "executed": false,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::primary_loop::n_loops. Declared but declined: Held 14-path primary inventory; changing it alone violates the captured installed-path identity rather than selecting a costed reactor redesign.",
+      "judged": null
+    },
+    {
+      "axis": "primary_pipes_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::primary_pipes_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "primary_spares_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::primary_spares_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "reactor_controls_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::reactor_controls_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "recuperator_hardware_ua",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::recuperator_hardware::ua. Installed capability selected from an explicitly priced coordinated service offer.",
+      "judged": null
+    },
+    {
+      "axis": "remote_handling_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::remote_handling_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "shared_electrical_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::shared_electrical_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "shield_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::shield_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "source_basis_heating_source_efficiency",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::source_basis::heating_source_efficiency. Sensitivity: declared upstream electrical efficiency, with native electrical and auxiliary-rejection consequences.",
+      "judged": null
+    },
+    {
+      "axis": "source_basis_q_source_MW",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::source_basis::q_source_MW. Sensitivity: independently supplied hot source at 2500/2800/3000 MW. Fusion and primary demand are calculated; 3000 MW failures remain visible. This is not a reactor geometry or sustainment search.",
+      "judged": null
+    },
+    {
+      "axis": "source_installation_allowance_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::source_installation_allowance_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "source_installation_allowance_account_quote_USD2025",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::source_installation_allowance_account::quote_USD2025. Sensitivity: declared source installation allowance in USD2025, with no implied hardware qualification.",
+      "judged": null
+    },
+    {
+      "axis": "steam_boundary_bypass_flow_rating",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_boundary::bypass_flow_rating. Full or deliberately undersized purchased controller offer.",
+      "judged": null
+    },
+    {
+      "axis": "steam_cycle_condenser_temperature_C",
+      "framing": "sensitivity",
+      "executed": false,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_cycle::condenser_temperature_C. Declared but declined: Held reviewed property point; not physically tied to the separately selected water-sink temperatures.",
+      "judged": null
+    },
+    {
+      "axis": "steam_cycle_eta_hp",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_cycle::eta_hp. Hypothetical performance sensitivity on the selected steam offer.",
+      "judged": null
+    },
+    {
+      "axis": "steam_cycle_eta_lp",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_cycle::eta_lp. Hypothetical performance sensitivity on the selected steam offer.",
+      "judged": null
+    },
+    {
+      "axis": "steam_cycle_reheat_temperature_C",
+      "framing": "sensitivity",
+      "executed": false,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_cycle::reheat_temperature_C. Declared but declined: Held reviewed property point; varying the supplied state lacks a supported matched steam-property offer.",
+      "judged": null
+    },
+    {
+      "axis": "steam_cycle_steam_temperature_C",
+      "framing": "sensitivity",
+      "executed": false,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_cycle::steam_temperature_C. Declared but declined: Held reviewed property point; varying the supplied state lacks a supported matched steam-property offer.",
+      "judged": null
+    },
+    {
+      "axis": "steam_ledger_annual_service_fraction",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_ledger::annual_service_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit.",
+      "judged": null
+    },
+    {
+      "axis": "steam_ledger_capital3",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_ledger::capital3. Selected steam conversion or rejection aggregate quote in USD2025; physical scope held.",
+      "judged": null
+    },
+    {
+      "axis": "steam_ledger_capital4",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_ledger::capital4. Selected steam conversion or rejection aggregate quote in USD2025; physical scope held.",
+      "judged": null
+    },
+    {
+      "axis": "steam_ledger_controller_capital",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_ledger::controller_capital. Hypothetical controller quote paired with its declared flow rating; also subject to branch quote sensitivity.",
+      "judged": null
+    },
+    {
+      "axis": "steam_ledger_replacement_fraction",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_ledger::replacement_fraction. Hypothetical recurring-cost sensitivity. Separate salt event schedule remains explicit.",
+      "judged": null
+    },
+    {
+      "axis": "steam_operating_import_price",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_operating::import_price. Sensitivity: shared operating-load or imported-electricity price assumption. Gas binds the same chosen attribute; no separate gas input or tie.",
+      "judged": null
+    },
+    {
+      "axis": "steam_operating_residual_MW",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_operating::residual_MW. Sensitivity: shared operating-load or imported-electricity price assumption. Gas binds the same chosen attribute; no separate gas input or tie.",
+      "judged": null
+    },
+    {
+      "axis": "steam_transport_costscale",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_transport::costscale. Existing salt-connector cost multiplier; no physical equipment sizing.",
+      "judged": null
+    },
+    {
+      "axis": "steam_transport_n_loops",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_transport::n_loops. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14.",
+      "judged": null
+    },
+    {
+      "axis": "steam_transport_salt_pumps_per_circuit",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_transport::salt_pumps_per_circuit. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14.",
+      "judged": null
+    },
+    {
+      "axis": "steam_transport_secondary_head",
+      "framing": "sensitivity",
+      "executed": false,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_transport::secondary_head. Declared but declined: Held inherited selected pump-head assumption; no independently priced hydraulic redesign is proposed.",
+      "judged": null
+    },
+    {
+      "axis": "steam_transport_selected_salt_design_flow_kg_s",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_transport::selected_salt_design_flow_kg_s. Selected salt/IHX equipment offer. Here n_loops counts offered IHX circuits; upstream primary loop count remains held at 14.",
+      "judged": null
+    },
+    {
+      "axis": "steam_whole_magnet_life",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_whole::magnet_life. Sensitivity: shared lifecycle or routine-service allocation assumption. Gas binds the same chosen attribute; no separate gas input or tie.",
+      "judged": null
+    },
+    {
+      "axis": "steam_whole_routine_fraction",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::steam_whole::routine_fraction. Sensitivity: shared lifecycle or routine-service allocation assumption. Gas binds the same chosen attribute; no separate gas input or tie.",
+      "judged": null
+    },
+    {
+      "axis": "structure_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::structure_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "turbine_equipment_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::turbine_equipment::price_factor. Hypothetical quote sensitivity, with physical ratings held. The service quote is also part of its named equipment offer.",
+      "judged": null
+    },
+    {
+      "axis": "vessel_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::vessel_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "waste_account_price_factor",
+      "framing": "sensitivity",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::waste_account::price_factor. Sensitivity: explicit common account quote multiplier at unchanged selected hardware; coordinated common-price scenarios do not create physical ties.",
+      "judged": null
+    },
+    {
+      "axis": "water_ic1_ua",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::water_ic1::ua. Installed capability selected from an explicitly priced coordinated service offer.",
+      "judged": null
+    },
+    {
+      "axis": "water_ic2_ua",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::water_ic2::ua. Installed capability selected from an explicitly priced coordinated service offer.",
+      "judged": null
+    },
+    {
+      "axis": "water_pre_ua",
+      "framing": "search",
+      "executed": true,
+      "authority": "AGENT scope implementation of owner-requested finite equipment comparison and uncertainty scenarios",
+      "reason": "SysML attribute whole_plant_conversion::plant::water_pre::ua. Installed capability selected from an explicitly priced coordinated service offer.",
+      "judged": null
+    }
+  ],
+  "ruling": "All 90 groups have constraints_reachable. No no_constraint_response ruling is required. Price/efficiency sensitivity authority is owner-brief.md section3; graph reachability is not empirical resistance.",
+  "not_derivable": [
+    "monotonicity",
+    "same physical quantity across different keys",
+    "intra-module operand dependency"
+  ]
+}

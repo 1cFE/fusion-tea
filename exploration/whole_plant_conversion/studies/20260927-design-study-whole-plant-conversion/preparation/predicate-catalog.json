@@ -1,0 +1,1581 @@
+{
+  "whole_plant_conversion__plant__steam_lp_flow_capacity__capacity_requirement__a3fe0741c9ecff1c": {
+    "owner": "steam_lp_flow_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_lp_flow_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_lp_flow_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__salt_shaft_capacity__capacity_requirement__b2367d578fc2f1ec": {
+    "owner": "salt_shaft_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__salt_shaft_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__salt_shaft_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_condenser_capacity__capacity_requirement__21565c442e22d191": {
+    "owner": "steam_condenser_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_condenser_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_condenser_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__turbine_capacity__capacity_ok__ee860596098e7f44": {
+    "owner": "turbine_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__turbine_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__turbine_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_water_electric_capacity__capacity_requirement__e3f37a33f8f86544": {
+    "owner": "steam_water_electric_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_water_electric_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_water_electric_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_conditions__supported_required__f55a3b19d079007e": {
+    "owner": "steam_conditions",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_conditions__supported_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_conditions__supported_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__gas_boundary__exchanger_flow_margin_ok__396e8f7ff4b4cd78": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__exchanger_flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__gas_boundary__pressure_margin_ok__57cdec1e34d967ce": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__pressure_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__gas_boundary__controller_capacity_ok_ok__b340a8d5e92452b2": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "flag_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__controller_capacity_ok"
+      }
+    },
+    "authored_definition": "Required Flag"
+  },
+  "whole_plant_conversion__plant__gas_boundary__total_flow_margin_ok__b1cac73884dab807": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__total_flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__gas_boundary__bypass_fraction_margin_ok__c17576ed428ad624": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__bypass_fraction_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__gas_boundary__bypass_flow_margin_ok__44eb1a31c631c4dc": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__bypass_flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__gas_boundary__temperature_margin_ok__c3287e1bc91fd77f": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__temperature_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__gas_boundary__source_adequate_ok__665dcdd55c247bde": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "flag_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__source_adequate"
+      }
+    },
+    "authored_definition": "Required Flag"
+  },
+  "whole_plant_conversion__plant__gas_boundary__added_dp_margin_ok__cb2dbaa41d101ab2": {
+    "owner": "gas_boundary",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_boundary__evaluate__added_dp_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__gas_overheads__domain_supported_ok__37ebb2bb65f0bc13": {
+    "owner": "gas_overheads",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_overheads__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__water_pre__power_margin_ok__88cf3aa259145f02": {
+    "owner": "water_pre",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_pre__evaluate__power_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__water_pre__duty_margin_ok__43a051525223b723": {
+    "owner": "water_pre",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_pre__evaluate__duty_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__water_pre__flow_margin_ok__e81a241fb624b075": {
+    "owner": "water_pre",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_pre__evaluate__flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__water_pre__evaluation_defined_ok__84c4b3b2eb329ee0": {
+    "owner": "water_pre",
+    "branch": "gas",
+    "operands": {
+      "flag_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_pre__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Required Flag"
+  },
+  "whole_plant_conversion__plant__steam_cycle__main_admission_ok_required__9e7307c18ac5420b": {
+    "owner": "steam_cycle",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_cycle__main_admission_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_cycle__main_admission_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_cycle__reheat_admission_ok_required__46e7006e3a4fafe2": {
+    "owner": "steam_cycle",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_cycle__reheat_admission_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_cycle__reheat_admission_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_cycle__reheat_ua_available_required__34a9b54f6c90ff27": {
+    "owner": "steam_cycle",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_cycle__reheat_UA_available_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_cycle__reheat_UA_available_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_cycle__main_ua_available_required__281cb99c36b65283": {
+    "owner": "steam_cycle",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_cycle__main_UA_available_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_cycle__main_UA_available_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__source_checks__pressure_ok__e9cb76bbd569aa90": {
+    "owner": "source_checks",
+    "branch": "shared",
+    "operands": {
+      "p_loop_margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__primary_loop__evaluate__p_loop_margin"
+      }
+    },
+    "authored_definition": "Loop Pressure Margin"
+  },
+  "whole_plant_conversion__plant__source_checks__flow_ok__04e751f9ce97000b": {
+    "owner": "source_checks",
+    "branch": "shared",
+    "operands": {
+      "mdot_loop_rated_in": {
+        "kind": "input",
+        "key": "whole_plant_conversion__plant__primary_loop__mdot_loop_rated"
+      },
+      "mdot_loop_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__primary_loop__evaluate__mdot_loop"
+      }
+    },
+    "authored_definition": "Loop Capacity"
+  },
+  "whole_plant_conversion__plant__salt_flow_capacity__capacity_requirement__dd3ff75af1205c2a": {
+    "owner": "salt_flow_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__salt_flow_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__salt_flow_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_actual_approach__hot_gap_ok__8e52cd2d280b334c": {
+    "owner": "steam_actual_approach",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_actual_approach__evaluate__hot_gap"
+      }
+    },
+    "authored_definition": "Whole Plant Positive"
+  },
+  "whole_plant_conversion__plant__steam_actual_approach__cold_gap_ok__f8487fc350489be6": {
+    "owner": "steam_actual_approach",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_actual_approach__evaluate__cold_gap"
+      }
+    },
+    "authored_definition": "Whole Plant Positive"
+  },
+  "whole_plant_conversion__plant__source_basis__heating_coupled_margin_ok__26addbd9a09afc2d": {
+    "owner": "source_basis",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__source_basis__evaluate__heating_coupled_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__source_basis__heating_wall_margin_ok__7038060d9c96b5f8": {
+    "owner": "source_basis",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__source_basis__evaluate__heating_wall_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__source_basis__fusion_envelope_margin_ok__118a84d76a05a76c": {
+    "owner": "source_basis",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__source_basis__evaluate__fusion_envelope_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__source_basis__domain_supported_ok__a7d99ff729662eb5": {
+    "owner": "source_basis",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__source_basis__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__source_basis__divertor_margin_ok__77e857f8e82a3790": {
+    "owner": "source_basis",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__source_basis__evaluate__divertor_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__steam_condensate_electric_capacity__capacity_requirement__b4edc0272db0ccfd": {
+    "owner": "steam_condensate_electric_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_condensate_electric_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_condensate_electric_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_whole__outage_margin_ok__90418a10014fb429": {
+    "owner": "steam_whole",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_whole__evaluate__outage_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__steam_whole__domain_supported_ok__d85812a4b8cd9e3f": {
+    "owner": "steam_whole",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_whole__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__steam_whole__economic_defined_ok__aec3d165702acb63": {
+    "owner": "steam_whole",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_whole__evaluate__economic_defined"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__steam_feed_electric_capacity__capacity_requirement__b9644c9b953bc0ac": {
+    "owner": "steam_feed_electric_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_feed_electric_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_feed_electric_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_hp_shaft_capacity__capacity_requirement__a3fe202eb6d52755": {
+    "owner": "steam_hp_shaft_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_hp_shaft_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_hp_shaft_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__gas_ledger__balance__d86d965fca008ca2": {
+    "owner": "gas_ledger",
+    "branch": "gas",
+    "operands": {
+      "tolerance_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_ledger__evaluate__energy_tolerance"
+      },
+      "residual_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude"
+      }
+    },
+    "authored_definition": "Numerical Residual"
+  },
+  "whole_plant_conversion__plant__gas_ledger__net_positive__41d28cae11b1dbd6": {
+    "owner": "gas_ledger",
+    "branch": "gas",
+    "operands": {
+      "net_electric": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_ledger__evaluate__net_electric"
+      }
+    },
+    "authored_definition": "Net Power Positive"
+  },
+  "whole_plant_conversion__plant__steam_feed_pressure_capacity__capacity_requirement__5e891902fcc36704": {
+    "owner": "steam_feed_pressure_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_feed_pressure_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_feed_pressure_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_condensate_flow_capacity__capacity_requirement__9f500cb802e73b3a": {
+    "owner": "steam_condensate_flow_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_condensate_flow_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_condensate_flow_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__generator_capacity__capacity_ok__13f54fade9ec1f3f": {
+    "owner": "generator_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__generator_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__generator_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_reheat_ua_capacity__capacity_requirement__14e2137308151f37": {
+    "owner": "steam_reheat_ua_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_reheat_ua_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_reheat_ua_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__gas_loss_electric_capacity__capacity_requirement__ba3fad80f3006552": {
+    "owner": "gas_loss_electric_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_loss_electric_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_loss_electric_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__gas_whole__domain_supported_ok__bab43aa2eeeee822": {
+    "owner": "gas_whole",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_whole__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__gas_whole__outage_margin_ok__25e59eb98c7fca29": {
+    "owner": "gas_whole",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_whole__evaluate__outage_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__gas_whole__economic_defined_ok__5a084f6c1d99295a": {
+    "owner": "gas_whole",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_whole__evaluate__economic_defined"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__he_capacity__capacity_ok__86fcc614bddbfd3c": {
+    "owner": "he_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__he_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__he_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__supplied_core__field_margin_t_ok__4c34d4933dff04fb": {
+    "owner": "supplied_core",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__supplied_core__evaluate__field_margin_T"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__supplied_core__identity_supported_ok__121f94d9fa90b835": {
+    "owner": "supplied_core",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__supplied_core__evaluate__identity_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__supplied_core__stress_margin_pa_ok__edd9f45610c1547b": {
+    "owner": "supplied_core",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__supplied_core__evaluate__stress_margin_Pa"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__supplied_core__current_margin_ok__c67cdc1d2fb0a885": {
+    "owner": "supplied_core",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__supplied_core__evaluate__current_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__supplied_core__fit_margin_ok__d3fcebf466168c53": {
+    "owner": "supplied_core",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__supplied_core__evaluate__fit_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__supplied_core__strain_margin_ok__2d8a80d5407aa7bd": {
+    "owner": "supplied_core",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__supplied_core__evaluate__strain_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__water_ic1__flow_margin_ok__1dd1c3a1e5784553": {
+    "owner": "water_ic1",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_ic1__evaluate__flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__water_ic1__evaluation_defined_ok__1371e750cffff108": {
+    "owner": "water_ic1",
+    "branch": "gas",
+    "operands": {
+      "flag_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_ic1__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Required Flag"
+  },
+  "whole_plant_conversion__plant__water_ic1__duty_margin_ok__dfd546f8f5ee868f": {
+    "owner": "water_ic1",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_ic1__evaluate__duty_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__water_ic1__power_margin_ok__5b880ab5fc02b1dc": {
+    "owner": "water_ic1",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_ic1__evaluate__power_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__steam_rejection_capacity__capacity_requirement__550b287c6e69de07": {
+    "owner": "steam_rejection_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_rejection_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_rejection_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__gas_operating__auxiliary_margin_mw_ok__15f9aaa632609eef": {
+    "owner": "gas_operating",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_operating__evaluate__auxiliary_margin_MW"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__gas_operating__annual_net_grid_mwh_ok__1220a0098a3e5f94": {
+    "owner": "gas_operating",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_operating__evaluate__annual_net_grid_MWh"
+      }
+    },
+    "authored_definition": "Whole Plant Positive"
+  },
+  "whole_plant_conversion__plant__gas_operating__domain_supported_ok__e50b966764ec28c8": {
+    "owner": "gas_operating",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_operating__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__gas_operating__net_export_mw_ok__58d3569ea9297329": {
+    "owner": "gas_operating",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_operating__evaluate__net_export_MW"
+      }
+    },
+    "authored_definition": "Whole Plant Positive"
+  },
+  "whole_plant_conversion__plant__cryogenic_demand__intercept_margin_w_ok__c8cb8040676afc38": {
+    "owner": "cryogenic_demand",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__cryogenic_demand__evaluate__intercept_margin_W"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__cryogenic_demand__cold_margin_w_ok__7dcadae371ddbe6d": {
+    "owner": "cryogenic_demand",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__cryogenic_demand__evaluate__cold_margin_W"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__cryogenic_demand__domain_supported_ok__e5d086f806f615c2": {
+    "owner": "cryogenic_demand",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__cryogenic_demand__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__steam_transport__ihx_capacity_ok_required__98f15d4abb4b4604": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__ihx_capacity_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__ihx_capacity_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__motor_factor_ok_required__c7270c7cda57bab6": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__motor_factor_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__motor_factor_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__design_motor_base_ok_required__f884c33dd8381ddf": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__design_motor_base_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__design_motor_base_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__design_pump_type_ok_required__9883fd28033f69dd": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__design_pump_type_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__design_pump_type_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__pump_type_ok_required__ddc3748fb76b74c1": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__pump_type_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__pump_type_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__salt_head_ok_required__12b011d2b9b50c5e": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__salt_head_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__salt_head_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__salt_flow_regime_ok_required__4214cdcb871abc4e": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__salt_flow_regime_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__salt_flow_regime_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__motor_base_ok_required__b639a4539ef58c7f": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__motor_base_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__motor_base_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__design_motor_factor_ok_required__388250a54e30378f": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__design_motor_factor_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__design_motor_factor_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__design_pump_size_ok_required__0aad92e0e5d98e78": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__design_pump_size_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__design_pump_size_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_transport__pump_size_ok_required__b7783d5e6b21b1ec": {
+    "owner": "steam_transport",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__pump_size_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_transport__pump_size_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_water__cooling_approach_ok_required__8456fcd9f50ebe3a": {
+    "owner": "steam_water",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_water__cooling_approach_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_water__cooling_approach_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_overheads__domain_supported_ok__79a050b3100a6489": {
+    "owner": "steam_overheads",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_overheads__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__steam_ledger__net_positive__02f91f11a35b318a": {
+    "owner": "steam_ledger",
+    "branch": "steam",
+    "operands": {
+      "net_electric": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_ledger__evaluate__net_electric"
+      }
+    },
+    "authored_definition": "Net Power Positive"
+  },
+  "whole_plant_conversion__plant__steam_ledger__balance__e1489f8b74e321d3": {
+    "owner": "steam_ledger",
+    "branch": "steam",
+    "operands": {
+      "tolerance_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_ledger__evaluate__energy_tolerance"
+      },
+      "residual_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude"
+      }
+    },
+    "authored_definition": "Numerical Residual"
+  },
+  "whole_plant_conversion__plant__steam_lp_shaft_capacity__capacity_requirement__5eb83cc804af4b97": {
+    "owner": "steam_lp_shaft_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_lp_shaft_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_lp_shaft_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_condensate_pressure_capacity__capacity_requirement__81d8ff0ab723193e": {
+    "owner": "steam_condensate_pressure_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_condensate_pressure_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_condensate_pressure_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_operating__auxiliary_margin_mw_ok__95e4e54a80aa3248": {
+    "owner": "steam_operating",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_operating__evaluate__auxiliary_margin_MW"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__steam_operating__net_export_mw_ok__f2f015c4f9fa63ae": {
+    "owner": "steam_operating",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_operating__evaluate__net_export_MW"
+      }
+    },
+    "authored_definition": "Whole Plant Positive"
+  },
+  "whole_plant_conversion__plant__steam_operating__annual_net_grid_mwh_ok__e95e0d4ecf3512d0": {
+    "owner": "steam_operating",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_operating__evaluate__annual_net_grid_MWh"
+      }
+    },
+    "authored_definition": "Whole Plant Positive"
+  },
+  "whole_plant_conversion__plant__steam_operating__domain_supported_ok__8292960083cc99b1": {
+    "owner": "steam_operating",
+    "branch": "steam",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_operating__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__gas_loss_water__cooling_approach_ok_required__8223dadecc4964f5": {
+    "owner": "gas_loss_water",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_loss_water__cooling_approach_ok_required_screen__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_loss_water__cooling_approach_ok_required_screen__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__gas_loss_flow_capacity__capacity_requirement__111ef92c45f0ac07": {
+    "owner": "gas_loss_flow_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_loss_flow_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_loss_flow_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__recuperator_duty_capacity__capacity_requirement__751eb0b036d86809": {
+    "owner": "recuperator_duty_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__recuperator_duty_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__recuperator_duty_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__gas_actual_approach__cold_gap_ok__7e84344c8ebe1f06": {
+    "owner": "gas_actual_approach",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_actual_approach__evaluate__cold_gap"
+      }
+    },
+    "authored_definition": "Whole Plant Positive"
+  },
+  "whole_plant_conversion__plant__gas_actual_approach__hot_gap_ok__5e9b6647fc4988da": {
+    "owner": "gas_actual_approach",
+    "branch": "gas",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_actual_approach__evaluate__hot_gap"
+      }
+    },
+    "authored_definition": "Whole Plant Positive"
+  },
+  "whole_plant_conversion__plant__steam_gross_capacity__capacity_requirement__9cde1cfefe9e4edb": {
+    "owner": "steam_gross_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_gross_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_gross_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_hp_flow_capacity__capacity_requirement__5cc6b8ef933d65f8": {
+    "owner": "steam_hp_flow_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_hp_flow_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_hp_flow_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_water_flow_capacity__capacity_requirement__682b9c0979ad7556": {
+    "owner": "steam_water_flow_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_water_flow_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_water_flow_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__rejection_capacity__capacity_requirement__af7714dda178b8f0": {
+    "owner": "rejection_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__rejection_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__rejection_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__primary_offer__pressure_margin_pa_ok__76becfa8174fdcbd": {
+    "owner": "primary_offer",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__primary_offer__evaluate__pressure_margin_Pa"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__primary_offer__inventory_supported_ok__ef44640d09918a5a": {
+    "owner": "primary_offer",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__primary_offer__evaluate__inventory_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__primary_offer__electric_margin_mw_ok__fbb614dc306d8b9a": {
+    "owner": "primary_offer",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__primary_offer__evaluate__electric_margin_MW"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__primary_offer__flow_margin_kg_s_ok__8bc805379860ec62": {
+    "owner": "primary_offer",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__primary_offer__evaluate__flow_margin_kg_s"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__steam_feed_flow_capacity__capacity_requirement__5d9d76d0749190a1": {
+    "owner": "steam_feed_flow_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_feed_flow_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_feed_flow_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__gas_loss_duty_capacity__capacity_requirement__d56ff09d5df0acbc": {
+    "owner": "gas_loss_duty_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_loss_duty_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__gas_loss_duty_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__compressor_capacity__capacity_ok__add1463eda59a898": {
+    "owner": "compressor_capacity",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__compressor_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__compressor_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__water_ic2__evaluation_defined_ok__b931519f56a159d1": {
+    "owner": "water_ic2",
+    "branch": "gas",
+    "operands": {
+      "flag_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_ic2__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Required Flag"
+  },
+  "whole_plant_conversion__plant__water_ic2__power_margin_ok__4251efdd4ccb0c52": {
+    "owner": "water_ic2",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_ic2__evaluate__power_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__water_ic2__flow_margin_ok__6696de4f3ee21d56": {
+    "owner": "water_ic2",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_ic2__evaluate__flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__water_ic2__duty_margin_ok__143f9ca6200e6779": {
+    "owner": "water_ic2",
+    "branch": "gas",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__water_ic2__evaluate__duty_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__salt_electric_capacity__capacity_requirement__98e5361921299b30": {
+    "owner": "salt_electric_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__salt_electric_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__salt_electric_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_boundary__source_adequate_ok__d29edbaf0da24311": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "flag_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__source_adequate"
+      }
+    },
+    "authored_definition": "Required Flag"
+  },
+  "whole_plant_conversion__plant__steam_boundary__total_flow_margin_ok__d3ffa1c793b06886": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__total_flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__steam_boundary__bypass_fraction_margin_ok__e91d0e0192e4dffd": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__bypass_fraction_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__steam_boundary__temperature_margin_ok__5fbec511bdeb34e1": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__temperature_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__steam_boundary__pressure_margin_ok__a08fe8a322365c4f": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__pressure_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__steam_boundary__exchanger_flow_margin_ok__6737739807166519": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__exchanger_flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__steam_boundary__controller_capacity_ok_ok__f143197b782aea8e": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "flag_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__controller_capacity_ok"
+      }
+    },
+    "authored_definition": "Required Flag"
+  },
+  "whole_plant_conversion__plant__steam_boundary__added_dp_margin_ok__36cb21eac5ff1b89": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__added_dp_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__steam_boundary__bypass_flow_margin_ok__d79c6541885ab47e": {
+    "owner": "steam_boundary",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_boundary__evaluate__bypass_flow_margin"
+      }
+    },
+    "authored_definition": "Nonnegative Margin"
+  },
+  "whole_plant_conversion__plant__fuel_accounts__stock_margin_ok__84c447972f804892": {
+    "owner": "fuel_accounts",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__fuel_accounts__evaluate__stock_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__fuel_accounts__domain_supported_ok__94a59fec46208105": {
+    "owner": "fuel_accounts",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__fuel_accounts__evaluate__domain_supported"
+      }
+    },
+    "authored_definition": "Whole Plant Supported"
+  },
+  "whole_plant_conversion__plant__fuel_accounts__processing_margin_ok__860e81215fb2b47f": {
+    "owner": "fuel_accounts",
+    "branch": "shared",
+    "operands": {
+      "metric_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__fuel_accounts__evaluate__processing_margin"
+      }
+    },
+    "authored_definition": "Whole Plant Nonnegative"
+  },
+  "whole_plant_conversion__plant__salt_fill_capacity__capacity_requirement__5ccc7cbd0819713b": {
+    "owner": "salt_fill_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__salt_fill_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__salt_fill_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  },
+  "whole_plant_conversion__plant__steam_main_ua_capacity__capacity_requirement__7df245597c1c6a96": {
+    "owner": "steam_main_ua_capacity",
+    "branch": "steam",
+    "operands": {
+      "margin_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_main_ua_capacity__evaluate__margin"
+      },
+      "defined_in": {
+        "kind": "channel",
+        "key": "whole_plant_conversion__plant__steam_main_ua_capacity__evaluate__evaluation_defined"
+      }
+    },
+    "authored_definition": "Offered Equipment Capacity"
+  }
+}
