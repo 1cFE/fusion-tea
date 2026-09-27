@@ -46,6 +46,6 @@ The series/network comparison currently checks heat removal and selected equipme
 
 - [x] Resolve the thermal contract against original sources and record independent review. Source interpretation accepted in r2-source-review.md; the remaining requirement choice resolved by delegated owner authority and recorded in owner-supplement-r3.md.
 - [x] Record the smallest implementation design, quantity roles, affected bindings and acceptance checks. design.md and evidence/design-review.md final PASS; numerical rounded-gap finding resolved before implementation. Original and two explicit priced alternative inventories declared; native controlled/legacy modes and independent verification planned.
-- [ ] Implement in isolated owned paths; preserve and replay legacy behavior.
+- [x] Implement in isolated owned paths; preserve and replay legacy behavior. Native package committed at a97d6db7; stock repeated generation fixed point and seven legacy replays preserve 551 outputs and fourteen verdicts exactly. Implementation report and independent review record the evidence.
 - [ ] Independently verify added thermal channels and failure cases; run applicable integration checks.
 - [ ] Supply an audited executable interface for the refined study, or document the precise blocked requirement.

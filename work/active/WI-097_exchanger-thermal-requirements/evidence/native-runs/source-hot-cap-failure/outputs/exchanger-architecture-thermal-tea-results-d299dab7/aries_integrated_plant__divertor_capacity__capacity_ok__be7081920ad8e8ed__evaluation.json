@@ -1,0 +1,10 @@
+{
+  "actual_value": true,
+  "constraint_id": "aries_integrated_plant__divertor_capacity__capacity_ok__be7081920ad8e8ed",
+  "margin": null,
+  "observed": {
+    "defined_in": 1.0,
+    "margin_in": 441.0
+  },
+  "status": "satisfied"
+}

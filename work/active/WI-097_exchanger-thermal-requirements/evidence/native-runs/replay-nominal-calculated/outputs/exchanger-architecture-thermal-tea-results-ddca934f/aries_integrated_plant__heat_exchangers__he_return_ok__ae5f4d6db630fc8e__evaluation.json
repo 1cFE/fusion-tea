@@ -1,0 +1,10 @@
+{
+  "actual_value": false,
+  "constraint_id": "aries_integrated_plant__heat_exchangers__he_return_ok__ae5f4d6db630fc8e",
+  "margin": -106.8799662586789,
+  "observed": {
+    "residual_magnitude_in": 106.8799672586789,
+    "tolerance_in": 1e-06
+  },
+  "status": "violated"
+}
