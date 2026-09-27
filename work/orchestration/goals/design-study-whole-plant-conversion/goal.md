@@ -54,3 +54,7 @@ grounded — 2026-09-27. [OWNER] Invoked run-goal with the retained owner brief,
 [OWNER] Only the owner formally closes the goal or item. Recommend closure only on the complete declared endpoint and independent assurance. Partial completion remains partial.
 
 ## Amendments
+
+### Engineering endpoint — 2026-09-27
+
+[AGENT] The verified conditional engineering endpoint is met; [answer.md](answer.md) and the sealed study at a7bd94ed record the result. Independent final review passes. Round 2 is closed by the answered-goal trigger. Formal goal and WI-098 closure remain reserved to the owner; closure is recommended.
