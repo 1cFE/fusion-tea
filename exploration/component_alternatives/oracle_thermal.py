@@ -33,7 +33,7 @@ except ImportError:
 BOUNDARY_OUTPUTS = tuple('converged actual_heat unremoved_heat duty_correction raw_heat_residual raw_return_residual salt_hot salt_return steam_heat bypass_flow added_dp total_flow_margin exchanger_flow_margin bypass_flow_margin bypass_fraction_margin pressure_margin temperature_margin added_dp_margin controller_capacity_ok source_adequate generator_loss motor_import_loss salt_motor_loss rejection_load'.split())
 COOLER_OUTPUTS = tuple('evaluation_defined failure_code duty water_inlet_after_C water_outlet_C water_flow pump_electric total_rejection min_gap required_ua ua_residual energy_residual flow_margin power_margin duty_margin bracket_low_ua bracket_high_ua'.split())
 RECUPERATOR_OUTPUTS = ('capacity_rate', 'effectiveness')
-LEDGER_OUTPUTS = tuple('gross_electric electrical_load net_electric total_rejected unremoved_heat energy_residual conversion_energy_residual capital_total recurring_base annual_service annual_makeup machine_replacement_pv bundle_replacement_pv conversion_replacement_pv replacement_pv annuity_factor annual_energy discounted_energy accounted_pv corrected_pv cost_per_net_MWh economic_defined energy_tolerance'.split()) + tuple(f'capital_{i}' for i in range(1, 11))
+LEDGER_OUTPUTS = tuple('gross_electric electrical_load net_electric total_rejected unremoved_heat energy_residual conversion_energy_residual conversion_energy_residual_magnitude capital_total recurring_base annual_service annual_makeup machine_replacement_pv bundle_replacement_pv conversion_replacement_pv replacement_pv annuity_factor annual_energy discounted_energy accounted_pv corrected_pv cost_per_net_MWh economic_defined energy_tolerance'.split()) + tuple(f'capital_{i}' for i in range(1, 11))
 CERTIFIED_OUTPUTS = {'boundary': BOUNDARY_OUTPUTS, 'cooler': COOLER_OUTPUTS, 'recuperator': RECUPERATOR_OUTPUTS, 'ledger': LEDGER_OUTPUTS}
 DIAGNOSTIC_OUTPUTS = {'cooler': ('iterations',)}
 
@@ -237,5 +237,6 @@ def ledger(x: Mapping) -> dict:
                   total_rejected=rejection, unremoved_heat=x['available_heat']-x['actual_heat'],
                   energy_residual=x['available_heat']-net-rejection,
                   conversion_energy_residual=x['actual_heat']-net-rejection,
+                  conversion_energy_residual_magnitude=abs(x['actual_heat']-net-rejection),
                   economic_defined=float(net > 0), energy_tolerance=max(1e-6, abs(x['available_heat'])*1e-9))
     return result

@@ -9,7 +9,7 @@ INPUTS=dict(available_heat=0.,actual_heat=0.,gross=0.,shaft_import=0.,steam_pump
  rejected1=0.,rejected2=0.,rejected3=0.,rejected4=0.,capital1=0.,capital2=0.,capital3=0.,capital4=0.,capital5=0.,capital6=0.,capital7=0.,capital8=0.,capital9=0.,capital10=0.,currency_factor=1.,controller_capital=1e7,
  separately_replaced_capital=0.,salt_vendor=0.,salt_installation=0.,salt_removal=0.,bundle_event=0.,salt_stock_cost=0.,machine_life=10.,bundle_life=15.,makeup_fraction=.001,
  annual_service_fraction=.02,replacement_fraction=.2,replacement_year=15.,rate=.05,years=30.,availability=.85,scope_correction=0.,common_source_pv=0.)
-OUTPUTS='gross_electric electrical_load net_electric total_rejected unremoved_heat energy_residual conversion_energy_residual capital_total recurring_base annual_service annual_makeup machine_replacement_pv bundle_replacement_pv conversion_replacement_pv replacement_pv annuity_factor annual_energy discounted_energy accounted_pv corrected_pv cost_per_net_MWh economic_defined energy_tolerance'.split()+['capital_'+str(i) for i in range(1,11)]
+OUTPUTS='gross_electric electrical_load net_electric total_rejected unremoved_heat energy_residual conversion_energy_residual conversion_energy_residual_magnitude capital_total recurring_base annual_service annual_makeup machine_replacement_pv bundle_replacement_pv conversion_replacement_pv replacement_pv annuity_factor annual_energy discounted_energy accounted_pv corrected_pv cost_per_net_MWh economic_defined energy_tolerance'.split()+['capital_'+str(i) for i in range(1,11)]
 def calculate(x):
     if any(not math.isfinite(v) for v in x.values()):raise ValueError('nonfinite ledger input')
     if x['rate']<0 or x['years']<=0 or not 0<x['availability']<=1 or min(x['machine_life'],x['bundle_life'])<=0:
@@ -38,7 +38,7 @@ def calculate(x):
         price=run_lcoe_dcf(SimpleNamespace(total_capital_in=cap+rp+x['scope_correction']+x['common_source_pv'],annual_om_in=service+makeup,net_electric_mw=net,availability_in=x['availability'],discount_rate_in=r,construction_years_in=0.,operational_years_in=n))
     return dict(energy_tolerance=max(1e-6,1e-9*abs(x['available_heat'])),gross_electric=x['gross'],electrical_load=loads,net_electric=net,total_rejected=rejected,
       unremoved_heat=x['available_heat']-x['actual_heat'],energy_residual=x['available_heat']-net-rejected,
-      conversion_energy_residual=x['actual_heat']-net-rejected,capital_total=cap,recurring_base=recurring,
+      conversion_energy_residual=x['actual_heat']-net-rejected,conversion_energy_residual_magnitude=abs(x['actual_heat']-net-rejected),capital_total=cap,recurring_base=recurring,
       annual_service=service,annual_makeup=makeup,machine_replacement_pv=machine,bundle_replacement_pv=bundle,
       conversion_replacement_pv=replacement,replacement_pv=rp,annuity_factor=ann,annual_energy=annual,
       discounted_energy=energy,accounted_pv=accounted,corrected_pv=corrected,

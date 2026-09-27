@@ -332,7 +332,7 @@
         "membership_kind": null,
         "owner_instance_path": "component_alternatives__plant__steam_ledger",
         "owner_qualified_name": "component_alternatives::plant::steam_ledger",
-        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"residual_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"residual_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::residual_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"residual_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"residual_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::residual_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"-\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"residual_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"residual_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::residual_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
         "predicate_source_key": "definition:component_alternatives_thermal::'Numerical Residual'",
         "source_form": "definition_typed",
         "source_local_identity": "balance",
@@ -1276,7 +1276,7 @@
         "membership_kind": null,
         "owner_instance_path": "component_alternatives__plant__gas_ledger",
         "owner_qualified_name": "component_alternatives::plant::gas_ledger",
-        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"residual_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"residual_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::residual_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"residual_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"residual_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::residual_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"-\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"residual_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"residual_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::residual_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"tolerance_in\",\"target\":{\"kind\":\"ReferenceUsage\",\"name\":\"tolerance_in\",\"qualified_name\":\"component_alternatives_thermal::'Numerical Residual'::tolerance_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"<=\",\"schema_version\":\"expression-ir/v1\"}",
         "predicate_source_key": "definition:component_alternatives_thermal::'Numerical Residual'",
         "source_form": "definition_typed",
         "source_local_identity": "balance",
@@ -1348,7 +1348,7 @@
       }
     ],
     "excluded_records": [],
-    "fingerprint": "172086914524a24d51ecbf86ee3b031955c9350c3a9185bbcc595d3eb7fb1f64",
+    "fingerprint": "2b3dbeaa7aab2bc76f431e1ee8bea8e3e1434d14cb2d17e2081f0ee168ea58b0",
     "source_records": [
       {
         "definition_qualified_name": "component_alternatives_thermal::'Nonnegative Margin'",
@@ -5914,6 +5914,11 @@
       "python_type": "float"
     },
     {
+      "channel_name": "component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude",
+      "field_name": "conversion_energy_residual_magnitude",
+      "python_type": "float"
+    },
+    {
       "channel_name": "component_alternatives__plant__gas_ledger__evaluate__capital_6",
       "field_name": "capital_6",
       "python_type": "float"
@@ -6901,6 +6906,11 @@
     {
       "channel_name": "component_alternatives__plant__steam_ledger__evaluate__capital_2",
       "field_name": "capital_2",
+      "python_type": "float"
+    },
+    {
+      "channel_name": "component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude",
+      "field_name": "conversion_energy_residual_magnitude",
       "python_type": "float"
     },
     {
@@ -11141,5 +11151,5 @@
       "qualified_name": "component_alternatives__plant__water_pre__water_inlet_C"
     }
   ],
-  "semantic_fingerprint": "142189653702a7a4e2c99fc516fd9e0c7fed9ad6e46a9a1270bb6a13d7084b0a"
+  "semantic_fingerprint": "f0923214262db7c5b255f17b601866e0792ad013378024bd4dde1132f04adb4c"
 }

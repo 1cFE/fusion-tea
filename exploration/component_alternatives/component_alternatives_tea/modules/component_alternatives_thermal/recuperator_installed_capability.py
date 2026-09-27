@@ -13,9 +13,9 @@ Outputs:
     - capacity_rate: capacity_rate result
     - effectiveness: effectiveness result
 
-SysML Source: root-0/component_alternatives_thermal.sysml:115
+SysML Source: root-0/component_alternatives_thermal.sysml:116
 
-SysML Source: root-0/component_alternatives_thermal.sysml:115
+SysML Source: root-0/component_alternatives_thermal.sysml:116
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/component_alternatives_thermal/recuperator_installed_capability_impl.py
@@ -55,9 +55,9 @@ Outputs:
     - capacity_rate: capacity_rate result
     - effectiveness: effectiveness result
 
-SysML Source: root-0/component_alternatives_thermal.sysml:115
+SysML Source: root-0/component_alternatives_thermal.sysml:116
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:115
+    SysML Source: root-0/component_alternatives_thermal.sysml:116
 
     Calculation Specification:
         ua_in = 60.0

@@ -32,6 +32,7 @@ SysML Source: root-0/component_alternatives_thermal.sysml:3
     net_electric: float = Field(description="net_electric output")
     annuity_factor: float = Field(description="annuity_factor output")
     capital_2: float = Field(description="capital_2 output")
+    conversion_energy_residual_magnitude: float = Field(description="conversion_energy_residual_magnitude output")
     capital_6: float = Field(description="capital_6 output")
     annual_makeup: float = Field(description="annual_makeup output")
     bundle_replacement_pv: float = Field(description="bundle_replacement_pv output")

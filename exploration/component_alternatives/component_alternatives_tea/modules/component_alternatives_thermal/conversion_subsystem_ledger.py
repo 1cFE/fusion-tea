@@ -75,6 +75,7 @@ Outputs:
     - net_electric: net_electric result
     - annuity_factor: annuity_factor result
     - capital_2: capital_2 result
+    - conversion_energy_residual_magnitude: conversion_energy_residual_magnitude result
     - capital_6: capital_6 result
     - annual_makeup: annual_makeup result
     - bundle_replacement_pv: bundle_replacement_pv result
@@ -271,6 +272,7 @@ Outputs:
     - net_electric: net_electric result
     - annuity_factor: annuity_factor result
     - capital_2: capital_2 result
+    - conversion_energy_residual_magnitude: conversion_energy_residual_magnitude result
     - capital_6: capital_6 result
     - annual_makeup: annual_makeup result
     - bundle_replacement_pv: bundle_replacement_pv result
@@ -338,7 +340,7 @@ Documentation:
     for manual implementation.
 
     NOTE: Uses MultiOutput pattern for type-safe multi-output support.
-    TEAx automatically extracts annual_energy, cost_per_net_MWh, capital_10, gross_electric, conversion_energy_residual, energy_residual, replacement_pv, capital_3, economic_defined, electrical_load, accounted_pv, capital_4, capital_1, annual_service, total_rejected, recurring_base, unremoved_heat, capital_9, corrected_pv, machine_replacement_pv, capital_7, net_electric, annuity_factor, capital_2, capital_6, annual_makeup, bundle_replacement_pv, conversion_replacement_pv, capital_5, capital_8, energy_tolerance, discounted_energy, capital_total fields to separate channels.
+    TEAx automatically extracts annual_energy, cost_per_net_MWh, capital_10, gross_electric, conversion_energy_residual, energy_residual, replacement_pv, capital_3, economic_defined, electrical_load, accounted_pv, capital_4, capital_1, annual_service, total_rejected, recurring_base, unremoved_heat, capital_9, corrected_pv, machine_replacement_pv, capital_7, net_electric, annuity_factor, capital_2, conversion_energy_residual_magnitude, capital_6, annual_makeup, bundle_replacement_pv, conversion_replacement_pv, capital_5, capital_8, energy_tolerance, discounted_energy, capital_total fields to separate channels.
     """
 
     name: str = "Conversion_Subsystem_LedgerModule"
@@ -450,7 +452,7 @@ Documentation:
             replacement_year_in: replacement_year_in input
 
         Returns:
-            Module result with Conversion_Subsystem_LedgerOutput (annual_energy, cost_per_net_MWh, capital_10, gross_electric, conversion_energy_residual, energy_residual, replacement_pv, capital_3, economic_defined, electrical_load, accounted_pv, capital_4, capital_1, annual_service, total_rejected, recurring_base, unremoved_heat, capital_9, corrected_pv, machine_replacement_pv, capital_7, net_electric, annuity_factor, capital_2, capital_6, annual_makeup, bundle_replacement_pv, conversion_replacement_pv, capital_5, capital_8, energy_tolerance, discounted_energy, capital_total)
+            Module result with Conversion_Subsystem_LedgerOutput (annual_energy, cost_per_net_MWh, capital_10, gross_electric, conversion_energy_residual, energy_residual, replacement_pv, capital_3, economic_defined, electrical_load, accounted_pv, capital_4, capital_1, annual_service, total_rejected, recurring_base, unremoved_heat, capital_9, corrected_pv, machine_replacement_pv, capital_7, net_electric, annuity_factor, capital_2, conversion_energy_residual_magnitude, capital_6, annual_makeup, bundle_replacement_pv, conversion_replacement_pv, capital_5, capital_8, energy_tolerance, discounted_energy, capital_total)
         """
         # Validate inputs
         validated_inputs = self.validate_and_fill_default(actual_heat_in, capital3_in, water3_in, capital5_in, scope_correction_in, controller_capital_in, rate_in, rejected3_in, capital8_in, rejected2_in, water1_in, capital7_in, bundle_event_in, capital4_in, gross_in, shaft_import_in, capital10_in, capital1_in, replacement_fraction_in, currency_factor_in, availability_in, available_heat_in, rejected1_in, annual_service_fraction_in, capital9_in, water2_in, salt_stock_cost_in, salt_removal_in, salt_vendor_in, bundle_life_in, capital6_in, makeup_fraction_in, steam_pumps_in, salt_installation_in, common_source_pv_in, separately_replaced_capital_in, machine_life_in, salt_pumps_in, capital2_in, water4_in, controller_electric_in, years_in, rejected4_in, replacement_year_in)
@@ -461,7 +463,7 @@ Documentation:
         )
 
         # Execute implementation - returns tuple of values
-        annual_energy, cost_per_net_MWh, capital_10, gross_electric, conversion_energy_residual, energy_residual, replacement_pv, capital_3, economic_defined, electrical_load, accounted_pv, capital_4, capital_1, annual_service, total_rejected, recurring_base, unremoved_heat, capital_9, corrected_pv, machine_replacement_pv, capital_7, net_electric, annuity_factor, capital_2, capital_6, annual_makeup, bundle_replacement_pv, conversion_replacement_pv, capital_5, capital_8, energy_tolerance, discounted_energy, capital_total = run_conversion_subsystem_ledger(validated_inputs)
+        annual_energy, cost_per_net_MWh, capital_10, gross_electric, conversion_energy_residual, energy_residual, replacement_pv, capital_3, economic_defined, electrical_load, accounted_pv, capital_4, capital_1, annual_service, total_rejected, recurring_base, unremoved_heat, capital_9, corrected_pv, machine_replacement_pv, capital_7, net_electric, annuity_factor, capital_2, conversion_energy_residual_magnitude, capital_6, annual_makeup, bundle_replacement_pv, conversion_replacement_pv, capital_5, capital_8, energy_tolerance, discounted_energy, capital_total = run_conversion_subsystem_ledger(validated_inputs)
 
 
         # Return MultiOutput container (TEAx auto-extracts to channels)
@@ -492,6 +494,7 @@ Documentation:
                 net_electric=net_electric,
                 annuity_factor=annuity_factor,
                 capital_2=capital_2,
+                conversion_energy_residual_magnitude=conversion_energy_residual_magnitude,
                 capital_6=capital_6,
                 annual_makeup=annual_makeup,
                 bundle_replacement_pv=bundle_replacement_pv,

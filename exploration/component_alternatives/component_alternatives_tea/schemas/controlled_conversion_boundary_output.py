@@ -6,7 +6,7 @@ class Controlled_Conversion_BoundaryOutput(MultiOutput):
 
 *Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Numerical semantics are the complete calculate function in exploration/component_alternatives/bodies/component_alternatives_thermal/controlled_conversion_boundary_impl.py; units MW, K/degC, kg/s, Pa, MW/K, USD2025 and years as named.
 
-SysML Source: root-0/component_alternatives_thermal.sysml:123
+SysML Source: root-0/component_alternatives_thermal.sysml:124
     """
     salt_hot: float = Field(description="salt_hot output")
     salt_return: float = Field(description="salt_return output")

@@ -160,7 +160,7 @@ def predicate(operands):
     if keys=={'defined_in','margin_in'}:return operands['defined_in']>=1 and operands['margin_in']>=0
     if keys=={'margin_in'}:return operands['margin_in']>=0
     if keys=={'flag_in'}:return operands['flag_in']>=1
-    if keys=={'residual_in','tolerance_in'}:return abs(operands['residual_in'])<=operands['tolerance_in']
+    if keys=={'residual_in','tolerance_in'}:return operands['residual_in']<=operands['tolerance_in']
     if keys=={'net_electric'}:return operands['net_electric']>0
     if keys=={'mdot_loop_in','mdot_loop_rated_in'}:return operands['mdot_loop_in']<=operands['mdot_loop_rated_in']
     if keys=={'p_loop_margin_in'}:return operands['p_loop_margin_in']>0

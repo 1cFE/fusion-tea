@@ -344,7 +344,7 @@ class TestSelected_Inventory_PurchaseRunnable:
 class TestRecuperator_Installed_CapabilityRunnable:
     """Verify recuperator_installed_capability implementation runs without error.
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:115
+    SysML Source: root-0/component_alternatives_thermal.sysml:116
     """
 
     def test_import_and_run(self):
@@ -592,7 +592,7 @@ class TestFixed_Outlet_ConditioningRunnable:
 class TestFinite_Water_CoolerRunnable:
     """Verify finite_water_cooler implementation runs without error.
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:83
+    SysML Source: root-0/component_alternatives_thermal.sysml:84
     """
 
     def test_import_and_run(self):
@@ -718,7 +718,7 @@ class TestFixed_Outlet_ConditioningRunnable:
 class TestFinite_Water_CoolerRunnable:
     """Verify finite_water_cooler implementation runs without error.
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:83
+    SysML Source: root-0/component_alternatives_thermal.sysml:84
     """
 
     def test_import_and_run(self):
@@ -1008,7 +1008,7 @@ class TestPrimary_Bypass_ControlRunnable:
 class TestControlled_Conversion_BoundaryRunnable:
     """Verify controlled_conversion_boundary implementation runs without error.
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:123
+    SysML Source: root-0/component_alternatives_thermal.sysml:124
     """
 
     def test_import_and_run(self):
@@ -2054,7 +2054,7 @@ class TestPlant_Electrical_BalanceRunnable:
 class TestControlled_Conversion_BoundaryRunnable:
     """Verify controlled_conversion_boundary implementation runs without error.
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:123
+    SysML Source: root-0/component_alternatives_thermal.sysml:124
     """
 
     def test_import_and_run(self):
@@ -2474,7 +2474,7 @@ class TestPrimary_Bypass_ControlRunnable:
 class TestControlled_Conversion_BoundaryRunnable:
     """Verify controlled_conversion_boundary implementation runs without error.
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:123
+    SysML Source: root-0/component_alternatives_thermal.sysml:124
     """
 
     def test_import_and_run(self):
@@ -2558,7 +2558,7 @@ class TestSelected_Inventory_PurchaseRunnable:
 class TestFinite_Water_CoolerRunnable:
     """Verify finite_water_cooler implementation runs without error.
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:83
+    SysML Source: root-0/component_alternatives_thermal.sysml:84
     """
 
     def test_import_and_run(self):
@@ -2632,7 +2632,7 @@ class TestConversion_Subsystem_LedgerRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
-            assert len(result) == 33, f"Expected 33 outputs"
+            assert len(result) == 34, f"Expected 34 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:
@@ -3104,7 +3104,7 @@ class TestOffered_Capacity_ScreenRunnable:
 class TestControlled_Conversion_BoundaryRunnable:
     """Verify controlled_conversion_boundary implementation runs without error.
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:123
+    SysML Source: root-0/component_alternatives_thermal.sysml:124
     """
 
     def test_import_and_run(self):
@@ -3220,7 +3220,7 @@ class TestConversion_Subsystem_LedgerRunnable:
 
             # If implemented, verify return type
             assert isinstance(result, tuple), f"Expected tuple, got {type(result)}"
-            assert len(result) == 33, f"Expected 33 outputs"
+            assert len(result) == 34, f"Expected 34 outputs"
             assert all(isinstance(x, (float, int)) for x in result), "Tuple elements must be numeric"
 
         except NotImplementedError:

@@ -60,9 +60,9 @@ Outputs:
     - unremoved_heat: unremoved_heat result
     - generator_loss: generator_loss result
 
-SysML Source: root-0/component_alternatives_thermal.sysml:123
+SysML Source: root-0/component_alternatives_thermal.sysml:124
 
-SysML Source: root-0/component_alternatives_thermal.sysml:123
+SysML Source: root-0/component_alternatives_thermal.sysml:124
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/component_alternatives_thermal/controlled_conversion_boundary_impl.py
@@ -199,9 +199,9 @@ Outputs:
     - unremoved_heat: unremoved_heat result
     - generator_loss: generator_loss result
 
-SysML Source: root-0/component_alternatives_thermal.sysml:123
+SysML Source: root-0/component_alternatives_thermal.sysml:124
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:123
+    SysML Source: root-0/component_alternatives_thermal.sysml:124
 
     Calculation Specification:
         available_in = 0.0

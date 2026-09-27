@@ -53,6 +53,7 @@ package component_alternatives_thermal {
         out attribute unremoved_heat : Real;
         out attribute energy_residual : Real;
         out attribute conversion_energy_residual : Real;
+        out attribute conversion_energy_residual_magnitude : Real;
         out attribute capital_total : Real;
         out attribute recurring_base : Real;
         out attribute annual_service : Real;
@@ -177,5 +178,5 @@ package component_alternatives_thermal {
     }
     constraint def 'Nonnegative Margin' { doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Chosen capacity minus calculated demand; no physical tolerance. */ in margin_in : Real; margin_in >= 0.0 }
     constraint def 'Required Flag' { doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. A calculated admission flag must equal one. */ in flag_in : Real; flag_in >= 1.0 }
-    constraint def 'Numerical Residual' { doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Numerical calculation fidelity, not a physical capacity allowance. */ in residual_in : Real; in tolerance_in : Real; residual_in <= tolerance_in and residual_in >= -tolerance_in }
+    constraint def 'Numerical Residual' { doc /* **Source**: work/active/WI-096_matched-conversion-subsystems/design.md. **Reference**: reviewed fourth submission, sections 2-8. **Basis**: [AGENT] conditional component offer and explicitly reviewed equations; hydraulic, price and loss-sink qualification remain unverified. **Last Updated**: 2026-09-26. Nonnegative residual magnitude compared with numerical calculation tolerance; no physical capacity allowance. */ in residual_in : Real; in tolerance_in : Real; residual_in <= tolerance_in }
 }

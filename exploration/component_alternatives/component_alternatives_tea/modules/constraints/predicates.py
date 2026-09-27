@@ -92,8 +92,8 @@ def constraint_pred_definition_mfe_viability__net_power_positive(net_electric):
 
 # definition:component_alternatives_thermal::'Numerical Residual'
 def constraint_pred_definition_component_alternatives_thermal__numerical_residual(residual_in, tolerance_in):
-    value = _and(_cmp('<=', residual_in, tolerance_in), _cmp('>=', residual_in, (-tolerance_in)))
-    return _PredicateBodyResult(actual_value=value, source_margin=None)
+    value = _cmp('<=', residual_in, tolerance_in)
+    return _PredicateBodyResult(actual_value=value, source_margin=(_norm0((tolerance_in - residual_in)) if (_fin(residual_in) and _fin(tolerance_in)) else None))
 
 # definition:mfe_viability::'Loop Capacity'
 def constraint_pred_definition_mfe_viability__loop_capacity(mdot_loop_in, mdot_loop_rated_in):

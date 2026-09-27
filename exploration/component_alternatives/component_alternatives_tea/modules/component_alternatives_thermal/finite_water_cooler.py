@@ -37,9 +37,9 @@ Outputs:
     - failure_code: failure_code result
     - duty: duty result
 
-SysML Source: root-0/component_alternatives_thermal.sysml:83
+SysML Source: root-0/component_alternatives_thermal.sysml:84
 
-SysML Source: root-0/component_alternatives_thermal.sysml:83
+SysML Source: root-0/component_alternatives_thermal.sysml:84
 
 GAP: Code generator does NOT implement calc logic - only wrapper structure.
 Handwritten implementation required in handwritten/component_alternatives_thermal/finite_water_cooler_impl.py
@@ -119,9 +119,9 @@ Outputs:
     - failure_code: failure_code result
     - duty: duty result
 
-SysML Source: root-0/component_alternatives_thermal.sysml:83
+SysML Source: root-0/component_alternatives_thermal.sysml:84
 
-    SysML Source: root-0/component_alternatives_thermal.sysml:83
+    SysML Source: root-0/component_alternatives_thermal.sysml:84
 
     Calculation Specification:
         gas_inlet_K_in = 369.0

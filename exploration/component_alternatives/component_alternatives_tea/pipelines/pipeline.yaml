@@ -1534,6 +1534,7 @@ modules:
       net_electric: float component_alternatives__plant__gas_ledger__evaluate__net_electric
       annuity_factor: float component_alternatives__plant__gas_ledger__evaluate__annuity_factor
       capital_2: float component_alternatives__plant__gas_ledger__evaluate__capital_2
+      conversion_energy_residual_magnitude: float component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude
       capital_6: float component_alternatives__plant__gas_ledger__evaluate__capital_6
       annual_makeup: float component_alternatives__plant__gas_ledger__evaluate__annual_makeup
       bundle_replacement_pv: float component_alternatives__plant__gas_ledger__evaluate__bundle_replacement_pv
@@ -1968,6 +1969,7 @@ modules:
       net_electric: float component_alternatives__plant__steam_ledger__evaluate__net_electric
       annuity_factor: float component_alternatives__plant__steam_ledger__evaluate__annuity_factor
       capital_2: float component_alternatives__plant__steam_ledger__evaluate__capital_2
+      conversion_energy_residual_magnitude: float component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude
       capital_6: float component_alternatives__plant__steam_ledger__evaluate__capital_6
       annual_makeup: float component_alternatives__plant__steam_ledger__evaluate__annual_makeup
       bundle_replacement_pv: float component_alternatives__plant__steam_ledger__evaluate__bundle_replacement_pv
@@ -2373,7 +2375,7 @@ modules:
     module_type: component_alternatives.PlantSteamLedgerBalanceConstraintModule
     inputs:
       tolerance_in: float component_alternatives__plant__steam_ledger__evaluate__energy_tolerance
-      residual_in: float component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual
+      residual_in: float component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude
     outputs:
       evaluation: ConstraintEvaluation component_alternatives__plant__steam_ledger__balance__79e79cd29079c8e8__evaluation
 
@@ -2889,7 +2891,7 @@ modules:
     module_type: component_alternatives.PlantGasLedgerBalanceConstraintModule
     inputs:
       tolerance_in: float component_alternatives__plant__gas_ledger__evaluate__energy_tolerance
-      residual_in: float component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual
+      residual_in: float component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude
     outputs:
       evaluation: ConstraintEvaluation component_alternatives__plant__gas_ledger__balance__a530b58ca455c8b8__evaluation
 
@@ -3625,6 +3627,7 @@ modules:
       component_alternatives__plant__gas_ledger__evaluate__net_electric: float plant__gas_ledger__net_electric.json
       component_alternatives__plant__gas_ledger__evaluate__annuity_factor: float plant__gas_ledger__annuity_factor.json
       component_alternatives__plant__gas_ledger__evaluate__capital_2: float plant__gas_ledger__capital_2.json
+      component_alternatives__plant__gas_ledger__evaluate__conversion_energy_residual_magnitude: float plant__gas_ledger__conversion_energy_residual_magnitude.json
       component_alternatives__plant__gas_ledger__evaluate__capital_6: float plant__gas_ledger__capital_6.json
       component_alternatives__plant__gas_ledger__evaluate__annual_makeup: float plant__gas_ledger__annual_makeup.json
       component_alternatives__plant__gas_ledger__evaluate__bundle_replacement_pv: float plant__gas_ledger__bundle_replacement_pv.json
@@ -3823,6 +3826,7 @@ modules:
       component_alternatives__plant__steam_ledger__evaluate__net_electric: float plant__steam_ledger__net_electric.json
       component_alternatives__plant__steam_ledger__evaluate__annuity_factor: float plant__steam_ledger__annuity_factor.json
       component_alternatives__plant__steam_ledger__evaluate__capital_2: float plant__steam_ledger__capital_2.json
+      component_alternatives__plant__steam_ledger__evaluate__conversion_energy_residual_magnitude: float plant__steam_ledger__conversion_energy_residual_magnitude.json
       component_alternatives__plant__steam_ledger__evaluate__capital_6: float plant__steam_ledger__capital_6.json
       component_alternatives__plant__steam_ledger__evaluate__annual_makeup: float plant__steam_ledger__annual_makeup.json
       component_alternatives__plant__steam_ledger__evaluate__bundle_replacement_pv: float plant__steam_ledger__bundle_replacement_pv.json

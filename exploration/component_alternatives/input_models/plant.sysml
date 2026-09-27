@@ -2519,6 +2519,7 @@ package component_alternatives {
             attribute unremoved_heat : Real = evaluate.unremoved_heat;
             attribute energy_residual : Real = evaluate.energy_residual;
             attribute conversion_energy_residual : Real = evaluate.conversion_energy_residual;
+            attribute conversion_energy_residual_magnitude : Real = evaluate.conversion_energy_residual_magnitude;
             attribute capital_total : Real = evaluate.capital_total;
             attribute recurring_base : Real = evaluate.recurring_base;
             attribute annual_service : Real = evaluate.annual_service;
@@ -2549,7 +2550,7 @@ package component_alternatives {
                 in net_electric = evaluate.net_electric;
             }
             assert constraint balance : 'Numerical Residual' {
-                in residual_in = conversion_energy_residual;
+                in residual_in = conversion_energy_residual_magnitude;
                 in tolerance_in = energy_tolerance;
             }
         }
@@ -2632,6 +2633,7 @@ package component_alternatives {
             attribute unremoved_heat : Real = evaluate.unremoved_heat;
             attribute energy_residual : Real = evaluate.energy_residual;
             attribute conversion_energy_residual : Real = evaluate.conversion_energy_residual;
+            attribute conversion_energy_residual_magnitude : Real = evaluate.conversion_energy_residual_magnitude;
             attribute capital_total : Real = evaluate.capital_total;
             attribute recurring_base : Real = evaluate.recurring_base;
             attribute annual_service : Real = evaluate.annual_service;
@@ -2662,7 +2664,7 @@ package component_alternatives {
                 in net_electric = evaluate.net_electric;
             }
             assert constraint balance : 'Numerical Residual' {
-                in residual_in = conversion_energy_residual;
+                in residual_in = conversion_energy_residual_magnitude;
                 in tolerance_in = energy_tolerance;
             }
         }

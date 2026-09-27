@@ -54,6 +54,7 @@
       "unremoved_heat",
       "energy_residual",
       "conversion_energy_residual",
+      "conversion_energy_residual_magnitude",
       "capital_total",
       "recurring_base",
       "annual_service",
