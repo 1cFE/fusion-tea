@@ -528,6 +528,12 @@ standalone:
   priority: P1
   status: backlog
   completed: null
+- id: WI-098
+  name: Whole Plant Conversion Comparison
+  scale: standard
+  priority: P0
+  status: backlog
+  completed: null
 ---
 
 # Project Backlog
@@ -656,3 +662,4 @@ standalone:
 | WI-095 | Loop return control | standard | P1 | completed | Completed 2026-09-26 |
 | WI-096 | Matched Conversion Subsystems | standard | P1 | backlog |  |
 | WI-097 | exchanger thermal requirements | standard | P1 | backlog |  |
+| WI-098 | Whole Plant Conversion Comparison | standard | P0 | backlog |  |
