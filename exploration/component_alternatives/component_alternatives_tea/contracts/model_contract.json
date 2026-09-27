@@ -1283,10 +1283,10 @@
         "usage_qualified_name": "component_alternatives::plant::gas_ledger::balance"
       },
       {
-        "constraint_id": "component_alternatives__plant__steam_cycle__main_UA_available_required__f9837efa3d05f097",
-        "declaration_id": "37605f05-6040-5d26-8d43-317b2edb5568",
+        "constraint_id": "component_alternatives__plant__steam_cycle__main_ua_available_required__6cdb52b3bf9953e0",
+        "declaration_id": "229d194b-e796-5a33-8bbc-9ea24299f173",
         "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
-        "evaluation_channel": "component_alternatives__plant__steam_cycle__main_UA_available_required__f9837efa3d05f097__evaluation",
+        "evaluation_channel": "component_alternatives__plant__steam_cycle__main_ua_available_required__6cdb52b3bf9953e0__evaluation",
         "expected_value": true,
         "is_negated": false,
         "membership_kind": null,
@@ -1295,8 +1295,8 @@
         "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
         "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
         "source_form": "definition_typed",
-        "source_local_identity": "main_UA_available_required",
-        "usage_qualified_name": "component_alternatives::plant::steam_cycle::main_UA_available_required"
+        "source_local_identity": "main_ua_available_required",
+        "usage_qualified_name": "component_alternatives::plant::steam_cycle::main_ua_available_required"
       },
       {
         "constraint_id": "component_alternatives__plant__steam_cycle__reheat_admission_ok_required__e88f7416d91d86fd",
@@ -1315,6 +1315,22 @@
         "usage_qualified_name": "component_alternatives::plant::steam_cycle::reheat_admission_ok_required"
       },
       {
+        "constraint_id": "component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d",
+        "declaration_id": "c44b2d06-ba66-528e-ab43-600ce6d4c7ab",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "evaluation_channel": "component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d__evaluation",
+        "expected_value": true,
+        "is_negated": false,
+        "membership_kind": null,
+        "owner_instance_path": "component_alternatives__plant__steam_cycle",
+        "owner_qualified_name": "component_alternatives::plant::steam_cycle",
+        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
+        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
+        "source_form": "definition_typed",
+        "source_local_identity": "reheat_ua_available_required",
+        "usage_qualified_name": "component_alternatives::plant::steam_cycle::reheat_ua_available_required"
+      },
+      {
         "constraint_id": "component_alternatives__plant__steam_cycle__main_admission_ok_required__dbbd20ff9c7f4317",
         "declaration_id": "e0077a2d-6c29-57cb-8fc5-04bdd223b970",
         "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
@@ -1329,26 +1345,10 @@
         "source_form": "definition_typed",
         "source_local_identity": "main_admission_ok_required",
         "usage_qualified_name": "component_alternatives::plant::steam_cycle::main_admission_ok_required"
-      },
-      {
-        "constraint_id": "component_alternatives__plant__steam_cycle__reheat_UA_available_required__bdd3c800a1cc7c08",
-        "declaration_id": "f2f4b63d-a0e2-5360-8977-20cccd9d906b",
-        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
-        "evaluation_channel": "component_alternatives__plant__steam_cycle__reheat_UA_available_required__bdd3c800a1cc7c08__evaluation",
-        "expected_value": true,
-        "is_negated": false,
-        "membership_kind": null,
-        "owner_instance_path": "component_alternatives__plant__steam_cycle",
-        "owner_qualified_name": "component_alternatives::plant::steam_cycle",
-        "predicate_ir": "{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"defined_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"defined_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::defined_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":1.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"operator\",\"operand_type\":null,\"operands\":[{\"kind\":\"feature_ref\",\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"reference\":{\"chain_segments\":[],\"source_name\":\"margin_in\",\"target\":{\"kind\":\"AttributeUsage\",\"name\":\"margin_in\",\"qualified_name\":\"mfe_viability::'Offered Equipment Capacity'::margin_in\"},\"target_types\":[\"ScalarValues::Real\",\"Base::DataValue\",\"Base::Anything\"]},\"schema_version\":\"expression-ir/v1\"},{\"kind\":\"literal\",\"literal\":{\"kind\":\"LiteralRational\",\"result_type\":\"ScalarValues::Rational\",\"value\":0.0},\"operand_type\":{\"category\":\"real\",\"enumeration\":null,\"unit\":null},\"schema_version\":\"expression-ir/v1\"}],\"operator\":\">=\",\"schema_version\":\"expression-ir/v1\"}],\"operator\":\"and\",\"schema_version\":\"expression-ir/v1\"}",
-        "predicate_source_key": "definition:mfe_viability::'Offered Equipment Capacity'",
-        "source_form": "definition_typed",
-        "source_local_identity": "reheat_UA_available_required",
-        "usage_qualified_name": "component_alternatives::plant::steam_cycle::reheat_UA_available_required"
       }
     ],
     "excluded_records": [],
-    "fingerprint": "2b3dbeaa7aab2bc76f431e1ee8bea8e3e1434d14cb2d17e2081f0ee168ea58b0",
+    "fingerprint": "f70d2e899dddc5e40fba65a76536bb18d59339e6d81b2cbf6d8f6ff77c909d32",
     "source_records": [
       {
         "definition_qualified_name": "component_alternatives_thermal::'Nonnegative Margin'",
@@ -1632,6 +1632,24 @@
         "usage_qualified_name": "component_alternatives::plant::steam_water::cooling_approach_ok_required"
       },
       {
+        "declaration_id": "229d194b-e796-5a33-8bbc-9ea24299f173",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "component_alternatives::plant::steam_cycle::main_ua_available_required profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "component_alternatives::plant::steam_cycle",
+        "source_form": "definition_typed",
+        "source_local_identity": "main_ua_available_required",
+        "usage_qualified_name": "component_alternatives::plant::steam_cycle::main_ua_available_required"
+      },
+      {
         "declaration_id": "26a7e4e6-304a-5611-987f-ad1676935510",
         "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
         "disposition_detail": "component_alternatives::plant::turbine_capacity::capacity_ok profile eligibility admit",
@@ -1756,24 +1774,6 @@
         "source_form": "definition_typed",
         "source_local_identity": "added_dp_margin_ok",
         "usage_qualified_name": "component_alternatives::plant::steam_boundary::added_dp_margin_ok"
-      },
-      {
-        "declaration_id": "37605f05-6040-5d26-8d43-317b2edb5568",
-        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
-        "disposition_detail": "component_alternatives::plant::steam_cycle::main_UA_available_required profile eligibility admit",
-        "disposition_kind": "eligible",
-        "disposition_reason": "admitted",
-        "disposition_severity": "info",
-        "expected_value": true,
-        "inapplicability_reason": null,
-        "is_negated": false,
-        "membership_kind": null,
-        "occurrence_count": 1,
-        "owner_kind": "part_usage",
-        "owner_qualified_name": "component_alternatives::plant::steam_cycle",
-        "source_form": "definition_typed",
-        "source_local_identity": "main_UA_available_required",
-        "usage_qualified_name": "component_alternatives::plant::steam_cycle::main_UA_available_required"
       },
       {
         "declaration_id": "385f98d4-00e4-5da3-8405-c1ae9b6aa4f7",
@@ -2622,6 +2622,24 @@
         "usage_qualified_name": "component_alternatives::plant::source_checks::pressure_ok"
       },
       {
+        "declaration_id": "c44b2d06-ba66-528e-ab43-600ce6d4c7ab",
+        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
+        "disposition_detail": "component_alternatives::plant::steam_cycle::reheat_ua_available_required profile eligibility admit",
+        "disposition_kind": "eligible",
+        "disposition_reason": "admitted",
+        "disposition_severity": "info",
+        "expected_value": true,
+        "inapplicability_reason": null,
+        "is_negated": false,
+        "membership_kind": null,
+        "occurrence_count": 1,
+        "owner_kind": "part_usage",
+        "owner_qualified_name": "component_alternatives::plant::steam_cycle",
+        "source_form": "definition_typed",
+        "source_local_identity": "reheat_ua_available_required",
+        "usage_qualified_name": "component_alternatives::plant::steam_cycle::reheat_ua_available_required"
+      },
+      {
         "declaration_id": "c68edabb-3f88-5c76-bcdb-2f17c86186e7",
         "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
         "disposition_detail": "component_alternatives::plant::salt_fill_capacity::capacity_requirement profile eligibility admit",
@@ -2836,24 +2854,6 @@
         "source_form": "definition_typed",
         "source_local_identity": "capacity_requirement",
         "usage_qualified_name": "component_alternatives::plant::steam_condensate_electric_capacity::capacity_requirement"
-      },
-      {
-        "declaration_id": "f2f4b63d-a0e2-5360-8977-20cccd9d906b",
-        "definition_qualified_name": "mfe_viability::'Offered Equipment Capacity'",
-        "disposition_detail": "component_alternatives::plant::steam_cycle::reheat_UA_available_required profile eligibility admit",
-        "disposition_kind": "eligible",
-        "disposition_reason": "admitted",
-        "disposition_severity": "info",
-        "expected_value": true,
-        "inapplicability_reason": null,
-        "is_negated": false,
-        "membership_kind": null,
-        "occurrence_count": 1,
-        "owner_kind": "part_usage",
-        "owner_qualified_name": "component_alternatives::plant::steam_cycle",
-        "source_form": "definition_typed",
-        "source_local_identity": "reheat_UA_available_required",
-        "usage_qualified_name": "component_alternatives::plant::steam_cycle::reheat_UA_available_required"
       },
       {
         "declaration_id": "f509a8c8-fda4-5496-95c1-2c2fa0c0782d",
@@ -7694,7 +7694,7 @@
       "python_type": "ConstraintEvaluation"
     },
     {
-      "channel_name": "component_alternatives__plant__steam_cycle__main_UA_available_required__f9837efa3d05f097__evaluation",
+      "channel_name": "component_alternatives__plant__steam_cycle__main_ua_available_required__6cdb52b3bf9953e0__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -7704,12 +7704,12 @@
       "python_type": "ConstraintEvaluation"
     },
     {
-      "channel_name": "component_alternatives__plant__steam_cycle__main_admission_ok_required__dbbd20ff9c7f4317__evaluation",
+      "channel_name": "component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
     {
-      "channel_name": "component_alternatives__plant__steam_cycle__reheat_UA_available_required__bdd3c800a1cc7c08__evaluation",
+      "channel_name": "component_alternatives__plant__steam_cycle__main_admission_ok_required__dbbd20ff9c7f4317__evaluation",
       "field_name": "evaluation",
       "python_type": "ConstraintEvaluation"
     },
@@ -11151,5 +11151,5 @@
       "qualified_name": "component_alternatives__plant__water_pre__water_inlet_C"
     }
   ],
-  "semantic_fingerprint": "f0923214262db7c5b255f17b601866e0792ad013378024bd4dde1132f04adb4c"
+  "semantic_fingerprint": "0cbdff5087be16d2dbe876b5e94f0c89fc525bf3527bfb5a9d1ceb7878a88de8"
 }

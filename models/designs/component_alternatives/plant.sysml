@@ -1291,7 +1291,7 @@ package component_alternatives {
             }
             attribute main_UA_available_required_defined : Real = main_UA_available_required_screen.evaluation_defined;
             attribute main_UA_available_required_margin : Real = main_UA_available_required_screen.margin;
-            assert constraint main_UA_available_required : 'Offered Equipment Capacity' {
+            assert constraint main_ua_available_required : 'Offered Equipment Capacity' {
                 in defined_in = main_UA_available_required_defined;
                 in margin_in = main_UA_available_required_margin;
             }
@@ -1304,7 +1304,7 @@ package component_alternatives {
             }
             attribute reheat_UA_available_required_defined : Real = reheat_UA_available_required_screen.evaluation_defined;
             attribute reheat_UA_available_required_margin : Real = reheat_UA_available_required_screen.margin;
-            assert constraint reheat_UA_available_required : 'Offered Equipment Capacity' {
+            assert constraint reheat_ua_available_required : 'Offered Equipment Capacity' {
                 in defined_in = reheat_UA_available_required_defined;
                 in margin_in = reheat_UA_available_required_margin;
             }

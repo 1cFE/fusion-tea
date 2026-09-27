@@ -48,7 +48,7 @@ def part(name,definition,values,source=None,checks=()):
    body+=f"            calc {calc_name} : 'Offered Capacity Screen' {{\n                in rating_in = 1.0;\n                in demand_in = 0.0;\n                in applicable_in = true;\n                in conditions_supported_in = {flag_value};\n                in demand_available_in = true;\n            }}\n"
    body+=f'            attribute {check}_defined : Real = {calc_name}.evaluation_defined;\n            attribute {check}_margin : Real = {calc_name}.margin;\n'
    kind='Offered Equipment Capacity';binding={'defined_in':check+'_defined','margin_in':check+'_margin'}
-  body+=f"            assert constraint {check} : '{kind}' {{\n"+''.join(f'                in {k} = {v};\n' for k,v in binding.items())+'            }\n'
+  body+=f"            assert constraint {check.lower()} : '{kind}' {{\n"+''.join(f'                in {k} = {v};\n' for k,v in binding.items())+'            }\n'
  body+='        }\n';parts.append(body)
 def flag(name):return(name+'_ok','Required Flag',{'flag_in':name})
 def margin(name):return(name+'_ok','Nonnegative Margin',{'margin_in':name})

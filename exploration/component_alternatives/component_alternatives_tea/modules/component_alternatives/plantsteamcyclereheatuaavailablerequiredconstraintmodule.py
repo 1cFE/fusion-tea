@@ -1,6 +1,6 @@
-"""Constraint module for component_alternatives__plant__steam_cycle__reheat_UA_available_required__bdd3c800a1cc7c08 (Item 7 / D2/D3/D9).
+"""Constraint module for component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d (Item 7 / D2/D3/D9).
 
-Effective predicate: component_alternatives::plant::steam_cycle::reheat_UA_available_required in owner instance component_alternatives__plant__steam_cycle.
+Effective predicate: component_alternatives::plant::steam_cycle::reheat_ua_available_required in owner instance component_alternatives__plant__steam_cycle.
 Three-valued (Kleene) semantics. A verdict against the assertion does not itself raise (INV-3).
 """
 
@@ -23,10 +23,10 @@ class PlantSteamCycleReheatUaAvailableRequiredConstraintOutput(MultiOutput):
 
 
 class PlantSteamCycleReheatUaAvailableRequiredConstraintModule(ModuleBase[PlantSteamCycleReheatUaAvailableRequiredConstraintInput, PlantSteamCycleReheatUaAvailableRequiredConstraintOutput]):
-    name: str = "component_alternatives__plant__steam_cycle__reheat_ua_available_required__bdd3c800a1cc7c08"
+    name: str = "component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d"
     version: str = "v0.1"
 
-    CONSTRAINT_ID = "component_alternatives__plant__steam_cycle__reheat_UA_available_required__bdd3c800a1cc7c08"
+    CONSTRAINT_ID = "component_alternatives__plant__steam_cycle__reheat_ua_available_required__1e1158ef6871602d"
 
     def run(self, margin_in: float, defined_in: float) -> ModuleResult[PlantSteamCycleReheatUaAvailableRequiredConstraintOutput]:
         PlantSteamCycleReheatUaAvailableRequiredConstraintInput(margin_in=margin_in, defined_in=defined_in)  # validate every resolved formal
