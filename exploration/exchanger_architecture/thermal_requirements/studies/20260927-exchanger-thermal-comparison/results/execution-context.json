@@ -1,0 +1,17 @@
+{
+  "repo_commit_at_execution": "05941a0043277929d0d1c00720857a333ef3a954",
+  "utc_recorded": "2026-09-27T16:03:18.428299+00:00",
+  "execution_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python -m exploration.exchanger_architecture.thermal_requirements.execute_study --record exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison --integration-return work/orchestration/goals/design-study-exchanger-architecture/evidence/integration-r3/integration_return.json'",
+  "verification_command": ".codex-test/run bash -c 'PYTHONPATH=\"$PWD:$STOP_PARSER_TEAX_ROOT/packages/teax-simkit\" python scripts/study/verify.py --package exploration/exchanger_architecture/thermal_requirements/exchanger_architecture_thermal_tea --manifest exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison/manifest.json --identity exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison/preparation/package_identity.json --store exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison/results/native/20260927-exchanger-thermal-comparison.db --sample-size 1277 --out exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison/results/verification_summary.json'",
+  "expected_cases": 1277,
+  "scope": "All native points verify435 numeric channels and35 predicates; complete recorded inputs retained. No adapter or runtime physics glue.",
+  "preparation_commands": [
+    "r3-prepare-study.py prepare",
+    "stock indicators and exact baseline/preflight",
+    "r3-prepare-study.py scan",
+    "r3-refine-study.py",
+    "r3-finalize-proposals.py"
+  ],
+  "model_commit": "a97d6db7",
+  "audit_commit": "b09198bb"
+}

@@ -46,3 +46,19 @@ Append-only accepted round findings. None yet.
 - **Implication:** Re-evaluate thermally admissible operations before selecting a preferred architecture; buying more exchanger area cannot repair this particular fixed-flow source-side limit.
 - **Supersedes:** none; limits application of L-001 under the amended thermal contract.
 - **Accepted by:** Round 2 coordinator closure using independent source review, 2026-09-27.
+
+## L-006 — Original divertor exchanger cannot satisfy the adopted finite approaches
+
+- **Claim:** [AGENT] With 30 K minimum at both actual terminals, counterflow transfer requires Q at least UA times 30 K. Original divertor UA50 MW/K therefore needs at least1500 MW, while the N-R primary return/flow/hot cap permit329.7555 MW. Primary bypass cannot remove this contradiction while all installed UA remains active.
+- **Evidence:** WI-097 design and independent design review; source requirements and native original-inventory failure controls. The 30 K local-terminal rule is an agent-selected conditional requirement under delegated owner authority.
+- **Scope:** Declared constant-U model, full installed exchanger active and adopted N-R requirements. No universal exchanger-sizing or source requirement claim.
+- **Implication:** Explicit smaller area/price offers are required for this comparison; increasing area does not repair the original inventory's approach inconsistency.
+- **Accepted by:** Round 3 closure with independent design/implementation evidence, 2026-09-27.
+
+## L-007 — Refined operating points require complete native execution evidence
+
+- **Claim:** [AGENT] Two of1277 refined native maps fail bypass convergence despite finite independently calculated passing states. All1275 completed maps verify across435 channels and35 predicates, but that partial numeric success cannot certify the full comparison.
+- **Evidence:** Round 3 failed native store/export, verification-attempt.json, WI-097 oracle-failure-check and independent r3-failure-review.md.
+- **Scope:** Demonstrated numerical defect in executable cd16e8deb2f579e4cb1afcaf0fedbfc53498ba125783fbf8e17af14ffb4cbcc7; no changed thermal requirement or rejected physical point.
+- **Implication:** Preserve the failure, repair stable evaluation under independent review and rerun every unchanged map with a new pin. Do not select a winner by removing failed executions.
+- **Accepted by:** Round 3 closure with independent failed-state verification and disposition review, 2026-09-27.

@@ -194,3 +194,47 @@ T-006 · exploration/exchanger_architecture/thermal_requirements/studies/2026092
 - **Verification:** Eighteen native development cases agree on 435 independently calculated channels and 35 predicates. Seven legacy replays reproduce all 551 earlier outputs and fourteen checks exactly. Fifty-two independent reviewer tests and 29 author tests pass; these overlap and are not summed as unique coverage. Stock generation is a fixed point. The complete model validator retains 105 identical baseline literal warnings and adds 37 known pure-EXPOSE expression diagnostics to the baseline 498; the report states those limitations instead of claiming an all-level pass.
 - **MR-7 and thermal result:** Explicit fixed area/price selections remain supplied inputs; no equipment or effective UA is sized from demand. Both actual terminals, pre-mix primary HX outlet, aggregate return, required hot temperature, hot cap, active flow and bypass are separate channels. Original inventory fails the declared approach contract; fixed offered A/B controls pass all thirty-five checks. Main-study ranking remains T-006 work.
 - **Disposition:** Independent source/design/implementation evidence covers the new model. T-006 may execute after its completed preflight and final proposal refinement. WI-097's checklist is complete; formal work-item and goal closure remain owner-held.
+
+### T-006 return — 2026-09-27
+
+- **Outcome:** PREREQUISITE. The selected native study did not complete: 1275 of 1277 maps completed; candidate IDs c0621 and c1085 raised `bypass solve did not converge` in the new controlled closure. The exporter retained all stores/maps/results and failed closed. No architecture ranking is accepted.
+- **Evidence:** exploration/exchanger_architecture/thermal_requirements/studies/20260927-exchanger-thermal-comparison/results/cases.json, execution.log and native store; verification-attempt.json checks all 1275 completed cases on 435 channels and 35 predicates with no disagreement. Its numeric outcome is a partial completed-case pass, not evidence that the full study completed. WI-097 evidence/oracle-failure-check.json/.md independently establish that both failed maps have finite thermal solutions and pass the unchanged predicates.
+- **Preparation:** 91,234 oracle evaluations selected 1,277 exact native maps. Final refinement targets pass; no sampled passing outer edge remains. The retained independent scan and all candidate identities remain evidence, with nonpositive-net LCOE refusals separate from engineering failures. No points were removed after the native defect appeared.
+- **Disposition:** Route numerical closure evaluation to a bounded WI-097 repair with unchanged equations, oracle, tolerances, equipment, requirements and all 1277 maps. A changed executable requires another promoted pin and therefore another round. This is not a same-pin mechanical retry. Failed package archive and original source copies were captured before repair in failed-package-preservation.json.
+
+### Round 3 result — 2026-09-27
+
+- **Intent:** Thermal requirements, explicit offers and the reviewed native implementation are established. The full refined comparison is incomplete because two valid cases hit a numerical convergence defect. Preferred-case delivery remains unmet.
+- **Task sequence:** T-005 COMPLETE; T-006 PREREQUISITE. One promoted native pin; one failed, preserved study attempt. No successful sealed-study claim and no mechanical retry.
+- **Stop reason:** The one-pin round bound is reached; repairing the executable requires a new pin. Close this round and use the fourth authorized round for unchanged-meaning numerical repair and exact-map replay.
+- **Evidence:** Native package a97d6db7, implementation/interface b09198bb, integration/preparation 05941a00, failed study directory and package archive, independent implementation review and evidence/r3-failure-review.md. Final attempt digests will be committed with the failure record before replacement execution.
+- **Learning delta:** L-006: the declared finite terminal gaps make original divertor UA incompatible with the capped duty. L-007: development and baseline verification did not cover two finite bypass solve states reached by the refined scan; full execution and independent verification remain required.
+- **Next strategy:** Stabilize the numerical evaluation after independent review, preserve every attempted map and all scientific assumptions, then replay and verify the entire comparison. Goal and work-item closure stay owner-held.
+
+### Round 3 review — 2026-09-27
+
+- **Coverage:** Reuse independent source/design/implementation reviews; fresh failure disposition review PASS in evidence/r3-failure-review.md. Independently calculated failed-map states are finite; all completed native cases agree with the unchanged oracle. No result is selected by excluding a failed execution.
+- **Boundary and preservation:** A fourth-round replacement pin is required. Original Round 1's 873 sealed artifacts and all 180 package files are unchanged, checked in r3-preservation.json. Round 3's failed executable and source bytes are archived before repair. Native failure is not relabeled a physical failure or handled by looser requirements.
+- **Disposition and learning:** Accept L-006/L-007 within their stated scope. The numerical defect has WI-097 as its repair home. The attempted study's finding will be recorded with its blocked record; no unrelated discovery disposition changes are claimed. Round 3 is closed; four-round authority permits the following final round without a renewed owner decision.
+
+## Round 4 — stable-exact-map-thermal-comparison
+
+### Strategy revision — 2026-09-27
+
+- **Approach:** [AGENT] Repair the demonstrated numerical convergence defect, independently verify unchanged equations and tolerances, integrate one corrected pin, then replay every one of the same 1277 supplied maps and deliver the conditional comparison. [OWNER] Latest delegation to use best judgment and pursue strong results remains the authority.
+- **Assumptions:** The defect is numerical evaluation near a limiting heat-transfer state; both failed maps have finite independently verified physical solutions. A stable equivalent expression can resolve it without changing the scientific comparison.
+- **Abandonment conditions:** Remedy changes equations, requirements, oracle, tolerance, equipment or candidate scope; unchanged-meaning repair cannot be verified; or the final-round execution cannot establish passing preferred cases. Surface any such outcome explicitly rather than silently extend the goal.
+- **Intended model increment:** Minimal stable evaluation in the controlled closure, with kept reproducer/regression cases, unchanged legacy mode and MR-7 roles. No equipment selection or sizing change.
+- **Intended study question:** The same thermally consistent architecture comparison on the exact retained 1277 maps. Reconfirm independent window anchors/edges under the corrected identity; preserve the original scan and failure evidence.
+
+### T-007 scope
+
+- **Objective:** Diagnose and repair the two native convergence failures without changing scientific meaning, then integrate the corrected executable.
+- **Scope:** WI-097 numerical investigation, independent high-precision review, minimal stable implementation, full 1277-map verification baseline, regenerated fixed point and native integration. The independent oracle, numerical tolerances, thermal contract, inventory and candidate maps are frozen.
+- **Inputs:** Round 3 failed store/export, unchanged oracle failure checks, original source/body archive, WI-097 accepted design and all prior reviews.
+- **Done when:** Both failed cases and all regression cases execute and verify on an independently reviewed corrected pin, ready for exact-map stored study execution.
+- **Stop when:** Any abandonment condition above or declared native gate failure.
+
+### T-007 start — 2026-09-27
+
+T-007 · work/active/WI-097_exchanger-thermal-requirements · numerical repair under unchanged semantics. Continuing implementation author owns diagnosis/body/tests; independent oracle author owns failed-map calculations; continuing independent reviewer checks remedy before model changes. Coordinator preserves failed evidence and owns integration. Model edits remain gated on the remedy review.

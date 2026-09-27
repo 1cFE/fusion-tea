@@ -1,0 +1,8 @@
+{
+  "archive_sha256": "d6cdb44dfba5c5dc49c284353b558177209ed8afe421d320c2b14001e4894179",
+  "source_files": 65,
+  "executable_fingerprint": "cd16e8deb2f579e4cb1afcaf0fedbfc53498ba125783fbf8e17af14ffb4cbcc7",
+  "native_model_commit": "a97d6db7",
+  "audit_commit": "b09198bb",
+  "note": "Failed attempt preserved before any numerical repair; no accepted architecture result."
+}
