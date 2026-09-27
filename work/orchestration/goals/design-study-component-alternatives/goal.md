@@ -2,9 +2,9 @@
 
 ## Status
 
-`grounded` — owner-held formal closure remains pending.
+`closed` — closed by the owner on 2026-09-26 as answered within the declared offers and conditional modeling scope. [Closure direction](evidence/owner-direction-close.md).
 
-Round 2 completed the [owner-authorized bounded numerical repair](evidence/owner-direction-numerical-repair.md). All six original numerical defects were isolated and repaired without changing the oracle, tolerances, physical domain, variable roles or equipment offers. Fresh integration and full 498-case verification pass; all input maps and engineering verdicts match the retained predecessor. Independent repair and final economic reviews PASS. The [answer](answer.md) releases a conditional conversion-subsystem comparison with explicit cooler/property and procurement limitations. The original failed executable and study remain preserved. Formal goal and WI-096 closure remain owner-held.
+Round 2 completed the [owner-authorized bounded numerical repair](evidence/owner-direction-numerical-repair.md). All six original numerical defects were isolated and repaired without changing the oracle, tolerances, physical domain, variable roles or equipment offers. Fresh integration and full 498-case verification pass; all input maps and engineering verdicts match the retained predecessor. Independent repair and final economic reviews PASS. The [answer](answer.md) releases a conditional conversion-subsystem comparison with explicit cooler/property and procurement limitations. The original failed executable and study remain preserved. The owner has closed this goal; WI-096 remains open.
 
 ## Question
 
@@ -63,3 +63,5 @@ Round 2 completed the [owner-authorized bounded numerical repair](evidence/owner
 [OWNER] 2026-09-26: authorize one bounded numerical-repair continuation, including a new executable, revalidation and complete matched-study replay. The [full direction](evidence/owner-direction-numerical-repair.md) extends the applicable exhausted cap only for confirmed numerical defects. Oracle, tolerances, physical domain, explicit offers and comparison scope remain unchanged. Independent repair and economic review are required. Formal closure remains owner-held.
 
 [AGENT] Execution detail: round 2 records this authorized continuation with one repaired promoted identity and one fresh study. It does not reopen the closed round 1 or replace its failed evidence. The original four-round ceiling and ordinary mechanical retry limits remain; the previous stop on a new numerical executable is superseded only within the owner's repair scope.
+
+[OWNER] 2026-09-26: “ok great, close the goal.” Formal goal closure is recorded on the verified comparison and independent final PASS. WI-096 closure is separate. Direction: `evidence/owner-direction-close.md`.

@@ -283,3 +283,9 @@ Coordinator owns fresh integration and `exploration/component_alternatives/studi
 - **Coverage:** Reused valid fourth-design and implementation reviews; independently diagnosed all six numerical causes and replayed focused checks. Final review checked all-case identity/input/verdict joins, catalog minima, energy/cost arithmetic, sensitivities/frontiers, cooler exclusion classification and all three figures. It rehashed both snapshots and all 720 new/635 original artifacts, verified the six findings joins and final record/replay. Final record SHA256 is `9b3dd38c6211451d71ffb5e288a7216252c56173886ced23680947a3881c6740`.
 - **Evidence:** `evidence/numerical-repair-review.md` and `evidence/repaired-results-review.md`, with kept independent probes. The archived initial economic review precedes the seal; final hash assurance is appended externally without changing its archived copy.
 - **Closure boundary:** Review discharges the authorized technical continuation. Formal goal and WI-096 closure remain owner-held; no push or merge.
+
+### Owner closure — 2026-09-26
+
+[OWNER-VERBATIM] “ok great, close the goal.” Direction retained in `evidence/owner-direction-close.md`.
+
+[AGENT coordinator] Closed `design-study-component-alternatives` as answered on the verified, independently reviewed conditional comparison committed at `9360d952`. Two of four rounds were used. The repaired 498-case study passes the unchanged numerical contract; the final independent review passes its economic interpretation and seal. All engineering failures, cooler-property exclusions and qualification limits remain explicit. The original blocked study and repaired study retain their existing immutable snapshots. No new study, modeling change or review is required for this owner-directed status change. Goal status and answer updated; WI-096 remains open. No push or merge.
