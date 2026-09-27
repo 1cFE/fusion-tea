@@ -68,6 +68,7 @@ def freeze(record):
         'evidence/independent-verification/native-behaviors-final.json',
         'evidence/independent-verification/controls-summary.json',
         'evidence/conversion-controls/comparison.json'))
+    source_paths.update(p.relative_to(ROOT).as_posix() for p in (wi / 'evidence/magnet-capture').rglob('*') if p.is_file() and not p.is_symlink() and p.suffix in ('.json','.md','.py') and '__pycache__' not in p.parts and 'package-link' not in p.parts)
     goal = ROOT / 'work/orchestration/goals/design-study-whole-plant-conversion'
     source_paths.update((goal / name).relative_to(ROOT).as_posix() for name in (
         'comparison-contract.md','evidence/owner-brief.md','evidence/upstream-accounting.md',
@@ -77,6 +78,7 @@ def freeze(record):
         'evidence/final-results-review.md'))
     source_paths.update(p.relative_to(ROOT).as_posix() for p in (route.E2E / 'bodies').rglob('*.py'))
     source_paths.add(Path(__file__).relative_to(ROOT).as_posix())
+    source_paths.update((goal / 'evidence' / name).relative_to(ROOT).as_posix() for name in ('write-record.py','summarize-evidence.py','render_assembly.py'))
     for relative in sorted(source_paths):
         target = results / 'sources' / relative
         target.parent.mkdir(parents=True, exist_ok=True)
