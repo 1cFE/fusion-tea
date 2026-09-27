@@ -281,9 +281,29 @@ def extract(record):
     fingerprints = sorted({r["executable_fingerprint"] for r in native.values()})
     if len(fingerprints) != 1:
         raise ValueError("native results mix executable identities")
+    verification_path = record / "results/verification_summary.json"
+    verification = {"status": "unverified", "reason": "No passed stock verification receipt is present in this frozen record."}
+    if verification_path.exists():
+        receipt = read(verification_path)
+        if receipt.get("schema_version") != "study-verification-summary/v1":
+            raise ValueError("unknown stock verification receipt schema")
+        if receipt.get("identity", {}).get("digest") != fingerprints[0]:
+            raise ValueError("verification receipt identifies a different executable")
+        stores = receipt.get("stores", [])
+        if not stores or any(s["study_id"] != record.name for s in stores):
+            raise ValueError("verification receipt identifies a different study")
+        verified_ids = {cid for s in stores for cid in s["sampling"]["sampled_case_ids"]}
+        native_ids = {r["candidate_id"] for r in native.values()}
+        if not verified_ids.issubset(native_ids):
+            raise ValueError("verification receipt contains unknown native cases")
+        verification = {"status": receipt["outcome"], "sampled_native_cases": len(verified_ids),
+                        "native_cases": len(native_ids), "all_native_cases_sampled": verified_ids == native_ids,
+                        "receipt": "results/verification_summary.json"}
+        required["verification"] = verification_path
     used = {str(path.relative_to(record)): hashlib.sha256(path.read_bytes()).hexdigest() for path in required.values()}
     return {"kind": "stored native catalog ranking", "caveat": CAVEAT, "executable_fingerprint": fingerprints[0],
             "native_cases": len(native), "membership_aliases": len(aliases), "input_artifacts": used,
+            "stock_verification": verification,
             "materiality": MAPPING["materiality"], "rankings": rankings, "matched_pairs": matches}, ledger
 
 
@@ -298,8 +318,9 @@ def figures(data, out):
     colors = ["#146c94", "#e9a23b", "#799c4b", "#9972a5", "#cc6553", "#657786", "#a27b51", "#619d98"]
 
     def save(fig, name, caption):
-        fig.text(.01, .015, caption, ha="left", va="bottom", fontsize=7, wrap=True)
-        fig.tight_layout(rect=(0, .10, 1, .98))
+        status = "Stock verification: " + data["stock_verification"]["status"] + ". "
+        fig.text(.01, .015, status + caption, ha="left", va="bottom", fontsize=7, wrap=True)
+        fig.tight_layout(rect=(0, .10, 1, .95))
         fig.savefig(out / (name + ".svg"));fig.savefig(out / (name + ".png"));plt.close(fig)
 
     if nominal:
@@ -333,9 +354,15 @@ def figures(data, out):
 
     # Each point uses reranked native catalog minima. Diagnostic-only cases are not plotted as optima.
     scenarios = sorted({r["scenario"] for r in data["rankings"] if r["catalog_aliases"]})
-    sources = sorted({r["source_MW"] for r in data["rankings"] if r["catalog_aliases"]})
+    attempted_sources = {r["source_MW"] for r in data["rankings"] if r["catalog_aliases"]}
+    sources = sorted({r["source_MW"] for r in data["rankings"] if r["catalog_aliases"] and r["selected"]})
+    unsupported_sources = sorted(attempted_sources - set(sources))
+    unsupported_label = "; ".join(f"{q:g} MW: × no supported catalog pair" for q in unsupported_sources)
+    if not sources:
+        raise ValueError("no supported source condition for sensitivity figures")
     lookup = {(r["scenario"], r["source_MW"], r["branch"]): r for r in data["rankings"]}
     fig, axes = plt.subplots(1, len(sources), figsize=(5 * len(sources), max(5, .25 * len(scenarios))), squeeze=False, sharey=True)
+    if unsupported_label:fig.suptitle(unsupported_label, fontsize=10, color="#a93636", y=.99)
     for ax, source in zip(axes[0], sources):
         for index, scenario in enumerate(scenarios):
             pair = [lookup.get((scenario, source, b)) for b in BRANCHES]
@@ -360,6 +387,7 @@ def figures(data, out):
     # Companion view retains the continuous gap and the reporting band's exact endpoints.
     matched = {(m["scenario"], m["source_MW"]): m for m in data["matched_pairs"]}
     fig, axes = plt.subplots(1, len(sources), figsize=(5 * len(sources), max(5, .25 * len(scenarios))), squeeze=False, sharey=True)
+    if unsupported_label:fig.suptitle(unsupported_label, fontsize=10, color="#a93636", y=.99)
     for ax, source in zip(axes[0], sources):
         ax.axvspan(-COST_BAND_USD2025_MWH, COST_BAND_USD2025_MWH, color="#dddddd", zorder=0)
         ax.axvline(0, color="#999999", linewidth=.7)
@@ -378,6 +406,28 @@ def figures(data, out):
         ax.grid(axis="x", alpha=.2)
     axes[0][0].invert_yaxis()
     save(fig, "preference-gap", "Gray band: −5 through +5 USD/MWh, inclusive; I: indeterminate. Strict sign changes inside this band are not material preference reversals. Red ×: unsupported.")
+
+    boundary_keys = {(r["scenario"], r["source_MW"]) for r in data["rankings"]
+                     if r["family"] in ("economic_boundary", "reporting_boundary")}
+    boundary_pairs = [m for m in data["matched_pairs"]
+                      if (m["scenario"], m["source_MW"]) in boundary_keys and m["matched_supported"]]
+    if boundary_pairs:
+        fig, ax = plt.subplots(figsize=(12, max(4.5, .55 * len(boundary_pairs))))
+        ax.axvspan(-COST_BAND_USD2025_MWH, COST_BAND_USD2025_MWH, color="#e5e5e5")
+        ax.axvline(0, color="#888888", linewidth=.8)
+        names = []
+        for index, entry in enumerate(boundary_pairs):
+            gap = entry["cost_gap_gas_minus_steam_USD2025_MWh"]
+            color = colors[0] if entry["preference"] == "steam" else colors[1] if entry["preference"] == "gas" else "#666666"
+            ax.scatter(gap, index, color=color, s=35, zorder=3)
+            names.append(entry["scenario"].replace("economic-bracket-gas-favourable-", "Strict zero · ").replace("reporting-band-gap", "Reporting band "))
+            ax.text(1.02, index, f"{gap:+.9f}  {entry['preference']}", transform=ax.get_yaxis_transform(), va="center", fontsize=8)
+        ax.set_yticks(range(len(names)), names, fontsize=8)
+        ax.invert_yaxis()
+        ax.set(xlim=(-6, 6), xlabel="Gas − steam native LCOE (2025 USD/MWh)", title="Strict zero and reporting-band confirmations")
+        ax.grid(axis="x", alpha=.2)
+        save(fig, "economic-boundary-detail", "Gray band includes −5 and +5 USD/MWh. A strict ordering change near zero remains indeterminate. Native finite-catalog reranking; conditional assumptions.")
+
 
 
 def predecessor_context(record, data, out):
@@ -441,6 +491,7 @@ def render(record, out):
     figures(data, out)
     predecessor_context(record, data, out)
     readme = ["# Native whole-plant comparison", "", CAVEAT, "",
+              "Stock verification status: **" + data["stock_verification"]["status"] + "**. The exact receipt scope and identity are recorded in `native-ranking.json`. If no passed receipt is present, this is an unverified draft extraction.", "",
               "Cost preference is indeterminate when the absolute gas-minus-steam gap is at most 5 USD2025/MWh, including both endpoints. Exact gaps and strict cheaper-branch labels remain in `matched-pairs.csv`; `economic-boundary-context.json` separately retains native strict-crossing and reporting-band bracket results. A strict algebraic crossing inside this band is not a material preference reversal. Net-power differences use a separate inclusive ±5 MW reporting band. Both bands are presentation choices, not physical constraints.", "",
               "All headline LCOE values and engineering checks come from stored native results. A minimum is the best admitted member of the finite catalog; held-offer and edge diagnostics remain outside catalog ranking.", "",
               "`attempted-case-ledger.csv` retains every membership alias, including failed and unexecuted points. `matched-account-table.csv` gives nominal power, initial accounts, annual fuel/service/imports, replacement and terminal values with native case IDs. `scenario-summary.json` gives all scenario selections. Blue circles in the sensitivity figure denote steam; amber squares denote gas; red crosses mean no supported matched pair.", "",

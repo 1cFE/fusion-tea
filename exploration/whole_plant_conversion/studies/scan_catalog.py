@@ -316,7 +316,7 @@ def extend(integration_path,out):
     cryo=[]
     for q in ('2500','2800'):
         anchor=anchors[q];capacity=scan.cache[anchor['point_id']]['outputs'][P+'cryogenic_demand__evaluate__q_nuc_capacity_W_m3']
-        for end,offset in [('below',-1e-5),('above',1e-5)]:
+        for end,offset in [('below',-.01),('above',.01)]:
             chosen={'cryogenic_demand__q_nuc_W_m3':capacity+offset,'cryogenic_demand__extra_cold_W':0.}
             point=offers.change(anchor['point'],chosen);result=scan.evaluate(point)
             for branch in ('gas','steam'):

@@ -75,10 +75,11 @@ def freeze(record):
         'evidence/conversion-interfaces.md','evidence/boundary-review-r2.md',
         'evidence/capture-boundary-review-r2.md','evidence/cryoplant-offer-review.md',
         'evidence/implementation-integration-review.md','evidence/preservation-after-implementation.json',
-        'evidence/final-results-review.md'))
+        'evidence/final-results-review-r2.md','evidence/numerical-repair-r2-proposal.md',
+        'evidence/numerical-repair-r2-review.md','evidence/round-1-review.md'))
     source_paths.update(p.relative_to(ROOT).as_posix() for p in (route.E2E / 'bodies').rglob('*.py'))
     source_paths.add(Path(__file__).relative_to(ROOT).as_posix())
-    source_paths.update((goal / 'evidence' / name).relative_to(ROOT).as_posix() for name in ('write-record.py','summarize-evidence.py','render_assembly.py'))
+    source_paths.update((goal / 'evidence' / name).relative_to(ROOT).as_posix() for name in ('write-record.py','write-answer.py','summarize-evidence.py','render_assembly.py'))
     for relative in sorted(source_paths):
         target = results / 'sources' / relative
         target.parent.mkdir(parents=True, exist_ok=True)

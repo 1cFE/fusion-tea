@@ -160,7 +160,7 @@ def cooler(x: Mapping) -> dict:
         result['failure_code'] = 2.
         return result
     outlet = brentq(lambda t: evaluate(t)[0]-x['ua'], lower, upper,
-                    xtol=1e-11, rtol=1e-14, maxiter=200)
+                    xtol=math.nextafter(0.0, 1.0), rtol=4*math.ulp(1.0), maxiter=200)
     required, flow, gap = evaluate(outlet)
     power = flow*specific_electric/1000
     result.update(evaluation_defined=1., water_outlet_C=outlet, water_flow=flow,

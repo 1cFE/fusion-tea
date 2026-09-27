@@ -2,7 +2,7 @@
   "status": "pass",
   "scope": "Renderer development checks using copied retained native receipts in temporary synthetic study records; no main-study results or planning-oracle numerical results consumed.",
   "renderer": "exploration/whole_plant_conversion/studies/report_results.py",
-  "renderer_sha256": "456759cde64b5177e0e45db6cc79649633de1576af6bfae47ad0b8f12f480224",
+  "renderer_sha256": "73265e2fce90befdba15064bb80e52d68d152e1bc3872cbc1d66feb1763a9e8f",
   "native_receipt": "work/active/WI-098_whole-plant-conversion-comparison/evidence/development-final/native/cases.json",
   "native_receipt_sha256": "e6b1191a41dcf6a861b2b9d86f3d4aaab2a84c27b67c8ec4bb2ec5ad307cbdda",
   "retained_native_cases": [
@@ -68,6 +68,11 @@
       "name": "extension catalog roles",
       "status": "pass",
       "detail": "Performance-price, strict crossing and reporting-band catalogs rank; engineering boundary diagnostics remain outside catalog minima."
+    },
+    {
+      "name": "round-1 real-data layout refinement",
+      "status": "pass",
+      "detail": "264 rankings and all matched-pair data unchanged after layout/status refinements; all 2496 native cases and2651 aliases retained. Independent verification status remains unverified."
     }
   ],
   "test_driver": "/tmp/test_wi098_renderer.py",
@@ -83,6 +88,10 @@
     {
       "sha256": "7f8db6bbd81ace7c50d1b1ecf916c5216df2faf537fd2c79b8cd3820fc7bfaac",
       "status": "development fixture checks passed before materiality correction; superseded for reporting labels"
+    },
+    {
+      "sha256": "456759cde64b5177e0e45db6cc79649633de1576af6bfae47ad0b8f12f480224",
+      "status": "round-1 renderer preserved in supporting/report_results-at-execution.py; stock numerical verification failed independently"
     }
   ],
   "materiality_checks": {
@@ -163,5 +172,16 @@
     "extension_role_classification": "pass"
   },
   "materiality_test_driver_sha256": "9662e4ed8762df9aca8500fd71733c355b4a8fcebbef847637560d5e1a357770",
-  "materiality_test_replay": ".codex-test/run python /tmp/test_wi098_materiality.py"
+  "materiality_test_replay": ".codex-test/run python /tmp/test_wi098_materiality.py",
+  "round_1_rendering": {
+    "status": "draft_unverified",
+    "native_cases": 2496,
+    "membership_aliases": 2651,
+    "ranking_groups": 264,
+    "original_presentation": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/presentation",
+    "failure_disposition": "exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/presentation/STATUS.md",
+    "refined_layout_test": "/tmp/wi098-renderer-refined-round1",
+    "ranking_and_matched_pairs_unchanged": true,
+    "visual_inspection": "Power/cost readable. Removed empty unsupported 3000 MW numeric axis from sensitivity figures; explicit unsupported title remains. Added readable exact-gap boundary figure. Every new figure declares stock verification unverified."
+  }
 }

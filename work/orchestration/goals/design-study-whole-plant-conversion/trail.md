@@ -139,3 +139,57 @@ T-003 preparation retry 1 of 2 · same finite study scope and input catalog · i
 - **Evidence:** Model/package d7d8a1e5; integration CANDIDATE at 3deafc4e; blocked study 20260927-design-study-whole-plant-conversion; evidence/final-results-review.md FINDINGS.
 - **Proposed learning delta:** Relative-only comparison of a nearly cancelled capacity margin needs a predeclared diagnostic spacing that resolves the margin numerically. This does not justify changing physical inequalities or verification tolerances.
 - **Finding dispositions:** Study findings #1–8 remain the recorded declared seams or corrected scheduling issue. Finding #9 blocks release and routes to a separately reviewed next-round spacing proposal. Full discrepancy inspection remains required before that decision. One preparation mechanical retry was used; the main failure is a changed-input follow-up, not another mechanical retry.
+
+### Round 1 review — 2026-09-27
+
+- **Reviewer and verdict:** Independent boundary_review; PASS for failed-round closure coverage only, evidence/round-1-review.md. The economic release remains blocked by evidence/final-results-review.md FINDINGS.
+- **Coverage:** Native blocked record committed at 275ba13c, snapshot 038545e8b98042063409aa72884c182327b7a87ec7aa5d5a8c6a726ec44de0fb. Scope, one preparation retry, unchanged requested comparison and finding routing checked. Prior source/boundary/MR-7 reviews remain valid for the frozen implementation.
+- **Learning:** Accept the bounded diagnostic-spacing lesson below. Do not assume the first failure is the only failure. The completed all-case forensic scan subsequently identifies 11 scalar mismatches across five cases, including one cooler case, with zero predicate mismatches; evidence/verification-failure-r1/discrepancies.json. That diagnostic cannot turn the failed run into a pass.
+- **Recommendation:** Continue a new round with independent numerical diagnosis and reviewed corrections. Formal goal/item closure is not recommended yet.
+
+## Round 2 — resolve-numerical-verification
+
+### Strategy revision — 2026-09-27
+
+- **Approach:** [AGENT] Resolve all diagnosed numerical discrepancies using independently justified accuracy corrections and predeclared diagnostic spacing; retain every catalog offer and repeat the complete native study.
+- **Assumptions:** [AGENT] The discrepancy set reflects numerical conditioning rather than a changed physical or economic comparison. Independent high-precision adjudication must establish which implementation requires correction.
+- **Abandonment conditions:** A physical-model inconsistency, unresolved interpretation, repeated unreviewed mismatch or declared cap. No failing catalog offer is removed to obtain verification.
+- **Intended model increment:** None unless adjudication proves a native numerical implementation defect. Package-owned oracle accuracy may be repaired only with independent mathematical evidence; verification tolerances remain unchanged. Reuse unchanged source, cost, role and preservation reviews.
+- **Intended study question:** The original complete whole-plant preference and conditional thresholds, with a numerically resolved cryogenic capacity bracket.
+
+### T-004 scope
+
+- **Objective:** Independently diagnose all 11 discrepancies and review the bounded numerical correction before any new main study.
+- **Scope:** Upstream owns forensic/high-precision probes and any approved package-owned oracle correction; conversion owns native solver diagnosis and any approved native body correction. Root owns round/record/integration; boundary_review owns independent adjudication. Distinct files permit concurrent investigation; dependent mutations wait for reviewed diagnosis. Preserve sealed Round 1, unchanged tolerance definitions and all equipment selections.
+- **Inputs:** Blocked study at 275ba13c; evidence/verification-failure-r1; exact native/oracle sources and accepted comparison contract.
+- **Done when:** Independent review accepts a concrete correction, targeted native checks support it, and exact package/oracle identity is ready for integration.
+- **Stop when:** Unresolved scientific interpretation, material prerequisite or declared cap. This is a changed-input/correction task, not a mechanical retry of T-003.
+
+### T-004 start — 2026-09-27
+
+T-004 · independent numerical adjudication · evidence/verification-failure-r1 and evidence/numerical-repair-r2-proposal.md; no model or oracle mutation released yet.
+
+### T-004 correction review — 2026-09-27
+
+- **Evidence:** evidence/numerical-repair-r2-proposal.md and evidence/numerical-repair-r2-review.md, independent PASS for bounded implementation. The 80-digit reference identifies insufficient independent Brent stopping accuracy at c1868; native output is already accurate. All five failing input maps and original errors remain in the sealed first record and forensic diagnosis.
+- **Decision:** Trigger: independently adjudicated oracle stopping error and cancellation-sensitive diagnostic spacing. Decision: tighten only the package-owned oracle's Brent stopping precision and predeclare four replacement cryogenic points at capacity ±0.01 W/m³. Retain the native body, plant equations, all catalog offers and acceptance tolerances. Tier: execution detail. Decided by: coordinator [AGENT] using focused independent PASS. Changed: upstream assignment for oracle_thermal.py, scan_catalog.py and new validation receipts. No main study is released yet.
+- **Required checks:** Original 2496-point diagnostic must retain exactly eight known cryogenic discrepancies and no others; four new native points, legacy controls and complete replacement native verification must pass. An oracle correction never retroactively releases the old failed record.
+
+### T-004 return — 2026-09-27
+
+- **Outcome:** COMPLETE — exact reviewed correction and pre-main regression gates passed. Native model/package and acceptance tolerances are unchanged.
+- **Evidence:** evidence/numerical-repair-r2-validation/validation-summary.json and reviewed-changes.diff. Original 2496-point diagnostic retains exactly eight old cryogenic margin discrepancies, with zero others and zero predicate mismatches. All 498 controls pass; development gives 32 evaluated passes and three consistent refusals. Four wider cryogenic points pass stock numerical verification across 1192 scalars and 125 predicates, while retaining the expected lower-pass/upper-cold-capacity-failure behavior.
+- **Reading:** Independent high-precision adjudication supports a numerical accuracy change to the package-owned oracle only. This does not alter native economic outputs or release the original failed record. New main execution and verification remain required.
+- **Decision:** Trigger: reviewed correction and all required local checks passed. Decision: run native integration on the committed correction, then regenerate and freeze the replacement point list before a new complete study. Tier: execution detail. Decided by: coordinator [AGENT] under numerical-repair-r2-review.md. Changed: T-005 scope; regeneration and package readers remain sequential.
+
+### T-005 scope
+
+- **Objective:** Complete the original whole-plant engineering answer using the corrected verifier and reviewed cryogenic diagnostic spacing, a fresh native record, figures and independent final assurance.
+- **Scope:** One integration candidate and one committed replacement study in this round, at most 3000 complete native points. Same source, cost, equipment and reporting contract. Root owns integration, execution and narrative; upstream owns replacement preparation; conversion owns native report rendering; boundary_review owns final assurance. No preparation reader overlaps in-place integration regeneration.
+- **Inputs:** T-004 reviewed correction and regression, unchanged native package and original comparison contract, sealed failed first study and inherited catalog.
+- **Done when:** Complete all-case numerical verification, reviewed native reranking/figures/conclusion and sealed replayable evidence satisfy the owner endpoint.
+- **Stop when:** Numerical verification failure, material prerequisite, reserved owner gate or declared cap.
+
+### T-005 start — 2026-09-27
+
+T-005 · native integration and replacement run-study · exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion-b/.
