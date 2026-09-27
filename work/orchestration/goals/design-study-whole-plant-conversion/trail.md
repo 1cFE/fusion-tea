@@ -50,3 +50,13 @@ T-002 · native modeling PM · registered work item, specification, design/plan,
 ### T-002 design submission r1 — 2026-09-27
 
 [AGENT] Complete design/configuration submitted for the first independent review. The fixed alternative uses 48 kA excitation, the larger selected winding pack and a separately priced 40/60 kW cryoplant. The previous 50 kA offer remains failed evidence at 4d42eff9. Reviewer: boundary_review, continuing its original-evidence checks. Scope is the complete source/power/cost/role boundary in evidence/boundary-review-brief.md. Submission 1 of 3; no dependent model implementation or main study has executed. Evidence: work/active/WI-098_whole-plant-conversion-comparison/{design.md,configuration.md}, currently unpinned.
+
+### T-002 design review r1 — 2026-09-27
+
+- **Evidence:** Design/configuration r1 at 276cfe48; independent evidence/boundary-review.md, unpinned; no native digest. Verdict FINDINGS, MR-7 unverified pending a precise source-input migration and executed behavior.
+- **Decision:** Trigger: omitted major overhead/supplementary scopes and incomplete source/fuel interfaces. Decision: correct F1–F3 in the native design and return to the same reviewer before implementation. Tier: execution detail. Decided by: coordinator [AGENT]. Changed: author assignment for WI-098 design.md/configuration.md, revision 1 of 2.
+- **Decision:** Trigger: conditional 48 kA source interpretation. Decision: retain the proposed conditional interpretation because independent review found it inside the owner's supplied-source authority; exact native hardware capture and its component checks remain mandatory. Tier: premise surprise. Decided by: coordinator [AGENT], using the independent review. Changed: no model or study execution released by this finding.
+
+### T-002 design submission r2 — 2026-09-27
+
+[AGENT] Revised complete design/configuration submitted to boundary_review. Corrective scope: disjoint CAS29/30/50 accounts, exact single-source/finance migration, explicit D/Li6 purchase and refill equations, positive-integer operating horizon and capture-key identity. Submission 2 of 3. Native design files remain frozen during review. Reversible conversion-oracle namespace preparation has completed without changed arithmetic; new equations and native hardware execution remain paused.
