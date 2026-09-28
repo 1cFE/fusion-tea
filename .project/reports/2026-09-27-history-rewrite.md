@@ -31,6 +31,8 @@ They stay on disk on the machine that ran the studies, listed in `.gitignore` an
 - `exploration/whole_plant_conversion/studies/20260927-design-study-whole-plant-conversion/results/native/20260927-design-study-whole-plant-conversion.db`
 - `work/active/WI-098_whole-plant-conversion-comparison/evidence/conversion-controls/native/cases.json`
 
+Four sealed study records list some of these files in their `snapshot.json` or `manifest.json`, so re-verifying or replaying those studies from a clone needs the local copies: `20260912-plant-closure` (1 file), `20260927-exchanger-thermal-comparison-b` (1), `20260927-design-study-whole-plant-conversion` (6) and `20260927-design-study-whole-plant-conversion-b` (6).
+
 ## Reading commit IDs cited before the rewrite
 
 - Records written before the rewrite cite commit IDs from the old history. Of the commit IDs cited in `work/orchestration/` and `.project/`, 109 changed. About 540 files across the repository cite them, most of them captured evidence (logs, receipts, study and goal records).
