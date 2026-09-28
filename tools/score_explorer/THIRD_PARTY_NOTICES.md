@@ -1,6 +1,6 @@
 # Third-party libraries
 
-These unchanged distributions replace the same versions previously loaded from unpkg. No project license is added by these notices.
+These unchanged distributions replace the same versions previously loaded from unpkg. Their licenses remain distinct from the original project licenses in [LICENSING.md](LICENSING.md).
 
 | Local file | Upstream distribution | License |
 |---|---|---|
@@ -10,4 +10,4 @@ These unchanged distributions replace the same versions previously loaded from u
 
 React and ReactDOM retain their license headers. The htm module is the package's self-contained ES module without modifications. License texts were obtained from the matching package versions. `vendor/SHA256SUMS` records the downloaded files and their license texts. The release package adds checksums for the complete tool.
 
-A scoped license declaration for project code, data and written content remains to be added.
+Original project code, factual data and authored text are licensed separately as stated in [LICENSING.md](LICENSING.md).

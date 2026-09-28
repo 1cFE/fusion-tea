@@ -6,7 +6,7 @@ from pathlib import Path
 import shutil
 
 
-RUNTIME_PATHS = ("index.html", "run-locally.html", "THIRD_PARTY_NOTICES.md", "data", "vendor")
+RUNTIME_PATHS = ("index.html", "run-locally.html", "THIRD_PARTY_NOTICES.md", "LICENSING.md", "LICENSES", "data", "vendor")
 
 
 def main():

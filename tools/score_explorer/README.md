@@ -25,7 +25,7 @@ The script reads committed files, includes the captured data, local vendor libra
 
 The source commit also preserves the scoring framework, input YAML, lookup tables and taxonomy used by `build.py`. The regeneration workflow below is a separate operation from serving the fixed snapshot. Changes to these inputs should produce a new release with an explicit data date.
 
-A project license has not yet been added to this source tree. This change grants no new license for project code, data or written content. Third-party libraries retain their existing licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Original tool code is MIT licensed, original factual data is dedicated under CC0 1.0, and original authored text is CC BY 4.0. See [LICENSING.md](LICENSING.md) for the exact scope. This does not license unrelated fusion-tea material. Third-party libraries retain their existing licenses in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 To synchronize the existing GitHub Pages deployment copy without publishing it:
 

@@ -25,6 +25,6 @@
 python3 tools/score_explorer/package_release.py --ref &lt;source_commit&gt; --output-dir /tmp/scoring-release</pre>
   <p>Verify the downloaded ZIP against its separate <code>.sha256</code> file, then verify the extracted files with <code>shasum -a 256 -c SHA256SUMS</code>. Creating a local bundle does not publish a release.</p>
   <h2>Content and rights</h2>
-  <p>The bundle preserves its captured scores and input weights. Changing axis weights recomputes the composite ranking in the browser. The source repository contains the separate Python workflow for regenerating individual scores. A project license has not yet been added to this source tree. No new project license is granted by the preservation bundle. Pinned third-party libraries retain their existing licenses in <a href="THIRD_PARTY_NOTICES.md">the notices</a>.</p>
+  <p>The bundle preserves its captured scores and input weights. Changing axis weights recomputes the composite ranking in the browser. The source repository contains the separate Python workflow for regenerating individual scores. Original code is licensed under MIT, original factual data is dedicated under CC0 1.0, and original written content is CC BY 4.0. See <a href="LICENSING.md">the license scope and full texts</a>. Pinned third-party libraries retain their existing licenses in <a href="THIRD_PARTY_NOTICES.md">the notices</a>.</p>
 </body>
 </html>

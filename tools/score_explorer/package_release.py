@@ -13,7 +13,7 @@ import zipfile
 NAME = "1cfe-scoring"
 REPOSITORY = "https://github.com/1cFE/fusion-tea"
 SOURCE_PATH = "tools/score_explorer/"
-INCLUDE = ("index.html", "run-locally.html", "README.md", "THIRD_PARTY_NOTICES.md",
+INCLUDE = ("index.html", "run-locally.html", "README.md", "LICENSING.md", "LICENSES", "THIRD_PARTY_NOTICES.md",
            "package_release.py", "sync_site.py", "build.py", "data", "vendor")
 
 
@@ -38,7 +38,7 @@ def main():
         for name in names:
             payload[name[len(SOURCE_PATH):]] = git(root, "show", f"{commit}:{name}")
     for name, data in payload.items():
-        if name in ("index.html", "run-locally.html", "THIRD_PARTY_NOTICES.md") or name.startswith(("data/", "vendor/")):
+        if name in ("index.html", "run-locally.html", "THIRD_PARTY_NOTICES.md", "LICENSING.md") or name.startswith(("data/", "vendor/", "LICENSES/")):
             if git(root, "show", f"{commit}:docs/{name}") != data:
                 parser.error(f"Committed Pages copy differs: docs/{name}")
     manifest = {
@@ -47,7 +47,8 @@ def main():
         "source_commit": commit,
         "source_path": SOURCE_PATH.rstrip("/"),
         "source_url": f"{REPOSITORY}/tree/{commit}/{SOURCE_PATH}".rstrip("/"),
-        "project_license": "No project license is declared here; this bundle does not add a new project license.",
+        "licenses": dict(code="MIT", data="CC0-1.0", text="CC-BY-4.0"),
+        "license_scope": "LICENSING.md",
     }
     payload["release.json"] = (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode()
     payload["SHA256SUMS"] = "".join(
