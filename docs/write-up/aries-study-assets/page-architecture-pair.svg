@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="734.4pt" height="198pt" viewBox="0 0 734.4 198" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 198
+L 734.4 198
+L 734.4 0
+L 0 0
+z
+" style="fill: #fbfaf8"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 84.456 170.28
+L 231.336 170.28
+L 231.336 39.6
+L 84.456 39.6
+z
+" style="fill: #fbfaf8"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 84.456 170.28
+L 84.456 39.6
+" clip-path="url(#p9c2650ca94)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="me361c6dd5f" d="M 0 0
+L 0 3
+" style="stroke: #5f5f5f; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me361c6dd5f" x="84.456" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="84.456" y="183.395" transform="rotate(-0 84.456 183.395)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 124.523381 170.28
+L 124.523381 39.6
+" clip-path="url(#p9c2650ca94)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="124.523381" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="124.523381" y="183.395" transform="rotate(-0 124.523381 183.395)">500</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 164.590761 170.28
+L 164.590761 39.6
+" clip-path="url(#p9c2650ca94)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="164.590761" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="164.590761" y="183.395" transform="rotate(-0 164.590761 183.395)">1,000</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 204.658142 170.28
+L 204.658142 39.6
+" clip-path="url(#p9c2650ca94)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="204.658142" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="204.658142" y="183.395" transform="rotate(-0 204.658142 183.395)">1,500</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_9">
+      <defs>
+       <path id="m29ad4d9d88" d="M 0 0
+L -3 0
+" style="stroke: #5f5f5f; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m29ad4d9d88" x="84.456" y="75.24" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="77.956" y="79.09875" transform="rotate(-0 77.956 79.09875)">Series</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m29ad4d9d88" x="84.456" y="134.64" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: end; fill: #5f5f5f" x="77.956" y="138.49875" transform="rotate(-0 77.956 138.49875)">Split</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 84.456 91.872
+L 187.89262 91.872
+L 187.89262 58.608
+L 84.456 58.608
+z
+" clip-path="url(#p9c2650ca94)" style="fill: #8a847b"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 84.456 151.272
+L 184.298685 151.272
+L 184.298685 118.008
+L 84.456 118.008
+z
+" clip-path="url(#p9c2650ca94)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 84.456 170.28
+L 84.456 39.6
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 84.456 170.28
+L 231.336 170.28
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="189.961352" y="77.83875" transform="rotate(-0 189.961352 77.83875)">1,291</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="186.295539" y="137.23875" transform="rotate(-0 186.295539 137.23875)">1,246</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="84.456" y="31.6" transform="rotate(-0 84.456 31.6)">Cycle helium flow (kg/s)</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 304.776 170.28
+L 451.656 170.28
+L 451.656 39.6
+L 304.776 39.6
+z
+" style="fill: #fbfaf8"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_5">
+     <g id="line2d_11">
+      <path d="M 304.776 170.28
+L 304.776 39.6
+" clip-path="url(#p35d926fda4)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="304.776" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="304.776" y="183.395" transform="rotate(-0 304.776 183.395)">0</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_13">
+      <path d="M 343.924855 170.28
+L 343.924855 39.6
+" clip-path="url(#p35d926fda4)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="343.924855" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="343.924855" y="183.395" transform="rotate(-0 343.924855 183.395)">200</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_15">
+      <path d="M 383.073709 170.28
+L 383.073709 39.6
+" clip-path="url(#p35d926fda4)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="383.073709" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="383.073709" y="183.395" transform="rotate(-0 383.073709 183.395)">400</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_17">
+      <path d="M 422.222564 170.28
+L 422.222564 39.6
+" clip-path="url(#p35d926fda4)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="422.222564" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="422.222564" y="183.395" transform="rotate(-0 422.222564 183.395)">600</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_3">
+     <g id="line2d_19"/>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_20"/>
+    </g>
+   </g>
+   <g id="patch_8">
+    <path d="M 304.776 91.872
+L 402.211302 91.872
+L 402.211302 58.608
+L 304.776 58.608
+z
+" clip-path="url(#p35d926fda4)" style="fill: #8a847b"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 304.776 151.272
+L 408.21262 151.272
+L 408.21262 118.008
+L 304.776 118.008
+z
+" clip-path="url(#p35d926fda4)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 304.776 170.28
+L 304.776 39.6
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 304.776 170.28
+L 451.656 170.28
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="404.160008" y="77.83875" transform="rotate(-0 404.160008 77.83875)">497.8</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="410.281352" y="137.23875" transform="rotate(-0 410.281352 137.23875)">528.4</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 600; font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="304.776" y="31.6" transform="rotate(-0 304.776 31.6)">Net electricity (MW)</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_12">
+    <path d="M 525.096 170.28
+L 671.976 170.28
+L 671.976 39.6
+L 525.096 39.6
+z
+" style="fill: #fbfaf8"/>
+   </g>
+   <g id="matplotlib.axis_5">
+    <g id="xtick_9">
+     <g id="line2d_21">
+      <path d="M 525.096 170.28
+L 525.096 39.6
+" clip-path="url(#p84abeea3b2)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="525.096" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="525.096" y="183.395" transform="rotate(-0 525.096 183.395)">0</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_23">
+      <path d="M 574.686431 170.28
+L 574.686431 39.6
+" clip-path="url(#p84abeea3b2)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="574.686431" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="574.686431" y="183.395" transform="rotate(-0 574.686431 183.395)">50</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_25">
+      <path d="M 624.276861 170.28
+L 624.276861 39.6
+" clip-path="url(#p84abeea3b2)" style="fill: none; stroke: #e4e0da; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#me361c6dd5f" x="624.276861" y="170.28" style="fill: #5f5f5f; stroke: #5f5f5f; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 9px; font-family: 'Manrope'; text-anchor: middle; fill: #5f5f5f" x="624.276861" y="183.395" transform="rotate(-0 624.276861 183.395)">100</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_6">
+    <g id="ytick_5">
+     <g id="line2d_27"/>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_28"/>
+    </g>
+   </g>
+   <g id="patch_13">
+    <path d="M 525.096 91.872
+L 628.53262 91.872
+L 628.53262 58.608
+L 525.096 58.608
+z
+" clip-path="url(#p84abeea3b2)" style="fill: #8a847b"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 525.096 151.272
+L 622.531302 151.272
+L 622.531302 118.008
+L 525.096 118.008
+z
+" clip-path="url(#p84abeea3b2)" style="fill: #1b5f99"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 525.096 170.28
+L 525.096 39.6
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 525.096 170.28
+L 671.976 170.28
+" style="fill: none; stroke: #d3cdc4; stroke-width: 0.9; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="630.601352" y="77.83875" transform="rotate(-0 630.601352 77.83875)">$104.29</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="624.480008" y="137.23875" transform="rotate(-0 624.480008 137.23875)">$98.24</text>
+   </g>
+   <g id="text_22">
+    <text style="font-weight: 600; font-size: 10.5px; font-family: 'Manrope'; text-anchor: start; fill: #191919" x="525.096" y="31.6" transform="rotate(-0 525.096 31.6)">Cost excluding fuel (2004 $/MWh)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9c2650ca94">
+   <rect x="84.456" y="39.6" width="146.88" height="130.68"/>
+  </clipPath>
+  <clipPath id="p35d926fda4">
+   <rect x="304.776" y="39.6" width="146.88" height="130.68"/>
+  </clipPath>
+  <clipPath id="p84abeea3b2">
+   <rect x="525.096" y="39.6" width="146.88" height="130.68"/>
+  </clipPath>
+ </defs>
+</svg>

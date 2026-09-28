@@ -1,0 +1,40 @@
+# Review — aries-model-transfer-outline.html
+
+page: /home/reid/1cfe/fusion-tea/docs/write-up/aries-model-transfer-outline.html
+source: /home/reid/1cfe/fusion-tea/docs/write-up/aries-model-transfer-outline.md
+reviewed against: /home/reid/1cfe/fusion-tea/docs/write-up/html-render-prompt.md, /home/reid/1cfe/fusion-tea/docs/write-up/writing-prompt.md, ~/.claude/skills/_my_mental_model_v2/feedback/html.md, ~/.claude/skills/_my_mental_model_v2/feedback/synthesis.md, /home/reid/1cfe/fusion-tea/docs/write-up/html-feedback.md
+
+## Findings
+
+1. **A new sentence is spliced into a kept paragraph in section 2**, rather than added as a separate figure, reading guide, or collapsible. The paragraph "By then the agents had read all four ARIES papers, so the test could no longer be blind. `<span data-added>`We call that moment, when the withheld papers were opened, the reveal.`</span>` We went back to the last code..." inserts a new clause between two of the markdown's original sentences. The render prompt's "Keep the prose" section allows only seven specific adaptations to kept text (drop scaffolding, anchor ids, link retargeting, path text, section links, in-page links, source-pointer styling); splicing a new explanatory sentence into the middle of an existing paragraph is not one of them. (cites: html-render-prompt.md, "Keep the prose" — the paragraph's wording must stay unchanged apart from the seven listed adaptations)
+
+2. **The inline script does more than track navigation state**, contrary to the stated hard constraint. Beyond the navigation-highlighting code, the script builds two interactive features: it generates buttons and toggles highlighted cases for Figure 4 ("fuel-chips"), and it generates a full point-picker with live readout, SVG ring markers and ARIA-live text for Figure 6 ("pr-live"/"pr-chips"). (cites: html-render-prompt.md, "Hard constraints" — "An inline script may only track navigation state, as the style sample's script does.") Note for the coordinator: the project-local feedback file explicitly praises exactly this kind of interactivity elsewhere in the project ("Interactivity" entry, html-feedback.md, citing harness.html's explore panels and clickable cards as the accepted direction), so this may be a case where established practice has outrun the written constraint rather than a real defect — worth a decision either way, not a silent resolution.
+
+3. **Two added paragraphs before Figure 6 introduce substantial new quantitative claims that appear nowhere in the markdown**: "The gain comes mostly from the compressors. At 2,500 kg/s, lowering the ratio from 1.518 to 1.427 cut their work from 2,452 to 2,062 MW, while the turbine's output fell only from 3,132 to 2,941 MW, so the shaft work left for the generator rose from 680 to 879 MW. The recuperator also recovered more of the turbine's exhaust heat, 1,440 MW instead of 677, and the turbine inlet rose from 404 to 453 °C." and "The reactor's helium loop needs its helium back from the exchanger at 562 K (289 °C)... it sends the helium back half a kelvin too warm." None of compressor work, turbine output, shaft work, recuperator recovery, turbine-inlet temperature, or the 562 K / 300 °C return-temperature requirement is stated in the markdown or in the stored-case table the page itself shows (which only carries ratio, net MW, unmet heat, bypass, exchanger-inlet temperature and cost). This is allowed in principle — the render prompt permits new material "built only from facts the markdown states or its linked evidence records" — but it is a large amount of new engineering narrative added to the main flow rather than an evidence panel, and it is not something I can verify from what I was asked to read. Flagging for the coordinator to confirm against the cited evidence record before treating it as settled. (cites: html-render-prompt.md, "What the page adds" — new material must come from the markdown or its linked evidence, and referenced information "should stay out of the main flow unless it is part of the explanation")
+
+## Additions the page makes that are not in the markdown
+
+By section, everything under `data-added` plus every figure/table that has no counterpart in the markdown:
+
+- **§1**: Figure 1 (new diagram) recasts the two markdown bullets ("Can the model reproduce ARIES?" / "Can the combined model explore designs neither plant covers?") as a two-card visual. The bullets' wording is carried verbatim inside the cards, but the "steps" sub-lists inside each card ("The existing library alone", "Adding what ARIES needed", "Comparing with ARIES's published power and cost", "The answer", and the parallel four for question 2) are new labels, plus a caption sentence describing the figure.
+- **§2**: Figure 2 (new sizing-vs-evaluation diagram, entirely new content) plus its introducing sentence; the "reveal" definition spliced into the kept paragraph (finding 1); one evidence panel ("The false start and the repair").
+- **§3.1**: Figure 3 (new field-range chart, no markdown counterpart) plus its introducing sentence; two evidence panels ("The run, its inputs and where 56.6 tesla comes from", "The comparison with ARIES, part by part").
+- **§3.2**: one sentence on the hollow density profile's shape; Figure 4 (new plasma-to-fuel diagram) plus its introducing sentence; two evidence panels ("The eight additions and their tests", "The integrated ARIES plant").
+- **§3.3**: one sentence on what qualifying the magnets would require; Figure 5 (new three-panel chart, no markdown counterpart) plus its introducing sentence; two evidence panels ("Power: from the first ARIES case to 891 MW", "Cost: the difference by cause").
+- **§4.1**: the two substantive added paragraphs in finding 3; one reading-guide sentence for Figure 6; the live point-picker panel (finding 2) with an evidence-panel fallback table; a reading-guide sentence for Figure 7; one evidence panel ("The plant, the best points and what the study does not claim").
+- **§4.2**: a reading-guide sentence for Figure 8; a reading-guide sentence for Figure 9; Figure 10 (a new sensitivity chart built from the markdown's `preference-sensitivity.svg` link) inside an evidence panel, plus a second evidence panel ("The reactor, the assumptions and the earlier comparison").
+- **§4.3**: a reading-guide sentence for Figure 11 (which is itself a redrawn version of `r3-connections.png`, so not purely new); a reading-guide sentence for Figure 12; one evidence panel ("What changes the preference").
+
+None of these additions drop, reorder, or reword any markdown block that I could find — every markdown heading, paragraph, list item, table and figure appears in the page in order with its original wording (aside from finding 1). The additions are all supplementary.
+
+## Feedback-pattern check
+
+No repeated negative pattern from the shared feedback files was found in the text the page adds. In particular:
+- Skim marks use `<mark class="skim">`, matching the accepted fix in html-feedback.md rather than the rejected italics.
+- Every reading guide puts the fact needed to decode a figure in the body next to the chart, not buried in the caption (html-feedback.md, "Caption carrying the fact that decodes the figure").
+- Every cross-section reference in prose ("section 3.1", "section 3.4", "section 4") is a working in-page link, not a bare number (html.md, "Concept left for the reader to scroll for").
+- No main-flow heading sits behind a closed `<details>`; all twelve `<details>` are closed by default and hold only evidence or lower-level detail (html.md, "Main-flow heading behind a closed dropdown").
+- Evidence-panel summary lines are bare noun phrases ("In the record" + a plain title), not colon-joined double clauses (html.md, "Dropdown summary line written as a double clause").
+- Added prose is plain, causal, and in "we" voice, with no abstraction performing a verb, no compressed fragments standing alone, and no document-as-subject sentences (synthesis.md).
+
+No findings beyond the three above.

@@ -19,8 +19,9 @@ Rough working plan for the final write-ups covering agentic-mbse, sysml-codegen 
 | 2. Model execution and studies | [sysml-codegen-model-evaluation.html](sysml-codegen-model-evaluation.html) (source: [sysml-codegen-model-evaluation.md](sysml-codegen-model-evaluation.md); figures and evidence: `sysml-codegen-assets/`) | Done: HTML accepted by the owner, 2026-09-26. Retitled "Executing the trade studies on a SysML v2 plant model" [OWNER]. The page adds four interactive figures (field equation, calculation graph, breeding surrogate, feasibility map), approved by the owner for this page. |
 | 3. The full harness | [harness.html](harness.html) (source: [harness.md](harness.md); outline: [harness-outline.md](harness-outline.md); figures: `harness-assets/`) | Done: HTML accepted by the owner, 2026-09-26. The page adds nine figures, three of them interactive (the goal loop, the repository areas, the checks), with the detail in collapsed sections. `harness.md` stays the full-text source; the page deliberately carries less text than it. |
 | 4. The demo, support 1: modeling Stellaris | Evolution viewer (`feat/model-viz-evolution`, page at `~/1cfe/stellarator_evolution.html`) plus [stellaris-evolution.md](stellaris-evolution.md) (outline: [stellaris-evolution-outline.md](stellaris-evolution-outline.md); evidence: `stellaris-evolution-assets/`) | Done, per the owner, 2026-09-26: [stellaris-evolution.html](stellaris-evolution.html). Viewer built, 29 frames (baseline plus 28 goals); six theme notes with evidence links, every outline number checked against the goal records. |
-| 4. The demo, support 2: the ARIES test | [aries-model-transfer-outline.md](aries-model-transfer-outline.md) | Narrative draft awaiting owner discussion. |
+| 4. The demo, support 2: the ARIES test | [aries-model-transfer-outline.md](aries-model-transfer-outline.md) | Done, per the owner, 2026-09-27: [aries-model-transfer-outline.html](aries-model-transfer-outline.html). |
 | 5. Takeaways and forward outlook | Probably none | Main post only. |
+| Main post | [main-post-draft.md](main-post-draft.md) (figures: `main-post-assets/`) | Drafted 2026-09-27; the owner is happy with it. See the Main post section. |
 
 ## Strategy and sequencing
 
@@ -120,6 +121,44 @@ Open for support 1:
 [OWNER, 2026-09-25] Organizing sequence settled: generalization hypothesis, brief false-start disclosure, design-instance-only test, required model enhancements, resulting studies. Explanations and takeaways are proposed editorial synthesis; linked records supply the evidence.
 
 Next step: owner discussion of the draft, then fill using the writing prompt, then HTML.
+
+**Status, 2026-09-27.** [OWNER] Asked an agent to critique the draft and then revise it to the point the owner would be happiest with. The file is a full draft, not an outline, about 3,450 words. The settled sequence is kept, with section 5 (the comparison with ARIES) between the enhancements and the studies, and a closing section 7 added.
+
+[AGENT] Changes made, each checked against the linked records (not yet owner-reviewed):
+
+- Title and opening line match the other supports and link support 1 and Part 3. "Part 1" and "Part 2" of the test became "the reuse test" and "the extension test", because the main post uses Part 1 to 5.
+- Section 1 now introduces the library-and-plant idea and the two tests, says what ARIES-CS is, and links the quarantine.
+- Section 2 now says what the false start was: the first run stopped in a winding-sizing calculation, and all four ARIES papers had been read, so later work is a post-reveal comparison.
+- Section 3 now says what the run supplied: 3 ARIES inputs, 701 at the Stellaris design. The 56.6 T is Stellaris's coils at ARIES's radius, 14.7 T on axis against ARIES's 5.7 T.
+- Section 5 cost: our 891 MW case is $686/MWh, more than 90% of it purchased tritium, because breeding is unsupported. ARIES assumes self-sufficient breeding. The $59/MWh figure applies ARIES's conventions.
+- Section 5 power: the series exchanger error and the published-inconsistency finding are now stated.
+- Section 6 opens with a table of each study's plant and cost basis. The four comparisons use different plants and cost years, and the draft had not said so.
+- Parameter study: the headline is now the record's own, 427 to 621 MW (+45%) from the design ratio 1.518, not from 1.45.
+- Component study: now explains Brayton's poor output by temperature. The Brayton turbine inlet is 686 K (413 °C) against ARIES's 708 °C, read from the study's stored outputs. It also notes the earlier conversion-only study found the two options within $5/MWh.
+- Architecture study: the bypass dependence moved up next to the result, and it applies to both layouts. The study now says the split network is ARIES's own arrangement.
+- Section 7 is new: a verdict in four bullets, and an answer to Part 3's open question. It is proposed editorial synthesis.
+- Section 6's closing summary was cut, as the writing prompt asks.
+
+[OWNER, 2026-09-27] Restructured around two questions, which the owner preferred to the reuse and extension tests: "Can the model reproduce ARIES?" (sections 3.1 to 3.4) and "Can the combined model explore designs neither plant covers?" (sections 4.1 to 4.4, the three studies). Each question ends with its answer, and section 5 closes. The two-question framing was the agent's proposal, ratified by the owner. The point about stopping early in answer 1 is the owner's: "we made the big changes, but decided (for time reasons) to call it before closing every gap."
+
+[OWNER, 2026-09-27] Section 5 re-angled during the HTML conversion, because the main sections already answer the two questions: "I wonder if it would be more interesting and additive to take a different angle." The logic: (1) the harness seems to be working, shown by the growth in calculations, checks and parts in the later goals in support 1's plots, and goals seemed to finish faster; (2) the framework seems to be working, holding up across two design points and producing studies; so we should keep pushing across design sets, keep pushing in detail, and try for more interesting knowledge transfer, e.g. "develop strong component models from first principles where the primary source papers don't have detail". The harness point stays short. Section 5 does not revisit the false start, because section 2 covers it and the owner judged it already over-emphasized. [AGENT] Redrafted to that logic; awaiting owner review. The main post draft says magnet and conductor models were added for ARIES; they were not (3.4 lists them as open). Fixed in the main post draft, 2026-09-27.
+
+Open for the owner: whether the answers in 3.4, 4.4 and 5 say what the owner wants to claim, and whether the length is acceptable given that section 6's detail can collapse in the HTML. The parameter figure was left as is: its x-axis still runs up in ratio, so the caption says to read right to left.
+
+## Main post
+
+**Status, 2026-09-27.** Drafted in [main-post-draft.md](main-post-draft.md), built on the owner's outline, which stays unchanged. [OWNER] Happy with the draft.
+
+Decisions taken while drafting:
+
+- [OWNER] A human voice that keeps the character and points of the owner's notes, not the plainer voice of the supports. "I" for motivation and opinion, "we" for the work.
+- [OWNER] Honest about what this is: a proof of concept. Results "suggest"; no conclusions, and study numbers are not to be trusted. The intro, the steam-versus-Brayton figure and Part 4's "What to make of it" carry this.
+- [OWNER] The ARIES false start and the model refusing to calculate are not takeaways. The "didn't stay blind" paragraph was removed; the ARIES support covers it.
+- [OWNER] Part 2 is features and limitations: three types of study, feasibility through constraints, DAG computation.
+- [OWNER] Part 4's question 2 is framed as the test of whether all this was worth building, and ties back to Parts 1 to 3.
+- [OWNER] Part 5 points are the owner's: coupled solvers as a path forward, system models as the context layer, "systems as code", and the companies Sensmetry, Flow Engineering, Dalus and Spread AI.
+
+Figures (static PNG for Substack): `main-post-assets/design-iteration.png` (new, HTML-rendered, titled "Two levels of design iteration"), `harness-assets/goal-loop.png`, `main-post-assets/model-growth.png` (new, from the viewer's per-goal counts), `aries-study-assets/parameter-pressure-ratio.png`, `main-post-assets/steam-vs-brayton.png` (new) and `aries-study-assets/architecture-nominal-pair.png`. The nested-circles harness figure was not drawn.
 
 ## Cross-cutting
 

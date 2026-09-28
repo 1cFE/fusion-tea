@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Two levels of design iteration</title>
+<!-- Source for design-iteration.png. Uses the write-up stylesheet; render_design_iteration.py screenshots #fig. -->
+<link rel="stylesheet" href="../write-up.css">
+<style>
+  @font-face { font-family: "Manrope"; src: url("../fonts/Manrope-Regular.ttf"); font-weight: 400; }
+  @font-face { font-family: "Manrope"; src: url("../fonts/Manrope-Medium.ttf"); font-weight: 500; }
+  @font-face { font-family: "Manrope"; src: url("../fonts/Manrope-SemiBold.ttf"); font-weight: 600 700; }
+  @font-face { font-family: "Fira Code"; src: url("../fonts/FiraCode-Regular.ttf"); font-weight: 400; }
+  @font-face { font-family: "Fira Code"; src: url("../fonts/FiraCode-Medium.ttf"); font-weight: 500; }
+
+  body { margin: 0; padding: 0; background: var(--paper); }
+  /* Drawn at 800 px so the text stays readable at Substack's ~728 px column. */
+  #fig { width: 50rem; box-sizing: border-box; }
+  #fig .diagram { min-width: 0; }
+
+  .levels .flow {
+    display: grid;
+    grid-template-columns: 1fr 2.25rem 1fr 2.25rem 1fr;
+    align-items: stretch;
+  }
+  .levels .dg-label { margin-bottom: 0.6rem; }
+  .levels .dg-label .what { display: block; margin-top: 0.15rem; font-size: 0.8125rem; color: var(--muted); }
+  .levels .dg-box ul { list-style: disc; padding-left: 1.05rem; }
+  .levels .dg-box li { margin: 0.3rem 0; line-height: 1.4; }
+  .levels .dg-box li::marker { color: var(--role); }
+
+  /* The two loops back into the flow. Pixel positions follow the 760 px content width. */
+  .levels .loops { display: block; width: 100%; height: 56px; overflow: visible; }
+  .levels .loop-model, .levels .loop-params { fill: none; stroke-width: 2; }
+  .levels .loop-model { stroke: var(--role-calc); }
+  .levels .loop-params { stroke: var(--role-data); }
+
+  .levels .keys {
+    display: grid;
+    grid-template-columns: 1fr 2.25rem 1fr 2.25rem 1fr;
+    margin-top: 0.35rem;
+  }
+  .levels .key-model { grid-column: 1 / 4; --role: var(--role-calc); }
+  .levels .key-params { grid-column: 4 / 6; --role: var(--role-data); }
+  .levels .key-title { font-weight: 600; color: var(--role); }
+  .levels .keys ul { margin: 0.35rem 0 0; padding-left: 1.05rem; list-style: disc; font-size: 0.875rem; }
+  .levels .keys li { margin: 0.25rem 0; line-height: 1.4; }
+  .levels .keys li::marker { color: var(--role); }
+  .levels .keys b { font-weight: 600; color: var(--ink-strong); }
+</style>
+</head>
+<body>
+<figure id="fig" class="figure" style="margin:0">
+  <div class="frame">
+    <div class="diagram levels" role="group" aria-label="Two levels of design iteration: changing the model regenerates the program; changing parameters reuses it.">
+      <div class="dg-head">
+        <div class="dg-title">Two levels of design iteration</div>
+        <div class="dg-sub">Changing the model regenerates the program. Changing parameters reuses it.</div>
+      </div>
+
+      <div class="flow">
+        <div class="dg-box">
+          <div class="dg-label">Compose the plant<span class="what">in SysML v2</span></div>
+          <ul>
+            <li>Define each component's equations and engineering limits</li>
+            <li>Select and instantiate the components the plant uses</li>
+            <li>Wire them together, each input to what supplies it</li>
+            <li>Set the default design values</li>
+          </ul>
+        </div>
+        <div class="dg-arrow" aria-hidden="true">→</div>
+        <div class="dg-box">
+          <div class="dg-label">Generate the program<span class="what">with sysml-codegen</span></div>
+          <ul>
+            <li>Trace every calculation's inputs to their sources</li>
+            <li>Translate the equations into Python</li>
+            <li>Expose the design values as program inputs</li>
+          </ul>
+        </div>
+        <div class="dg-arrow" aria-hidden="true">→</div>
+        <div class="dg-box data">
+          <div class="dg-label">Evaluate designs<span class="what">with TEAx</span></div>
+          <ul>
+            <li>Override the design values for each point</li>
+            <li>Calculate performance and cost</li>
+            <li>Check every engineering limit</li>
+          </ul>
+        </div>
+      </div>
+
+      <svg class="loops" viewBox="0 0 760 56" aria-hidden="true">
+        <defs>
+          <marker id="head-model" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1b5f99" stroke="none"/></marker>
+          <marker id="head-params" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0b6f6a" stroke="none"/></marker>
+        </defs>
+        <!-- Change the model: out of Evaluate, back into Compose. -->
+        <path class="loop-model" d="M737,0 V40 Q737,48 729,48 H122.7 Q114.7,48 114.7,40 V3" marker-end="url(#head-model)"/>
+        <!-- Change the parameters: out of Evaluate and back into it. -->
+        <path class="loop-params" d="M696,0 V16 Q696,24 688,24 H603 Q595,24 595,16 V3" marker-end="url(#head-params)"/>
+      </svg>
+
+      <div class="keys">
+        <div class="key-model">
+          <div class="key-title">Change the model</div>
+          <ul>
+            <li><b>What changes:</b> which components the plant uses, how each one is modeled, and how they connect</li>
+            <li><b>Example:</b> replace the blanket's fixed breeding value with a calculation fitted to neutron-transport runs</li>
+          </ul>
+        </div>
+        <div class="key-params">
+          <div class="key-title">Change the parameters</div>
+          <ul>
+            <li><b>What changes:</b> design values, like dimensions and operating conditions</li>
+            <li><b>Example:</b> sweep plant radius and coil ampere-turns</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</figure>
+</body>
+</html>
