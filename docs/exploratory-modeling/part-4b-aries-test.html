@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Part 4, support 2: Testing the Stellaris model against ARIES</title>
+<title>Part 4b: Testing the Stellaris model against ARIES</title>
 <link rel="stylesheet" href="write-up.css">
 <style>
   /* Charts are drawn at the plate's width. On a narrow screen they keep a readable width and scroll sideways. */
@@ -145,7 +145,7 @@
 <body>
 
 <aside class="rail">
-  <p class="rail-eyebrow">1cFE write-up · Part 4</p>
+  <p class="rail-eyebrow">1cFE write-up · Part 4b</p>
   <p class="rail-title">Testing the Stellaris model against ARIES</p>
   <nav class="toc" aria-label="Contents">
     <ol>
@@ -175,15 +175,15 @@
 <main class="page">
 <article class="article">
 
-<h1 id="part-4-support-2-testing-the-stellaris-model-against-aries">Part 4, support 2: Testing the Stellaris model against ARIES</h1>
-<p>Supports <a href="fusion-tea-exploratory-modeling.md">the main post</a>. <a href="stellaris-evolution.html">Support 1</a> describes how the Stellaris model was built. Part 3, <a href="harness.html">the full harness</a>, explains goals and rounds.</p>
+<h1 id="part-4b-testing-the-stellaris-model-against-aries">Part 4b: Testing the Stellaris model against ARIES</h1>
+<p>Supports <a href="https://1cf.energy/exploratory-modeling/">the main post</a>. <a href="part-4a-modeling-stellaris.html">Part 4a</a> describes how the Stellaris model was built. Part 3, <a href="part-3-harness.html">the full harness</a>, explains goals and rounds.</p>
 
 <section>
 <h2 id="1-the-hypothesis-and-the-test"><span class="num">1</span>The hypothesis and the test</h2>
 <p>Our larger goal was to assess whether an AI-assisted modeling process could help us develop and evaluate engineering concepts. <mark class="skim">The hypothesis was that we could start from one documented stellarator design, abstract it into a generalized system model, and use that model to explore alternatives.</mark></p>
-<p>Think of the model as <strong>a library of component definitions and a plant assembled from them</strong>. A definition describes a component's behavior and limits. A plant selects components, connects them and supplies their input values. &quot;Generalized&quot; means the relationships live in the definitions and the choices live in the plant. We can then change dimensions and operating conditions, select different components or materials, and change how the plant is assembled: the <a href="sysml-codegen-model-evaluation.html#11-exploring-the-design-space-parameters-components-and-architecture">three kinds of design-space exploration</a> the modeling strategy is intended to support.</p>
+<p>Think of the model as <strong>a library of component definitions and a plant assembled from them</strong>. A definition describes a component's behavior and limits. A plant selects components, connects them and supplies their input values. &quot;Generalized&quot; means the relationships live in the definitions and the choices live in the plant. We can then change dimensions and operating conditions, select different components or materials, and change how the plant is assembled: the <a href="part-2-model-execution.html#11-exploring-the-design-space-parameters-components-and-architecture">three kinds of design-space exploration</a> the modeling strategy is intended to support.</p>
 <p>The challenge is assessing whether those abstractions are realistic and coherent. <mark class="skim">A program can execute correctly and produce plausible numbers while describing the wrong physical system.</mark> Reproducing the design used to build the model is useful, but it does not tell us how well the model applies elsewhere.</p>
-<p>We used a hold-out test: develop the model using one design, then assess it against a documented design we had deliberately withheld. <mark class="skim">We built the model from Stellaris and withheld ARIES-CS, a US design study of a compact stellarator power plant that published its physics, engineering and costs in detail.</mark> Agents were barred from reading the ARIES papers, and the research tooling refuses to register them (<a href="harness.html#3-where-everything-lives">Part 3, section 3</a>).</p>
+<p>We used a hold-out test: develop the model using one design, then assess it against a documented design we had deliberately withheld. <mark class="skim">We built the model from Stellaris and withheld ARIES-CS, a US design study of a compact stellarator power plant that published its physics, engineering and costs in detail.</mark> Agents were barred from reading the ARIES papers, and the research tooling refuses to register them (<a href="part-3-harness.html#3-where-everything-lives">Part 3, section 3</a>).</p>
 <p>The test asked two questions:</p>
 <figure class="figure wide" id="figure-1">
   <div class="frame test-frame">
@@ -224,7 +224,7 @@
 
 <section>
 <h2 id="2-one-false-start-before-the-main-assessment"><span class="num">2</span>One false start before the main assessment</h2>
-<p>Our first ARIES run stopped before producing any result: a calculation that sized the magnet winding received a field outside the conductor model's range. Investigating it exposed a bigger problem. <mark class="skim">Several calculations sized equipment to meet calculated demand, including the magnet winding, facilities and fuel processing, instead of evaluating the equipment a designer had chosen.</mark> That breaks the design pattern the model is meant to follow (<a href="stellaris-evolution.html#4-following-the-engineering-design-pattern">support 1, theme 4</a>), and none of our checks had caught it.</p>
+<p>Our first ARIES run stopped before producing any result: a calculation that sized the magnet winding received a field outside the conductor model's range. Investigating it exposed a bigger problem. <mark class="skim">Several calculations sized equipment to meet calculated demand, including the magnet winding, facilities and fuel processing, instead of evaluating the equipment a designer had chosen.</mark> That breaks the design pattern the model is meant to follow (<a href="part-4a-modeling-stellaris.html#4-following-the-engineering-design-pattern">Part 4a, theme 4</a>), and none of our checks had caught it.</p>
 <p data-added>Figure 2 contrasts the two patterns. Read the top row, what those calculations did, and then the bottom row, the pattern the model is meant to follow.</p>
 <figure class="figure wide" id="figure-2">
   <div class="frame diagram-scroll">
@@ -281,7 +281,7 @@
 <section>
 <h3 id="31-with-the-existing-library"><span class="num">3.1</span>With the existing library</h3>
 <p>We first tried the existing library alone. Any change to the plant's assembly, connections and inputs was allowed, but no new or changed component definitions. We ran it once, on the repaired model. The run supplied the ARIES values that matched a model input directly: major radius, minor radius and peak ion temperature. <mark class="skim">The other 701 inputs stayed at the Stellaris design.</mark> That included the magnets' turns and current per turn, because the ARIES papers give total ampere-turns, which fix neither choice.</p>
-<p><strong>The run stopped at the conductor calculation.</strong> The model calculated the field of the Stellaris coils, with their turns and current, at ARIES's smaller major radius: 14.7 tesla on axis, where ARIES has 5.7, and 56.6 tesla at the coils. The conductor model covers 20 to 32 tesla, the limit <a href="stellaris-evolution.html#model-limits">support 1 ends on</a>, so it refused to calculate. We obtained no plant assessment and no LCOE, the lifecycle cost per unit of electricity.</p>
+<p><strong>The run stopped at the conductor calculation.</strong> The model calculated the field of the Stellaris coils, with their turns and current, at ARIES's smaller major radius: 14.7 tesla on axis, where ARIES has 5.7, and 56.6 tesla at the coils. The conductor model covers 20 to 32 tesla, the limit <a href="part-4a-modeling-stellaris.html#model-limits">Part 4a ends on</a>, so it refused to calculate. We obtained no plant assessment and no LCOE, the lifecycle cost per unit of electricity.</p>
 <p data-added>Figure 3 puts both designs' fields on one axis, on the plasma axis above and at the coils below. Black squares are ARIES's published values and blue circles are our run. The shaded band is the range the conductor model covers. Our run's field at the coils lies far above that range. ARIES's own coil field lies below it, and the range belongs to a different conductor from the one ARIES uses.</p>
 <figure class="figure wide" id="figure-3">
   <div class="plate"><div class="chart-scroll">
@@ -561,7 +561,7 @@ z
 </tbody>
 </table>
 </div>
-<p data-added>A hollow density profile has a lower density at the plasma's center than partway out. ARIES's published profile has that dip at the center and keeps a finite density at the edge. The Stellaris model's density peaks at the center and falls to zero at the edge (<a href="harness.html#6-model-updates-the-ash-profile-work-item">Part 3, section 6</a>), so no choice of its inputs gives ARIES's shape.</p>
+<p data-added>A hollow density profile has a lower density at the plasma's center than partway out. ARIES's published profile has that dip at the center and keeps a finite density at the edge. The Stellaris model's density peaks at the center and falls to zero at the edge (<a href="part-3-harness.html#6-model-updates-the-ash-profile-work-item">Part 3, section 6</a>), so no choice of its inputs gives ARIES's shape.</p>
 <p>The plasma-to-fuel connection is the clearest example of reuse. The new plasma calculation produced fusion power, and the existing fuel model used that power to calculate fuel demand. Raising the density by 50% increased fusion power from about 1.84 to 4.13 GW and exceeded the selected exhaust-processing capacity. <mark class="skim">The existing check caught that failure, with no ARIES-specific fuel equation and no automatic enlargement of the equipment.</mark></p>
 <p data-added>Figure 4 follows that connection from left to right. The first two boxes are calculations added for ARIES, the third is the existing fuel model and the last is its existing capacity check. Each box gives its value at the design density and with 50% more.</p>
 <figure class="figure wide" id="figure-4">
@@ -2021,7 +2021,7 @@ Q 169.380147 230.887971 87.870144 229.975523
 </svg>
 <!-- /inline:page-pressure-ratio -->
   </div></div>
-  <figcaption><span class="fig-label">Figure 6</span>The last part of that range, near the limit, with pressure ratio falling from right to left. Blue points pass every implemented check; the red point fails heat removal and the return-temperature requirement. Data: <code class="path">docs/write-up/aries-study-assets/parameter-figure-data.json</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 6</span>The last part of that range, near the limit, with pressure ratio falling from right to left. Blue points pass every implemented check; the red point fails heat removal and the return-temperature requirement. Data: <code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code>.</figcaption>
 </figure>
 <div class="live pr-live" id="pr-live" hidden>
   <div class="live-head"><span class="live-kind">Read a point</span><span>Each point is one stored case at 2,500 kg/s</span></div>
@@ -2749,10 +2749,10 @@ z
 </svg>
 <!-- /inline:page-flow-boundary -->
   </div></div>
-  <figcaption><span class="fig-label">Figure 7</span>Each point is the limiting ratio at one flow. The best two, 2,500 and 2,750 kg/s, are within 3 MW of each other. Data: <code class="path">docs/write-up/aries-study-assets/parameter-figure-data.json</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 7</span>Each point is the limiting ratio at one flow. The best two, 2,500 and 2,750 kg/s, are within 3 MW of each other. Data: <code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code>.</figcaption>
 </figure>
 <p>Every cost except fuel is fixed in this sweep, so more electricity lowers the cost excluding fuel <strong>from $133 to $91.5/MWh</strong> in 2004 dollars. <mark class="skim">The output is low for the 3,300 MW of heat the loop delivers because the cycle runs cool: its turbine inlet is about 450 °C, against 708 °C in the ARIES design.</mark> The components study below shows what that costs. These results use fixed machine efficiencies rather than vendor performance maps, and the bypass hardware is not modeled.</p>
-<p>Evidence: final parameter-study assessment <code class="path">work/orchestration/goals/design-study-parameters/answer.md</code>, verified case results <code class="path">exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/results/readout.md</code>, figure data <code class="path">docs/write-up/aries-study-assets/parameter-figure-data.json</code> and reproducible renderer <code class="path">docs/write-up/aries-study-assets/render_parameters.py</code>.</p>
+<p>Evidence: final parameter-study assessment <code class="path">work/orchestration/goals/design-study-parameters/answer.md</code>, verified case results <code class="path">exploration/costed_loop_brayton/studies/20260926-design-study-parameters-b/results/readout.md</code>, figure data <code class="path">archive/write-up/aries-study-assets/parameter-figure-data.json</code> and reproducible renderer <code class="path">archive/write-up/aries-study-assets/render_parameters.py</code>.</p>
 <details class="evidence">
   <summary><span class="evidence-kind">In the record</span><span>The plant, the best points and what the study does not claim</span></summary>
   <div class="evidence-body" data-added>
@@ -5202,12 +5202,12 @@ L 671.976 170.28
 </svg>
 <!-- /inline:page-architecture-pair -->
   </div></div>
-  <figcaption><span class="fig-label">Figure 12</span>Both layouts use the same revised exchangers: 18,000 m² each for blanket helium and PbLi, and 2,000 m² for the divertor. Cost excludes recurring fuel purchases; the bypass and any extra piping and controls are not priced. Data: <code class="path">docs/write-up/aries-study-assets/architecture-figure-data.json</code>.</figcaption>
+  <figcaption><span class="fig-label">Figure 12</span>Both layouts use the same revised exchangers: 18,000 m² each for blanket helium and PbLi, and 2,000 m² for the divertor. Cost excludes recurring fuel purchases; the bypass and any extra piping and controls are not priced. Data: <code class="path">archive/write-up/aries-study-assets/architecture-figure-data.json</code>.</figcaption>
 </figure>
 <p><strong>The split lets the cycle take the same heat with less circulating helium.</strong> In series, the divertor exchanger warms the entire stream before it reaches the PbLi exchanger. Splitting avoids that preheating, so the network needs about 1,246 kg/s of cycle flow where series needs 1,291 kg/s. Less flow means less compressor work and more electricity to export. <mark class="skim">At equal flow, when both remove all the heat, they produce exactly the same electricity: the split gives no separate efficiency bonus.</mark> With costs unchanged, the extra electricity lowers the cost excluding fuel <strong>from $104.29 to $98.24/MWh</strong> in 2004 dollars.</p>
 <p>The study also shows what would reverse the choice. If the network loses 8% of the cycle pressure against 4.5% for series, its output falls to 491 MW, below series at 498 MW. <mark class="skim">The network's real pressure losses and its extra piping and controls therefore decide whether it is worth building.</mark></p>
 <p><strong>Changing connections can cut the circulation needed to carry the reactor heat, and so raise output, but added pressure loss can erase the gain.</strong> The model puts numbers on both: a reason to prefer the network, and a concrete thing to check before choosing it.</p>
-<p>Evidence: final architecture assessment and replay <code class="path">work/orchestration/goals/design-study-exchanger-architecture/answer.md</code>, verified sensitivities <code class="path">work/orchestration/goals/design-study-exchanger-architecture/evidence/r3-data/sensitivity-coverage.csv</code>, figure data <code class="path">docs/write-up/aries-study-assets/architecture-figure-data.json</code> and renderer <code class="path">docs/write-up/aries-study-assets/render_architecture.py</code>.</p>
+<p>Evidence: final architecture assessment and replay <code class="path">work/orchestration/goals/design-study-exchanger-architecture/answer.md</code>, verified sensitivities <code class="path">work/orchestration/goals/design-study-exchanger-architecture/evidence/r3-data/sensitivity-coverage.csv</code>, figure data <code class="path">archive/write-up/aries-study-assets/architecture-figure-data.json</code> and renderer <code class="path">archive/write-up/aries-study-assets/render_architecture.py</code>.</p>
 <details class="evidence">
   <summary><span class="evidence-kind">In the record</span><span>What changes the preference</span></summary>
   <div class="evidence-body" data-added>
@@ -5248,7 +5248,7 @@ L 671.976 170.28
 <h2 id="5-what-the-test-showed-and-where-to-go-next"><span class="num">5</span>What the test showed and where to go next</h2>
 <p>Across both supports, two things seem to be working:</p>
 <ul>
-<li><strong>The harness.</strong> Over the 28 goals in <a href="stellaris-evolution.html">support 1</a>, the model grew from 55 calculations, 6 checks and 14 parts to 199, 67 and 76, and most of that growth came in the last eight goals. Goals also seemed to finish faster as we refined the harness.</li>
+<li><strong>The harness.</strong> Over the 28 goals in <a href="part-4a-modeling-stellaris.html">Part 4a</a>, the model grew from 55 calculations, 6 checks and 14 parts to 199, 67 and 76, and most of that growth came in the last eight goals. Goals also seemed to finish faster as we refined the harness.</li>
 <li><strong>The modeling framework.</strong> With two design points, it held up and produced studies. ARIES assembled from the same library once we added what it needed, the Stellaris model stayed unchanged, and the combined library ran the three studies in <a href="#4-question-2-can-the-combined-model-explore-designs-neither-plant-covers">section 4</a>.</li>
 </ul>
 <p>With these positive indications, we would love to see this get pushed further:</p>

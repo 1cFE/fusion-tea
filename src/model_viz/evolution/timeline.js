@@ -343,7 +343,8 @@
     prev.disabled = index === 0;
     next.disabled = index === frames.length - 1;
     position.textContent = `${index + 1} / ${frames.length}`;
-    document.title = `${frame.title} · ${data.title}`;
+    // In the write-up the tab keeps the article's title; the standalone viewer names the frame.
+    if (!articleMode) document.title = `${frame.title} · ${data.title}`;
     renderTiles(index);
     renderSummary(frame);
     renderChanges(frame);

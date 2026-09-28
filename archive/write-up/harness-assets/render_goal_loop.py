@@ -1,6 +1,6 @@
 """Render the goal-loop figure for the Part 3 harness write-up.
 
-Run: uv run python docs/write-up/harness-assets/render_goal_loop.py
+Run: uv run python archive/write-up/harness-assets/render_goal_loop.py
 Writes goal-loop.png and goal-loop.svg next to this script.
 
 The figure follows section 2's walk of the outer loop: the goal is written first; a round

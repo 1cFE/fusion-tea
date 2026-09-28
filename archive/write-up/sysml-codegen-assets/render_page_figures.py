@@ -1,7 +1,7 @@
 """Render the figures that the HTML page adds or redraws, and inline them into the page.
 
 Run from the repository root:
-  uv run python docs/write-up/sysml-codegen-assets/render_page_figures.py
+  uv run python archive/write-up/sysml-codegen-assets/render_page_figures.py
 
 Writes, next to this script (all new files; the markdown's figures are untouched):
   page-calculation-graph.svg      Figure 5, the magnet graph from graph-evidence.json, in the page's fonts
@@ -13,7 +13,7 @@ Writes, next to this script (all new files; the markdown's figures are untouched
   page-feasibility-cost-stacked.svg  the same map with the panels stacked, for narrow screens
   page-map-data.json              the map's cases, as the page's readout needs them
 
-Then, if ../sysml-codegen-model-evaluation.html exists, replaces the content between its
+Then, if the published page docs/exploratory-modeling/part-2-model-execution.html exists, replaces the content between its
 <!-- inline:NAME --> and <!-- /inline:NAME --> markers with the file NAME, so the page embeds
 the SVG text and the browser draws it with the page's own fonts.
 
@@ -37,7 +37,7 @@ ROOT = WRITEUP.parents[1]
 sys.path.insert(0, str(WRITEUP))
 import figure_style as fs  # noqa: E402
 
-PAGE = WRITEUP / "sysml-codegen-model-evaluation.html"
+PAGE = ROOT / "docs/exploratory-modeling/part-2-model-execution.html"
 SANS = f"{fs.SANS}, 'Helvetica Neue', Arial, sans-serif"
 MONO = f"'{fs.MONO}', ui-monospace, Menlo, Consolas, monospace"
 

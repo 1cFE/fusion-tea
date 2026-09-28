@@ -10,11 +10,11 @@ from conftest import BUILDER, REPO
 
 @pytest.fixture(scope="session")
 def article(tmp_path_factory):
-    output = tmp_path_factory.mktemp("article") / "stellaris-evolution.html"
+    output = tmp_path_factory.mktemp("article") / "part-4a-modeling-stellaris.html"
     subprocess.run([
         sys.executable, str(BUILDER), "--article",
-        str(REPO / "docs/write-up/stellaris-evolution.md"),
-        "--stylesheet", (REPO / "docs/write-up/write-up.css").as_uri(),
+        str(REPO / "archive/write-up/stellaris-evolution.md"),
+        "--stylesheet", (REPO / "docs/exploratory-modeling/write-up.css").as_uri(),
         "-o", str(output),
     ], check=True, capture_output=True)
     return output
@@ -42,7 +42,7 @@ def test_static_navigation_and_no_external_viewer_resources(article):
     assert not doc.remote
     assert all(link[1:] in doc.ids for link in doc.links if link.startswith('#'))
     assert all(not link.startswith('../../') for link in doc.links)
-    assert 'harness.html' in doc.links
+    assert 'part-3-harness.html' in doc.links
     for frame in range(1, 30):
         assert f'frame-{frame}' in doc.ids
 
@@ -57,7 +57,7 @@ def test_story_and_records_without_scripts(browser, article):
     assert page.locator('.article > .model-limits > h2').inner_text() == 'Model limits'
     assert page.locator('.model-limits > #frame-record').count() == 1
     assert page.locator('.model-limits > p').inner_text().startswith('The models are still limited to the ranges they were built for.')
-    assert page.locator('.model-limits a[href="aries-model-transfer-outline.html"]').inner_text() == 'support 2'
+    assert page.locator('.model-limits a[href="part-4b-aries-test.html"]').inner_text() == 'Part 4b'
     assert page.locator('details[open]').count() == 0
     page.locator('#frame-record summary').click()
     assert page.locator('#frame-29').inner_text().find('199 / 67 / 76') >= 0

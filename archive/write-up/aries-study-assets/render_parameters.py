@@ -1,5 +1,5 @@
 """Render the final verified parameter-study results; no model evaluations.
-Run from the repository root: .codex-test/run python docs/write-up/aries-study-assets/render_parameters.py
+Run from the repository root: .codex-test/run python archive/write-up/aries-study-assets/render_parameters.py
 """
 from pathlib import Path
 import hashlib

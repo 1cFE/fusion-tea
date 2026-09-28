@@ -456,7 +456,7 @@
 <article class="article">
 
 <h1 id="part-3-the-full-harness">Part 3: The full harness</h1>
-<p>Supports <a href="fusion-tea-exploratory-modeling.md">the main post</a>. Part 2, <a href="sysml-codegen-model-evaluation.html">turning a SysML model into a calculator</a>, covers evaluating one version of the model; this part covers everything around it.</p>
+<p>Supports <a href="https://1cf.energy/exploratory-modeling/">the main post</a>. Part 2, <a href="part-2-model-execution.html">executing the trade studies on a SysML v2 plant model</a>, covers evaluating one version of the model; this part covers everything around it.</p>
 <section>
 <h2 id="1-the-problem-engineering-work-that-has-to-build-on-itself"><span class="num">1</span>The problem: engineering work that has to build on itself</h2>
 <p>We want an AI to do engineering work the way a small team does it over weeks: research a system, model it, run studies against the model, find what is wrong, fix it, and go around again. Part 2 showed how a study evaluates one version of the model. <mark class="skim">This part is about the rest of the loop: how the model gets its numbers, how it changes, and how anyone can tell whether a change was right.</mark></p>
@@ -646,7 +646,7 @@
           <div class="dg-label">Sources</div>
           <div class="where"><code>knowledge/</code></div>
           <p>What research finds. Every number in the model cites a file here.</p>
-          <p>One directory, <code>knowledge/<wbr>holdout/</code>, is quarantined for the test in Part 4: agents are told never to read it, and the registration script refuses anything from it.</p>
+          <p>One directory, <code>knowledge/<wbr>holdout/</code>, is quarantined for the test in <a href="part-4b-aries-test.html">Part 4b</a>: agents are told never to read it, and the registration script refuses anything from it.</p>
         </div>
         <div class="dg-box area c2 top ">
           <div class="dg-label">The model</div>
@@ -1562,15 +1562,15 @@ def n_e(u: float) -&gt; float:
 </div>
 </details>
 <p><strong>What the checks establish.</strong> The code checks show that the model is well formed and that the program computes it correctly. The agent reviews show that the study's design and its conclusions fit the evidence, and on this goal they produced the corrections that mattered.</p>
-<p>These checks show that the work is consistent with the model and its sources. <mark class="skim">They do not show that the model predicts a real plant correctly, which is what the hold-out test in Part 4 is designed to test.</mark></p>
+<p>These checks show that the work is consistent with the model and its sources. <mark class="skim">They do not show that the model predicts a real plant correctly, which is what the hold-out test in <a href="part-4b-aries-test.html">Part 4b</a> is designed to test.</mark></p>
 </section>
 <section>
 <h2 id="8-where-the-harness-stands"><span class="num">8</span>Where the harness stands</h2>
 <p>We built the harness so that an AI could carry engineering work across many sessions and have that work build on itself. <mark class="skim">Our assessment has three parts: the harness is still being refined, it runs our demo's goals almost on its own, and its analysis has been credible but has leaned on a published design to check against.</mark> That last part leaves our biggest open question.</p>
 <p><strong>It is still being refined.</strong> We continued to develop the harness as we used it and found issues. Many of those fixes were new rules written into the agents' instructions. As much as possible, moving these prompt-rules into deterministic scripts improves scalability.</p>
-<p><strong>It runs goals almost on its own.</strong> We estimate that about 95 percent of the work on our demo's goals ran without us. The stored-energy goal was an early one, and the owner stepped in at four points: approving the goal, leaving the research decision to the agent, ruling on the fix, and closing the goal. Agents did everything else, including the research request, the work item, the regenerated program and its pin, the 7,712-point study, and six reviews by fresh agents. Later goals needed even less. The four goals that built the integrated ARIES model in Part 4 ran seven rounds between them, and the owner's only input was a written brief at the start and the decision to close at the end.</p>
+<p><strong>It runs goals almost on its own.</strong> We estimate that about 95 percent of the work on our demo's goals ran without us. The stored-energy goal was an early one, and the owner stepped in at four points: approving the goal, leaving the research decision to the agent, ruling on the fix, and closing the goal. Agents did everything else, including the research request, the work item, the regenerated program and its pin, the 7,712-point study, and six reviews by fresh agents. Later goals needed even less. The four goals that built the integrated ARIES model in <a href="part-4b-aries-test.html">Part 4b</a> ran seven rounds between them, and the owner's only input was a written brief at the start and the decision to close at the end.</p>
 <p><strong>Its analysis has been credible, but it has leaned on ground truth.</strong> Many of the issues we caught were found by comparing the model with a published design, such as the Stellaris paper.</p>
-<p><strong>The open question.</strong> Our biggest open question is whether the harness's own checks are enough in a domain with no published design to compare against. The checks in <a href="#7-checks-code-and-fresh-reviewers">section 7</a> test the work against the model and its sources, so they do not test whether the model's own assumptions are right. Part 4 describes the hold-out test we designed to probe this: the model was built without the ARIES-CS publications and then compared with them.</p>
+<p><strong>The open question.</strong> Our biggest open question is whether the harness's own checks are enough in a domain with no published design to compare against. The checks in <a href="#7-checks-code-and-fresh-reviewers">section 7</a> test the work against the model and its sources, so they do not test whether the model's own assumptions are right. <a href="part-4b-aries-test.html">Part 4b</a> describes the hold-out test we designed to probe this: the model was built without the ARIES-CS publications and then compared with them.</p>
 </section>
 
 </article>

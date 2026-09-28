@@ -1,9 +1,9 @@
 """Static PNG figures for the main Substack post.
 
-Run: uv run python docs/write-up/main-post-assets/render_figures.py
+Run: uv run python archive/write-up/main-post-assets/render_figures.py
 
 - model-growth.png: calculations, checks and parts after each goal, read from the data embedded in
-  ../stellaris-evolution.html (the evolution viewer).
+  docs/exploratory-modeling/part-4a-modeling-stellaris.html (the evolution viewer).
 - steam-vs-brayton.png: the 2,500 MW pair from
   work/orchestration/goals/design-study-whole-plant-conversion/answer.md (Nominal results table and
   "Why the choice changes at plant scale").
@@ -29,7 +29,7 @@ FIG_W = 7.2  # inches; Substack shows images about 728 px wide
 
 
 def viewer_frames():
-    html = (HERE.parent / "stellaris-evolution.html").read_text()
+    html = (HERE.parents[2] / "docs/exploratory-modeling/part-4a-modeling-stellaris.html").read_text()
     blob = re.search(r'<script[^>]*id="evo-data"[^>]*>(.*?)</script>', html, re.S).group(1)
     return json.loads(gzip.decompress(base64.b64decode(blob.strip())))["frames"]
 

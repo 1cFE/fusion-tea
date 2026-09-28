@@ -1,6 +1,6 @@
-# Part 4, support 1: Modeling Stellaris
+# Part 4a: Modeling Stellaris
 
-Supports [the main post](fusion-tea-exploratory-modeling.md). The viewer is the page; these notes are context for its frames. Part 3, [the full harness](harness.md), explains goals and rounds.
+Supports [the main post](https://1cf.energy/exploratory-modeling/). The viewer is the page; these notes are context for its frames. Part 3, [the full harness](part-3-harness.html), explains goals and rounds.
 
 We started with a model that could price the Stellaris design but mostly just repeated the paper's numbers back to us. Over about a month, we ran 28 goals against it to turn the model into something that actually computes the plant from its design: from 55 calculations, 6 checks and 14 parts to 199, 67 and 76.
 
@@ -61,4 +61,4 @@ All of this adds code, and code has bugs, so some goals were repairs.
 
 ## Model limits
 
-The models are still limited to the ranges they were built for. For example, the conductor performance model, which gives the current the superconducting tape can carry at a given field, is only valid for peak fields between 20 and 32 T, and the tritium breeding calculation was built from neutron-transport runs at the Stellaris radius, so it only covers blanket thicknesses of 0.6 to 1.0 m at that radius (frame 29, [answer](../../work/orchestration/goals/model-evaluation-domain-readiness/answer.md)). Expanding the design space the model can handle is more work to be done. We look at this question further in [support 2](aries-model-transfer-outline.md).
+The models are still limited to the ranges they were built for. For example, the conductor performance model, which gives the current the superconducting tape can carry at a given field, is only valid for peak fields between 20 and 32 T, and the tritium breeding calculation was built from neutron-transport runs at the Stellaris radius, so it only covers blanket thicknesses of 0.6 to 1.0 m at that radius (frame 29, [answer](../../work/orchestration/goals/model-evaluation-domain-readiness/answer.md)). Expanding the design space the model can handle is more work to be done. We look at this question further in [Part 4b](part-4b-aries-test.html).

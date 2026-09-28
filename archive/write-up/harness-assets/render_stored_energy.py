@@ -1,6 +1,6 @@
 """Render the stored-energy figure for the HTML page of the Part 3 harness write-up.
 
-Run: uv run python docs/write-up/harness-assets/render_stored_energy.py
+Run: uv run python archive/write-up/harness-assets/render_stored_energy.py
 Writes stored-energy.svg and stored-energy.png next to this script. The page embeds the SVG inline.
 
 The figure puts the stored-energy values of the stored-energy-basis goal on one axis: the paper's above

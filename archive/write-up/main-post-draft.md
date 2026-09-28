@@ -1,4 +1,4 @@
-<!-- Draft of the main Substack post, built from fusion-tea-exploratory-modeling.md (the owner's outline). Links and images are relative for review; swap in published addresses before posting. -->
+<!-- Draft of the main Substack post, built from fusion-tea-exploratory-modeling.md (the owner's outline). Page links are the published addresses; images are relative for review and get uploaded in the editor. -->
 
 # Exploratory modeling: evolving a fusion plant design with AI and SysML v2
 
@@ -70,7 +70,7 @@ Features and limitations:
 2. **Feasibility through constraints.** Engineering limits are written into the model as constraints: true/false checks on calculated values, like "the winding pack fits inside its casing" or "the conductor can carry its current". Every design point comes back with its performance and cost, plus which checks it passes and fails. A point only counts as feasible if every check was evaluated and passed, and even then only against the limits we have modeled.
 3. **DAG computation.** The generated program runs its calculations in one direction, as a directed acyclic graph (DAG). This was convenient for codegen, but it relies on being able to say that some values are design parameters and others are calculated attributes. It does not support coupled systems, where two calculations each need the other's result. See the supporting write-up for more details.
 
-The full walkthrough, from one magnet equation to a map of which designs pass, is in [Executing the trade studies on a SysML v2 plant model](sysml-codegen-model-evaluation.html). It has interactive versions of the figures.
+The full walkthrough, from one magnet equation to a map of which designs pass, is in [Executing the trade studies on a SysML v2 plant model](https://scoring.1cf.energy/exploratory-modeling/part-2-model-execution.html). It has interactive versions of the figures.
 
 ## 3. The full harness
 
@@ -98,7 +98,7 @@ The human operator keeps the gates: approving the goal and deciding when it's an
 
 An example from early on: our model disagreed with the Stellaris paper about whether the paper's own design could work. To keep the plasma hot, the model said it needed 90.6 MW of external heating, but the design only installs 50 MW. The easy move is to tune something until the numbers fit. Instead, the goal traced most of the gap to how the model spread helium "ash" (what fusion reactions leave behind) through the plasma. Using the paper's own rule for that brought the heating needed down to 49.1 MW, just inside what's installed. Nothing was tuned.
 
-[The full harness](harness.html) walks that goal round by round, shows where everything lives on disk, and lists the checks that run before anything builds on a round.
+[The full harness](https://scoring.1cf.energy/exploratory-modeling/part-3-harness.html) walks that goal round by round, shows where everything lives on disk, and lists the checks that run before anything builds on a round.
 
 ## 4. The demo: exploratory modeling
 
@@ -131,7 +131,7 @@ Looking back, the goals mostly did one of a few things:
 - **Make the model push back.** In one sweep, most of the "feasible" designs (1,113 of 1,839) turned out to be ignited plasmas the model had no way to control. That became the next goal and a new constraint.
 - **Make cost follow the design.** The cooling system's $205M allowance became $8.2B of sized pumps, piping and exchangers once cost had to follow the hardware.
 
-The [Stellaris evolution viewer](stellaris-evolution.html) lets you step through all 28 goals, see what each one changed, and open any calculation in the model.
+The [Stellaris evolution viewer](https://scoring.1cf.energy/exploratory-modeling/part-4a-modeling-stellaris.html) lets you step through all 28 goals, see what each one changed, and open any calculation in the model.
 
 ### Question 1: can the model reproduce ARIES?
 
@@ -174,7 +174,7 @@ We ran one study for each of the three types of study from Part 2. I'll go into 
 
 *Same reactor heat and equipment; only the connections change.*
 
-[Testing the Stellaris model against ARIES](aries-model-transfer-outline.md) has the full comparison, all three studies, and what each one assumes.
+[Testing the Stellaris model against ARIES](https://scoring.1cf.energy/exploratory-modeling/part-4b-aries-test.html) has the full comparison, all three studies, and what each one assumes.
 
 ### What to make of it
 

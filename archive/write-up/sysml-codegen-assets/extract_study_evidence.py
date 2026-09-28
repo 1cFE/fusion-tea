@@ -1,7 +1,7 @@
 """Extract existing native stellarator results for the public execution explainer.
 
 Run from the repository root with:
-    .codex-test/run python docs/write-up/sysml-codegen-assets/extract_study_evidence.py
+    .codex-test/run python archive/write-up/sysml-codegen-assets/extract_study_evidence.py
 
 This reads recorded artifacts only. It does not load or execute a model.
 """

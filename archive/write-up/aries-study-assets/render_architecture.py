@@ -1,5 +1,5 @@
 """Plot the verified nominal architecture pair, without rerunning a model.
-Run: .codex-test/run python docs/write-up/aries-study-assets/render_architecture.py
+Run: .codex-test/run python archive/write-up/aries-study-assets/render_architecture.py
 """
 from pathlib import Path
 import hashlib

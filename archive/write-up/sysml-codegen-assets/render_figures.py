@@ -1,7 +1,7 @@
 """Rebuild the public explainer's figures from recorded stellarator evidence.
 
 Run from repository root:
-  MPLCONFIGDIR=/tmp/codegen-writeup-mpl .codex-test/run python docs/write-up/sysml-codegen-assets/render_figures.py
+  MPLCONFIGDIR=/tmp/codegen-writeup-mpl .codex-test/run python archive/write-up/sysml-codegen-assets/render_figures.py
 """
 from pathlib import Path
 import csv

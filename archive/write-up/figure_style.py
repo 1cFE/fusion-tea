@@ -1,4 +1,4 @@
-"""Shared figure style for the HTML write-ups in docs/write-up/.
+"""Shared figure style for the HTML write-ups in archive/write-up/.
 
 Figures use the pages' fonts (Manrope and Fira Code, kept in fonts/) and the colors in write-up.css.
 Draw each figure at the width it is shown, so its text keeps its point size on the page: a figure's plate is

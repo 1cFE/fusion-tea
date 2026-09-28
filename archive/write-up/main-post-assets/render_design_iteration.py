@@ -1,6 +1,6 @@
 """Render design-iteration.html to design-iteration.png at 2x for the Substack post.
 
-Run: uv run python docs/write-up/main-post-assets/render_design_iteration.py
+Run: uv run python archive/write-up/main-post-assets/render_design_iteration.py
 """
 from pathlib import Path
 

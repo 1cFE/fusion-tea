@@ -470,8 +470,8 @@ def article_parts(source: Path, data: dict) -> tuple[str, str, str]:
             label, target = match.groups()
             if target.startswith(('https://', 'http://', '#')):
                 return save(f'<a href="{escape(target, quote=True)}">{escape(label)}</a>')
-            if '/' not in target and target.endswith('.md'):
-                if target != 'fusion-tea-exploratory-modeling.md':
+            if '/' not in target and target.endswith(('.md', '.html')):
+                if target.endswith('.md'):
                     target = target[:-3] + '.html'
                 return save(f'<a href="{escape(target)}">{escape(label)}</a>')
             path = (source.parent / target).resolve().relative_to(root)
@@ -479,7 +479,7 @@ def article_parts(source: Path, data: dict) -> tuple[str, str, str]:
                 raise BuildRefused(f'missing narrative reference: {path}')
             return save(f'{escape(label)}: <code class="path">{escape(str(path))}</code>')
         text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', link, text)
-        text = text.replace('Part 3 walks this goal.', save('<a href="harness.html">Part 3</a>') + ' walks this goal.')
+        text = text.replace('Part 3 walks this goal.', save('<a href="part-3-harness.html">Part 3</a>') + ' walks this goal.')
         text = re.sub(r'`([^`]+)`', lambda m: save(f'<code>{escape(m[1])}</code>'), text)
         def frame(match):
             return re.sub(r'\d+', lambda n: save(f'<a class="frame-link" href="#frame-{n[0]}" data-frame="{int(n[0])-1}">{n[0]}</a>'), match[0])
@@ -535,7 +535,7 @@ def article_parts(source: Path, data: dict) -> tuple[str, str, str]:
         m = frame['metrics']
         rows.append(f'<tr id="frame-{index}"><th scope="row">{index}. {escape(frame["title"])}</th><td data-label="Calculations / checks / parts">{m["calcs"]} / {m["checks"]} / {m["parts"]}</td><td data-label="Recorded result and source">{escape(frame["result"])}<br><code class="path">{escape(frame["result_source"])}</code></td></tr>')
     evidence = '<details class="evidence" id="frame-record"><summary><span class="evidence-kind">In the record</span><span>Frame records</span></summary><div class="evidence-body"><p>Counts come from each committed snapshot. Results below are the viewer’s agent condensations of the cited records; they have not been owner-reviewed. The six themes above use the checked write-up text.</p><div class="table-wrap"><table><thead><tr><th>Frame</th><th>Calculations / checks / parts</th><th>Recorded result and source</th></tr></thead><tbody>' + ''.join(rows) + '</tbody></table></div></div></details>'
-    rail = '<aside class="rail"><p class="rail-eyebrow">1cFE write-up · Part 4</p><p class="rail-title">Modeling Stellaris</p><nav class="toc" aria-label="Contents"><ol><li><a href="#evolution-viewer"><span class="n">↗</span><span>Model evolution viewer</span></a></li><li><a href="#' + group_anchor + '"><span class="n">↗</span><span>Six themes</span></a><ol>' + ''.join(toc) + '</ol></li><li><a href="#model-limits"><span class="n">↗</span><span>Model limits</span></a><ol><li><a href="#frame-record"><span class="n">↗</span><span>Frame records</span></a></li></ol></li></ol></nav></aside>'
+    rail = '<aside class="rail"><p class="rail-eyebrow">1cFE write-up · Part 4a</p><p class="rail-title">Modeling Stellaris</p><nav class="toc" aria-label="Contents"><ol><li><a href="#evolution-viewer"><span class="n">↗</span><span>Model evolution viewer</span></a></li><li><a href="#' + group_anchor + '"><span class="n">↗</span><span>Six themes</span></a><ol>' + ''.join(toc) + '</ol></li><li><a href="#model-limits"><span class="n">↗</span><span>Model limits</span></a><ol><li><a href="#frame-record"><span class="n">↗</span><span>Frame records</span></a></li></ol></li></ol></nav></aside>'
     return rail, '\n'.join(intro), '\n'.join(themes) + evidence + '</section>'
 
 
@@ -583,6 +583,9 @@ def add_article(page: str, source: Path, data: dict, stylesheet: str) -> str:
     # Scope the viewer's document-level CSS; the article keeps the shared stylesheet's typography.
     page = page[:start] + rail + '<main class="page"><article class="article">' + intro + '<div class="wide" id="evolution-viewer"><h2 id="model-evolution-viewer">Model evolution viewer</h2><p>Step through the goals with the slider or arrows. Select a part to open it, then select a calculation to see its inputs and equations. Frame links in the themes return here. Expand gives the graph the whole window.</p><noscript><p>The interactive graph needs JavaScript. All six themes and the frame records below remain available.</p></noscript><div class="viewer-shell">' + viewer + '</div></div>' + themes + '</article></main>' + page[end:]
     page = page.replace('<body ', '<body class="writeup" ', 1)
+    # The tab carries the article's own heading, not the standalone viewer's title.
+    heading = source.read_text(encoding='utf-8').split('\n', 1)[0].removeprefix('# ')
+    page = re.sub(r'<title>.*?</title>', lambda _m: f'<title>{escape(heading)}</title>', page, count=1)
     style = (HERE / 'article.css').read_text()
     page = page.replace('</head>', f'<meta name="viewport" content="width=device-width, initial-scale=1">\n<link rel="stylesheet" href="{escape(stylesheet, quote=True)}">\n<style>{style}</style>\n</head>')
     return page

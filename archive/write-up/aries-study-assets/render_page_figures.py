@@ -1,6 +1,6 @@
 """Render the charts of the HTML page for the ARIES write-up, in the page's fonts, and inline them into the page.
 
-Run from the repository root: uv run python docs/write-up/aries-study-assets/render_page_figures.py
+Run from the repository root: uv run python archive/write-up/aries-study-assets/render_page_figures.py
 
 Writes page-*.svg next to this script, then refreshes each copy inside ../aries-model-transfer-outline.html between
 its <!-- inline:NAME --> and <!-- /inline:NAME --> markers. Every value is read from a committed study or goal record
