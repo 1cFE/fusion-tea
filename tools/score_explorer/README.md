@@ -1,5 +1,41 @@
 # Score Explorer
 
+Live tool: https://scoring.1cf.energy/. Source: [tools/score_explorer](https://github.com/1cFE/fusion-tea/tree/main/tools/score_explorer). The GitHub Pages copy lives in `docs/`.
+
+## Preserve and run a fixed version
+
+The ready-to-serve files are `index.html`, `data/`, `vendor/`, and `run-locally.html`. They need no account, backend, package installation or external runtime request. Serve an extracted bundle with Python 3 from the directory containing `index.html`:
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Open http://127.0.0.1:8000/. Use HTTP rather than opening the file directly because the browser loads JSON and an ES module. See [run-locally.html](run-locally.html) for instructions that remain with the tool when hosting changes.
+
+Each generated bundle includes `release.json` with the exact source commit and permanent source URL, plus `SHA256SUMS` for the payload. Verify the ZIP with its separate `.sha256` file before extracting, then run `shasum -a 256 -c SHA256SUMS` in the extracted directory. For an exact replay, use the recorded commit, not the current default branch.
+
+From a source checkout, create the deterministic bundle using only Python's standard library and Git:
+
+```sh
+git checkout <source_commit>
+python3 tools/score_explorer/package_release.py --ref <source_commit> --output-dir /tmp/scoring-release
+```
+
+The script reads committed files, includes the captured data, local vendor libraries and licenses, and writes a ZIP plus its checksum. It does not publish, deploy or create tags. It fails if the committed Pages copy differs from the tool source. This packages existing scores; it does not run models, research extraction or scoring again.
+
+The source commit also preserves the scoring framework, input YAML, lookup tables and taxonomy used by `build.py`. The regeneration workflow below is a separate operation from serving the fixed snapshot. Changes to these inputs should produce a new release with an explicit data date.
+
+A project license has not yet been added to this source tree. This change grants no new license for project code, data or written content. Third-party libraries retain their existing licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+To synchronize the existing GitHub Pages deployment copy without publishing it:
+
+```sh
+python3 tools/score_explorer/sync_site.py
+python3 tools/score_explorer/sync_site.py --check
+```
+
+Before publishing a release, verify ranking changes, filtering, details, CSV/JSON exports and local instructions without external network access. Record the tested source commit in its release description.
+
 Interactive UI for the 7-axis fusion-concept scoring framework. Adjust
 axis weights with sliders, watch the rankings re-compute client-side in
 real time, drill into per-axis diagnostics for any concept, and export
@@ -11,14 +47,15 @@ the active ranking + weights as CSV/JSON.
 tools/score_explorer/
 ├── README.md          (this file)
 ├── build.py           Python script — reads scoring_v2 output → data/*.json
-├── index.html         Single-page app (vanilla React + Recharts via CDN)
+├── index.html         Single-page app (React + htm, local libraries)
+├── vendor/            Pinned React, ReactDOM and htm with license files
 └── data/
     ├── concepts.json  Per-concept scores, evidence, features, diagnostics
     └── weights.json   Per-axis weight + sub-tables
 ```
 
-**No build step.** React 18, Recharts, Babel-standalone all load from
-CDN — no `npm install`, no bundler, no transpiler.
+**No frontend build step.** React 18.3.1, ReactDOM 18.3.1 and htm 3.1.1
+load from `vendor/`. There is no runtime CDN, Babel, Recharts, npm install or bundler.
 
 ## Workflow
 
@@ -41,8 +78,7 @@ CDN — no `npm install`, no bundler, no transpiler.
    # open http://localhost:8000/
    ```
 
-   (The CDN-loaded React requires `http://` rather than `file://` due to
-   CORS on the JSON `fetch()` calls.)
+   (The JSON fetches and local ES module require HTTP rather than `file://`.)
 
 ## What the UI gives you
 

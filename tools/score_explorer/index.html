@@ -5,12 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fusion Concept Score Explorer</title>
 
-  <!-- React 18 + htm via CDN. No build step, no Babel — htm is a
-       ~600-byte tagged-template helper that builds React elements
-       directly. Tagged template literals are ES6; every modern browser
-       supports them natively. -->
-  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <!-- Pinned local React and htm. No runtime CDN or transpiler required. -->
+  <script src="vendor/react-18.3.1.production.min.js"></script>
+  <script src="vendor/react-dom-18.3.1.production.min.js"></script>
 
   <style>
     :root {
@@ -33,6 +30,9 @@
     h1 { font-size: 20px; }
     h2 { font-size: 15px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
     h3 { font-size: 13px; color: var(--text-dim); }
+    .artifact-links { display:flex; flex-wrap:wrap; gap:8px 24px; padding:12px 16px; border-bottom:1px solid var(--border); }
+    .artifact-links a { color:var(--accent); text-underline-offset:3px; }
+    .artifact-links a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
     .app { display: grid; grid-template-columns: 340px 1fr; min-height: 100vh; gap: 0; }
     .sidebar { background: var(--panel); border-right: 1px solid var(--border); padding: 16px; overflow-y: auto; }
     .main    { padding: 16px 24px; overflow-x: auto; }
@@ -211,6 +211,10 @@
   </style>
 </head>
 <body>
+  <nav class="artifact-links" aria-label="Source and preservation">
+    <a href="https://github.com/1cFE/fusion-tea/tree/main/tools/score_explorer">Source on GitHub</a>
+    <a href="run-locally.html">Run locally and reproduce a release</a>
+  </nav>
   <div id="root">Loading…</div>
 
   <!-- Show any uncaught error directly on the page so the user doesn't
@@ -244,7 +248,7 @@
   </script>
 
   <script type="module">
-    import htm from "https://unpkg.com/htm@3.1.1?module";
+    import htm from "./vendor/htm-3.1.1.module.js";
     const html = htm.bind(React.createElement);
     const { useEffect, useMemo, useState } = React;
 

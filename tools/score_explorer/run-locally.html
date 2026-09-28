@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Run the Fusion Concept Score Explorer locally</title>
+  <style>
+    body{max-width:760px;margin:48px auto;padding:0 24px;font:17px/1.65 system-ui,sans-serif;color:#16212b;background:#eceef0}
+    a{color:#843257}h1,h2{line-height:1.25}h2{margin-top:32px;font-size:23px}
+    pre{overflow:auto;padding:18px;background:white;border:1px solid #c8cfd6;font-size:14px}
+    code{font-family:ui-monospace,monospace;overflow-wrap:anywhere}nav{display:flex;gap:24px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <nav aria-label="Tool and source"><a href="index.html">Open the tool</a><a href="https://github.com/1cFE/fusion-tea/tree/main/tools/score_explorer">Source on GitHub</a></nav>
+  <h1>Run the Fusion Concept Score Explorer locally</h1>
+  <p>The complete tool can run from a downloaded directory. It needs no account, backend or paid service.</p>
+  <h2>Download and run</h2>
+  <p>Use a bundle from <a href="https://github.com/1cFE/fusion-tea/releases">GitHub Releases</a> when available, or download the repository's source. Extract it and run this command from the directory containing <code>index.html</code>:</p>
+  <pre>python3 -m http.server 8000 --bind 127.0.0.1</pre>
+  <p>Open <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>. Adjust the seven axis weights, filter the table, open a concept, or export the ranking. The tool works without external network access.</p>
+  <h2>Use a fixed source revision</h2>
+  <p>A generated release bundle includes <code>release.json</code> with the full source commit and its permanent GitHub URL. Check out that exact commit to reproduce the bundle. Do not substitute the latest branch if you need the same artifact.</p>
+  <pre>git checkout &lt;source_commit&gt;
+python3 tools/score_explorer/package_release.py --ref &lt;source_commit&gt; --output-dir /tmp/scoring-release</pre>
+  <p>Verify the downloaded ZIP against its separate <code>.sha256</code> file, then verify the extracted files with <code>shasum -a 256 -c SHA256SUMS</code>. Creating a local bundle does not publish a release.</p>
+  <h2>Content and rights</h2>
+  <p>The bundle preserves its captured scores and input weights. Changing axis weights recomputes the composite ranking in the browser. The source repository contains the separate Python workflow for regenerating individual scores. A project license has not yet been added to this source tree. No new project license is granted by the preservation bundle. Pinned third-party libraries retain their existing licenses in <a href="THIRD_PARTY_NOTICES.md">the notices</a>.</p>
+</body>
+</html>
